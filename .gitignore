@@ -94,3 +94,7 @@ tests/.venv-ping-flood/
 # committed to the repo.
 /uv-*-apple-darwin.tar.gz
 /uv-*-apple-darwin.tar.gz.sha256
+
+# Xcode per-user workspace state
+*.xcuserstate
+iTerm2.xcodeproj/project.xcworkspace/xcuserdata/
