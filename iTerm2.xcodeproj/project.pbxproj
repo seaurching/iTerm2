@@ -1082,6 +1082,7 @@
 		6C1249B29C2376A669BE56BE /* iTermLayoutSpecValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6BC074C860759EEDF3F98F0 /* iTermLayoutSpecValidator.swift */; };
 		6C9AFC35D6E32B64B11A3A8F /* Portholes.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8ACBF32A36014FF3886BE9B /* Portholes.strings */; };
 		6CE3AED77D074C569A3D6D07 /* iTermOpenDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A96ECF2322040C00AEA8E0 /* iTermOpenDirectory.m */; };
+		6D030EB5307E7A7D00E13376 /* menu_ids.rst in Resources */ = {isa = PBXBuildFile; fileRef = 6D030EB4307E7A7D00E13376 /* menu_ids.rst */; };
 		6D3A8786305D768B00562BB8 /* Cockpit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D3A8785305D768B00562BB8 /* Cockpit.xib */; };
 		6D3A8787305D768B00562BB8 /* Cockpit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D3A8785305D768B00562BB8 /* Cockpit.xib */; };
 		6D3A8788305D768B00562BB8 /* Cockpit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D3A8785305D768B00562BB8 /* Cockpit.xib */; };
@@ -7174,6 +7175,7 @@
 		6C3893BF7944544FADCA3AF7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Metrology.strings; sourceTree = "<group>"; };
 		6C53C6B13CEBD8E45E0D258C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Metrology.strings"; sourceTree = "<group>"; };
 		6CA038E797B515ECFFC12546 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/OpenQuickly.strings"; sourceTree = "<group>"; };
+		6D030EB4307E7A7D00E13376 /* menu_ids.rst */ = {isa = PBXFileReference; lastKnownFileType = text; path = menu_ids.rst; sourceTree = "<group>"; };
 		6D3A8784305D768B00562BB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Cockpit.xib; sourceTree = "<group>"; };
 		6D3A8789305D768B00562BB8 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Cockpit.xcstrings; sourceTree = "<group>"; };
 		6D3A878B305D8C3F00562BB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppKit.strings; sourceTree = "<group>"; };
@@ -12203,6 +12205,7 @@
 		530AB7F220AE85DE00D2AA08 /* docs */ = {
 			isa = PBXGroup;
 			children = (
+				6D030EB4307E7A7D00E13376 /* menu_ids.rst */,
 				530AB7F320AE85DE00D2AA08 /* app.rst */,
 				530AB7F420AE85DE00D2AA08 /* index.rst */,
 				530AB7F620AE85DE00D2AA08 /* tutorial */,
@@ -21508,6 +21511,7 @@
 				A6E7AE95214394DD00DE9F3B /* graphic_coffee@2x.png in Resources */,
 				A6E16C6A24A866F300C6DB06 /* WindowCorner_BigSur@2x.png in Resources */,
 				A6F7D5102E05CEDA0065D09C /* history-page.html in Resources */,
+				6D030EB5307E7A7D00E13376 /* menu_ids.rst in Resources */,
 				6D6965E43060BFF4002B885D /* CompressibleBuffers.strings in Resources */,
 				1D48B292165F405A000046EE /* important@2x.png in Resources */,
 				1DEF5E6F185F889600300319 /* Alert@2x.png in Resources */,
@@ -29717,8 +29721,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -29794,8 +29798,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -29869,8 +29873,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -29944,8 +29948,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

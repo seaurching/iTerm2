@@ -128,7 +128,7 @@
 "Install a Claude Code hook that lets iTerm2 detect Claude’s state (working, waiting, idle) and display it in the Session Status tool.\n\nThis adds a hook to your Claude Code settings that runs automatically as Claude works." = "安装 Claude Code hook，让 iTerm2 检测 Claude 的状态（工作中、等待中、空闲）并在“会话状态”工具中显示。\n\n这会在你的 Claude Code 设置中添加一个 hook，随着 Claude 工作自动运行。";
 
 /* Install the Claude Code workgroup, which groups your main Claude session with... */
-"Install the Claude Code workgroup, which groups your main Claude session with two peer sessions: a diff viewer and a code-review session. You can switch between them with one click.\n\nYou can customize this layout later in Settings > Shortcuts > Workgroups." = "安装 Claude Code 工作组，它将你的主 Claude 会话与两个同级会话分组：一个差异查看器和一个代码审查会话。你可以一键切换它们。\n\n你可以稍后在“设置 > 快捷键 > 工作组”中自定义此布局。";
+"Install the Claude Code workgroup, which groups your main Claude session with two peer sessions: a diff viewer and a code-review session. You can switch between them with one click.\n\nYou can customize this layout later in Settings > Arrangements > Workgroups." = "安装 Claude Code 工作组，它将你的主 Claude 会话与两个同级会话分组：一个差异查看器和一个代码审查会话。你可以一键切换它们。\n\n你可以稍后在“设置 > 排列 > 工作组”中自定义此布局。";
 
 /* Interrupting %@ */
 "Interrupting %@" = "正在中断 %@";

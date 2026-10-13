@@ -2,21 +2,12 @@ Version 3.7.1beta1 of iTerm2 was built on
 September 10, 2026.
 
 Improvements:
-- The iTerm2 Buddy companion app is now
-  available on the App Store. The setup wizard
-  links to a page with a QR code you can scan
-  with your phone to install it.
-- Removed the icons that had been added to menu
-  items.
 - Newlines embedded in a completion suggestion
   (such as a command-history entry or file name)
   now show as a return glyph so the entry stays
   on one line instead of spilling across rows.
   The value inserted when you accept the row is
   unchanged.
-- Shell > Workgroups now shows a checkmark next
-  to the workgroup the current session belongs
-  to.
 
 Bug Fixes:
 - Fixed a crash on launch when restoring saved
@@ -29,8 +20,6 @@ Bug Fixes:
   load. Over time this could exhaust a
   system-wide limit and break other apps that
   manage power (such as OrbStack).
-- Fixed a crash that could occur when doing a
-  global search that included a browser session.
 - Fixed a bug where navigating between tmux
   sessions or windows could freeze the UI for
   several seconds.
@@ -58,15 +47,6 @@ Bug Fixes:
 - Fixed a spurious offer to reset key reporting
   mode after running a command in shells that use
   the kitty keyboard protocol, such as Fish 4.
-- Fixed an empty Keys > General tab in Edit
-  Session that could appear after editing a
-  browser session and then a terminal session.
-- Fixed the Actions settings table not redrawing
-  the action column after editing an action
-  without changing its title.
-- Fixed a white rectangle that could appear to
-  the right of a collapsed tab group in the
-  Minimal theme.
 - Fixed the tab group outline in the Tahoe theme,
   which was being clipped: the top and bottom
   lines, the outline around the group chip, and
@@ -74,6 +54,3 @@ Bug Fixes:
   in the tab bar were partly or fully missing.
 - Fixed a faint vertical line that could appear
   inside a selected tab in the dark Tahoe theme.
-- Fixed the locale description in Settings >
-  Profiles > Terminal not adapting its color when
-  switching between light and dark mode.

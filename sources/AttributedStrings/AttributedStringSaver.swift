@@ -67,16 +67,24 @@ class AttributedStringSaver: NSObject {
             let rtfData = try attributedString.data(from: range,
                                                     documentAttributes: documentAttributes)
             Task {
-                try await rtfData.writeTo(saveItem: item)
+                do {
+                    try await rtfData.writeTo(saveItem: item)
+                } catch {
+                    self.showSaveError(error, window: window)
+                }
             }
         } catch {
-            _ = iTermWarning.show(withTitle: String(format: NSLocalizedString("There was a problem saving the file: %@", tableName: "AttributedStrings", comment: "保存文件时出现问题：%@"), error.localizedDescription),
-                                  actions: [NSLocalizedString("OK", tableName: "AttributedStrings", comment: "好")],
-                                  accessory: nil,
-                                  identifier: nil,
-                                  silenceable: .kiTermWarningTypePersistent,
-                                  heading: NSLocalizedString("Could Not Save File", tableName: "AttributedStrings", comment: "无法保存文件"),
-                                  window: window)
+            showSaveError(error, window: window)
         }
+    }
+
+    private func showSaveError(_ error: Error, window: NSWindow) {
+        _ = iTermWarning.show(withTitle: String(format: NSLocalizedString("There was a problem saving the file: %@", tableName: "AttributedStrings", comment: "保存文件时出现问题：%@"), error.localizedDescription),
+                              actions: [NSLocalizedString("OK", tableName: "AttributedStrings", comment: "好")],
+                              accessory: nil,
+                              identifier: nil,
+                              silenceable: .kiTermWarningTypePersistent,
+                              heading: NSLocalizedString("Could Not Save File", tableName: "AttributedStrings", comment: "无法保存文件"),
+                              window: window)
     }
 }
