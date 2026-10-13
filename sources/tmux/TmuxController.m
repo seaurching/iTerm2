@@ -592,7 +592,7 @@ static NSDictionary *iTermTmuxControllerDefaultFontOverridesFromProfile(Profile 
     TSVDocument *doc = [response tsvDocumentWithFields:[self listWindowFields] workAroundTabBug:_shouldWorkAroundTabBug];
     if (!doc) {
         RLog(@"Failed to parse %@", response);
-        [gateway_ abortWithErrorMessage:[NSString stringWithFormat:@"Bad response for initial list windows request: %@", response]];
+        [gateway_ abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Bad response for initial list windows request: %@", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: bad response initial list windows"), response]];
         return;
     }
     NSMutableArray<NSArray *> *windowsToOpen = [NSMutableArray array];
@@ -639,9 +639,9 @@ static NSDictionary *iTermTmuxControllerDefaultFontOverridesFromProfile(Profile 
     }
     [[TmuxDashboardController sharedInstance] didAttachWithHiddenWindows:haveHidden tooManyWindows:tooMany];
     if (tooMany) {
-        [[iTermNotificationController sharedInstance] notify:@"Too many tmux windows!" withDescription:@"Use the tmux dashboard to select which to open."];
+        [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Too many tmux windows!", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: too many windows notification title") withDescription:NSLocalizedStringFromTableInBundle(@"Use the tmux dashboard to select which to open.", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: use dashboard notification description")];
     } else if (haveHidden) {
-        [[iTermNotificationController sharedInstance] notify:@"Some tmux windows were hidden." withDescription:@"Use the tmux dashboard to select which to open."];
+        [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Some tmux windows were hidden.", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: hidden windows notification title") withDescription:NSLocalizedStringFromTableInBundle(@"Use the tmux dashboard to select which to open.", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: use dashboard notification description")];
     }
     for (NSArray *record in windowsToOpen) {
         DLog(@"Open window %@", record);
@@ -1538,8 +1538,8 @@ static NSDictionary *iTermTmuxControllerDefaultFontOverridesFromProfile(Profile 
 
 - (void)checkForUTF8Response:(NSString *)response {
     if ([response containsString:@"_"]) {
-        [gateway_ abortWithErrorMessage:@"tmux is not in UTF-8 mode. Please pass the -u command line argument to tmux or change your LANG environment variable to end with “.UTF-8”."
-                                  title:@"UTF-8 Mode Not Detected"];
+        [gateway_ abortWithErrorMessage:NSLocalizedStringFromTableInBundle(@"tmux is not in UTF-8 mode. Please pass the -u command line argument to tmux or change your LANG environment variable to end with “.UTF-8”.", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: utf-8 mode not detected message")
+                                  title:NSLocalizedStringFromTableInBundle(@"UTF-8 Mode Not Detected", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: utf-8 mode alert title")];
     }
 }
 
@@ -1857,12 +1857,10 @@ static NSDictionary *iTermTmuxControllerDefaultFontOverridesFromProfile(Profile 
 - (void)optionValidationFailedForOption:(NSString *)option
 {
     NSString *message = [NSString stringWithFormat:
-                            @"The \"%@\" option is turned on in tmux. "
-                             "It is not compatible with the iTerm2-tmux integration. "
-                             "Please disable it and try again.",
+                            NSLocalizedStringFromTableInBundle(@"The \"%@\" option is turned on in tmux. It is not compatible with the iTerm2-tmux integration. Please disable it and try again.", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: unsupported option message"),
                              option];
     [gateway_ abortWithErrorMessage:message
-                              title:@"Unsupported tmux option"];
+                              title:NSLocalizedStringFromTableInBundle(@"Unsupported tmux option", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: unsupported option alert title")];
 }
 
 - (NSArray *)unsupportedGlobalOptions
@@ -3112,12 +3110,12 @@ static NSDictionary *iTermTmuxControllerDefaultFontOverridesFromProfile(Profile 
     }
     if (haveRed) {
         const iTermWarningSelection selection =
-        [iTermWarning showWarningWithTitle:@"While attaching to tmux, some tabs were found whose color is pure red. This may be due to a bug in early versions of iTerm2 3.6.x. Would you like to reset those tabs’ colors?"
-                                   actions:@[ @"Reset", @"Keep Red" ]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"While attaching to tmux, some tabs were found whose color is pure red. This may be due to a bug in early versions of iTerm2 3.6.x. Would you like to reset those tabs’ colors?", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: red tab colors warning")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"Reset", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: reset red tabs action"), NSLocalizedStringFromTableInBundle(@"Keep Red", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: keep red tabs action") ]
                                  accessory:nil
                                 identifier:@"NoSyncResetRedTmuxTabs"
                                silenceable:kiTermWarningTypePermanentlySilenceable
-                                   heading:@"Fix corrupted tab colors?"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Fix corrupted tab colors?", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: fix corrupted tab colors heading")
                                     window:[NSApp keyWindow]];
         if (selection == kiTermWarningSelection0) {
             [_tabColors removeObjectsPassingTest:^BOOL(NSNumber *key, NSString *obj) {
@@ -3367,7 +3365,7 @@ static NSDictionary *iTermTmuxControllerDefaultFontOverridesFromProfile(Profile 
     TSVDocument *doc = [response tsvDocumentWithFields:[self listWindowFields]
                                       workAroundTabBug:_shouldWorkAroundTabBug];
     if (!doc) {
-        [gateway_ abortWithErrorMessage:[NSString stringWithFormat:@"Bad response for list windows request: %@",
+        [gateway_ abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Bad response for list windows request: %@", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: bad response list windows"),
                                          response]];
         return;
     }
@@ -3521,8 +3519,8 @@ static NSDictionary *iTermTmuxControllerDefaultFontOverridesFromProfile(Profile 
     [pendingWindowOpens_ removeObject:windowIndex];
     if (windowOpener.errorCount != 0) {
         [affinities_ removeValue:[@(windowOpener.windowIndex) stringValue]];
-        [[iTermNotificationController sharedInstance] notify:@"Error opening tmux tab"
-                                             withDescription:@"A tmux pane terminated immediately after creation"];
+        [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Error opening tmux tab", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: error opening tmux tab notification title")
+                                             withDescription:NSLocalizedStringFromTableInBundle(@"A tmux pane terminated immediately after creation", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux controller: pane terminated notification description")];
         return;
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:kTmuxControllerWindowDidOpen

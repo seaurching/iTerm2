@@ -314,12 +314,12 @@ struct AIConversation {
                         regCompletion(registration)
                         completion(nil)
                     } else {
-                        completion(AIError("You must provide a valid API key to use AI features in iTerm2."))
+                        completion(AIError(NSLocalizedString("You must provide a valid API key to use AI features in iTerm2.", tableName: "AITermXC", comment: "您必须提供有效的 API 密钥才能使用 iTerm2 中的 AI 功能。")))
                     }
                 }
             } else {
                 RLog("No registration provider found")
-                completion(AIError("You must provide a valid API key to use AI features in iTerm2"))
+                completion(AIError(NSLocalizedString("You must provide a valid API key to use AI features in iTerm2", tableName: "AITermXC", comment: "您必须提供有效的 API 密钥才能使用 iTerm2 中的 AI 功能")))
             }
         }
     }

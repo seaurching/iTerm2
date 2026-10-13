@@ -3585,11 +3585,19 @@ static NSString *iTermStringForEventPhase(NSEventPhase eventPhase) {
     while (i > 0 && [[self blockIDsOnLine:i - 1] containsObject:block]) {
         i -= 1;
     }
-    _hoverBlockCopyButton = [[iTermTerminalCopyButton alloc] initWithID:-1
-                                                                blockID:block
-                                                                   mark:nil
-                                                                   absY:@(i + _dataSource.totalScrollbackOverflow)
-                                                                tooltip:@"Copy block to clipboard"];
+    _hoverBlockCopyButton = [
+        [iTermTerminalCopyButton alloc] initWithID:-1
+        blockID:block
+        mark:nil
+        absY:@(i + _dataSource.totalScrollbackOverflow)
+        tooltip:
+            NSLocalizedStringFromTableInBundle(
+                                               @"Copy block to clipboard",
+                                               @"TerminalView",
+                                               [NSBundle bundleForClass:[self class]],
+                                               @"copy block: tooltip"
+                                               )
+    ];
     _hoverBlockCopyButton.isFloating = YES;
     __weak __typeof(self) weakSelf = self;
     const long long offset = _dataSource.totalScrollbackOverflow;
@@ -4377,7 +4385,7 @@ static NSString *iTermStringForEventPhase(NSEventPhase eventPhase) {
 
     NSButton *timestampsButton = [[[NSButton alloc] init] autorelease];
     [timestampsButton setButtonType:NSButtonTypeSwitch];
-    timestampsButton.title = @"Include timestamps";
+    timestampsButton.title = NSLocalizedStringFromTableInBundle(@"Include timestamps", @"TerminalView", [NSBundle bundleForClass:[self class]], @"save panel: include timestamps checkbox");
     NSString *userDefaultsKey = @"NoSyncSaveWithTimestamps";
     timestampsButton.state = [[iTermUserDefaults userDefaults] boolForKey:userDefaultsKey] ? NSControlStateValueOn : NSControlStateValueOff;
     [timestampsButton sizeToFit];
@@ -4396,7 +4404,7 @@ static NSString *iTermStringForEventPhase(NSEventPhase eventPhase) {
     NSString *formattedDate = [dateFormatter stringFromDate:[NSDate date]];
     // Stupid mac os can't have colons in filenames
     formattedDate = [formattedDate stringByReplacingOccurrencesOfString:@":" withString:@"-"];
-    NSString *nowStr = [NSString stringWithFormat:@"Log at %@.txt", formattedDate];
+    NSString *nowStr = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Log at %@.txt", @"TerminalView", [NSBundle bundleForClass:[self class]], @"Default filename when saving a log"), formattedDate];
 
     // Show the save panel. The first time it's done set the path, and from then on the save panel
     // will remember the last path you used.tmp
@@ -5206,20 +5214,35 @@ static NSString *iTermStringForEventPhase(NSEventPhase eventPhase) {
         return NO;
     }
     if (files.count == 1) {
-        text = [NSString stringWithFormat:@"OK to %@\n%@\nto\n%@@%@:%@?",
-                useSSHIntegration ? @"copy" : @"scp",
-                [files componentsJoinedByString:@", "],
-                path.username, path.hostname, path.path];
+        text = [
+            NSString stringWithFormat:
+                NSLocalizedStringFromTableInBundle(
+                                                   @"OK to %@\n%@\nto\n%@@%@:%@?",
+                                                   @"TerminalView",
+                                                   [NSBundle bundleForClass:[self class]],
+                                                   @"upload: single file confirm"
+                                                   ),
+            useSSHIntegration ? @"copy" : @"scp",
+            [files componentsJoinedByString:@", "],
+            path.username, path.hostname, path.path
+        ];
     } else {
-        text = [NSString stringWithFormat:@"OK to %@ the following files:\n%@\n\nto\n%@@%@:%@?",
+        text = [NSString stringWithFormat:
+                NSLocalizedStringFromTableInBundle(
+                                                   @"OK to %@ the following files:\n%@\n\nto\n%@@%@:%@?",
+                                                   @"TerminalView",
+                                                   [NSBundle bundleForClass:[self class]],
+                                                   @"upload: multiple files confirm"
+                                                   ),
                 useSSHIntegration ? @"copy" : @"scp",
                 [files componentsJoinedByString:@", "],
-                path.username, path.hostname, path.path];
+                path.username, path.hostname, path.path
+        ];
     }
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
     alert.messageText = text;
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Cancel"];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"TerminalView", [NSBundle bundleForClass:[self class]], @"upload: OK button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"TerminalView", [NSBundle bundleForClass:[self class]], @"upload: cancel button")];
     [alert layout];
     NSInteger button = [alert runModal];
     return (button == NSAlertFirstButtonReturn);
@@ -6705,11 +6728,20 @@ extendResultsAcrossSoftBoundaries:(BOOL)extendResultsAcrossSoftBoundaries {
             !VT100GridAbsCoordEquals([self absCoordForButton:_buttons[i]], place.coord) ||
             ![_buttons[i] matchesMark:place.mark]) {
             if (place.mark.copyBlockID) {
-                iTermTerminalButton *button = [[[iTermTerminalCopyButton alloc] initWithID:place.id
-                                                                                   blockID:place.mark.copyBlockID
-                                                                                      mark:place.mark
-                                                                                      absY:nil
-                                                                                   tooltip:@"Copy Block to clipboard"] autorelease];
+                iTermTerminalButton *button = [
+                    [
+                        [iTermTerminalCopyButton alloc] initWithID:place.id
+                        blockID:place.mark.copyBlockID
+                        mark:place.mark
+                        absY:nil
+                        tooltip:NSLocalizedStringFromTableInBundle(
+                                                                   @"Copy Block to clipboard",
+                                                                   @"TerminalView",
+                                                                   [NSBundle bundleForClass:[self class]],
+                                                                   @"Tooltip for the copy-block terminal button"
+                                                                   )
+                    ] autorelease
+                ];
                 NSString *blockID = [[place.mark.copyBlockID copy] autorelease];
 
                 button.action = ^(NSPoint locationInWindow) {
@@ -6856,11 +6888,11 @@ extendResultsAcrossSoftBoundaries:(BOOL)extendResultsAcrossSoftBoundaries {
 - (void)popCommandSettingsButtonAt:(NSPoint)locationInWindow for:(id<VT100ScreenMarkReading>)mark {
     iTermSimpleContextMenu *menu = [[[iTermSimpleContextMenu alloc] init] autorelease];
     __weak __typeof(self) weakSelf = self;
-    [menu addItemWithTitle:@"Disable Command Selection" action:^{
+    [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Disable Command Selection", @"TerminalView", [NSBundle bundleForClass:[self class]], @"禁用命令选择菜单项") action:^{
         [iTermPreferences setBool:NO forKey:kPreferenceKeyClickToSelectCommand];
         [weakSelf.delegate textViewReloadSelectedCommand];
     }];
-    [menu addItemWithTitle:@"Help" action:^{
+    [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Help", @"TerminalView", [NSBundle bundleForClass:[self class]], @"帮助菜单项") action:^{
         if (!weakSelf) {
             return;
         }
@@ -6886,18 +6918,18 @@ extendResultsAcrossSoftBoundaries:(BOOL)extendResultsAcrossSoftBoundaries {
     iTermSimpleContextMenu *menu = [[[iTermSimpleContextMenu alloc] init] autorelease];
     if (command.length) {
         __weak __typeof(self) weakSelf = self;
-        [menu addItemWithTitle:@"Copy Command" action:^{
+        [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Copy Command", @"TerminalView", [NSBundle bundleForClass:[self class]], @"复制命令菜单项") action:^{
             [weakSelf copyString:command];
-            [ToastWindowController showToastWithMessage:@"Command Copied"
+            [ToastWindowController showToastWithMessage:NSLocalizedStringFromTableInBundle(@"Command Copied", @"TerminalView", [NSBundle bundleForClass:[self class]], @"Toast after copying a command")
                                                duration:1.5
                                 topLeftScreenCoordinate:[weakSelf.window convertPointToScreen:locationInWindow]
                                               pointSize:12];
         }];
-        [menu addItemWithTitle:@"Copy Output" action:^{
+        [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Copy Output", @"TerminalView", [NSBundle bundleForClass:[self class]], @"复制输出菜单项") action:^{
             iTermRenegablePromise<NSString *> *promise = [self promisedOutputForMark:mark progress:nil];
             [[promise wait] whenFirst:^(NSString * _Nonnull string) {
                 [weakSelf copyString:string];
-                [ToastWindowController showToastWithMessage:@"Output Copied"
+                [ToastWindowController showToastWithMessage:NSLocalizedStringFromTableInBundle(@"Output Copied", @"TerminalView", [NSBundle bundleForClass:[self class]], @"Toast after copying command output")
                                                    duration:1.5
                                     topLeftScreenCoordinate:[weakSelf.window convertPointToScreen:locationInWindow]
                                                   pointSize:12];
@@ -6983,7 +7015,7 @@ extendResultsAcrossSoftBoundaries:(BOOL)extendResultsAcrossSoftBoundaries {
 
 - (void)copyBlock:(NSString *)block absLine:(long long)absLine screenCoordinate:(NSPoint)screenCoordinate {
     if ([self copyBlock:block includingAbsLine:absLine]) {
-        [ToastWindowController showToastWithMessage:@"Copied"
+        [ToastWindowController showToastWithMessage:NSLocalizedStringFromTableInBundle(@"Copied", @"TerminalView", [NSBundle bundleForClass:[self class]], @"Toast after copying a block")
                                            duration:1
                             topLeftScreenCoordinate:screenCoordinate
                                           pointSize:12];
@@ -7594,13 +7626,38 @@ static NSString *iTermStringFromRange(NSRange range) {
 #pragma mark - PTYNoteViewControllerDelegate
 
 - (void)noteDidRequestRemoval:(PTYNoteViewController *)note {
-    const iTermWarningSelection selection = [iTermWarning showWarningWithTitle:@"Really remove annotation?"
-                                                                       actions:@[ @"OK", @"Cancel" ]
-                                                                     accessory:nil
-                                                                    identifier:@"NoSyncConfirmRemoveAnnotation"
-                                                                   silenceable:kiTermWarningTypePermanentlySilenceable
-                                                                       heading:@"Confirm"
-                                                                        window:self.window];
+    const iTermWarningSelection selection = [
+        iTermWarning showWarningWithTitle:
+            NSLocalizedStringFromTableInBundle(
+                                               @"Really remove annotation?",
+                                               @"TerminalView",
+                                               [NSBundle bundleForClass:[self class]],
+                                               @"annotation: remove warning title"
+                                               )
+        actions:@[NSLocalizedStringFromTableInBundle(
+                      @"OK",
+                      @"TerminalView",
+                      [NSBundle bundleForClass:[self class]],
+                      @"annotation: OK button"
+                  ),
+                  NSLocalizedStringFromTableInBundle(
+                      @"Cancel",
+                      @"TerminalView",
+                      [NSBundle bundleForClass:[self class]],
+                      @"annotation: cancel button"
+                  )
+    ]
+        accessory:nil
+        identifier:@"NoSyncConfirmRemoveAnnotation"
+        silenceable:kiTermWarningTypePermanentlySilenceable
+        heading:NSLocalizedStringFromTableInBundle(
+                                                   @"Confirm",
+                                                   @"TerminalView",
+                                                   [NSBundle bundleForClass:[self class]],
+                                                   @"annotation: confirm heading"
+                                                   )
+        window:self.window
+    ];
     if (selection == kiTermWarningSelection1) {
         return;
     }
@@ -8579,7 +8636,7 @@ dragSemanticHistoryWithEvent:(NSEvent *)event
         NSString *copyString = url.absoluteString;
         [pasteboard setString:copyString forType:NSPasteboardTypeString];
         [[PasteboardHistory sharedInstance] save:copyString];
-        [ToastWindowController showToastWithMessage:@"Copied"
+        [ToastWindowController showToastWithMessage:NSLocalizedStringFromTableInBundle(@"Copied", @"TerminalView", [NSBundle bundleForClass:[self class]], @"Toast after copying a block")
                                            duration:1
                                    screenCoordinate:[NSEvent mouseLocation]
                                           pointSize:12];

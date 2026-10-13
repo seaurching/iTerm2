@@ -1,0 +1,62 @@
+/* OpenSavePanels: save panel item display name */
+"“%@” on %@" = "“%@” 在 %@ 上";
+
+/* OpenSavePanels: no ssh connection upload warning */
+"No ssh connection to %@ is available to upload %@" = "没有可用的 SSH 连接到 %@ 来上传 %@";
+
+/* OpenSavePanels: upload failed OK button */
+"OK" = "好";
+
+/* OpenSavePanels: upload failed heading */
+"Upload Failed" = "上传失败";
+
+/* OpenSavePanels: open SSH panel button */
+"Open SSH Panel..." = "打开 SSH 面板…";
+
+/* OpenSavePanels: open panel canceled error */
+"Canceled" = "已取消";
+
+/* OpenSavePanels: raw data log format menu item */
+"Raw data" = "原始数据";
+
+/* OpenSavePanels: plain text log format menu item */
+"Plain text" = "纯文本";
+
+/* OpenSavePanels: HTML log format menu item */
+"HTML" = "HTML";
+
+/* OpenSavePanels: ASCIInema log format menu item */
+"ASCIInema" = "ASCIInema";
+
+/* OpenSavePanels: home directory location fragment */
+" in your home directory" = "（位于主目录）";
+
+/* OpenSavePanels: desktop location fragment */
+" on the Desktop" = "（位于桌面）";
+
+/* OpenSavePanels: file exists heading */
+"“%@” already exists. Do you want to replace it or append to it?" = "“%@” 已存在。你想要替换它还是追加到它？";
+
+/* OpenSavePanels: file exists body */
+"A file or folder with the same name already exists%@. Replacing it will overwrite its current contents." = "同名的文件或文件夹已存在%@。替换将覆盖其当前内容。";
+
+/* OpenSavePanels: file exists cancel button */
+"Cancel" = "取消";
+
+/* OpenSavePanels: file exists replace button */
+"Replace" = "替换";
+
+/* OpenSavePanels: file exists append button */
+"Append" = "追加";
+
+/* OpenSavePanels: use both extensions title */
+"You can choose to use both, so that your file name ends in “.%@.%@”." = "你可以选择同时使用两者，使文件名以 “.%@.%@” 结尾。";
+
+/* OpenSavePanels: use required extension button */
+"Use .%@" = "使用 .%@";
+
+/* OpenSavePanels: use both extensions button */
+"Use both" = "同时使用";
+
+/* OpenSavePanels: wrong extension heading */
+"You cannot save this document with extension “.%@” at the end of the name. The required extension is “.%@”." = "你无法以扩展名 “.%@” 作为名称结尾来保存此文档。必需的扩展名是 “.%@”。";

@@ -18,11 +18,11 @@ class ExitWorkgroupTrigger: Trigger {
     @objc static let leaderOnlyParamKey = "leaderOnly"
 
     override static var title: String {
-        return "Exit Workgroup"
+        return NSLocalizedString("Exit Workgroup", tableName: "Triggers", comment: "退出工作组触发器")
     }
 
     override var description: String {
-        return "Exit Workgroup"
+        return NSLocalizedString("Exit Workgroup", tableName: "Triggers", comment: "退出工作组触发器")
     }
 
     override func takesParameter() -> Bool {

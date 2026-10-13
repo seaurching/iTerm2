@@ -19,8 +19,9 @@ static NSString *const kBlackAndWhiteKey = @"Print In Black And White";
 }
 
 - (NSArray<NSDictionary<NSString *,NSString *> *> *)localizedSummaryItems {
-  return @[ @{ NSPrintPanelAccessorySummaryItemNameKey: @"blackAndWhite",
-               NSPrintPanelAccessorySummaryItemDescriptionKey: @"Should the document print only in black and white?" } ];
+  NSBundle *printingBundle = [NSBundle bundleForClass:[self class]];
+  return @[ @{ NSPrintPanelAccessorySummaryItemNameKey: NSLocalizedStringFromTableInBundle(@"blackAndWhite", @"Printing", printingBundle, @"Printing: print panel summary black and white option name"),
+               NSPrintPanelAccessorySummaryItemDescriptionKey: NSLocalizedStringFromTableInBundle(@"Should the document print only in black and white?", @"Printing", printingBundle, @"Printing: print panel summary black and white option description") } ];
 }
 
 - (void)awakeFromNib {

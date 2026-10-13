@@ -1,0 +1,8 @@
+/* Global search: folded region match count */
+"Folded region (%lu matches)" = "Folded region (%lu matches)";
+
+/* Global search: fallback session name */
+"Session" = "Session";
+
+/* Global search: folded region accessibility description */
+"Folded region" = "Folded region";

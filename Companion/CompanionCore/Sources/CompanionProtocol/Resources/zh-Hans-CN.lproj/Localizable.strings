@@ -1,0 +1,6 @@
+"The connection was closed" = "连接已关闭";
+"Received a frame of %d bytes, larger than the limit of %d" = "收到大小为 %d 字节的数据帧，超过上限 %d";
+"Received a malformed frame" = "收到格式错误的数据帧";
+"The relay's daily data limit was reached" = "已达到中继的每日数据限额";
+"This relay no longer serves the pairing; re-resolving to the current host" = "该中继不再服务此配对；正在重新解析到当前主机";
+"Another connection took over this pairing's slot" = "另一个连接接管了此配对的槽位";

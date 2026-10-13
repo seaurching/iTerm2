@@ -14,12 +14,12 @@
 @implementation BellTrigger
 
 - (NSString *)description {
-    return @"Ring Bell";
+    return NSLocalizedStringFromTableInBundle(@"Ring Bell", @"Triggers", [NSBundle bundleForClass:[self class]], @"响铃触发器");
 }
 
 + (NSString *)title
 {
-    return @"Ring Bell";
+    return NSLocalizedStringFromTableInBundle(@"Ring Bell", @"Triggers", [NSBundle bundleForClass:[self class]], @"响铃触发器");
 }
 
 - (BOOL)takesParameter

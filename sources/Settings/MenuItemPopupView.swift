@@ -103,9 +103,9 @@ private extension NSMenuItem {
     func title(descendsFromProfiles: Bool) -> String {
         switch itemType(descendsFromProfiles: descendsFromProfiles) {
         case .newWindow:
-            return "\(self.title) — New Window"
+            return String(format: NSLocalizedString("%@ — New Window", tableName: "Settings", comment: "Menu item title for new window"), self.title)
         case .newTab:
-            return "\(self.title) — New Tab"
+            return String(format: NSLocalizedString("%@ — New Tab", tableName: "Settings", comment: "Menu item title for new tab"), self.title)
         case .other:
             return self.title
         }
@@ -142,7 +142,7 @@ private extension SearchableComboViewItem {
 
     static private func moveToScreenItems(tagProvider: () -> (Int)) -> [SearchableComboViewItem] {
         return NSScreen.screens.map { screen in
-            return SearchableComboViewItem("Move to \(screen.it_uniqueName())",
+            return SearchableComboViewItem(String(format: NSLocalizedString("Move to %@", tableName: "Settings", bundle: Bundle(for: MenuItemPopupView.self), comment: ""), screen.it_uniqueName()),
                                            tag: tagProvider(),
                                            identifier: screen.it_uniqueKey())
         }
@@ -203,7 +203,7 @@ class MenuItemPopupView: NSView {
         let identifier = selectedIdentifier
         comboView?.removeFromSuperview()
         let newComboView = SearchableComboView(SearchableComboViewGroup.fromMainMenu(),
-                                               defaultTitle: "Select Menu Item…")
+                                               defaultTitle: NSLocalizedString("Select Menu Item…", tableName: "Settings", bundle: Bundle(for: MenuItemPopupView.self), comment: ""))
         newComboView.frame = self.bounds
         newComboView.delegate = comboView?.delegate
         addSubview(newComboView)

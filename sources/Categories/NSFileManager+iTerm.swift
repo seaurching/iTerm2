@@ -17,8 +17,8 @@ extension FileManager {
         if fileExists(atPath: directoryPath, isDirectory: &isDir) && isDir.boolValue {
             return true
         }
-        let selection = iTermWarning.show(withTitle: "Would you like to create the directory at \(directoryPath)?",
-                                          actions: ["OK", "Cancel"],
+        let selection = iTermWarning.show(withTitle: String(format: NSLocalizedString("Would you like to create the directory at %@?", tableName: "Categories", comment: "Prompt to create enclosing directory"), directoryPath),
+                                          actions: [NSLocalizedString("OK", tableName: "Categories", comment: "Button: OK"), NSLocalizedString("Cancel", tableName: "Categories", comment: "Button: Cancel")],
                                           accessory: nil,
                                           identifier: "CreateDirectory_" + identifier,
                                           silenceable: .kiTermWarningTypePermanentlySilenceable,
@@ -32,8 +32,8 @@ extension FileManager {
                                     attributes: nil)
                 return true
             } catch {
-                let selection = iTermWarning.show(withTitle: "Failed to create \(directoryPath):\n\n\(error.localizedDescription)",
-                                                  actions: ["Try Again", "Cancel"],
+                let selection = iTermWarning.show(withTitle: String(format: NSLocalizedString("Failed to create %@:\n\n%@", tableName: "Categories", comment: "Failed to create directory error"), directoryPath, error.localizedDescription),
+                                                  actions: [NSLocalizedString("Try Again", tableName: "Categories", comment: "Button: Try Again"), NSLocalizedString("Cancel", tableName: "Categories", comment: "Button: Cancel")],
                                                   accessory: nil,
                                                   identifier: nil,
                                                   silenceable: .kiTermWarningTypePersistent,

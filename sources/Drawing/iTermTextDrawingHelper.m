@@ -2571,7 +2571,7 @@ static BOOL NSRangesAdjacent(NSRange lhs, NSRange rhs) {
     CGContextSetTextMatrix(cgContext, textMatrix);
     const BOOL verbose = NO;  // turn this on to debug character position problems.
     if (verbose) {
-        NSLog(@"Begin drawing string: %@", attributedString.string);
+        NSLog(NSLocalizedStringFromTableInBundle(@"Begin drawing string: %@", @"Drawing", [NSBundle bundleForClass:[self class]], @"Text drawing helper debug: begin drawing string"), attributedString.string);
     }
 
     NSData *drawInCellIndex = attributes[iTermDrawInCellIndexAttribute];

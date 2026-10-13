@@ -265,7 +265,7 @@ static const NSTimeInterval kMaximumTimeToKeepFinishedDownload = 24 * 60 * 60;
     [item setAction:@selector(itemSelected:)];
 
     NSMenu *submenu = [[[NSMenu alloc] init] autorelease];
-    NSMenuItem *subItem = [[[NSMenuItem alloc] initWithTitle:@"Stop"
+    NSMenuItem *subItem = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Stop", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Menu item: stop transfer")
                                                       action:@selector(stop:)
                                                keyEquivalent:@""] autorelease];
     [subItem setTarget:controller];
@@ -273,7 +273,7 @@ static const NSTimeInterval kMaximumTimeToKeepFinishedDownload = 24 * 60 * 60;
     controller.stopSubItem = subItem;
 
     if (transferrableFile.isDownloading) {
-        subItem = [[[NSMenuItem alloc] initWithTitle:@"Show in Finder"
+        subItem = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Show in Finder", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Menu item: show in Finder")
                                               action:@selector(showInFinder:)
                                        keyEquivalent:@""] autorelease];
         [subItem setTarget:controller];
@@ -281,7 +281,7 @@ static const NSTimeInterval kMaximumTimeToKeepFinishedDownload = 24 * 60 * 60;
         controller.showInFinderSubItem = subItem;
     }
 
-    subItem = [[[NSMenuItem alloc] initWithTitle:@"Remove from List"
+    subItem = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Remove from List", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Menu item: remove from list")
                                           action:@selector(removeFromList:)
                                    keyEquivalent:@""] autorelease];
     [subItem setTarget:controller];
@@ -289,7 +289,7 @@ static const NSTimeInterval kMaximumTimeToKeepFinishedDownload = 24 * 60 * 60;
     controller.removeFromListSubItem = subItem;
 
     if (transferrableFile.isDownloading) {
-        subItem = [[[NSMenuItem alloc] initWithTitle:@"Open"
+        subItem = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Open", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Menu item: open file")
                                               action:@selector(open:)
                                        keyEquivalent:@""] autorelease];
         [subItem setTarget:controller];
@@ -297,7 +297,7 @@ static const NSTimeInterval kMaximumTimeToKeepFinishedDownload = 24 * 60 * 60;
         controller.openSubItem = subItem;
     }
 
-    subItem = [[[NSMenuItem alloc] initWithTitle:@"Get Info"
+    subItem = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Get Info", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Menu item: get info")
                                           action:@selector(getInfo:)
                                    keyEquivalent:@""] autorelease];
     [subItem setTarget:controller];
@@ -335,7 +335,7 @@ static const NSTimeInterval kMaximumTimeToKeepFinishedDownload = 24 * 60 * 60;
 - (void)transferrableFile:(TransferrableFile *)transferrableFile
     didFinishTransmissionWithError:(NSError *)error {
     if (error) {
-        [transferrableFile didFailWithError:error.localizedDescription ?: @"File transfer failed with an unknown error"];
+        [transferrableFile didFailWithError:error.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"File transfer failed with an unknown error", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: file transfer failed with unknown error")];
     } else {
         transferrableFile.status = kTransferrableFileStatusFinishedSuccessfully;
     }
@@ -368,7 +368,7 @@ static const NSTimeInterval kMaximumTimeToKeepFinishedDownload = 24 * 60 * 60;
 
     // Call the completion block if set (transfer was cancelled)
     if (transferrableFile.completionBlock) {
-        transferrableFile.completionBlock(NO, @"Transfer cancelled");
+        transferrableFile.completionBlock(NO, NSLocalizedStringFromTableInBundle(@"Transfer cancelled", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: transfer cancelled"));
         transferrableFile.completionBlock = nil;
     }
 }
@@ -379,15 +379,15 @@ static const NSTimeInterval kMaximumTimeToKeepFinishedDownload = 24 * 60 * 60;
 - (void)transferrableFile:(TransferrableFile *)transferrableFile
         interactivePrompt:(NSString *)prompt
                completion:(void (^)(NSString *password))completion {
-    NSString *text = [NSString stringWithFormat:@"Authenticate %@", transferrableFile.authRequestor];
+    NSString *text = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Authenticate %@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Alert title: authenticate user"), transferrableFile.authRequestor];
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
     alert.messageText = text;
-    alert.informativeText = [NSString stringWithFormat:@"Please enter the %@ for %@ to begin %@.",
+    alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Please enter the %@ for %@ to begin %@.", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Alert: enter credential to begin transfer"),
                              prompt, transferrableFile.authRequestor,
                              transferrableFile.protocolName];
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Cancel"];
-    [alert addButtonWithTitle:@"Password Manager…"];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Button: OK")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Button: cancel")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Password Manager…", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Button: password manager")];
 
     NSSecureTextField *input =
         [[[NSSecureTextField alloc] initWithFrame:NSMakeRect(0, 0, 200, 24)] autorelease];
@@ -424,8 +424,8 @@ static const NSTimeInterval kMaximumTimeToKeepFinishedDownload = 24 * 60 * 60;
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
     alert.messageText = title;
     alert.informativeText = message;
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Cancel"];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Button: OK")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Button: cancel")];
 
     [alert layout];
     NSInteger button = [alert runModal];

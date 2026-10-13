@@ -642,12 +642,12 @@ static void iTermPreferencesRefreshFastCachesForKey(NSString *key);
         return;
     }
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:@"Load settings from Gitlab settings-like URL on pasteboard?"
-                               actions:@[ @"OK", @"Cancel" ]
+    [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Load settings from Gitlab settings-like URL on pasteboard?", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                              accessory:nil
                             identifier:nil
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Load Gitlab Settings"
+                               heading:NSLocalizedStringFromTableInBundle(@"Load Gitlab Settings", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                 window:nil];
     if (selection == kiTermWarningSelection0) {
         [ud setBool:YES forKey:kPreferenceKeyLoadPrefsFromCustomFolder];

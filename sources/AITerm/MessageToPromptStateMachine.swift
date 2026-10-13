@@ -66,22 +66,22 @@ struct MessageToPromptStateMachine {
 
     private func prompt(terminalCommand: TerminalCommand) -> String {
         var lines = [String]()
-        lines.append("iTerm2 is sending you this message automatically because the user enabled sending terminal commands to AI for assistance. If you can provide useful non-obvious insights, respond with those. Do not restate information that is obvious from the output. If there is nothing important to say, just respond with \"Got it.\"")
-        lines.append("I executed the following command line:")
+        lines.append(NSLocalizedString("iTerm2 is sending you this message automatically because the user enabled sending terminal commands to AI for assistance. If you can provide useful non-obvious insights, respond with those. Do not restate information that is obvious from the output. If there is nothing important to say, just respond with \"Got it.\"", tableName: "AITermXC", comment: "iTerm2 自动发送此消息，因为用户启用了将终端命令发送给 AI 以获取帮助。如果您能提供有用的非明显见解，请回复。不要重复输出中明显的信息。如果没有重要内容，请回复\"明白了。\""))
+        lines.append(NSLocalizedString("I executed the following command line:", tableName: "AITermXC", comment: "我执行了以下命令行："))
         lines.append(terminalCommand.command)
         if let directory = terminalCommand.directory {
-            lines.append("My current directory was:")
+            lines.append(NSLocalizedString("My current directory was:", tableName: "AITermXC", comment: "我当时的目录是："))
             lines.append(directory)
         }
         if let hostname = terminalCommand.hostname {
             if let username = terminalCommand.username {
-                lines.append("I am logged in as \(username)@\(hostname)")
+                lines.append(String(format: NSLocalizedString("I am logged in as %@@%@", tableName: "AITermXC", comment: "我以 %@@%@ 登录"), username, hostname))
             } else {
-                lines.append("The current hostname is \(hostname)")
+                lines.append(String(format: NSLocalizedString("The current hostname is %@", tableName: "AITermXC", comment: "当前主机名是 %@"), hostname))
             }
         }
-        lines.append("The exit status of the command was \(terminalCommand.exitCode)")
-        lines.append("It produced this output:")
+        lines.append(String(format: NSLocalizedString("The exit status of the command was %@", tableName: "AITermXC", comment: "命令的退出状态是 %@"), "\(terminalCommand.exitCode)"))
+        lines.append(NSLocalizedString("It produced this output:", tableName: "AITermXC", comment: "它产生了以下输出："))
         lines.append(terminalCommand.output)
         return lines.joined(separator: "\n")
     }
@@ -131,14 +131,14 @@ struct MessageToPromptStateMachine {
             }
             if parts.contains(where: { $0.isAttachment}),
                let i = parts.firstIndex(where: { $0.isText }) {
-                parts[i].prepend("I have attached files for you to use.\n")
+                parts[i].prepend(NSLocalizedString("I have attached files for you to use.\n", tableName: "AITermXC", comment: "我已附上文件供你使用。\n"))
             }
             return .multipart(parts)
         case .remoteCommandResponse(let result, _, let functionName, let functionCallID):
             let output = result.map { value in
                 value
             } failure: { error in
-                "I was unable to complete the function call: " + error.localizedDescription
+                NSLocalizedString("I was unable to complete the function call: ", tableName: "AITermXC", comment: "我未能完成此函数调用：") + error.localizedDescription
             }
             return .functionOutput(name: functionName,
                                    output: output,
@@ -173,26 +173,23 @@ struct MessageToPromptStateMachine {
         lines.append("<status_update reason=\"\(xmlEscapeAttribute(payload.reason.rawValue))\" "
                      + "watcher_id=\"\(xmlEscapeAttribute(payload.watcherID))\" "
                      + "at=\"\(xmlEscapeAttribute(at))\">")
-        lines.append("Workgroup: \(xmlEscapeText(payload.workgroupName))")
-        lines.append("Role: \(xmlEscapeText(payload.roleName))")
+        lines.append(String(format: NSLocalizedString("Workgroup: %@", tableName: "AITermXC", comment: "工作组：%%@"), xmlEscapeText(payload.workgroupName)))
+        lines.append(String(format: NSLocalizedString("Role: %@", tableName: "AITermXC", comment: "角色：%%@"), xmlEscapeText(payload.roleName)))
         if !payload.stateReached.isEmpty {
-            lines.append("Reached state: \(xmlEscapeText(payload.stateReached))")
+            lines.append(String(format: NSLocalizedString("Reached state: %@", tableName: "AITermXC", comment: "到达状态：%%@"), xmlEscapeText(payload.stateReached)))
         }
         if let screenLastChanged = payload.screenLastChanged {
-            lines.append("Screen last changed: \(xmlEscapeText(screenLastChanged))")
+            lines.append(String(format: NSLocalizedString("Screen last changed: %@", tableName: "AITermXC", comment: "屏幕最后更改：%%@"), xmlEscapeText(screenLastChanged)))
         }
         if !payload.detail.isEmpty {
-            lines.append("Detail: \(xmlEscapeText(payload.detail))")
+            lines.append(String(format: NSLocalizedString("Detail: %@", tableName: "AITermXC", comment: "详情：%%@"), xmlEscapeText(payload.detail)))
         }
         if payload.pushed == true {
-            lines.append("Note: iTerm2 already sent a push notification to the user's iPhone for this event. Do not send another.")
+            lines.append(NSLocalizedString("Note: iTerm2 already sent a push notification to the user's iPhone for this event. Do not send another.", tableName: "AITermXC", comment: "注意：iTerm2 已为此事件向用户的 iPhone 发送了推送通知。请勿再发送。"))
         } else if payload.pushed == false {
-            lines.append("Note: the user asked for a push notification but notifications are unavailable right now, so make sure they see this in chat.")
+            lines.append(NSLocalizedString("Note: the user asked for a push notification but notifications are unavailable right now, so make sure they see this in chat.", tableName: "AITermXC", comment: "注意：用户请求了推送通知，但通知目前不可用，请确保他们在对话中看到此消息。"))
         } else if CompanionPushRegistry.canNotify {
-            // The model reliably summarizes into the chat but tends not to
-            // reach for notify on its own; remind it at exactly the moment
-            // it matters, and only when a push could actually be delivered.
-            lines.append("Note: the user may be away from their Mac. If they asked to be told when this happened, also send a push notification with the notify tool.")
+            lines.append(NSLocalizedString("Note: the user may be away from their Mac. If they asked to be told when this happened, also send a push notification with the notify tool.", tableName: "AITermXC", comment: "注意：用户可能不在 Mac 旁边。如果他们要求在此情况发生时通知，请同时使用通知工具发送推送通知。"))
         }
         lines.append("</status_update>")
         return lines.joined(separator: "\n")

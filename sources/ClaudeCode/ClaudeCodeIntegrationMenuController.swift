@@ -40,14 +40,11 @@ final class ClaudeCodeIntegrationMenuController: NSObject {
 
     @objc func uninstall(_ sender: Any?) {
         let confirm = NSAlert()
-        confirm.messageText = "Uninstall Claude Code Integration?"
-        confirm.informativeText = "This removes the cc-status hook from "
-            + "~/.claude/settings.json, the Claude Code workgroup from your "
-            + "settings, and the Enter/Exit Workgroup triggers from every "
-            + "profile. You can reinstall any time using iTerm2 > Install Claude Code Integration."
+        confirm.messageText = NSLocalizedString("Uninstall Claude Code Integration?", tableName: "ClaudeCodeXC", comment: "卸载 Claude Code 集成？")
+        confirm.informativeText = NSLocalizedString("This removes the cc-status hook from ~/.claude/settings.json, the Claude Code workgroup from your settings, and the Enter/Exit Workgroup triggers from every profile. You can reinstall any time using iTerm2 > Install Claude Code Integration.", tableName: "ClaudeCodeXC", comment: "这将从 ~/.claude/settings.json 中移除 cc-status 钩子、从你的设置中移除 Claude Code 工作组，并从每个配置中移除进入/退出工作组触发器。你可以随时使用 iTerm2 > 安装 Claude Code 集成来重新安装。")
         confirm.alertStyle = .warning
-        confirm.addButton(withTitle: "Uninstall")
-        confirm.addButton(withTitle: "Cancel")
+        confirm.addButton(withTitle: NSLocalizedString("Uninstall", tableName: "ClaudeCodeXC", comment: "卸载"))
+        confirm.addButton(withTitle: NSLocalizedString("Cancel", tableName: "ClaudeCodeXC", comment: "取消"))
         guard confirm.runModal() == .alertFirstButtonReturn else { return }
 
         // Hooks first — they're the only step that can fail (disk).
@@ -61,28 +58,22 @@ final class ClaudeCodeIntegrationMenuController: NSObject {
             let detail: String
             switch hookResult {
             case .unreadable:
-                detail = "Could not read ~/.claude/settings.json — check "
-                    + "the file\u{2019}s permissions."
+                detail = NSLocalizedString("Could not read ~/.claude/settings.json — check the file\u{2019}s permissions.", tableName: "ClaudeCodeXC", comment: "无法读取 ~/.claude/settings.json — 请检查文件的权限。")
             case .malformed:
-                detail = "~/.claude/settings.json couldn\u{2019}t be parsed "
-                    + "as JSON. Open it in a text editor and check it for "
-                    + "syntax errors."
+                detail = NSLocalizedString("~/.claude/settings.json couldn\u{2019}t be parsed as JSON. Open it in a text editor and check it for syntax errors.", tableName: "ClaudeCodeXC", comment: "无法将 ~/.claude/settings.json 解析为 JSON。请在文本编辑器中打开并检查语法错误。")
             case .writeFailed:
-                detail = "Could not write to ~/.claude/settings.json — "
-                    + "check the file\u{2019}s permissions."
+                detail = NSLocalizedString("Could not write to ~/.claude/settings.json — check the file\u{2019}s permissions.", tableName: "ClaudeCodeXC", comment: "无法写入 ~/.claude/settings.json — 请检查文件的权限。")
             case .success:
                 detail = ""  // unreachable; covered by outer guard
             @unknown default:
                 detail = ""
             }
             let failure = NSAlert()
-            failure.messageText = "Couldn\u{2019}t Remove Hooks"
-            failure.informativeText = "\(detail) Continue removing the "
-                + "workgroup and triggers anyway? cc-status will keep "
-                + "running until you fix the underlying issue and try again."
+            failure.messageText = NSLocalizedString("Couldn\u{2019}t Remove Hooks", tableName: "ClaudeCodeXC", comment: "无法移除钩子")
+            failure.informativeText = String(format: NSLocalizedString("%@ Continue removing the workgroup and triggers anyway? cc-status will keep running until you fix the underlying issue and try again.", tableName: "ClaudeCodeXC", comment: "%@ 仍然继续移除工作组和触发器吗？在你修复根本问题并重试之前，cc-status 会继续运行。"), detail)
             failure.alertStyle = .warning
-            failure.addButton(withTitle: "Continue")
-            failure.addButton(withTitle: "Cancel")
+            failure.addButton(withTitle: NSLocalizedString("Continue", tableName: "ClaudeCodeXC", comment: "继续"))
+            failure.addButton(withTitle: NSLocalizedString("Cancel", tableName: "ClaudeCodeXC", comment: "取消"))
             guard failure.runModal() == .alertFirstButtonReturn else { return }
         }
 
@@ -101,12 +92,10 @@ final class ClaudeCodeIntegrationMenuController: NSObject {
         // to offer).
         if iTermAPIHelper.isEnabled() {
             let apiAlert = NSAlert()
-            apiAlert.messageText = "Disable the Python API?"
-            apiAlert.informativeText = "The installer enabled iTerm2\u{2019}s "
-                + "Python API. Other scripts or integrations may be using "
-                + "it now. Leave it enabled, or turn it off?"
-            apiAlert.addButton(withTitle: "Leave Enabled")
-            apiAlert.addButton(withTitle: "Disable")
+            apiAlert.messageText = NSLocalizedString("Disable the Python API?", tableName: "ClaudeCodeXC", comment: "禁用 Python API？")
+            apiAlert.informativeText = NSLocalizedString("The installer enabled iTerm2\u{2019}s Python API. Other scripts or integrations may be using it now. Leave it enabled, or turn it off?", tableName: "ClaudeCodeXC", comment: "安装程序启用了 iTerm2 的 Python API。其他脚本或集成可能正在使用它。保持启用，还是关闭它？")
+            apiAlert.addButton(withTitle: NSLocalizedString("Leave Enabled", tableName: "ClaudeCodeXC", comment: "保持启用"))
+            apiAlert.addButton(withTitle: NSLocalizedString("Disable", tableName: "ClaudeCodeXC", comment: "禁用"))
             if apiAlert.runModal() == .alertSecondButtonReturn {
                 iTermAPIHelper.setEnabled(false)
             }

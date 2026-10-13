@@ -53,19 +53,19 @@ static NSString *const iTermSnippetsEditingPasteboardType = @"com.googlecode.ite
     [super awakeFromNib];
     NSMenu *menu = [[NSMenu alloc] init];
     menu.delegate = self;
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Duplicate"
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Duplicate", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                              action:@selector(duplicateSnippets:)
                                       keyEquivalent:@""]];
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Delete"
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Delete", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                              action:@selector(deleteSnippets:)
                                       keyEquivalent:@""]];
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Add Above"
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Add Above", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                              action:@selector(addSnippetAbove:)
                                       keyEquivalent:@""]];
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Add Below"
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Add Below", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                              action:@selector(addSnippetBelow:)
                                       keyEquivalent:@""]];
-    [menu addItem:[[NSMenuItem alloc] initWithTitle:@"Edit"
+    [menu addItem:[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Edit", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                              action:@selector(editClickedSnippet:)
                                       keyEquivalent:@""]];
     _tableView.menu = menu;
@@ -188,8 +188,8 @@ static NSString *const iTermSnippetsEditingPasteboardType = @"com.googlecode.ite
         [weakSelf snippetsDidChange:notification];
     }];
     [container addViewToSearchIndex:_tableView
-                        displayName:@"Snippets"
-                            phrases:@[ @"Snippets" ]
+                        displayName:NSLocalizedStringFromTableInBundle(@"Snippets", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
+                            phrases:@[ NSLocalizedStringFromTableInBundle(@"Snippets", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                                 key:kPreferenceKeySnippets];
 }
 
@@ -441,24 +441,24 @@ static NSString *const iTermSnippetsEditingPasteboardType = @"com.googlecode.ite
                                                   encoding:NSUTF8StringEncoding
                                                      error:&error];
     if (!content || error) {
-        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"While loading %@: %@", url.path, error.localizedDescription]
-                                   actions:@[ @"OK" ]
+        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"While loading %@: %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), url.path, error.localizedDescription]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                                  accessory:nil
                                 identifier:@"NoSyncImportSnippetsFailed"
                                silenceable:kiTermWarningTypePersistent
-                                   heading:[NSString stringWithFormat:@"Import Failed"]
+                                   heading:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Import Failed", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]
                                     window:self.view.window];
         return;
     }
 
     id root = [NSJSONSerialization it_objectForJsonString:content error:&error];
     if (!root) {
-        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"While parsing %@: %@", url.path, error.localizedDescription]
-                                   actions:@[ @"OK" ]
+        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"While parsing %@: %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), url.path, error.localizedDescription]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                                  accessory:nil
                                 identifier:@"NoSyncImportSnippetsFailed"
                                silenceable:kiTermWarningTypePersistent
-                                   heading:[NSString stringWithFormat:@"Import Failed"]
+                                   heading:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Import Failed", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]
                                     window:self.view.window];
         return;
     }
@@ -486,12 +486,12 @@ static NSString *const iTermSnippetsEditingPasteboardType = @"com.googlecode.ite
 }
 
 - (void)showEncodingErrorForURL:(NSURL *)url {
-    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Malformed file at %@", url.path]
-                               actions:@[ @"OK" ]
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed file at %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), url.path]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                              accessory:nil
                             identifier:@"NoSyncSnippetEncodingError"
                            silenceable:kiTermWarningTypePersistent
-                               heading:[NSString stringWithFormat:@"Import Failed"]
+                               heading:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Import Failed", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]
                                 window:self.view.window];
 }
 
@@ -507,13 +507,13 @@ static NSString *const iTermSnippetsEditingPasteboardType = @"com.googlecode.ite
     NSString *json = [NSJSONSerialization it_jsonStringForObject:array];
     [json writeToSaveItem:item completionHandler:^(NSError *error) {
         if (error) {
-            [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Error saving to %@: %@",
+            [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error saving to %@: %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
                                                 item.displayName, error.localizedDescription]
-                                       actions:@[ @"OK" ]
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                                      accessory:nil
                                     identifier:@"NoSyncSnippetWritingError"
                                    silenceable:kiTermWarningTypePersistent
-                                       heading:[NSString stringWithFormat:@"Export Failed"]
+                                       heading:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Export Failed", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]
                                         window:self.view.window];
         } else {
             [item revealInFinderIfLocal];

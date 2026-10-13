@@ -27,17 +27,17 @@ enum CompanionPluginInstallerError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .appSupportUnavailable:
-            return "Could not find iTerm2’s Application Support directory."
+            return NSLocalizedString("Could not find iTerm2’s Application Support directory.", tableName: "Companion", comment: "找不到应用程序支持目录错误")
         case .downloadFailed(let reason):
-            return "Download failed: \(reason)"
+            return String(format: NSLocalizedString("Download failed: %@", tableName: "Companion", comment: "下载失败错误"), reason)
         case .badResponse(let code):
-            return "Download failed with HTTP status \(code)."
+            return String(format: NSLocalizedString("Download failed with HTTP status %d.", tableName: "Companion", comment: "HTTP 状态码下载失败错误"), code)
         case .unzipFailed(let reason):
-            return "Could not unpack the downloaded plugin: \(reason)"
+            return String(format: NSLocalizedString("Could not unpack the downloaded plugin: %@", tableName: "Companion", comment: "解压失败错误"), reason)
         case .bundleNotFound:
-            return "The downloaded archive did not contain a plugin."
+            return NSLocalizedString("The downloaded archive did not contain a plugin.", tableName: "Companion", comment: "压缩包无插件错误")
         case .verificationFailed(let name):
-            return "The \(name) did not load after installation."
+            return String(format: NSLocalizedString("The %@ did not load after installation.", tableName: "Companion", comment: "安装后未加载错误"), name)
         }
     }
 }
@@ -66,7 +66,7 @@ enum CompanionPluginInstaller {
         let ok = await waitForSuccess(reload: { Plugin.reload() },
                                       check: { Plugin.instance().isSuccess })
         if !ok {
-            throw CompanionPluginInstallerError.verificationFailed(aiSpec.name)
+            throw CompanionPluginInstallerError.verificationFailed(NSLocalizedString("AI plugin", tableName: "Companion", comment: "AI 插件名称"))
         }
     }
 
@@ -76,7 +76,7 @@ enum CompanionPluginInstaller {
         let ok = await waitForSuccess(reload: { CompanionPlugin.reload() },
                                       check: { CompanionPlugin.instance().isSuccess })
         if !ok {
-            throw CompanionPluginInstallerError.verificationFailed(companionSpec.name)
+            throw CompanionPluginInstallerError.verificationFailed(NSLocalizedString("companion plugin", tableName: "Companion", comment: "伴侣插件名称"))
         }
     }
 
@@ -101,7 +101,7 @@ enum CompanionPluginInstaller {
         // Move the download out of its auto-purged temporary slot, unpack it into
         // a scratch directory, then locate the .app inside.
         guard let workPath = fm.it_temporaryDirectory() else {
-            throw CompanionPluginInstallerError.unzipFailed("no temporary directory")
+            throw CompanionPluginInstallerError.unzipFailed(NSLocalizedString("no temporary directory", tableName: "Companion", comment: "没有临时目录错误"))
         }
         let workDir = URL(fileURLWithPath: workPath)
         let zipDest = workDir.appendingPathComponent("plugin.zip")

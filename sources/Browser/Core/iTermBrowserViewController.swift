@@ -273,12 +273,12 @@ extension iTermBrowserViewController {
                 } catch {
                     videoWindowController?.close()
                     videoWindowController = nil
-                    iTermWarning.show(withTitle: "Could not create movie: \(error.localizedDescription)",
-                                      actions: ["OK"],
+                    iTermWarning.show(withTitle: String(format: NSLocalizedString("Could not create movie: %@", tableName: "Browser", comment: "无法创建影片：%@"), error.localizedDescription),
+                                      actions: [NSLocalizedString("OK", tableName: "Browser", comment: "好")],
                                       accessory: nil,
                                       identifier: nil,
                                       silenceable: .kiTermWarningTypePersistent,
-                                      heading: "Problem saving instant replay movie",
+                                      heading: NSLocalizedString("Problem saving instant replay movie", tableName: "Browser", comment: "保存即时回放影片时出现问题"),
                                       window: view.window)
                 }
             }
@@ -721,7 +721,7 @@ extension iTermBrowserViewController {
                 completion(.success(FindOnPageOutput(results: results,
                                                      excessiveResultsDropped: dropped)))
             } catch {
-                completion(.failure(BrowserManagerError(errorDescription: "The page could not be converted to markdown for processing")))
+                completion(.failure(BrowserManagerError(errorDescription: NSLocalizedString("The page could not be converted to markdown for processing", tableName: "Browser", comment: "页面无法转换为 markdown 以进行处理"))))
             }
         }
     }
@@ -1328,7 +1328,7 @@ extension iTermBrowserViewController {
             }
 
             let savePanel = iTermModernSavePanel()
-            savePanel.defaultFilename = browserManager.webView.title ?? "Untitled"
+            savePanel.defaultFilename = browserManager.webView.title ?? NSLocalizedString("Untitled", tableName: "Browser", comment: "未命名")
             let response = await savePanel.beginSheetModal(for: window)
             if response == .OK,
                 let item = savePanel.item,

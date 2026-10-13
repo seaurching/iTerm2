@@ -41,7 +41,7 @@
                 _title = [pasteboardString ellipsizedDescriptionNoLongerThan:40];
                 _value = pasteboardString;
             } else {
-                _title = @"Untitled";
+                _title = NSLocalizedStringFromTableInBundle(@"Untitled", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 _value = @"";
             }
             _guid = [[NSUUID UUID] UUIDString];
@@ -101,11 +101,10 @@
 
 - (IBAction)help:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Escaping";
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Escaping", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     alert.informativeText =
-    @"C-Style Backslash Escaping supports: \\a (bell), \\b (backspace), \\e (escape), \\n (newline), \\r (carriage return), \\t (tab), \\\\ (backslash), and \\x followed by two hex digits giving a single byte of UTF-8.\n\n"
-    @"Unescaped Literal Text does not have any special characters.\n\n"
-    @"Backward Compatibility Escaping, which is not recommended for new snippets, supports: \\n (newline), \\e (escape), \\a (bell), and \\t (tab).\n\n";
+    NSLocalizedStringFromTableInBundle(@"C-Style Backslash Escaping supports: \\a (bell), \\b (backspace), \\e (escape), \n (newline), \\r (carriage return), \\t (tab), \\ (backslash), and \\x followed by two hex digits giving a single byte of UTF-8.\n\nUnescaped Literal Text does not have any special characters.\n\nBackward Compatibility Escaping, which is not recommended for new snippets, supports: \n (newline), \\e (escape), \\a (bell), and \\t (tab).\n\n", @"Settings", [NSBundle bundleForClass:[self class]], @"settings ui")
+        ;
     [alert runModal];
 }
 

@@ -135,7 +135,7 @@ class iTermBrowserAdblockManager: NSObject {
         let urlString = iTermAdvancedSettingsModel.adblockListURL()!
         guard let url = URL(string: urlString) else {
             let error = NSError(domain: "iTermBrowserAdblockManager", code: 1, userInfo: [
-                NSLocalizedDescriptionKey: "Invalid adblock list URL: \(urlString)"
+                NSLocalizedDescriptionKey: String(format: NSLocalizedString("Invalid adblock list URL: %@", tableName: "Browser", comment: "无效的广告拦截列表 URL：%@"), urlString)
             ])
             handleFailure(error)
             return
@@ -150,7 +150,7 @@ class iTermBrowserAdblockManager: NSObject {
                 
                 guard let data = data, let content = String(data: data, encoding: .utf8) else {
                     let error = NSError(domain: "iTermBrowserAdblockManager", code: 2, userInfo: [
-                        NSLocalizedDescriptionKey: "Failed to parse adblock list response"
+                        NSLocalizedDescriptionKey: NSLocalizedString("Failed to parse adblock list response", tableName: "Browser", comment: "解析广告拦截列表响应失败")
                     ])
                     self?.handleFailure(error)
                     return
@@ -168,7 +168,7 @@ class iTermBrowserAdblockManager: NSObject {
         guard let jsonData = content.data(using: .utf8),
               let _ = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] else {
             let error = NSError(domain: "iTermBrowserAdblockManager", code: 3, userInfo: [
-                NSLocalizedDescriptionKey: "Downloaded content is not valid JSON format"
+                NSLocalizedDescriptionKey: NSLocalizedString("Downloaded content is not valid JSON format", tableName: "Browser", comment: "下载的内容不是有效的 JSON 格式")
             ])
             handleFailure(error)
             return
@@ -277,7 +277,7 @@ class iTermBrowserAdblockManager: NSObject {
         
         if daysSinceUpdate >= maxFailureDays {
             let error = NSError(domain: "iTermBrowserAdblockManager", code: 4, userInfo: [
-                NSLocalizedDescriptionKey: "Adblock rules haven't been updated for \(daysSinceUpdate) days"
+                NSLocalizedDescriptionKey: String(format: NSLocalizedString("Adblock rules haven't been updated for %d days", tableName: "Browser", comment: "广告拦截规则已 %d 天未更新"), daysSinceUpdate)
             ])
             NotificationCenter.default.post(
                 name: Self.didFailWithErrorNotification,

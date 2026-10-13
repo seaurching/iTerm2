@@ -42,7 +42,7 @@ class iTermBrowserSourceHandler: NSObject, iTermBrowserPageHandler {
     
     func start(urlSchemeTask: WKURLSchemeTask, url: URL) {
         guard url == Self.sourceURL else {
-            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserSourceHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid source URL"]))
+            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserSourceHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Invalid source URL", tableName: "Browser", comment: "无效的源 URL")]))
             return
         }
         
@@ -54,7 +54,7 @@ class iTermBrowserSourceHandler: NSObject, iTermBrowserPageHandler {
             // Fallback content if no source is pending
             htmlContent = iTermBrowserTemplateLoader.loadTemplate(named: "view-source",
                                                                   type: "html",
-                                                                  substitutions: ["SOURCE": "No source available"])
+                                                                  substitutions: ["SOURCE": NSLocalizedString("No source available", tableName: "Browser", comment: "无可用源")])
         }
         
         let data = htmlContent.data(using: .utf8) ?? Data()

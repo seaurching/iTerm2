@@ -1,0 +1,3 @@
+/* CompressibleBuffers.strings - CompressibleBuffers module strings */
+
+"An error occurred while decoding an object" = "解码对象时发生错误";

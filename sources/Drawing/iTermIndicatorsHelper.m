@@ -376,27 +376,28 @@ CGFloat kiTermIndicatorStandardHeight = 20;
 
 - (NSString *)helpTextForIndicatorWithName:(NSString *)name sessionID:(NSString *)sessionID {
     // NOTE: These messages are interpreted as markdown.
+    NSBundle *drawingBundle = [NSBundle bundleForClass:[self class]];
     NSDictionary<NSString *, NSString *> *messages = @{
-        kItermIndicatorBroadcastInput: @"Keyboard input gets broadcast to other sessions.",
-        kItermIndicatorBroadcastInputReceiver: @"Keyboard input from another session gets broadcast to this one, but this session is not an input source for broadcasting (anything you type here stays here).",
-        kiTermIndicatorMaximized: @"This is a maximized split pane.",
-        kiTermIndicatorCoprocess: @"A coprocess is running.",
-        kiTermIndicatorAlert: @"Will alert on next mark.",
-        kiTermIndicatorAllOutputSuppressed: @"All output is currently suppressed.",
-        kiTermIndicatorZoomedIn: @"Zoomed in.",
-        kiTermIndicatorFilter: @"Filtering.",
-        kiTermIndicatorCopyMode: @"In copy mode. See [documentation](https://iterm2.com/documentation-copymode.html) for details.",
-        kiTermIndicatorDebugLogging: @"Debug logging is enabled.",
-        kiTermIndicatorSecureKeyboardEntry_User: @"Secure Keyboard Entry is enabled. Select iTerm2 > Secure Keyboard Entry to disable.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)",
-        kiTermIndicatorSecureKeyboardEntry_Forced: @"Secure Keyboard Entry is enabled because another app has turned it on.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)",
-        kiTermIndicatorPinned: @"This Hotkey Window is pinned.",
-        kiTermIndicatorAIChatLinked: [NSString stringWithFormat:@"AI Chats can view or control this session.\n * [Unlink from AI Chat](iterm2:unlink-session-chat?s=%@&t=%@)\n * [Reveal AI Chat](iterm2:reveal-chat-for-session?s=%@&t=%@)", sessionID, [[NSWorkspace sharedWorkspace] it_newToken], sessionID, [[NSWorkspace sharedWorkspace] it_newToken]],
-        kiTermIndicatorAIChatStreaming: [NSString stringWithFormat:@"Commands run in this session are automatically sent to an AI chat, along with their output. [Stop sending](iterm2:disable-streaming-session-chat?s=%@&t=%@)",
+        kItermIndicatorBroadcastInput: NSLocalizedStringFromTableInBundle(@"Keyboard input gets broadcast to other sessions.", @"Drawing", drawingBundle, @"Indicator help: broadcast input"),
+        kItermIndicatorBroadcastInputReceiver: NSLocalizedStringFromTableInBundle(@"Keyboard input from another session gets broadcast to this one, but this session is not an input source for broadcasting (anything you type here stays here).", @"Drawing", drawingBundle, @"Indicator help: broadcast input receiver"),
+        kiTermIndicatorMaximized: NSLocalizedStringFromTableInBundle(@"This is a maximized split pane.", @"Drawing", drawingBundle, @"Indicator help: maximized"),
+        kiTermIndicatorCoprocess: NSLocalizedStringFromTableInBundle(@"A coprocess is running.", @"Drawing", drawingBundle, @"Indicator help: coprocess"),
+        kiTermIndicatorAlert: NSLocalizedStringFromTableInBundle(@"Will alert on next mark.", @"Drawing", drawingBundle, @"Indicator help: alert"),
+        kiTermIndicatorAllOutputSuppressed: NSLocalizedStringFromTableInBundle(@"All output is currently suppressed.", @"Drawing", drawingBundle, @"Indicator help: all output suppressed"),
+        kiTermIndicatorZoomedIn: NSLocalizedStringFromTableInBundle(@"Zoomed in.", @"Drawing", drawingBundle, @"Indicator help: zoomed in"),
+        kiTermIndicatorFilter: NSLocalizedStringFromTableInBundle(@"Filtering.", @"Drawing", drawingBundle, @"Indicator help: filter"),
+        kiTermIndicatorCopyMode: NSLocalizedStringFromTableInBundle(@"In copy mode. See [documentation](https://iterm2.com/documentation-copymode.html) for details.", @"Drawing", drawingBundle, @"Indicator help: copy mode"),
+        kiTermIndicatorDebugLogging: NSLocalizedStringFromTableInBundle(@"Debug logging is enabled.", @"Drawing", drawingBundle, @"Indicator help: debug logging"),
+        kiTermIndicatorSecureKeyboardEntry_User: NSLocalizedStringFromTableInBundle(@"Secure Keyboard Entry is enabled. Select iTerm2 > Secure Keyboard Entry to disable.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)", @"Drawing", drawingBundle, @"Indicator help: secure keyboard entry (user enabled)"),
+        kiTermIndicatorSecureKeyboardEntry_Forced: NSLocalizedStringFromTableInBundle(@"Secure Keyboard Entry is enabled because another app has turned it on.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)", @"Drawing", drawingBundle, @"Indicator help: secure keyboard entry (forced)"),
+        kiTermIndicatorPinned: NSLocalizedStringFromTableInBundle(@"This Hotkey Window is pinned.", @"Drawing", drawingBundle, @"Indicator help: pinned"),
+        kiTermIndicatorAIChatLinked: [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"AI Chats can view or control this session.\n * [Unlink from AI Chat](iterm2:unlink-session-chat?s=%@&t=%@)\n * [Reveal AI Chat](iterm2:reveal-chat-for-session?s=%@&t=%@)", @"Drawing", drawingBundle, @"Indicator help: AI chat linked"), sessionID, [[NSWorkspace sharedWorkspace] it_newToken], sessionID, [[NSWorkspace sharedWorkspace] it_newToken]],
+        kiTermIndicatorAIChatStreaming: [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Commands run in this session are automatically sent to an AI chat, along with their output. [Stop sending](iterm2:disable-streaming-session-chat?s=%@&t=%@)", @"Drawing", drawingBundle, @"Indicator help: AI chat streaming"),
                                          sessionID, [[NSWorkspace sharedWorkspace] it_newToken]],
-        kiTermIndicatorChannel: [NSString stringWithFormat:@"This command is running within another session.\n * [Return to Enclosing Session](iterm2:pop-channel?s=%@&t=%@)", sessionID, [[NSWorkspace sharedWorkspace] it_newToken]],
-        kiTermIndicatorBufferingInput: @"Keyboard input is being buffered and will be sent when a trigger stops buffering.",
-        kiTermIndicatorShowRememberedAlerts: @"Showing alerts with remembered selections. Disable in iTerm2 > Suppressed Alerts.",
-        kiTermIndicatorScreenshotMode: @"In screenshot mode. Close the screenshot panel to return to normal."
+        kiTermIndicatorChannel: [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"This command is running within another session.\n * [Return to Enclosing Session](iterm2:pop-channel?s=%@&t=%@)", @"Drawing", drawingBundle, @"Indicator help: channel"), sessionID, [[NSWorkspace sharedWorkspace] it_newToken]],
+        kiTermIndicatorBufferingInput: NSLocalizedStringFromTableInBundle(@"Keyboard input is being buffered and will be sent when a trigger stops buffering.", @"Drawing", drawingBundle, @"Indicator help: buffering input"),
+        kiTermIndicatorShowRememberedAlerts: NSLocalizedStringFromTableInBundle(@"Showing alerts with remembered selections. Disable in iTerm2 > Suppressed Alerts.", @"Drawing", drawingBundle, @"Indicator help: remembered alerts"),
+        kiTermIndicatorScreenshotMode: NSLocalizedStringFromTableInBundle(@"In screenshot mode. Close the screenshot panel to return to normal.", @"Drawing", drawingBundle, @"Indicator help: screenshot mode")
     };
     return messages[name];
 }

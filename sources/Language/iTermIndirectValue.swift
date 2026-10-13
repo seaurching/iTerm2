@@ -111,7 +111,7 @@ class IndirectValue: NSObject {
                         completion(.first(NSNull()))
                     } else {
                         // Non-optional expression: error
-                        completion(.second(iTermError("Invalid variable reference \(path)") as NSError))
+                        completion(.second(iTermError(String(format: NSLocalizedString("Invalid variable reference %@", tableName: "Language", comment: "Indirect value error: invalid variable reference"), path)) as NSError))
                     }
                 } else {
                     completion(.first(result))
@@ -120,14 +120,14 @@ class IndirectValue: NSObject {
                 if optional {
                     completion(.first(NSNull()))
                 } else {
-                    completion(.second(iTermError("Invalid variable reference \(path)") as NSError))
+                    completion(.second(iTermError(String(format: NSLocalizedString("Invalid variable reference %@", tableName: "Language", comment: "Indirect value error: invalid variable reference"), path)) as NSError))
                 }
             }
             return
         }
         if let indexExpression {
             guard let array else {
-                completion(.second(iTermError("Indexing a non-array \(d(value))") as NSError))
+                completion(.second(iTermError(String(format: NSLocalizedString("Indexing a non-array %@", tableName: "Language", comment: "Indirect value error: indexing non-array"), d(value))) as NSError))
                 return
             }
             indexExpression.evaluate(invocation: invocation,
@@ -137,19 +137,19 @@ class IndirectValue: NSObject {
                                      scope: scope) { result in
                 result.whenFirst { value in
                     guard let number = value as? NSNumber else {
-                        completion(.second(iTermError("Array index must be a number") as NSError))
+                        completion(.second(iTermError(NSLocalizedString("Array index must be a number", tableName: "Language", comment: "Indirect value error: array index must be number")) as NSError))
                         return
                     }
                     let i = number.intValue
                     if i < 0 || i >= array.count {
-                        let errorMsg = "Array index \(i) out of bounds for array of size \(array.count) in \"\(invocation)\"."
+                        let errorMsg = String(format: NSLocalizedString("Array index %d out of bounds for array of size %d in \"%@\".", tableName: "Language", comment: "Indirect value error: array index out of bounds"), i, array.count, invocation)
                         completion(.second(iTermError(errorMsg) as NSError))
                         return
                     }
                     if let obj = array[i] as? NSObject {
                         completion(.first(obj))
                     } else {
-                        completion(.second(iTermError("Non-object found in array at index \(i): \(d(array[i]))") as NSError))
+                        completion(.second(iTermError(String(format: NSLocalizedString("Non-object found in array at index %d: %@", tableName: "Language", comment: "Indirect value error: non-object in array"), i, d(array[i]))) as NSError))
                     }
                 } second: { error in
                     completion(.second(error))
@@ -157,6 +157,6 @@ class IndirectValue: NSObject {
             }
             return
         }
-        completion(.second(iTermError("Missing value") as NSError))
+        completion(.second(iTermError(NSLocalizedString("Missing value", tableName: "Language", comment: "Indirect value error: missing value")) as NSError))
     }
 }

@@ -22,18 +22,18 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-static NSString *const kLearnMoreTitle = @"Learn More";
-static NSString *const kDismissTipTitle = @"Dismiss Tip";
-static NSString *const kFewerOptionsTitle = @"Fewer Options";
-static NSString *const kMoreOptionsTitle = @"More Options";
-static NSString *const kShowThisLaterTitle = @"Show This Later";
-static NSString *const kDisableTipsTitle = @"Disable Tips";
-static NSString *const kEnableTipsTitle = @"Enable Tips";
-static NSString *const kShowNextTipTitle = @"Show Next Tip";
-static NSString *const kShowPreviousTipTitle = @"Show Previous Tip";
-static NSString *const kShowTipsWeeklyTitle = @"Show Tips Weekly";
-static NSString *const kShowTipsDailyTitle = @"Show Tips Daily";
-static NSString *const kShareTitle = @"Share";
+static NSString *kLearnMoreTitle;
+static NSString *kDismissTipTitle;
+static NSString *kFewerOptionsTitle;
+static NSString *kMoreOptionsTitle;
+static NSString *kShowThisLaterTitle;
+static NSString *kDisableTipsTitle;
+static NSString *kEnableTipsTitle;
+static NSString *kShowNextTipTitle;
+static NSString *kShowPreviousTipTitle;
+static NSString *kShowTipsWeeklyTitle;
+static NSString *kShowTipsDailyTitle;
+static NSString *kShareTitle;
 
 static const CGFloat kWindowWidth = 400;
 
@@ -75,6 +75,24 @@ static const CGFloat kWindowTopMargin = 8;
     BOOL _dragging;
 }
 
++ (void)initialize {
+    if (self != [iTermTipWindowController class]) {
+        return;
+    }
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    kLearnMoreTitle = NSLocalizedStringFromTableInBundle(@"Learn More", @"Tips", bundle, @"tip window: learn more button");
+    kDismissTipTitle = NSLocalizedStringFromTableInBundle(@"Dismiss Tip", @"Tips", bundle, @"tip window: dismiss tip button");
+    kFewerOptionsTitle = NSLocalizedStringFromTableInBundle(@"Fewer Options", @"Tips", bundle, @"tip window: fewer options button");
+    kMoreOptionsTitle = NSLocalizedStringFromTableInBundle(@"More Options", @"Tips", bundle, @"tip window: more options button");
+    kShowThisLaterTitle = NSLocalizedStringFromTableInBundle(@"Show This Later", @"Tips", bundle, @"tip window: show this later button");
+    kDisableTipsTitle = NSLocalizedStringFromTableInBundle(@"Disable Tips", @"Tips", bundle, @"tip window: disable tips button");
+    kEnableTipsTitle = NSLocalizedStringFromTableInBundle(@"Enable Tips", @"Tips", bundle, @"tip window: enable tips button");
+    kShowNextTipTitle = NSLocalizedStringFromTableInBundle(@"Show Next Tip", @"Tips", bundle, @"tip window: show next tip button");
+    kShowPreviousTipTitle = NSLocalizedStringFromTableInBundle(@"Show Previous Tip", @"Tips", bundle, @"tip window: show previous tip button");
+    kShowTipsWeeklyTitle = NSLocalizedStringFromTableInBundle(@"Show Tips Weekly", @"Tips", bundle, @"tip window: show tips weekly button");
+    kShowTipsDailyTitle = NSLocalizedStringFromTableInBundle(@"Show Tips Daily", @"Tips", bundle, @"tip window: show tips daily button");
+    kShareTitle = NSLocalizedStringFromTableInBundle(@"Share", @"Tips", bundle, @"tip window: share button");
+}
 - (instancetype)initWithTip:(id)tip {
     self = [self init];
     if (self) {
@@ -330,7 +348,7 @@ static const CGFloat kWindowTopMargin = 8;
 
     self.window.level = NSModalPanelWindowLevel;
     self.window.accessibilityElement = YES;
-    self.window.accessibilityLabel = @"iTerm2 Tip of the Day";
+    self.window.accessibilityLabel = NSLocalizedStringFromTableInBundle(@"iTerm2 Tip of the Day", @"Tips", [NSBundle bundleForClass:[self class]], @"tip window: accessibility label");
     self.window.opaque = NO;
     self.window.alphaValue = 0;
 

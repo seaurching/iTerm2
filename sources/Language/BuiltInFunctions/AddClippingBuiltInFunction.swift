@@ -33,17 +33,17 @@ extension AddClippingBuiltInFunction: iTermBuiltInFunctionProtocol {
             context: .session,
             sideEffectsPlaceholder: "[add_clipping]") { parameters, completion in
                 guard let sessionID = parameters[argSession] as? String else {
-                    completion(nil, error(message: "Missing session_id. This shouldn't happen so please report a bug."))
+                    completion(nil, error(message: NSLocalizedString("Missing session_id. This shouldn't happen so please report a bug.", tableName: "Language", comment: "Add clipping error: missing session_id")))
                     return
                 }
                 guard let type = parameters[argType] as? String,
                       let title = parameters[argTitle] as? String,
                       let detail = parameters[argDetail] as? String else {
-                    completion(nil, error(message: "Missing required argument"))
+                    completion(nil, error(message: NSLocalizedString("Missing required argument", tableName: "Language", comment: "Add clipping error: missing required argument")))
                     return
                 }
                 guard let session = iTermController.sharedInstance().anySession(withGUID: sessionID) else {
-                    completion(nil, error(message: "No such session"))
+                    completion(nil, error(message: NSLocalizedString("No such session", tableName: "Language", comment: "Add clipping error: no such session")))
                     return
                 }
                 // Code-review-mode workgroup peers send their clippings

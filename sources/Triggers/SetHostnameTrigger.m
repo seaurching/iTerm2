@@ -11,11 +11,11 @@
 @implementation SetHostnameTrigger
 
 + (NSString *)title {
-    return @"Report User & Host";
+    return NSLocalizedStringFromTableInBundle(@"Report User & Host", @"Triggers", [NSBundle bundleForClass:[self class]], @"报告用户与主机触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Report User & Host as “%@”", self.param];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Report User & Host as “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"报告用户与主机触发器描述"), self.param];
 }
 
 - (BOOL)takesParameter{
@@ -23,7 +23,7 @@
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-    return @"username@hostname";
+    return NSLocalizedStringFromTableInBundle(@"username@hostname", @"Triggers", [NSBundle bundleForClass:[self class]], @"占位符：用户名@主机名");
 }
 
 - (BOOL)isIdempotent {

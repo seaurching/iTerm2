@@ -1,0 +1,358 @@
+/* Selection movement unit */
+"By Line" = "By Line";
+
+/* Selection movement unit */
+"By Character" = "By Character";
+
+/* Selection movement unit */
+"By Word" = "By Word";
+
+/* Selection movement unit */
+"By WORD" = "By WORD";
+
+/* Selection movement unit */
+"By Mark" = "By Mark";
+
+/* Key binding action */
+"Move Tab Left" = "Move Tab Left";
+
+/* Key binding action */
+"Move Tab Right" = "Move Tab Right";
+
+/* Key binding action */
+"Cycle Tabs Forward" = "Cycle Tabs Forward";
+
+/* Key binding action */
+"Cycle Tabs Backward" = "Cycle Tabs Backward";
+
+/* Key binding action */
+"Next Pane" = "Next Pane";
+
+/* Key binding action */
+"Previous Pane" = "Previous Pane";
+
+/* Key binding action */
+"Next Tab" = "Next Tab";
+
+/* Key binding action */
+"Next Window" = "Next Window";
+
+/* Key binding action */
+"Previous Tab" = "Previous Tab";
+
+/* Key binding action */
+"Previous Window" = "Previous Window";
+
+/* Key binding action */
+"Scroll To End" = "Scroll To End";
+
+/* Key binding action */
+"Scroll To Top" = "Scroll To Top";
+
+/* Key binding action */
+"Scroll One Line Down" = "Scroll One Line Down";
+
+/* Key binding action */
+"Scroll One Line Up" = "Scroll One Line Up";
+
+/* Key binding action */
+"Scroll One Page Down" = "Scroll One Page Down";
+
+/* Key binding action */
+"Scroll One Page Up" = "Scroll One Page Up";
+
+/* Key binding action: send escape sequence */
+"Send ^[" = "Send ^[";
+
+/* Key binding action: send hex codes */
+"Send Hex Codes:" = "Send Hex Codes:";
+
+/* Key binding action: send text */
+"Send:" = "Send:";
+
+/* Key binding action: send text no broadcast */
+"Send (no broadcast):" = "Send (no broadcast):";
+
+/* Key binding action: send snippet */
+"Send Snippet “%@”" = "Send Snippet “%@”";
+
+/* Key binding action */
+"Send Deleted Snippet (no action)" = "Send Deleted Snippet (no action)";
+
+/* Key binding action: compose */
+"Compose “%@”" = "Compose “%@”";
+
+/* Key binding action: tmux command */
+"tmux: %@" = "tmux: %@";
+
+/* Key binding action: run coprocess */
+"Run Coprocess \"%@\"" = "Run Coprocess \"%@\"";
+
+/* Key binding action: select menu item */
+"Select Menu Item" = "Select Menu Item";
+
+/* Key binding action: new window with profile */
+"New Window with \"%@\" Profile" = "New Window with \"%@\" Profile";
+
+/* Key binding action */
+"New Window with unavailable Profile" = "New Window with unavailable Profile";
+
+/* Key binding action: new tab with profile */
+"New Tab with \"%@\" Profile" = "New Tab with \"%@\" Profile";
+
+/* Key binding action */
+"New Tab with unavailable Profile" = "New Tab with unavailable Profile";
+
+/* Key binding action: split horizontally with profile */
+"Split Horizontally with \"%@\" Profile" = "Split Horizontally with \"%@\" Profile";
+
+/* Key binding action */
+"Split Horizontally with unavailable Profile" = "Split Horizontally with unavailable Profile";
+
+/* Key binding action: split vertically with profile */
+"Split Vertically with \"%@\" Profile" = "Split Vertically with \"%@\" Profile";
+
+/* Key binding action */
+"Split Vertically with unavailable Profile" = "Split Vertically with unavailable Profile";
+
+/* Key binding action: change profile */
+"Change Profile to \"%@\"" = "Change Profile to \"%@\"";
+
+/* Key binding action */
+"Change Profile to unavailable profile" = "Change Profile to unavailable profile";
+
+/* Key binding action: load color preset */
+"Load Color Preset \"%@\"" = "Load Color Preset \"%@\"";
+
+/* Key binding action */
+"Send ^H Backspace" = "Send ^H Backspace";
+
+/* Key binding action */
+"Send ^? Backspace" = "Send ^? Backspace";
+
+/* Key binding action */
+"Ignore" = "Ignore";
+
+/* Key binding action */
+"Bypass Terminal" = "Bypass Terminal";
+
+/* Key binding action */
+"Unsupported Command" = "Unsupported Command";
+
+/* Key binding action */
+"Start Instant Replay" = "Start Instant Replay";
+
+/* Key binding action */
+"Select Split Pane on Left" = "Select Split Pane on Left";
+
+/* Key binding action */
+"Select Split Pane on Right" = "Select Split Pane on Right";
+
+/* Key binding action */
+"Select Split Pane Above" = "Select Split Pane Above";
+
+/* Key binding action */
+"Select Split Pane Below" = "Select Split Pane Below";
+
+/* Key binding action */
+"Do Not Remap Modifiers" = "Do Not Remap Modifiers";
+
+/* Key binding action */
+"Remap Modifiers in iTerm2 Only" = "Remap Modifiers in iTerm2 Only";
+
+/* Key binding action */
+"Toggle Fullscreen" = "Toggle Fullscreen";
+
+/* Key binding action */
+"Toggle Pin Hotkey Window" = "Toggle Pin Hotkey Window";
+
+/* Key binding action */
+"Undo" = "Undo";
+
+/* Key binding action: find regex */
+"Find Regex “%@”" = "Find Regex “%@”";
+
+/* Key binding action */
+"Find Again Down" = "Find Again Down";
+
+/* Key binding action */
+"Find Again Up" = "Find Again Up";
+
+/* Key binding action: paste from selection */
+"Paste from Selection: %@" = "Paste from Selection: %@";
+
+/* Key binding action */
+"Paste from Selection" = "Paste from Selection";
+
+/* Key binding action: paste */
+"Paste: %@" = "Paste: %@";
+
+/* Key binding action */
+"Paste" = "Paste";
+
+/* Key binding action: move end of selection left */
+"Move End of Selection Left %@" = "Move End of Selection Left %@";
+
+/* Key binding action: move end of selection right */
+"Move End of Selection Right %@" = "Move End of Selection Right %@";
+
+/* Key binding action: move start of selection left */
+"Move Start of Selection Left %@" = "Move Start of Selection Left %@";
+
+/* Key binding action: move start of selection right */
+"Move Start of Selection Right %@" = "Move Start of Selection Right %@";
+
+/* Key binding action */
+"Decrease Height" = "Decrease Height";
+
+/* Key binding action */
+"Increase Height" = "Increase Height";
+
+/* Key binding action */
+"Decrease Width" = "Decrease Width";
+
+/* Key binding action */
+"Increase Width" = "Increase Width";
+
+/* Key binding action */
+"Swap With Split Pane on Left" = "Swap With Split Pane on Left";
+
+/* Key binding action */
+"Swap With Split Pane on Right" = "Swap With Split Pane on Right";
+
+/* Key binding action */
+"Swap With Split Pane Above" = "Swap With Split Pane Above";
+
+/* Key binding action */
+"Swap With Split Pane Below" = "Swap With Split Pane Below";
+
+/* Key binding action */
+"Toggle Mouse Reporting" = "Toggle Mouse Reporting";
+
+/* Key binding action: call script function */
+"Call %@" = "Call %@";
+
+/* Key binding action */
+"Duplicate Tab" = "Duplicate Tab";
+
+/* Key binding action: sequence join */
+", then " = ", then ";
+
+/* Key binding action: unknown action */
+"Unknown Action ID" = "Unknown Action ID";
+
+/* Key binding action */
+"Move to Split Pane" = "Move to Split Pane";
+
+/* Key binding action */
+"Swap with Next Pane" = "Swap with Next Pane";
+
+/* Key binding action */
+"Swap with Previous Pane" = "Swap with Previous Pane";
+
+/* Key binding action */
+"Copy Selection or Send ^C" = "Copy Selection or Send ^C";
+
+/* Key binding action */
+"Paste or Send ^V" = "Paste or Send ^V";
+
+/* Key binding action */
+"Alert on Next Mark" = "Alert on Next Mark";
+
+/* Key binding action: copy interpolated string */
+"Copy Interpolated String “%@”" = "Copy Interpolated String “%@”";
+
+/* Key binding action: copy mode */
+"Copy mode: %@" = "Copy mode: %@";
+
+/* Key binding action: toggle setting */
+"Toggle %@" = "Toggle %@";
+
+/* Key binding apply mode: all sessions */
+"In all sessions, %@" = "In all sessions, %@";
+
+/* Key binding apply mode: unfocused sessions */
+"In unfocused sessions, %@" = "In unfocused sessions, %@";
+
+/* Key binding apply mode: all in window */
+"In all sessions in the window, %@" = "In all sessions in the window, %@";
+
+/* Key binding apply mode: all in tab */
+"In all sessions in the tab, %@" = "In all sessions in the tab, %@";
+
+/* Key binding apply mode: broadcasting */
+"In all broadcasted-to sessions, %@" = "In all broadcasted-to sessions, %@";
+
+/* Key name */
+"Del→" = "Del→";
+
+/* Key name */
+"←Delete" = "←Delete";
+
+/* Key name */
+"End" = "End";
+
+/* Key name */
+"Help" = "Help";
+
+/* Key name */
+"Home" = "Home";
+
+/* Key name */
+"Numlock" = "Numlock";
+
+/* Key name */
+"Page Down" = "Page Down";
+
+/* Key name */
+"Page Up" = "Page Up";
+
+/* Key name */
+"Insert" = "Insert";
+
+/* Key name */
+"Space" = "Space";
+
+/* Key name */
+"Return ↩" = "Return ↩";
+
+/* Key name */
+"Esc ⎋" = "Esc ⎋";
+
+/* Key name */
+"Tab ↦" = "Tab ↦";
+
+/* Key name */
+"Tab ↤" = "Tab ↤";
+
+/* Secure keyboard entry alert title */
+"Secure keyboard entry is enabled.\n\nIn macOS 12 and later, enabling Secure Keyboard Entry prevents other programs from being activated. This affects the `open` command as well as the panel shown when using Touch ID for sudo." = "Secure keyboard entry is enabled.\n\nIn macOS 12 and later, enabling Secure Keyboard Entry prevents other programs from being activated. This affects the `open` command as well as the panel shown when using Touch ID for sudo.";
+
+/* Secure keyboard entry alert OK button */
+"OK" = "OK";
+
+/* Secure keyboard entry alert heading */
+"Secure Keyboard Entry Enabled" = "Secure Keyboard Entry Enabled";
+
+/* Undo close shortcut warning: keep new shortcut button */
+"Keep New Shortcut" = "Keep New Shortcut";
+
+/* Undo close shortcut warning: restore button */
+"Restore ⌘⇧T to Show Tabs" = "Restore ⌘⇧T to Show Tabs";
+
+/* Undo close shortcut warning heading */
+"Keyboard Shortcut Changed" = "Keyboard Shortcut Changed";
+
+/* Undo close shortcut warning body */
+"⌘⇧T now restores recently closed tabs (Undo Close). The Show Tabs in Fullscreen shortcut has moved to ⌘⇧U.\n\nWould you like to keep ⌘⇧T as the shortcut for Show Tabs in Fullscreen by adding a key binding?" = "⌘⇧T now restores recently closed tabs (Undo Close). The Show Tabs in Fullscreen shortcut has moved to ⌘⇧U.\n\nWould you like to keep ⌘⇧T as the shortcut for Show Tabs in Fullscreen by adding a key binding?";
+
+/* Vim key parser error: missing closing bracket */
+"Missing closing '>'" = "Missing closing '>'";
+
+/* Vim key parser error: invalid key */
+"Invalid key: <%@" = "Invalid key: <%@";
+
+/* Vim key parser error: problem location */
+"%@ at index %d in %@" = "%@ at index %d in %@";
+
+"Cancel" = "Cancel";

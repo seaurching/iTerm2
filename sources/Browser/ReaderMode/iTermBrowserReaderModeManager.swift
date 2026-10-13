@@ -66,7 +66,7 @@ class iTermBrowserReaderModeManager: NSObject {
         let turndown = iTermBrowserTemplateLoader.loadTemplate(named: "convert-to-markdown",
                                                                type: "js",
                                                                substitutions: ["SKIP_CHROME": skipChrome ? "true" : "false"])
-        return try await webView.safelyEvaluateJavaScript(turndown, contentWorld: .defaultClient) as? String ?? "No content found on page"
+        return try await webView.safelyEvaluateJavaScript(turndown, contentWorld: .defaultClient) as? String ?? NSLocalizedString("No content found on page", tableName: "Browser", comment: "页面上未找到内容")
     }
 
     private func toggleReaderMode(webView: iTermBrowserWebView) async {

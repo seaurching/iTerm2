@@ -16,7 +16,7 @@ struct SubArray<Element>: RandomAccessCollection {
     init(_ base: [Element], bounds: Range<Int>) {
         precondition(base.indices.contains(bounds.lowerBound)
                   && base.indices.contains(bounds.upperBound - 1),
-                     "bounds out of range")
+                     NSLocalizedString("bounds out of range", tableName: "FancyStrings", comment: "SubArray: bounds out of range"))
         self.base = base
         self.bounds = bounds
     }
@@ -29,7 +29,7 @@ struct SubArray<Element>: RandomAccessCollection {
     /// Returns a zero-based slice of this SubArray.
     subscript(range: Range<Int>) -> SubArray<Element> {
         precondition(range.lowerBound >= 0 && range.upperBound <= count,
-                     "SubArray range out of bounds: \(range)")
+                     String(format: NSLocalizedString("SubArray range out of bounds: %@", tableName: "FancyStrings", comment: "SubArray: range out of bounds"), String(describing: range)))
         let newLower = bounds.lowerBound + range.lowerBound
         let newUpper = bounds.lowerBound + range.upperBound
         return SubArray(base, bounds: newLower..<newUpper)

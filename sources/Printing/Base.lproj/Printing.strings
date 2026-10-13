@@ -1,0 +1,5 @@
+/* Printing: print panel summary black and white option name */
+"blackAndWhite" = "blackAndWhite";
+
+/* Printing: print panel summary black and white option description */
+"Should the document print only in black and white?" = "Should the document print only in black and white?";

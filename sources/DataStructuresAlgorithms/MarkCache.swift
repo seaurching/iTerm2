@@ -224,7 +224,7 @@ class ReadOnlyMarkCache: NSObject, MarkCacheReading {
     }
 
     override var description: String {
-        realInstance?.description ?? "Unrealized"
+        realInstance?.description ?? NSLocalizedString("Unrealized", tableName: "DataStructuresAlgorithms", comment: "ReadOnlyMarkCache: not yet realized description")
     }
 
     @objc(enumerateFrom:)

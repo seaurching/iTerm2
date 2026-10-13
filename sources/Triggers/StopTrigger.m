@@ -11,7 +11,7 @@
 @implementation StopTrigger
 
 + (NSString *)title {
-  return @"Stop Processing Triggers";
+  return NSLocalizedStringFromTableInBundle(@"Stop Processing Triggers", @"Triggers", [NSBundle bundleForClass:[self class]], @"停止处理触发器标题");
 }
 
 - (NSString *)description {

@@ -1,0 +1,32 @@
+/* Drawing.strings - Indicator help text */
+
+"Keyboard input gets broadcast to other sessions." = "键盘输入正在广播到其他会话。";
+"Keyboard input from another session gets broadcast to this one, but this session is not an input source for broadcasting (anything you type here stays here)." = "来自其他会话的键盘输入会广播到此会话，但此会话不是广播的输入源（在此输入的内容仅留在此会话）。";
+"This is a maximized split pane." = "此分屏面板已最大化。";
+"A coprocess is running." = "有一个协进程正在运行。";
+"Will alert on next mark." = "将在下一个标记处发出提醒。";
+"All output is currently suppressed." = "所有输出当前已被抑制。";
+"Zoomed in." = "已放大。";
+"Filtering." = "正在过滤。";
+"In copy mode. See [documentation](https://iterm2.com/documentation-copymode.html) for details." = "处于复制模式。详见[文档](https://iterm2.com/documentation-copymode.html)。";
+"Debug logging is enabled." = "调试日志已启用。";
+"Secure Keyboard Entry is enabled. Select iTerm2 > Secure Keyboard Entry to disable.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)" = "安全键盘输入已启用。选择 iTerm2 > 安全键盘输入以禁用。\n[禁用此指示器。](iterm2:disable-secure-keyboard-entry-indicator)";
+"Secure Keyboard Entry is enabled because another app has turned it on.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)" = "安全键盘输入已由其他应用启用。\n[禁用此指示器。](iterm2:disable-secure-keyboard-entry-indicator)";
+"This Hotkey Window is pinned." = "此热键窗口已固定。";
+"AI Chats can view or control this session.\n * [Unlink from AI Chat](iterm2:unlink-session-chat?s=%@&t=%@)\n * [Reveal AI Chat](iterm2:reveal-chat-for-session?s=%@&t=%@)" = "AI 对话可以查看或控制此会话。\n * [取消与 AI 对话的链接](iterm2:unlink-session-chat?s=%@&t=%@)\n * [显示 AI 对话](iterm2:reveal-chat-for-session?s=%@&t=%@)";
+"Commands run in this session are automatically sent to an AI chat, along with their output. [Stop sending](iterm2:disable-streaming-session-chat?s=%@&t=%@)" = "此会话中运行的命令及其输出会自动发送到 AI 对话。[停止发送](iterm2:disable-streaming-session-chat?s=%@&t=%@)";
+"This command is running within another session.\n * [Return to Enclosing Session](iterm2:pop-channel?s=%@&t=%@)" = "此命令运行于另一个会话内。\n * [返回外层会话](iterm2:pop-channel?s=%@&t=%@)";
+"Keyboard input is being buffered and will be sent when a trigger stops buffering." = "键盘输入正在缓冲，将在触发器停止缓冲时发送。";
+"Showing alerts with remembered selections. Disable in iTerm2 > Suppressed Alerts." = "正在显示带记忆选择的警报。在 iTerm2 > 已抑制的警报中禁用。";
+"In screenshot mode. Close the screenshot panel to return to normal." = "处于截图模式。关闭截图面板以返回正常状态。";
+
+/* Shared image store: failed to load image from path */
+"Failed to load image from %@" = "无法从 %@ 加载图像";
+/* Text drawing helper debug: begin drawing string */
+"Begin drawing string: %@" = "开始绘制字符串：%@";
+/* CoreText line rendering debug: begin run */
+"Begin run %@" = "开始运行 %@";
+/* CoreText line rendering debug: begin glyph */
+"  begin glyph %@" = "  开始字形 %@";
+/* CoreText line rendering debug: glyph begins new character or column */
+"  This glyph begins a new character or column. xOffset<-%@, xOriginForCurrentColumn<-%@" = "  此字形开始一个新字符或列。xOffset<-%@, xOriginForCurrentColumn<-%@";

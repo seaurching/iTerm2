@@ -1,0 +1,15 @@
+/* iTermAboutWindowController.strings - English */
+
+/* iTermAboutWindowController.m */
+"Build %@\n\n" = "Build %@\n\n";
+"What’s New in 3.7?\n" = "What’s New in 3.7?\n";
+"Home Page" = "Home Page";
+"Report a bug" = "Report a bug";
+"Credits" = "Credits";
+"Loading supporters…" = "Loading supporters…";
+"Error loading patrons :(" = "Error loading patrons :(";
+
+/* AboutWindow.xib */
+"iTerm2" = "iTerm2";
+"By George Nachman and Contributors" = "By George Nachman and Contributors";
+"iTerm2 is supported by these backers on <a href=\"https://patreon.com/gnachman\">Patreon</a> and <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a>:" = "iTerm2 is supported by these backers on <a href=\"https://patreon.com/gnachman\">Patreon</a> and <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a>:";

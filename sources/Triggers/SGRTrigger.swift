@@ -10,11 +10,11 @@ import Foundation
 @objc(iTermSGRTrigger)
 class SGRTrigger: Trigger {
     override var description: String {
-        return "Change Style “\(self.param ?? "")”"
+        return String(format: NSLocalizedString("Change Style “%@”", tableName: "Triggers", comment: "更改样式触发器描述"), String(describing: self.param ?? ""))
     }
 
     override static var title: String {
-        return "Change Style…"
+        return NSLocalizedString("Change Style…", tableName: "Triggers", comment: "更改样式触发器标题")
     }
 
     override func takesParameter() -> Bool {
@@ -22,7 +22,7 @@ class SGRTrigger: Trigger {
     }
 
     override func triggerOptionalParameterPlaceholder(withInterpolation interpolation: Bool) -> String? {
-        return "Enter SGR codes. See help button for details."
+        return NSLocalizedString("Enter SGR codes. See help button for details.", tableName: "Triggers", comment: "占位符：输入 SGR 代码")
     }
 
     override var helpText: String? {

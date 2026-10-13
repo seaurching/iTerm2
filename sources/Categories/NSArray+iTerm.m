@@ -255,7 +255,7 @@
 }
 
 - (NSString *)componentsJoinedWithOxfordComma {
-    return [self componentsJoinedWithOxfordCommaAndConjunction:@"and"];
+    return [self componentsJoinedWithOxfordCommaAndConjunction:NSLocalizedStringFromTableInBundle(@"and", @"Categories", [NSBundle mainBundle], @"Oxford comma conjunction")];
 }
 
 - (NSString *)componentsJoinedWithOxfordCommaAndConjunction:(NSString *)conjunction {
@@ -590,7 +590,7 @@
         NSArray *values = classified[key];
         const NSInteger count = values.count;
         if (count > 1) {
-            return [NSString stringWithFormat:@"%@ instances of \"%@\"", @(count), key];
+            return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ instances of \"%@\"", @"Categories", [NSBundle mainBundle], @"Counted instances description"), @(count), key];
         } else {
             return values.firstObject;
         }

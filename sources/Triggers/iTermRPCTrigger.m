@@ -22,15 +22,15 @@ static NSString *const iTermRPCTriggerPathLineNumber = @"trigger.line_number";
 @implementation iTermRPCTrigger
 
 + (NSString *)title {
-    return @"Invoke Script Function";
+    return NSLocalizedStringFromTableInBundle(@"Invoke Script Function", @"Triggers", [NSBundle bundleForClass:[self class]], @"调用脚本函数触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Invoke Script Function “%@”", self.param];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Invoke Script Function “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"调用脚本函数触发器描述"), self.param];
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-    return @"Function call";
+    return NSLocalizedStringFromTableInBundle(@"Function call", @"Triggers", [NSBundle bundleForClass:[self class]], @"占位符：函数调用");
 }
 
 - (BOOL)takesParameter {

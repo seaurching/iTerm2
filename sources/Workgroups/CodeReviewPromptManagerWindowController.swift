@@ -52,7 +52,7 @@ final class CodeReviewPromptManagerWindowController: NSWindowController {
             styleMask: [.titled, .closable, .resizable, .miniaturizable],
             backing: .buffered,
             defer: false)
-        window.title = "Code Review Prompts"
+        window.title = NSLocalizedString("Code Review Prompts", tableName: "Workgroups", comment: "代码评审提示窗口标题")
         window.setFrameAutosaveName("CodeReviewPromptManager")
         window.minSize = NSSize(width: 560, height: 320)
         super.init(window: window)
@@ -135,7 +135,7 @@ final class CodeReviewPromptManagerWindowController: NSWindowController {
             using: .systemFont(ofSize: NSFont.systemFontSize))
 
         let nameColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier("Name"))
-        nameColumn.title = "Name"
+        nameColumn.title = NSLocalizedString("Name", tableName: "Workgroups", comment: "名称列标题")
         nameColumn.isEditable = true
         nameColumn.width = leftWidth - 4
         table.addTableColumn(nameColumn)
@@ -146,9 +146,9 @@ final class CodeReviewPromptManagerWindowController: NSWindowController {
 
         let segmented = NSSegmentedControl(images: [
             NSImage(systemSymbolName: "plus",
-                     accessibilityDescription: "Add")!,
+                     accessibilityDescription: NSLocalizedString("Add", tableName: "Workgroups", comment: "添加按钮无障碍描述"))!,
             NSImage(systemSymbolName: "minus",
-                     accessibilityDescription: "Remove")!
+                     accessibilityDescription: NSLocalizedString("Remove", tableName: "Workgroups", comment: "移除按钮无障碍描述"))!
         ], trackingMode: .momentary, target: nil, action: nil)
         segmented.frame = NSRect(x: margin, y: margin,
                                   width: 60, height: segmentHeight)
@@ -160,7 +160,7 @@ final class CodeReviewPromptManagerWindowController: NSWindowController {
         let rightX = margin + leftWidth + margin
         let rightWidth = container.bounds.width - rightX - margin
 
-        let nameLabel = NSTextField(labelWithString: "Name:")
+        let nameLabel = NSTextField(labelWithString: NSLocalizedString("Name:", tableName: "Workgroups", comment: "名称标签"))
         nameLabel.font = .systemFont(ofSize: NSFont.smallSystemFontSize)
         nameLabel.textColor = .secondaryLabelColor
         nameLabel.frame = NSRect(x: rightX,
@@ -175,13 +175,13 @@ final class CodeReviewPromptManagerWindowController: NSWindowController {
             y: nameLabel.frame.minY - 24,
             width: rightWidth,
             height: 22))
-        nameInput.placeholderString = "Untitled"
+        nameInput.placeholderString = NSLocalizedString("Untitled", tableName: "Workgroups", comment: "未命名占位符")
         nameInput.autoresizingMask = [.width, .minYMargin]
         nameInput.delegate = self
         container.addSubview(nameInput)
         nameField = nameInput
 
-        let bodyLabel = NSTextField(labelWithString: "Prompt:")
+        let bodyLabel = NSTextField(labelWithString: NSLocalizedString("Prompt:", tableName: "Workgroups", comment: "提示标签"))
         bodyLabel.font = .systemFont(ofSize: NSFont.smallSystemFontSize)
         bodyLabel.textColor = .secondaryLabelColor
         bodyLabel.frame = NSRect(x: rightX,
@@ -221,7 +221,7 @@ final class CodeReviewPromptManagerWindowController: NSWindowController {
         bodyScrollView = bodyScroll
 
         let placeholder = NSTextField(wrappingLabelWithString:
-            "Select a prompt on the left to edit it, or click + to add a new prompt.")
+            NSLocalizedString("Select a prompt on the left to edit it, or click + to add a new prompt.", tableName: "Workgroups", comment: "空提示选择引导标签"))
         placeholder.font = .systemFont(ofSize: NSFont.systemFontSize)
         placeholder.textColor = .secondaryLabelColor
         placeholder.alignment = .center
@@ -429,7 +429,7 @@ private final class PromptDataProvider: CRUDDataProvider {
 
     func makeNew(completion: @escaping (Int) -> ()) {
         guard let controller else { return }
-        let name = uniqueName(basedOn: "New Prompt")
+        let name = uniqueName(basedOn: NSLocalizedString("New Prompt", tableName: "Workgroups", comment: "新提示默认名称"))
         var newIndex = -1
         controller.performLocalMutation {
             controller.crudController?.undoable {
@@ -454,6 +454,6 @@ private final class PromptDataProvider: CRUDDataProvider {
         if !existing.contains(base) { return base }
         var i = 2
         while existing.contains("\(base) \(i)") { i += 1 }
-        return "\(base) \(i)"
+        return String(format: NSLocalizedString("%@ %d", tableName: "Workgroups", comment: "唯一提示名称格式"), base, i)
     }
 }

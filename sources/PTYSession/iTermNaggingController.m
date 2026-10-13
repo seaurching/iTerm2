@@ -98,7 +98,7 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 
     return [self requestPermissionWithOriginalValue:originalValue
                                                 key:[NSString stringWithFormat:@"ShouldReportVariable%@", name]
-                                   prompt:[NSString stringWithFormat:@"A request to report variable “%@” was denied. Allow it in the future?", name]
+                                   prompt:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"A request to report variable “%@” was denied. Allow it in the future?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: variable reporting prompt"), name]
                                    setter:^(BOOL shouldAllow) {
         NSArray<NSString *> *parts = [self variablesToReportEntries];
         NSString *prefix = shouldAllow ? allow : deny;
@@ -110,12 +110,12 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 
 - (void)offerToFixSessionWithBrokenArrangementProfileIn:(NSString *)arrangementName
                                                    guid:(NSString *)guid {
-    NSString *notice = @"This arrangement’s profile is missing. This could be due to a bug in iTerm2 version 3.5.7, which caused profiles to be corrupted in saved arrangements.";
+    NSString *notice = NSLocalizedStringFromTableInBundle(@"This arrangement’s profile is missing. This could be due to a bug in iTerm2 version 3.5.7, which caused profiles to be corrupted in saved arrangements.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: arrangement profile missing notice");
     [self.delegate naggingControllerShowMessage:notice
                                      isQuestion:NO
                                       important:YES
                                      identifier:@"ArrangementMissingProfile"
-                                        options:@[ @"Assign Profile" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"Assign Profile", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: assign profile button") ]
                                      completion:^(int selection) {
         if (selection == 0) {
             [self.delegate naggingControllerAssignProfileToSession:arrangementName
@@ -148,7 +148,7 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
     NSString *notice;
     if (dict.count == 1) {
         NSString *key = dict.allKeys.firstObject;
-        notice = [NSString stringWithFormat:@"An app tried to change the profile property **%@**", [iTermProfilePreferences descriptionForKey:key]];
+        notice = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"An app tried to change the profile property **%@**", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: change profile property notice"), [iTermProfilePreferences descriptionForKey:key]];
     } else {
         NSMutableArray<NSString *> *descriptions = [NSMutableArray array];
         for (NSString *key in dict.allKeys) {
@@ -156,17 +156,17 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
             [descriptions addObject:[NSString stringWithFormat:@"* %@", desc]];
         }
         NSString *bulletList = [descriptions componentsJoinedByString:@"\n"];
-        NSString *popoverMessage = [NSString stringWithFormat:@"**Properties to be changed:**\n\n%@", bulletList];
+        NSString *popoverMessage = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"**Properties to be changed:**\n\n%@", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: properties to be changed popover"), bulletList];
         NSString *encodedMessage = [popoverMessage stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         NSString *popoverURL = [NSString stringWithFormat:@"x-iterm2-popover:?message=%@", encodedMessage];
-        notice = [NSString stringWithFormat:@"An app tried to change [multiple profile properties](%@).", popoverURL];
+        notice = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"An app tried to change [multiple profile properties](%@).", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: change multiple profile properties notice"), popoverURL];
     }
     __weak __typeof(self) weakSelf = self;
     [self.delegate naggingControllerShowMarkdownMessage:notice
                                              isQuestion:YES
                                               important:NO
                                              identifier:iTermNaggingControllerArrangementSetProfileProperty
-                                                options:@[ @"_Allow Once", @"Allow Always", @"Deny Always" ]
+                                                options:@[ NSLocalizedStringFromTableInBundle(@"_Allow Once", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: allow once button"), NSLocalizedStringFromTableInBundle(@"Allow Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: allow always button"), NSLocalizedStringFromTableInBundle(@"Deny Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: deny always button") ]
                                              completion:^(int selection) {
         if (selection == 0 || selection == 1) {
             [weakSelf.delegate naggingControllerSetProfileProperties:dict];
@@ -201,14 +201,14 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
     if (_haveOutstandingTextReplacementOffer) {
         return;
     }
-    NSString *notice = @"Would you like macOS Text Replacements to be applied automatically?";
+    NSString *notice = NSLocalizedStringFromTableInBundle(@"Would you like macOS Text Replacements to be applied automatically?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: text replacement notice");
     _haveOutstandingTextReplacementOffer = YES;
     __weak __typeof(self) weakSelf = self;
     [self.delegate naggingControllerShowMessage:notice
                                      isQuestion:YES
                                       important:NO
                                      identifier:iTermNaggingControllerArrangementTextReplacements
-                                        options:@[ @"_Yes", @"_No" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: yes button"), NSLocalizedStringFromTableInBundle(@"_No", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: no button") ]
                                      completion:^(int selection) {
         if (selection == 0 || selection == 1) {
             [[iTermUserDefaults userDefaults] setBool:selection == 0 forKey:userDefaultsKey];
@@ -236,14 +236,14 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
         return;
     }
     NSString *notice;
-    NSArray<NSString *> *actions = @[ @"Don’t Warn Again" ];
+    NSArray<NSString *> *actions = @[ NSLocalizedStringFromTableInBundle(@"Don’t Warn Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont warn again button") ];
     if ([[ProfileModel sharedInstance] bookmarkWithName:missingProfileName]) {
-        notice = [NSString stringWithFormat:@"This session’s profile, “%@”, no longer exists. A profile with that name happens to exist.", missingProfileName];
+        notice = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"This session’s profile, “%@”, no longer exists. A profile with that name happens to exist.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: profile missing same name notice"), missingProfileName];
         if (savedArrangementName) {
-            actions = [actions arrayByAddingObject:@"Repair Saved Arrangement"];
+            actions = [actions arrayByAddingObject:NSLocalizedStringFromTableInBundle(@"Repair Saved Arrangement", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: repair saved arrangement button")];
         }
     } else {
-        notice = [NSString stringWithFormat:@"This session’s profile, “%@”, no longer exists.", missingProfileName];
+        notice = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"This session’s profile, “%@”, no longer exists.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: profile missing notice"), missingProfileName];
     }
     _missingSavedArrangementProfileGUID = [guid copy];
     [self.delegate naggingControllerShowMessage:notice
@@ -266,13 +266,13 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
     if ([iTermAdvancedSettingsModel noSyncSuppressBadPWDInArrangementWarning]) {
         return;
     }
-    NSString *notice = [NSString stringWithFormat:@"The saved arrangement “%@” has a bad initial directory of “%@” for this session.", arrangementName, badPWD];
+    NSString *notice = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The saved arrangement “%@” has a bad initial directory of “%@” for this session.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: bad pwd notice"), arrangementName, badPWD];
 
     [self.delegate naggingControllerShowMessage:notice
                                      isQuestion:NO
                                       important:NO
                                      identifier:iTermNaggingControllerArrangementProfileMissingIdentifier
-                                        options:@[ @"Don’t Warn Again", @"Repair" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"Don’t Warn Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont warn again button"), NSLocalizedStringFromTableInBundle(@"Repair", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: repair button") ]
                                      completion:^(int selection) {
         [self handleCompletionForInvalidPWDInArrangementWithName:arrangementName
                                                             guid:sessionGUID
@@ -294,11 +294,11 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 }
 
 - (void)didRestoreOrphan {
-    [self.delegate naggingControllerShowMessage:@"This already-running session was restored but its contents were not saved."
+    [self.delegate naggingControllerShowMessage:NSLocalizedStringFromTableInBundle(@"This already-running session was restored but its contents were not saved.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: orphan restore notice")
                                      isQuestion:YES
                                       important:NO
                                      identifier:iTermNaggingControllerOrphanIdentifier
-                                        options:@[ @"Why?" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"Why?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: why button") ]
                                      completion:^(int selection) {
         if (selection == 0) {
             // Why?
@@ -312,22 +312,22 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 }
 
 - (void)sessionEndedWithExecFailure:(BOOL)execDidFail {
-    [self.delegate naggingControllerShowMessage:execDidFail ? @"Session failed to start." : @"Session ended (command exited). Restart it?"
+    [self.delegate naggingControllerShowMessage:execDidFail ? NSLocalizedStringFromTableInBundle(@"Session failed to start.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: session failed notice") : NSLocalizedStringFromTableInBundle(@"Session ended (command exited). Restart it?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: session ended notice")
                                      isQuestion:!execDidFail
                                       important:YES
                                      identifier:iTermNaggingControllerReopenSessionAfterBrokenPipeIdentifier
-                                        options:@[ @"_Restart", @"Don’t Ask Again" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Restart", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: restart button"), NSLocalizedStringFromTableInBundle(@"Don’t Ask Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont ask again button") ]
                                      completion:^(int selection) {
         [self handleCompletionForBrokenPipe:selection];
     }];
 }
 
 - (void)askAboutAbortingDownload {
-    [self.delegate naggingControllerShowMessage:@"A file is being downloaded. Abort the download?"
+    [self.delegate naggingControllerShowMessage:NSLocalizedStringFromTableInBundle(@"A file is being downloaded. Abort the download?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: abort download notice")
                                      isQuestion:YES
                                       important:YES
                                      identifier:iTermNaggingControllerAbortDownloadIdentifier
-                                        options:@[ @"OK", @"Cancel" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button") ]
                                      completion:^(int selection) {
         if (selection == 0) {
             [self.delegate naggingControllerAbortDownload];
@@ -336,11 +336,11 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 }
 
 - (void)askAboutAbortingUpload {
-    [self.delegate naggingControllerShowMessage:@"A file is being uploaded. Abort the upload?"
+    [self.delegate naggingControllerShowMessage:NSLocalizedStringFromTableInBundle(@"A file is being uploaded. Abort the upload?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: abort upload notice")
                                      isQuestion:YES
                                       important:YES
                                      identifier:iTermNaggingControllerAbortUploadOnKeyPressAnnouncementIdentifier
-                                        options:@[ @"OK", @"Cancel" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button") ]
                                      completion:^(int selection) {
         if (selection == 0) {
             [self.delegate naggingControllerAbortUpload];
@@ -368,12 +368,12 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 }
 
 - (void)tmuxSupplementaryPlaneErrorForCharacter:(NSString *)string {
-    NSString *message = [NSString stringWithFormat:@"Because of a bug in tmux 2.2, the character “%@” cannot be sent.", string];
+    NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Because of a bug in tmux 2.2, the character “%@” cannot be sent.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux supplementary plane notice"), string];
     [self.delegate naggingControllerShowMessage:message
                                      isQuestion:NO
                                       important:NO
                                      identifier:iTermNaggingControllerTmuxSupplementaryPlaneErrorIdentifier
-                                        options:@[ @"Why?" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"Why?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: why button") ]
                                      completion:^(int selection) {
         if (selection == 0) {
             [self showTmuxSupplementaryPlaneBugHelpPage];
@@ -397,11 +397,11 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
     if ([[iTermUserDefaults userDefaults] boolForKey:iTermNaggingControllerUserDefaultNeverAskAboutSettingAlternateMouseScroll]) {
         return;
     }
-    [self.delegate naggingControllerShowMessage:@"Do you want the scroll wheel to move the cursor in interactive programs like this?"
+    [self.delegate naggingControllerShowMessage:NSLocalizedStringFromTableInBundle(@"Do you want the scroll wheel to move the cursor in interactive programs like this?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: alternate mouse scroll notice")
                                      isQuestion:YES
                                       important:YES
                                      identifier:iTermNaggingControllerAskAboutAlternateMouseScrollIdentifier
-                                        options:@[ @"Yes", @"Don‘t Ask Again" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: yes button"), NSLocalizedStringFromTableInBundle(@"Don‘t Ask Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont ask again button l8") ]
                                      completion:^(int selection) {
         [self handleTryingToSendArrowKeysWithScrollWheel:selection];
     }];
@@ -437,15 +437,15 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 
     NSString *title;
     if (filename.length) {
-        title = [NSString stringWithFormat:@"Set background image to “%@”?", filename];
+        title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Set background image to “%@”?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: set background image notice"), filename];
     } else {
-        title = @"Remove background image?";
+        title = NSLocalizedStringFromTableInBundle(@"Remove background image?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: remove background image notice");
     }
     [self.delegate naggingControllerShowMessage:title
                                      isQuestion:YES
                                       important:NO
                                      identifier:iTermNaggingControllerSetBackgroundImageFileIdentifier
-                                        options:@[ @"Yes", @"Always", @"Never" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: yes button"), NSLocalizedStringFromTableInBundle(@"Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always button"), NSLocalizedStringFromTableInBundle(@"Never", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: never button") ]
                                      completion:^(int selection) {
         [self handleSetBackgroundImageToFileWithName:filename selection:selection];
     }];
@@ -494,11 +494,11 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
     if ([iTermAdvancedSettingsModel noSyncNeverAskAboutMouseReportingFrustration]) {
         return;
     }
-    [self.delegate naggingControllerShowMessage:@"Looks like you’re trying to copy to the pasteboard, but mouse reporting has prevented making a selection. Disable mouse reporting?"
+    [self.delegate naggingControllerShowMessage:NSLocalizedStringFromTableInBundle(@"Looks like you’re trying to copy to the pasteboard, but mouse reporting has prevented making a selection. Disable mouse reporting?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: mouse reporting frustration notice")
                                      isQuestion:YES
                                       important:YES
                                      identifier:iTermNaggingControllerAskAboutMouseReportingFrustrationIdentifier
-                                        options:@[ @"_Temporarily", @"Permanently", @"Stop Asking" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Temporarily", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: temporarily button"), NSLocalizedStringFromTableInBundle(@"Permanently", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: permanently button"), NSLocalizedStringFromTableInBundle(@"Stop Asking", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: stop asking button") ]
                                      completion:^(int selection) {
         [self handleMouseReportingFrustration:selection];
     }];
@@ -523,13 +523,13 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 
 - (void)offerToTurnOffBracketedPasteOnHostChange {
     NSString *title;
-    title = @"Looks like paste bracketing was left on when an ssh session ended unexpectedly or an app misbehaved. Turn it off?";
+    title = NSLocalizedStringFromTableInBundle(@"Looks like paste bracketing was left on when an ssh session ended unexpectedly or an app misbehaved. Turn it off?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: bracketed paste notice");
 
     [self.delegate naggingControllerShowMessage:title
                                      isQuestion:YES
                                       important:YES
                                      identifier:kTurnOffBracketedPasteOnHostChangeAnnouncementIdentifier
-                                        options:@[ @"_Yes", @"Always", @"Never", @"Help" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: yes button"), NSLocalizedStringFromTableInBundle(@"Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always button"), NSLocalizedStringFromTableInBundle(@"Never", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: never button"), NSLocalizedStringFromTableInBundle(@"Help", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: help button") ]
                                      completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programmatically
@@ -574,13 +574,13 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
         return NO;
     }
     // User hasn't chosen yet - show nag
-    NSString *title = @"The key reporting mode may have been left in an unusual setting when an ssh session died or an app crashed. Restore?";
+    NSString *title = NSLocalizedStringFromTableInBundle(@"The key reporting mode may have been left in an unusual setting when an ssh session died or an app crashed. Restore?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: key reporting mode notice");
 
     [self.delegate naggingControllerShowMessage:title
                                      isQuestion:YES
                                       important:YES
                                      identifier:kResetKeyReportingModeAnnouncementIdentifier
-                                        options:@[ @"_Yes", @"Always", @"Never" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: yes button"), NSLocalizedStringFromTableInBundle(@"Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always button"), NSLocalizedStringFromTableInBundle(@"Never", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: never button") ]
                                      completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programmatically
@@ -614,7 +614,7 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 
 - (void)offerToRestoreIconName:(NSString *)iconName windowName:(NSString *)windowName {
     NSString *title;
-    title = @"Automatically restore the tab and window title when an ssh session ends?";
+    title = NSLocalizedStringFromTableInBundle(@"Automatically restore the tab and window title when an ssh session ends?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: restore icon name notice");
 
     _pendingRestoreIconName = [iconName copy];
     _pendingRestoreWindowName = [windowName copy];
@@ -624,7 +624,7 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
                                      isQuestion:YES
                                       important:YES
                                      identifier:kRestoreIconAndWindowNameOnHostChangeAnnouncementIdentifier
-                                        options:@[ @"_Only This Time", @"Always", @"Never" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Only This Time", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: only this time button"), NSLocalizedStringFromTableInBundle(@"Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always button"), NSLocalizedStringFromTableInBundle(@"Never", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: never button") ]
                                      completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programmatically
@@ -691,13 +691,13 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
         return;
     }
     NSString *title;
-    title = @"This session’s triggers are pretty slow. Disable them in interactive apps?";
+    title = NSLocalizedStringFromTableInBundle(@"This session’s triggers are pretty slow. Disable them in interactive apps?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: slow triggers notice");
 
     [self.delegate naggingControllerShowMessage:title
                                      isQuestion:YES
                                       important:YES
                                      identifier:kTurnOffSlowTriggersOfferUserDefaultsKey
-                                        options:@[ @"_Yes", @"Stop Asking", @"View Stats", @"Help" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: yes button"), NSLocalizedStringFromTableInBundle(@"Stop Asking", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: stop asking button"), NSLocalizedStringFromTableInBundle(@"View Stats", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: view stats button"), NSLocalizedStringFromTableInBundle(@"Help", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: help button") ]
                                      completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programmatically
@@ -761,11 +761,11 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
     if ([iTermPreferences boolForKey:kPreferenceKeyTmuxSyncClipboard]) {
         return;
     }
-    [self.delegate naggingControllerShowMessage:@"The tmux paste buffer was updated. Would you like to mirror it to the local clipboard from now on?"
+    [self.delegate naggingControllerShowMessage:NSLocalizedStringFromTableInBundle(@"The tmux paste buffer was updated. Would you like to mirror it to the local clipboard from now on?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux clipboard sync notice")
                                      isQuestion:YES
                                       important:NO
                                      identifier:iTermNaggingControllerOfferToSyncTmuxClipboard
-                                        options:@[ @"_Always", @"_Never" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always button"), NSLocalizedStringFromTableInBundle(@"_Never", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: never button") ]
                                      completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programatically
@@ -789,12 +789,12 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 }
 
 - (void)askAboutClearingScrollbackHistory {
-    NSString *message = @"A control sequence attempted to clear scrollback history. Allow this in the future?";
+    NSString *message = NSLocalizedStringFromTableInBundle(@"A control sequence attempted to clear scrollback history. Allow this in the future?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: clearing scrollback notice");
     [self.delegate naggingControllerShowMessage:message
                                      isQuestion:YES
                                       important:NO
                                      identifier:iTermNaggingControllerAskAboutClearingScrollbackHistoryIdentifier
-                                        options:@[ @"Always _Allow", @"Always _Deny" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"Always _Allow", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always allow button"), NSLocalizedStringFromTableInBundle(@"Always _Deny", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always deny button") ]
                                      completion:^(int selection) {
         switch (selection) {
             case 0: {
@@ -815,12 +815,12 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
     if (!iTermAdvancedSettingsModel.warnAboutSecureKeyboardInputWithOpenCommand) {
         return;
     }
-    NSString *message = @"The open command doesn't activate other apps when Secure Keyboard Input is enabled.";
+    NSString *message = NSLocalizedStringFromTableInBundle(@"The open command doesn't activate other apps when Secure Keyboard Input is enabled.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: secure keyboard input notice");
     [self.delegate naggingControllerShowMessage:message
                                      isQuestion:YES
                                       important:NO
                                      identifier:iTermNaggingControllerWarnAboutSecureKeyboardInputWithOpenCommand
-                                        options:@[ @"Don’t Remind Me Again" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"Don’t Remind Me Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont remind me again button") ]
                                      completion:^(int selection) {
         switch (selection) {
             case 0: {
@@ -836,12 +836,12 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
     if (boolPtr) {
         return !*boolPtr;
     }
-    NSString *message = @"A control sequence attempted to change the current profile. Allow this in the future?";
+    NSString *message = NSLocalizedStringFromTableInBundle(@"A control sequence attempted to change the current profile. Allow this in the future?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: change profile notice");
     [self.delegate naggingControllerShowMessage:message
                                      isQuestion:YES
                                       important:NO
                                      identifier:iTermNaggingControllerAskAboutChangingProfileIdentifier
-                                        options:@[ @"Always _Allow", @"Always _Deny" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"Always _Allow", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always allow button"), NSLocalizedStringFromTableInBundle(@"Always _Deny", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always deny button") ]
                                      completion:^(int selection) {
         switch (selection) {
             case 0: {
@@ -864,12 +864,12 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
     if (boolPtr) {
         return *boolPtr;
     }
-    NSString *message = @"Close tmux windows after detaching?";
+    NSString *message = NSLocalizedStringFromTableInBundle(@"Close tmux windows after detaching?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux close notice");
     [self.delegate naggingControllerShowMessage:message
                                      isQuestion:YES
                                       important:YES
                                      identifier:iTermNaggingControllerTmuxWindowsShouldCloseAfterDetach
-                                        options:@[ @"_Always", @"_Never" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always button"), NSLocalizedStringFromTableInBundle(@"_Never", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: never button") ]
                                      completion:^(int selection) {
         if (selection == 0 || selection == 1) {
             BOOL value = (selection == 0);
@@ -889,11 +889,11 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 }
 
 - (void)showJSONPromotion {
-    [_delegate naggingControllerShowMessage:@"That's a gnarly JSON blob you've got there! iTerm2 can replace this hard-to-read selection with a pretty-printed value."
+    [_delegate naggingControllerShowMessage:NSLocalizedStringFromTableInBundle(@"That's a gnarly JSON blob you've got there! iTerm2 can replace this hard-to-read selection with a pretty-printed value.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: json promotion notice")
                                  isQuestion:NO
                                   important:NO
                                  identifier:@"JSONPromotion"
-                                    options:@[ @"Try it Now", @"Dismiss" ]
+                                    options:@[ NSLocalizedStringFromTableInBundle(@"Try it Now", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: try it now button"), NSLocalizedStringFromTableInBundle(@"Dismiss", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dismiss button") ]
                                  completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programmatically
@@ -929,11 +929,11 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
         return;
     }
 
-    [_delegate naggingControllerShowMessage:[NSString stringWithFormat: @"Open this URL? %@", url.sanitizedForPrinting.absoluteString]
+    [_delegate naggingControllerShowMessage:[NSString stringWithFormat: NSLocalizedStringFromTableInBundle(@"Open this URL? %@", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: open url notice"), url.sanitizedForPrinting.absoluteString]
                                  isQuestion:YES
                                   important:YES
                                  identifier:allowHostKey
-                                    options:@[ @"Allow", @"Always allow for this host", @"Never allow" ]
+                                    options:@[ NSLocalizedStringFromTableInBundle(@"Allow", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: allow button"), NSLocalizedStringFromTableInBundle(@"Always allow for this host", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always allow for host button"), NSLocalizedStringFromTableInBundle(@"Never allow", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: never allow button") ]
                                  completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programmatically
@@ -987,7 +987,7 @@ static NSString *const iTermNaggingControllerTouchIDForSudoUserDefaultsKey = @"N
         DLog(@"Touch ID for sudo already enabled");
         return;
     }
-    NSString *message = @"Would you like to enable Touch ID for sudo?";
+    NSString *message = NSLocalizedStringFromTableInBundle(@"Would you like to enable Touch ID for sudo?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: touch id for sudo notice");
     if ([self.delegate naggingControllerAnnouncementWouldObscureCursorForText:message]) {
         DLog(@"Announcement would obscure cursor");
         return;
@@ -996,7 +996,7 @@ static NSString *const iTermNaggingControllerTouchIDForSudoUserDefaultsKey = @"N
                                      isQuestion:YES
                                       important:YES
                                      identifier:iTermNaggingControllerTouchIDForSudoIdentifier
-                                        options:@[ @"_Run In New Window", @"Copy Command", @"Don’t Ask Again" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Run In New Window", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: run in new window button"), NSLocalizedStringFromTableInBundle(@"Copy Command", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: copy command button"), NSLocalizedStringFromTableInBundle(@"Don’t Ask Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont ask again button") ]
                                      completion:^(int selection) {
         // Any explicit user action — including closing with the X (selection -1)
         // — should suppress further offers for this sudo invocation.
@@ -1053,7 +1053,7 @@ static NSString *const iTermNaggingControllerTouchIDForSudoUserDefaultsKey = @"N
                                      isQuestion:YES
                                       important:YES
                                      identifier:key
-                                        options:@[ @"Always Allow", @"Always Deny" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"Always Allow", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always allow button"), NSLocalizedStringFromTableInBundle(@"Always Deny", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always deny button") ]
                                      completion:^(int selection) {
         if (selection == 0) {
             setter(YES);
@@ -1100,12 +1100,12 @@ static NSString *const iTermNaggingControllerTouchIDForSudoUserDefaultsKey = @"N
     if (![self.delegate naggingControllerCanShowMessageWithIdentifier:iTermNaggingControllerClaudeCodeStatusToolIdentifier]) {
         return;
     }
-    NSString *message = @"Want to try iTerm2’s Claude Code integration?";
+    NSString *message = NSLocalizedStringFromTableInBundle(@"Want to try iTerm2’s Claude Code integration?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: claude code notice");
     [self.delegate naggingControllerShowMessage:message
                                      isQuestion:YES
                                       important:NO
                                      identifier:iTermNaggingControllerClaudeCodeStatusToolIdentifier
-                                        options:@[ @"_Yes", @"Never", @"Ask Later" ]
+                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: yes button"), NSLocalizedStringFromTableInBundle(@"Never", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: never button"), NSLocalizedStringFromTableInBundle(@"Ask Later", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: ask later button") ]
                                      completion:^(int selection) {
         [[NSNotificationCenter defaultCenter] postNotificationName:iTermNaggingControllerClaudeCodeStatusToolDismissedNotification
                                                             object:nil];

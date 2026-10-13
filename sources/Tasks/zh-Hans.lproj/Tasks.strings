@@ -1,0 +1,15 @@
+"Failed to launch coprocess." = "启动辅助进程失败。";
+"OK" = "确定";
+"Unable to fork child process: you may have too many processes already running." = "无法派生子进程：您可能已经运行了太多进程。";
+"%@ The system error was: %s" = "%@ 系统错误为：%s";
+"Unable to fork!" = "无法派生子进程！";
+"Error" = "错误";
+"An error was encountered while creating a temporary file with mkstemps. Verify that %@ exists and is writable." = "使用 mkstemps 创建临时文件时遇到错误。请验证 %@ 是否存在且可写。";
+"Problem Starting iTerm2 Daemon" = "启动 iTerm2 守护程序时出现问题";
+"Neither ~/Library/Application Support/iTerm2 nor ~/.iterm2 are writable directories. This prevents the session restoration server from running. Please correct the problem and restart iTerm2." = "~/Library/Application Support/iTerm2 和 ~/.iterm2 都不是可写目录。这会阻止会话恢复服务器运行。请纠正此问题并重启 iTerm2。";
+"Required File Missing" = "缺少必需的文件";
+"The iTermServer executable is missing from the application bundle. This indicates iTerm2 is corrupted or incomplete. Please reinstall iTerm2 from the official website." = "应用程序包中缺少 iTermServer 可执行文件。这表明 iTerm2 已损坏或不完整。请从官方网站重新安装 iTerm2。";
+"Quit" = "退出";
+"Could not copy %@ to %@: %@" = "无法将 %@ 拷贝到 %@：%@";
+"Could not check permissions on %@" = "无法检查 %@ 的权限";
+"Could not set 0700 permissions on %@" = "无法为 %@ 设置 0700 权限";

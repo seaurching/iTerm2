@@ -1,0 +1,108 @@
+/* Process info: command header */
+"Command" = "命令";
+
+/* Process info: working directory header */
+"Working Directory" = "工作目录";
+
+/* Process info: loading placeholder */
+"Loading…" = "加载中…";
+
+/* Process info: process id header */
+"Process ID" = "进程 ID";
+
+/* Process info: started header */
+"Started" = "启动时间";
+
+/* Process info: environment header */
+"Environment" = "环境";
+
+/* Process info: environment variable column */
+"Variable" = "变量";
+
+/* Process info: environment value column */
+"Value" = "值";
+
+/* Process info: open files header */
+"Open Files & Sockets" = "打开的文件和套接字";
+
+/* Process info: file descriptor column */
+"FD" = "FD";
+
+/* Process info: type column */
+"Type" = "类型";
+
+/* Process info: detail column */
+"Detail" = "详情";
+
+/* Process info: copy accessibility */
+"Copy" = "复制";
+
+/* Process info: unknown value */
+"Unknown" = "未知";
+
+/* Process info: copied toast */
+"Copied" = "已复制";
+
+/* Process info: started time with elapsed */
+"%1$@ (%2$@ ago)" = "%1$@（%2$@ 前）";
+
+/* Process info: unknown process name fallback */
+"unknown name" = "未知名称";
+
+/* Process info: job terminated alert title */
+"Job Terminated" = "作业已终止";
+
+/* Process info: jobs terminated alert title */
+"Jobs Terminated" = "作业已终止";
+
+/* Process info: job terminated OK button */
+"OK" = "好";
+
+/* Process info: unknown name fallback */
+"(unknown)" = "(未知)";
+
+/* Process info: job terminated informative text */
+"The job %1$@ with process ID %2$d has terminated." = "进程 ID 为 %2$d 的作业“%1$@”已终止。";
+
+/* Process info: cannot monitor alert title */
+"Cannot Notify on Termination" = "无法通知终止";
+
+/* Process info: cannot monitor informative text */
+"iTerm2 cannot watch the job %1$@ with process ID %2$d because it has already terminated." = "iTerm2 无法监视进程 ID 为 %2$d 的作业“%1$@”，因为它已经终止。";
+
+/* Process info: clear accessibility */
+"Clear" = "清除";
+
+/* Process info: inspect accessibility */
+"Inspect" = "检查";
+
+/* Process info: inspect tooltip */
+"Inspect the selected process" = "检查所选进程";
+
+/* Process info: one process with children */
+"one process and its children" = "一个进程及其子进程";
+
+/* Process info: processes with children */
+"%d processes and their children" = "%d 个进程及其子进程";
+
+/* Process info: one process */
+"one process" = "一个进程";
+
+/* Process info: processes */
+"%d processes" = "%d 个进程";
+
+/* Process info: kill confirmation title */
+"Are you sure? This may terminate %@." = "你确定吗？这可能会终止%@。";
+
+/* Process info: kill confirmation cancel button */
+"Cancel" = "取消";
+
+/* Process info: kill confirmation heading */
+"Confirmation Needed" = "需要确认";
+
+/* Process info: terminated process label */
+"(terminated)" = "(已终止)";
+
+/* Process info: bell accessibility */
+"Will notify when this job terminates" = "在此作业终止时通知";
+"SIG%@ (%d)" = "SIG%@ (%d)";

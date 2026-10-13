@@ -330,7 +330,7 @@ const CGFloat iTermColorsMenuItemViewDisabledAlpha = 0.3;
         const CGFloat alpha = self.effectiveAppearance.it_isDark ? 0.30 : 0.25;
         attributes[NSForegroundColorAttributeName] = [attributes[NSForegroundColorAttributeName] colorWithAlphaComponent:alpha];
     }
-    NSString *labelTitle = @"Tab Color:";
+    NSString *labelTitle = NSLocalizedStringFromTableInBundle(@"Tab Color:", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Label in color menu item");
     const CGFloat x = [self colorXOffset];
     [labelTitle drawAtPoint:NSMakePoint(x, [ColorsMenuItemView preferredSize].height - kMenuLabelOffsetY) withAttributes:attributes];
     [NSBezierPath setDefaultLineWidth:savedWidth];
@@ -392,7 +392,7 @@ const CGFloat iTermColorsMenuItemViewDisabledAlpha = 0.3;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         cachedEyedropper = [NSImage imageWithSystemSymbolName:@"eyedropper"
-                                     accessibilityDescription:@"Color Picker"];
+                                     accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Color Picker", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Accessibility description for eyedropper icon")];
         if (!cachedEyedropper) {
             cachedEyedropper = [NSImage imageNamed:NSImageNameColorPanel];
         }

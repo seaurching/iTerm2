@@ -335,7 +335,7 @@ class AITermControllerObjC: NSObject, AITermControllerDelegate, iTermObject {
          window: NSWindow,
          handler: @escaping (iTermOr<NSString, NSError>) -> ()) {
         let pleaseWait = PleaseWaitWindow(owningWindow: window,
-                                          message: "Thinking…",
+                                          message: NSLocalizedString("Thinking…", tableName: "AITermXC", comment: "思考中…"),
                                           image: NSImage.it_imageNamed("aiterm", for: AITermControllerObjC.self)!)
         self.pleaseWait = pleaseWait
         var cancel: (() -> ())?
@@ -397,11 +397,11 @@ class AITermControllerObjC: NSObject, AITermControllerDelegate, iTermObject {
     }
 
     func aitermController(_ sender: AITermController, didStreamUpdate update: String?) {
-        it_fatalError("Streaming not supported in the objective c interface")
+        it_fatalError(NSLocalizedString("Streaming not supported in the objective c interface", tableName: "AITermXC", comment: "Objective-C 接口不支持流式传输"))
     }
 
     func aitermController(_ sender: AITermController, didStreamAttachment: LLM.Message.Attachment) {
-        it_fatalError("Streaming not supported in the objective C interface")
+        it_fatalError(NSLocalizedString("Streaming not supported in the objective C interface", tableName: "AITermXC", comment: "Objective-C 接口不支持流式传输"))
     }
 
     func aitermController(_ sender: AITermController, offerChoice choice: String) {
@@ -472,7 +472,7 @@ class AITermControllerObjC: NSObject, AITermControllerDelegate, iTermObject {
             if let registration {
                 completion(registration)
             } else {
-                handler?(.failure(AIError("AI features are not enabled or the API key is missing.")))
+                handler?(.failure(AIError(NSLocalizedString("AI features are not enabled or the API key is missing.", tableName: "AITermXC", comment: "AI 功能未启用或 API 密钥缺失。"))))
             }
         }
     }

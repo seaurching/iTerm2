@@ -25,7 +25,7 @@ class iTermLocaleGuesser: NSObject {
     struct Config {
         private static var lowerCaseEncodings: [String: Bool] = {
             guard let plistFile = Bundle(for: iTermLocaleGuesser.self).path(forResource: "EncodingsWithLowerCase", ofType: "plist") else {
-                AppSignatureValidator.warn(reason: "While loading the list of known encodings")
+                AppSignatureValidator.warn(reason: NSLocalizedString("While loading the list of known encodings", tableName: "Locale", comment: "Locale guesser: warning while loading encodings"))
                 it_fatalError("bundle damaged")
             }
             // A present-but-unparseable plist means the same thing as a missing
@@ -33,7 +33,7 @@ class iTermLocaleGuesser: NSObject {
             // returning an empty dictionary and tripping the downstream assert
             // in properlyCapitalizedIANAEncoding(for:).
             guard let dict = NSDictionary(contentsOfFile: plistFile) as? [String: Bool] else {
-                AppSignatureValidator.warn(reason: "While loading the list of known encodings")
+                AppSignatureValidator.warn(reason: NSLocalizedString("While loading the list of known encodings", tableName: "Locale", comment: "Locale guesser: warning while loading encodings"))
                 it_fatalError("bundle damaged")
             }
             return dict

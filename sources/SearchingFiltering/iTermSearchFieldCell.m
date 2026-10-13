@@ -47,7 +47,7 @@ const CGFloat kEdgeWidth = 3;
 
     if (_loupeColor) {
         NSImage *originalImage = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolMagnifyingglass)
-                                          accessibilityDescription:@"Search"];
+                                          accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Search", @"SearchingFiltering", [NSBundle bundleForClass:[self class]], @"Searching: search accessibility description")];
 
         if (originalImage) {
             NSImage *tintedImage = [originalImage it_imageWithTintColor:_loupeColor];

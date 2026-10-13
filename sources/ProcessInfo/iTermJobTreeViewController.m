@@ -142,7 +142,7 @@ static int gSignalsToList[] = {
         i = kDefaultSignal;
     }
     [self setStringValue:signalNames[i]];
-    [self setToolTip:[NSString stringWithFormat:@"SIG%@ (%d)", signalNames[i], i]];
+    [self setToolTip:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"SIG%@ (%d)", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"信号工具提示"), signalNames[i], i]];
 }
 
 - (BOOL)isValid {
@@ -333,7 +333,7 @@ static int gSignalsToList[] = {
 
 - (void)awakeFromNib {
     if (@available(macOS 10.16, *)) {
-        kill_.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolPlay) accessibilityDescription:@"Clear"];
+        kill_.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolPlay) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Clear", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: clear accessibility")];
         _outlineView.style = NSTableViewStyleInset;
     }
     _outlineView.backgroundColor = [NSColor clearColor];
@@ -350,11 +350,11 @@ static int gSignalsToList[] = {
         }
     }
     NSImage *magnifyingGlass = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolMagnifyingglass)
-                                    accessibilityDescription:@"Inspect"];
+                                    accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Inspect", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: inspect accessibility")];
     _inspectButton = [NSButton buttonWithImage:magnifyingGlass target:self action:@selector(inspect:)];
     _inspectButton.bordered = NO;
     _inspectButton.imageScaling = NSImageScaleProportionallyDown;
-    _inspectButton.toolTip = @"Inspect the selected process";
+    _inspectButton.toolTip = NSLocalizedStringFromTableInBundle(@"Inspect the selected process", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: inspect tooltip");
     _inspectButton.refusesFirstResponder = YES;
     [self.view addSubview:_inspectButton];
     [self updateKillButtonEnabled];
@@ -417,25 +417,25 @@ static int gSignalsToList[] = {
     }
     if ([self anySelectedProcessHasChildren]) {
         if (count == 1) {
-            description = @"one process and its children";
+            description = NSLocalizedStringFromTableInBundle(@"one process and its children", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: one process with children");
         } else {
-            description = [NSString stringWithFormat:@"%@ processes and their children", @(count)];
+            description = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%d processes and their children", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: processes with children"), (int)count];
         }
     } else {
         if (count == 1) {
-            description = @"one process";
+            description = NSLocalizedStringFromTableInBundle(@"one process", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: one process");
         } else {
-            description = [NSString stringWithFormat:@"%@ processes", @(count)];
+            description = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%d processes", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: processes"), (int)count];
         }
     }
 
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Are you sure? This may terminate %@.", description]
-                               actions:@[ @"OK", @"Cancel"]
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Are you sure? This may terminate %@.", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: kill confirmation title"), description]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: kill confirmation OK button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: kill confirmation cancel button")]
                              accessory:nil
                             identifier:@"NoSyncSuppressSendSignal"
                            silenceable:kiTermWarningTypePermanentlySilenceable
-                               heading:@"Confirmation Needed"
+                               heading:NSLocalizedStringFromTableInBundle(@"Confirmation Needed", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: kill confirmation heading")
                                 window:self.view.window];
     return selection == kiTermWarningSelection0;
 }
@@ -774,7 +774,7 @@ static int gSignalsToList[] = {
     const BOOL monitored = (isJob && info.pid &&
                             [[iTermJobTerminationMonitor sharedInstance] isMonitoringProcessID:info.pid]);
     if (isJob) {
-        string = info.fullName ?: @"(terminated)";
+        string = info.fullName ?: NSLocalizedStringFromTableInBundle(@"(terminated)", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: terminated process label");
         NSImage *rawImage = [_graphicSource imageForJobName:info.name];
         if (rawImage) {
             image = [NSImage imageWithSize:rawImage.size flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
@@ -819,13 +819,13 @@ static int gSignalsToList[] = {
     }
     // Hovering any cell in the row reveals the full, untruncated command (the
     // visible text is clipped to the column width and capped at 256 chars).
-    cell.toolTip = info.fullName ?: @"(terminated)";
+    cell.toolTip = info.fullName ?: NSLocalizedStringFromTableInBundle(@"(terminated)", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: terminated process label");
     return cell;
 }
 
 - (NSAttributedString *)monitorIndicatorPrefixWithFont:(NSFont *)font {
     NSImage *bell = [NSImage it_imageForSymbolName:@"bell"
-                            accessibilityDescription:@"Will notify when this job terminates"];
+                            accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Will notify when this job terminates", @"ProcessInfo", [NSBundle bundleForClass:[self class]], @"Process info: bell accessibility")];
     if (!bell) {
         return [[NSAttributedString alloc] initWithString:@""];
     }

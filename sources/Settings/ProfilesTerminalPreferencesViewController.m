@@ -347,8 +347,11 @@
     
     [self addViewToSearchIndex:_filterAlertsButton
 
-                   displayName:@"Filter alerts"
-                       phrases:@[ @"bell", @"idle", @"session ended", @"new output"]
+                   displayName:NSLocalizedStringFromTableInBundle(@"Filter alerts", @"Settings", [NSBundle bundleForClass:[self class]], @"Search index display name for filter alerts button")
+                       phrases:@[ NSLocalizedStringFromTableInBundle(@"bell", @"Settings", [NSBundle bundleForClass:[self class]], @"Search phrase"),
+                                  NSLocalizedStringFromTableInBundle(@"idle", @"Settings", [NSBundle bundleForClass:[self class]], @"Search phrase"),
+                                  NSLocalizedStringFromTableInBundle(@"session ended", @"Settings", [NSBundle bundleForClass:[self class]], @"Search phrase"),
+                                  NSLocalizedStringFromTableInBundle(@"new output", @"Settings", [NSBundle bundleForClass:[self class]], @"Search phrase") ]
                            key:nil];
     [self updateEnabledState];
     [self commitControls];
@@ -381,10 +384,10 @@
 }
 
 - (NSAttributedString *)attributedStringForLocale:(NSString *)lang {
-    NSString *title = [iTermLocaleGuesser titleForLocale:lang] ?: @"(No description available)";
+    NSString *title = [iTermLocaleGuesser titleForLocale:lang] ?: NSLocalizedStringFromTableInBundle(@"(No description available)", @"Settings", [NSBundle bundleForClass:[self class]], @"Fallback when locale has no description");
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
     NSFont *monoFont = [NSFont userFixedPitchFontOfSize:[NSFont systemFontSize]];
-    NSAttributedString *langAS = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"LANG=%@", lang]
+    NSAttributedString *langAS = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"LANG=%@", @"Settings", [NSBundle bundleForClass:[self class]], @"Format string showing LANG environment variable"), lang]
                                                                  attributes:@{ NSFontAttributeName: monoFont} ];
     NSAttributedString *titleAS = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"\u2002\u2002\u2002%@", title]
                                                                   attributes:@{NSForegroundColorAttributeName: [NSColor secondaryLabelColor] }];
@@ -402,15 +405,15 @@
             iTermLocaleGuesser *guesser = [[iTermLocaleGuesser alloc] initWithEncoding:[self unsignedIntegerForKey:KEY_CHARACTER_ENCODING]];
             NSDictionary *env = guesser.dictionaryWithLC_CTYPE;
             if (!env) {
-                _localeName.stringValue = @"Invalid encoding: neither $LC_CTYPE nor $LANG set.";
+                _localeName.stringValue = NSLocalizedStringFromTableInBundle(@"Invalid encoding: neither $LC_CTYPE nor $LANG set.", @"Settings", [NSBundle bundleForClass:[self class]], @"Locale error message for invalid encoding");
                 break;
             }
             NSString *ctype = [[guesser dictionaryWithLC_CTYPE] objectForKey:@"LC_CTYPE"];
             if (ctype) {
-                _localeName.stringValue = [NSString stringWithFormat:@"LC_CTYPE=%@", ctype];
+                _localeName.stringValue = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"LC_CTYPE=%@", @"Settings", [NSBundle bundleForClass:[self class]], @"Format string showing LC_CTYPE environment variable"), ctype];
             } else {
                 RLog(@"enc=%@ %@", @([self unsignedIntegerForKey:KEY_CHARACTER_ENCODING]), [guesser dictionaryWithLC_CTYPE]);
-                _localeName.stringValue = @"Unexpectedly missing LC_CTYPE. Report a bug.";
+                _localeName.stringValue = NSLocalizedStringFromTableInBundle(@"Unexpectedly missing LC_CTYPE. Report a bug.", @"Settings", [NSBundle bundleForClass:[self class]], @"Locale error message for missing LC_CTYPE");
             }
             break;
         }
@@ -419,7 +422,7 @@
             if ([self stringForKey:KEY_CUSTOM_LOCALE].length) {
                 _localeName.attributedStringValue = [self attributedStringForLocale:[self stringForKey:KEY_CUSTOM_LOCALE]];
             } else {
-                _localeName.stringValue = @"No locale selected.";
+                _localeName.stringValue = NSLocalizedStringFromTableInBundle(@"No locale selected.", @"Settings", [NSBundle bundleForClass:[self class]], @"Shown when no custom locale is selected");
             }
             break;
         }
@@ -430,13 +433,13 @@
             if (lang.length) {
                 _localeName.attributedStringValue = [self attributedStringForLocale:lang];
             } else {
-                _localeName.stringValue = @"No valid locale exists for this machine’s language and country.";
+                _localeName.stringValue = NSLocalizedStringFromTableInBundle(@"No valid locale exists for this machine’s language and country.", @"Settings", [NSBundle bundleForClass:[self class]], @"Shown when no valid locale exists for the machine's language and country");
             }
             break;
         }
         case iTermSetLocalVarsModeDoNotSet:
             _changeLocale.hidden = YES;
-            _localeName.stringValue = @"$LANG will not be set.";
+            _localeName.stringValue = NSLocalizedStringFromTableInBundle(@"$LANG will not be set.", @"Settings", [NSBundle bundleForClass:[self class]], @"Shown when locale variables will not be set");
             break;
     }
 }
@@ -506,19 +509,20 @@ static NSInteger CompareEncodingByLocalizedName(id a, id b, void *unused) {
 - (IBAction)changeCustomLocale:(id)sender {
     iTermLocalePrompt *prompt = [[iTermLocalePrompt alloc] initWithEncoding:[self unsignedIntegerForKey:KEY_CHARACTER_ENCODING]];
     prompt.defaultLocale = [self stringForKey:KEY_CUSTOM_LOCALE];
-    prompt.message = @"Select your preferred locale:";
+    prompt.message = NSLocalizedStringFromTableInBundle(@"Select your preferred locale:", @"Settings", [NSBundle bundleForClass:[self class]], @"Prompt message for selecting a custom locale");
     prompt.allowRemember = NO;
     [prompt requestLocaleFromUserForProfile:nil inWindow:self.view.window cancelUsesC:NO];
     NSString *locale = prompt.selectedLocale;
     if (locale && [self unsignedIntegerForKey:KEY_CHARACTER_ENCODING] == NSUTF8StringEncoding && ![locale containsString:@"UTF-8"]) {
         NSString *guid = [self stringForKey:KEY_GUID] ?: @"";
         const iTermWarningSelection selection =
-        [iTermWarning showWarningWithTitle:@"Warning! This profile uses a custom locale that doesn't use UTF-8 as its character encoding, but your profile *is* using UTF-8. This can cause error messages and non-ASCII text to appear wrong."
-                                   actions:@[ @"Change Locale", @"Keep This Locale"]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Warning! This profile uses a custom locale that doesn't use UTF-8 as its character encoding, but your profile *is* using UTF-8. This can cause error messages and non-ASCII text to appear wrong.", @"Settings", [NSBundle bundleForClass:[self class]], @"Warning about UTF-8 mismatch with custom locale")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"Change Locale", @"Settings", [NSBundle bundleForClass:[self class]], @"Action button to change locale"),
+                                              NSLocalizedStringFromTableInBundle(@"Keep This Locale", @"Settings", [NSBundle bundleForClass:[self class]], @"Action button to keep current locale") ]
                                  accessory:nil
                                 identifier:[@"NoSyncUTF8Mismatch_" stringByAppendingString:guid]
                                silenceable:kiTermWarningTypePermanentlySilenceable
-                                   heading:@"Wrong Encoding Detected"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Wrong Encoding Detected", @"Settings", [NSBundle bundleForClass:[self class]], @"Warning heading for wrong encoding detected")
                                     window:self.view.window];
         if (selection == kiTermWarningSelection0) {
             [self changeCustomLocale:sender];
@@ -534,7 +538,7 @@ static NSInteger CompareEncodingByLocalizedName(id a, id b, void *unused) {
 }
 
 - (IBAction)shellIntegrationRequired:(id)sender {
-    NSString *html = @"This feature requires shell integration to be installed. <a href=\"https://iterm2.com/documentation-shell-integration.html\">Learn more.</a>";
+    NSString *html = NSLocalizedStringFromTableInBundle(@"This feature requires shell integration to be installed. <a href=\"https://iterm2.com/documentation-shell-integration.html\">Learn more.</a>", @"Settings", [NSBundle bundleForClass:[self class]], @"HTML message about shell integration requirement");
     NSAttributedString *attributedString = [NSAttributedString attributedStringWithHTML:html
                                                                                    font:[NSFont systemFontOfSize:[NSFont systemFontSize]]
                                                                          paragraphStyle:[NSParagraphStyle defaultParagraphStyle]];

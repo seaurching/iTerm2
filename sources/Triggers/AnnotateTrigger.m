@@ -13,11 +13,18 @@
 
 + (NSString *)title
 {
-    return @"Annotate…";
+    return NSLocalizedStringFromTableInBundle(@"Annotate…",
+                                              @"iTerm",
+                                              [NSBundle bundleForClass: self],
+                                              @"Trigger title");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Annotate as as “%@”", self.param];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Annotate as as “%@”",
+                                                                        @"iTerm",
+                                                                        [NSBundle bundleForClass: [self class]],
+                                                                        @"Trigger description"),
+            self.param];
 }
 
 - (BOOL)takesParameter
@@ -26,7 +33,10 @@
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-    return @"Enter annotation";
+    return NSLocalizedStringFromTableInBundle(@"Enter annotation",
+                                              @"iTerm",
+                                              [NSBundle bundleForClass: [self class]],
+                                              @"Trigger parameter placeholder");
 }
 
 // Annotations require captured text ranges, so not compatible with event triggers

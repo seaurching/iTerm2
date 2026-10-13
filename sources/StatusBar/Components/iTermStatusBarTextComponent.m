@@ -26,19 +26,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSArray<iTermStatusBarComponentKnob *> *)statusBarComponentKnobs {
     iTermStatusBarComponentKnob *textColorKnob =
-        [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Text Color:"
+        [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Text Color:", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for text color")
                                                           type:iTermStatusBarComponentKnobTypeColor
                                                    placeholder:nil
                                                   defaultValue:nil
                                                            key:iTermStatusBarSharedTextColorKey];
     iTermStatusBarComponentKnob *backgroundColorKnob =
-        [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Background Color:"
+        [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Background Color:", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for background color")
                                                           type:iTermStatusBarComponentKnobTypeColor
                                                    placeholder:nil
                                                   defaultValue:nil
                                                            key:iTermStatusBarSharedBackgroundColorKey];
     iTermStatusBarComponentKnob *fontKnob =
-        [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Custom Font"
+        [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Custom Font", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for custom font")
                                                           type:iTermStatusBarComponentKnobTypeFont
                                                    placeholder:nil
                                                   defaultValue:nil

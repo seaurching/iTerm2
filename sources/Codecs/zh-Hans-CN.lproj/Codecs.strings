@@ -1,0 +1,38 @@
+/* Fallback title when error has no localized description */
+"Unknown error" = "未知错误";
+
+/* OK button */
+"OK" = "好";
+
+/* Heading when recording file envelope is malformed */
+"Could not read the file: its envelope was malformed." = "无法读取文件：文件封装格式不正确。";
+
+/* Title when gzip decompression fails */
+"Could not read the file: decompression failed." = "无法读取文件：解压缩失败。";
+
+/* Title when unarchiving fails */
+"Could not read the file: unarchiving decompressed data failed." = "无法读取文件：解档解压数据失败。";
+
+/* Title when recording version is unsupported */
+"This recording is from a newer version of iTerm2 and cannot be replayed in this version." = "此录制来自较新版本的 iTerm2，无法在当前版本中回放。";
+
+/* Heading when recording cannot be loaded */
+"Can’t Load Recording" = "无法加载录制";
+
+/* Title when recording is missing critical fields */
+"This recording could not be loaded because it is missing critical information." = "无法加载此录制，因为缺少关键信息。";
+
+/* Title when DVR dictionary fails to load */
+"The recording could not be loaded. It might be corrupted." = "无法加载录制。文件可能已损坏。";
+
+/* Heading when DVR loading fails */
+"Error Loading Recording" = "加载录制出错";
+
+/* Default filename for exported recording */
+"Recording" = "录制";
+
+/* Heading when saving recording fails */
+"The recording could not be saved." = "无法保存录制。";
+
+/* Title when recording encoding fails */
+"Error encoding recording." = "编码录制出错。";

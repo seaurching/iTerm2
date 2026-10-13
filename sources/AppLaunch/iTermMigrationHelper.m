@@ -60,12 +60,12 @@
         return;
     }
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:@"Move OpenAI API key into the keychain? It is currently stored in User Defaults, which is not as secure."
-                               actions:@[ @"OK", @"Erase from Settings" ]
+    [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Move OpenAI API key into the keychain? It is currently stored in User Defaults, which is not as secure.", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"将 OpenAI API 密钥移入钥匙串？它当前存储在用户默认设置中，安全性较低。")
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"好"), NSLocalizedStringFromTableInBundle(@"Erase from Settings", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"从设置中删除") ]
                              accessory:nil
                             identifier:@"NoSyncMoveOpenAIAPIKeyIntoKeychain"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Move Key" 
+                               heading:NSLocalizedStringFromTableInBundle(@"Move Key", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"移动密钥")
                                 window:nil];
     if (selection == kiTermWarningSelection0) {
         [self addOpenAIKeyToKeychain:key];
@@ -110,10 +110,11 @@
         }
 
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Manual Update Needed";
-        alert.informativeText = @"iTerm2's Application Support directory has changed.\n\n"
-        @"Previously, both these directories were supported:\n~/Library/Application Support/iTerm\n~/Library/Application Support/iTerm2.\n\n"
-            @"Now, only the iTerm2 version is supported. But you have files in both so please move everything from iTerm to iTerm2.";
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Manual Update Needed", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"需要手动更新");
+        alert.informativeText = [NSString stringWithFormat:@"%@\n\n%@\n\n%@",
+                                 NSLocalizedStringFromTableInBundle(@"iTerm2's Application Support directory has changed.", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"iTerm2 的应用程序支持目录已更改。"),
+                                 NSLocalizedStringFromTableInBundle(@"Previously, both these directories were supported:\n~/Library/Application Support/iTerm\n~/Library/Application Support/iTerm2.", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"之前，以下两个目录都受支持：\n~/Library/Application Support/iTerm\n~/Library/Application Support/iTerm2。"),
+                                 NSLocalizedStringFromTableInBundle(@"Now, only the iTerm2 version is supported. But you have files in both so please move everything from iTerm to iTerm2.", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"现在仅支持 iTerm2 版本。但两个目录中都有文件，请将所有内容从 iTerm 移动到 iTerm2。")];
 
         NSMutableArray<NSString *> *files = [NSMutableArray array];
         int over = 0;
@@ -146,9 +147,9 @@
         [unfucker layout];
         alert.accessoryView = unfucker;
 
-        [alert addButtonWithTitle:@"Open in Finder"];
-        [alert addButtonWithTitle:@"I Fixed It"];
-        [alert addButtonWithTitle:@"Not Now"];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Open in Finder", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"在 Finder 中打开")];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"I Fixed It", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"我已修复")];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Not Now", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"暂不")];
         switch ([alert runModal]) {
             case NSAlertFirstButtonReturn:
                 [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:@[ [NSURL fileURLWithPath:legacy],
@@ -291,16 +292,16 @@ static NSString *const iTermMigrationHelperRemoveDeprecatedKeyMappingsUserDefaul
 }
 
 + (BOOL)askToRemoveDeprecatedKeyMappings:(NSString *)specialReason NS_AVAILABLE_MAC(15) {
-    NSString *message = specialReason ?: @"Some profiles have unnecessary key mappings which may interfere with window tiling shortcuts added in macOS Sequoia. These were in the default profile for many years but are no longer needed. Remove the key mappings? It shouldn’t break anything, and it won’t modify the on-disk copy of the dynamic profile.";
+    NSString *message = specialReason ?: NSLocalizedStringFromTableInBundle(@"Some profiles have unnecessary key mappings which may interfere with window tiling shortcuts added in macOS Sequoia. These were in the default profile for many years but are no longer needed. Remove the key mappings? It shouldn’t break anything, and it won’t modify the on-disk copy of the dynamic profile.", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"一些配置文件有不必要的按键映射，可能会干扰 macOS Sequoia 中添加的窗口平铺快捷键。这些映射在默认配置文件中存在多年，但已不再需要。是否移除这些按键映射？这不会破坏任何功能，也不会修改动态配置文件的磁盘副本。");
 
 
     const iTermWarningSelection selection =
     [iTermWarning showWarningWithTitle:message
-                               actions:@[ @"OK", @"Learn More", @"Cancel" ]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"好"), NSLocalizedStringFromTableInBundle(@"Learn More", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"了解更多"), NSLocalizedStringFromTableInBundle(@"Cancel", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"取消") ]
                              accessory:nil
                             identifier:nil
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Remove Deprecated Key Mappings?"
+                               heading:NSLocalizedStringFromTableInBundle(@"Remove Deprecated Key Mappings?", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"移除已弃用的按键映射？")
                                 window:nil];
     switch (selection) {
         case kiTermWarningSelection0:  // ok

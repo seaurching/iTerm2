@@ -48,13 +48,13 @@ final class WorkgroupAutoSendClippingsToolbarItem: SessionToolbarControl {
     private static func configure(button: NSButton, isOn: Bool) {
         let symbol: SFSymbol = isOn ? .paperplaneFill : .paperplane
         button.image = NSImage(systemSymbolName: symbol.rawValue,
-                               accessibilityDescription: "Auto-send clippings when idle")
+                               accessibilityDescription: NSLocalizedString("Auto-send clippings when idle", tableName: "Workgroups", comment: "自动发送剪辑无障碍描述"))
         // Explicit tints so the look is stable across window-active changes:
         // accent when on, a dim secondary label color when off.
         button.contentTintColor = isOn ? .controlAccentColor : .secondaryLabelColor
         button.toolTip = isOn
-            ? "Auto-send clippings to the main session when idle: on"
-            : "Auto-send clippings to the main session when idle: off"
+            ? NSLocalizedString("Auto-send clippings to the main session when idle: on", tableName: "Workgroups", comment: "自动发送剪辑提示（开）")
+            : NSLocalizedString("Auto-send clippings to the main session when idle: off", tableName: "Workgroups", comment: "自动发送剪辑提示（关）")
     }
 
     @objc private func didToggle(_ sender: Any?) {

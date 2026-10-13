@@ -58,8 +58,8 @@
 
 - (void)showNotSupported
 {
-    [label_ setStringValue:@"You can't customize that button"];
-    [label_ performSelector:@selector(setStringValue:) withObject:@"Click or Tap Here to Set Input Fields" afterDelay:1];
+    [label_ setStringValue:NSLocalizedStringFromTableInBundle(@"You can't customize that button", @"Settings", [NSBundle bundleForClass:[self class]], @"Event monitor: cannot customize button")];
+    [label_ performSelector:@selector(setStringValue:) withObject:NSLocalizedStringFromTableInBundle(@"Click or Tap Here to Set Input Fields", @"Settings", [NSBundle bundleForClass:[self class]], @"Event monitor: click to set input fields") afterDelay:1];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent {

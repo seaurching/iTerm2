@@ -1,0 +1,762 @@
+{
+    "sourceLanguage": "en",
+    "strings": {
+        "cCu-Aq-YHj.title": {
+            "comment": "Class = \"NSMenuItem\"; title = \"Move by Mark\"; ObjectID = \"cCu-Aq-YHj\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Move by Mark"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按标记移动"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依標記移動"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按标记移动"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按标记移动"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依標記移動"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依標記移動"
+                    }
+                }
+            }
+        },
+        "F0z-JX-Cv5.title": {
+            "comment": "Class = \"NSWindow\"; title = \"Set Keyboard Shortcut\"; ObjectID = \"F0z-JX-Cv5\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Set Keyboard Shortcut"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "设置键盘快捷键"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "設定鍵盤快捷鍵"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "设置键盘快捷键"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "设置键盘快捷键"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "設定鍵盤快捷鍵"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "設定鍵盤快捷鍵"
+                    }
+                }
+            }
+        },
+        "Fhv-Fo-bzd.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Cancel\"; ObjectID = \"Fhv-Fo-bzd\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Cancel"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                }
+            }
+        },
+        "gdc-og-Wst.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Color Preset:\"; ObjectID = \"gdc-og-Wst\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Color Preset:"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "颜色预设："
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "顏色預設："
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "颜色预设："
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "颜色预设："
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "顏色預設："
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "顏色預設："
+                    }
+                }
+            }
+        },
+        "GiU-A2-oLi.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Action:\"; ObjectID = \"GiU-A2-oLi\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Action:"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "操作："
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "動作："
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "操作："
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "操作："
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "動作："
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "動作："
+                    }
+                }
+            }
+        },
+        "mYT-YJ-w7Z.placeholderString": {
+            "comment": "Class = \"NSTextFieldCell\"; placeholderString = \"Label to show in Touch Bar\"; ObjectID = \"mYT-YJ-w7Z\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Label to show in Touch Bar"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "在触控栏显示的标签"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "在觸控列顯示的標籤"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "在触控栏显示的标签"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "在触控栏显示的标签"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "在觸控列顯示的標籤"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "在觸控列顯示的標籤"
+                    }
+                }
+            }
+        },
+        "nyw-Fu-OuP.title": {
+            "comment": "Class = \"NSMenuItem\"; title = \"Move by Character\"; ObjectID = \"nyw-Fu-OuP\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Move by Character"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按字符移动"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依字元移動"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按字符移动"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按字符移动"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依字元移動"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依字元移動"
+                    }
+                }
+            }
+        },
+        "QTL-FQ-Diu.placeholderString": {
+            "comment": "Class = \"NSTextFieldCell\"; placeholderString = \"ex: 0x7f\"; ObjectID = \"QTL-FQ-Diu\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "ex: 0x7f"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "例：0x7f"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "例：0x7f"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "例：0x7f"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "例：0x7f"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "例：0x7f"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "例：0x7f"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "T00-UT-45K.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Profile:\"; ObjectID = \"T00-UT-45K\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Profile:"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "配置文件："
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "設定檔："
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "配置文件："
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "配置文件："
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "設定檔："
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "設定檔："
+                    }
+                }
+            }
+        },
+        "Ujq-Yh-FZ2.title": {
+            "comment": "Class = \"NSMenuItem\"; title = \"Move by Word\"; ObjectID = \"Ujq-Yh-FZ2\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Move by Word"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按单词移动"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依單字移動"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按单词移动"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按单词移动"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依單字移動"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依單字移動"
+                    }
+                }
+            }
+        },
+        "v6X-rc-pu8.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Error message goes here\"; ObjectID = \"v6X-rc-pu8\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Error message goes here"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "错误消息显示于此"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "錯誤訊息顯示於此"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "错误消息显示于此"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "错误消息显示于此"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "錯誤訊息顯示於此"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "錯誤訊息顯示於此"
+                    }
+                }
+            }
+        },
+        "vSP-yA-XuW.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Action:\"; ObjectID = \"vSP-yA-XuW\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Action:"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "操作："
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "動作："
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "操作："
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "操作："
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "動作："
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "動作："
+                    }
+                }
+            }
+        },
+        "WbG-ev-YAV.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Esc+\"; ObjectID = \"WbG-ev-YAV\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Esc+"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Esc+"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Esc+"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Esc+"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Esc+"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Esc+"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Esc+"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "yKb-4m-EJs.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Keyboard Shortcut:\"; ObjectID = \"yKb-4m-EJs\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Keyboard Shortcut:"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "键盘快捷键："
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "鍵盤快捷鍵："
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "键盘快捷键："
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "键盘快捷键："
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "鍵盤快捷鍵："
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "鍵盤快捷鍵："
+                    }
+                }
+            }
+        },
+        "Ysw-TJ-E0w.title": {
+            "comment": "Class = \"NSMenuItem\"; title = \"Move by Line\"; ObjectID = \"Ysw-TJ-E0w\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Move by Line"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按行移动"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依行移動"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按行移动"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "按行移动"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依行移動"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "依行移動"
+                    }
+                }
+            }
+        },
+        "zMC-Yr-nMr.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"OK\"; ObjectID = \"zMC-Yr-nMr\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "OK"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "确定"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "確定"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "确定"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "确定"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "確定"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "確定"
+                    }
+                }
+            }
+        }
+    },
+    "version": "1.1"
+}

@@ -29,7 +29,7 @@ NSString *iTermShellIntegrationShellString(iTermShellIntegrationShell shell) {
         case iTermShellIntegrationShellZsh:
             return @"zsh";
         case iTermShellIntegrationShellUnknown:
-            return @"an unsupported shell";
+            return NSLocalizedStringFromTableInBundle(@"an unsupported shell", @"ShellIntegrationInstaller", [NSBundle mainBundle], @"unsupported shell name");
     }
 }
 

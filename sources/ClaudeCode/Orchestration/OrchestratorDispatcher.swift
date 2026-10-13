@@ -955,7 +955,7 @@ final class OrchestratorDispatcher {
         }
         guard let linkedTerminal, !linkedTerminal.isEmpty else {
             throw OrchestratorError.malformedArgs(reason:
-                "No session to watch: this chat is not linked to a terminal session.")
+                NSLocalizedString("No session to watch: this chat is not linked to a terminal session.", tableName: "ClaudeCodeXC", comment: "没有可监视的会话：此对话未关联到终端会话。"))
         }
         if let explicitGuid, explicitGuid != linkedTerminal {
             throw OrchestratorError.unsupported(reason:
@@ -1040,7 +1040,7 @@ final class OrchestratorDispatcher {
         if tornDown {
             return safeEncode(OrchestratorError
                 .unsupported(reason:
-                    "This chat is no longer in orchestration mode.").asResult)
+                    NSLocalizedString("This chat is no longer in orchestration mode.", tableName: "ClaudeCodeXC", comment: "此对话已不再处于编排模式。")).asResult)
         }
         if name.hasPrefix("session_") {
             return await handleSessionToolCall(name: name,
@@ -1098,7 +1098,7 @@ final class OrchestratorDispatcher {
         do {
             guard let dict = try JSONSerialization.jsonObject(
                 with: jsonArgs) as? [String: Any] else {
-                return Data("Error: arguments not a JSON object".utf8)
+                return Data(NSLocalizedString("Error: arguments not a JSON object", tableName: "ClaudeCodeXC", comment: "错误：参数不是 JSON 对象").utf8)
             }
             argsObject = dict
         } catch {
@@ -1150,7 +1150,7 @@ final class OrchestratorDispatcher {
             // isn't execute_command (today it isn't, but the property exists to
             // grow): without the command string we can't classify.
             guard case let .executeCommand(execArgs) = remoteCommand.content else {
-                return Data("Not run automatically: this action needs manual approval first. Ask the user to run it themselves or to approve it.".utf8)
+                return Data(NSLocalizedString("Not run automatically: this action needs manual approval first. Ask the user to run it themselves or to approve it.", tableName: "ClaudeCodeXC", comment: "未自动运行：此操作需要先经人工批准。请让用户自行运行，或由其批准此操作。").utf8)
             }
             do {
                 try await gateTypedText(execArgs.command, appendNewline: true, session: session)
@@ -1181,7 +1181,7 @@ final class OrchestratorDispatcher {
             do {
                 try await enforce(
                     outcome,
-                    actionSummary: "The agent wants to create the file `\(fileArgs.filename)`.")
+                    actionSummary: String(format: NSLocalizedString("The agent wants to create the file `%@`.", tableName: "ClaudeCodeXC", comment: "代理想要创建文件`%@`。"), fileArgs.filename))
             } catch let error as OrchestratorError {
                 return Data(error.message.utf8)
             } catch {
@@ -1212,7 +1212,7 @@ final class OrchestratorDispatcher {
             }
         }
         guard let response else {
-            return Data("Error: session command timed out after 30s.".utf8)
+            return Data(NSLocalizedString("Error: session command timed out after 30s.", tableName: "ClaudeCodeXC", comment: "错误：会话命令在 30 秒后超时。").utf8)
         }
         return Data(response.utf8)
     }
@@ -1473,16 +1473,9 @@ final class OrchestratorDispatcher {
         let workgroupName = WorkgroupIntrospection.displayName(forWorkgroupID: workgroupID)
         let summary: String
         if workgroupID.hasPrefix(WorkgroupIntrospection.syntheticWorkgroupIDPrefix) {
-            summary = "The agent is asking to send keystrokes and interrupt "
-                + "running commands in session \u{201C}\(workgroupName)\u{201D}. "
-                + "Approval is sticky for the rest of this chat. Deny to refuse "
-                + "this and future control of this session until you "
-                + "explicitly approve."
+            summary = String(format: NSLocalizedString("The agent is asking to send keystrokes and interrupt running commands in session \u{201C}%@\u{201D}. Approval is sticky for the rest of this chat. Deny to refuse this and future control of this session until you explicitly approve.", tableName: "ClaudeCodeXC", comment: "代理请求向会话“%@”发送按键并中断正在运行的命令。批准在本对话剩余期间持续有效。拒绝则拒绝此次及未来对该会话的控制，直到您明确批准。"), workgroupName)
         } else {
-            summary = "The agent is asking to send keystrokes, interrupt running "
-                + "commands, and post clippings to this workgroup. Approval is sticky "
-                + "for the rest of this chat. Deny to refuse this and future control "
-                + "of this workgroup until you explicitly approve."
+            summary = NSLocalizedString("The agent is asking to send keystrokes, interrupt running commands, and post clippings to this workgroup. Approval is sticky for the rest of this chat. Deny to refuse this and future control of this workgroup until you explicitly approve.", tableName: "ClaudeCodeXC", comment: "代理请求发送按键、中断正在运行的命令，并向此工作组发布剪报。批准在本对话剩余期间持续有效。拒绝则拒绝此次及未来对该工作组的控制，直到您明确批准。")
         }
         return await awaitPermission(workgroupID: workgroupID,
                                       workgroupName: workgroupName,
@@ -1533,22 +1526,22 @@ final class OrchestratorDispatcher {
         let placement: String
         if case .startSession(let args) = command {
             switch args.window ?? .tab {
-            case .new: placement = "a new window"
-            case .tab: placement = "a new tab in the current window"
-            case .current: placement = "a vertical split of the current pane"
+            case .new: placement = NSLocalizedString("a new window", tableName: "ClaudeCodeXC", comment: "一个新窗口")
+            case .tab: placement = NSLocalizedString("a new tab in the current window", tableName: "ClaudeCodeXC", comment: "当前窗口中的一个新标签页")
+            case .current: placement = NSLocalizedString("a vertical split of the current pane", tableName: "ClaudeCodeXC", comment: "当前窗格的垂直分屏")
             }
         } else {
-            placement = "a new session"
+            placement = NSLocalizedString("a new session", tableName: "ClaudeCodeXC", comment: "一个新会话")
         }
         let cmd = Self.spawnCommand(from: command)
         let detail: String
         if let cmd {
-            detail = "The agent is asking to open \(placement) and run \u{201C}\(cmd)\u{201D}."
+            detail = String(format: NSLocalizedString("The agent is asking to open %@ and run \u{201C}%@\u{201D}.", tableName: "ClaudeCodeXC", comment: "代理请求打开“%@”并运行“%@”。"), placement, cmd)
         } else {
-            detail = "The agent is asking to open \(placement)."
+            detail = String(format: NSLocalizedString("The agent is asking to open %@.", tableName: "ClaudeCodeXC", comment: "代理请求打开%@。"), placement)
         }
         return await awaitPermission(workgroupID: WorkgroupIntrospection.spawnWorkgroupID,
-                                      workgroupName: "New session",
+                                      workgroupName: NSLocalizedString("New session", tableName: "ClaudeCodeXC", comment: "新会话"),
                                       summary: detail)
     }
 
@@ -1643,9 +1636,7 @@ final class OrchestratorDispatcher {
         guard claimedScopes.remove(scope) != nil else { return }
         persistClaimedScopes()
         let name = WorkgroupIntrospection.displayName(forWorkgroupID: scope)
-        let notice = "Revoked this chat’s permission to control "
-            + "\u{201C}\(name)\u{201D}. The agent will ask before its "
-            + "next action there."
+        let notice = String(format: NSLocalizedString("Revoked this chat’s permission to control \u{201C}%@\u{201D}. The agent will ask before its next action there.", tableName: "ClaudeCodeXC", comment: "已撤销本对话控制“%@”的权限。代理将在下次在该处执行操作前再次请求许可。"), name)
         do {
             try broker?.publishNotice(chatID: chatID, notice: notice)
         } catch {
@@ -1701,16 +1692,16 @@ final class OrchestratorDispatcher {
                     reason: "Notifications are not enabled on the paired phone yet. Call request_notification_permission first.")
             case (_, .denied):
                 throw OrchestratorError.unsupported(
-                    reason: "The user has notifications turned off for iTerm2 Buddy. Do not push them about it; they can enable it in iOS Settings if they want alerts.")
+                    reason: NSLocalizedString("The user has notifications turned off for iTerm2 Buddy. Do not push them about it; they can enable it in iOS Settings if they want alerts.", tableName: "ClaudeCodeXC", comment: "用户已关闭 iTerm2 Buddy 的通知。请勿就此向其推送；如需提醒，可在 iOS 设置中开启。"))
             default:
                 throw OrchestratorError.unsupported(
-                    reason: "No paired companion phone is registered for notifications.")
+                    reason: NSLocalizedString("No paired companion phone is registered for notifications.", tableName: "ClaudeCodeXC", comment: "尚未注册可接收通知的配对手机。"))
             }
         }
         if CompanionChatMuteRegistry.isMuted(chatID: chatID) {
             RLog("[Orchestrator \(chatID)] notify tool suppressed: chat is muted")
             throw OrchestratorError.unsupported(
-                reason: "The user has muted this chat's notifications on their phone, so the notification was not sent. Do not try to work around it.")
+                reason: NSLocalizedString("The user has muted this chat's notifications on their phone, so the notification was not sent. Do not try to work around it.", tableName: "ClaudeCodeXC", comment: "用户已在手机上静音此对话的通知，因此通知未发送。请勿尝试绕过。"))
         }
         do {
             try await CompanionPushSender.send(title: args.title, body: args.body)
@@ -1731,7 +1722,7 @@ final class OrchestratorDispatcher {
         }
         guard CompanionPairingController.shared.isPhoneConnected else {
             throw OrchestratorError.unsupported(
-                reason: "No companion phone is connected right now, so permission cannot be requested.")
+                reason: NSLocalizedString("No companion phone is connected right now, so permission cannot be requested.", tableName: "ClaudeCodeXC", comment: "当前没有已连接的配套手机，无法请求权限。"))
         }
         let authorization = await CompanionPairingController.shared.requestNotificationPermission()
         switch authorization {
@@ -1739,10 +1730,10 @@ final class OrchestratorDispatcher {
             return .ack
         case .denied:
             throw OrchestratorError.unsupported(
-                reason: "The user declined notification permission. Do not ask again; iOS only shows the prompt once. If they change their mind they can enable notifications for iTerm2 Buddy in iOS Settings.")
+                reason: NSLocalizedString("The user declined notification permission. Do not ask again; iOS only shows the prompt once. If they change their mind they can enable notifications for iTerm2 Buddy in iOS Settings.", tableName: "ClaudeCodeXC", comment: "用户拒绝了通知权限。请勿再次询问；iOS 只会显示一次该提示。如果改变主意，可在 iOS 设置中为 iTerm2 Buddy 开启通知。"))
         case .notDetermined:
             throw OrchestratorError.unsupported(
-                reason: "The phone could not show the permission prompt.")
+                reason: NSLocalizedString("The phone could not show the permission prompt.", tableName: "ClaudeCodeXC", comment: "手机无法显示权限提示。"))
         case nil:
             throw OrchestratorError.timeout
         }
@@ -1923,7 +1914,7 @@ final class OrchestratorDispatcher {
             // (it would sit dead until the next relaunch's reconcile).
             if broker?.listModel.chat(id: chatID)?.terminalSessionGuid != targetGuid {
                 throw OrchestratorError.unsupported(reason:
-                    "The chat was unlinked from this session before the watch could be registered.")
+                    NSLocalizedString("The chat was unlinked from this session before the watch could be registered.", tableName: "ClaudeCodeXC", comment: "在注册监听之前，该对话已与此会话解除关联。"))
             }
             // Re-dedup: a concurrent identical register_watch may have appended
             // while we were suspended on the prompt. Return that watcher rather
@@ -2041,7 +2032,7 @@ final class OrchestratorDispatcher {
         if sessionBound,
            watcher.targetState != .working,
            !mayReadScreen(for: watcher) {
-            note = "No screen backstop: View Contents isn't granted for this session, so this watch fires only on the program's own status updates and has no timeout. If that status source stops (the program crashes or detaches) the watch will not fire. Grant View Contents (Always) for a screen-based fallback, or plan to check the session yourself if it goes quiet."
+            note = NSLocalizedString("No screen backstop: View Contents isn't granted for this session, so this watch fires only on the program's own status updates and has no timeout. If that status source stops (the program crashes or detaches) the watch will not fire. Grant View Contents (Always) for a screen-based fallback, or plan to check the session yourself if it goes quiet.", tableName: "ClaudeCodeXC", comment: "没有屏幕兜底：此会话未授予 View Contents 权限，因此该监听只依据程序自身的状态更新触发，且没有超时。若该状态源停止（程序崩溃或分离），监听将不会触发。可授予 View Contents（总是）作为基于屏幕的兜底，或在会话安静时自行检查。")
         }
         return .watcherRegistered(Self.description(of: watcher, note: note))
     }
@@ -2080,7 +2071,7 @@ final class OrchestratorDispatcher {
             let approved = await promptForWatchScreenRead(resolved: resolved)
             if !approved {
                 throw OrchestratorError.unsupported(reason:
-                    "The user declined to let this watch read the screen. Ask them to enable View Contents (Always) for this session if they want it.")
+                    NSLocalizedString("The user declined to let this watch read the screen. Ask them to enable View Contents (Always) for this session if they want it.", tableName: "ClaudeCodeXC", comment: "用户拒绝让此监听读取屏幕。如有需要，请让其为该会话开启 View Contents（总是）。"))
             }
             screenConsent = true  // validated against the post-await permission below
         }
@@ -2136,7 +2127,7 @@ final class OrchestratorDispatcher {
     nonisolated private static func watchReadDenied(
         _ category: RemoteCommand.Content.PermissionCategory) -> OrchestratorError {
         return .unsupported(reason:
-            "This chat isn't allowed to watch the linked session: the \u{201C}\(category.rawValue)\u{201D} permission is set to never. Ask the user to enable it first.")
+            "This chat isn't allowed to watch the linked session: the \u{201C}\(category.displayName)\u{201D} permission is set to never. Ask the user to enable it first.")
     }
 
     // One-time consent for a session-bound watch to read the session's screen on
@@ -2146,7 +2137,7 @@ final class OrchestratorDispatcher {
     @MainActor
     private func promptForWatchScreenRead(
         resolved: WorkgroupIntrospection.ResolvedTarget) async -> Bool {
-        let summary = "This watch reads \(Self.watcherTargetLabel(role: resolved.roleName, workgroup: resolved.workgroupName, workgroupID: resolved.workgroupID))'s screen repeatedly while it waits. View Contents is set to Ask for this session, so allow this background reading until the watch finishes?"
+        let summary = String(format: NSLocalizedString("This watch reads %@'s screen repeatedly while it waits. View Contents is set to Ask for this session, so allow this background reading until the watch finishes?", tableName: "ClaudeCodeXC", comment: "此监视会在等待期间反复读取“%@”的屏幕内容。此会话的“查看内容”设置为“询问”，是否允许此后台读取直到监视结束？"), Self.watcherTargetLabel(role: resolved.roleName, workgroup: resolved.workgroupName, workgroupID: resolved.workgroupID))
         return await awaitPermission(
             workgroupID: WorkgroupIntrospection.watchApprovalWorkgroupID,
             workgroupName: resolved.workgroupName,
@@ -2523,10 +2514,10 @@ final class OrchestratorDispatcher {
             // round-trip and block inert payloads.
             try await enforce(await Self.classifyCommand(
                 command, inTUI: false, classifier: safetyClassifier()),
-                              actionSummary: "The agent wants to run:\n\n`\(command)`")
+                              actionSummary: String(format: NSLocalizedString("The agent wants to run:\n\n`%@`", tableName: "ClaudeCodeXC", comment: "代理想要运行：\n\n`%@`"), command))
         case .failClosed(let reason):
             try await enforce(.requireApproval(reason: reason),
-                              actionSummary: "The agent wants to run a command in the session.")
+                              actionSummary: NSLocalizedString("The agent wants to run a command in the session.", tableName: "ClaudeCodeXC", comment: "代理想要在会话中运行命令。"))
         }
 
         // Concurrency guard. gateTypedText runs on the main actor, but the
@@ -2597,7 +2588,7 @@ final class OrchestratorDispatcher {
         try await enforce(
             await Self.tuiKeystrokeOutcome(
                 keystroke: effective, screen: screen, classifier: safetyClassifier()),
-            actionSummary: "The agent wants to send this to the session's foreground program:\n\n`\(TUISafetyPrompt.displayKeystroke(effective))`")
+            actionSummary: String(format: NSLocalizedString("The agent wants to send this to the session's foreground program:\n\n`%@`", tableName: "ClaudeCodeXC", comment: "代理想要向会话的前台程序发送以下内容：\n\n`%@`"), TUISafetyPrompt.displayKeystroke(effective)))
     }
 
     // Enforce a safety-gate outcome. On .allow, return so the action proceeds.
@@ -2638,12 +2629,12 @@ final class OrchestratorDispatcher {
                                           reason: String,
                                           flagged: Bool) async -> Bool {
         let lead = flagged
-            ? "The safety check flagged this as potentially dangerous.\n\n"
+            ? NSLocalizedString("The safety check flagged this as potentially dangerous.\n\n", tableName: "ClaudeCodeXC", comment: "安全检查将此标记为具有潜在危险。\n\n")
             : ""
         let summary = "\(lead)\(actionSummary)\n\nWhy it needs review: \(reason)"
         return await awaitPermission(
             workgroupID: WorkgroupIntrospection.commandApprovalWorkgroupID,
-            workgroupName: "Run command",
+            workgroupName: NSLocalizedString("Run command", tableName: "ClaudeCodeXC", comment: "运行命令"),
             summary: summary)
     }
 
@@ -2816,7 +2807,7 @@ final class OrchestratorDispatcher {
             baseProfile = p
         } else {
             guard let p = ProfileModel.sharedInstance().defaultProfile() else {
-                throw OrchestratorError.unsupported(reason: "No default profile is configured.")
+                throw OrchestratorError.unsupported(reason: NSLocalizedString("No default profile is configured.", tableName: "ClaudeCodeXC", comment: "未配置默认配置文件。"))
             }
             baseProfile = p
         }
@@ -2931,9 +2922,7 @@ final class OrchestratorDispatcher {
         let reachable = iTermController.sharedInstance()?.anySession(withGUID: session.guid) != nil
         if session.exited || !reachable {
             throw OrchestratorError.unsupported(reason:
-                "The new session was created but is no longer reachable. "
-                + "The command likely exited immediately (e.g. binary not on PATH "
-                + "or a non-zero startup script) and the window auto-closed.")
+                NSLocalizedString("The new session was created but is no longer reachable. The command likely exited immediately (e.g. binary not on PATH or a non-zero startup script) and the window auto-closed.", tableName: "ClaudeCodeXC", comment: "新会话已创建，但已不再可达。命令很可能立即退出了（例如二进制文件不在 PATH 中，或启动脚本返回非零状态），窗口已自动关闭。"))
         }
         // Record who conjured this session so other chats seeing it in
         // their <workgroups> snapshot (directly, or chained through a

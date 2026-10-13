@@ -51,7 +51,7 @@ final class InlineChatToolbarView: NSView {
                                           alignment: .center)
 
     override init(frame frameRect: NSRect) {
-        let label = InlineChatToolbarTitleLabel(labelWithString: "AI Chat")
+        let label = InlineChatToolbarTitleLabel(labelWithString: NSLocalizedString("AI Chat", tableName: "AITermXC", comment: "AI 对话"))
         label.font = NSFont.systemFont(ofSize: 13, weight: .semibold)
         label.textColor = .labelColor
         label.alignment = .center
@@ -59,19 +59,19 @@ final class InlineChatToolbarView: NSView {
         titleLabel = label
 
         newChatButton = Self.makeButton(symbol: .squareAndPencil,
-                                        tooltip: "New chat")
+                                        tooltip: NSLocalizedString("New chat", tableName: "AITermXC", comment: "新建对话"))
         switchChatButton = Self.makeButton(symbol: .bubbleLeftAndBubbleRight,
-                                           tooltip: "Switch to another chat")
+                                           tooltip: NSLocalizedString("Switch to another chat", tableName: "AITermXC", comment: "切换到其他对话"))
         // Same info-circle control the chat window toolbar uses.
         sessionInfoButton = ChatToolbar.makeSessionInfoButton()
         sessionInfoButton.imageScaling = .scaleProportionallyDown
-        sessionInfoButton.toolTip = "Link or unlink terminal/browser session"
+        sessionInfoButton.toolTip = NSLocalizedString("Link or unlink terminal/browser session", tableName: "AITermXC", comment: "链接或取消链接终端/浏览器会话")
         // makeSessionInfoButton builds the image with a nil accessibility
         // description, so give VoiceOver an explicit label (the tooltip only
         // maps to accessibility help, not the element's label).
-        sessionInfoButton.setAccessibilityLabel("Link or unlink terminal/browser session")
+        sessionInfoButton.setAccessibilityLabel(NSLocalizedString("Link or unlink terminal/browser session", tableName: "AITermXC", comment: "链接或取消链接终端/浏览器会话"))
         closeButton = Self.makeButton(symbol: .xmark,
-                                      tooltip: "Hide chat")
+                                      tooltip: NSLocalizedString("Hide chat", tableName: "AITermXC", comment: "隐藏对话"))
 
         separator = NSBox()
         separator.boxType = .separator
@@ -120,7 +120,7 @@ final class InlineChatToolbarView: NSView {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) not implemented")
+        it_fatalError(NSLocalizedString("init(coder:) not implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     private static func makeButton(symbol: SFSymbol, tooltip: String) -> NSButton {

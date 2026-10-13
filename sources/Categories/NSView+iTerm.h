@@ -70,9 +70,18 @@ NSString *CGAffineTransformDescription(CGAffineTransform tm);
 @property (nonatomic, readonly) BOOL it_canDraw;
 @property(nonatomic) BOOL it_showNonDefaultIndicator;
 
+// The xib files give every control a fixed frame, with positions chosen so English text just
+// fits. Localized text is often shorter, which leaves large gaps between a piece of inline text
+// and the control that follows it. Move inline controls so they hug the text's rendered width.
+// Columns of controls that share an x origin, right-aligned labels, checkboxes and radio buttons
+// are never moved, nothing ever moves left except where noted, and English-language layouts are
+// skipped entirely, so the original design is unaffected. Call this once from -awakeFromNib of
+// container views whose subviews are fixed-frame rows.
+- (void)it_adaptInlineRowsForLocalization;
+
+
 @end
 
 @interface NSView(Private)
 - (CGSize)_recommendedDrawableSize;
 @end
-

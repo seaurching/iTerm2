@@ -159,10 +159,10 @@ typedef NS_ENUM(NSInteger, iTermScriptFilterControlTag) {
     [self makeTextViewHorizontallyScrollable:_logsView];
     [self makeTextViewHorizontallyScrollable:_callsView];
 
-    [self setSymbol:SFSymbolGetString(SFSymbolScope) tooltip:@"Inspector" onButton:_inspectorButton];
-    [self setSymbol:SFSymbolGetString(SFSymbolStopCircle) tooltip:@"Terminate" onButton:_terminateButton];
-    [self setSymbol:SFSymbolGetString(SFSymbolArrowClockwise) tooltip:@"Restart" onButton:_startButton];
-    [self setSymbol:SFSymbolGetString(SFSymbolTrash) tooltip:@"Clear Terminated" onButton:_clearTerminatedButton];
+    [self setSymbol:SFSymbolGetString(SFSymbolScope) tooltip:NSLocalizedStringFromTableInBundle(@"Inspector", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script console button tooltip") onButton:_inspectorButton];
+    [self setSymbol:SFSymbolGetString(SFSymbolStopCircle) tooltip:NSLocalizedStringFromTableInBundle(@"Terminate", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script console button tooltip") onButton:_terminateButton];
+    [self setSymbol:SFSymbolGetString(SFSymbolArrowClockwise) tooltip:NSLocalizedStringFromTableInBundle(@"Restart", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script console button tooltip") onButton:_startButton];
+    [self setSymbol:SFSymbolGetString(SFSymbolTrash) tooltip:NSLocalizedStringFromTableInBundle(@"Clear Terminated", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script console button tooltip") onButton:_clearTerminatedButton];
 
     [self reloadTableFully];
 }
@@ -196,7 +196,7 @@ typedef NS_ENUM(NSInteger, iTermScriptFilterControlTag) {
         if (entry.isRunning) {
             return entry.name;
         } else {
-            return [NSString stringWithFormat:@"(%@)", entry.name];
+            return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"(%@)", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Format string wrapping a non-running script name"), entry.name];
         }
     } else {
         return [_dateFormatter stringFromDate:entry.startDate];
@@ -548,9 +548,9 @@ typedef NS_ENUM(NSInteger, iTermScriptFilterControlTag) {
 
 - (NSString *)formatPIDs:(NSArray<NSNumber *> *)pids {
     if (pids.count == 1) {
-        return [NSString stringWithFormat:@"PID %@", pids[0]];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"PID %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"进程 ID %@"), pids[0]];
     }
-    return [NSString stringWithFormat:@"PIDs %@", [pids componentsJoinedByString:@", "]];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"PIDs %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"进程 ID 列表 %@"), [pids componentsJoinedByString:@", "]];
 }
 
 - (void)connectionRejected:(NSNotification *)notification {
@@ -568,7 +568,7 @@ typedef NS_ENUM(NSInteger, iTermScriptFilterControlTag) {
         }
         if (!name) {
             // Shouldn't happen as there ought to always be a PID
-            name = @"Unknown";
+            name = NSLocalizedStringFromTableInBundle(@"Unknown", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Fallback name for script");
         }
         entry = [[iTermScriptHistoryEntry alloc] initWithName:name
                                                      fullPath:nil
@@ -597,7 +597,7 @@ typedef NS_ENUM(NSInteger, iTermScriptFilterControlTag) {
         }
         if (!name) {
             // Shouldn't happen as there ought to always be a PID
-            name = @"Unknown";
+            name = NSLocalizedStringFromTableInBundle(@"Unknown", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Fallback name for script");
         }
         entry = [[iTermScriptHistoryEntry alloc] initWithName:name
                                                      fullPath:nil
@@ -609,7 +609,7 @@ typedef NS_ENUM(NSInteger, iTermScriptFilterControlTag) {
     }
     entry.websocketConnection = notification.userInfo[@"websocket"];
     DLog(@"Adding output");
-    [entry addOutput:[NSString stringWithFormat:@"Connection accepted: %@\n", notification.userInfo[@"reason"]]
+    [entry addOutput:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Connection accepted: %@\n", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script console log message"), notification.userInfo[@"reason"]]
           completion:^{}];
     DLog(@"Done");
 }
@@ -621,7 +621,7 @@ typedef NS_ENUM(NSInteger, iTermScriptFilterControlTag) {
     if (!entry) {
         return;
     }
-    [entry addOutput:@"\nConnection closed.\n" completion:^{}];
+    [entry addOutput:NSLocalizedStringFromTableInBundle(@"\nConnection closed.\n", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script console log message") completion:^{}];
     [entry stopRunning];
 }
 

@@ -160,7 +160,7 @@
 
 - (id) init {
 
-    @throw [NSException exceptionWithName:@"MethodNotAllowedException" reason:@"Initialize an AATree with the 'initWithKeyComparator:' method." userInfo:nil];
+    @throw [NSException exceptionWithName:@"MethodNotAllowedException" reason:NSLocalizedStringFromTable(@"Initialize an AATree with the 'initWithKeyComparator:' method.", @"DataStructuresAlgorithms", @"AATree init not allowed exception reason") userInfo:nil];
 }
 
 
@@ -238,7 +238,7 @@
 
 - (NSString *)dumpVerbose:(BOOL)verbose {
     if (!self.root) {
-        return @"No root";
+        return NSLocalizedStringFromTable(@"No root", @"DataStructuresAlgorithms", @"AATree dump: tree has no root");
     }
     return [[self dumpNode:self.root verbose:verbose] componentsJoinedByString:@"\n"];
 }

@@ -1,0 +1,15 @@
+/* 权限描述与系统文案本地化,键与 plists/iTerm2.plist 对应 */
+"NSAppleEventsUsageDescription" = "iTerm2 中的應用程式想要使用 AppleScript。";
+"NSBluetoothAlwaysUsageDescription" = "iTerm2 中的應用程式想要使用藍牙。";
+"NSCalendarsUsageDescription" = "iTerm2 中的應用程式想要使用日曆資料。";
+"NSCameraUsageDescription" = "iTerm2 中的應用程式想要使用相機。";
+"NSContactsUsageDescription" = "iTerm2 中的應用程式想要使用你的聯絡人。";
+"NSLocalNetworkUsageDescription" = "iTerm2 中的應用程式想要存取本機網路。";
+"NSLocationAlwaysUsageDescription" = "iTerm2 中的應用程式想要使用你的位置資訊（即使在背景）。";
+"NSLocationUsageDescription" = "iTerm2 中的應用程式想要使用你的位置資訊。";
+"NSLocationWhenInUseUsageDescription" = "iTerm2 中的應用程式想要在使用期間使用你的位置資訊。";
+"NSMicrophoneUsageDescription" = "iTerm2 中的應用程式想要使用你的麥克風。";
+"NSPhotoLibraryUsageDescription" = "iTerm2 中的應用程式想要使用照片圖庫。";
+"NSRemindersUsageDescription" = "iTerm2 中的應用程式想要使用你的提醒事項。";
+"NSSpeechRecognitionUsageDescription" = "iTerm2 中的應用程式想要使用語音辨識。";
+"NSSystemAdministrationUsageDescription" = "iTerm2 中的程式正在執行的操作需要提升的權限。";

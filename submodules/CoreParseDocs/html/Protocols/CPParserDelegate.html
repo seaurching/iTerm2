@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>CPParserDelegate Protocol Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">CoreParse </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Beelsebob</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/parser:didEncounterErrorOnInput:">- parser:didEncounterErrorOnInput:</option>
+		
+		<option value="//api/name/parser:didEncounterErrorOnInput:expecting:">- parser:didEncounterErrorOnInput:expecting:</option>
+		
+		<option value="//api/name/parser:didProduceSyntaxTree:">- parser:didProduceSyntaxTree:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">CPParserDelegate Protocol Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Conforms to</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>CPParser.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The delegate of a <a href="../Classes/CPParser.html">CPParser</a> must adopt the CPParserDelegate protocol.  This allows you to replace the produced syntax trees with data structures of your choice.</p>
+
+<p>Significant processing can be performed in a parser delegate.  For example, a parser for numeric expressions could replace each syntax tree with an NSNumber representing
+the resultant value of evaluating the expression.  This would allow you to parse, and compute the result of the expression in one pass.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/parser:didProduceSyntaxTree:" title="parser:didProduceSyntaxTree:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/parser:didProduceSyntaxTree:">&ndash;&nbsp;parser:didProduceSyntaxTree:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Should return an object to replace a produced syntax tree with.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)parser:(CPParser *)<em>parser</em> didProduceSyntaxTree:(CPSyntaxTree *)<em>syntaxTree</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parser</code></th>
+						<td><p>The parser which produced the syntax tree.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>syntaxTree</code></th>
+						<td><p>The syntax tree the parser has produced.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An object value to replace the syntax tree with.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Should return an object to replace a produced syntax tree with.</p>
+
+<p>You should not return <code>nil</code> from this method.  If you do not wish to change the syntax tree, simply return the same value as you are passed.</p><div class="warning"><p><strong>Warning:</strong> Note that it is not guarenteed that this method will be called in the same order as the structures appear in your input stream.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPParser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/parser:didEncounterErrorOnInput:" title="parser:didEncounterErrorOnInput:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/parser:didEncounterErrorOnInput:">&ndash;&nbsp;parser:didEncounterErrorOnInput:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when the parser encounters a token for which it can not shift, reduce or accept.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (CPRecoveryAction *)parser:(CPParser *)<em>parser</em> didEncounterErrorOnInput:(CPTokenStream *)<em>inputStream</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parser</code></th>
+						<td><p>The parser which produced the syntax tree.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inputStream</code></th>
+						<td><p>The input stream containing the token the parser could not cope with.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An action to take to recover from the parse error or nil.  If the action is nil, and the problematic token is a <a href="../Classes/CPErrorToken.html">CPErrorToken</a>
+the parse stack is unwound a step for the parent rule to deal with the error.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when the parser encounters a token for which it can not shift, reduce or accept.</p><div class="bug"><p><strong>Bug:</strong> Warning this method is deprecated, use <a href="#//api/name/parser:didEncounterErrorOnInput:expecting:">parser:didEncounterErrorOnInput:expecting:</a> instead.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPParser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/parser:didEncounterErrorOnInput:expecting:" title="parser:didEncounterErrorOnInput:expecting:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/parser:didEncounterErrorOnInput:expecting:">&ndash;&nbsp;parser:didEncounterErrorOnInput:expecting:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Called when the parser encounters a token for which it can not shift, reduce or accept.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (CPRecoveryAction *)parser:(CPParser *)<em>parser</em> didEncounterErrorOnInput:(CPTokenStream *)<em>inputStream</em> expecting:(NSSet *)<em>acceptableTokens</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parser</code></th>
+						<td><p>The parser which produced the syntax tree.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>inputStream</code></th>
+						<td><p>The input stream containing the token the parser could not cope with.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>acceptableTokens</code></th>
+						<td><p>A set of token names that would have allowed the parser to continue in its current state.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An action to take to recover from the parse error or nil.  If the action is nil, and the problematic token is a <a href="../Classes/CPErrorToken.html">CPErrorToken</a>
+the parse stack is unwound a step for the parent rule to deal with the error.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Called when the parser encounters a token for which it can not shift, reduce or accept.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPParser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2026 Beelsebob. All rights reserved. Updated: 2026-09-19</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+/* ClaudeCodeXC.strings — iTerm2 Claude Code integration */
+/* Language: zh-Hans — auto-generated from NSLocalizedString(tableName:"ClaudeCodeXC") */
+
+/* %@ Continue removing the workgroup and triggers anyway? cc-status will keep r... */
+"%@ Continue removing the workgroup and triggers anyway? cc-status will keep running until you fix the underlying issue and try again." = "%@ 仍然继续移除工作组和触发器吗？在你修复根本问题并重试之前，cc-status 会继续运行。";
+
+/* %@ in %@ */
+"%@ in %@" = "%@ 位于 %@ 中";
+
+/* %@ · %d */
+"%@ · %d" = "%@ · %d";
+
+/* %@: %@ */
+"%@: %@" = "%@：%@";
+
+/* (untitled) */
+"(untitled)" = "(无标题)";
+
+/* Also update %d sessions whose profiles are missing */
+"Also update %d sessions whose profiles are missing" = "同时更新 %d 个配置文件缺失的会话";
+
+/* Also update 1 session whose profile is missing */
+"Also update 1 session whose profile is missing" = "同时更新 1 个配置文件缺失的会话";
+
+/* Auto-Enter Workgroup */
+"Auto-Enter Workgroup" = "自动进入工作组";
+
+/* Back */
+"Back" = "返回";
+
+/* Before You Start */
+"Before You Start" = "开始之前";
+
+/* Buried Sessions */
+"Buried Sessions" = "已隐藏的会话";
+
+/* Cancel */
+"Cancel" = "取消";
+
+/* Cancelling a watch */
+"Cancelling a watch" = "正在取消监视";
+
+/* Checking state of %@ */
+"Checking state of %@" = "正在检查 %@ 的状态";
+
+/* Claude Code Integration Looks Broken */
+"Claude Code Integration Looks Broken" = "Claude Code 集成似乎已损坏";
+
+/* Claude Code Integration Setup */
+"Claude Code Integration Setup" = "Claude Code 集成设置";
+
+/* Close */
+"Close" = "关闭";
+
+/* Command to run in this pane. Changes take effect the next time the pane is re... */
+"Command to run in this pane. Changes take effect the next time the pane is restarted." = "在此窗格中运行的命令。更改在下次重启窗格时生效。";
+
+/* Command: */
+"Command:" = "命令：";
+
+/* Continue */
+"Continue" = "继续";
+
+/* Could not read ~/.claude/settings.json — check the file’s permissions. */
+"Could not read ~/.claude/settings.json — check the file’s permissions." = "无法读取 ~/.claude/settings.json — 请检查文件的权限。";
+
+/* Could not write to %@: %@ */
+"Could not write to %@: %@" = "无法写入 %@：%@";
+
+/* Could not write to ~/.claude/settings.json — check the file’s permissions. */
+"Could not write to ~/.claude/settings.json — check the file’s permissions." = "无法写入 ~/.claude/settings.json — 请检查文件的权限。";
+
+/* Couldn’t Remove Hooks */
+"Couldn’t Remove Hooks" = "无法移除钩子";
+
+/* Disable */
+"Disable" = "禁用";
+
+/* Disable the Python API? */
+"Disable the Python API?" = "禁用 Python API？";
+
+/* Do It */
+"Do It" = "执行";
+
+/* Don’t panic! All of this can be undone later via iTerm2 > Uninstall Claude Co... */
+"Don’t panic! All of this can be undone later via iTerm2 > Uninstall Claude Code Integration." = "别担心！所有这些稍后都可以通过 iTerm2 > 卸载 Claude Code 集成来撤销。";
+
+/* Dynamic Profiles Selected */
+"Dynamic Profiles Selected" = "已选择动态配置文件";
+
+/* Enable */
+"Enable" = "启用";
+
+/* Enable Python API */
+"Enable Python API" = "启用 Python API";
+
+/* Executing `%@` */
+"Executing `%@`" = "正在执行 `%@`";
+
+/* Failed to install hook */
+"Failed to install hook" = "安装 hook 失败";
+
+/* Group sessions by status (Waiting / Working / Idle), within each window. */
+"Group sessions by status (Waiting / Working / Idle), within each window." = "在每个窗口内按状态（等待 / 工作中 / 空闲）对会话分组。";
+
+/* Group sessions by window, then by tab and split pane. */
+"Group sessions by window, then by tab and split pane." = "按窗口对会话分组，再按标签页和分屏。";
+
+/* Idle */
+"Idle" = "空闲";
+
+/* Includes running sessions that were created from a profile that has since bee... */
+"Includes running sessions that were created from a profile that has since been deleted." = "包括从已删除的配置文件创建的正在运行的会话。";
+
+/* Install */
+"Install" = "安装";
+
+/* Install Auto-Enter Triggers */
+"Install Auto-Enter Triggers" = "安装自动进入触发器";
+
+/* Install Hook */
+"Install Hook" = "安装 Hook";
+
+/* Install Workgroup */
+"Install Workgroup" = "安装工作组";
+
+/* Install a Claude Code hook that lets iTerm2 detect Claude’s state (working, w... */
+"Install a Claude Code hook that lets iTerm2 detect Claude’s state (working, waiting, idle) and display it in the Session Status tool.\n\nThis adds a hook to your Claude Code settings that runs automatically as Claude works." = "安装 Claude Code hook，让 iTerm2 检测 Claude 的状态（工作中、等待中、空闲）并在“会话状态”工具中显示。\n\n这会在你的 Claude Code 设置中添加一个 hook，随着 Claude 工作自动运行。";
+
+/* Install the Claude Code workgroup, which groups your main Claude session with... */
+"Install the Claude Code workgroup, which groups your main Claude session with two peer sessions: a diff viewer and a code-review session. You can switch between them with one click.\n\nYou can customize this layout later in Settings > Shortcuts > Workgroups." = "安装 Claude Code 工作组，它将你的主 Claude 会话与两个同级会话分组：一个差异查看器和一个代码审查会话。你可以一键切换它们。\n\n你可以稍后在“设置 > 快捷键 > 工作组”中自定义此布局。";
+
+/* Interrupting %@ */
+"Interrupting %@" = "正在中断 %@";
+
+/* Kicking off Code Review on %@ %@ */
+"Kicking off Code Review on %@ %@" = "正在对 %@ 发起代码审查 %@";
+
+/* Learn more about the Claude Code integration */
+"Learn more about the Claude Code integration" = "了解更多关于 Claude Code 集成的信息";
+
+/* Leave Enabled */
+"Leave Enabled" = "保持启用";
+
+/* Listing active watches */
+"Listing active watches" = "正在列出活动监视";
+
+/* Listing clippings in %@ */
+"Listing clippings in %@" = "正在列出 %@ 中的剪藏";
+
+/* Looking up workgroups */
+"Looking up workgroups" = "正在查找工作组";
+
+/* Mark Rewritable & Install */
+"Mark Rewritable & Install" = "标记为可重写并安装";
+
+/* New session */
+"New session" = "新会话";
+
+/* Next */
+"Next" = "下一步";
+
+/* Not Now */
+"Not Now" = "暂时不";
+
+/* Notify on status change */
+"Notify on status change" = "状态变化时通知";
+
+/* Notify on status change armed */
+"Notify on status change armed" = "已开启状态变化通知";
+
+/* Notify with an alert when the selected window or session’s status changes. */
+"Notify with an alert when the selected window or session’s status changes." = "当选定窗口或会话的状态变化时通过提醒通知。";
+
+/* Pick the profiles you’ll run claude in. We’ll add Enter/Exit Workgroup trigge... */
+"Pick the profiles you’ll run claude in. We’ll add Enter/Exit Workgroup triggers to each one so the Claude Code workgroup is entered automatically." = "选择你要运行 claude 的配置文件。我们会为每个配置文件添加进入/退出工作组触发器，使 Claude Code 工作组自动进入。";
+
+/* Pick the terminal profiles where you run claude. iTerm2 will add triggers so ... */
+"Pick the terminal profiles where you run claude. iTerm2 will add triggers so the Claude Code workgroup is entered automatically when claude starts and exited when it stops.\n\nWithout this, you can still enter the workgroup manually via Shell > Workgroups > Claude Code." = "选择你运行 claude 的终端配置文件。iTerm2 会添加触发器，使 Claude Code 工作组在 claude 启动时自动进入，在 claude 停止时自动退出。\n\n若不安装，你仍可通过“Shell > 工作组 > Claude Code”手动进入工作组。";
+
+/* Posting clipping “%@” to %@ */
+"Posting clipping “%@” to %@" = "正在将剪藏 “%@” 发布到 %@";
+
+/* Reading screen of %@ */
+"Reading screen of %@" = "正在读取 %@ 的屏幕";
+
+/* Reinstall */
+"Reinstall" = "重新安装";
+
+/* Revoked this chat’s permission to control “%@”. The agent will ask before its... */
+"Revoked this chat’s permission to control “%@”. The agent will ask before its next action there." = "已撤销本对话控制“%@”的权限。代理将在下次在该处执行操作前再次请求许可。";
+
+/* Run command */
+"Run command" = "运行命令";
+
+/* Scrolling %@ to show %@ content */
+"Scrolling %@ to show %@ content" = "正在滚动 %@ 以显示%@内容";
+
+/* Show */
+"Show" = "显示";
+
+/* Show Toolbelt */
+"Show Toolbelt" = "显示工具栏";
+
+/* Show only sessions in a workgroup, grouped by workgroup. */
+"Show only sessions in a workgroup, grouped by workgroup." = "仅显示属于工作组的会话，按工作组分组。";
+
+/* Show the toolbelt and enable the Session Status tool. The toolbelt appears on... */
+"Show the toolbelt and enable the Session Status tool. The toolbelt appears on the right side of your terminal window.\n\nYou can toggle the toolbelt from View > Toolbelt > Show Toolbelt, or with the shortcut ⌘⇧B." = "显示工具栏并启用“会话状态”工具。工具栏出现在终端窗口右侧。\n\n你可以从“显示 > 工具栏 > 显示工具栏”切换工具栏，或使用快捷键 ⌘⇧B。";
+
+/* Skip Dynamic Profiles */
+"Skip Dynamic Profiles" = "跳过动态配置文件";
+
+/* Starting new session */
+"Starting new session" = "正在启动新会话";
+
+/* Starting new session: `%@` */
+"Starting new session: `%@`" = "正在启动新会话：`%@`";
+
+/* Status */
+"Status" = "状态";
+
+/* Tab %d */
+"Tab %d" = "标签页 %d";
+
+/* The Claude Code integration relies on iTerm2’s Python API to find sessions ru... */
+"The Claude Code integration relies on iTerm2’s Python API to find sessions running Claude and track their status.\n\nThe Python API is currently disabled. Setup can’t continue until it is enabled. Click Enable to turn it on." = "Claude Code 集成依赖 iTerm2 的 Python API 来发现运行 Claude 的会话并跟踪其状态。\n\nPython API 当前已禁用。启用前无法继续设置。点击“启用”将其打开。";
+
+/* The agent is asking to open %@ and run “%@”. */
+"The agent is asking to open %@ and run “%@”." = "代理请求打开“%@”并运行“%@”。";
+
+/* The agent is asking to open %@. */
+"The agent is asking to open %@." = "代理请求打开%@。";
+
+/* The agent is asking to send keystrokes and interrupt running commands in sess... */
+"The agent is asking to send keystrokes and interrupt running commands in session “%@”. Approval is sticky for the rest of this chat. Deny to refuse this and future control of this session until you explicitly approve." = "代理请求向会话“%@”发送按键并中断正在运行的命令。批准在本对话剩余期间持续有效。拒绝则拒绝此次及未来对该会话的控制，直到您明确批准。";
+
+/* The agent is asking to send keystrokes, interrupt running commands, and post ... */
+"The agent is asking to send keystrokes, interrupt running commands, and post clippings to this workgroup. Approval is sticky for the rest of this chat. Deny to refuse this and future control of this workgroup until you explicitly approve." = "代理请求发送按键、中断正在运行的命令，并向此工作组发布剪报。批准在本对话剩余期间持续有效。拒绝则拒绝此次及未来对该工作组的控制，直到您明确批准。";
+
+/* The agent wants to create the file `%@`. */
+"The agent wants to create the file `%@`." = "代理想要创建文件`%@`。";
+
+/* The agent wants to run a command in the session. */
+"The agent wants to run a command in the session." = "代理想要在会话中运行命令。";
+
+/* The agent wants to run:
+
+`%@` */
+"The agent wants to run:\n\n`%@`" = "代理想要运行：\n\n`%@`";
+
+/* The agent wants to send this to the session's foreground program:
+
+`%@` */
+"The agent wants to send this to the session's foreground program:\n\n`%@`" = "代理想要向会话的前台程序发送以下内容：\n\n`%@`";
+
+/* The installer enabled iTerm2’s Python API. Other scripts or integrations may ... */
+"The installer enabled iTerm2’s Python API. Other scripts or integrations may be using it now. Leave it enabled, or turn it off?" = "安装程序启用了 iTerm2 的 Python API。其他脚本或集成可能正在使用它。保持启用，还是关闭它？";
+
+/* The safety check could not be completed, so this needs manual approval. */
+"The safety check could not be completed, so this needs manual approval." = "安全检查无法完成，因此需要手动批准。";
+
+/* The safety check flagged this as potentially dangerous.
+
+ */
+"The safety check flagged this as potentially dangerous.\n\n" = "安全检查将此标记为具有潜在危险。\n\n";
+
+/* The safety check result could not be understood, so this needs manual approval. */
+"The safety check result could not be understood, so this needs manual approval." = "无法理解安全检查结果，因此需要手动批准。";
+
+/* These profiles are dynamic and not marked “rewritable,” so iTerm2 normally re... */
+"These profiles are dynamic and not marked “rewritable,” so iTerm2 normally regenerates them from disk and any change here would be lost:\n\n%@\n\niTerm2 can write the triggers back to dynamic profiles when they’re marked rewritable. Rewriting can change the order of values in the underlying file." = "这些配置文件是动态的且未标记为“可重写”，因此 iTerm2 通常会从磁盘重新生成它们，此处的任何更改都会丢失：\n\n%@\n\n当动态配置文件标记为可重写时，iTerm2 可以将触发器写回。重写可能会更改底层文件中值的顺序。";
+
+/* This removes the cc-status hook from ~/.claude/settings.json, the Claude Code... */
+"This removes the cc-status hook from ~/.claude/settings.json, the Claude Code workgroup from your settings, and the Enter/Exit Workgroup triggers from every profile. You can reinstall any time using iTerm2 > Install Claude Code Integration." = "这将从 ~/.claude/settings.json 中移除 cc-status 钩子、从你的设置中移除 Claude Code 工作组，并从每个配置中移除进入/退出工作组触发器。你可以随时使用 iTerm2 > 安装 Claude Code 集成来重新安装。";
+
+/* This watch reads %@'s screen repeatedly while it waits. View Contents is set ... */
+"This watch reads %@'s screen repeatedly while it waits. View Contents is set to Ask for this session, so allow this background reading until the watch finishes?" = "此监视会在等待期间反复读取“%@”的屏幕内容。此会话的“查看内容”设置为“询问”，是否允许此后台读取直到监视结束？";
+
+/* Typing into %@: %@ */
+"Typing into %@: %@" = "正在向 %@ 输入：%@";
+
+/* Uninstall */
+"Uninstall" = "卸载";
+
+/* Uninstall Claude Code Integration? */
+"Uninstall Claude Code Integration?" = "卸载 Claude Code 集成？";
+
+/* Untitled workgroup */
+"Untitled workgroup" = "未命名工作组";
+
+/* Waiting */
+"Waiting" = "等待";
+
+/* Watching for a status change on the selected item. An alert will appear on th... */
+"Watching for a status change on the selected item. An alert will appear on the next change, then turn this off." = "正在监视选定项的状态变化。下次变化时将出现提醒，然后关闭此功能。";
+
+/* What gets changed */
+"What gets changed" = "会更改哪些内容";
+
+/* Will notify when %@ becomes **%@** */
+"Will notify when %@ becomes **%@**" = "将在 %@ 变为 **%@** 时通知";
+
+/* Will notify when %@ satisfies: %@ */
+"Will notify when %@ satisfies: %@" = "将在 %@ 满足以下条件时通知：%@";
+
+/* Window */
+"Window" = "窗口";
+
+/* Window %d */
+"Window %d" = "窗口 %d";
+
+/* Workgroup */
+"Workgroup" = "工作组";
+
+/* Working */
+"Working" = "工作中";
+
+/* [defunct session] */
+"[defunct session]" = "[已失效的会话]";
+
+/* _(unknown session)_ */
+"_(unknown session)_" = "_(未知会话)_";
+
+/* _unknown workgroup_ */
+"_unknown workgroup_" = "_未知工作组_";
+
+/* a new session */
+"a new session" = "一个新会话";
+
+/* a new tab in the current window */
+"a new tab in the current window" = "当前窗口中的一个新标签页";
+
+/* a new window */
+"a new window" = "一个新窗口";
+
+/* a vertical split of the current pane */
+"a vertical split of the current pane" = "当前窗格的垂直分屏";
+
+/* iTerm2 session */
+"iTerm2 session" = "iTerm2 会话";
+
+/* iTerm2’s cc-status hook is no longer in ~/.claude/settings.json. This usually... */
+"iTerm2’s cc-status hook is no longer in ~/.claude/settings.json. This usually means Claude Code rewrote that file. Reinstall the hook so per-tab status indicators (“Working…,” “Waiting…”) work again?" = "iTerm2 的 cc-status 钩子已不在 ~/.claude/settings.json 中。这通常意味着 Claude Code 重写了该文件。重新安装钩子以让每标签页状态指示器（“工作中…” “等待中…”）重新工作？";
+
+/* newer */
+"newer" = "较新";
+
+/* older */
+"older" = "较旧";
+
+/* the linked session */
+"the linked session" = "链接的会话";
+
+/* the pending command line is too long to safety-check automatically */
+"the pending command line is too long to safety-check automatically" = "待处理的命令行过长，无法自动进行安全检查";
+
+/* with %@ */
+"with %@" = "使用 %@";
+
+/* with saved prompt “%@” */
+"with saved prompt “%@”" = "使用已保存的提示词 “%@”";
+
+/* with the default prompt */
+"with the default prompt" = "使用默认提示词";
+
+/* ~/.claude/settings.json couldn’t be parsed as JSON. Open it in a text editor ... */
+"~/.claude/settings.json couldn’t be parsed as JSON. Open it in a text editor and check it for syntax errors." = "无法将 ~/.claude/settings.json 解析为 JSON。请在文本编辑器中打开并检查语法错误。";
+
+/* • iTerm2’s Python API is enabled
+• A cc-status hook is added to ~/.claude/set... */
+"• iTerm2’s Python API is enabled\n• A cc-status hook is added to ~/.claude/settings.json\n• The toolbelt is shown\n• A Claude Code workgroup is added to iTerm2’s settings\n• Enter/Exit Workgroup triggers are added to the profiles you pick" = "• 启用 iTerm2 的 Python API\n• 在 ~/.claude/settings.json 中添加 cc-status hook\n• 显示工具栏\n• 在 iTerm2 的设置中添加 Claude Code 工作组\n• 在你选择的配置文件中添加进入/退出工作组触发器";
+
+"Claude Code is running. Want to try the Claude Code integration?" = "Claude Code 正在运行。想试试 Claude Code 集成吗？";
+"Try It Now" = "立即试用";
+"Don't Show Again" = "不再显示";
+"No session to watch: this chat is not linked to a terminal session." = "没有可监视的会话：此对话未关联到终端会话。";
+"This chat is no longer in orchestration mode." = "此对话已不再处于编排模式。";
+"Error: arguments not a JSON object" = "错误：参数不是 JSON 对象";
+"Not run automatically: this action needs manual approval first. Ask the user to run it themselves or to approve it." = "未自动运行：此操作需要先经人工批准。请让用户自行运行，或由其批准此操作。";
+"Error: session command timed out after 30s." = "错误：会话命令在 30 秒后超时。";
+"The user has notifications turned off for iTerm2 Buddy. Do not push them about it; they can enable it in iOS Settings if they want alerts." = "用户已关闭 iTerm2 Buddy 的通知。请勿就此向其推送；如需提醒，可在 iOS 设置中开启。";
+"No paired companion phone is registered for notifications." = "尚未注册可接收通知的配对手机。";
+"The user has muted this chat's notifications on their phone, so the notification was not sent. Do not try to work around it." = "用户已在手机上静音此对话的通知，因此通知未发送。请勿尝试绕过。";
+"No companion phone is connected right now, so permission cannot be requested." = "当前没有已连接的配套手机，无法请求权限。";
+"The user declined notification permission. Do not ask again; iOS only shows the prompt once. If they change their mind they can enable notifications for iTerm2 Buddy in iOS Settings." = "用户拒绝了通知权限。请勿再次询问；iOS 只会显示一次该提示。如果改变主意，可在 iOS 设置中为 iTerm2 Buddy 开启通知。";
+"The phone could not show the permission prompt." = "手机无法显示权限提示。";
+"The chat was unlinked from this session before the watch could be registered." = "在注册监听之前，该对话已与此会话解除关联。";
+"No screen backstop: View Contents isn't granted for this session, so this watch fires only on the program's own status updates and has no timeout. If that status source stops (the program crashes or detaches) the watch will not fire. Grant View Contents (Always) for a screen-based fallback, or plan to check the session yourself if it goes quiet." = "没有屏幕兜底：此会话未授予 View Contents 权限，因此该监听只依据程序自身的状态更新触发，且没有超时。若该状态源停止（程序崩溃或分离），监听将不会触发。可授予 View Contents（总是）作为基于屏幕的兜底，或在会话安静时自行检查。";
+"The user declined to let this watch read the screen. Ask them to enable View Contents (Always) for this session if they want it." = "用户拒绝让此监听读取屏幕。如有需要，请让其为该会话开启 View Contents（总是）。";
+"No default profile is configured." = "未配置默认配置文件。";
+"User denied permission for this action." = "用户拒绝了对该操作的许可。";
+"The operation timed out." = "操作超时。";
+
+"The new session was created but is no longer reachable. The command likely exited immediately (e.g. binary not on PATH or a non-zero startup script) and the window auto-closed." = "新会话已创建，但已不再可达。命令很可能立即退出了（例如二进制文件不在 PATH 中，或启动脚本返回非零值），窗口已自动关闭。";

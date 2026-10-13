@@ -1,0 +1,103 @@
+{
+    "sourceLanguage": "en",
+    "strings": {
+        "d6u-sa-c0E.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"100\"; ObjectID = \"d6u-sa-c0E\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "100"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "100"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "100"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "100"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "100"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "100"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "100"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "Htp-7L-sn0.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Tab size in spaces:\"; ObjectID = \"Htp-7L-sn0\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Tab size in spaces:"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "制表符大小（空格数）："
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "制表符大小（空格数）："
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "制表符大小（空格数）："
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "定位字元大小（空格數）："
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "定位字元大小（空格數）："
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "定位字元大小（空格數）："
+                    }
+                }
+            }
+        }
+    },
+    "version": "1.1"
+}

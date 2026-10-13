@@ -1,0 +1,14 @@
+/* App signature alert title */
+"Application Corrupt" = "應用程式已損壞";
+
+/* App signature alert OK button */
+"OK" = "確定";
+
+/* App signature warning: signature could not be verified */
+"A required file appears to be missing or corrupted and iTerm2’s code signature could not be verified.\n\nYou should download a fresh copy of the app and reinstall it." = "某個必需的檔案似乎缺失或已損壞，且無法驗證 iTerm2 的程式碼簽章。\n\n您應該重新下載一份新的應用程式副本並重新安裝。";
+
+/* App signature warning: signature did not match official distribution */
+"A required file appears to be missing or corrupted and iTerm2’s code signature did not match that of the official distribution.\n\nYou should download a fresh copy of the app and reinstall it." = "某個必需的檔案似乎缺失或已損壞，且 iTerm2 的程式碼簽章與官方發布版本不符。\n\n您應該重新下載一份新的應用程式副本並重新安裝。";
+
+/* App signature warning: valid but unexpected */
+"A required file appears to be missing or corrupted, yet against all odds the code signature for iTerm2 is valid. Please file a bug at https://iterm2.com/bugs" = "某個必需的檔案似乎缺失或已損壞，但 iTerm2 的程式碼簽章竟然是有效的。請在 https://iterm2.com/bugs 提交錯誤報告";

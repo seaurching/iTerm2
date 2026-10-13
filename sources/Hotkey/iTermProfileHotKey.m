@@ -895,8 +895,8 @@ static NSString *const kArrangement = @"Arrangement";
         if ([[iTermSecureKeyboardEntryController sharedInstance] isEnabled] &&
             ![NSApp isActive]) {
             DLog(@"Notify");
-            [[iTermNotificationController sharedInstance] notify:@"Hotkeys Unavailable"
-                                                 withDescription:@"Another app has enabled secure keyboard input. That prevents hotkey windows from being shown."];
+            [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Hotkeys Unavailable", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Notification title: hotkeys unavailable")
+                                                 withDescription:NSLocalizedStringFromTableInBundle(@"Another app has enabled secure keyboard input. That prevents hotkey windows from being shown.", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Notification description: hotkeys unavailable due to secure keyboard input")];
             return @[];
         }
     }

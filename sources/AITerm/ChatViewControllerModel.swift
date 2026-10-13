@@ -121,9 +121,9 @@ class ChatViewControllerModel {
         case .some(let justMessage):
             switch justMessage.content {
             case .userCommand:
-                it_fatalError("user command not allowed in model")
+                it_fatalError(NSLocalizedString("user command not allowed in model", tableName: "AITermXC", comment: "模型中不允许用户命令"))
             case .append, .appendAttachment:
-                it_fatalError("Append type messages not allowed in model")
+                it_fatalError(NSLocalizedString("Append type messages not allowed in model", tableName: "AITermXC", comment: "模型中不允许追加类型的消息"))
             case .plainText, .markdown, .explanationRequest, .explanationResponse,
                     .remoteCommandRequest, .remoteCommandResponse, .selectSessionRequest,
                     .clientLocal, .renameChat, .commit, .setPermissions, .terminalCommand,

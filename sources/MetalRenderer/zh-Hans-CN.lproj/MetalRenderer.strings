@@ -1,0 +1,107 @@
+/* Metal unavailable: no GPU */
+"no usable GPU found on this machine." = "此机器上没有可用的 GPU。";
+
+/* Metal unavailable: disabled in settings */
+"GPU Renderer is disabled in Settings > General." = "GPU 渲染器已在“设置 > 通用”中禁用。";
+
+/* Metal unavailable: not a terminal */
+"the current session is not a terminal." = "当前会话不是终端。";
+
+/* Metal unavailable: ligatures enabled */
+"ligatures are enabled. You can disable them in Settings > Profiles > Text > Use ligatures." = "连字已启用。你可以在“设置 > 配置文件 > 文本 > 使用连字”中禁用。";
+
+/* Metal unavailable: initializing */
+"the GPU renderer is initializing. It should be ready soon." = "GPU 渲染器正在初始化。应该很快就能就绪。";
+
+/* Metal unavailable: invalid size */
+"the session is too large or too small." = "会话太大或太小。";
+
+/* Metal unavailable: session initializing */
+"the session is initializing." = "会话正在初始化。";
+
+/* Metal unavailable: transparency not supported */
+"transparent windows are not supported. They can be disabled in Settings > Profiles > Window > Transparency." = "不支持透明窗口。你可以在“设置 > 配置文件 > 窗口 > 透明度”中禁用。";
+
+/* Metal unavailable: vertical spacing */
+"the font's vertical spacing set to less than 100%. You can change it in Settings > Profiles > Text > Change Font." = "字体的垂直间距设置为低于 100%。你可以在“设置 > 配置文件 > 文本 > 更改字体”中修改。";
+
+/* Metal unavailable: margins too small */
+"terminal window margins are too small. You can edit them in Settings > Advanced." = "终端窗口边距太小。你可以在“设置 > 高级”中编辑。";
+
+/* Metal unavailable: annotations open */
+"annotations or URL shortcuts are open." = "标注或 URL 快捷方式已打开。";
+
+/* Metal unavailable: natively rendered items */
+"this session has natively rendered items." = "此会话包含原生渲染的项目。";
+
+/* Metal unavailable: find panel open */
+"the find panel is open." = "查找面板已打开。";
+
+/* Metal unavailable: paste indicator open */
+"the paste progress indicator is open." = "粘贴进度指示器已打开。";
+
+/* Metal unavailable: announcement visible */
+"an announcement (yellow bar) is visible." = "公告（黄色栏）可见。";
+
+/* Metal unavailable: URL preview visible */
+"a URL preview is visible." = "URL 预览可见。";
+
+/* Metal unavailable: window resizing */
+"the window is being resized." = "窗口正在调整大小。";
+
+/* Metal unavailable: not on power */
+"the computer is not connected to power. You can enable GPU rendering while disconnected from power in Settings > General > Advanced GPU Settings." = "计算机未连接电源。你可以在“设置 > 通用 > 高级 GPU 设置”中启用在使用电池时进行 GPU 渲染。";
+
+/* Metal unavailable: session idle */
+"the session is idle. You can enable Metal while idle in Settings > Advanced." = "会话处于空闲状态。你可以在“设置 > 高级”中启用空闲时使用 Metal。";
+
+/* Metal unavailable: too many panes */
+"This tab has too many split panes" = "此标签页的分割窗格太多";
+
+/* Metal unavailable: no keyboard focus */
+"the window does not have keyboard focus." = "窗口没有键盘焦点。";
+
+/* Metal unavailable: tab inactive */
+"this tab is not active." = "此标签页未激活。";
+
+/* Metal unavailable: tab bar visible */
+"the tab bar is temporarily visible." = "标签栏暂时可见。";
+
+/* Metal unavailable: screen config changed */
+"the screen configuration has just changed." = "屏幕配置刚刚更改。";
+
+/* Metal unavailable: context alloc failure */
+"of a temporary failure to allocate a graphics context." = "由于临时分配图形上下文失败。";
+
+/* Metal unavailable: tab being dragged */
+"a tab is being dragged." = "正在拖动标签页。";
+
+/* Metal unavailable: no window */
+"the current session has no window (this shouldn't happen)." = "当前会话没有窗口（这不应发生）。";
+
+/* Metal unavailable: scp drop targets */
+"secure copy drop targets are visible." = "安全复制放置目标可见。";
+
+/* Metal unavailable: swiping tabs */
+"swiping between tabs" = "在标签页之间滑动";
+
+/* Metal unavailable: split pane dragged */
+"a split pane is being dragged." = "正在拖动分割窗格。";
+
+/* Metal unavailable: window obscured */
+"the window is mostly under another window." = "窗口大部分被另一个窗口遮挡。";
+
+/* Metal unavailable: low power mode */
+"macOS is in low power mode." = "macOS 处于低电量模式。";
+
+/* Metal unavailable: internal error */
+"of an internal error. Please file a bug report!" = "由于内部错误。请提交错误报告！";
+
+/* Metal: cursor image loading warning reason */
+"While loading the key cursor image" = "加载按键光标图像时";
+
+/* Metal timestamps: repeat row label */
+"(repeat)" = "(重复)";
+
+/* Metal: FPS meter display */
+" [Frame %d: %d fps] " = " [帧 %d：%d fps] ";

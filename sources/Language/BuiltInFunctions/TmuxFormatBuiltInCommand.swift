@@ -31,15 +31,15 @@ extension TmuxFormatBuiltInFunction: iTermBuiltInFunctionProtocol {
             sideEffectsPlaceholder: nil) {
                 parameters, completion in
                 guard let sessionID = parameters[sessionIDKey] as? String else {
-                    completion(nil, error(message: "Missing \(sessionIDKey). This shouldn't happen so please report a bug."))
+                    completion(nil, error(message: String(format: NSLocalizedString("Missing %@. This shouldn't happen so please report a bug.", tableName: "Language", comment: "Tmux format error: missing session_id"), sessionIDKey)))
                     return
                 }
                 guard let session = iTermController.sharedInstance().session(withGUID: sessionID) else {
-                    completion(nil, error(message: "No such session"))
+                    completion(nil, error(message: NSLocalizedString("No such session", tableName: "Language", comment: "Tmux format error: no such session")))
                     return
                 }
                 guard let ref = parameters[backingVariableKey] as? iTermVariableReference<AnyObject> else {
-                    completion(nil, error(message: "Type mismatch for \(backingVariableKey). Must be a path reference."))
+                    completion(nil, error(message: String(format: NSLocalizedString("Type mismatch for %@. Must be a path reference.", tableName: "Language", comment: "Tmux format error: type mismatch"), backingVariableKey)))
                     return
                 }
                 execute(session: session,
@@ -55,7 +55,7 @@ extension TmuxFormatBuiltInFunction: iTermBuiltInFunctionProtocol {
                                 ref: iTermVariableReference<AnyObject>,
                                 completion: iTermBuiltInFunctionCompletionBlock) {
         guard let format else {
-            completion(nil, Self.error(message: "Invalid format"))
+            completion(nil, Self.error(message: NSLocalizedString("Invalid format", tableName: "Language", comment: "Tmux format error: invalid format")))
             return
         }
         do {

@@ -11,6 +11,13 @@ class ModalEnclosure: NSView {
     var shiftsViewsBeneath: Bool = true
     var neighborToGrowRight: NSView?
 
+    // The xib lays out rows with fixed frames designed around English text. Adapt the layout for
+    // shorter localized text.
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        it_adaptInlineRowsForLocalization()
+    }
+
     @objc
     var visibleForProfileTypes: ProfileType {
         return [.all]

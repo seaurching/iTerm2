@@ -100,6 +100,20 @@ static NSString *const kDynamicToolURL = @"URL";
     }];
 }
 
+// Display name for a toolbelt tool. Built-in names are localized; dynamic
+// (script-registered) tool names are user-provided and returned as-is. The
+// registered identity stays the English name so persisted proportions and the
+// API's built-in-name guard keep working.
++ (NSString *)localizedDisplayNameForToolName:(NSString *)name {
+    if ([[iTermToolbeltView builtInToolNames] containsObject:name]) {
+        return NSLocalizedStringFromTableInBundle(name,
+                                                  @"Toolbelt",
+                                                  [NSBundle bundleForClass:[self class]],
+                                                  @"Toolbelt tool display name");
+    }
+    return name;
+}
+
 + (NSArray<NSString *> *)builtInToolNames {
     return [gRegisteredTools.allKeys filteredArrayUsingBlock:^BOOL(NSString *key) {
         Class c = gRegisteredTools[key];
@@ -287,7 +301,7 @@ static NSString *const kDynamicToolURL = @"URL";
 
         _noToolsMessage = [NSTextField newLabelStyledTextField];
         _noToolsMessage.alignment = NSTextAlignmentCenter;
-        _noToolsMessage.stringValue = @"No Tools enabled. Select them from the menu above.";
+        _noToolsMessage.stringValue = NSLocalizedStringFromTableInBundle(@"No Tools enabled. Select them from the menu above.", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"toolbelt: no tools message label");
         _noToolsMessage.frame = self.bounds;
         [self addSubview:_noToolsMessage];
         [self layoutNoToolsMessage];
@@ -305,7 +319,7 @@ static NSString *const kDynamicToolURL = @"URL";
         [self addSubview:_dragHandle];
 
         _menuButton = [[iTermHamburgerButton alloc] initWithMenuProvider:^NSMenu * _Nonnull {
-            NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
+            NSMenu *menu = [[NSMenu alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Contextual Menu", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"toolbelt: contextual menu title")];
             [iTermToolbeltView addToolsToMenu:menu];
             return menu;
         }];
@@ -540,6 +554,7 @@ static NSString *const kDynamicToolURL = @"URL";
                                                                           self.frame.size.width,
                                                                           self.frame.size.height / MAX(1, [iTermToolbeltView numberOfVisibleToolsForProfileType:self.profileType] - 1))];
     wrapper.name = toolName;
+    wrapper.displayName = [iTermToolbeltView localizedDisplayNameForToolName:toolName];
     wrapper.delegate = self;
     Class c = [gRegisteredTools objectForKey:toolName];
     if (c) {

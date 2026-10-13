@@ -1,0 +1,214 @@
+/* Pasting: paste path action */
+"Paste Path" = "Paste Path";
+
+/* Pasting: paste paths action */
+"Paste Paths" = "Paste Paths";
+
+/* Pasting: paste base64 contents action */
+"Paste Base64-Encoded Contents" = "Paste Base64-Encoded Contents";
+
+/* Pasting: paste base64 archive action */
+"Paste Base64-Encoded Archive (tar.gz)" = "Paste Base64-Encoded Archive (tar.gz)";
+
+/* Pasting: paste as text action */
+"Paste as Text" = "Paste as Text";
+
+/* Pasting: upload action */
+"Upload" = "Upload";
+
+/* Pasting: upload and paste path action */
+"Upload and Paste Path" = "Upload and Paste Path";
+
+/* Pasting: cancel action */
+"Cancel" = "Cancel";
+
+/* Pasting: copied file gone error */
+"The copied file no longer exists." = "The copied file no longer exists.";
+
+/* Pasting: some files gone error */
+"%d of %d files no longer exist. Proceeding with remaining files." = "%d of %d files no longer exist. Proceeding with remaining files.";
+
+/* Pasting: file paste warning title */
+"How would you like to paste %@?" = "How would you like to paste %@?";
+
+/* Pasting: paste folder heading */
+"Paste Folder" = "Paste Folder";
+
+/* Pasting: paste file heading */
+"Paste File" = "Paste File";
+
+/* Pasting: paste files heading */
+"Paste Files" = "Paste Files";
+
+/* Pasting: folder prefix fragment */
+" the folder " = " the folder ";
+
+/* Pasting: multiple files description */
+"“%@” and %d other files" = "“%@” and %d other files";
+
+/* Pasting: paste failed alert title */
+"Paste Failed" = "Paste Failed";
+
+/* Pasting: paste failed OK button */
+"OK" = "OK";
+
+/* Pasting: save temp and paste path action */
+"Save to Temp File and Paste Path" = "Save to Temp File and Paste Path";
+
+/* Pasting: unknown image type fallback */
+"some" = "some";
+
+/* Pasting: image paste warning title */
+"The clipboard contains %1$@ image data (%2$@). How would you like to paste it?" = "The clipboard contains %1$@ image data (%2$@). How would you like to paste it?";
+
+/* Pasting: paste image heading */
+"Paste Image" = "Paste Image";
+
+/* Pasting: PNG image type */
+"a PNG" = "a PNG";
+
+/* Pasting: JPEG image type */
+"a JPEG" = "a JPEG";
+
+/* Pasting: GIF image type */
+"a GIF" = "a GIF";
+
+/* Pasting: TIFF image type */
+"a TIFF" = "a TIFF";
+
+/* Pasting: BMP image type */
+"a BMP" = "a BMP";
+
+/* Pasting: WebP image type */
+"a WebP" = "a WebP";
+
+/* Pasting: HEIC image type */
+"a HEIC" = "a HEIC";
+
+/* Pasting: unknown image type article */
+"an" = "an";
+
+/* Pasting: temp dir error */
+"Could not create temporary directory." = "Could not create temporary directory.";
+
+/* Pasting: save image error */
+"Could not save image to temporary file: %@" = "Could not save image to temporary file: %@";
+
+/* Pasting: read file error */
+"Could not read file “%@”." = "Could not read file “%@”.";
+
+/* Pasting: archive error */
+"Could not create archive of “%@”: %@" = "Could not create archive of “%@”: %@";
+
+/* Pasting: large base64 warning title */
+"OK to paste %@ bytes of base64-encoded data?" = "OK to paste %@ bytes of base64-encoded data?";
+
+/* Pasting: large paste heading */
+"Large Paste" = "Large Paste";
+
+/* Pasting: not utf8 error */
+"File “%@” is not valid UTF-8 text." = "File “%@” is not valid UTF-8 text.";
+
+/* Pasting: char limit warning title */
+"OK to paste %@ characters?" = "OK to paste %@ characters?";
+
+/* Pasting: advanced button */
+"Advanced…" = "Advanced…";
+
+/* Pasting: char limit heading */
+"Paste Limit Exceeded" = "Paste Limit Exceeded";
+
+/* Pasting: paste button */
+"Paste" = "Paste";
+
+/* Pasting: paste without newline button */
+"Paste Without Newline" = "Paste Without Newline";
+
+/* Pasting: multiline at prompt warning */
+"OK to paste %d lines at shell prompt?" = "OK to paste %d lines at shell prompt?";
+
+/* Pasting: multiline warning */
+"OK to paste %d lines?" = "OK to paste %d lines?";
+
+/* Pasting: one line at prompt warning */
+"OK to paste one line ending in a newline at shell prompt?" = "OK to paste one line ending in a newline at shell prompt?";
+
+/* Pasting: one line warning */
+"OK to paste one line ending in a newline?" = "OK to paste one line ending in a newline?";
+
+/* Pasting: multiline heading */
+"Confirm Multi-Line Paste" = "Confirm Multi-Line Paste";
+
+/* Pasting: tabs warning title */
+"You're about to paste a string with tabs." = "You're about to paste a string with tabs.";
+
+/* Pasting: convert tabs button */
+"Convert tabs to spaces" = "Convert tabs to spaces";
+
+/* Pasting: text label */
+"Text: “%@”" = "Text: “%@”";
+
+/* Pasting: unknown type fallback */
+"Unknown Type" = "Unknown Type";
+
+/* Pasting: type label */
+"%@: “%@”" = "%@: “%@”";
+
+/* Pasting: multiple file names label */
+"Multiple file names" = "Multiple file names";
+
+/* Pasting: file name label */
+"File name" = "File name";
+
+/* Pasting: contents of label */
+"Contents of %@" = "Contents of %@";
+
+/* Pasting: stats label */
+"%@ byte%@ in %@ line%@." = "%@ byte%@ in %@ line%@.";
+
+/* Pasting: instant duration */
+"Instant" = "Instant";
+
+/* Pasting: error updating settings title */
+"Error Updating Settings" = "Error Updating Settings";
+
+/* Pasting: clipboard reporting error informative */
+"An error occurred while removing the file that authorizes clipboard reporting: %@.
+As long as this file exists, clipboard reporting could be enabled by programs running on this computer." = "An error occurred while removing the file that authorizes clipboard reporting: %@.
+As long as this file exists, clipboard reporting could be enabled by programs running on this computer.";
+
+/* Pasting: reveal in finder button */
+"Reveal in Finder" = "Reveal in Finder";
+
+/* Pasting: enable clipboard reporting title */
+"Really Enable Clipboard Reporting?" = "Really Enable Clipboard Reporting?";
+
+/* Pasting: enable clipboard reporting informative */
+"Reporting the content of the clipboard to apps running inside iTerm2 may expose sensitive information such as passwords. Think carefully before enabling this." = "Reporting the content of the clipboard to apps running inside iTerm2 may expose sensitive information such as passwords. Think carefully before enabling this.";
+
+/* Pasting: sending label */
+"Sending…" = "Sending…";
+
+/* Pasting: send keystrokes accessibility */
+"Send keystrokes to terminal" = "Send keystrokes to terminal";
+
+/* Pasting: keystroke passthrough tooltip */
+"Type directly to the terminal (for example to answer a password prompt) instead of queueing your keystrokes until the paste finishes." = "Type directly to the terminal (for example to answer a password prompt) instead of queueing your keystrokes until the paste finishes.";
+
+/* Pasting: queued hint message */
+"Typing is queued while pasting. Click the keyboard to toggle queueing." = "Typing is queued while pasting. Click the keyboard to toggle queueing.";
+
+/* Pasting: seconds unit */
+"sec" = "sec";
+
+/* Pasting: minutes unit */
+"min" = "min";
+
+/* Pasting: tabs to spaces setting */
+"Tabs->%@ spcs" = "Tabs->%@ spcs";
+
+/* Pasting: very slow setting */
+"V.Slow" = "V.Slow";
+
+/* Pasting: slow setting */
+"Slow" = "Slow";

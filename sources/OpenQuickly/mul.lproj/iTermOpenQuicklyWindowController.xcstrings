@@ -1,0 +1,150 @@
+{
+    "sourceLanguage": "en",
+    "strings": {
+        "F0z-JX-Cv5.title": {
+            "comment": "Class = \"NSWindow\"; title = \"Open Quickly\"; ObjectID = \"F0z-JX-Cv5\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Open Quickly"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "快速打开"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "快速打开"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "快速打开"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "快速開啟"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "快速開啟"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "快速開啟"
+                    }
+                }
+            }
+        },
+        "NGu-Jc-J4f.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Detail\"; ObjectID = \"NGu-Jc-J4f\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Detail"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "详情"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "详情"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "详情"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "詳情"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "詳情"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "詳情"
+                    }
+                }
+            }
+        },
+        "ulN-O0-L4B.placeholderString": {
+            "comment": "Class = \"NSTextFieldCell\"; placeholderString = \"Search for sessions, profiles, or arrangements\"; ObjectID = \"ulN-O0-L4B\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Search for sessions, profiles, or arrangements"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "搜索会话、配置文件或布局"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "搜索会话、配置文件或布局"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "搜索会话、配置文件或布局"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "搜尋工作階段、設定檔或配置"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "搜尋工作階段、設定檔或配置"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "搜尋工作階段、設定檔或配置"
+                    }
+                }
+            }
+        }
+    },
+    "version": "1.1"
+}

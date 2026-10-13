@@ -19,7 +19,7 @@ class TypingIndicatorCellView: NSView {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) has not been implemented")
+        it_fatalError(NSLocalizedString("init(coder:) has not been implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     private func setupViews() {

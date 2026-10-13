@@ -1,0 +1,6 @@
+/* AttributedStrings.strings - 繁體中文 */
+
+/* AttributedStringSaver.swift - 檔案儲存 */
+"There was a problem saving the file: %@" = "儲存檔案時發生問題：%@";
+"OK" = "好";
+"Could Not Save File" = "無法儲存檔案";

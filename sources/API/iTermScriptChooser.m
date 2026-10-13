@@ -46,7 +46,7 @@
         [_signButton setAction:@selector(didToggleSignButton:)];
         _signButton.translatesAutoresizingMaskIntoConstraints = NO;
         _signButton.buttonType = NSButtonTypeSwitch;
-        _signButton.title = @"Code-sign exported script using identity: ";
+        _signButton.title = NSLocalizedStringFromTableInBundle(@"Code-sign exported script using identity: ", @"APIFiles", [NSBundle bundleForClass:[self class]], @"代码签名按钮标题");
         [_signButton sizeToFit];
         [self addSubview:_signButton];
 
@@ -60,7 +60,7 @@
                                                                     locale:[NSLocale currentLocale]];
         [_identities enumerateObjectsUsingBlock:^(SIGIdentity * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *formattedDate = [dateFormatter stringFromDate:obj.signingCertificate.expirationDate];
-            NSString *title = [NSString stringWithFormat:@"%@, expires %@",
+            NSString *title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@, expires %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"证书菜单项标题"),
                                obj.signingCertificate.longDescription, formattedDate];
             NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:title
                                                               action:nil
@@ -74,7 +74,7 @@
         _launchButton.action = @selector(toggleAutoLaunch:);
         _launchButton.translatesAutoresizingMaskIntoConstraints = NO;
         _launchButton.buttonType = NSButtonTypeSwitch;
-        _launchButton.title = @"Offer to launch automatically during installation";
+        _launchButton.title = NSLocalizedStringFromTableInBundle(@"Offer to launch automatically during installation", @"APIFiles", [NSBundle bundleForClass:[self class]], @"自动启动按钮标题");
         _launchButton.state = NSControlStateValueOff;
         _launchButton.enabled = NO;
         [_launchButton sizeToFit];

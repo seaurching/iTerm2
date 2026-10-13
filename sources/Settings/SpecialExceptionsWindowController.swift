@@ -25,7 +25,7 @@ enum SpecialExceptionRangePreset: CaseIterable {
     var title: String {
         switch self {
         case .han:
-            return "Han (CJK Unified Ideographs)"
+            return NSLocalizedString("Han (CJK Unified Ideographs)", tableName: "Settings", comment: "汉字（CJK 统一表意文字）菜单项标题")
         case .hiraganaKatakana:
             return "Hiragana/Katakana"
         case .hangulSyllables:
@@ -35,7 +35,7 @@ enum SpecialExceptionRangePreset: CaseIterable {
         case .cyrillic:
             return "Cyrillic"
         case .greek:
-            return "Greek (Greek and Coptic)"
+            return NSLocalizedString("Greek (Greek and Coptic)", tableName: "Settings", comment: "希腊文（希腊文和科普特文）菜单项标题")
         case .privateUseArea:
             return "Private Use Area"
         }
@@ -142,32 +142,32 @@ class SpecialExceptionEntryEditorWindowController: NSWindowController, NSTextFie
         preview.textColor = .textColor
         switch checkedRange {
         case .ascii:
-            preview.string = "Start must be at least U+80. ASCII doesn’t support special exceptions."
+            preview.string = NSLocalizedString("Start must be at least U+80. ASCII doesn’t support special exceptions.", tableName: "Settings", comment: "Preview message when range starts in ASCII")
         case .incomplete:
             preview.string = ""
         case .inverted:
-            preview.string = "Invalid range."
+            preview.string = NSLocalizedString("Invalid range.", tableName: "Settings", comment: "Preview message when range is inverted")
         case .limitTooLarge:
-            preview.string = "End is higher than U+110000, the maximum Unicode code point."
+            preview.string = NSLocalizedString("End is higher than U+110000, the maximum Unicode code point.", tableName: "Settings", comment: "Preview message when end exceeds Unicode limit")
         case .taken:
-            preview.string = "Range includes an already-assigned code point."
+            preview.string = NSLocalizedString("Range includes an already-assigned code point.", tableName: "Settings", comment: "Preview message when range overlaps existing entry")
         case .invalidDestination:
-            preview.string = "Invalid destination"
+            preview.string = NSLocalizedString("Invalid destination", tableName: "Settings", comment: "Preview message when destination is invalid")
         case let .valid(source: sourceRange, destination: _):
             guard let familyName = affordance.familyName,
                   let font = NSFont(name: familyName, size: NSFont.systemFontSize) else {
-                preview.string = "No font selected."
+                preview.string = NSLocalizedString("No font selected.", tableName: "Settings", comment: "Preview message when no font is chosen")
                 return
             }
             if (!destinationIsValid(range: sourceRange)) {
-                preview.string = "Invalid destination."
+                preview.string = NSLocalizedString("Invalid destination.", tableName: "Settings", comment: "Preview message when destination is invalid")
                 return
             }
             let disallowed = IndexSet([9, 10, 13, 0xad, 0x200e, 0x200f, 0x200b, 0x200c])
             let combined = NSMutableAttributedString()
             for i in sourceRange {
                 if combined.length >= 1024 * 10 {
-                    combined.append(NSAttributedString(string: " [truncated]",
+                    combined.append(NSAttributedString(string: NSLocalizedString(" [truncated]", tableName: "Settings", comment: "Indicator that preview text was cut short"),
                                                        attributes: [
                                                         .foregroundColor: NSColor.textColor,
                                                         .font: NSFont.systemFont(ofSize: NSFont.systemFontSize)]))
@@ -478,16 +478,16 @@ final class SpecialExceptionsWindowController: NSWindowController {
 
     private func importString(_ content: String) {
         guard let newConfig = FontTable.Config(string: content) else {
-            showError("This file is not well formed. Is it from a newer version of iTerm2?")
+            showError(NSLocalizedString("This file is not well formed. Is it from a newer version of iTerm2?", tableName: "Settings", comment: "Error when imported file cannot be parsed"))
             return
         }
         guard newConfig.version <= FontTable.Config.latestKnownVersion else {
-            showError("This file is from a newer version of iTerm2 and cannot be loaded.")
+            showError(NSLocalizedString("This file is from a newer version of iTerm2 and cannot be loaded.", tableName: "Settings", comment: "Error when imported file is from a newer version"))
             return
         }
         let missing = missingFonts(newConfig)
         guard missing.isEmpty else {
-            showError("You must install the following fonts to use the exceptions in this file:\n\n\(missing.joined(separator: "\n"))")
+            showError(String(format: NSLocalizedString("You must install the following fonts to use the exceptions in this file:\n\n%@", tableName: "Settings", comment: "Error listing missing fonts needed by imported file"), missing.joined(separator: "\n")))
             return
         }
         crud.undoable {
@@ -521,11 +521,11 @@ final class SpecialExceptionsWindowController: NSWindowController {
 
     private func showError(_ message: String) {
         iTermWarning.show(withTitle: message,
-                          actions: ["OK"],
+                          actions: [NSLocalizedString("OK", tableName: "Settings", bundle: Bundle(for: SpecialExceptionsWindowController.self), comment: "")],
                           accessory: nil,
                           identifier: "SpecialExceptionsImportError",
                           silenceable: .kiTermWarningTypePersistent,
-                          heading: "Problem Importing Special Exceptions",
+                          heading: NSLocalizedString("Problem Importing Special Exceptions", tableName: "Settings", bundle: Bundle(for: SpecialExceptionsWindowController.self), comment: ""),
                           window: window)
     }
 
@@ -540,12 +540,13 @@ final class SpecialExceptionsWindowController: NSWindowController {
 
     @IBAction func installNerdFontBundle(_ sender: Any) {
         if !config.entries.isEmpty {
-            let selection = iTermWarning.show(withTitle: "This will replace existing special exceptions. Continue?",
-                                              actions: ["OK", "Cancel"],
+            let selection = iTermWarning.show(withTitle: NSLocalizedString("This will replace existing special exceptions. Continue?", tableName: "Settings", bundle: Bundle(for: SpecialExceptionsWindowController.self), comment: ""),
+                                              actions: [NSLocalizedString("OK", tableName: "Settings", bundle: Bundle(for: SpecialExceptionsWindowController.self), comment: ""),
+                                                        NSLocalizedString("Cancel", tableName: "Settings", bundle: Bundle(for: SpecialExceptionsWindowController.self), comment: "")],
                                               accessory: nil,
                                               identifier: "SpecialExceptionsInstallNerdBundleConfirmation",
                                               silenceable: .kiTermWarningTypePersistent,
-                                              heading: "Confirm",
+                                              heading: NSLocalizedString("Confirm", tableName: "Settings", bundle: Bundle(for: SpecialExceptionsWindowController.self), comment: ""),
                                               window: window)
             if selection == .kiTermWarningSelection1 {
                 return

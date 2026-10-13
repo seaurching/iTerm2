@@ -11,14 +11,14 @@
 extension Conductor: ConductorFileTransferDelegate {
     func beginDownload(fileTransfer: ConductorFileTransfer) {
         guard let path = fileTransfer.localPath() else {
-            fileTransfer.fail(reason: "No local path specified")
+            fileTransfer.fail(reason: NSLocalizedString("No local path specified", tableName: "SSH", comment: "conductor delegate: no local path error"))
             return
         }
         let remotePath = fileTransfer.path.path!
 
         FileManager.default.createFile(atPath: path, contents: nil, attributes: nil)
         guard let fileHandle = FileHandle(forUpdatingAtPath: path) else {
-            fileTransfer.fail(reason: "Could not open \(path)")
+            fileTransfer.fail(reason: String(format: NSLocalizedString("Could not open %@", tableName: "SSH", comment: "conductor delegate: could not open error"), path))
             return
         }
         Task {
@@ -52,7 +52,7 @@ extension Conductor: ConductorFileTransferDelegate {
         if info.kind == .folder {
             continuation.finish(
                 throwing: ConductorFileTransfer.ConductorFileTransferError(
-                    "Streaming downloads do not support folders"))
+                    NSLocalizedString("Streaming downloads do not support folders", tableName: "SSH", comment: "conductor delegate: streaming folders error")))
             return
         }
         var done = false
@@ -81,7 +81,7 @@ extension Conductor: ConductorFileTransferDelegate {
             let info = try await stat(remotePath)
             if info.kind == .folder {
                 if !allowDirectories {
-                    fileTransfer.fail(reason: "Transfer of directory at \(remotePath) not allowed")
+                    fileTransfer.fail(reason: String(format: NSLocalizedString("Transfer of directory at %@ not allowed", tableName: "SSH", comment: "conductor delegate: directory transfer not allowed"), remotePath))
                 }
                 await reallyDownloadFolder(info: info,
                                            fileTransfer: fileTransfer,
@@ -170,7 +170,7 @@ extension Conductor: ConductorFileTransferDelegate {
         }
 
         guard remoteFile.kind.isRegularFile else {
-            throw ConductorFileTransfer.ConductorFileTransferError("\(remoteFile.absolutePath) on \(sshIdentity.displayName) is not a regular file")
+            throw ConductorFileTransfer.ConductorFileTransferError(String(format: NSLocalizedString("%@ on %@ is not a regular file", tableName: "SSH", comment: "conductor delegate: not regular file error"), remoteFile.absolutePath, sshIdentity.displayName))
         }
 
         let scpPath = SCPPath()
@@ -269,7 +269,7 @@ extension Conductor: ConductorFileTransferDelegate {
                 offset: taskOffset,
                 task: Task { @MainActor in
                     if fileTransfer.isStopped {
-                        throw ConductorFileTransfer.ConductorFileTransferError("Canceled")
+                        throw ConductorFileTransfer.ConductorFileTransferError(NSLocalizedString("Canceled", tableName: "SSH", comment: "conductor delegate: canceled error"))
                     }
                     let data = try await conductor.downloadOneChunk(
                         remoteFile: remoteFile,
@@ -300,7 +300,7 @@ extension Conductor: ConductorFileTransferDelegate {
                 content.append(result)
                 if result.isEmpty && !tasks.isEmpty {
                     throw ConductorFileTransfer.ConductorFileTransferError(
-                        "Download ended prematurely (received \(content.count) of \(remoteFile.size!) byte\(remoteFile.size! == 1 ? "" : "s")")
+                        String(format: NSLocalizedString("Download ended prematurely (received %@ of %@ byte%@)", tableName: "SSH", comment: "conductor delegate: download premature error"), content.count, remoteFile.size!, remoteFile.size! == 1 ? "" : "s"))
                 }
             }
         }
@@ -354,7 +354,7 @@ extension Conductor: ConductorFileTransferDelegate {
             return
         }
         guard let path = fileTransfer.localPath() else {
-            fileTransfer.fail(reason: "No local filename specified")
+            fileTransfer.fail(reason: NSLocalizedString("No local filename specified", tableName: "SSH", comment: "conductor delegate: no local filename error"))
             return
         }
         Task {
@@ -402,7 +402,7 @@ extension Conductor: ConductorFileTransferDelegate {
                 proposedName = fileTransfer.path.path + " (\(i + 2))"
             }
             guard let remoteName else {
-                throw ConductorFileTransfer.ConductorFileTransferError("Too many iterations to find a valid file name on remote host for upload")
+                throw ConductorFileTransfer.ConductorFileTransferError(NSLocalizedString("Too many iterations to find a valid file name on remote host for upload", tableName: "SSH", comment: "conductor delegate: too many iterations error"))
             }
             fileTransfer.remoteName = remoteName
             // Rename the tempfile to the proper name

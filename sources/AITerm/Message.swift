@@ -465,18 +465,18 @@ struct Message: Codable {
             case .explanationResponse(_, _, let markdown):
                 return markdown.truncatedWithTrailingEllipsis(to: maxLength)
             case .remoteCommandRequest(let command, safe: _): return command.markdownDescription
-            case .selectSessionRequest: return "Selecting session…"
+            case .selectSessionRequest: return NSLocalizedString("Selecting session…", tableName: "AITermXC", comment: "正在选择会话…")
             case .clientLocal(let cl):
                 switch cl.action {
                 case .executingCommand(let command): return command.markdownDescription
-                case .pickingSession: return "Selecting session…"
+                case .pickingSession: return NSLocalizedString("Selecting session…", tableName: "AITermXC", comment: "正在选择会话…")
                 case .notice(let message): return message
                 case .streamingChanged(let state):
                     return switch state {
                     case .stopped, .stoppedAutomatically:
-                        "Stopped sending commands to AI"
+                        NSLocalizedString("Stopped sending commands to AI", tableName: "AITermXC", comment: "已停止向 AI 发送命令")
                     case .active:
-                        "Sending commands to AI automatically"
+                        NSLocalizedString("Sending commands to AI automatically", tableName: "AITermXC", comment: "正在自动向 AI 发送命令")
                     }
                 case .offerLink, .offerOrchestration, .permissions, .workgroupPermissionRequest,
                         .enableOrchestrationRequest, .orchestrationPermissionGranted:
@@ -488,9 +488,9 @@ struct Message: Codable {
             case .watcherEvent(let update):
                 return update.detail.truncatedWithTrailingEllipsis(to: maxLength)
             case .remoteCommandResponse:
-                return "Finished executing command"
+                return NSLocalizedString("Finished executing command", tableName: "AITermXC", comment: "已完成执行命令")
             case .terminalCommand(let cmd):
-                return "Ran `\(cmd.command.truncatedWithTrailingEllipsis(to: maxLength - 4))`"
+                return String(format: NSLocalizedString("Ran `%@`", tableName: "AITermXC", comment: "已运行 `%@`"), cmd.command.truncatedWithTrailingEllipsis(to: maxLength - 4))
             case .multipart(let subparts, _):
                 // Return the last substantive subpart's preview (shared with the
                 // companion's reply-preview classifier via Subpart.previewAndLabel).
@@ -499,7 +499,7 @@ struct Message: Codable {
                         return preview.text
                     }
                 }
-                return "Empty message"
+                return NSLocalizedString("Empty message", tableName: "AITermXC", comment: "空消息")
             }
         }
     }

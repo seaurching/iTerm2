@@ -30,7 +30,7 @@ class DateCellView: NSView {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) not implemented")
+        it_fatalError(NSLocalizedString("init(coder:) not implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     private func setupViews() {
@@ -92,7 +92,7 @@ class DateCellView: NSView {
     private static func humanReadableDate(from components: DateComponents) -> String {
         let calendar = Calendar.current
         guard let date = calendar.date(from: components) else {
-            return "Invalid date"
+            return NSLocalizedString("Invalid date", tableName: "AITermXC", comment: "无效日期")
         }
 
         let now = Date()
@@ -105,9 +105,9 @@ class DateCellView: NSView {
         let daysDifference = calendar.dateComponents([.day], from: dateStart, to: today).day ?? 0
 
         if daysDifference == 0 {
-            return "Today"
+            return NSLocalizedString("Today", tableName: "AITermXC", comment: "今天")
         } else if daysDifference == 1 {
-            return "Yesterday"
+            return NSLocalizedString("Yesterday", tableName: "AITermXC", comment: "昨天")
         } else if daysDifference > 1 && daysDifference < 7 {
             formatter.dateFormat = "EEEE" // Full weekday name
         } else if daysDifference >= 7 && calendar.component(.year, from: date) == calendar.component(.year, from: now) {

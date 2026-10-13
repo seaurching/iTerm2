@@ -20,15 +20,15 @@
 
 + (NSString *)title
 {
-    return @"Show Alert…";
+    return NSLocalizedStringFromTableInBundle(@"Show Alert…", @"Triggers", [NSBundle bundleForClass:[self class]], @"警告触发器标题");
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-    return @"Enter text to show in alert";
+    return NSLocalizedStringFromTableInBundle(@"Enter text to show in alert", @"Triggers", [NSBundle bundleForClass:[self class]], @"占位符：输入警告文本");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Show alert “%@”", self.param];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Show alert “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"警告触发器描述"), self.param];
 }
 
 - (BOOL)takesParameter

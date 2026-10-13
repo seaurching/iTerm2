@@ -108,22 +108,22 @@ static NSString *const iTermSavePanelLoggingStyleUserDefaultsKey = @"NoSyncLoggi
         button = [[NSPopUpButton alloc] init];
         NSMenuItem *item;
         {
-            item = [[NSMenuItem alloc] initWithTitle:@"Raw data" action:nil keyEquivalent:@""];
+            item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Raw data", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: raw data log format menu item") action:nil keyEquivalent:@""];
             item.tag = iTermLoggingStyleRaw;
             [button.menu addItem:item];
         }
         {
-            item = [[NSMenuItem alloc] initWithTitle:@"Plain text" action:nil keyEquivalent:@""];
+            item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Plain text", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: plain text log format menu item") action:nil keyEquivalent:@""];
             item.tag = iTermLoggingStylePlainText;
             [button.menu addItem:item];
         }
         {
-            item = [[NSMenuItem alloc] initWithTitle:@"HTML" action:nil keyEquivalent:@""];
+            item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"HTML", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: HTML log format menu item") action:nil keyEquivalent:@""];
             item.tag = iTermLoggingStyleHTML;
             [button.menu addItem:item];
         }
         {
-            item = [[NSMenuItem alloc] initWithTitle:@"ASCIInema" action:nil keyEquivalent:@""];
+            item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"ASCIInema", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: ASCIInema log format menu item") action:nil keyEquivalent:@""];
             item.tag = iTermLoggingStyleAsciicast;
             [button.menu addItem:item];
         }
@@ -323,19 +323,18 @@ typedef NS_ENUM(NSUInteger, iTermSavePanelAction) {
     NSString *location = @"";
     NSString *directory = [self.item.filename stringByDeletingLastPathComponent];
     if ([directory isEqualToString:self.item.host.homeDirectory]) {
-        location = @" in your home directory";
+        location = NSLocalizedStringFromTableInBundle(@" in your home directory", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: home directory location fragment");
     } else if (self.item.host.isLocalhost && [directory isEqualToString:[[NSFileManager defaultManager] desktopDirectory]]) {
-        location = @" on the Desktop";
+        location = NSLocalizedStringFromTableInBundle(@" on the Desktop", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: desktop location fragment");
     }
 
     NSString *heading =
-    [NSString stringWithFormat:@"“%@” already exists. Do you want to replace it or append to it?",
+    [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"“%@” already exists. Do you want to replace it or append to it?", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: file exists heading"),
      [self.item.filename lastPathComponent]];
-    NSString *body = [NSString stringWithFormat:@"A file or folder with the same name already exists%@. "
-                      @"Replacing it will overwrite its current contents.",
+    NSString *body = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"A file or folder with the same name already exists%@. Replacing it will overwrite its current contents.", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: file exists body"),
                       location];
     iTermWarningSelection selection = [iTermWarning showWarningWithTitle:body
-                                                                 actions:@[ @"Cancel", @"Replace", @"Append" ]
+                                                                 actions:@[ NSLocalizedStringFromTableInBundle(@"Cancel", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: file exists cancel button"), NSLocalizedStringFromTableInBundle(@"Replace", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: file exists replace button"), NSLocalizedStringFromTableInBundle(@"Append", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: file exists append button") ]
                                                                accessory:nil
                                                               identifier:nil
                                                              silenceable:kiTermWarningTypePersistent
@@ -404,14 +403,14 @@ typedef NS_ENUM(NSUInteger, iTermSavePanelAction) {
     if ([proposedExtension isEqualToString:self.requiredExtension]) {
         return YES;
     }
-    iTermWarningSelection selection = [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"You can choose to use both, so that your file name ends in “.%@.%@”.", proposedExtension, _requiredExtension]
-                                                                 actions:@[ [NSString stringWithFormat:@"Use .%@", _requiredExtension],
-                                                                            @"Cancel",
-                                                                            @"Use both" ]
+    iTermWarningSelection selection = [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"You can choose to use both, so that your file name ends in “.%@.%@”.", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: use both extensions title"), proposedExtension, _requiredExtension]
+                                                                 actions:@[ [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Use .%@", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: use required extension button"), _requiredExtension],
+                                                                            NSLocalizedStringFromTableInBundle(@"Cancel", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: wrong extension cancel button"),
+                                                                            NSLocalizedStringFromTableInBundle(@"Use both", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: use both extensions button") ]
                                                                accessory:nil
                                                               identifier:nil
                                                              silenceable:kiTermWarningTypePersistent
-                                                                 heading:[NSString stringWithFormat:@"You cannot save this document with extension “.%@” at the end of the name. The required extension is “.%@”.",
+                                                                 heading:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"You cannot save this document with extension “.%@” at the end of the name. The required extension is “.%@”.", @"OpenSavePanels", [NSBundle bundleForClass:[self class]], @"OpenSavePanels: wrong extension heading"),
                                                                           proposedExtension, _requiredExtension]
                                                                   window:nil];
     switch (selection) {

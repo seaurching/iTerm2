@@ -328,7 +328,7 @@ final class CompanionHostBridge {
             if case .hello(let revision, let minimumPeer) = envelope.payload {
                 handleHello(peerRevision: revision, peerMinimumPeer: minimumPeer, requestID: requestID)
             } else {
-                send(.error(CompanionError(code: .badRequest, message: "Companion app upgrade required")),
+                send(.error(CompanionError(code: .badRequest, message: NSLocalizedString("Companion app upgrade required", tableName: "Companion", comment: "Peer upgrade required error"))),
                      requestID: requestID)
             }
             return
@@ -349,7 +349,7 @@ final class CompanionHostBridge {
             // envelope still decoded, so reply with a correlated error rather than
             // dropping it silently.
             RLog("Companion bridge: unsupported client message (peer is newer)")
-            send(.error(CompanionError(code: .badRequest, message: "Unsupported request; app upgrade required")),
+            send(.error(CompanionError(code: .badRequest, message: NSLocalizedString("Unsupported request; app upgrade required", tableName: "Companion", comment: "Unsupported message error"))),
                  requestID: requestID)
         case .hello(let revision, let minimumPeer):
             handleHello(peerRevision: revision, peerMinimumPeer: minimumPeer, requestID: requestID)
@@ -877,7 +877,7 @@ final class CompanionHostBridge {
                                           requestID: UInt64?) {
         guard params.supportedCodecs.contains(.hevc) else {
             send(.error(CompanionError(code: .badRequest,
-                                       message: "No supported video codec (HEVC required)")),
+                                       message: NSLocalizedString("No supported video codec (HEVC required)", tableName: "Companion", comment: "No codec error"))),
                  requestID: requestID)
             return
         }
@@ -1021,7 +1021,7 @@ final class CompanionHostBridge {
                               mode: CompanionNewChatMode,
                               requestID: UInt64?) {
         guard let client = ChatClient.instance else {
-            send(.error(CompanionError(code: .notPaired, message: "Chat system unavailable")),
+            send(.error(CompanionError(code: .notPaired, message: NSLocalizedString("Chat system unavailable", tableName: "Companion", comment: "Chat system error"))),
                  requestID: requestID)
             return
         }
@@ -1052,7 +1052,7 @@ final class CompanionHostBridge {
             if let entry = entry(forChatID: chatID) {
                 send(.chatCreated(entry: entry), requestID: requestID)
             } else {
-                send(.error(CompanionError(code: .internalError, message: "Chat was not created")),
+                send(.error(CompanionError(code: .internalError, message: NSLocalizedString("Chat was not created", tableName: "Companion", comment: "Chat creation error"))),
                      requestID: requestID)
             }
         } catch {
@@ -1191,13 +1191,13 @@ final class CompanionHostBridge {
         // still recognized as solicited.
         guard let roomSecret = CompanionMacIdentity.pairedRoomSecret() else {
             RLog("Companion bridge: messagesSince -> error (no room secret stored)")
-            send(.error(CompanionError(code: .internalError, message: "No room secret stored")),
+            send(.error(CompanionError(code: .internalError, message: NSLocalizedString("No room secret stored", tableName: "Companion", comment: "No room secret error"))),
                  requestID: requestID)
             return
         }
         guard let model = ChatListModel.instance, let db = ChatDatabase.instance else {
             RLog("Companion bridge: messagesSince -> error (chat system unavailable)")
-            send(.error(CompanionError(code: .internalError, message: "Chat system unavailable")),
+            send(.error(CompanionError(code: .internalError, message: NSLocalizedString("Chat system unavailable", tableName: "Companion", comment: "Chat system error"))),
                  requestID: requestID)
             return
         }
@@ -1227,7 +1227,7 @@ final class CompanionHostBridge {
         // chat-DB rewind (seq > maxSeq) and force the phone's watermark to 0.
         guard let probe = db.messagesSince(chatID: chat.id, sinceSeq: seq, windowLimit: windowLimit) else {
             RLog("Companion bridge: messagesSince -> error (chat database query failed)")
-            send(.error(CompanionError(code: .internalError, message: "Chat database unavailable")),
+            send(.error(CompanionError(code: .internalError, message: NSLocalizedString("Chat database unavailable", tableName: "Companion", comment: "Chat database error"))),
                  requestID: requestID)
             return
         }
@@ -1244,7 +1244,7 @@ final class CompanionHostBridge {
         if reset {
             guard let refetched = db.messagesSince(chatID: chat.id, sinceSeq: 0, windowLimit: windowLimit) else {
                 RLog("Companion bridge: messagesSince -> error (reset re-fetch failed)")
-                send(.error(CompanionError(code: .internalError, message: "Chat database unavailable")),
+                send(.error(CompanionError(code: .internalError, message: NSLocalizedString("Chat database unavailable", tableName: "Companion", comment: "Chat database error"))),
                      requestID: requestID)
                 return
             }
@@ -1298,7 +1298,7 @@ final class CompanionHostBridge {
         }
 
         guard let model = ChatListModel.instance, let db = ChatDatabase.instance else {
-            serveError("Chat system unavailable")
+            serveError(NSLocalizedString("Chat system unavailable", tableName: "Companion", comment: "Chat system error"))
             return
         }
 
@@ -1315,7 +1315,7 @@ final class CompanionHostBridge {
         guard let probe = db.messagesSinceGlobal(sinceSeq: max(messageSeq, 0),
                                                  windowLimit: messageWindow,
                                                  ascending: !firstRun) else {
-            serveError("Chat database unavailable")
+            serveError(NSLocalizedString("Chat database unavailable", tableName: "Companion", comment: "Chat database error"))
             return
         }
         let globalMessageTip = probe.maxSeq
@@ -1348,7 +1348,7 @@ final class CompanionHostBridge {
         // --- Alerts (oldest-first drain; window >= store prune cap, so the window
         // never truncates and no alert is skipped past the floor). ---
         guard let alertProbe = db.alertsSince(sinceSeq: max(alertSeq, 0), limit: windowLimit) else {
-            serveError("Alert store unavailable")
+            serveError(NSLocalizedString("Alert store unavailable", tableName: "Companion", comment: "Alert store error"))
             return
         }
         let globalAlertTip = alertProbe.maxSeq
@@ -1535,7 +1535,21 @@ final class CompanionHostBridge {
             let name = session?.name ?? guid
             try ChatClient.instance?.publishNotice(
                 chatID: chatID,
-                notice: "This chat has been linked to \(terminal ? "terminal" : "browser") session “\(name)”.")
+                notice: String(
+                    format:
+                        NSLocalizedString(
+                            "This chat has been linked to %@ session “%@”.",
+                            tableName: "Companion",
+                            comment: "Chat linked notice"
+                        ),
+                    	NSLocalizedString(
+                            terminal ? "terminal" : "browser",
+                            tableName: "Companion",
+                            comment: "Session type word"
+                        ),
+                    name
+                )
+            )
             RLog("Companion bridge: linked \(terminal ? "terminal" : "browser") session \(guid) to chat \(chatID)")
         } catch {
             RLog("Companion bridge: linkSession failed: \(error)")
@@ -1551,7 +1565,7 @@ final class CompanionHostBridge {
             inChat: chatID,
             requestUUID: requestUUID,
             message: text,
-            functionCallName: message.functionCallName ?? "Unknown function call name",
+            functionCallName: message.functionCallName ?? NSLocalizedString("Unknown function call name", tableName: "Companion", comment: "Unknown function call fallback"),
             functionCallID: message.functionCallID,
             userNotice: nil)
     }
@@ -1570,7 +1584,7 @@ final class CompanionHostBridge {
             declineRemoteCommand(chatID: chatID,
                                  requestUUID: originalMessage.uniqueID,
                                  message: originalMessage,
-                                 text: "The user declined to allow this function call to execute.")
+                                 text: NSLocalizedString("The user declined to allow this function call to execute.", tableName: "Companion", comment: "Function call denied notice"))
         }
     }
 
@@ -1609,16 +1623,42 @@ final class CompanionHostBridge {
             declineRemoteCommand(chatID: chatID,
                                  requestUUID: messageUniqueID,
                                  message: message,
-                                 text: "The user declined to allow this function call to execute.")
+                                 text: NSLocalizedString("The user declined to allow this function call to execute.", tableName: "Companion", comment: "Function call denied notice"))
         case .allowOnce, .allowAlways:
             guard let guid,
                   let session = iTermController.sharedInstance().anySession(forReference: guid) else {
-                try? client.publishNotice(chatID: chatID,
-                                          notice: "This chat is not linked to any \(browser ? "web browser" : "terminal") session.")
-                declineRemoteCommand(chatID: chatID,
-                                     requestUUID: messageUniqueID,
-                                     message: message,
-                                     text: "The user did not link a \(browser ? "web browser" : "terminal") session to chat, so the function could not be run.")
+                try? client.publishNotice(
+                    chatID: chatID,
+                    notice: String(
+                        format: NSLocalizedString(
+                            "This chat is not linked to any %@ session.",
+                            tableName: "Companion",
+                            comment: "Chat unlinked notice"
+                        ),
+                        NSLocalizedString(
+                            browser ? "web browser" : "terminal",
+                            tableName: "Companion",
+                            comment: "Session type word"
+                        )
+                    )
+                )
+                declineRemoteCommand(
+                    chatID: chatID,
+                    requestUUID: messageUniqueID,
+                    message: message,
+                    text: String(
+                        format: NSLocalizedString(
+                            "The user did not link a %@ session to chat, so the function could not be run.",
+                            tableName: "Companion",
+                            comment: "Unlinked run failure"
+                        ),
+                        NSLocalizedString(
+                            browser ? "web browser" : "terminal",
+                            tableName: "Companion",
+                            comment: "Session type word"
+                        )
+                    )
+                )
                 return
             }
             if decision == .allowAlways {
@@ -1657,13 +1697,13 @@ final class CompanionHostBridge {
         guard let session = iTermController.sharedInstance().anySession(forReference: guid),
               let textview = session.textview else {
             send(.error(CompanionError(code: .unknownSession,
-                                       message: "That session no longer exists. It may have been closed.")),
+                                       message: NSLocalizedString("That session no longer exists. It may have been closed.", tableName: "Companion", comment: "Session gone error"))),
                  requestID: requestID)
             return nil
         }
         guard textview.frame.width > 0 else {
             send(.error(CompanionError(code: .unknownSession,
-                                       message: "That session hasn’t started running yet, so there is nothing to show.")),
+                                       message: NSLocalizedString("That session hasn’t started running yet, so there is nothing to show.", tableName: "Companion", comment: "Session not started error"))),
                  requestID: requestID)
             return nil
         }
@@ -1706,7 +1746,7 @@ final class CompanionHostBridge {
         let count = min(min(lineCount, Self.maxContentLines), totalLines - first)
         guard count > 0 else {
             send(.error(CompanionError(code: .badRequest,
-                                       message: "The requested lines are out of range.")),
+                                       message: NSLocalizedString("The requested lines are out of range.", tableName: "Companion", comment: "Lines out of range error"))),
                  requestID: requestID)
             return
         }
@@ -1734,14 +1774,14 @@ final class CompanionHostBridge {
                                                showCursor: false) else {
             RLog("Companion bridge: render failed for \(guid): wasDetached=\(wasDetached) lines=\(totalLines) frame=\(NSStringFromRect(textview.frame))")
             send(.error(CompanionError(code: .internalError,
-                                       message: "Rendering the session content failed.")),
+                                       message: NSLocalizedString("Rendering the session content failed.", tableName: "Companion", comment: "Render failure error"))),
                  requestID: requestID)
             return
         }
         let pngData = image.dataForFile(of: .png)
         guard !pngData.isEmpty else {
             send(.error(CompanionError(code: .internalError,
-                                       message: "Encoding the session content failed.")),
+                                       message: NSLocalizedString("Encoding the session content failed.", tableName: "Companion", comment: "Encode failure error"))),
                  requestID: requestID)
             return
         }
@@ -1766,7 +1806,7 @@ final class CompanionHostBridge {
               let session = iTermController.sharedInstance().anySession(forReference: context.guid),
               let textview = session.textview else {
             RLog("Companion historyTile FAIL: no such stream \(streamID)")
-            send(.error(CompanionError(code: .badRequest, message: "No such stream.")), requestID: requestID)
+            send(.error(CompanionError(code: .badRequest, message: NSLocalizedString("No such stream.", tableName: "Companion", comment: "No such stream error"))), requestID: requestID)
             return
         }
         let overflow = session.screen.totalScrollbackOverflow()
@@ -1798,7 +1838,7 @@ final class CompanionHostBridge {
                                                showCursor: false,
                                                includeSelection: true) else {
             RLog("Companion historyTile FAIL render covered=[\(covered.absLine),+\(covered.count)) rel=\(relativeFirst) total=\(total) detached=\(wasDetached) frame=\(NSStringFromRect(textview.frame))")
-            send(.error(CompanionError(code: .internalError, message: "Rendering the session content failed.")),
+            send(.error(CompanionError(code: .internalError, message: NSLocalizedString("Rendering the session content failed.", tableName: "Companion", comment: "Render failure error"))),
                  requestID: requestID)
             return
         }
@@ -1815,7 +1855,7 @@ final class CompanionHostBridge {
         guard let instance = iTermWorkgroupController.instance.allInstances
             .first(where: { $0.instanceUniqueIdentifier == workgroupID }) else {
             send(.error(CompanionError(code: .unknownSession,
-                                       message: "That workgroup no longer exists.")),
+                                       message: NSLocalizedString("That workgroup no longer exists.", tableName: "Companion", comment: "Workgroup gone error"))),
                  requestID: requestID)
             return
         }
@@ -1841,7 +1881,7 @@ final class CompanionHostBridge {
         let rawName = instance.workgroup.name
         send(.workgroupInfo(CompanionWorkgroupInfo(
             workgroupID: workgroupID,
-            name: rawName.isEmpty ? "Untitled workgroup" : rawName,
+            name: rawName.isEmpty ? NSLocalizedString("Untitled workgroup", tableName: "Companion", comment: "Untitled workgroup fallback") : rawName,
             members: members)),
              requestID: requestID)
     }

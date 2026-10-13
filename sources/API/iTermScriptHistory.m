@@ -35,7 +35,7 @@ static NSDateFormatter *gScriptHistoryDateFormatter;
     static id instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[self alloc] initWithName:@"iTerm2 App"
+        instance = [[self alloc] initWithName:NSLocalizedStringFromTableInBundle(@"iTerm2 App", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script history entry name")
                                      fullPath:nil
                                    identifier:@"iTerm2"
                                      relaunch:nil];
@@ -47,7 +47,7 @@ static NSDateFormatter *gScriptHistoryDateFormatter;
     static id instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[self alloc] initWithName:@"Automatic Profile Switching"
+        instance = [[self alloc] initWithName:NSLocalizedStringFromTableInBundle(@"Automatic Profile Switching", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script history entry name")
                                      fullPath:nil
                                    identifier:@"__APS"
                                      relaunch:nil];
@@ -59,7 +59,7 @@ static NSDateFormatter *gScriptHistoryDateFormatter;
     static id instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[self alloc] initWithName:@"Dynamic Profiles"
+        instance = [[self alloc] initWithName:NSLocalizedStringFromTableInBundle(@"Dynamic Profiles", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script history entry name")
                                      fullPath:nil
                                    identifier:@"__DP"
                                      relaunch:nil];
@@ -77,7 +77,7 @@ static NSDateFormatter *gScriptHistoryDateFormatter;
     if (entry) {
         return entry;
     }
-    entry = [[self alloc] initWithName:[NSString stringWithFormat:@"Web Browser %@", identifier]
+    entry = [[self alloc] initWithName:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Web Browser %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script history entry name for a web browser"), identifier]
                               fullPath:nil
                             identifier:[@"__WB_" stringByAppendingString:identifier]
                               relaunch:nil];
@@ -89,7 +89,7 @@ static NSDateFormatter *gScriptHistoryDateFormatter;
     static id instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[self alloc] initWithName:@"Smart Selection Actions"
+        instance = [[self alloc] initWithName:NSLocalizedStringFromTableInBundle(@"Smart Selection Actions", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script history entry name")
                                      fullPath:nil
                                    identifier:@"__SSA"
                                      relaunch:nil];
@@ -155,7 +155,7 @@ static NSDateFormatter *gScriptHistoryDateFormatter;
 }
 
 - (void)addClientOriginatedRPC:(NSString *)rpc {
-    NSString *string = [NSString stringWithFormat:@"Script → iTerm2 %@:\n%@\n", [gScriptHistoryDateFormatter stringFromDate:[NSDate date]], rpc];
+    NSString *string = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Script → iTerm2 %@:\n%@\n", @"APIFiles", [NSBundle bundleForClass:[self class]], @"脚本日志"), [gScriptHistoryDateFormatter stringFromDate:[NSDate date]], rpc];
     [self appendCalls:string];
     [[NSNotificationCenter defaultCenter] postNotificationName:iTermScriptHistoryEntryDidChangeNotification
                                                         object:self
@@ -164,7 +164,7 @@ static NSDateFormatter *gScriptHistoryDateFormatter;
 }
 
 - (void)addServerOriginatedRPC:(NSString *)rpc {
-    NSString *string = [NSString stringWithFormat:@"Script ← iTerm2 %@:\n%@\n", [gScriptHistoryDateFormatter stringFromDate:[NSDate date]], rpc];
+    NSString *string = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Script ← iTerm2 %@:\n%@\n", @"APIFiles", [NSBundle bundleForClass:[self class]], @"脚本日志"), [gScriptHistoryDateFormatter stringFromDate:[NSDate date]], rpc];
     [self appendCalls:string];
     [[NSNotificationCenter defaultCenter] postNotificationName:iTermScriptHistoryEntryDidChangeNotification
                                                         object:self

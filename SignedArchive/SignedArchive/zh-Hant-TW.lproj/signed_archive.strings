@@ -1,0 +1,105 @@
+/* signed_archive.strings - 繁體中文（台灣） */
+
+/* extract/main.m */
+"%@ error code %@" = "%@ 錯誤，代碼 %@";
+"Destination filename malformed." = "目標檔案名稱格式錯誤。";
+"Verification failed for an unknown reason" = "驗證失敗，原因未知";
+"Usage: extract file.in file.out" = "用法：extract 輸入檔案 輸出檔案";
+
+/* resign/main.m */
+"Using identity %@" = "正在使用身份 %@";
+"Failed to load %@: %@" = "載入 %@ 失敗：%@";
+"Could not realize input stream from %@: %@" = "無法從 %@ 建立輸入流：%@";
+"Could not create temporary file in %@" = "無法在 %@ 中建立暫存檔案";
+"Could not create output stream to write to %@" = "無法建立輸出流寫入 %@";
+"Error %@ reading from %@" = "從 %@ 讀取時出錯：%@";
+"Error %@ while writing to %@" = "寫入 %@ 時出錯：%@";
+"Could not extract from %@" = "無法從 %@ 中擷取";
+"No identity found" = "未找到簽名身份";
+"Signing error: %@" = "簽名錯誤：%@";
+"Warning: While deleting temp file %@: %@" = "警告：刪除暫存檔案 %@ 時出錯：%@";
+"While moving temp file %@ over input file %@: %@" = "將暫存檔案 %@ 移動覆蓋輸入檔案 %@ 時出錯：%@";
+"Usage: resign filename.in identity filename.out" = "用法：resign 輸入檔案 身份 輸出檔案";
+"       resign -m identity file [file...]" = "       resign -m 身份 檔案 [檔案...]";
+
+/* sign/main.m */
+"Usage: sign filename.in identity filename.out" = "用法：sign 輸入檔案 身份 輸出檔案";
+
+/* verify/main.m */
+"    The following certificates were found:" = "    找到以下憑證：";
+"Unknown" = "未知";
+"       Certificate \"%@\"" = "       憑證 \"%@\"";
+" [signing cert]" = " [簽名憑證]";
+", issued by \"%@\"" = "，由 \"%@\" 頒發";
+"    Metadata:" = "    元資料：";
+"    Payload length: %@" = "    有效負載長度： %@";
+"Usage: verify [-v] [-2] file [file...]" = "用法：verify [-v] [-2] 檔案 [檔案...]";
+"ok" = "正常";
+
+/* SIGArchiveBuilder.m */
+"Could not create write stream" = "無法建立寫入流";
+"Error checking file size" = "檢查檔案大小時出錯";
+
+/* SIGArchiveChunk.m */
+"Failed to create chunk object" = "建立資料區塊物件失敗";
+"Short read" = "讀取不完整";
+"Uncaught read failure" = "未捕獲的讀取失敗";
+"File changed during signing" = "檔案在簽名過程中被修改";
+"Short write" = "寫入不完整";
+"Error reading file" = "讀取檔案時出錯";
+"File changed while reading" = "檔案在讀取過程中被修改";
+"Error writing to file" = "寫入檔案時出錯";
+
+/* SIGArchiveReader.m */
+"Failed to get size of input file" = "取得輸入檔案大小失敗";
+"Error opening file" = "開啟檔案時出錯";
+
+/* SIGArchiveVerifier.m */
+"Application error: archive not verified" = "應用程式錯誤：封存未驗證";
+"Algorithm \"%@\" not supported" = "不支援的演算法 \"%@\"";
+"Could not create archive reader" = "無法建立封存讀取器";
+
+/* SIGCertificate.m */
+"Failed to get root certs: %@" = "取得根憑證失敗：%@";
+"Failed to get certificate: %@" = "取得憑證失敗：%@";
+
+/* SIGError.m */
+"Inconsistency discovered" = "發現資料不一致";
+"Error writing destination file" = "寫入目標檔案時出錯";
+"Error reading source file" = "讀取來源檔案時出錯";
+"No private key found" = "未找到私鑰";
+"No certificate found" = "未找到憑證";
+"No metadata found" = "未找到元資料";
+"No signature found" = "未找到簽名";
+"No payload found" = "未找到有效負載";
+"No header found" = "未找到檔案標頭";
+"Could not create algorithm" = "無法建立演算法";
+"This file is from a newer version of this app and cannot be loaded. Please upgrade and try again" = "此檔案來自更高版本的應用程式，無法載入。請升級後重試";
+"Metadata chunk malformed" = "元資料區塊格式錯誤";
+"This file is in an older format that is no longer supported because its authenticity cannot be guaranteed. It cannot be opened by this version of the app" = "此檔案使用了已不再支援的舊格式，因為無法保證其真實性，當前版本的應用程式無法開啟";
+"Header chunk malformed" = "檔案標頭區塊格式錯誤";
+"Unsupported algorithm" = "不支援的演算法";
+"Unknown or unexpected error" = "未知或意外錯誤";
+"Input file malformed" = "輸入檔案格式錯誤";
+"Malformed certificate" = "憑證格式錯誤";
+"Error creating trust object" = "建立信任物件時出錯";
+"Trust chain verification failed by user preference" = "信任鏈驗證因使用者設定而失敗";
+"Trust chain verification internal error" = "信任鏈驗證內部錯誤";
+"Trust chain verification failed" = "信任鏈驗證失敗";
+"Signature does not match payload" = "簽名與有效負載不相符";
+"Unknown error" = "未知錯誤";
+
+/* SIGIdentity.m */
+"Unable to create keychain search: %d" = "無法建立鑰匙圈搜尋：%d";
+
+/* SIGSHA2SigningAlgorithm.m */
+"Error reading input stream" = "讀取輸入流時出錯";
+"Key does not support requested algorithm" = "金鑰不支援請求的演算法";
+"Signing failed" = "簽名失敗";
+
+/* SIGSHA2VerificationAlgorithm.m */
+"Error reading payload stream" = "讀取有效負載流時出錯";
+"Signature verification failed" = "簽名驗證失敗";
+
+/* SIGTrust.m */
+"Failed to evaluate certificate chain" = "評估憑證鏈失敗";

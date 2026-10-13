@@ -105,7 +105,7 @@ struct LLMProvider {
             return "Llama"
         }
 
-        return "Unknown Platform"
+        return NSLocalizedString("Unknown Platform", tableName: "AITermXC", comment: "")
     }
 
     var dynamicModelsSupported: Bool {
@@ -338,7 +338,7 @@ struct LLMProvider {
         case .appleIntelligence:
             // On-device; AITermController handles the response directly and
             // never parses HTTP data for this provider.
-            it_fatalError("Apple Intelligence does not parse HTTP responses")
+            it_fatalError(NSLocalizedString("Apple Intelligence does not parse HTTP responses", tableName: "AITermXC", comment: "Apple Intelligence 不解析 HTTP 响应"))
         @unknown default:
             it_fatalError()
         }

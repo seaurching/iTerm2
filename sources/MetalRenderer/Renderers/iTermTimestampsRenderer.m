@@ -123,7 +123,7 @@
         key.width = visibleWidth;
         key.textColor = textColor;
         key.backgroundColor = backgroundColor;
-        key.string = [self->_drawHelper rowIsRepeat:idx] ? @"(repeat)" : [self->_drawHelper stringForRow:idx];
+        key.string = [self->_drawHelper rowIsRepeat:idx] ? NSLocalizedStringFromTableInBundle(@"(repeat)", @"MetalRenderer", [NSBundle bundleForClass:[self class]], @"Metal timestamps: repeat row label") : [self->_drawHelper stringForRow:idx];
         block(idx,
               key,
               NSMakeRect(rightEdgePoints - visibleWidth,

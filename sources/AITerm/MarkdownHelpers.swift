@@ -110,17 +110,17 @@ extension LLM.Message.StatusUpdate {
     var displayMarkdownString: String {
         switch self {
         case .webSearchStarted:
-            "Searching the web…"
+            NSLocalizedString("Searching the web…", tableName: "AITermXC", comment: "正在搜索网页…")
         case .webSearchFinished(let query):
             if let query {
-                "Finished searching the web for **\(query.escapedForMarkdown)**."
+                String(format: NSLocalizedString("Finished searching the web for **%@**.", tableName: "AITermXC", comment: "已完成网页搜索：**%@**。"), query.escapedForMarkdown)
             } else {
-                "Finished searching the web."
+                NSLocalizedString("Finished searching the web.", tableName: "AITermXC", comment: "已完成网页搜索。")
             }
         case .codeInterpreterStarted:
-            "Executing code…"
+            NSLocalizedString("Executing code…", tableName: "AITermXC", comment: "正在执行代码…")
         case .codeInterpreterFinished:
-            "Finished executing code"
+            NSLocalizedString("Finished executing code", tableName: "AITermXC", comment: "代码执行完成")
         case .reasoningSummaryUpdate(let text): text
         case .multipart(let subparts):
             Self.subpartsForDisplay(subparts).map { $0.displayMarkdownString }.joined(separator: "\n")
@@ -157,7 +157,7 @@ private func AttributedStringForMessage(_ md: SwiftyMarkdown,
                                         didCopy: (() -> ())?) -> NSAttributedString {
     let attributedString = md.attributedString()
     if #available(macOS 11.0, *) {
-        let image = NSImage(systemSymbolName: SFSymbol.docOnDoc.rawValue, accessibilityDescription: "Copy")!
+        let image = NSImage(systemSymbolName: SFSymbol.docOnDoc.rawValue, accessibilityDescription: NSLocalizedString("Copy", tableName: "AITermXC", comment: "复制"))!
         let modified = attributedString.mutableCopy() as! NSMutableAttributedString
         var ranges = [NSRange]()
         let utf16String = attributedString.string.utf16
@@ -187,7 +187,7 @@ private func AttributedStringForMessage(_ md: SwiftyMarkdown,
                 modified.insertButton(withImage: DynamicImage(image: image, dark: .white, light: .black), at: range.location) { point in
                     NSPasteboard.general.declareTypes([.string], owner: NSApp)
                     NSPasteboard.general.setString(attributedString.string.substring(nsrange: range), forType: .string)
-                    ToastWindowController.showToast(withMessage: "Copied", duration: 1, screenCoordinate: point, pointSize: 12)
+                    ToastWindowController.showToast(withMessage: NSLocalizedString("Copied", tableName: "AITermXC", comment: "已复制"), duration: 1, screenCoordinate: point, pointSize: 12)
                     didCopy()
                 }
                 modified.insert(

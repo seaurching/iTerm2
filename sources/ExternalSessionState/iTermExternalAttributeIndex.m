@@ -737,28 +737,28 @@ static BOOL iTermDecodeDarkVariantTrailer(iTermTLVDecoder *decoder, VT100Termina
 
 // This is intended for users, so don't make it too wonky.
 - (NSString *)humanReadableDescription {
+    NSBundle *externalSessionStateBundle = [NSBundle bundleForClass:[self class]];
     NSMutableArray<NSString *> *parts = [NSMutableArray array];
     if (_hasUnderlineColor) {
-        [parts addObject:[NSString stringWithFormat:@"underline=%@",
-                          VT100TerminalColorValueDescription(_underlineColor, YES)]];
+        [parts addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"underline=%@", @"ExternalSessionState", externalSessionStateBundle, @"Context menu: underline color value"), VT100TerminalColorValueDescription(_underlineColor, YES)]];
     }
     if (_url) {
-        [parts addObject:@"URL"];
+        [parts addObject:NSLocalizedStringFromTableInBundle(@"URL", @"ExternalSessionState", externalSessionStateBundle, @"Context menu: cell has URL")];
     }
     if (_blockIDList) {
-        [parts addObject:@"block"];
+        [parts addObject:NSLocalizedStringFromTableInBundle(@"block", @"ExternalSessionState", externalSessionStateBundle, @"Context menu: cell has block ID")];
     }
     if (_dualModeForeground.valid) {
-        [parts addObject:@"dualFg"];
+        [parts addObject:NSLocalizedStringFromTableInBundle(@"dualFg", @"ExternalSessionState", externalSessionStateBundle, @"Context menu: cell has dual-mode foreground")];
     }
     if (_dualModeBackground.valid) {
-        [parts addObject:@"dualBg"];
+        [parts addObject:NSLocalizedStringFromTableInBundle(@"dualBg", @"ExternalSessionState", externalSessionStateBundle, @"Context menu: cell has dual-mode background")];
     }
     if (parts.count == 0) {
-        return @"none";
+        return NSLocalizedStringFromTableInBundle(@"none", @"ExternalSessionState", externalSessionStateBundle, @"Context menu: cell has no external attributes");
     }
     if (_controlCode.valid) {
-        [parts addObject:@"Control Code"];
+        [parts addObject:NSLocalizedStringFromTableInBundle(@"Control Code", @"ExternalSessionState", externalSessionStateBundle, @"Context menu: cell has control code")];
     }
     return [parts componentsJoinedByString:@","];
 }

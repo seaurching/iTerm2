@@ -77,12 +77,12 @@ static const CGFloat kHelpMargin = 5;
         if (@available(macOS 10.16, *)) {
             clear_.bezelStyle = NSBezelStyleRegularSquare;
             clear_.bordered = NO;
-            clear_.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolTrash) accessibilityDescription:@"Clear"];
+            clear_.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolTrash) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Clear", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool command history: clear button accessibility")];
             clear_.imagePosition = NSImageOnly;
             clear_.frame = NSMakeRect(0, 0, 22, 22);
         } else {
             [clear_ setButtonType:NSButtonTypeMomentaryPushIn];
-            [clear_ setTitle:@"Clear All"];
+            [clear_ setTitle:NSLocalizedStringFromTableInBundle(@"Clear All", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool command history: clear all button title fallback")];
             [clear_ setBezelStyle:NSBezelStyleSmallSquare];
             [clear_ sizeToFit];
         }
@@ -360,10 +360,10 @@ static const CGFloat kHelpMargin = 5;
 
 - (void)clear:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Erase Command History";
-    alert.informativeText = @"Command history for all hosts will be erased. Continue?";
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Cancel"];
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Erase Command History", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool command history: erase command history alert title");
+    alert.informativeText = NSLocalizedStringFromTableInBundle(@"Command history for all hosts will be erased. Continue?", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool command history: erase alert info");
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool command history: erase alert ok button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool command history: erase alert cancel button")];
     if ([alert runModal] == NSAlertFirstButtonReturn) {
         [[iTermShellHistoryController sharedInstance] eraseCommandHistory:YES directories:NO];
     }

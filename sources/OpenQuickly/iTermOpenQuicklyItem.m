@@ -143,7 +143,7 @@
 - (NSImage *)icon {
     if (@available(macOS 11, *)) {
         NSImageSymbolConfiguration *config = [NSImageSymbolConfiguration configurationWithPointSize:32 weight:NSFontWeightRegular];
-        NSImage *image = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolBookmark) accessibilityDescription:@"globe"];
+        NSImage *image = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolBookmark) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"globe", @"OpenQuickly", [NSBundle bundleForClass:[self class]], @"Open Quickly: globe accessibility")];
         image = [image imageWithSymbolConfiguration:config];
         image.size = NSMakeSize(32, 32);
         return image;
@@ -158,7 +158,7 @@
 - (NSImage *)icon {
     if (@available(macOS 11, *)) {
         NSImageSymbolConfiguration *config = [NSImageSymbolConfiguration configurationWithPointSize:32 weight:NSFontWeightRegular];
-        NSImage *image = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolGlobe) accessibilityDescription:@"globe"];
+        NSImage *image = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolGlobe) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"globe", @"OpenQuickly", [NSBundle bundleForClass:[self class]], @"Open Quickly: globe accessibility")];
         image = [image imageWithSymbolConfiguration:config];
         image.size = NSMakeSize(32, 32);
         return image;

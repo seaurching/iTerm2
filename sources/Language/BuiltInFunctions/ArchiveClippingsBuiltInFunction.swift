@@ -26,11 +26,11 @@ extension ArchiveClippingsBuiltInFunction: iTermBuiltInFunctionProtocol {
             context: .session,
             sideEffectsPlaceholder: "[archive_clippings]") { parameters, completion in
                 guard let sessionID = parameters[argSession] as? String else {
-                    completion(nil, error(message: "Missing session_id. This shouldn't happen so please report a bug."))
+                    completion(nil, error(message: NSLocalizedString("Missing session_id. This shouldn't happen so please report a bug.", tableName: "Language", comment: "Archive clippings error: missing session_id")))
                     return
                 }
                 guard let session = iTermController.sharedInstance().anySession(withGUID: sessionID) else {
-                    completion(nil, error(message: "No such session"))
+                    completion(nil, error(message: NSLocalizedString("No such session", tableName: "Language", comment: "Archive clippings error: no such session")))
                     return
                 }
                 // Mirror add_clipping's routing: a code-review workgroup peer

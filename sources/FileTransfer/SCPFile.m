@@ -151,7 +151,7 @@ static NSError *SCPFileError(NSString *description) {
 }
 
 - (NSString *)displayName {
-    return [NSString stringWithFormat:@"Secure copy\nUser name: %@\nHost: %@\nFile: %@", _path.username, _path.hostname, _path.path];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Secure copy\nUser name: %@\nHost: %@\nFile: %@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Display name: secure copy details"), _path.username, _path.hostname, _path.path];
 }
 
 - (NSString *)shortName {
@@ -175,7 +175,7 @@ static NSError *SCPFileError(NSString *description) {
 }
 
 - (NSString *)protocolName {
-    return @"secure copy";
+    return NSLocalizedStringFromTableInBundle(@"secure copy", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Protocol name: secure copy");
 }
 
 // This runs in a thread.
@@ -375,10 +375,10 @@ static NSError *SCPFileError(NSString *description) {
     RLog(@"performTransfer download=%@ agentAllowed=%@ path=%@ baseName=%@",
          @(isDownload), @(agentAllowed), self.path, baseName);
     if (!baseName) {
-        self.error = [NSString stringWithFormat:@"Invalid path: %@", self.path.path];
+        self.error = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Invalid path: %@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: invalid path"), self.path.path];
         [self performOnMainThread:^{
             [[FileTransferManager sharedInstance] transferrableFile:self
-                                     didFinishTransmissionWithError:SCPFileError(@"Invalid filename")];
+                                     didFinishTransmissionWithError:SCPFileError(NSLocalizedStringFromTableInBundle(@"Invalid filename", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: invalid filename"))];
         }];
         return;
     }
@@ -414,22 +414,22 @@ static NSError *SCPFileError(NSString *description) {
             // error. Should that ever change, this clause will not execute.
             theError = [NSError errorWithDomain:@"com.googlecode.iterm2"
                                            code:-1
-                                       userInfo:@{ NSLocalizedDescriptionKey: @"Could not connect." }];
+                                       userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Could not connect.", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: could not connect") }];
         }
-        self.error = [NSString stringWithFormat:@"Connection failed: %@",
+        self.error = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Connection failed: %@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: connection failed"),
                          theError.localizedDescription];
         [self performOnMainThread:^{
             [[FileTransferManager sharedInstance] transferrableFile:self
                                      didFinishTransmissionWithError:theError];
             iTermWarningSelection selection =
-                [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Failed to connect to %@:%d. Double-check that the host name is correct.", self.hostname, effectivePort]
-                                           actions:@[ @"Ok", @"Help" ]
+                [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Failed to connect to %@:%d. Double-check that the host name is correct.", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Warning: failed to connect, check hostname"), self.hostname, effectivePort]
+                                           actions:@[ NSLocalizedStringFromTableInBundle(@"Ok", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Button: ok"), NSLocalizedStringFromTableInBundle(@"Help", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Button: help") ]
                                      actionMapping:nil
                                          accessory:nil
                                         identifier:kSecureCopyConnectionFailedWarning
                                        silenceable:kiTermWarningTypePermanentlySilenceable
-                                           heading:@"Connection Failed"
-                                       cancelLabel:@"Help"
+                                           heading:NSLocalizedStringFromTableInBundle(@"Connection Failed", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Heading: connection failed")
+                                       cancelLabel:NSLocalizedStringFromTableInBundle(@"Help", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Button: help")
                                             window:nil];
             if (selection == kiTermWarningSelection1) {
                 [[NSWorkspace sharedWorkspace] it_openURL:[NSURL URLWithString:@"https://iterm2.com/troubleshoot-hostname"]
@@ -468,7 +468,7 @@ static NSError *SCPFileError(NSString *description) {
                 break;
             }
             if ([authType isEqualToString:@"password"]) {
-                NSString *password = [self keyboardInteractiveRequest:@"password"];
+                NSString *password = [self keyboardInteractiveRequest:NSLocalizedStringFromTableInBundle(@"password", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Prompt: password")];
                 if (self.stopped || !password) {
                     break;
                 }
@@ -513,10 +513,10 @@ static NSError *SCPFileError(NSString *description) {
                         if (keyIsEncrypted) {
                             NSString *prompt;
                             if (firstAttempt) {
-                                prompt = [NSString stringWithFormat:@"passphrase for private key “%@”:",
+                                prompt = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"passphrase for private key “%@”:", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Prompt: passphrase for private key"),
                                           keyPath];
                             } else {
-                                prompt = [NSString stringWithFormat:@"correct passphrase for “%@”:",
+                                prompt = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"correct passphrase for “%@”:", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Prompt: correct passphrase for key"),
                                           keyPath];
                             }
                             password = [self keyboardInteractiveRequest:prompt];
@@ -584,9 +584,9 @@ static NSError *SCPFileError(NSString *description) {
             if (!error) {
                 error = [NSError errorWithDomain:@"com.googlecode.iterm2.SCPFile"
                                             code:0
-                                        userInfo:@{ NSLocalizedDescriptionKey: @"Authentication failed." }];
+                                        userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Authentication failed.", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: authentication failed") }];
             }
-            self.error = @"Authentication error.";
+            self.error = NSLocalizedStringFromTableInBundle(@"Authentication error.", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: authentication error");
             [[FileTransferManager sharedInstance] transferrableFile:self
                                      didFinishTransmissionWithError:error];
         }];
@@ -610,11 +610,11 @@ static NSError *SCPFileError(NSString *description) {
             tempfile = [downloadDirectory stringByAppendingPathComponent:tempFileName];
         }
         if (!tempfile) {
-            self.error = [NSString stringWithFormat:@"Downloads folder not writable. Tried %@",
+            self.error = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Downloads folder not writable. Tried %@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: downloads folder not writable"),
                           downloadDirectory];
             [self performOnMainThread:^{
                 [[FileTransferManager sharedInstance] transferrableFile:self
-                                         didFinishTransmissionWithError:SCPFileError(@"Downloads folder not writable")];
+                                         didFinishTransmissionWithError:SCPFileError(NSLocalizedStringFromTableInBundle(@"Downloads folder not writable", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: downloads folder not writable"))];
             }];
             return;
         }
@@ -702,16 +702,16 @@ static NSError *SCPFileError(NSString *description) {
                 return;
             } else {
                 if (quarantineError) {
-                    self.error = @"Quarantine Error";
+                    self.error = NSLocalizedStringFromTableInBundle(@"Quarantine Error", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: quarantine error");
                 } else {
                     NSString *errorDescription = [[self lastError] localizedDescription];
                     if (errorDescription.length) {
                         self.error = errorDescription;
                     } else {
-                        self.error = @"Download failed";
+                        self.error = NSLocalizedStringFromTableInBundle(@"Download failed", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: download failed");
                     }
                 }
-                error = SCPFileError(@"Download failed");
+                error = SCPFileError(NSLocalizedStringFromTableInBundle(@"Download failed", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: download failed"));
             }
         }
         [self performOnMainThread:^{
@@ -760,9 +760,9 @@ static NSError *SCPFileError(NSString *description) {
                 if (errorDescription.length) {
                     self.error = errorDescription;
                 } else {
-                    self.error = @"Upload failed";
+                    self.error = NSLocalizedStringFromTableInBundle(@"Upload failed", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: upload failed");
                 }
-                error = SCPFileError(@"Upload failed");
+                error = SCPFileError(NSLocalizedStringFromTableInBundle(@"Upload failed", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: upload failed"));
             }
         }
         [self performOnMainThread:^{
@@ -810,12 +810,12 @@ static NSString *const SCPFileKnownHostsUserDefaultsKey = @"NoSyncKnownHosts";
 
 - (BOOL)shouldConnectToNewHostname {
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Connect to %@?", self.userHostPort]
-                               actions:@[ @"OK", @"Cancel" ]
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Connect to %@?", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Warning: connect to host"), self.userHostPort]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Button: OK"), NSLocalizedStringFromTableInBundle(@"Cancel", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Button: cancel") ]
                              accessory:nil
                             identifier:[@"NoSyncConnectTo_" stringByAppendingString:self.userHostPort]
                            silenceable:kiTermWarningTypePermanentlySilenceable
-                               heading:@"Connect to New Host?"
+                               heading:NSLocalizedStringFromTableInBundle(@"Connect to New Host?", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Heading: connect to new host")
                                 window:nil];
     return selection == kiTermWarningSelection0;
 }
@@ -835,9 +835,9 @@ static NSString *const SCPFileKnownHostsUserDefaultsKey = @"NoSyncKnownHosts";
     if (!self.hasPredecessor) {
         if (![self hostnameIsKnown]) {
             if (![self shouldConnectToNewHostname]) {
-                self.error = @"Canceled by user";
+                self.error = NSLocalizedStringFromTableInBundle(@"Canceled by user", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: canceled by user");
                 [[FileTransferManager sharedInstance] transferrableFile:self
-                                         didFinishTransmissionWithError:SCPFileError(@"Canceled by user")];
+                                         didFinishTransmissionWithError:SCPFileError(NSLocalizedStringFromTableInBundle(@"Canceled by user", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: canceled by user"))];
                 return;
             }
             [self addKnownHost];
@@ -884,7 +884,7 @@ static NSString *const SCPFileKnownHostsUserDefaultsKey = @"NoSyncKnownHosts";
     NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:self.localPath error:&attributesError];
     if (attributesError) {
         RLog(@"Failed to get attributes for %@: %@", self.localPath, attributesError);
-        self.error = [NSString stringWithFormat:@"Cannot read file: %@", attributesError.localizedDescription];
+        self.error = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Cannot read file: %@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: cannot read file"), attributesError.localizedDescription];
         [[FileTransferManager sharedInstance] transferrableFile:self
                                  didFinishTransmissionWithError:attributesError];
         return;
@@ -905,9 +905,9 @@ static NSString *const SCPFileKnownHostsUserDefaultsKey = @"NoSyncKnownHosts";
     if (!self.hasPredecessor) {
         if (![self hostnameIsKnown]) {
             if (![self shouldConnectToNewHostname]) {
-                self.error = @"Canceled by user";
+                self.error = NSLocalizedStringFromTableInBundle(@"Canceled by user", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: canceled by user");
                 [[FileTransferManager sharedInstance] transferrableFile:self
-                                         didFinishTransmissionWithError:SCPFileError(@"Canceled by user")];
+                                         didFinishTransmissionWithError:SCPFileError(NSLocalizedStringFromTableInBundle(@"Canceled by user", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: canceled by user"))];
                 return;
             }
             [self addKnownHost];
@@ -943,14 +943,11 @@ static NSString *const SCPFileKnownHostsUserDefaultsKey = @"NoSyncKnownHosts";
     [self performOnMainThread:^{
         _okToAdd = NO;
         NSString *message = nil;
-        NSString *title = @"Notice";  // The default value should never be used.
+        NSString *title = NSLocalizedStringFromTableInBundle(@"Notice", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Alert title: notice");  // The default value should never be used.
         switch (status) {
             case NMSSHKnownHostStatusFailure:
-                title = [NSString stringWithFormat:@"Problem connecting to %@", host];
-                message = [NSString stringWithFormat:@"Could not read the known_hosts file.\n"
-                                                     @"As a result, the authenticity of host '%@' can't be established."
-                                                     @"%@ key fingerprint is %@. Connect anyway?",
-                           host, hashName, fingerprint];
+                title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Problem connecting to %@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Alert title: problem connecting to host"), host];
+                message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not read the known_hosts file.\nAs a result, the authenticity of host '%@' can't be established.%@ key fingerprint is %@. Connect anyway?", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Alert: could not read known_hosts, authenticity cannot be established"), host, hashName, fingerprint];
                 break;
 
             case NMSSHKnownHostStatusMatch:
@@ -959,21 +956,15 @@ static NSString *const SCPFileKnownHostsUserDefaultsKey = @"NoSyncKnownHosts";
                 break;
 
             case NMSSHKnownHostStatusMismatch:
-                title = @"Warning!";
+                title = NSLocalizedStringFromTableInBundle(@"Warning!", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Alert title: warning");
                 message =
-                    [NSString stringWithFormat:@"REMOTE HOST IDENTIFICATION HAS CHANGED!\n\n"
-                                               @"The %@ key fingerprint of host '%@' has changed. It is %@.\n\n"
-                                               @"Someone could be eavesdropping on you right now (man-in-the-middle attack)!\n"
-                                               @"It is also possible that a host key has just been changed.\nConnect anyway?",
-                     host, hashName, fingerprint];
+                    [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"REMOTE HOST IDENTIFICATION HAS CHANGED!\n\nThe %@ key fingerprint of host '%@' has changed. It is %@.\n\nSomeone could be eavesdropping on you right now (man-in-the-middle attack)!\nIt is also possible that a host key has just been changed.\nConnect anyway?", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Alert: remote host identification has changed"), host, hashName, fingerprint];
                 break;
 
             case NMSSHKnownHostStatusNotFound:
-                title = [NSString stringWithFormat:@"First time connecting to %@", host];
+                title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"First time connecting to %@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Alert title: first time connecting to host"), host];
                 message =
-                    [NSString stringWithFormat:@"The authenticity of host '%@' can't be established.\n\n"
-                                               @"%@ key fingerprint is %@.\n\nConnect anyway?",
-                     host, hashName, fingerprint];
+                    [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The authenticity of host '%@' can't be established.\n\n%@ key fingerprint is %@.\n\nConnect anyway?", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Alert: authenticity of host cannot be established"), host, hashName, fingerprint];
                 _okToAdd = YES;
                 break;
         }

@@ -338,7 +338,7 @@ static const CGFloat kLabelWidth = 124;
     [stackView addArrangedSubview:matchTypeRow];
 
     // Regular Expression row
-    _regexRow = [self createRowWithLabelText:@"Regular Expression:" hasVisualizationButton:YES];
+    _regexRow = [self createRowWithLabelText:NSLocalizedStringFromTableInBundle(@"Regular Expression:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") hasVisualizationButton:YES];
     [stackView addArrangedSubview:_regexRow];
 
     // Event parameter row (hidden by default)
@@ -353,11 +353,11 @@ static const CGFloat kLabelWidth = 124;
     }
     
     // Name row
-    NSView *nameRow = [self createRowWithLabelText:@"Name:" hasVisualizationButton:NO];
+    NSView *nameRow = [self createRowWithLabelText:NSLocalizedStringFromTableInBundle(@"Name:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") hasVisualizationButton:NO];
     [stackView addArrangedSubview:nameRow];
 
     // Job row
-    NSView *jobRow = [self createRowWithLabelText:@"Job:" hasVisualizationButton:NO];
+    NSView *jobRow = [self createRowWithLabelText:NSLocalizedStringFromTableInBundle(@"Job:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") hasVisualizationButton:NO];
     [stackView addArrangedSubview:jobRow];
 
     // Buttons row
@@ -421,7 +421,7 @@ static const CGFloat kLabelWidth = 124;
     performanceRow.hidden = YES;
     
     // Create help button
-    NSString *helpText = @"This histogram shows how much CPU time was used evaluating the regular expression for this trigger over the lifetime of the current terminal session. The X axis gives time in microseconds while the Y axis gives the number of samples which fell in that duration bucket. The vertical red line indicates the mean duration. You can use this to diagnose triggers that cause performance problems.";
+    NSString *helpText = NSLocalizedStringFromTableInBundle(@"This histogram shows how much CPU time was used evaluating the regular expression for this trigger over the lifetime of the current terminal session. The X axis gives time in microseconds while the Y axis gives the number of samples which fell in that duration bucket. The vertical red line indicates the mean duration. You can use this to diagnose triggers that cause performance problems.", @"Settings", [NSBundle bundleForClass:[self class]], @"性能直方图帮助文本");
     iTermPopoverHelpButton *helpButton = [[iTermPopoverHelpButton alloc] initWithHelpText:helpText];
     helpButton.translatesAutoresizingMaskIntoConstraints = NO;
     [performanceRow addSubview:helpButton];
@@ -429,7 +429,7 @@ static const CGFloat kLabelWidth = 124;
     // Create label
     NSTextField *performanceLabel = [[NSTextField alloc] init];
     performanceLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    performanceLabel.stringValue = @"CPU Time:";
+    performanceLabel.stringValue = NSLocalizedStringFromTableInBundle(@"CPU Time:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     performanceLabel.editable = NO;
     performanceLabel.bordered = NO;
     performanceLabel.backgroundColor = [NSColor clearColor];
@@ -597,14 +597,14 @@ static const CGFloat kLabelWidth = 124;
     textField.delegate = self;
     [row addSubview:textField];
     
-    if ([labelText isEqualToString:@"Regular Expression:"]) {
+    if ([labelText isEqualToString:NSLocalizedStringFromTableInBundle(@"Regular Expression:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]) {
         _regexTextField = textField;
         _regexLabel = label;
-    } else if ([labelText isEqualToString:@"Name:"]) {
+    } else if ([labelText isEqualToString:NSLocalizedStringFromTableInBundle(@"Name:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]) {
         _nameTextField = textField;
-    } else if ([labelText isEqualToString:@"Job:"]) {
+    } else if ([labelText isEqualToString:NSLocalizedStringFromTableInBundle(@"Job:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]) {
         _jobTextField = textField;
-        _jobTextField.placeholderString = @"Trigger enabled only for this job (e.g., emacs)";
+        _jobTextField.placeholderString = NSLocalizedStringFromTableInBundle(@"Trigger enabled only for this job (e.g., emacs)", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     }
     
     // Add visualization button if needed
@@ -614,7 +614,7 @@ static const CGFloat kLabelWidth = 124;
         _toggleVisualizationButton.bezelStyle = NSBezelStyleRounded;
         _toggleVisualizationButton.bordered = YES;
         _toggleVisualizationButton.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolFlowchart)
-                                                  accessibilityDescription:@"Show visualization"
+                                                  accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Show visualization", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                                          fallbackImageName:@"flowchart"
                                                                   forClass:[self class]];
         _toggleVisualizationButton.target = self;
@@ -781,7 +781,7 @@ static const CGFloat kLabelWidth = 124;
     // Create label
     NSTextField *label = [[NSTextField alloc] init];
     label.translatesAutoresizingMaskIntoConstraints = NO;
-    label.stringValue = @"Match Against:";
+    label.stringValue = NSLocalizedStringFromTableInBundle(@"Match Against:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     label.editable = NO;
     label.bordered = NO;
     label.backgroundColor = [NSColor clearColor];
@@ -793,12 +793,12 @@ static const CGFloat kLabelWidth = 124;
     // Create popup button for match type
     _matchTypeButton = [[NSPopUpButton alloc] init];
     _matchTypeButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [_matchTypeButton it_addItemWithTitle:@"Regular Expression" tag:iTermTriggerMatchTypeRegex];
+    [_matchTypeButton it_addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Regular Expression", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:iTermTriggerMatchTypeRegex];
 
     if (_browserMode) {
         // Browser-specific match types
-        [_matchTypeButton it_addItemWithTitle:@"URL" tag:iTermTriggerMatchTypeURLRegex];
-        [_matchTypeButton it_addItemWithTitle:@"Page Content" tag:iTermTriggerMatchTypePageContentRegex];
+        [_matchTypeButton it_addItemWithTitle:NSLocalizedStringFromTableInBundle(@"URL", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:iTermTriggerMatchTypeURLRegex];
+        [_matchTypeButton it_addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Page Content", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:iTermTriggerMatchTypePageContentRegex];
     } else {
         // Terminal-specific event types, sorted alphabetically by display name
         [[_matchTypeButton menu] addItem:[NSMenuItem separatorItem]];
@@ -881,7 +881,7 @@ static const CGFloat kLabelWidth = 124;
     // Create label
     NSTextField *label = [[NSTextField alloc] init];
     label.translatesAutoresizingMaskIntoConstraints = NO;
-    label.stringValue = @"Content Regex:";
+    label.stringValue = NSLocalizedStringFromTableInBundle(@"Content Regex:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     label.editable = NO;
     label.bordered = NO;
     label.backgroundColor = [NSColor clearColor];
@@ -904,7 +904,7 @@ static const CGFloat kLabelWidth = 124;
     _contentRegexVisualizationButton.bezelStyle = NSBezelStyleRounded;
     _contentRegexVisualizationButton.bordered = YES;
     _contentRegexVisualizationButton.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolFlowchart)
-                                                    accessibilityDescription:@"Show content regex visualization"
+                                                    accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Show content regex visualization", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                                            fallbackImageName:@"flowchart"
                                                                     forClass:[self class]];
     _contentRegexVisualizationButton.target = self;
@@ -1010,7 +1010,7 @@ static const CGFloat kLabelWidth = 124;
     // Create label
     NSTextField *label = [[NSTextField alloc] init];
     label.translatesAutoresizingMaskIntoConstraints = NO;
-    label.stringValue = @"Parameters:";
+    label.stringValue = NSLocalizedStringFromTableInBundle(@"Parameters:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     label.editable = NO;
     label.bordered = NO;
     label.backgroundColor = [NSColor clearColor];
@@ -1093,7 +1093,7 @@ static const CGFloat kLabelWidth = 124;
     _instantButton = [[NSButton alloc] init];
     _instantButton.translatesAutoresizingMaskIntoConstraints = NO;
     _instantButton.buttonType = NSButtonTypeSwitch;
-    _instantButton.title = @"Instant";
+    _instantButton.title = NSLocalizedStringFromTableInBundle(@"Instant", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     _instantButton.target = self;
     _instantButton.action = @selector(instantDidChange:);
     [row addSubview:_instantButton];
@@ -1101,7 +1101,7 @@ static const CGFloat kLabelWidth = 124;
     _enabledButton = [[NSButton alloc] init];
     _enabledButton.translatesAutoresizingMaskIntoConstraints = NO;
     _enabledButton.buttonType = NSButtonTypeSwitch;
-    _enabledButton.title = @"Enabled";
+    _enabledButton.title = NSLocalizedStringFromTableInBundle(@"Enabled", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     _enabledButton.target = self;
     _enabledButton.action = @selector(enabledDidChange:);
     [row addSubview:_enabledButton];
@@ -1109,7 +1109,7 @@ static const CGFloat kLabelWidth = 124;
     _updateProfileButton = [[NSButton alloc] init];
     _updateProfileButton.translatesAutoresizingMaskIntoConstraints = NO;
     _updateProfileButton.buttonType = NSButtonTypeSwitch;
-    _updateProfileButton.title = @"Update Profile";
+    _updateProfileButton.title = NSLocalizedStringFromTableInBundle(@"Update Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     [row addSubview:_updateProfileButton];
     
     // Add leading spacer to align with text fields
@@ -1195,8 +1195,8 @@ static const CGFloat kLabelWidth = 124;
     _leaderOnlyButton = [[NSButton alloc] init];
     _leaderOnlyButton.translatesAutoresizingMaskIntoConstraints = NO;
     _leaderOnlyButton.buttonType = NSButtonTypeSwitch;
-    _leaderOnlyButton.title = @"Only on the workgroup leader";
-    _leaderOnlyButton.toolTip = @"When set, the trigger fires only for the workgroup leader (the session that originally entered the workgroup). Peers such as the Code Review and Diff sessions do not, so reloading or quitting one keeps the workgroup open.";
+    _leaderOnlyButton.title = NSLocalizedStringFromTableInBundle(@"Only on the workgroup leader", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
+    _leaderOnlyButton.toolTip = NSLocalizedStringFromTableInBundle(@"When set, the trigger fires only for the workgroup leader (the session that originally entered the workgroup). Peers such as the Code Review and Diff sessions do not, so reloading or quitting one keeps the workgroup open.", @"Settings", [NSBundle bundleForClass:[self class]], @"settings ui");
     _leaderOnlyButton.target = self;
     _leaderOnlyButton.action = @selector(leaderOnlyDidChange:);
     [row addSubview:_leaderOnlyButton];
@@ -1258,7 +1258,7 @@ static const CGFloat kLabelWidth = 124;
     // Create label
     NSTextField *label = [[NSTextField alloc] init];
     label.translatesAutoresizingMaskIntoConstraints = NO;
-    label.stringValue = @"Action:";
+    label.stringValue = NSLocalizedStringFromTableInBundle(@"Action:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     label.editable = NO;
     label.bordered = NO;
     label.backgroundColor = [NSColor clearColor];
@@ -1337,7 +1337,7 @@ static const CGFloat kLabelWidth = 124;
     _cancelButton = [[NSButton alloc] init];
     _cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
     _cancelButton.bezelStyle = NSBezelStyleRounded;
-    _cancelButton.title = @"Cancel";
+    _cancelButton.title = NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     _cancelButton.target = self;
     _cancelButton.action = @selector(cancel:);
     _cancelButton.keyEquivalent = @"\e"; // Escape key
@@ -1346,7 +1346,7 @@ static const CGFloat kLabelWidth = 124;
     _okButton = [[NSButton alloc] init];
     _okButton.translatesAutoresizingMaskIntoConstraints = NO;
     _okButton.bezelStyle = NSBezelStyleRounded;
-    _okButton.title = @"OK";
+    _okButton.title = NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     _okButton.target = self;
     _okButton.action = @selector(ok:);
     _okButton.keyEquivalent = @"\r"; // Return key
@@ -1473,14 +1473,14 @@ static const CGFloat kLabelWidth = 124;
         _popover = popover;
 
         button.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolFlowchartFill)
-                             accessibilityDescription:@"Hide visualization"
+                             accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Hide visualization", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                     fallbackImageName:@"flowchart.fill"
                                              forClass:[self class]];
     } else {
         [_popover close];
         _popover = nil;
         button.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolFlowchart)
-              accessibilityDescription:@"Show visualization"
+              accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Show visualization", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                      fallbackImageName:@"flowchart"
                               forClass:[self class]];
     }
@@ -1596,7 +1596,7 @@ static const CGFloat kLabelWidth = 124;
                               _matchType == iTermTriggerMatchTypeEventJobEnded);
     _jobTextField.enabled = !jobFieldRedundant;
     if (jobFieldRedundant) {
-        _jobTextField.placeholderString = @"Set job above";
+        _jobTextField.placeholderString = NSLocalizedStringFromTableInBundle(@"Set job above", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         // Clear so we don't serialize a stale trigger.job from a
         // previously-selected match type. The job-started/ended
         // evaluator ignores trigger.job entirely (it reads from
@@ -1604,7 +1604,7 @@ static const CGFloat kLabelWidth = 124;
         // would confuse future callers.
         _jobTextField.stringValue = @"";
     } else {
-        _jobTextField.placeholderString = @"Trigger enabled only for this job (e.g., emacs)";
+        _jobTextField.placeholderString = NSLocalizedStringFromTableInBundle(@"Trigger enabled only for this job (e.g., emacs)", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     }
 }
 
@@ -1618,7 +1618,7 @@ static const CGFloat kLabelWidth = 124;
     [_matchTypeButton removeAllItems];
 
     // Always add regex
-    [_matchTypeButton it_addItemWithTitle:@"Regular Expression" tag:iTermTriggerMatchTypeRegex];
+    [_matchTypeButton it_addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Regular Expression", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:iTermTriggerMatchTypeRegex];
 
     // Add all event types, sorted alphabetically by display name
     NSArray<NSNumber *> *sortedEventTypes = [[iTermEventTriggerMatchTypeHelper allEventTypes] sortedArrayUsingComparator:^NSComparisonResult(NSNumber *a, NSNumber *b) {
@@ -1841,7 +1841,7 @@ static const CGFloat kLabelWidth = 124;
     _popover = nil;
     _visualizationViewController = nil;
     _toggleVisualizationButton.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolFlowchart)
-                                             accessibilityDescription:@"Show visualization"
+                                             accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Show visualization", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                                     fallbackImageName:@"flowchart"
                                                              forClass:[self class]];
     
@@ -1850,7 +1850,7 @@ static const CGFloat kLabelWidth = 124;
     _contentRegexVisualizationViewController = nil;
     if (_contentRegexVisualizationButton) {
         _contentRegexVisualizationButton.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolFlowchart)
-                                                         accessibilityDescription:@"Show content regex visualization"
+                                                         accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Show content regex visualization", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                                                 fallbackImageName:@"flowchart"
                                                                          forClass:[self class]];
     }
@@ -1867,9 +1867,9 @@ static const CGFloat kLabelWidth = 124;
     // Update the regex label text based on match type
     if (_regexLabel) {
         if (_matchType == iTermTriggerMatchTypePageContentRegex) {
-            _regexLabel.stringValue = @"URL Regex:";
+            _regexLabel.stringValue = NSLocalizedStringFromTableInBundle(@"URL Regex:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         } else {
-            _regexLabel.stringValue = @"Regular Expression:";
+            _regexLabel.stringValue = NSLocalizedStringFromTableInBundle(@"Regular Expression:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         }
     }
 }
@@ -1886,14 +1886,14 @@ static const CGFloat kLabelWidth = 124;
         _contentRegexPopover = popover;
 
         button.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolFlowchartFill)
-                             accessibilityDescription:@"Hide content regex visualization"
+                             accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Hide content regex visualization", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                     fallbackImageName:@"flowchart.fill"
                                              forClass:[self class]];
     } else {
         [_contentRegexPopover close];
         _contentRegexPopover = nil;
         button.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolFlowchart)
-              accessibilityDescription:@"Show content regex visualization"
+              accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Show content regex visualization", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                      fallbackImageName:@"flowchart"
                               forClass:[self class]];
     }

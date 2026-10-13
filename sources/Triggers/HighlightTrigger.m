@@ -64,11 +64,11 @@ enum {
 }
 
 + (NSString *)title {
-    return @"Highlight Text…";
+    return NSLocalizedStringFromTableInBundle(@"Highlight Text…", @"Triggers", [NSBundle bundleForClass:[self class]], @"高亮文本触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Highlight text %@ over %@", self.textColor.humanReadableDescription ?: @"(no color)", self.backgroundColor.humanReadableDescription ?: @"(no color))"];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Highlight text %@ over %@", @"Triggers", [NSBundle bundleForClass:[self class]], @"高亮触发器描述"), self.textColor.humanReadableDescription ?: NSLocalizedStringFromTableInBundle(@"(no color)", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：无颜色"), self.backgroundColor.humanReadableDescription ?: NSLocalizedStringFromTableInBundle(@"(no color)", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：无颜色")];
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
@@ -110,91 +110,91 @@ enum {
 
 - (NSDictionary *)menuItemsForPoupupButton {
     return [NSDictionary dictionaryWithObjectsAndKeys:
-            @"Yellow on Black", [NSNumber numberWithInt:(int)kYellowOnBlackHighlight],
-            @"Black on Yellow", [NSNumber numberWithInt:(int)kBlackOnYellowHighlight],
-            @"White on Red",    [NSNumber numberWithInt:(int)kWhiteOnRedHighlight],
-            @"Red on White",    [NSNumber numberWithInt:(int)kRedOnWhiteHighlight],
-            @"Black on Orange", [NSNumber numberWithInt:(int)kBlackOnOrangeHighlight],
-            @"Orange on Black", [NSNumber numberWithInt:(int)kOrangeOnBlackHighlight],
-            @"Purple on Black", [NSNumber numberWithInt:(int)kPurpleOnBlackHighlight],
-            @"Black on Purple", [NSNumber numberWithInt:(int)kBlackOnPurpleHighlight],
+            NSLocalizedStringFromTableInBundle(@"Yellow on Black", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：黄字黑底"), [NSNumber numberWithInt:(int)kYellowOnBlackHighlight],
+            NSLocalizedStringFromTableInBundle(@"Black on Yellow", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：黑字黄底"), [NSNumber numberWithInt:(int)kBlackOnYellowHighlight],
+            NSLocalizedStringFromTableInBundle(@"White on Red", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：白字红底"), [NSNumber numberWithInt:(int)kWhiteOnRedHighlight],
+            NSLocalizedStringFromTableInBundle(@"Red on White", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：红字白底"), [NSNumber numberWithInt:(int)kRedOnWhiteHighlight],
+            NSLocalizedStringFromTableInBundle(@"Black on Orange", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：黑字橙底"), [NSNumber numberWithInt:(int)kBlackOnOrangeHighlight],
+            NSLocalizedStringFromTableInBundle(@"Orange on Black", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：橙字黑底"), [NSNumber numberWithInt:(int)kOrangeOnBlackHighlight],
+            NSLocalizedStringFromTableInBundle(@"Purple on Black", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：紫字黑底"), [NSNumber numberWithInt:(int)kPurpleOnBlackHighlight],
+            NSLocalizedStringFromTableInBundle(@"Black on Purple", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：黑字紫底"), [NSNumber numberWithInt:(int)kBlackOnPurpleHighlight],
 
-            @"Black Foreground",  [NSNumber numberWithInt:(int)kBlackHighlight],
-            @"Blue Foreground",  [NSNumber numberWithInt:(int)kBlueHighlight],
-            @"Brown Foreground",  [NSNumber numberWithInt:(int)kBrownHighlight],
-            @"Cyan Foreground",  [NSNumber numberWithInt:(int)kCyanHighlight],
-            @"Dark Gray Foreground",  [NSNumber numberWithInt:(int)kDarkGrayHighlight],
-            @"Gray Foreground",  [NSNumber numberWithInt:(int)kGrayHighlight],
-            @"Green Foreground",  [NSNumber numberWithInt:(int)kGreenHighlight],
-            @"Light Gray Foreground",  [NSNumber numberWithInt:(int)kLightGrayHighlight],
-            @"Magenta Foreground",  [NSNumber numberWithInt:(int)kMagentaHighlight],
-            @"Orange Foreground",  [NSNumber numberWithInt:(int)kOrangeHighlight],
-            @"Purple Foreground",  [NSNumber numberWithInt:(int)kPurpleHighlight],
-            @"Red Foreground",  [NSNumber numberWithInt:(int)kRedHighlight],
-            @"White Foreground",  [NSNumber numberWithInt:(int)kWhiteHighlight],
-            @"Yellow Foreground",  [NSNumber numberWithInt:(int)kYellowHighlight],
+            NSLocalizedStringFromTableInBundle(@"Black Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：黑色"), [NSNumber numberWithInt:(int)kBlackHighlight],
+            NSLocalizedStringFromTableInBundle(@"Blue Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：蓝色"), [NSNumber numberWithInt:(int)kBlueHighlight],
+            NSLocalizedStringFromTableInBundle(@"Brown Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：棕色"), [NSNumber numberWithInt:(int)kBrownHighlight],
+            NSLocalizedStringFromTableInBundle(@"Cyan Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：青色"), [NSNumber numberWithInt:(int)kCyanHighlight],
+            NSLocalizedStringFromTableInBundle(@"Dark Gray Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：深灰"), [NSNumber numberWithInt:(int)kDarkGrayHighlight],
+            NSLocalizedStringFromTableInBundle(@"Gray Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：灰色"), [NSNumber numberWithInt:(int)kGrayHighlight],
+            NSLocalizedStringFromTableInBundle(@"Green Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：绿色"), [NSNumber numberWithInt:(int)kGreenHighlight],
+            NSLocalizedStringFromTableInBundle(@"Light Gray Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：浅灰"), [NSNumber numberWithInt:(int)kLightGrayHighlight],
+            NSLocalizedStringFromTableInBundle(@"Magenta Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：洋红"), [NSNumber numberWithInt:(int)kMagentaHighlight],
+            NSLocalizedStringFromTableInBundle(@"Orange Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：橙色"), [NSNumber numberWithInt:(int)kOrangeHighlight],
+            NSLocalizedStringFromTableInBundle(@"Purple Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：紫色"), [NSNumber numberWithInt:(int)kPurpleHighlight],
+            NSLocalizedStringFromTableInBundle(@"Red Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：红色"), [NSNumber numberWithInt:(int)kRedHighlight],
+            NSLocalizedStringFromTableInBundle(@"White Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：白色"), [NSNumber numberWithInt:(int)kWhiteHighlight],
+            NSLocalizedStringFromTableInBundle(@"Yellow Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：黄色"), [NSNumber numberWithInt:(int)kYellowHighlight],
 
-            @"Black Background",  [NSNumber numberWithInt:(int)kBlackBackgroundHighlight],
-            @"Blue Background",  [NSNumber numberWithInt:(int)kBlueBackgroundHighlight],
-            @"Brown Background",  [NSNumber numberWithInt:(int)kBrownBackgroundHighlight],
-            @"Cyan Background",  [NSNumber numberWithInt:(int)kCyanBackgroundHighlight],
-            @"Dark Gray Background",  [NSNumber numberWithInt:(int)kDarkGrayBackgroundHighlight],
-            @"Gray Background",  [NSNumber numberWithInt:(int)kGrayBackgroundHighlight],
-            @"Green Background",  [NSNumber numberWithInt:(int)kGreenBackgroundHighlight],
-            @"Light Gray Background",  [NSNumber numberWithInt:(int)kLightGrayBackgroundHighlight],
-            @"Magenta Background",  [NSNumber numberWithInt:(int)kMagentaBackgroundHighlight],
-            @"Orange Background",  [NSNumber numberWithInt:(int)kOrangeBackgroundHighlight],
-            @"Purple Background",  [NSNumber numberWithInt:(int)kPurpleBackgroundHighlight],
-            @"Red Background",  [NSNumber numberWithInt:(int)kRedBackgroundHighlight],
-            @"White Background",  [NSNumber numberWithInt:(int)kWhiteBackgroundHighlight],
-            @"Yellow Background",  [NSNumber numberWithInt:(int)kYellowBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Black Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：黑色"), [NSNumber numberWithInt:(int)kBlackBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Blue Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：蓝色"), [NSNumber numberWithInt:(int)kBlueBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Brown Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：棕色"), [NSNumber numberWithInt:(int)kBrownBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Cyan Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：青色"), [NSNumber numberWithInt:(int)kCyanBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Dark Gray Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：深灰"), [NSNumber numberWithInt:(int)kDarkGrayBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Gray Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：灰色"), [NSNumber numberWithInt:(int)kGrayBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Green Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：绿色"), [NSNumber numberWithInt:(int)kGreenBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Light Gray Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：浅灰"), [NSNumber numberWithInt:(int)kLightGrayBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Magenta Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：洋红"), [NSNumber numberWithInt:(int)kMagentaBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Orange Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：橙色"), [NSNumber numberWithInt:(int)kOrangeBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Purple Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：紫色"), [NSNumber numberWithInt:(int)kPurpleBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Red Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：红色"), [NSNumber numberWithInt:(int)kRedBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"White Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：白色"), [NSNumber numberWithInt:(int)kWhiteBackgroundHighlight],
+            NSLocalizedStringFromTableInBundle(@"Yellow Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：黄色"), [NSNumber numberWithInt:(int)kYellowBackgroundHighlight],
 
             nil];
 }
 
 - (NSArray *)groupedMenuItemsForPopupButton {
     NSDictionary *fgbg = [NSDictionary dictionaryWithObjectsAndKeys:
-                          @"Yellow on Black", [NSNumber numberWithInt:(int)kYellowOnBlackHighlight],
-                          @"Black on Yellow", [NSNumber numberWithInt:(int)kBlackOnYellowHighlight],
-                          @"White on Red",    [NSNumber numberWithInt:(int)kWhiteOnRedHighlight],
-                          @"Red on White",    [NSNumber numberWithInt:(int)kRedOnWhiteHighlight],
-                          @"Black on Orange", [NSNumber numberWithInt:(int)kBlackOnOrangeHighlight],
-                          @"Orange on Black", [NSNumber numberWithInt:(int)kOrangeOnBlackHighlight],
-                          @"Purple on Black", [NSNumber numberWithInt:(int)kPurpleOnBlackHighlight],
-                          @"Black on Purple", [NSNumber numberWithInt:(int)kBlackOnPurpleHighlight],
+                          NSLocalizedStringFromTableInBundle(@"Yellow on Black", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：黄字黑底"), [NSNumber numberWithInt:(int)kYellowOnBlackHighlight],
+                          NSLocalizedStringFromTableInBundle(@"Black on Yellow", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：黑字黄底"), [NSNumber numberWithInt:(int)kBlackOnYellowHighlight],
+                          NSLocalizedStringFromTableInBundle(@"White on Red", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：白字红底"), [NSNumber numberWithInt:(int)kWhiteOnRedHighlight],
+                          NSLocalizedStringFromTableInBundle(@"Red on White", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：红字白底"), [NSNumber numberWithInt:(int)kRedOnWhiteHighlight],
+                          NSLocalizedStringFromTableInBundle(@"Black on Orange", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：黑字橙底"), [NSNumber numberWithInt:(int)kBlackOnOrangeHighlight],
+                          NSLocalizedStringFromTableInBundle(@"Orange on Black", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：橙字黑底"), [NSNumber numberWithInt:(int)kOrangeOnBlackHighlight],
+                          NSLocalizedStringFromTableInBundle(@"Purple on Black", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：紫字黑底"), [NSNumber numberWithInt:(int)kPurpleOnBlackHighlight],
+                          NSLocalizedStringFromTableInBundle(@"Black on Purple", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：黑字紫底"), [NSNumber numberWithInt:(int)kBlackOnPurpleHighlight],
                           nil];
     NSDictionary *fg = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"Black Foreground",  [NSNumber numberWithInt:(int)kBlackHighlight],
-                        @"Blue Foreground",  [NSNumber numberWithInt:(int)kBlueHighlight],
-                        @"Brown Foreground",  [NSNumber numberWithInt:(int)kBrownHighlight],
-                        @"Cyan Foreground",  [NSNumber numberWithInt:(int)kCyanHighlight],
-                        @"Dark Gray Foreground",  [NSNumber numberWithInt:(int)kDarkGrayHighlight],
-                        @"Gray Foreground",  [NSNumber numberWithInt:(int)kGrayHighlight],
-                        @"Green Foreground",  [NSNumber numberWithInt:(int)kGreenHighlight],
-                        @"Light Gray Foreground",  [NSNumber numberWithInt:(int)kLightGrayHighlight],
-                        @"Magenta Foreground",  [NSNumber numberWithInt:(int)kMagentaHighlight],
-                        @"Orange Foreground",  [NSNumber numberWithInt:(int)kOrangeHighlight],
-                        @"Purple Foreground",  [NSNumber numberWithInt:(int)kPurpleHighlight],
-                        @"Red Foreground",  [NSNumber numberWithInt:(int)kRedHighlight],
-                        @"White Foreground",  [NSNumber numberWithInt:(int)kWhiteHighlight],
-                        @"Yellow Foreground",  [NSNumber numberWithInt:(int)kYellowHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Black Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：黑色"), [NSNumber numberWithInt:(int)kBlackHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Blue Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：蓝色"), [NSNumber numberWithInt:(int)kBlueHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Brown Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：棕色"), [NSNumber numberWithInt:(int)kBrownHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Cyan Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：青色"), [NSNumber numberWithInt:(int)kCyanHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Dark Gray Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：深灰"), [NSNumber numberWithInt:(int)kDarkGrayHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Gray Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：灰色"), [NSNumber numberWithInt:(int)kGrayHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Green Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：绿色"), [NSNumber numberWithInt:(int)kGreenHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Light Gray Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：浅灰"), [NSNumber numberWithInt:(int)kLightGrayHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Magenta Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：洋红"), [NSNumber numberWithInt:(int)kMagentaHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Orange Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：橙色"), [NSNumber numberWithInt:(int)kOrangeHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Purple Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：紫色"), [NSNumber numberWithInt:(int)kPurpleHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Red Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：红色"), [NSNumber numberWithInt:(int)kRedHighlight],
+                        NSLocalizedStringFromTableInBundle(@"White Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：白色"), [NSNumber numberWithInt:(int)kWhiteHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Yellow Foreground", @"Triggers", [NSBundle bundleForClass:[self class]], @"前景色：黄色"), [NSNumber numberWithInt:(int)kYellowHighlight],
                         nil];
 
     NSDictionary *bg = [NSDictionary dictionaryWithObjectsAndKeys:
-                        @"Black Background",  [NSNumber numberWithInt:(int)kBlackBackgroundHighlight],
-                        @"Blue Background",  [NSNumber numberWithInt:(int)kBlueBackgroundHighlight],
-                        @"Brown Background",  [NSNumber numberWithInt:(int)kBrownBackgroundHighlight],
-                        @"Cyan Background",  [NSNumber numberWithInt:(int)kCyanBackgroundHighlight],
-                        @"Gray Background",  [NSNumber numberWithInt:(int)kDarkGrayBackgroundHighlight],
-                        @"Gray Background",  [NSNumber numberWithInt:(int)kGrayBackgroundHighlight],
-                        @"Green Background",  [NSNumber numberWithInt:(int)kGreenBackgroundHighlight],
-                        @"Light Gray Background",  [NSNumber numberWithInt:(int)kLightGrayBackgroundHighlight],
-                        @"Magenta Background",  [NSNumber numberWithInt:(int)kMagentaBackgroundHighlight],
-                        @"Orange Background",  [NSNumber numberWithInt:(int)kOrangeBackgroundHighlight],
-                        @"Purple Background",  [NSNumber numberWithInt:(int)kPurpleBackgroundHighlight],
-                        @"Red Background",  [NSNumber numberWithInt:(int)kRedBackgroundHighlight],
-                        @"White Background",  [NSNumber numberWithInt:(int)kWhiteBackgroundHighlight],
-                        @"Yellow Background",  [NSNumber numberWithInt:(int)kYellowBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Black Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：黑色"), [NSNumber numberWithInt:(int)kBlackBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Blue Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：蓝色"), [NSNumber numberWithInt:(int)kBlueBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Brown Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：棕色"), [NSNumber numberWithInt:(int)kBrownBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Cyan Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：青色"), [NSNumber numberWithInt:(int)kCyanBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Gray Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：灰色（原 typo 行）"), [NSNumber numberWithInt:(int)kDarkGrayBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Gray Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：灰色"), [NSNumber numberWithInt:(int)kGrayBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Green Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：绿色"), [NSNumber numberWithInt:(int)kGreenBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Light Gray Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：浅灰"), [NSNumber numberWithInt:(int)kLightGrayBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Magenta Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：洋红"), [NSNumber numberWithInt:(int)kMagentaBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Orange Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：橙色"), [NSNumber numberWithInt:(int)kOrangeBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Purple Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：紫色"), [NSNumber numberWithInt:(int)kPurpleBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Red Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：红色"), [NSNumber numberWithInt:(int)kRedBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"White Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：白色"), [NSNumber numberWithInt:(int)kWhiteBackgroundHighlight],
+                        NSLocalizedStringFromTableInBundle(@"Yellow Background", @"Triggers", [NSBundle bundleForClass:[self class]], @"背景色：黄色"), [NSNumber numberWithInt:(int)kYellowBackgroundHighlight],
                         nil];
     return [NSArray arrayWithObjects:fgbg, fg, bg, nil];
 }
@@ -508,7 +508,7 @@ enum {
 - (NSAttributedString *)paramAttributedString {
     NSMutableAttributedString *result = [[NSMutableAttributedString alloc] init];
 
-    [result appendAttributedString:[[NSAttributedString alloc] initWithString:@"Text: "]];
+    [result appendAttributedString:[[NSAttributedString alloc] initWithString:NSLocalizedStringFromTableInBundle(@"Text: ", @"Triggers", [NSBundle bundleForClass:[self class]], @"参数标签：文本")]];
 
     NSTextAttachment *textColorAttachment = [[NSTextAttachment alloc] init];
     textColorAttachment.image = [self imageForColor:self.textColor];
@@ -518,7 +518,7 @@ enum {
     [mutableTextAttachmentString addAttribute:NSBaselineOffsetAttributeName value:@(-2) range:NSMakeRange(0, mutableTextAttachmentString.length)];
     [result appendAttributedString:mutableTextAttachmentString];
 
-    [result appendAttributedString:[[NSAttributedString alloc] initWithString:@" Background: "]];
+    [result appendAttributedString:[[NSAttributedString alloc] initWithString:NSLocalizedStringFromTableInBundle(@" Background: ", @"Triggers", [NSBundle bundleForClass:[self class]], @"参数标签：背景")]];
 
     NSTextAttachment *backgroundColorAttachment = [[NSTextAttachment alloc] init];
     backgroundColorAttachment.image = [self imageForColor:self.backgroundColor];

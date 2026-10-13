@@ -15,13 +15,13 @@ enum SSHEndpointException: LocalizedError {
         get {
             switch self {
             case .connectionClosed:
-                return "Connection closed"
+                return NSLocalizedString("Connection closed", tableName: "SSH", comment: "SSH endpoint: connection closed error")
             case .fileNotFound:
-                return "File not found"
+                return NSLocalizedString("File not found", tableName: "SSH", comment: "SSH endpoint: file not found error")
             case .internalError:
-                return "Internal error"
+                return NSLocalizedString("Internal error", tableName: "SSH", comment: "SSH endpoint: internal error")
             case .transferCanceled:
-                return "File transfer canceled"
+                return NSLocalizedString("File transfer canceled", tableName: "SSH", comment: "SSH endpoint: transfer canceled error")
             }
         }
     }

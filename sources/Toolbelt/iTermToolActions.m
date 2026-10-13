@@ -73,12 +73,12 @@ static NSButton *iTermToolActionsNewButton(NSString *imageName, NSString *title,
     self = [super initWithFrame:frame];
     if (self) {
         if (@available(macOS 10.16, *)) {
-            _applyButton = iTermToolActionsNewButton(@"play", @"Apply", self, @selector(apply:), frame);
-            _addButton = iTermToolActionsNewButton(@"plus", @"Add", self, @selector(add:), frame);
-            _removeButton = iTermToolActionsNewButton(@"minus", @"Remove", self, @selector(remove:), frame);
-            _editButton = iTermToolActionsNewButton(@"pencil", @"Edit", self, @selector(edit:), frame);
+            _applyButton = iTermToolActionsNewButton(@"play", NSLocalizedStringFromTableInBundle(@"Apply", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool actions: apply button accessibility"), self, @selector(apply:), frame);
+            _addButton = iTermToolActionsNewButton(@"plus", NSLocalizedStringFromTableInBundle(@"Add", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool actions: add button accessibility"), self, @selector(add:), frame);
+            _removeButton = iTermToolActionsNewButton(@"minus", NSLocalizedStringFromTableInBundle(@"Remove", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool actions: remove button accessibility"), self, @selector(remove:), frame);
+            _editButton = iTermToolActionsNewButton(@"pencil", NSLocalizedStringFromTableInBundle(@"Edit", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool actions: edit button accessibility"), self, @selector(edit:), frame);
         } else {
-            _applyButton = iTermToolActionsNewButton(nil, @"Apply", self, @selector(apply:), frame);
+            _applyButton = iTermToolActionsNewButton(nil, NSLocalizedStringFromTableInBundle(@"Apply", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool actions: apply button title fallback"), self, @selector(apply:), frame);
             _addButton = iTermToolActionsNewButton(NSImageNameAddTemplate, nil, self, @selector(add:), frame);
             _removeButton = iTermToolActionsNewButton(NSImageNameRemoveTemplate, nil, self, @selector(remove:), frame);
             _editButton = iTermToolActionsNewButton(nil, @"✐", self, @selector(edit:), frame);
@@ -314,7 +314,7 @@ static NSButton *iTermToolActionsNewButton(NSString *imageName, NSString *title,
     if (title.length) {
         return title;
     }
-    return @"Untitled";
+    return NSLocalizedStringFromTableInBundle(@"Untitled", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool actions: untitled action name");
 }
 
 - (void)update {

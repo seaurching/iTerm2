@@ -1,0 +1,74 @@
+/* Menu item: overflow profiles not shown */
+"[%d profiles not shown]" = "[%d 個設定檔未顯示]";
+
+/* Menu item: open all profiles */
+"Open All" = "全部開啟";
+
+/* Menu item: open all profiles in new window */
+"Open All in New Window" = "在新視窗中全部開啟";
+
+/* Alert: about to open many profiles */
+"You are about to open %d profiles." = "您即將開啟 %d 個設定檔。";
+
+/* Alert button: OK */
+"OK" = "確定";
+
+/* Notification title: creating a tab */
+"Creating a tab" = "正在建立分頁";
+
+/* Notification detail: tab preference now respected */
+"The system preference to open a tab instead of a window is now respected in iTerm2." = "iTerm2 現在遵循系統偏好中「開啟分頁而非視窗」的設定。";
+
+/* Alert heading: open untrusted arrangement */
+"Open the arrangement “%@”?" = "開啟佈局「%@」？";
+
+/* Alert button: open the arrangement */
+"Open" = "開啟";
+
+/* Trust gate body: explanation of arrangement risks */
+"Window arrangements embed session profiles, which can run commands, connect to remote hosts, and configure triggers or smart-selection actions that execute when the terminal sees matching output. Opening an arrangement from an untrusted source is equivalent to running a program they gave you." = "視窗佈局嵌入了工作階段設定檔，這些設定檔可以執行指令、連線遠端主機，並設定觸發器或智慧選取動作，在終端看到匹配輸出時執行。開啟來自不可信來源的佈局等同於執行他們給您的程式。";
+
+/* Trust gate body: list header */
+"This arrangement contains:" = "此佈局包含：";
+
+/* Trust gate body: trust warning */
+"Open it only if you trust where it came from." = "僅當您信任其來源時才開啟它。";
+
+/* Trust gate finding: embedded session profile */
+"embedded session profile" = "嵌入的工作階段設定檔";
+
+/* Trust gate finding: custom command */
+"custom command" = "自訂指令";
+
+/* Trust gate finding suffix: custom command */
+" that will run when the arrangement opens" = "，將在佈局開啟時執行";
+
+/* Trust gate finding: SSH connection */
+"SSH connection" = "SSH 連線";
+
+/* Trust gate finding suffix: SSH connection */
+" that will be opened automatically" = "，將自動開啟";
+
+/* Trust gate finding: session */
+"session" = "工作階段";
+
+/* Trust gate finding suffix: session initial text */
+" with text that will be typed into the terminal on startup" = "，帶有啟動時將輸入至終端的文字";
+
+/* Trust gate finding: trigger */
+"trigger" = "觸發器";
+
+/* Trust gate finding suffix: trigger */
+" that runs actions when matching output appears" = "，在出現匹配輸出時執行動作";
+
+/* Trust gate finding: smart-selection rule */
+"smart-selection rule" = "智慧選取規則";
+
+/* Trust gate finding suffix: smart-selection rule */
+" with custom actions" = "，帶有自訂動作";
+
+/* Trust gate: count + noun (singular) */
+"%d %@" = "%d 個%@";
+
+/* Trust gate: count + noun (plural) */
+"%d %@s" = "%d 個%@";

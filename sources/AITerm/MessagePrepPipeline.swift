@@ -100,7 +100,7 @@ private extension MessagePrepPipeline {
             case .attachment(let attachment):
                 switch attachment.type {
                 case .code, .statusUpdate:
-                    it_fatalError("Unsupported user-sent attachment type")
+                    it_fatalError(NSLocalizedString("Unsupported user-sent attachment type", tableName: "AITermXC", comment: "不支持的用户发送附件类型"))
                 case .file(let file):
                     if provider.shouldInlineBase64EncodedFile(mimeType: file.mimeType) == true {
                         return nil
@@ -201,12 +201,12 @@ private extension MessagePrepPipeline {
         case .success(let id):
             try delegate?.publishNotice(
                 chatID: chatID,
-                message: "Upload of \(description) finished.")
+                message: String(format: NSLocalizedString("Upload of %@ finished.", tableName: "AITermXC", comment: "上传 %@ 完成。"), description))
             try completion(.success(.fileUploaded(id: id, name: fileName)))
         case .failure(let error):
             try delegate?.publishNotice(
                 chatID: chatID,
-                message: "Failed to upload \(fileName): \(error.localizedDescription)")
+                message: String(format: NSLocalizedString("Failed to upload %@: %@", tableName: "AITermXC", comment: "上传 %@ 失败：%@"), fileName, error.localizedDescription))
             try completion(.failure(error))
         }
     }
@@ -214,7 +214,7 @@ private extension MessagePrepPipeline {
     func createVectorStoreAction(chatID: String) throws -> Pipeline<PipelineResult>.Action.Closure {
         return { [weak self] _, completion in
             guard let self else {
-                try completion(.failure(AIError("Chat agent no longer exists")))
+                try completion(.failure(AIError(NSLocalizedString("Chat agent no longer exists", tableName: "AITermXC", comment: "对话智能体不再存在"))))
                 return
             }
             delegate?.createVectorStore(
@@ -232,7 +232,7 @@ private extension MessagePrepPipeline {
                     } failure: { error in
                         try self?.delegate?.publishNotice(
                             chatID: chatID,
-                            message: "There was a problem creating a vector store database: \(error.localizedDescription)")
+                            message: String(format: NSLocalizedString("There was a problem creating a vector store database: %@", tableName: "AITermXC", comment: "创建向量存储数据库时出现问题：%@"), error.localizedDescription))
                         try? completion(.failure(error))
                     }
                 }
@@ -261,7 +261,7 @@ private extension MessagePrepPipeline {
         } else if let newVectorStoreID {
             justVectorStoreID = newVectorStoreID
         } else {
-            try? completion(.failure(AIError("Missing vector store ID")))
+            try? completion(.failure(AIError(NSLocalizedString("Missing vector store ID", tableName: "AITermXC", comment: "缺少向量存储 ID"))))
             return
         }
         delegate?.addFilesToVectorStore(fileIDs: fileIDs,
@@ -274,7 +274,7 @@ private extension MessagePrepPipeline {
             if let error {
                 try? self?.delegate?.publishNotice(
                     chatID: chatID,
-                    message: "There was a problem adding files to the vector store: \(error.localizedDescription)")
+                    message: String(format: NSLocalizedString("There was a problem adding files to the vector store: %@", tableName: "AITermXC", comment: "向向量存储添加文件时出现问题：%@"), error.localizedDescription))
                 try? completion(.failure(error))
             } else {
                 try? completion(.success(.filesAddedToVectorStore))
@@ -315,7 +315,7 @@ private extension MessagePrepPipeline {
                                    relativeTo: stagingDir,
                                    callbackQueue: .main) { ok in
                 if !ok {
-                    try? completion(.failure(AIError("Failed to zip attached files")))
+                    try? completion(.failure(AIError(NSLocalizedString("Failed to zip attached files", tableName: "AITermXC", comment: "压缩附件失败"))))
                     return
                 }
                 do {
@@ -406,7 +406,7 @@ private extension MessagePrepPipeline {
         DLog("files=\(files.map(\.name).joined(separator: ", "))")
         DLog("text=\(text)")
         if !files.isEmpty {
-            try delegate?.publishNotice(chatID: chatID, message: "Uploading…")
+            try delegate?.publishNotice(chatID: chatID, message: NSLocalizedString("Uploading…", tableName: "AITermXC", comment: "上传中…"))
             currentBuilder = try ingestFiles(files: files,
                                              chatID: userMessage.chatID,
                                              addToVectorStore: false,

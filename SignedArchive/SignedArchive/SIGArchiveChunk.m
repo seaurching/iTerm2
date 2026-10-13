@@ -46,7 +46,7 @@ NSString *const SIGArchiveHeaderMagicString = @"signed-archive";
     if (!chunk) {
         if (error) {
             *error = [SIGError errorWithCode:SIGErrorCodeUnknown
-                                      detail:@"Failed to create chunk object"];
+                                      detail:NSLocalizedStringFromTable(@"Failed to create chunk object", @"signed_archive", @"创建数据块对象失败")];
         }
         return nil;
     }
@@ -71,11 +71,11 @@ NSString *const SIGArchiveHeaderMagicString = @"signed-archive";
     }
     if (!readError && data.length != expectedLength) {
         readError = [SIGError errorWithCode:SIGErrorCodeIORead
-                                     detail:@"Short read"];
+                                     detail:NSLocalizedStringFromTable(@"Short read", @"signed_archive", @"读取不完整")];
     }
     if (!data && !readError) {
         readError = [SIGError errorWithCode:SIGErrorCodeIORead
-                                     detail:@"Uncaught read failure"];
+                                     detail:NSLocalizedStringFromTable(@"Uncaught read failure", @"signed_archive", @"未捕获的读取失败")];
     }
     if (error) {
         *error = readError;
@@ -187,7 +187,7 @@ NSString *const SIGArchiveHeaderMagicString = @"signed-archive";
     if (data.length != self.payloadLength) {
         if (error) {
             *error = [SIGError errorWithCode:SIGErrorCodeConsistency
-                                      detail:@"File changed during signing"];
+                                      detail:NSLocalizedStringFromTable(@"File changed during signing", @"signed_archive", @"文件在签名过程中被修改")];
         }
         return NO;
     }
@@ -199,11 +199,11 @@ NSString *const SIGArchiveHeaderMagicString = @"signed-archive";
     if (length != data.length) {
         if (error) {
             *error = [SIGError errorWithCode:SIGErrorCodeIOWrite
-                                      detail:@"Short write"];
+                                      detail:NSLocalizedStringFromTable(@"Short write", @"signed_archive", @"写入不完整")];
         }
         return NO;
     }
-    
+
     return YES;
 }
 
@@ -228,7 +228,7 @@ NSString *const SIGArchiveHeaderMagicString = @"signed-archive";
             if (error) {
                 *error = [SIGError errorWrapping:readStream.streamError
                                           code:SIGErrorCodeIORead
-                                          detail:@"Error reading file"];
+                                          detail:NSLocalizedStringFromTable(@"Error reading file", @"signed_archive", @"读取文件时出错")];
             }
             return NO;
         }
@@ -236,14 +236,14 @@ NSString *const SIGArchiveHeaderMagicString = @"signed-archive";
         if (totalNumberOfBytes > self.payloadLength) {
             if (error) {
                 *error = [SIGError errorWithCode:SIGErrorCodeConsistency
-                                          detail:@"File changed while reading"];
+                                          detail:NSLocalizedStringFromTable(@"File changed while reading", @"signed_archive", @"文件在读取过程中被修改")];
             }
             return NO;
         }
         NSInteger numberOfBytesWritten = [writeStream write:buffer maxLength:numberOfBytesRead];
         if (numberOfBytesWritten < numberOfBytesRead) {
             *error = [SIGError errorWithCode:SIGErrorCodeIOWrite
-                                      detail:@"Short write"];
+                                      detail:NSLocalizedStringFromTable(@"Short write", @"signed_archive", @"写入不完整")];
             return NO;
         }
     }
@@ -264,10 +264,10 @@ NSString *const SIGArchiveHeaderMagicString = @"signed-archive";
         if (length < 0) {
             *error = [SIGError errorWrapping:stream.streamError
                                       code:SIGErrorCodeIOWrite
-                                      detail:@"Error writing to file"];
+                                      detail:NSLocalizedStringFromTable(@"Error writing to file", @"signed_archive", @"写入文件时出错")];
         } else if (length != sizeof(buffer)) {
             *error = [SIGError errorWithCode:SIGErrorCodeIOWrite
-                                      detail:@"Short write"];
+                                      detail:NSLocalizedStringFromTable(@"Short write", @"signed_archive", @"写入不完整")];
         }
     }
     return length == sizeof(buffer);

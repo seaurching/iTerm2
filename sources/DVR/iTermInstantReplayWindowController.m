@@ -235,26 +235,26 @@ typedef NS_ENUM(NSUInteger, iTermInstantReplayState) {
     _state = destinationState;
     switch (_state) {
         case iTermInstantReplayStateNormal:
-            _firstButton.title = @"Export…";
+            _firstButton.title = NSLocalizedStringFromTableInBundle(@"Export…", @"InstantReplayPlIB", [NSBundle bundleForClass:[self class]], @"Instant Replay: export button title");
             _eventsView.startFraction = 0;
             _eventsView.endFraction = 0;
             [_eventsView setNeedsDisplay:YES];
             _secondButton.hidden = YES;
             break;
         case iTermInstantReplayStateSetStart:
-            _firstButton.title = @"Set Start";
+            _firstButton.title = NSLocalizedStringFromTableInBundle(@"Set Start", @"InstantReplayPlIB", [NSBundle bundleForClass:[self class]], @"Instant Replay: set start button title");
             _slider.floatValue = 0;
             [_delegate instantReplaySeekTo:0];
             [self updateInstantReplayView];
-            _secondButton.title = @"Cancel";
+            _secondButton.title = NSLocalizedStringFromTableInBundle(@"Cancel", @"InstantReplayPlIB", [NSBundle bundleForClass:[self class]], @"Instant Replay: cancel button title");
             _secondButton.hidden = NO;
             break;
         case iTermInstantReplayStateSetEnd:
-            _firstButton.title = @"Set End";
+            _firstButton.title = NSLocalizedStringFromTableInBundle(@"Set End", @"InstantReplayPlIB", [NSBundle bundleForClass:[self class]], @"Instant Replay: set end button title");
             _slider.floatValue = 1;
             [_delegate instantReplaySeekTo:1];
             [self updateInstantReplayView];
-            _secondButton.title = @"Cancel";
+            _secondButton.title = NSLocalizedStringFromTableInBundle(@"Cancel", @"InstantReplayPlIB", [NSBundle bundleForClass:[self class]], @"Instant Replay: cancel button title");
             _secondButton.hidden = NO;
     }
 }
@@ -317,11 +317,11 @@ typedef NS_ENUM(NSUInteger, iTermInstantReplayState) {
     } else {
         // Live view
         [_slider setFloatValue:1.0];
-        [_currentTimeLabel setStringValue:@"Live View"];
+        [_currentTimeLabel setStringValue:NSLocalizedStringFromTableInBundle(@"Live View", @"InstantReplayPlIB", [NSBundle bundleForClass:[self class]], @"Instant Replay: live view label")];
         [_currentTimeLabel sizeToFit];
     }
     [_earliestTimeLabel setStringValue:[self stringForTimestamp:firstTimestamp]];
-    [_latestTimeLabel setStringValue:@"Now"];
+    [_latestTimeLabel setStringValue:NSLocalizedStringFromTableInBundle(@"Now", @"InstantReplayPlIB", [NSBundle bundleForClass:[self class]], @"Instant Replay: now label")];
 
     // Adjust the width of the "earliest time" label, and keep the margin between it and the
     // slider the same.

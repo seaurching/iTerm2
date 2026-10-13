@@ -329,11 +329,11 @@ enum PageSaveError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .failedToGetHTML:
-            return "Failed to get page HTML content"
+            return NSLocalizedString("Failed to get page HTML content", tableName: "Browser", comment: "获取页面 HTML 内容失败")
         case .failedToCreateDirectory:
-            return "Failed to create save directory"
+            return NSLocalizedString("Failed to create save directory", tableName: "Browser", comment: "创建保存目录失败")
         case .failedToSaveFile:
-            return "Failed to save file"
+            return NSLocalizedString("Failed to save file", tableName: "Browser", comment: "保存文件失败")
         }
     }
 }
@@ -383,10 +383,10 @@ extension iTermBrowserPageSaver {
     @MainActor
     private static func showSaveError(_ error: Error, window: NSWindow) {
         let alert = NSAlert()
-        alert.messageText = "Save Failed"
-        alert.informativeText = "Could not save the page: \(error.localizedDescription)"
+        alert.messageText = NSLocalizedString("Save Failed", tableName: "Browser", comment: "保存失败")
+        alert.informativeText = String(format: NSLocalizedString("Could not save the page: %@", tableName: "Browser", comment: "无法保存页面：%@"), error.localizedDescription)
         alert.alertStyle = .warning
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: NSLocalizedString("OK", tableName: "Browser", comment: "好"))
         alert.beginSheetModal(for: window, completionHandler: nil)
     }
 

@@ -44,7 +44,7 @@ class ChatClient {
         }
         switch message.content {
         case .userCommand:
-            it_fatalError("Agent should not send userCommand")
+            it_fatalError(NSLocalizedString("Agent should not send userCommand", tableName: "AITermXC", comment: "智能体不应发送 userCommand"))
         case .remoteCommandRequest(let payload, safe: let safe):
             it_assert(!partial)
             // AITerm's client only processes .classic payloads. .external
@@ -151,10 +151,10 @@ class ChatClient {
             try? respondSuccessfullyToRemoteCommandRequest(
                 inChat: chatID,
                 requestUUID: message.uniqueID,
-                message: "The user denied permission to use function calling in this terminal session. Do not try again.",
-                functionCallName: message.functionCallName ?? "Unknown function call name",
+                message: NSLocalizedString("The user denied permission to use function calling in this terminal session. Do not try again.", tableName: "AITermXC", comment: "用户拒绝了在此终端会话中使用函数调用的权限。请勿重试。"),
+                functionCallName: message.functionCallName ?? NSLocalizedString("Unknown function call name", tableName: "AITermXC", comment: "未知的函数调用名称"),
                 functionCallID: message.functionCallID,
-                userNotice: "AI will not execute this command.")
+                userNotice: NSLocalizedString("AI will not execute this command.", tableName: "AITermXC", comment: "AI 不会执行此命令。"))
             return nil
         case .always, .ask:
             // Park on the user's Allow/Deny when the shared predicate says so (ask
@@ -209,7 +209,7 @@ class ChatClient {
             try self?.respondSuccessfullyToRemoteCommandRequest(inChat: chatID,
                                                             requestUUID: messageUniqueID,
                                                             message: response,
-                                                            functionCallName: request.llmMessage.function_call?.name ?? "Unknown function call name",
+                                                            functionCallName: request.llmMessage.function_call?.name ?? NSLocalizedString("Unknown function call name", tableName: "AITermXC", comment: "未知的函数调用名称"),
                                                             functionCallID: request.llmMessage.functionCallID,
                                                             userNotice: userNotice)
         }
@@ -326,7 +326,7 @@ class ChatClient {
                         it_fatalError("You can't append \(stringOrAttachment)")
                     }
                 case .attachment:
-                    it_fatalError("Server-sent attachments are not yet supported")
+                    it_fatalError(NSLocalizedString("Server-sent attachments are not yet supported", tableName: "AITermXC", comment: "尚不支持服务器发送的附件"))
                 }
                 return temp;
             } else if uuid != upstreamUUID {
@@ -450,7 +450,7 @@ class ChatClient {
             guard let url else {
                 continue
             }
-            bullets.append("I [annotated](\(url.absoluteString)) “\(annotation.annotatedText)”: \(annotation.note)")
+            bullets.append(String(format: NSLocalizedString("I [annotated](%@) “%@”: %@", tableName: "AITermXC", comment: ""), url.absoluteString, annotation.annotatedText, annotation.note))
         }
         var result = ""
         result += bullets.map { "  * " + $0 }.joined(separator: "\n")
@@ -458,7 +458,7 @@ class ChatClient {
             result += "\n"
         }
         if value.final && !response.annotations.isEmpty {
-            result += "\nYou can click on a link in this message or on a yellow underline in the terminal to reveal an annotation."
+            result += NSLocalizedString("\nYou can click on a link in this message or on a yellow underline in the terminal to reveal an annotation.", tableName: "AITermXC", comment: "")
         }
         if let mainResponse = value.mainResponse {
             if !result.isEmpty {

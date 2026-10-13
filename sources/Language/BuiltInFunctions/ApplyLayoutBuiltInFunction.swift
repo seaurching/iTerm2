@@ -25,13 +25,13 @@ class ApplyLayoutBuiltInFunction: iTermBuiltInFunction {
                 // but the iTerm expression parser does not decode `\"` back
                 // to `"`. Base64 sidesteps that entirely.
                 guard let specB64 = parameters["spec_json_b64"] as? String else {
-                    completion(nil, Self.error("Missing spec_json_b64 argument"))
+                    completion(nil, Self.error(NSLocalizedString("Missing spec_json_b64 argument", tableName: "Language", comment: "Apply layout error: missing spec argument")))
                     return
                 }
                 guard let data = Data(base64Encoded: specB64),
                       let parsed = try? JSONSerialization.jsonObject(with: data),
                       let dict = parsed as? [String: Any] else {
-                    completion(nil, Self.error("spec_json_b64 is not valid base64-encoded JSON"))
+                    completion(nil, Self.error(NSLocalizedString("spec_json_b64 is not valid base64-encoded JSON", tableName: "Language", comment: "Apply layout error: invalid base64 JSON")))
                     return
                 }
 
@@ -57,7 +57,7 @@ class ApplyLayoutBuiltInFunction: iTermBuiltInFunction {
                 } catch let error as LayoutMutatorError {
                     completion(nil, Self.error(error.localizedDescription))
                 } catch {
-                    completion(nil, Self.error("\(type(of: error)): \(error)"))
+                    completion(nil, Self.error(String(format: NSLocalizedString("%@: %@", tableName: "Language", comment: "Apply layout error: unexpected error type"), String(describing: type(of: error)), String(describing: error))))
                 }
             }
         iTermBuiltInFunctions.sharedInstance().register(f, namespace: "iterm2")
@@ -72,40 +72,40 @@ class ApplyLayoutBuiltInFunction: iTermBuiltInFunction {
     private static func describe(_ error: LayoutSpecError) -> String {
         switch error {
         case .missingField(let path, let field):
-            return "Missing field '\(field)' at \(path)"
+            return String(format: NSLocalizedString("Missing field '%@' at %@", tableName: "Language", comment: "Apply layout spec error: missing field"), field, path)
         case .wrongType(let path, let expected):
-            return "Wrong type at \(path): expected \(expected)"
+            return String(format: NSLocalizedString("Wrong type at %@: expected %@", tableName: "Language", comment: "Apply layout spec error: wrong type"), path, expected)
         case .unknownLeafKind(let path):
-            return "Unknown leaf kind at \(path) (must be session_id, new_session, or splitter)"
+            return String(format: NSLocalizedString("Unknown leaf kind at %@ (must be session_id, new_session, or splitter)", tableName: "Language", comment: "Apply layout spec error: unknown leaf kind"), path)
         case .splitterTooFewChildren(let path, let count):
-            return "Splitter at \(path) has \(count) children; must have at least 2"
+            return String(format: NSLocalizedString("Splitter at %@ has %d children; must have at least 2", tableName: "Language", comment: "Apply layout spec error: splitter too few children"), path, count)
         case .nestedSameOrientation(let path):
-            return "Same-orientation splitter nesting at \(path) (vertical inside vertical or horizontal inside horizontal)"
+            return String(format: NSLocalizedString("Same-orientation splitter nesting at %@ (vertical inside vertical or horizontal inside horizontal)", tableName: "Language", comment: "Apply layout spec error: nested same orientation"), path)
         case .treeTooDeep(let path, let depth):
-            return "Layout tree at \(path) is too deep (\(depth))"
+            return String(format: NSLocalizedString("Layout tree at %@ is too deep (%d)", tableName: "Language", comment: "Apply layout spec error: tree too deep"), path, depth)
         case .duplicateSessionID(let guid):
-            return "Session GUID '\(guid)' appears more than once in the spec"
+            return String(format: NSLocalizedString("Session GUID '%@' appears more than once in the spec", tableName: "Language", comment: "Apply layout spec error: duplicate session ID"), guid)
         }
     }
 
     private static func describe(_ error: LayoutResolverError) -> String {
         switch error {
         case .unknownSession(let guid):
-            return "Unknown session: \(guid)"
+            return String(format: NSLocalizedString("Unknown session: %@", tableName: "Language", comment: "Apply layout resolver error: unknown session"), guid)
         case .unknownTab(let guid):
-            return "Unknown tab: \(guid)"
+            return String(format: NSLocalizedString("Unknown tab: %@", tableName: "Language", comment: "Apply layout resolver error: unknown tab"), guid)
         case .unknownWindow(let guid):
-            return "Unknown window: \(guid)"
+            return String(format: NSLocalizedString("Unknown window: %@", tableName: "Language", comment: "Apply layout resolver error: unknown window"), guid)
         case .orphanedSession(let tabGUID, let sessionGUID):
-            return "Session \(sessionGUID) in tab \(tabGUID) is unaccounted for; it must appear in the new layout or in close_sessions/close_tabs"
+            return String(format: NSLocalizedString("Session %@ in tab %@ is unaccounted for; it must appear in the new layout or in close_sessions/close_tabs", tableName: "Language", comment: "Apply layout resolver error: orphaned session"), sessionGUID, tabGUID)
         case .tmuxTabNotSupported(let tabGUID):
-            return "Tab \(tabGUID) is a tmux integration tab; layout application is not supported on tmux tabs"
+            return String(format: NSLocalizedString("Tab %@ is a tmux integration tab; layout application is not supported on tmux tabs", tableName: "Language", comment: "Apply layout resolver error: tmux tab not supported"), tabGUID)
         case .newTabsNotSupported:
-            return "The 'new_tabs' field is not supported by apply_layout"
+            return NSLocalizedString("The 'new_tabs' field is not supported by apply_layout", tableName: "Language", comment: "Apply layout resolver error: new tabs not supported")
         case .newWindowsNotSupported:
-            return "The 'new_windows' field is not supported by apply_layout"
+            return NSLocalizedString("The 'new_windows' field is not supported by apply_layout", tableName: "Language", comment: "Apply layout resolver error: new windows not supported")
         case .unknownProfile(let guid):
-            return "Unknown profile: \(guid)"
+            return String(format: NSLocalizedString("Unknown profile: %@", tableName: "Language", comment: "Apply layout resolver error: unknown profile"), guid)
         }
     }
 }

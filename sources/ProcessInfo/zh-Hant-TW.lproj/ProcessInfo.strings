@@ -1,0 +1,108 @@
+/* Process info: command header */
+"Command" = "指令";
+
+/* Process info: working directory header */
+"Working Directory" = "工作目錄";
+
+/* Process info: loading placeholder */
+"Loading…" = "載入中…";
+
+/* Process info: process id header */
+"Process ID" = "行程 ID";
+
+/* Process info: started header */
+"Started" = "啟動時間";
+
+/* Process info: environment header */
+"Environment" = "環境";
+
+/* Process info: environment variable column */
+"Variable" = "變數";
+
+/* Process info: environment value column */
+"Value" = "值";
+
+/* Process info: open files header */
+"Open Files & Sockets" = "開啟的檔案和 Socket";
+
+/* Process info: file descriptor column */
+"FD" = "FD";
+
+/* Process info: type column */
+"Type" = "類型";
+
+/* Process info: detail column */
+"Detail" = "詳情";
+
+/* Process info: copy accessibility */
+"Copy" = "複製";
+
+/* Process info: unknown value */
+"Unknown" = "未知";
+
+/* Process info: copied toast */
+"Copied" = "已複製";
+
+/* Process info: started time with elapsed */
+"%1$@ (%2$@ ago)" = "%1$@（%2$@ 前）";
+
+/* Process info: unknown process name fallback */
+"unknown name" = "未知名稱";
+
+/* Process info: job terminated alert title */
+"Job Terminated" = "工作已終止";
+
+/* Process info: jobs terminated alert title */
+"Jobs Terminated" = "工作已終止";
+
+/* Process info: job terminated OK button */
+"OK" = "好";
+
+/* Process info: unknown name fallback */
+"(unknown)" = "(未知)";
+
+/* Process info: job terminated informative text */
+"The job %1$@ with process ID %2$d has terminated." = "行程 ID 為 %2$d 的工作「%1$@」已終止。";
+
+/* Process info: cannot monitor alert title */
+"Cannot Notify on Termination" = "無法通知終止";
+
+/* Process info: cannot monitor informative text */
+"iTerm2 cannot watch the job %1$@ with process ID %2$d because it has already terminated." = "iTerm2 無法監視行程 ID 為 %2$d 的工作「%1$@」，因為它已經終止。";
+
+/* Process info: clear accessibility */
+"Clear" = "清除";
+
+/* Process info: inspect accessibility */
+"Inspect" = "檢查";
+
+/* Process info: inspect tooltip */
+"Inspect the selected process" = "檢查所選行程";
+
+/* Process info: one process with children */
+"one process and its children" = "一個行程及其子行程";
+
+/* Process info: processes with children */
+"%d processes and their children" = "%d 個行程及其子行程";
+
+/* Process info: one process */
+"one process" = "一個行程";
+
+/* Process info: processes */
+"%d processes" = "%d 個行程";
+
+/* Process info: kill confirmation title */
+"Are you sure? This may terminate %@." = "您確定嗎？這可能會終止%@。";
+
+/* Process info: kill confirmation cancel button */
+"Cancel" = "取消";
+
+/* Process info: kill confirmation heading */
+"Confirmation Needed" = "需要確認";
+
+/* Process info: terminated process label */
+"(terminated)" = "(已終止)";
+
+/* Process info: bell accessibility */
+"Will notify when this job terminates" = "在此工作終止時通知";
+"SIG%@ (%d)" = "SIG%@ (%d)";

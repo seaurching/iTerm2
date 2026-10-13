@@ -297,11 +297,11 @@ const CGFloat iTermGetStatusBarHeight(void) {
 }
 
 - (void)showContextMenuForEvent:(NSEvent *)event {
-    NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
+    NSMenu *menu = [[NSMenu alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Contextual Menu", @"StatusBar", [NSBundle bundleForClass:[self class]], @"右键菜单标题")];
     if ([_component respondsToSelector:@selector(statusBarComponentCopyableString)]) {
         NSString *copyableString = [_component statusBarComponentCopyableString];
         if (copyableString.length > 0) {
-            [menu addItemWithTitle:@"Copy"
+            [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Copy", @"StatusBar", [NSBundle bundleForClass:[self class]], @"container view: copy menu item")
                             action:@selector(copyComponentValue:)
                      keyEquivalent:@""];
             [menu addItem:[NSMenuItem separatorItem]];
@@ -309,18 +309,18 @@ const CGFloat iTermGetStatusBarHeight(void) {
     }
     if (![_component statusBarComponentIsInternal]) {
         if ([[_component statusBarComponentKnobs] count]) {
-            [menu addItemWithTitle:[NSString stringWithFormat:@"Configure %@", [self.component statusBarComponentShortDescription]]
+            [menu addItemWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Configure %@", @"StatusBar", [NSBundle bundleForClass:[self class]], @"container view: configure component menu format"), [self.component statusBarComponentShortDescription]]
                             action:@selector(configureComponent:)
                      keyEquivalent:@""];
         }
-        [menu addItemWithTitle:[NSString stringWithFormat:@"Hide %@", [self.component statusBarComponentShortDescription]]
+        [menu addItemWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Hide %@", @"StatusBar", [NSBundle bundleForClass:[self class]], @"container view: hide component menu format"), [self.component statusBarComponentShortDescription]]
                         action:@selector(hideComponent:)
                  keyEquivalent:@""];
     }
-    [menu addItemWithTitle:@"Configure Status Bar"
+    [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Configure Status Bar", @"StatusBar", [NSBundle bundleForClass:[self class]], @"container view: configure status bar menu item")
                     action:@selector(configureStatusBar:)
              keyEquivalent:@""];
-    [menu addItemWithTitle:@"Disable Status Bar"
+    [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Disable Status Bar", @"StatusBar", [NSBundle bundleForClass:[self class]], @"container view: disable status bar menu item")
                     action:@selector(disableStatusBar:)
              keyEquivalent:@""];
     NSDictionary<NSString *, id> *values = [self.component statusBarComponentKnobValues];

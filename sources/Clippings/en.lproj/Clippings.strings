@@ -1,0 +1,21 @@
+/* Clippings.strings - en */
+"Add" = "Add";
+"Cancel" = "Cancel";
+"Hide clippings" = "Hide clippings";
+"New Clipping" = "New Clipping";
+"Preview (Space)" = "Preview (Space)";
+"Viewing archived clippings (%d of %d)" = "Viewing archived clippings (%d of %d)";
+"Add clipping" = "Add clipping";
+"Remove clipping" = "Remove clipping";
+"Archive clippings" = "Archive clippings";
+"Remove selected clipping" = "Remove selected clipping";
+"Archive all clippings" = "Archive all clippings";
+"Send clipping" = "Send clipping";
+"Copy clipping" = "Copy clipping";
+"Send selected to terminal" = "Send selected to terminal";
+"Copy selected to pasteboard" = "Copy selected to pasteboard";
+"Previous archived clippings" = "Previous archived clippings";
+"Next archived clippings" = "Next archived clippings";
+"Show previous archived clippings" = "Show previous archived clippings";
+"Show next archived clippings" = "Show next archived clippings";
+"Preview clipping" = "Preview clipping";

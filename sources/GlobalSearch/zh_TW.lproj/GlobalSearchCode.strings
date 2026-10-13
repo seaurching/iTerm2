@@ -1,0 +1,8 @@
+/* Global search: folded region match count */
+"Folded region (%lu matches)" = "折疊區域（%lu 個匹配）";
+
+/* Global search: fallback session name */
+"Session" = "工作階段";
+
+/* Global search: folded region accessibility description */
+"Folded region" = "折疊區域";

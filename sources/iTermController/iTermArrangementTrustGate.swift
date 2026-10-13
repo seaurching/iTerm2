@@ -20,11 +20,11 @@ final class iTermArrangementTrustGate: NSObject {
         }
 
         let filename = (path as NSString).lastPathComponent
-        let heading = "Open the arrangement “\(filename)”?"
+        let heading = String(format: NSLocalizedString("Open the arrangement “%@”?", tableName: "iTermController", comment: "Alert heading: open untrusted arrangement"), filename)
         let body = buildBody(summary: summary)
 
         let selection = iTermWarning.show(withTitle: body,
-                                          actions: ["Cancel", "Open"],
+                                          actions: ["Cancel", NSLocalizedString("Open", tableName: "iTermController", comment: "Alert button: open the arrangement")],
                                           accessory: nil,
                                           identifier: nil,
                                           silenceable: .kiTermWarningTypePersistent,
@@ -39,16 +39,16 @@ final class iTermArrangementTrustGate: NSObject {
 
     private static func buildBody(summary: RiskSummary) -> String {
         var parts: [String] = []
-        parts.append("Window arrangements embed session profiles, which can run commands, connect to remote hosts, and configure triggers or smart-selection actions that execute when the terminal sees matching output. Opening an arrangement from an untrusted source is equivalent to running a program they gave you.")
+        parts.append(NSLocalizedString("Window arrangements embed session profiles, which can run commands, connect to remote hosts, and configure triggers or smart-selection actions that execute when the terminal sees matching output. Opening an arrangement from an untrusted source is equivalent to running a program they gave you.", tableName: "iTermController", comment: "Trust gate body: explanation of arrangement risks"))
         if !summary.findings.isEmpty {
             parts.append("")
-            parts.append("This arrangement contains:")
+            parts.append(NSLocalizedString("This arrangement contains:", tableName: "iTermController", comment: "Trust gate body: list header"))
             for finding in summary.findings {
                 parts.append("  • " + finding)
             }
         }
         parts.append("")
-        parts.append("Open it only if you trust where it came from.")
+        parts.append(NSLocalizedString("Open it only if you trust where it came from.", tableName: "iTermController", comment: "Trust gate body: trust warning"))
         return parts.joined(separator: "\n")
     }
 
@@ -114,23 +114,23 @@ enum RiskAnalyzer {
 
         var findings: [String] = []
         if sessionCount > 0 {
-            findings.append(plural(sessionCount, "embedded session profile"))
+            findings.append(plural(sessionCount, NSLocalizedString("embedded session profile", tableName: "iTermController", comment: "Trust gate finding: embedded session profile")))
         }
         let commandTotal = customCommandCount + programCount
         if commandTotal > 0 {
-            findings.append(plural(commandTotal, "custom command") + " that will run when the arrangement opens")
+            findings.append(plural(commandTotal, NSLocalizedString("custom command", tableName: "iTermController", comment: "Trust gate finding: custom command")) + NSLocalizedString(" that will run when the arrangement opens", tableName: "iTermController", comment: "Trust gate finding suffix: custom command"))
         }
         if sshCount > 0 {
-            findings.append(plural(sshCount, "SSH connection") + " that will be opened automatically")
+            findings.append(plural(sshCount, NSLocalizedString("SSH connection", tableName: "iTermController", comment: "Trust gate finding: SSH connection")) + NSLocalizedString(" that will be opened automatically", tableName: "iTermController", comment: "Trust gate finding suffix: SSH connection"))
         }
         if initialTextCount > 0 {
-            findings.append(plural(initialTextCount, "session") + " with text that will be typed into the terminal on startup")
+            findings.append(plural(initialTextCount, NSLocalizedString("session", tableName: "iTermController", comment: "Trust gate finding: session")) + NSLocalizedString(" with text that will be typed into the terminal on startup", tableName: "iTermController", comment: "Trust gate finding suffix: session initial text"))
         }
         if triggerCount > 0 {
-            findings.append(plural(triggerCount, "trigger") + " that runs actions when matching output appears")
+            findings.append(plural(triggerCount, NSLocalizedString("trigger", tableName: "iTermController", comment: "Trust gate finding: trigger")) + NSLocalizedString(" that runs actions when matching output appears", tableName: "iTermController", comment: "Trust gate finding suffix: trigger"))
         }
         if smartRuleCount > 0 {
-            findings.append(plural(smartRuleCount, "smart-selection rule") + " with custom actions")
+            findings.append(plural(smartRuleCount, NSLocalizedString("smart-selection rule", tableName: "iTermController", comment: "Trust gate finding: smart-selection rule")) + NSLocalizedString(" with custom actions", tableName: "iTermController", comment: "Trust gate finding suffix: smart-selection rule"))
         }
         return RiskSummary(findings: findings)
     }
@@ -185,9 +185,9 @@ enum RiskAnalyzer {
     }
 
     private static func plural(_ count: Int, _ noun: String) -> String {
-        if count == 1 {
-            return "1 \(noun)"
-        }
-        return "\(count) \(noun)s"
+        let fmt = (count == 1)
+            ? NSLocalizedString("%d %@", tableName: "iTermController", comment: "Trust gate: count + noun (singular)")
+            : NSLocalizedString("%d %@s", tableName: "iTermController", comment: "Trust gate: count + noun (plural)");
+        return String(format: fmt, count, noun)
     }
 }

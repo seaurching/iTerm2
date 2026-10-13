@@ -101,7 +101,7 @@
                           BOOL * _Nonnull stop) {
         const BOOL verbose = self->_verbose;
         if (verbose) {
-            NSLog(@"Begin run %@", @(j));
+            NSLog(NSLocalizedStringFromTableInBundle(@"Begin run %@", @"Drawing", [NSBundle bundleForClass:[self class]], @"CoreText line rendering debug: begin run"), @(j));
         }
         [self alignGlyphsToGridWithGlyphIndex:glyphIndexToCharacterIndex
                                        length:length
@@ -150,7 +150,7 @@
         const CGFloat xOriginForThisCharacter = xOriginsForCharacters[characterIndex] - xOriginsForCharacters[0];
 
         if (verbose) {
-            NSLog(@"  begin glyph %@", @(glyphIndex));
+            NSLog(NSLocalizedStringFromTableInBundle(@"  begin glyph %@", @"Drawing", [NSBundle bundleForClass:[self class]], @"CoreText line rendering debug: begin glyph"), @(glyphIndex));
         }
 
         if (characterIndex != previousCharacterIndex &&
@@ -159,7 +159,7 @@
             startOfThisCharacter = *advanceAccumulatorPtr;
             xOriginForCurrentColumn = xOriginForThisCharacter;
             if (verbose) {
-                NSLog(@"  This glyph begins a new character or column. xOffset<-%@, xOriginForCurrentColumn<-%@", @(startOfThisCharacter), @(xOriginForCurrentColumn));
+                NSLog(NSLocalizedStringFromTableInBundle(@"  This glyph begins a new character or column. xOffset<-%@, xOriginForCurrentColumn<-%@", @"Drawing", [NSBundle bundleForClass:[self class]], @"CoreText line rendering debug: glyph begins new character or column"), @(startOfThisCharacter), @(xOriginForCurrentColumn));
             }
         }
         *advanceAccumulatorPtr = advances[glyphIndex].width + positions[glyphIndex].x;

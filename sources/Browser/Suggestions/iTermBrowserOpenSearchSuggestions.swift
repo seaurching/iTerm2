@@ -101,7 +101,7 @@ class iTermBrowserOpenSearchSuggestions {
             let urlSuggestion = URLSuggestion(
                 url: searchURL,
                 displayText: displayText,
-                detail: "Search Suggestion",
+                detail: NSLocalizedString("Search Suggestion", tableName: "Browser", comment: "搜索建议"),
                 type: .webSearch
             )
             

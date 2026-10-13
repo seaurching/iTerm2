@@ -1,0 +1,13 @@
+/* iTermPromptOnCloseReason.strings */
+
+"A session with profile “%@” is running %@, and %@ other %@." = "A session with profile “%@” is running %@, and %@ other %@.";
+"A session with profile “%@” is running %@." = "A session with profile “%@” is running %@.";
+"A tmux session is configured to prompt if jobs are running, but tmux doesn’t expose the process tree." = "A tmux session is configured to prompt if jobs are running, but tmux doesn’t expose the process tree.";
+"Tab #%d is pinned." = "Tab #%d is pinned.";
+"The profile “%@” always requires confirmation." = "The profile “%@” always requires confirmation.";
+"This pane is locked." = "This pane is locked.";
+"You can change this setting in Settings > Profiles > Session" = "You can change this setting in Settings > Profiles > Session";
+"jobs" = "jobs";
+"“Settings > General > Closing > Confirm Quit iTerm2” and “Even if there are no windows” is enabled." = "“Settings > General > Closing > Confirm Quit iTerm2” and “Even if there are no windows” is enabled.";
+"“Settings > General > Closing > Confirm Quit iTerm2” is enabled and there is at least one terminal window." = "“Settings > General > Closing > Confirm Quit iTerm2” is enabled and there is at least one terminal window.";
+"“Settings > General > Closing > Confirm closing multiple sessions” is enabled." = "“Settings > General > Closing > Confirm closing multiple sessions” is enabled.";

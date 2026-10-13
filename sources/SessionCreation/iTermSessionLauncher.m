@@ -35,12 +35,12 @@
                                  ligaturesEnabled:[iTermProfilePreferences boolForKey:KEY_ASCII_LIGATURES
                                                                             inProfile:profile]];
     if (!font) {
-        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Couldn’t find the specified font “%@” or the fallback standard fixed-pitch font, Menlo. Please ensure at least one of these is installed.", profile[KEY_NORMAL_FONT]]
-                                   actions:@[ @"OK" ]
+        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Couldn’t find the specified font “%@” or the fallback standard fixed-pitch font, Menlo. Please ensure at least one of these is installed.", @"SessionCreation", [NSBundle bundleForClass:[self class]], @"Session launcher: font not found warning"), profile[KEY_NORMAL_FONT]]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"SessionCreation", [NSBundle bundleForClass:[self class]], @"Session launcher: font not found OK button") ]
                                  accessory:nil
                                 identifier:nil
                                silenceable:kiTermWarningTypePersistent
-                                   heading:@"Invalid Profile"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Invalid Profile", @"SessionCreation", [NSBundle bundleForClass:[self class]], @"Session launcher: invalid profile heading")
                                     window:nil];
         return NO;
     }
@@ -584,14 +584,14 @@
     if (username) {
         NSString *part = [self validatedAndShellEscapedUsername:username];
         if (!part) {
-            NSString *message = [NSString stringWithFormat:@"The SSH user name “%@” contained a disallowed character. The set of allowed characters is limited for security reasons. You can modify it in Settings > Advanced > Valid characters in SSH user names.",
+            NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The SSH user name “%@” contained a disallowed character. The set of allowed characters is limited for security reasons. You can modify it in Settings > Advanced > Valid characters in SSH user names.", @"SessionCreation", [NSBundle bundleForClass:[self class]], @"Session launcher: illegal SSH username warning"),
                                  username];
             [iTermWarning showWarningWithTitle:message
-                                       actions:@[ @"OK" ]
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"SessionCreation", [NSBundle bundleForClass:[self class]], @"Session launcher: illegal username OK button") ]
                                      accessory:nil
                                     identifier:nil
                                    silenceable:kiTermWarningTypePersistent
-                                       heading:@"Illegal Username"
+                                       heading:NSLocalizedStringFromTableInBundle(@"Illegal Username", @"SessionCreation", [NSBundle bundleForClass:[self class]], @"Session launcher: illegal username heading")
                                         window:nil];
             RLog(@"bad username");
             return nil;

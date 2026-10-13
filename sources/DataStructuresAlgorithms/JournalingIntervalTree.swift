@@ -88,7 +88,7 @@ class EventuallyConsistentIntervalTree: IntervalTree {
         let copyOfInterval = interval.copy(with: nil) as! Interval
         addSideEffect(object, closure: { doppelganger, derivative in
             derivative.add(doppelganger, with: copyOfInterval)
-        }, name: "add object")
+        }, name: NSLocalizedString("add object", tableName: "DataStructuresAlgorithms", comment: "JournalingIntervalTree side effect name: add object"))
     }
 
     // Returns whether the object was actually removed.
@@ -98,7 +98,7 @@ class EventuallyConsistentIntervalTree: IntervalTree {
         let result = super.remove(object)
         addSideEffect(object, closure: { doppelganger, derivative in
             derivative.remove(doppelganger)
-        }, name: "remove object")
+        }, name: NSLocalizedString("remove object", tableName: "DataStructuresAlgorithms", comment: "JournalingIntervalTree side effect name: remove object"))
         return result
     }
 
@@ -109,7 +109,7 @@ class EventuallyConsistentIntervalTree: IntervalTree {
         sideEffectPerformer?.addSideEffect({ [weak self] in
             self?._derivative.removeAllObjects()
         },
-                                           name: "remove all objects")
+                                           name: NSLocalizedString("remove all objects", tableName: "DataStructuresAlgorithms", comment: "JournalingIntervalTree side effect name: remove all objects"))
     }
 
     // The `closure` gets called twice: once (synchronously) with `object` and a second time (maybe
@@ -131,7 +131,7 @@ class EventuallyConsistentIntervalTree: IntervalTree {
 #endif
         addSideEffect(mutable, closure: { doppelganger, _ in
             closure(doppelganger)
-        }, name: "mutate object")
+        }, name: NSLocalizedString("mutate object", tableName: "DataStructuresAlgorithms", comment: "JournalingIntervalTree side effect name: mutate object"))
     }
 
     // If you know you're making lots of changes at one time, this is a faster version of
@@ -152,7 +152,7 @@ class EventuallyConsistentIntervalTree: IntervalTree {
         }
         addBulkSideEffect(objects as! [IntervalTreeObject], closure: { _, doppelganger, _ in
             closure(doppelganger)
-        }, name: "bulk mutate objects")
+        }, name: NSLocalizedString("bulk mutate objects", tableName: "DataStructuresAlgorithms", comment: "JournalingIntervalTree side effect name: bulk mutate objects"))
     }
 
     @objc(bulkRemoveObjects:)
@@ -179,7 +179,7 @@ class EventuallyConsistentIntervalTree: IntervalTree {
         addBulkSideEffect(objects as! [IntervalTreeObject], closure: { i, ito, tree in
             DLog("Running bulk removal side effect on \(ito.description)")
             tree.remove(ito)
-        }, name: "bulk remove objects")
+        }, name: NSLocalizedString("bulk remove objects", tableName: "DataStructuresAlgorithms", comment: "JournalingIntervalTree side effect name: bulk remove objects"))
         DLog("After bulk remove tree has:\n\(allObjects())")
     }
 
@@ -201,7 +201,7 @@ super.sanityCheck()
         addBulkSideEffect(objects as! [IntervalTreeObject], closure: { i, ito, tree in
             tree.remove(ito)
             tree.add(ito, with: newIntervals[i])
-        }, name: "bulk move objects")
+        }, name: NSLocalizedString("bulk move objects", tableName: "DataStructuresAlgorithms", comment: "JournalingIntervalTree side effect name: bulk move objects"))
     }
 
     private func addSideEffect(_ object: IntervalTreeObject,

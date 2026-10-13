@@ -1,0 +1,105 @@
+/* signed_archive.strings - English localization */
+
+/* extract/main.m */
+"%@ error code %@" = "%@ error code %@";
+"Destination filename malformed." = "Destination filename malformed.";
+"Verification failed for an unknown reason" = "Verification failed for an unknown reason";
+"Usage: extract file.in file.out" = "Usage: extract file.in file.out";
+
+/* resign/main.m */
+"Using identity %@" = "Using identity %@";
+"Failed to load %@: %@" = "Failed to load %@: %@";
+"Could not realize input stream from %@: %@" = "Could not realize input stream from %@: %@";
+"Could not create temporary file in %@" = "Could not create temporary file in %@";
+"Could not create output stream to write to %@" = "Could not create output stream to write to %@";
+"Error %@ reading from %@" = "Error %@ reading from %@";
+"Error %@ while writing to %@" = "Error %@ while writing to %@";
+"Could not extract from %@" = "Could not extract from %@";
+"No identity found" = "No identity found";
+"Signing error: %@" = "Signing error: %@";
+"Warning: While deleting temp file %@: %@" = "Warning: While deleting temp file %@: %@";
+"While moving temp file %@ over input file %@: %@" = "While moving temp file %@ over input file %@: %@";
+"Usage: resign filename.in identity filename.out" = "Usage: resign filename.in identity filename.out";
+"       resign -m identity file [file...]" = "       resign -m identity file [file...]";
+
+/* sign/main.m */
+"Usage: sign filename.in identity filename.out" = "Usage: sign filename.in identity filename.out";
+
+/* verify/main.m */
+"    The following certificates were found:" = "    The following certificates were found:";
+"Unknown" = "Unknown";
+"       Certificate \"%@\"" = "       Certificate \"%@\"";
+" [signing cert]" = " [signing cert]";
+", issued by \"%@\"" = ", issued by \"%@\"";
+"    Metadata:" = "    Metadata:";
+"    Payload length: %@" = "    Payload length: %@";
+"Usage: verify [-v] [-2] file [file...]" = "Usage: verify [-v] [-2] file [file...]";
+"ok" = "ok";
+
+/* SIGArchiveBuilder.m */
+"Could not create write stream" = "Could not create write stream";
+"Error checking file size" = "Error checking file size";
+
+/* SIGArchiveChunk.m */
+"Failed to create chunk object" = "Failed to create chunk object";
+"Short read" = "Short read";
+"Uncaught read failure" = "Uncaught read failure";
+"File changed during signing" = "File changed during signing";
+"Short write" = "Short write";
+"Error reading file" = "Error reading file";
+"File changed while reading" = "File changed while reading";
+"Error writing to file" = "Error writing to file";
+
+/* SIGArchiveReader.m */
+"Failed to get size of input file" = "Failed to get size of input file";
+"Error opening file" = "Error opening file";
+
+/* SIGArchiveVerifier.m */
+"Application error: archive not verified" = "Application error: archive not verified";
+"Algorithm \"%@\" not supported" = "Algorithm \"%@\" not supported";
+"Could not create archive reader" = "Could not create archive reader";
+
+/* SIGCertificate.m */
+"Failed to get root certs: %@" = "Failed to get root certs: %@";
+"Failed to get certificate: %@" = "Failed to get certificate: %@";
+
+/* SIGError.m */
+"Inconsistency discovered" = "Inconsistency discovered";
+"Error writing destination file" = "Error writing destination file";
+"Error reading source file" = "Error reading source file";
+"No private key found" = "No private key found";
+"No certificate found" = "No certificate found";
+"No metadata found" = "No metadata found";
+"No signature found" = "No signature found";
+"No payload found" = "No payload found";
+"No header found" = "No header found";
+"Could not create algorithm" = "Could not create algorithm";
+"This file is from a newer version of this app and cannot be loaded. Please upgrade and try again" = "This file is from a newer version of this app and cannot be loaded. Please upgrade and try again";
+"Metadata chunk malformed" = "Metadata chunk malformed";
+"This file is in an older format that is no longer supported because its authenticity cannot be guaranteed. It cannot be opened by this version of the app" = "This file is in an older format that is no longer supported because its authenticity cannot be guaranteed. It cannot be opened by this version of the app";
+"Header chunk malformed" = "Header chunk malformed";
+"Unsupported algorithm" = "Unsupported algorithm";
+"Unknown or unexpected error" = "Unknown or unexpected error";
+"Input file malformed" = "Input file malformed";
+"Malformed certificate" = "Malformed certificate";
+"Error creating trust object" = "Error creating trust object";
+"Trust chain verification failed by user preference" = "Trust chain verification failed by user preference";
+"Trust chain verification internal error" = "Trust chain verification internal error";
+"Trust chain verification failed" = "Trust chain verification failed";
+"Signature does not match payload" = "Signature does not match payload";
+"Unknown error" = "Unknown error";
+
+/* SIGIdentity.m */
+"Unable to create keychain search: %d" = "Unable to create keychain search: %d";
+
+/* SIGSHA2SigningAlgorithm.m */
+"Error reading input stream" = "Error reading input stream";
+"Key does not support requested algorithm" = "Key does not support requested algorithm";
+"Signing failed" = "Signing failed";
+
+/* SIGSHA2VerificationAlgorithm.m */
+"Error reading payload stream" = "Error reading payload stream";
+"Signature verification failed" = "Signature verification failed";
+
+/* SIGTrust.m */
+"Failed to evaluate certificate chain" = "Failed to evaluate certificate chain";

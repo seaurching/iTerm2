@@ -1,0 +1,12 @@
+/* TouchBar.strings - zh-Hant-TW */
+"Status" = "狀態";
+"Function Keys" = "功能鍵";
+"Full Screen Tab Bar" = "全螢幕分頁列";
+"Autocomplete Suggestions" = "自動補全建議";
+"Man Page" = "手冊頁";
+"Your Message Here" = "在此顯示您的訊息";
+"Add Mark" = "新增標記";
+"Next Mark" = "下一個標記";
+"Previous Mark" = "上一個標記";
+"Color Preset" = "顏色預設";
+"Function Keys Popover" = "功能鍵彈出選單";

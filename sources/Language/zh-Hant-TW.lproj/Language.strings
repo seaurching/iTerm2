@@ -1,0 +1,313 @@
+/* Parse error: expected one of fragment */
+" one of" = " 之一";
+
+/* Apply layout error: unexpected error type */
+"%@: %@" = "%@: %@";
+
+/* Parse error: null never allowed */
+"&null is never allowed" = "不允許使用 &null";
+
+/* URL encode error: argument not string */
+"Argument must be a string (was %@)" = "參數必須是字串（實際為 %@）";
+
+/* Array count error: argument not array */
+"Argument must be an array (was %@)" = "參數必須是陣列（實際為 %@）";
+
+/* Subexpression error: arithmetic requires numeric */
+"Arithmetic operations require numeric operands" = "算術運算需要數值操作數";
+
+/* Array count error: array argument null */
+"Array argument must be non-null" = "陣列參數不能為空";
+
+/* Indirect value error: array index out of bounds */
+"Array index %d out of bounds for array of size %d in \"%@\"." = "陣列索引 %d 超出大小為 %d 的陣列的範圍（在 \"%@\" 中）。";
+
+/* Parse error: array index must be number */
+"Array index for \"%@\" must be a number, not %@" = "陣列索引 \"%@\" 必須是數字，而不是 %@";
+
+/* Indirect value error: array index must be number */
+"Array index must be a number" = "陣列索引必須是數字";
+
+/* Move session error: cant move locked session */
+"Can't move locked session" = "無法移動已鎖定的工作階段";
+
+/* Subexpression error: cannot compare incompatible types */
+"Cannot compare incompatible types with relational operators. Left-hand side is %@, right-hand side is %@" = "無法用關係運算子比較不相容的類型。左側為 %@，右側為 %@";
+
+/* Subexpression error: cannot convert null to number */
+"Cannot convert null to number" = "無法將 null 轉換為數字";
+
+/* Subexpression error: cannot convert string to number */
+"Cannot convert string literal to number" = "無法將字串字面值轉換為數字";
+
+/* Subexpression error: cannot evaluate function call synchronously */
+"Cannot evaluate function call synchronously" = "無法同步求值函式呼叫";
+
+/* Subexpression error: cannot negate non-numeric */
+"Cannot negate non-numeric value" = "無法對非數值取負";
+
+/* Parse error: cannot form reference to container */
+"Can’t form reference to non-existent or read-only container for variable %@" = "無法為變數 %@ 形成對不存在或唯讀容器的參照";
+
+/* Evaluator: error evaluating expression output */
+"Error evaluating expression %@: %@\n" = "求值表示式 %@ 時發生錯誤：%@\n";
+
+/* Parse error: error evaluating index expression */
+"Error evaluating index expression: %@" = "求值索引表示式時發生錯誤：%@";
+
+/* Script call error: expected function call not value */
+"Expected a function call, not a value" = "應為函式呼叫，而非值";
+
+/* Parse error: expected function call not a value */
+"Expected function call, not a value" = "應為函式呼叫，而非值";
+
+/* Parse error: expected function call not interpolated string */
+"Expected function call, not an interpolated string" = "應為函式呼叫，而非插值字串";
+
+/* Parse error: expected function call not nil */
+"Expected function call, not nil" = "應為函式呼叫，而非 nil";
+
+/* Parse error: expected single function call */
+"Expected single function call" = "應為單一函式呼叫";
+
+/* Move tab to window error: failed to create new window */
+"Failed to create new window" = "建立新視窗失敗";
+
+/* Move pane error: insert failed */
+"Failed to insert session" = "插入工作階段失敗";
+
+/* Move session to new tab error: failed to move session */
+"Failed to move session" = "移動工作階段失敗";
+
+/* Move session to new window error: failed */
+"Failed to move session to new window" = "移動工作階段到新視窗失敗";
+
+/* Script call error: in call to */
+"In call to %@: %@" = "在呼叫 %@ 時：%@";
+
+/* Parse error: index out of range */
+"Index %@ out of range of “%@”, which has %@ values" = "索引 %@ 超出「%@」的範圍，該陣列有 %@ 個值";
+
+/* Indirect value error: indexing non-array */
+"Indexing a non-array %@" = "對非陣列建立索引 %@";
+
+/* Subexpression error: indirect value returned nil */
+"IndirectValue.synchronousValue returned nil" = "IndirectValue.synchronousValue 傳回了 nil";
+
+/* Subexpression error: indirect value returned non-number */
+"IndirectValue.synchronousValue returned non-NSNumber type %@" = "IndirectValue.synchronousValue 傳回了非 NSNumber 類型 %@";
+
+/* Move session error: invalid argument */
+"Invalid argument" = "無效參數";
+
+/* Built-in function error: invalid argument */
+"Invalid argument %@ to %@" = "%@ 的參數 %@ 無效";
+
+/* Set status error: invalid dot_color */
+"Invalid dot_color (expected #rrggbb)" = "無效的 dot_color（應為 #rrggbb）";
+
+/* Tmux format error: invalid format */
+"Invalid format" = "無效格式";
+
+/* Evaluator error: invalid parsed expression type */
+"Invalid parsed expression type %@" = "無效的已解析表示式類型 %@";
+
+/* Built-in function error: invalid reference */
+"Invalid reference “%@” to %@" = "對 %@ 的參照「%@」無效";
+
+/* Subexpression error: invalid relational operation */
+"Invalid relational operation" = "無效的關係運算";
+
+/* Move session error: invalid session ID */
+"Invalid session ID" = "無效的工作階段 ID";
+
+/* Set status error: invalid text_color */
+"Invalid text_color (expected #rrggbb)" = "無效的 text_color（應為 #rrggbb）";
+
+/* Parsed expression: invalid type */
+"Invalid type: %@" = "無效類型：%@";
+
+/* Indirect value error: invalid variable reference */
+"Invalid variable reference %@" = "無效的變數參照 %@";
+
+/* Move session to new tab error: invalid window ID */
+"Invalid window ID" = "無效的視窗 ID";
+
+/* Generic evaluator: invocation failed output */
+"Invocation of “%@” failed with error:\n%@\n" = "呼叫「%@」失敗，錯誤資訊：\n%@\n";
+
+/* Apply layout spec error: tree too deep */
+"Layout tree at %@ is too deep (%d)" = "%@ 處的佈局樹過深（%d）";
+
+/* Subexpression error: logical not requires numeric */
+"Logical not requires numeric operand, got %@" = "邏輯非運算需要數值操作數，實際為 %@";
+
+/* Subexpression error: logical requires numeric */
+"Logical operations require numeric operands" = "邏輯運算需要數值操作數";
+
+/* Tmux format error: missing session_id */
+"Missing %@. This shouldn't happen so please report a bug." = "缺少 %@。此情況不應發生，請回報 Bug。";
+
+/* Apply layout spec error: missing field */
+"Missing field '%@' at %@" = "%@ 處缺少欄位「%@」";
+
+/* Add clipping error: missing required argument */
+"Missing required argument" = "缺少必要參數";
+
+/* Move session to new tab/window error: missing session argument */
+"Missing session argument" = "缺少 session 參數";
+
+/* Set status error: missing session_id */
+"Missing session_id" = "缺少 session_id";
+
+/* Built-in function error: missing session_id */
+"Missing session_id. This shouldn't happen so please report a bug." = "缺少 session_id。此情況不應發生，請回報 Bug。";
+
+/* Apply layout error: missing spec argument */
+"Missing spec_json_b64 argument" = "缺少 spec_json_b64 參數";
+
+/* Indirect value error: missing value */
+"Missing value" = "缺少值";
+
+/* Object error: no method found */
+"No method found on %@ with signature %@" = "在 %@ 上未找到簽章為 %@ 的方法";
+
+/* Object error: no object with ID */
+"No object with ID %@" = "沒有 ID 為 %@ 的物件";
+
+/* Built-in function error: no such session */
+"No such session" = "無此工作階段";
+
+/* Move tab to window error: no such tab */
+"No such tab" = "無此分頁";
+
+/* Indirect value error: non-object in array */
+"Non-object found in array at index %d: %@" = "在陣列的索引 %d 處找到非物件值：%@";
+
+/* Alert error: checkboxes count mismatch */
+"Number of checkboxes does not match number of defaults" = "核取方塊數量與預設值數量不符";
+
+/* Script call error: object not found */
+"Object with identifier “%@” not found" = "未找到識別碼為「%@」的物件";
+
+/* Parse error: reference to undefined variable */
+"Reference to undefined variable \"%@\". Change it to \"%@?\" to treat the undefined value as null." = "參照了未定義的變數 \"%@\"。請改為 \"%@?\" 以將未定義的值視為 null。";
+
+/* Apply layout spec error: nested same orientation */
+"Same-orientation splitter nesting at %@ (vertical inside vertical or horizontal inside horizontal)" = "%@ 處存在同方向分割器巢狀（垂直巢狀垂直或水平巢狀水平）";
+
+/* Apply layout resolver error: orphaned session */
+"Session %@ in tab %@ is unaccounted for; it must appear in the new layout or in close_sessions/close_tabs" = "分頁 %@ 中的工作階段 %@ 未被處理；它必須出現在新佈局中，或在 close_sessions/close_tabs 中";
+
+/* Apply layout spec error: duplicate session ID */
+"Session GUID '%@' appears more than once in the spec" = "工作階段 GUID「%@」在規格中出現了多次";
+
+/* Move session/pane error: session has no tab */
+"Session has no tab" = "工作階段沒有分頁";
+
+/* Move session error: session has no window */
+"Session has no window" = "工作階段沒有視窗";
+
+/* Move pane error: session locked */
+"Session is locked" = "工作階段已鎖定";
+
+/* Move session error: sessions not compatible */
+"Sessions are not compatible" = "工作階段不相容";
+
+/* Session title: default Shell component */
+"Shell" = "Shell";
+
+/* Apply layout spec error: splitter too few children */
+"Splitter at %@ has %d children; must have at least 2" = "%@ 處的分割器有 %d 個子節點；至少需要 2 個";
+
+/* Subexpression error: wrapper */
+"Subexpression error: %@" = "子表示式錯誤：%@";
+
+/* Parse error: syntax error */
+"Syntax error" = "語法錯誤";
+
+/* Parse error: syntax error at index */
+"Syntax error at index %@ of “%@”. Expected%@: %@" = "「%@」的第 %@ 處語法錯誤。應為%@：%@";
+
+/* Apply layout resolver error: tmux tab not supported */
+"Tab %@ is a tmux integration tab; layout application is not supported on tmux tabs" = "分頁 %@ 是 tmux 整合分頁；不支援在 tmux 分頁上套用佈局";
+
+/* Move tab to window error: tab has no window */
+"Tab has no window" = "分頁沒有視窗";
+
+/* Move pane error: tab has only one session */
+"Tab has only one session" = "分頁只有一個工作階段";
+
+/* Apply layout resolver error: new tabs not supported */
+"The 'new_tabs' field is not supported by apply_layout" = "apply_layout 不支援 'new_tabs' 欄位";
+
+/* Apply layout resolver error: new windows not supported */
+"The 'new_windows' field is not supported by apply_layout" = "apply_layout 不支援 'new_windows' 欄位";
+
+/* Script call error: timeout evaluating arguments */
+"Timeout (%@ sec) while evaluating invocation “%@”. The timeout occurred while evaluating the following arguments to %@: %@" = "求值呼叫「%@」時逾時（%@ 秒）。逾時發生在求值 %@ 的以下參數時：%@";
+
+/* Script call error: timeout waiting for return */
+"Timeout (%@ sec) while evaluating invocation “%@”. The timeout occurred while waiting for %@ to return." = "求值呼叫「%@」時逾時（%@ 秒）。逾時發生在等待 %@ 傳回時。";
+
+/* Tmux format error: type mismatch */
+"Type mismatch for %@. Must be a path reference." = "%@ 的類型不符。必須是路徑參照。";
+
+/* Built-in function error: type mismatch */
+"Type mismatch for argument %@. Expected %@ but got %@." = "參數 %@ 的類型不符。應為 %@，實際為 %@。";
+
+/* Subexpression error: type mismatch expected number */
+"Type mismatch: expected number but got %@" = "類型不符：應為數字，實際為 %@";
+
+/* Built-in function error: undeclared identifier */
+"Undeclared identifier %@" = "未宣告的識別碼 %@";
+
+/* Script call error: undefined function */
+"Undefined function with signature “%@”" = "未定義簽章為「%@」的函式";
+
+/* Parsed expression: unknown error fallback */
+"Unknown error" = "未知錯誤";
+
+/* Apply layout spec error: unknown leaf kind */
+"Unknown leaf kind at %@ (must be session_id, new_session, or splitter)" = "%@ 處的葉子節點類型未知（必須為 session_id、new_session 或 splitter）";
+
+/* Apply layout resolver error: unknown profile */
+"Unknown profile: %@" = "未知設定檔：%@";
+
+/* Apply layout resolver error: unknown session */
+"Unknown session: %@" = "未知工作階段：%@";
+
+/* Apply layout resolver error: unknown tab */
+"Unknown tab: %@" = "未知分頁：%@";
+
+/* Apply layout resolver error: unknown window */
+"Unknown window: %@" = "未知視窗：%@";
+
+/* Parse error: variable not array */
+"Variable “%@” is of type %@, not array" = "變數「%@」的類型為 %@，不是陣列";
+
+/* Move tab to window error: window has only one tab */
+"Window has only one tab" = "視窗只有一個分頁";
+
+/* Apply layout spec error: wrong type */
+"Wrong type at %@: expected %@" = "%@ 處類型錯誤：應為 %@";
+
+/* Script call error: interpolated string not allowed */
+"interpolated string not allowed" = "不允許使用插值字串";
+
+/* Script call error: nil not allowed */
+"nil not allowed" = "不允許 nil";
+
+/* Apply layout error: invalid base64 JSON */
+"spec_json_b64 is not valid base64-encoded JSON" = "spec_json_b64 不是有效的 base64 編碼 JSON";
+
+/* URL encode error: string argument null */
+"string argument must be non-null" = "字串參數不能為空";
+
+/* Move pane error: tmux async */
+"tmux sessions are moved asynchronously" = "tmux 工作階段以非同步方式移動";
+"Nil operand in unary operation" = "一元運算的運算元為空";
+"Nil operand in logical not operation" = "邏輯非運算的運算元為空";
+"Nil operand in binary operation (-)" = "二元運算 (-) 的運算元為空";
+"Nil operand in binary operation (/)" = "二元運算 (/) 的運算元為空";
+"Nil operand in ternary operation" = "三元運算的運算元為空";

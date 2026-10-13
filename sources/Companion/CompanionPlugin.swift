@@ -56,19 +56,19 @@ struct CompanionPlugin {
 
     init() throws {
         guard let bundleURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleID) else {
-            throw PluginError(reason: "Companion plugin not installed")
+            throw PluginError(reason: NSLocalizedString("Companion plugin not installed", tableName: "Companion", comment: "插件未安装"))
         }
         let jsURL = bundleURL.appendingPathComponent("Contents/Resources/iTermCompanionPlugin.js")
         guard let codeData = try? Data(contentsOf: jsURL) else {
-            throw PluginError(reason: "Companion plugin code missing or unreadable")
+            throw PluginError(reason: NSLocalizedString("Companion plugin code missing or unreadable", tableName: "Companion", comment: "插件代码缺失"))
         }
         guard let code = String(data: codeData, encoding: .utf8) else {
-            throw PluginError(reason: "Companion plugin code is not valid UTF-8")
+            throw PluginError(reason: NSLocalizedString("Companion plugin code is not valid UTF-8", tableName: "Companion", comment: "插件代码非 UTF-8"))
         }
         let signatureURL = bundleURL.appendingPathComponent("Contents/Resources/iTermCompanionPlugin.sig")
         guard let signatureB64 = try? String(contentsOf: signatureURL),
               let signature = Data(base64Encoded: signatureB64.trimmingCharacters(in: .whitespacesAndNewlines)) else {
-            throw PluginError(reason: "Companion plugin signature missing or malformed")
+            throw PluginError(reason: NSLocalizedString("Companion plugin signature missing or malformed", tableName: "Companion", comment: "插件签名缺失"))
         }
         try CompanionPlugin.checkSignature(message: codeData, signature: signature)
         self.client = CompanionPluginClient(code: code)
@@ -79,7 +79,7 @@ struct CompanionPlugin {
         guard let keyData = Data(base64Encoded: publicKeyB64),
               let publicKey = try? Curve25519.Signing.PublicKey(rawRepresentation: keyData),
               publicKey.isValidSignature(signature, for: message) else {
-            throw PluginError(reason: "The companion plugin's signature is invalid. Reinstall the plugin or upgrade iTerm2.")
+            throw PluginError(reason: NSLocalizedString("The companion plugin's signature is invalid. Reinstall the plugin or upgrade iTerm2.", tableName: "Companion", comment: "插件签名无效"))
         }
         RLog("Companion plugin signature is good")
     }
@@ -104,7 +104,7 @@ struct CompanionPlugin {
     func version() async throws -> Decimal {
         let string = try await client.version()
         guard let decimal = Decimal(string: string) else {
-            throw PluginError(reason: "Invalid companion plugin version: \(string)")
+            throw PluginError(reason: String(format: NSLocalizedString("Invalid companion plugin version: %@", tableName: "Companion", comment: "插件版本无效"), string))
         }
         return decimal
     }

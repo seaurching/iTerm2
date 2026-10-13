@@ -233,24 +233,24 @@ class NotifyOnStatusChangeController: NSObject {
                               from: String?,
                               to: String?,
                               window: NSWindow?) {
-        let name = sessionName ?? "A session"
-        let fromText = from ?? "none"
-        let toText = to ?? "none"
+        let name = sessionName ?? NSLocalizedString("A session", tableName: "VT100", comment: "状态变更提示：会话名缺失时的占位")
+        let fromText = from ?? NSLocalizedString("none", tableName: "VT100", comment: "状态变更提示：原状态缺失占位")
+        let toText = to ?? NSLocalizedString("none", tableName: "VT100", comment: "状态变更提示：新状态缺失占位")
         // Present asynchronously so the modal alert doesn't run
         // reentrantly while the status-change notification is still
         // being dispatched.
         DispatchQueue.main.async {
             let alert = NSAlert()
-            alert.messageText = "Session status changed"
-            alert.informativeText = "\(name) changed from “\(fromText)” to “\(toText)”."
-            alert.addButton(withTitle: "OK")
+            alert.messageText = NSLocalizedString("Session status changed", tableName: "VT100", comment: "状态变更提示：警告标题")
+            alert.informativeText = String(format: NSLocalizedString("%@ changed from “%@” to “%@”.", tableName: "VT100", comment: "状态变更提示：会话从原状态变为新状态"), name, fromText, toText)
+            alert.addButton(withTitle: NSLocalizedString("OK", tableName: "VT100", comment: "状态变更提示：确定按钮"))
             // Offer Reveal only when the session can still be resolved; it may
             // have gone away between the change and the alert being shown.
             let canReveal = sessionGuid.flatMap {
                 iTermController.sharedInstance()?.anySession(withGUID: $0)
             } != nil
             if canReveal {
-                alert.addButton(withTitle: "Reveal")
+                alert.addButton(withTitle: NSLocalizedString("Reveal", tableName: "VT100", comment: "状态变更提示：显示按钮"))
             }
             let reveal: () -> Void = {
                 if let sessionGuid {

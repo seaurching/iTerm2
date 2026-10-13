@@ -31,11 +31,11 @@ extension GetProfilePropertyBuiltInFunction: iTermBuiltInFunctionProtocol {
             context: .session,
             sideEffectsPlaceholder: nil) { parameters, completion in
                 guard let sessionID = parameters[sessionIDArgName] as? String else {
-                    completion(nil, error(message: "Missing session_id. This shouldn't happen so please report a bug."))
+                    completion(nil, error(message: NSLocalizedString("Missing session_id. This shouldn't happen so please report a bug.", tableName: "Language", comment: "Get profile property error: missing session_id")))
                     return
                 }
                 guard let session = iTermController.sharedInstance().anySession(withGUID: sessionID) else {
-                    completion(nil, error(message: "No such session"))
+                    completion(nil, error(message: NSLocalizedString("No such session", tableName: "Language", comment: "Get profile property error: no such session")))
                     return
                 }
                 let key = parameters[keyArgName] as! String

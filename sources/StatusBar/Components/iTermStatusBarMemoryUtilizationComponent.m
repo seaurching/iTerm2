@@ -37,16 +37,16 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Memory Utilization";
+    return NSLocalizedStringFromTableInBundle(@"Memory Utilization", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for memory utilization component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Shows current memory utilization.";
+    return NSLocalizedStringFromTableInBundle(@"Shows current memory utilization.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for memory utilization component");
 }
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
                                           textColor:(NSColor *)textColor {
-    return @"3.1 GB ▂▃▃▅ RAM";
+    return NSLocalizedStringFromTableInBundle(@"3.1 GB ▂▃▃▅ RAM", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for memory utilization component");
 }
 
 - (BOOL)statusBarComponentCanStretch {

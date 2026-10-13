@@ -62,10 +62,10 @@ class iTermUvProvisioner: NSObject {
     static func fetchSelectedEntry() -> Result<iTermUvManifestEntry, Error> {
         guard let urlString = iTermAdvancedSettingsModel.uvManifestDownloadURL(),
               let manifestURL = URL(string: urlString) else {
-            return .failure(error("The uv manifest URL is not valid."))
+            return .failure(error(NSLocalizedString("The uv manifest URL is not valid.", tableName: "APIFiles", comment: "uv 清单 URL 无效。")))
         }
         guard let data = boundedDownload(from: manifestURL, maxBytes: maxManifestBytes) else {
-            return .failure(error("Could not download the uv manifest from \(urlString)."))
+            return .failure(error(String(format: NSLocalizedString("Could not download the uv manifest from %@.", tableName: "APIFiles", comment: "无法从 %@ 下载 uv 清单。"), urlString)))
         }
         return selectedEntry(fromManifestData: data, runningMacOSVersion: runningMacOSVersionString())
     }
@@ -76,30 +76,30 @@ class iTermUvProvisioner: NSObject {
                               runningMacOSVersion: String) -> Result<iTermUvManifestEntry, Error> {
         guard let entries = iTermUvManifest.parse(data) else {
             // parse() returns nil only when the top level is not a JSON array at all.
-            return .failure(error("The uv manifest is not valid JSON (a hosting problem, not a macOS-version problem)."))
+            return .failure(error(NSLocalizedString("The uv manifest is not valid JSON (a hosting problem, not a macOS-version problem).", tableName: "APIFiles", comment: "uv 清单不是有效的 JSON（托管问题，不是 macOS 版本问题）。")))
         }
         guard !entries.isEmpty else {
             // Parsed fine but every entry was filtered out (empty manifest, or all entries
             // had a shape this build could not decode). That is a manifest/hosting problem,
             // NOT "unavailable for this macOS", so do not misdiagnose it as such.
-            return .failure(error("The uv manifest lists no usable entries (a hosting or manifest problem)."))
+            return .failure(error(NSLocalizedString("The uv manifest lists no usable entries (a hosting or manifest problem).", tableName: "APIFiles", comment: "uv 清单没有可用条目（托管或清单问题）。")))
         }
         guard let entry = iTermUvManifest.select(entries: entries,
                                                  runningMacOSVersion: runningMacOSVersion) else {
-            return .failure(error("uv is not available for macOS \(runningMacOSVersion)."))
+            return .failure(error(String(format: NSLocalizedString("uv is not available for macOS %@.", tableName: "APIFiles", comment:  "uv 不适用于 macOS %@。"), runningMacOSVersion)))
         }
         // The manifest itself is not signed (only the tarball is), so a compromised
         // host could offer an older, still-validly-signed uv (a rollback). Refuse any
         // build older than the minimum the app requires.
         guard iTermDottedVersion.compare(entry.uvVersion, minimumUvVersion) != .orderedAscending else {
-            return .failure(error("The offered uv version (\(entry.uvVersion)) is older than the minimum required (\(minimumUvVersion))."))
+            return .failure(error(String(format: NSLocalizedString("The offered uv version (%@) is older than the minimum required (%@).", tableName: "APIFiles",  comment: "提供的 uv 版本 (%@) 低于最低要求 (%@)。"), entry.uvVersion, minimumUvVersion)))
         }
         // The manifest is unsigned, so `size` is attacker-controlled if the host is
         // compromised. Require a sane positive size here, before any bytes are fetched,
         // so the download cap and the consent-dialog arithmetic can trust it: a huge
         // value would otherwise overflow (crash), and a zero would disable the cap.
         guard entry.size > 0 && entry.size <= maxTarballBytes else {
-            return .failure(error("The uv manifest declares an implausible download size (\(entry.size) bytes)."))
+            return .failure(error(String(format: NSLocalizedString("The uv manifest declares an implausible download size (%@ bytes).", tableName: "APIFiles",  comment: "uv 清单声明了不可信的下载大小（%@ 字节）。"), "\(entry.size)")))
         }
         return .success(entry)
     }
@@ -215,7 +215,7 @@ class iTermUvProvisioner: NSObject {
     static func install(fromExtractedDirectory directory: String,
                         to destinationBinaryPath: String) throws {
         guard let source = locateUvBinary(inDirectory: directory) else {
-            throw error("The uv download did not contain a uv binary.")
+            throw error(NSLocalizedString("The uv download did not contain a uv binary.", tableName: "APIFiles", comment: "uv 下载未包含 uv 二进制文件。"))
         }
         let fm = FileManager.default
         let destinationDirectory = (destinationBinaryPath as NSString).deletingLastPathComponent
@@ -264,7 +264,7 @@ class iTermUvProvisioner: NSObject {
     static func verifyDownloadedTarball(data: Data, encodedSignature: String) -> Error? {
         guard let keyURL = Bundle.main.url(forResource: "rsa_pub", withExtension: "pem"),
               let publicKey = try? String(contentsOf: keyURL, encoding: .utf8) else {
-            return error("Could not load the uv signature public key.")
+            return error(NSLocalizedString("Could not load the uv signature public key.", tableName: "APIFiles", comment: "无法加载 uv 签名公钥。"))
         }
         let tempFile = (NSTemporaryDirectory() as NSString)
             .appendingPathComponent("uv-verify-" + UUID().uuidString)
@@ -301,7 +301,7 @@ class iTermUvProvisioner: NSObject {
                                             withArguments: ["-xzf", tarball, "-C", extracted],
                                             path: extracted).blockingRun()
             guard status == 0 else {
-                return error("Failed to extract uv (tar exited with status \(status)).")
+                return error(String(format: NSLocalizedString("Failed to extract uv (tar exited with status %@).", tableName: "APIFiles", comment: "解压 uv 失败（tar 退出状态为 %@）。"), "\(status)"))
             }
             try install(fromExtractedDirectory: extracted, to: destinationBinaryPath)
             return nil
@@ -425,7 +425,7 @@ class iTermUvProvisioner: NSObject {
                     return .failure(NSError(domain: NSPOSIXErrorDomain,
                                             code: Int(code),
                                             userInfo: [NSLocalizedDescriptionKey:
-                                                        "Could not install the rebuilt Python environment at \(venvPath) (errno \(code))."]))
+                                                        String(format: NSLocalizedString("Could not install the rebuilt Python environment at %@ (errno %@).", tableName: "APIFiles", comment: "无法在 %@ 安装重建的 Python 环境（错误码 %@）。"), venvPath, "\(code)")]))
                 }
             } else {
                 try? fileManager.removeItem(atPath: buildPath)
@@ -526,7 +526,7 @@ class iTermUvProvisioner: NSObject {
             // from a normal (non-debug-log) build.
             let output = runner.output.flatMap { String(data: $0, encoding: .utf8) } ?? ""
             let detail = output.isEmpty ? "" : "\n\(output.suffix(2000))"
-            return error("uv \(arguments.first ?? "command") failed with status \(status).\(detail)")
+            return error(String(format: NSLocalizedString("uv %@ failed with status %@.%@", tableName: "APIFiles", comment: "uv %@ 执行失败，状态为 %@.%@"), arguments.first ?? "command", status, detail))
         }
         return nil
     }
@@ -590,11 +590,11 @@ class iTermUvProvisioner: NSObject {
                 deliver(error)
             case .success(let entry):
                 guard let url = URL(string: entry.url) else {
-                    deliver(Self.error("The uv download URL is not valid."))
+                    deliver(Self.error(NSLocalizedString("The uv download URL is not valid.", tableName: "APIFiles", comment: "uv 下载 URL 无效。")))
                     return
                 }
                 DispatchQueue.main.async {
-                    self.fetcher.fetch(url: url, title: "Downloading uv…", byteCount: entry.size) { result in
+                    self.fetcher.fetch(url: url, title: NSLocalizedString("Downloading uv…", tableName: "APIFiles", comment: ""), byteCount: entry.size) { result in
                         switch result {
                         case .failure(let error):
                             deliver(error)
@@ -710,14 +710,13 @@ class iTermUvProvisioner: NSObject {
     // basic-script venv (which is not tied to one script), giving a generic message.
     private static func reportForcedRemap(scriptName: String?, from: String, to: String) {
         let fromMinor = iTermUvPythonVersion.twoPartVersion(from)
-        let caveat = "Python versions are not always compatible across releases, so a bumped script may need small changes."
+        let caveat = NSLocalizedString("Python versions are not always compatible across releases, so a bumped script may need small changes.", tableName: "APIFiles", comment: "")
         let text: String
         if let scriptName = scriptName {
             text = iTermUvMigration.consolidatedWarningText(
                 remaps: [iTermUvPythonRemap(scriptName: scriptName, fromVersion: fromMinor, toVersion: to)])
         } else {
-            text = "A script was written for Python \(fromMinor), which is no longer available, "
-                + "so it now uses Python \(to). " + caveat
+            text = String(format: NSLocalizedString("A script was written for Python %@, which is no longer available, so it now uses Python %@. ", tableName: "APIFiles", comment: ""), fromMinor, to) + caveat
         }
         RLog("uv: \(text)")
         // Console-only, per the design: the ONE user-facing modal is the consolidated
@@ -987,7 +986,7 @@ class iTermUvProvisioner: NSObject {
                         RLog("uv: could not build \(resolved.version) for requested \(requestedPythonVersion) (\(error.localizedDescription)); falling back to \(fallback)")
                         DispatchQueue.main.async {
                             iTermScriptHistoryEntry.global().addOutput(
-                                "Could not build the Python \(resolved.version) environment (\(error.localizedDescription)). Using a previously provisioned environment instead.\n",
+                                String(format: NSLocalizedString("Could not build the Python %@ environment (%@). Using a previously provisioned environment instead.", tableName: "APIFiles", comment: "无法构建 Python %@ 环境（%@）。将使用之前配置的环境。"), resolved.version, error.localizedDescription),
                                 completion: {})
                             completion(nil, fallback)
                         }
@@ -1081,7 +1080,7 @@ class iTermUvProvisioner: NSObject {
     @objc func userRequestedUpgradeCheck(completion: @escaping (Bool, String) -> Void) {
         DispatchQueue.global(qos: .utility).async {
             guard Self.isInstalled else {
-                DispatchQueue.main.async { completion(false, "uv is not installed.") }
+                DispatchQueue.main.async { completion(false, NSLocalizedString("uv is not installed.", tableName: "APIFiles", comment: "")) }
                 return
             }
             let outcome = Self.upgradeUvBinaryIfNewerAvailable()
@@ -1093,10 +1092,10 @@ class iTermUvProvisioner: NSObject {
             switch outcome {
             case .upToDate(let version):
                 ok = true
-                message = "uv \(version) is up to date."
+                message = String(format: NSLocalizedString("uv %@ is up to date.", tableName: "APIFiles", comment: ""), version)
             case .upgraded(let from, let to):
                 ok = true
-                message = "Upgraded uv \(from) to \(to). Updated the Python modules in shared environments."
+                message = String(format: NSLocalizedString("Upgraded uv %@ to %@. Updated the Python modules in shared environments.", tableName: "APIFiles", comment: ""), from, to)
             case .failed(let failureMessage):
                 ok = false
                 message = failureMessage
@@ -1124,11 +1123,11 @@ class iTermUvProvisioner: NSObject {
             // Surface the specific reason (bad JSON / empty manifest / floor or size
             // rejection / download failure) rather than always blaming "offline", so a
             // hosting problem is not misreported as a network problem.
-            var reason = "unknown error"
+            var reason = NSLocalizedString("unknown error", tableName: "APIFiles", comment: "")
             if case .failure(let err) = selected {
                 reason = err.localizedDescription
             }
-            return .failed(message: "Could not check for a uv update: \(reason)")
+            return .failed(message: String(format: NSLocalizedString("Could not check for a uv update: %@", tableName: "APIFiles", comment: ""), reason))
         }
         let installed = installedUvVersion(uvPath: uvBinaryPath)
         guard shouldUpgradeUv(installedVersion: installed, manifestVersion: entry.uvVersion) else {
@@ -1142,7 +1141,7 @@ class iTermUvProvisioner: NSObject {
               let data = boundedDownload(from: url,
                                          maxBytes: entry.size + 16 * 1024 * 1024,
                                          resourceTimeout: 3600) else {
-            return .failed(message: "Could not download the uv update.")
+            return .failed(message: NSLocalizedString("Could not download the uv update.", tableName: "APIFiles", comment: ""))
         }
         var outcome: UvBinaryUpgradeOutcome = .upToDate(version: installed)
         // Do the swap on provisionQueue so it is serialized with any concurrent provisioning.
@@ -1340,7 +1339,7 @@ class iTermUvProvisioner: NSObject {
     static func cancelError() -> NSError {
         return NSError(domain: errorDomain,
                        code: cancelErrorCode,
-                       userInfo: [NSLocalizedDescriptionKey: "The download was canceled."])
+                       userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("The download was canceled.", tableName: "APIFiles", comment: "")])
     }
 
     // Whether an error is the user-cancellation sentinel (so ObjC callers can stay
@@ -1433,13 +1432,10 @@ final class iTermUvWindowControllerFetcher: iTermUvTarballFetcher {
         // Ask before downloading, like the legacy runtime download did.
         let megabytes = max(1, (declaredSize + 512 * 1024) / (1024 * 1024))
         let alert = NSAlert()
-        alert.messageText = "Download Python Support?"
-        alert.informativeText = "To run Python scripts, iTerm2 needs to download uv "
-            + "(about \(megabytes) MB) and a Python interpreter. Additional Python "
-            + "versions are downloaded automatically later if a script needs them. "
-            + "OK to download it now?"
-        alert.addButton(withTitle: "OK")
-        alert.addButton(withTitle: "Cancel")
+        alert.messageText = NSLocalizedString("Download Python Support?", tableName: "APIFiles", comment: "")
+        alert.informativeText = String(format: NSLocalizedString("To run Python scripts, iTerm2 needs to download uv (about %@ MB) and a Python interpreter. Additional Python versions are downloaded automatically later if a script needs them. OK to download it now?", tableName: "APIFiles", comment: ""), "\(megabytes)")
+        alert.addButton(withTitle: NSLocalizedString("OK", tableName: "APIFiles", comment: ""))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "APIFiles", comment: ""))
         guard alert.runModal() == .alertFirstButtonReturn else {
             completion(.failure(iTermUvProvisioner.cancelError()))
             return
@@ -1485,11 +1481,11 @@ final class iTermUvWindowControllerFetcher: iTermUvTarballFetcher {
                     completion(.failure(phaseError))
                 }
             } else if overflowed {
-                completion(.failure(iTermUvProvisioner.error("The uv download was larger than expected and was rejected.")))
+                completion(.failure(iTermUvProvisioner.error(NSLocalizedString("The uv download was larger than expected and was rejected.", tableName: "APIFiles", comment: ""))))
             } else if let data = downloadedData {
                 completion(.success(data))
             } else {
-                completion(.failure(iTermUvProvisioner.error("The uv download produced no data.")))
+                completion(.failure(iTermUvProvisioner.error(NSLocalizedString("The uv download produced no data.", tableName: "APIFiles", comment: ""))))
             }
         }
         controller.window?.makeKeyAndOrderFront(nil)

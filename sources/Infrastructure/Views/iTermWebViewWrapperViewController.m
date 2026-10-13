@@ -50,7 +50,7 @@ NSString *const iTermWebViewErrorDomain = @"com.iterm2.webview";
         [button setButtonType:NSButtonTypeMomentaryPushIn];
         [button setTarget:self];
         [button setAction:@selector(openInBrowserButtonPressed:)];
-        [button setTitle:[NSString stringWithFormat:@"Open in %@", [self browserName]]];
+        [button setTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Open in %@", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Button title: open in browser"), [self browserName]]];
         [button setBezelStyle:NSBezelStyleTexturedRounded];
         [button sizeToFit];
         NSRect frame = button.frame;
@@ -94,7 +94,7 @@ NSString *const iTermWebViewErrorDomain = @"com.iterm2.webview";
             return name;
         }
     }
-    return @"Default Browser";
+    return NSLocalizedStringFromTableInBundle(@"Default Browser", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Fallback browser name");
 }
 
 - (void)terminateWebView {
@@ -249,7 +249,7 @@ NSString *const iTermWebViewErrorDomain = @"com.iterm2.webview";
         script = innerScript = [NSString stringWithFormat:@"throw %@", [NSJSONSerialization it_jsonStringForObject:error.localizedDescription]];
     } else {
         innerScript = [NSString stringWithFormat:@"%@(%@)", callback, [NSJSONSerialization it_jsonStringForObject:value]];
-        script = [NSString stringWithFormat:@"try { %@; } catch(err) { alert('Caught error while sending return value to javascript: ' + err.message + '\\n' + err.stack); }", innerScript];
+        script = [NSString stringWithFormat:@"try { %@; } catch(err) { alert('%@' + err.message + '\\n' + err.stack); }", innerScript, NSLocalizedStringFromTableInBundle(@"Caught error while sending return value to javascript: ", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"JS alert: error sending return value to JavaScript")];
     }
     __weak id<iTermWebViewDelegate> delegate = [webview.configuration.userContentController it_associatedObjectForKey:&iTermWebViewFactoryUserControllerDelegateKey];
     [delegate itermWebViewWillExecuteJavascript:innerScript];
@@ -264,11 +264,11 @@ NSString *const iTermWebViewErrorDomain = @"com.iterm2.webview";
         NSString *messageKey = @"WKJavaScriptExceptionMessage";
         NSString *lineKey = @"WKJavaScriptExceptionLineNumber";
         if (error.userInfo[messageKey]) {
-            description = [NSString stringWithFormat:@"Error evaluating '%@' at line %@: %@", innerScript, error.userInfo[lineKey], error.userInfo[messageKey]];
+            description = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error evaluating '%@' at line %@: %@", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Error description: JavaScript evaluation failed"), innerScript, error.userInfo[lineKey], error.userInfo[messageKey]];
         }
         completion([NSError errorWithDomain:iTermWebViewErrorDomain
                                        code:iTermWebViewErrorCodeRPCFailed
-                                   userInfo:@{ NSLocalizedDescriptionKey: description ?: @"Unknown error" }]);
+                                   userInfo:@{ NSLocalizedDescriptionKey: description ?: NSLocalizedStringFromTableInBundle(@"Unknown error", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Fallback error description") }]);
     }];
 }
 

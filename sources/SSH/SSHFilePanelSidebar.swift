@@ -127,9 +127,9 @@ class SSHFilePanelSidebar: NSView {
         var name: String {
             switch identifier {
             case .favorites:
-                return "Favorites"
+                return NSLocalizedString("Favorites", tableName: "SSH", comment: "sidebar: favorites section title")
             case .connectedHosts:
-                return "Connected Hosts"
+                return NSLocalizedString("Connected Hosts", tableName: "SSH", comment: "sidebar: connected hosts section title")
             }
         }
 
@@ -243,13 +243,13 @@ class SSHFilePanelSidebar: NSView {
 
         // Standard user directories that appear in sidebar
         let standardLocations: [(FileManager.SearchPathDirectory, String)] = [
-            (.desktopDirectory, "Desktop"),
-            (.documentDirectory, "Documents"),
-            (.downloadsDirectory, "Downloads"),
-            (.moviesDirectory, "Movies"),
-            (.musicDirectory, "Music"),
-            (.picturesDirectory, "Pictures"),
-            (.userDirectory, "Home")
+            (.desktopDirectory, NSLocalizedString("Desktop", tableName: "SSH", comment: "sidebar: desktop favorite")),
+            (.documentDirectory, NSLocalizedString("Documents", tableName: "SSH", comment: "sidebar: documents favorite")),
+            (.downloadsDirectory, NSLocalizedString("Downloads", tableName: "SSH", comment: "sidebar: downloads favorite")),
+            (.moviesDirectory, NSLocalizedString("Movies", tableName: "SSH", comment: "sidebar: movies favorite")),
+            (.musicDirectory, NSLocalizedString("Music", tableName: "SSH", comment: "sidebar: music favorite")),
+            (.picturesDirectory, NSLocalizedString("Pictures", tableName: "SSH", comment: "sidebar: pictures favorite")),
+            (.userDirectory, NSLocalizedString("Home", tableName: "SSH", comment: "sidebar: home favorite"))
         ]
 
         for (directory, name) in standardLocations {
@@ -260,7 +260,7 @@ class SSHFilePanelSidebar: NSView {
 
         // Add Applications
         if let appsURL = fileManager.urls(for: .applicationDirectory, in: .localDomainMask).first {
-            favorites.append((name: "Applications", url: appsURL))
+            favorites.append((name: NSLocalizedString("Applications", tableName: "SSH", comment: "sidebar: applications favorite"), url: appsURL))
         }
 
         return favorites
@@ -729,14 +729,14 @@ extension SSHFilePanelSidebar: NSOutlineViewDelegate {
                 } else {
                     image = NSImage.it_image(
                         forSymbolName: SFSymbol.folder.rawValue,
-                        accessibilityDescription: "Folder",
+                        accessibilityDescription: NSLocalizedString("Folder", tableName: "SSH", comment: "sidebar: folder accessibility"),
                         fallbackImageName: "folder",
                         for: SSHFilePanelSidebar.self)
                 }
             } else {
                 image = NSImage.it_image(
                     forSymbolName: SFSymbol.folder.rawValue,
-                    accessibilityDescription: "Folder",
+                    accessibilityDescription: NSLocalizedString("Folder", tableName: "SSH", comment: "sidebar: folder accessibility"),
                     fallbackImageName: "folder",
                     for: SSHFilePanel.self)
             }
@@ -749,7 +749,7 @@ extension SSHFilePanelSidebar: NSOutlineViewDelegate {
             } else {
                 image = NSImage.it_image(
                     forSymbolName: SFSymbol.serverRack.rawValue,
-                    accessibilityDescription: "Server",
+                    accessibilityDescription: NSLocalizedString("Server", tableName: "SSH", comment: "sidebar: server accessibility"),
                     fallbackImageName: "rack",
                     for: SSHFilePanel.self
                 )

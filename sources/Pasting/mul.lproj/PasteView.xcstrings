@@ -1,0 +1,102 @@
+{
+    "sourceLanguage": "en",
+    "strings": {
+        "3.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Pasting…\"; ObjectID = \"3\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Pasting…"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "正在粘贴…"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "正在粘贴…"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "正在粘贴…"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "正在貼上…"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "正在貼上…"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "正在貼上…"
+                    }
+                }
+            }
+        },
+        "451.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Cancel\"; ObjectID = \"451\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Cancel"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "取消"
+                    }
+                }
+            }
+        }
+    },
+    "version": "1.1"
+}

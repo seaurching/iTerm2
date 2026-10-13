@@ -347,11 +347,11 @@ enum CompanionMacError: Error, CustomStringConvertible {
     var description: String {
         switch self {
         case .keychain(let status):
-            return "Keychain error \(status)"
+            return String(format: NSLocalizedString("Keychain error %d", tableName: "Companion", comment: "钥匙串错误"), status)
         case .chatSystemUnavailable:
-            return "The chat system is not available"
+            return NSLocalizedString("The chat system is not available", tableName: "Companion", comment: "对话系统不可用")
         case .unknownChat(let id):
-            return "Unknown chat \(id)"
+            return String(format: NSLocalizedString("Unknown chat %@", tableName: "Companion", comment: "未知对话"), id)
         }
     }
 }

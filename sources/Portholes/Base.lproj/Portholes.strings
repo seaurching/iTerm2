@@ -1,0 +1,20 @@
+/* Portholes: cancel button */
+"Cancel" = "Cancel";
+
+/* Portholes: close markdown view accessibility */
+"Close markdown view" = "Close markdown view";
+
+/* Portholes: confirm heading */
+"Confirm" = "Confirm";
+
+/* Portholes: OK button */
+"OK" = "OK";
+
+/* Portholes: open URL confirmation */
+"Open URL %@?" = "Open URL %@?";
+
+/* Portholes: open file confirmation */
+"Open file at %@?" = "Open file at %@?";
+
+/* Portholes: wide checkbox title */
+"Wide" = "Wide";

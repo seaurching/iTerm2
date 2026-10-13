@@ -1,0 +1,8 @@
+/* Session notes: title label */
+"Session Note" = "工作階段備註";
+
+/* Session notes: collapse button accessibility description */
+"Collapse" = "摺疊";
+
+/* Session notes: expand button accessibility description */
+"Expand" = "展開";

@@ -1,0 +1,156 @@
+/* Open Quickly: tip title */
+"Tip: Start your query with “/%@”" = "提示：以 “/%@” 開始您的查詢";
+
+/* Open Quickly: tip detail */
+"Restricts results to %@" = "將結果限制為%@";
+
+/* Open Quickly: in-tabs arrangement restriction */
+"window arrangements that open in tabs" = "在分頁中開啟的視窗排列";
+
+/* Open Quickly: arrangement restriction */
+"window arrangements" = "視窗排列";
+
+/* Open Quickly: sessions restriction */
+"existing sessions" = "現有工作階段";
+
+/* Open Quickly: windows restriction */
+"existing windows" = "現有視窗";
+
+/* Open Quickly: switch profiles restriction */
+"switch profiles" = "切換設定檔";
+
+/* Open Quickly: create tab restriction */
+"create tab" = "建立分頁";
+
+/* Open Quickly: run script restriction */
+"run script" = "執行腳本";
+
+/* Open Quickly: load color preset restriction */
+"load color preset" = "載入配色方案";
+
+/* Open Quickly: perform action restriction */
+"perform action" = "執行動作";
+
+/* Open Quickly: send snippet restriction */
+"send snippet" = "傳送程式碼片段";
+
+/* Open Quickly: open bookmark restriction */
+"open bookmark" = "開啟書籤";
+
+/* Open Quickly: globe accessibility */
+"globe" = "地球";
+
+/* Open Quickly: directory feature name */
+"Directory" = "目錄";
+
+/* Open Quickly: command feature name */
+"Command" = "指令";
+
+/* Open Quickly: host feature name */
+"Host" = "主機";
+
+/* Open Quickly: badge feature name */
+"Badge" = "徽章";
+
+/* Open Quickly: website feature name */
+"Web Site" = "網站";
+
+/* Open Quickly: alternate menu item prefix */
+"Alternate menu item under " = "備用選單項目位於 ";
+
+/* Open Quickly: menu item prefix */
+"Menu item under " = "選單項目位於 ";
+
+/* Open Quickly: named mark detail */
+"Named mark “%@”" = "命名標記 “%@”";
+
+/* Open Quickly: on display feature */
+"On %@" = "在 %@ 上";
+
+/* Open Quickly: offscreen feature */
+"Offscreen" = "螢幕外";
+
+/* Open Quickly: miniaturized feature */
+"Miniaturized" = "已最小化";
+
+/* Open Quickly: full screen feature */
+"Full screen" = "全螢幕";
+
+/* Open Quickly: on other space feature */
+"On other Space" = "在其他空間";
+
+/* Open Quickly: hotkey feature */
+"Hotkey %@" = "快捷鍵 %@";
+
+/* Open Quickly: hotkey modifier feature */
+"Hotkey %@%@" = "快捷鍵 %@%@";
+
+/* Open Quickly: new window with profile detail */
+"Create a new window with this profile" = "用此設定檔建立新視窗";
+
+/* Open Quickly: new tab with profile detail */
+"Create a new tab with this profile" = "用此設定檔建立新分頁";
+
+/* Open Quickly: open bookmark in browser detail */
+"Open Bookmark in Browser" = "在瀏覽器中開啟書籤";
+
+/* Open Quickly: open visited site in browser detail */
+"Open Visited Site in Browser" = "在瀏覽器中開啟造訪過的網站";
+
+/* Open Quickly: open URL in browser detail */
+"Open URL in Browser" = "在瀏覽器中開啟 URL";
+
+/* Open Quickly: load color preset detail */
+"Load color preset ”%@“" = "載入配色方案 ”%@“";
+
+/* Open Quickly: change profile detail */
+"Change current session’s profile" = "變更目前工作階段的設定檔";
+
+/* Open Quickly: invoke detail */
+"Invoke" = "呼叫";
+
+/* Open Quickly: send snippet detail */
+"Send snippet “%@”. Press ⌥ to edit first." = "傳送程式碼片段 “%@”。按 ⌥ 先編輯。";
+
+/* Open Quickly: restore arrangement in tabs detail */
+"Restore window arrangement in tabs" = "在分頁中還原視窗排列";
+
+/* Open Quickly: restore arrangement detail */
+"Restore window arrangement" = "還原視窗排列";
+
+/* Open Quickly: run script detail */
+"Run Script" = "執行腳本";
+
+/* Open Quickly: user feature name */
+"User" = "使用者";
+
+/* Open Quickly: profile feature name */
+"Profile" = "設定檔";
+
+/* Open Quickly: git branch feature name */
+"Git Branch" = "Git 分支";
+
+/* Open Quickly: search icon accessibility */
+"Search icon" = "搜尋圖示";
+
+/* Open Quickly: clear search accessibility */
+"Clear search query" = "清除搜尋查詢";
+
+/* Open Quickly: tab preview */
+"Tab %d" = "分頁 %d";
+
+/* Open Quickly: tab preview with title */
+"Tab %d · %@" = "分頁 %d · %@";
+
+/* Open Quickly: function call result alert title */
+"Function Call Result" = "函式呼叫結果";
+
+/* Open Quickly: function call result informative text */
+"%@ returned:\n%@" = "%@ 傳回了：\n%@";
+
+/* Open Quickly: untitled item */
+"Untitled" = "無標題";
+
+/* Open Quickly: function call result OK button */
+"OK" = "好";
+

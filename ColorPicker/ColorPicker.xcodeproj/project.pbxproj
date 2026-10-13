@@ -53,6 +53,7 @@
 		A6184F411BA9D5700088EF3C /* SelectedColorIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = A6184F351BA9D5700088EF3C /* SelectedColorIndicator.png */; };
 		A6184F421BA9D5700088EF3C /* SelectedColorIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6184F361BA9D5700088EF3C /* SelectedColorIndicator@2x.png */; };
 		A6184F481BA9D75B0088EF3C /* colors.txt in Resources */ = {isa = PBXBuildFile; fileRef = A6184F471BA9D75B0088EF3C /* colors.txt */; };
+		A6CP0099000000000000CP09 /* ColorPicker.strings in Resources */ = {isa = PBXBuildFile; fileRef = A6CP0001000000000000CP01 /* ColorPicker.strings */; };
 		A6184F4B1BA9D7740088EF3C /* CPKColorNamer.h in Headers */ = {isa = PBXBuildFile; fileRef = A6184F491BA9D7740088EF3C /* CPKColorNamer.h */; };
 		A6184F4C1BA9D7740088EF3C /* CPKColorNamer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6184F4A1BA9D7740088EF3C /* CPKColorNamer.m */; };
 		A6184F4F1BA9EA410088EF3C /* CPKKDTreeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A6184F4D1BA9EA410088EF3C /* CPKKDTreeNode.h */; };
@@ -208,6 +209,14 @@
 		A667C230276A8A09006B4DEF /* NSColorSpace+CPK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSColorSpace+CPK.h"; sourceTree = "<group>"; };
 		A667C231276A8A09006B4DEF /* NSColorSpace+CPK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSColorSpace+CPK.m"; sourceTree = "<group>"; };
 		A6D398592BD9A4A600C4C1AD /* CPKLogging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPKLogging.h; sourceTree = "<group>"; };
+		A6CP0010000000000000CP01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/ColorPicker.strings; sourceTree = "<group>"; };
+		A6CP0011000000000000CP02 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ColorPicker.strings; sourceTree = "<group>"; };
+		A6CP0012000000000000CP03 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = zh_CN.lproj/ColorPicker.strings; sourceTree = "<group>"; };
+		A6CP0013000000000000CP04 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = zh_TW.lproj/ColorPicker.strings; sourceTree = "<group>"; };
+		A6CP0014000000000000CP05 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ColorPicker.strings"; sourceTree = "<group>"; };
+		A6CP0015000000000000CP06 /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/ColorPicker.strings"; sourceTree = "<group>"; };
+		A6CP0016000000000000CP07 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/ColorPicker.strings"; sourceTree = "<group>"; };
+		A6CP0017000000000000CP08 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/ColorPicker.strings"; sourceTree = "<group>"; };
 		A6E1748C206DD85F00E70F8D /* CPKScreenshot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPKScreenshot.h; sourceTree = "<group>"; };
 		A6E1748D206DD85F00E70F8D /* CPKScreenshot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPKScreenshot.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -333,6 +342,7 @@
 				A667C230276A8A09006B4DEF /* NSColorSpace+CPK.h */,
 				A667C231276A8A09006B4DEF /* NSColorSpace+CPK.m */,
 				A6D398592BD9A4A600C4C1AD /* CPKLogging.h */,
+				A6CP0001000000000000CP01 /* ColorPicker.strings */,
 			);
 			path = ColorPicker;
 			sourceTree = "<group>";
@@ -621,6 +631,12 @@
 			knownRegions = (
 				en,
 				Base,
+				zh_CN,
+				zh_TW,
+				"zh-Hans",
+				"zh-Hans-CN",
+				"zh-Hant",
+				"zh-Hant-TW",
 			);
 			mainGroup = A6184E9E1BA874020088EF3C;
 			productRefGroup = A6184EA91BA874020088EF3C /* Products */;
@@ -664,6 +680,7 @@
 				A6184F861BAA93F50088EF3C /* ActiveEyedropper.png in Resources */,
 				1D33688C1BCDB62100D3B564 /* ActiveEscapeHatch@2x.png in Resources */,
 				A6184F481BA9D75B0088EF3C /* colors.txt in Resources */,
+				A6CP0099000000000000CP09 /* ColorPicker.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +773,21 @@
 				A6184ED41BA874190088EF3C /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		A6CP0001000000000000CP01 /* ColorPicker.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6CP0010000000000000CP01 /* Base */,
+				A6CP0011000000000000CP02 /* en */,
+				A6CP0012000000000000CP03 /* zh_CN */,
+				A6CP0013000000000000CP04 /* zh_TW */,
+				A6CP0014000000000000CP05 /* zh-Hans */,
+				A6CP0015000000000000CP06 /* zh-Hans-CN */,
+				A6CP0016000000000000CP07 /* zh-Hant */,
+				A6CP0017000000000000CP08 /* zh-Hant-TW */,
+			);
+			name = ColorPicker.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -90,25 +90,19 @@ class iTermKeyMappingRepair: NSObject {
                 return keystrokeString
             }
             let action = iTermKeyBindingAction.withDictionary(actionDict)
-            let actionName = action?.displayName ?? "Unknown action"
-            return "\(keystrokeString): \(actionName)"
+            let actionName = action?.displayName ?? NSLocalizedString("Unknown action", tableName: "Settings", comment: "unknown action fallback")
+            return String(format: NSLocalizedString("%@: %@", tableName: "Settings", comment: "按键与动作"), keystrokeString, actionName)
         }
 
         let bindingsList = descriptions.sorted().map { "• \($0)" }.joined(separator: "\n")
         let count = corrupted.count
-        let bindingWord = count == 1 ? "key binding" : "key bindings"
-        let message = """
-            This will repair \(count) \(bindingWord) that \(count == 1 ? "was" : "were") corrupted by a bug in \
-            an earlier version of iTerm2. The affected \(count == 1 ? "binding currently displays" : "bindings currently display") incorrectly \
-            but \(count == 1 ? "functions" : "function") properly. After repair, \(count == 1 ? "it" : "they") will display correctly.
-
-            Affected \(bindingWord):
-            \(bindingsList)
-            """
+        let message = count == 1
+            ? String(format: NSLocalizedString("This will repair %d key binding that was corrupted by a bug in an earlier version of iTerm2. The affected binding currently displays incorrectly but functions properly. After repair, it will display correctly.\n\nAffected key binding:\n%@", tableName: "Settings", comment: "repair key binding message singular"), count, bindingsList)
+            : String(format: NSLocalizedString("This will repair %d key bindings that were corrupted by a bug in an earlier version of iTerm2. The affected bindings currently display incorrectly but function properly. After repair, they will display correctly.\n\nAffected key bindings:\n%@", tableName: "Settings", comment: "repair key bindings message plural"), count, bindingsList)
 
         let selection = iTermWarning.show(
             withTitle: message,
-            actions: ["Repair", "Cancel"],
+            actions: [NSLocalizedString("Repair", tableName: "Settings", comment: "repair button"), NSLocalizedString("Cancel", tableName: "Settings", comment: "cancel button")],
             identifier: nil,
             silenceable: .kiTermWarningTypePersistent,
             window: window

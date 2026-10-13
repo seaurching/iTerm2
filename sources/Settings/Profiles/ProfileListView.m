@@ -188,7 +188,7 @@ const CGFloat kDefaultTagsWidth = 80;
 
         [tableView_ setDoubleAction:@selector(onDoubleClick:)];
 
-        tableColumn_.title = @"Profile Name";
+        tableColumn_.title = NSLocalizedStringFromTableInBundle(@"Profile Name", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: profile name column title");
 
         [tableView_ sizeLastColumnToFit];
 
@@ -402,11 +402,11 @@ const CGFloat kDefaultTagsWidth = 80;
 
 - (void)_addTags:(NSArray*)tags toSearchField:(NSSearchField*)searchField
 {
-    NSMenu *cellMenu = [[[NSMenu alloc] initWithTitle:@"Search Menu"]
+    NSMenu *cellMenu = [[[NSMenu alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Search Menu", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: search menu title")]
                         autorelease];
     NSMenuItem *item;
 
-    item = [[[NSMenuItem alloc] initWithTitle:@"Tags"
+    item = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Tags", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: tags menu item")
                                        action:nil
                                 keyEquivalent:@""] autorelease];
     [item setTarget:self];
@@ -424,7 +424,7 @@ const CGFloat kDefaultTagsWidth = 80;
     }
 
     [cellMenu insertItem:[NSMenuItem separatorItem] atIndex:cellMenu.numberOfItems];
-    [cellMenu addItemWithTitle:@"Search Syntax Help" action:@selector(openHowToSearchHelp:) keyEquivalent:@""];
+    [cellMenu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Search Syntax Help", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: search syntax help menu item") action:@selector(openHowToSearchHelp:) keyEquivalent:@""];
 
     id searchCell = [searchField cell];
     [searchCell setSearchMenuTemplate:cellMenu];
@@ -741,9 +741,9 @@ const CGFloat kDefaultTagsWidth = 80;
         } else if ([customCommand isEqualToString:kProfilePreferenceCommandTypeSSHValue]) {
             theString = [NSString stringWithFormat:@"ssh %@", bookmark[KEY_COMMAND_LINE]];
         } else if ([customCommand isEqualToString:kProfilePreferenceCommandTypeLoginShellValue]) {
-            theString = @"Login shell";
+            theString = NSLocalizedStringFromTableInBundle(@"Login shell", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: login shell display");
         } else if ([customCommand isEqualToString:kProfilePreferenceCommandTypeBrowserValue]) {
-            theString = @"URL";
+            theString = NSLocalizedStringFromTableInBundle(@"URL", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: URL display");
         }
         return [self attributedStringForCommand:theString
                                        selected:[[tableView_ selectedRowIndexes] containsIndex:rowIndex]
@@ -1026,8 +1026,8 @@ const CGFloat kDefaultTagsWidth = 80;
 
     [tableColumn_ setWidth:250];
 
-    shortcutColumn_.title = @"Shortcut";
-    commandColumn_.title = @"Command";
+    shortcutColumn_.title = NSLocalizedStringFromTableInBundle(@"Shortcut", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: shortcut column title");
+    commandColumn_.title = NSLocalizedStringFromTableInBundle(@"Command", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: command column title");
     [tableView_ sizeLastColumnToFit];
 }
 

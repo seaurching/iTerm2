@@ -1,0 +1,38 @@
+/* Title of alert window when we had a crash: */
+"WANT_TO_SEND_CRASH_TITLE" = "要報告上次發生的崩潰嗎？";
+
+/* Message for alert window when we had a crash: */
+"WANT_TO_SEND_CRASH" = "應用程式 %@ 最近發生了崩潰。為協助改進它，你可以將系統崩潰記錄與設定檔副本傳送給本程式的開發者，以便他們利用其中的資訊修復該缺陷。要傳送記錄嗎？";
+
+/* Name of OK button in alert window: */
+"WANT_TO_SEND_CRASH_SEND" = "傳送";
+
+/* Name of Cancel button in alert window: */
+"WANT_TO_SEND_CRASH_DONT_SEND" = "不傳送";
+
+/* Name of "Later" button in alert window: */
+"WANT_TO_SEND_CRASH_SEND_LATER" = "稍後傳送";
+
+/* URL of CGI script which we'll send the log to: */
+"CRASH_REPORT_CGI_URL" = "https://iterm2.com/crashreportform.php";
+
+/* Title of error window: */
+"COULDNT_SEND_CRASH_REPORT_ERROR" = "無法提交崩潰報告";
+
+/* Title of error window for feedback messages: */
+"COULDNT_SEND_FEEDBACK_ERROR" = "無法傳送你的訊息。";
+
+/* OK button of error window: */
+"COULDNT_SEND_CRASH_REPORT_ERROR_OK" = "好";
+
+/* Text for feedback messages: */
+"FEEDBACK_MESSAGE_TEXT" = "你好，iTerm2 開發者：\n\n我想告訴你們：\n\n\t...\n\n-- %%LONGUSERNAME\n\n回覆請寄至 %%EMAILADDRESS";
+
+/* String to substitute if we can't determine user's e-mail address: */
+"MISSING_EMAIL_ADDRESS" = "<在此填寫你的電子郵件地址>";
+
+/* Text at the top of the window for feedback messages: */
+"FEEDBACK_EXPLANATION_TEXT" = "在下方輸入你的訊息。如果你要回報缺陷，請包含你的 Mac 與作業系統版本資訊，以及有助於重現該問題的步驟列表。\n\n請務必填寫你的電子郵件地址，否則我們將無法回覆你。";
+
+/* Name of "Crash Log" tab for feedback messages: */
+"SYSTEM_INFO_TAB_NAME" = "系統資訊";

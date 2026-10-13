@@ -23,7 +23,7 @@ class ProfilesWebPreferencesViewController: iTermProfilePreferencesBaseViewContr
         do {
             let _ = defineControl(browserPageZoom,
                                   key: KEY_BROWSER_ZOOM,
-                                  displayName: "Browser page zoom",
+                                  displayName: NSLocalizedString("Browser page zoom", tableName: "Settings", bundle: Bundle(for: ProfilesWebPreferencesViewController.self), comment: ""),
                                   type: .slider)
         }
         do {

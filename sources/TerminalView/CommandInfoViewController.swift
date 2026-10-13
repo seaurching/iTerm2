@@ -231,7 +231,7 @@ class CommandInfoViewController: NSViewController {
         if let codeNumber = _returnCode.maybeValue {
             commandDidFinish(returnCode: codeNumber.intValue)
         } else {
-            returnCode.stringValue = "Still Running"
+            returnCode.stringValue = NSLocalizedString("Still Running", tableName: "TerminalView", comment: "command info: return code still running")
             if _startDate != nil {
                 timer = Timer.scheduledTimer(withTimeInterval: 0.017, repeats: true) { [weak self] timer in
                     self?.timerDidFire()
@@ -244,12 +244,15 @@ class CommandInfoViewController: NSViewController {
         if let _runningTime {
             runningTime.stringValue = String(_runningTime.formattedHMS)
         } else {
-            runningTime.stringValue = "Unknown"
+            runningTime.stringValue = NSLocalizedString("Unknown", tableName: "TerminalView", comment: "command info: running time unknown")
         }
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         let formattedLines = numberFormatter.string(from: NSNumber(value: _lines)) ?? "\(_lines)"
-        output.stringValue = NSString.stringWithHumanReadableSize(UInt64(_size)) as String + " (\(formattedLines) line\(_lines != 1 ? "s" : ""))"
+        let linesText = _lines == 1
+            ? NSLocalizedString("1 line", tableName: "TerminalView", comment: "command info: singular line count")
+            : String(format: NSLocalizedString("%@ lines", tableName: "TerminalView", comment: "command info: plural line count"), formattedLines)
+        output.stringValue = NSString.stringWithHumanReadableSize(UInt64(_size)) as String + " (\(linesText))"
         copyOutput.isEnabled = false
         progressIndicator.isHidden = false
         _outputProgress.addObserver(owner: self, queue: .main) { [weak self] progress in
@@ -261,7 +264,7 @@ class CommandInfoViewController: NSViewController {
             }
         }
         if let _startDate {
-            startedAt.stringValue = "Started at " + formattedDate(_startDate)
+            startedAt.stringValue = String(format: NSLocalizedString("Started at %@", tableName: "TerminalView", comment: "command info: started at"), formattedDate(_startDate))
         } else {
             startedAtStackView.isHidden = true
             stackView.removeArrangedSubview(startedAtStackView)
@@ -277,8 +280,10 @@ class CommandInfoViewController: NSViewController {
                                                             options: 0,
                                                             locale: .current)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM d, yyyy"
-        return "\(timeFormatter.string(from: date)) on \(dateFormatter.string(from: date))"
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMMd",
+                                                            options: 0,
+                                                            locale: .current)
+        return String(format: NSLocalizedString("%1$@ on %2$@", tableName: "TerminalView", comment: "command info: time on date"), timeFormatter.string(from: date), dateFormatter.string(from: date))
     }
 
     private func updateOutputProgress(_ progress: Double) {
@@ -335,11 +340,11 @@ class CommandInfoViewController: NSViewController {
                              event: NSEvent,
                              view: NSView) {
         let menu = SimpleContextMenu()
-        menu.addItem(title: "Add Command as Snippet") {
+        menu.addItem(title: NSLocalizedString("Add Command as Snippet", tableName: "TerminalView", comment: "command info: add command as snippet menu")) {
             let snippet = iTermSnippet(title: command, value: command, guid: UUID().uuidString, tags: [], escaping: .none, version: iTermSnippet.currentVersion())
             iTermSnippetsModel.sharedInstance().addSnippet(snippet)
             if let window = view.window {
-                ToastWindowController.showToast(withMessage: "Snippet Added",
+                ToastWindowController.showToast(withMessage: NSLocalizedString("Snippet Added", tableName: "TerminalView", comment: "command info: snippet added toast"),
                                                 duration: 1,
                                                 screenCoordinate: window.convertPoint(toScreen: event.locationInWindow), pointSize: 12.0)
             }
@@ -363,10 +368,10 @@ class CommandInfoViewController: NSViewController {
             return
         }
 
-        menu.addItem(title: "Copy Command URL to Clipboard") {
+        menu.addItem(title: NSLocalizedString("Copy Command URL to Clipboard", tableName: "TerminalView", comment: "command info: copy command url menu")) {
             Self.copyURL(url)
         }
-        menu.addItem(title: "Open Share Sheet…") {
+        menu.addItem(title: NSLocalizedString("Open Share Sheet…", tableName: "TerminalView", comment: "command info: open share sheet menu")) {
             let viewRect = NSRect(origin: event.locationInWindow, size: .zero)
             let picker = NSSharingServicePicker(items: [url])
             picker.show(relativeTo: viewRect, of: view, preferredEdge: .minY)

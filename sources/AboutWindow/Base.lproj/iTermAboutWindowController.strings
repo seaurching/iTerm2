@@ -1,0 +1,13 @@
+/* AboutWindow.strings - Base (English) */
+
+/* iTermAboutWindowController.m */
+"Build %@\n\n" = "Build %@\n\n";
+"What’s New in 3.7?\n" = "What’s New in 3.7?\n";
+"Home Page" = "Home Page";
+"Report a bug" = "Report a bug";
+"Credits" = "Credits";
+"Loading supporters…" = "Loading supporters…";
+"Error loading patrons :(" = "Error loading patrons :(";
+
+/* AboutWindow.xib */
+"By George Nachman and Contributors" = "By George Nachman and Contributors";

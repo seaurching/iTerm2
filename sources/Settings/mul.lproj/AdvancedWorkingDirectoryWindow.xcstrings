@@ -1,0 +1,811 @@
+{
+    "sourceLanguage": "en",
+    "strings": {
+        "5JZ-fv-M9U.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Reuse previous session's directory\"; ObjectID = \"5JZ-fv-M9U\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Reuse previous session's directory"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "复用上一会话的目录"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "重用上一工作階段的目錄"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "复用上一会话的目录"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "复用上一会话的目录"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "重用上一工作階段的目錄"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "重用上一工作階段的目錄"
+                    }
+                }
+            }
+        },
+        "6mB-LP-747.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Home directory\"; ObjectID = \"6mB-LP-747\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Home directory"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目录"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目錄"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目录"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目录"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目錄"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目錄"
+                    }
+                }
+            }
+        },
+        "8Os-WL-DkE.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Working Directory for New Tabs\"; ObjectID = \"8Os-WL-DkE\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Working Directory for New Tabs"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新标签页的工作目录"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新分頁的工作目錄"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新标签页的工作目录"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新标签页的工作目录"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新分頁的工作目錄"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新分頁的工作目錄"
+                    }
+                }
+            }
+        },
+        "BSH-xK-ICw.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Radio\"; ObjectID = \"BSH-xK-ICw\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Radio"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "单选"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "单选"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "单选"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "單選"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "單選"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "單選"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "buH-xK-CVR.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Working Directory for New Windows\"; ObjectID = \"buH-xK-CVR\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Working Directory for New Windows"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新窗口的工作目录"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新視窗的工作目錄"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新窗口的工作目录"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新窗口的工作目录"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新視窗的工作目錄"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新視窗的工作目錄"
+                    }
+                }
+            }
+        },
+        "dfK-M9-Uwn.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Reuse previous session's directory\"; ObjectID = \"dfK-M9-Uwn\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Reuse previous session's directory"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "复用上一会话的目录"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "重用上一工作階段的目錄"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "复用上一会话的目录"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "复用上一会话的目录"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "重用上一工作階段的目錄"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "重用上一工作階段的目錄"
+                    }
+                }
+            }
+        },
+        "fDX-Cg-ad9.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Radio\"; ObjectID = \"fDX-Cg-ad9\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Radio"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "单选"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "单选"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "单选"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "單選"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "單選"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "單選"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "ffv-Al-noL.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Reuse previous session's directory\"; ObjectID = \"ffv-Al-noL\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Reuse previous session's directory"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "复用上一会话的目录"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "重用上一工作階段的目錄"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "复用上一会话的目录"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "复用上一会话的目录"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "重用上一工作階段的目錄"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "重用上一工作階段的目錄"
+                    }
+                }
+            }
+        },
+        "Ieo-mE-vpq.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Directory:\"; ObjectID = \"Ieo-mE-vpq\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Directory:"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目录："
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目錄："
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目录："
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目录："
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目錄："
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目錄："
+                    }
+                }
+            }
+        },
+        "MWK-km-GHQ.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Working Directory for New Split Panes\"; ObjectID = \"MWK-km-GHQ\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Working Directory for New Split Panes"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新分屏面板的工作目录"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新分割窗格的工作目錄"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新分屏面板的工作目录"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新分屏面板的工作目录"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新分割窗格的工作目錄"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "新分割窗格的工作目錄"
+                    }
+                }
+            }
+        },
+        "nKk-F6-OG0.title": {
+            "comment": "Class = \"NSWindow\"; title = \"Advanced Working Directory Settings\"; ObjectID = \"nKk-F6-OG0\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Advanced Working Directory Settings"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "高级工作目录设置"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "進階工作目錄設定"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "高级工作目录设置"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "高级工作目录设置"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "進階工作目錄設定"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "進階工作目錄設定"
+                    }
+                }
+            }
+        },
+        "nUw-Py-iKc.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Directory:\"; ObjectID = \"nUw-Py-iKc\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Directory:"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目录："
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目錄："
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目录："
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目录："
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目錄："
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目錄："
+                    }
+                }
+            }
+        },
+        "SD9-ei-Zdb.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Directory:\"; ObjectID = \"SD9-ei-Zdb\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Directory:"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目录："
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目錄："
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目录："
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目录："
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目錄："
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "目錄："
+                    }
+                }
+            }
+        },
+        "VBx-Lu-ahF.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Radio\"; ObjectID = \"VBx-Lu-ahF\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "new",
+                        "value": "Radio"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "单选"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "单选"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "单选"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "單選"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "單選"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "單選"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "yO6-Oa-WJ3.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Home directory\"; ObjectID = \"yO6-Oa-WJ3\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Home directory"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目录"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目錄"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目录"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目录"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目錄"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目錄"
+                    }
+                }
+            }
+        },
+        "Ziq-3t-wcN.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"Home directory\"; ObjectID = \"Ziq-3t-wcN\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Home directory"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目录"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目錄"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目录"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目录"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目錄"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "主目錄"
+                    }
+                }
+            }
+        },
+        "zkM-uf-Mpi.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"OK\"; ObjectID = \"zkM-uf-Mpi\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "OK"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "确定"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "確定"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "确定"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "确定"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "確定"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "確定"
+                    }
+                }
+            }
+        }
+    },
+    "version": "1.1"
+}

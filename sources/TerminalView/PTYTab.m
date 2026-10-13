@@ -3551,7 +3551,7 @@ static void SetAgainstGrainDim(BOOL isVertical, NSSize *dest, CGFloat value) {
     }
     [theTab setParentWindow:term];
     theTab.delegate = term;
-    [theTab->tabViewItem_ setLabel:@"Restoring..."];
+    [theTab->tabViewItem_ setLabel:NSLocalizedStringFromTableInBundle(@"Restoring...", @"TerminalView", [NSBundle bundleForClass:[self class]], @"tab: restoring label")];
 
     [theTab setObjectCount:[term numberOfTabs] + 1];
 
@@ -6087,7 +6087,7 @@ typedef struct {
     [self updateTabTitle];
     for (PTYSession *session in self.sessions) {
         if ([session checkForCyclesInSwiftyStrings]) {
-            _tabTitleOverrideSwiftyString.swiftyString = @"[Cycle detected]";
+            _tabTitleOverrideSwiftyString.swiftyString = NSLocalizedStringFromTableInBundle(@"[Cycle detected]", @"TerminalView", [NSBundle bundleForClass:[self class]], @"标签页标题: 循环检测提示");
         }
     }
 }
@@ -6962,11 +6962,11 @@ typedef struct {
                 // See if a notification should be posted.
                 if (!session.havePostedIdleNotification && [session shouldPostUserNotification]) {
                     NSString *theDescription =
-                        [NSString stringWithFormat:@"Session %@ in tab #%d became idle.",
+                        [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Session %@ in tab #%d became idle.", @"TerminalView", [NSBundle bundleForClass:[self class]], @"tab: idle notification description"),
                             [[session name] removingHTMLFromTabTitleIfNeeded],
                             [self tabNumber]];
                     if ([iTermProfilePreferences boolForKey:KEY_SEND_IDLE_ALERT inProfile:session.profile]) {
-                        [[iTermNotificationController sharedInstance] notify:@"Idle"
+                        [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Idle", @"TerminalView", [NSBundle bundleForClass:[self class]], @"tab: idle notification title")
                                                          withDescription:theDescription
                                                              windowIndex:[session screenWindowIndex]
                                                                 tabIndex:[session screenTabIndex]
@@ -7009,7 +7009,7 @@ typedef struct {
                                                                                                 @"iTerm",
                                                                                                 [NSBundle bundleForClass:[self class]],
                                                                                                 @"User Alerts")
-                                             withDescription:[NSString stringWithFormat:@"New output was received in %@, tab #%d.",
+                                             withDescription:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"New output was received in %@, tab #%d.", @"TerminalView", [NSBundle bundleForClass:[self class]], @"tab: new output notification description"),
                                                               [[[self activeSession] name] removingHTMLFromTabTitleIfNeeded],
                                                               [self tabNumber]]
                                                  windowIndex:[[self activeSession] screenWindowIndex]
@@ -7799,7 +7799,7 @@ backgroundColor:(NSColor *)backgroundColor {
     } else {
         NSError *error = [NSError errorWithDomain:@"com.iterm2.select-pane-in-direction"
                                              code:0
-                                         userInfo:@{ NSLocalizedDescriptionKey: @"Invalid direction. Should be left, right, above or below." }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Invalid direction. Should be left, right, above or below.", @"TerminalView", [NSBundle bundleForClass:[self class]], @"select pane: invalid direction error") }];
         completion(nil, error);
         return;
     }

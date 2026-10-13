@@ -17,15 +17,15 @@ fileprivate enum CommandOption {
     var title: String {
         switch self {
         case let .hostname(hostname):
-            return "Run on \(hostname) via ssh"
+            return String(format: NSLocalizedString("Run on %@ via ssh", tableName: "AppKit", comment: "通过 ssh 在 %@ 上运行"), hostname)
         case let .username(username):
-            return "Run as \(username)"
+            return String(format: NSLocalizedString("Run as %@", tableName: "AppKit", comment: "以 %@ 身份运行"), username)
         case let .directory(directory):
-            return "Run in directory \(directory)"
+            return String(format: NSLocalizedString("Run in directory %@", tableName: "AppKit", comment: "在目录 %@ 中运行"), directory)
         case .offerTab:
-            return "Open in tab offered"
+            return NSLocalizedString("Open in tab offered", tableName: "AppKit", comment: "在提供的标签页中打开")
         case .offerCurrent:
-            return "Run in current session offered"
+            return NSLocalizedString("Run in current session offered", tableName: "AppKit", comment: "在当前会话中运行")
         }
     }
     var isEnabled: Bool { true }
@@ -171,11 +171,11 @@ fileprivate class CommandOptionsView: NSView {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
 
         
-        addHorizontalStackView(createHorizontalStackView(label: "Command:",
+        addHorizontalStackView(createHorizontalStackView(label: NSLocalizedString("Command:", tableName: "AppKit", comment: "命令："),
                                                          view: scrollView,
                                                          firstBaselineAnchor: scrollView.centerYAnchor))
 
-        runOnSSHToggle = NSButton(checkboxWithTitle: "Run on \(hostname) via ssh", target: self, action: #selector(runOnSSHToggleValueChanged))
+        runOnSSHToggle = NSButton(checkboxWithTitle: String(format: NSLocalizedString("Run on %@ via ssh", tableName: "AppKit", comment: "通过 ssh 在 %@ 上运行"), hostname), target: self, action: #selector(runOnSSHToggleValueChanged))
         usernameTextField = NSTextField()
 
         if runOnSSH {
@@ -187,20 +187,20 @@ fileprivate class CommandOptionsView: NSView {
             usernameStackView.spacing = 10
             usernameStackView.translatesAutoresizingMaskIntoConstraints = false
 
-            usernameTextField.placeholderString = "Username"
+            usernameTextField.placeholderString = NSLocalizedString("Username", tableName: "AppKit", comment: "用户名")
             usernameTextField.font = NSFont.systemFont(ofSize: NSFont.systemFontSize, weight: .regular)
             usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-            usernameStackView.addArrangedSubview(createHorizontalStackView(label: "Username:",
+            usernameStackView.addArrangedSubview(createHorizontalStackView(label: NSLocalizedString("Username:", tableName: "AppKit", comment: "用户名："),
                                                                            view: usernameTextField,
                                                                            firstBaselineAnchor: usernameTextField.firstBaselineAnchor))
             addHorizontalStackView(usernameStackView)
         }
 
         directoryTextField = NSTextField()
-        directoryTextField.placeholderString = "Directory"
+        directoryTextField.placeholderString = NSLocalizedString("Directory", tableName: "AppKit", comment: "目录")
         directoryTextField.font = NSFont.systemFont(ofSize: NSFont.systemFontSize, weight: .regular)
         directoryTextField.translatesAutoresizingMaskIntoConstraints = false
-        addHorizontalStackView(createHorizontalStackView(label: "Directory:",
+        addHorizontalStackView(createHorizontalStackView(label: NSLocalizedString("Directory:", tableName: "AppKit", comment: "目录："),
                                                          view: directoryTextField,
                                                          firstBaselineAnchor: directoryTextField.firstBaselineAnchor))
 
@@ -208,23 +208,23 @@ fileprivate class CommandOptionsView: NSView {
         buttonsStackView.spacing = 10
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
 
-        cancelButton = NSButton(title: "Cancel", target: self, action: #selector(cancelButtonClicked))
+        cancelButton = NSButton(title: NSLocalizedString("Cancel", tableName: "AppKit", comment: "取消"), target: self, action: #selector(cancelButtonClicked))
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         cancelButton.keyEquivalent = "\01b"
         buttonsStackView.addArrangedSubview(cancelButton)
 
-        newWindowButton = NSButton(title: "Run in New Window", target: self, action: #selector(newWindowButtonClicked))
+        newWindowButton = NSButton(title: NSLocalizedString("Run in New Window", tableName: "AppKit", comment: "在新窗口中运行"), target: self, action: #selector(newWindowButtonClicked))
         newWindowButton.translatesAutoresizingMaskIntoConstraints = false
         buttonsStackView.addArrangedSubview(newWindowButton)
 
         if offerTab {
-            newTabButton = NSButton(title: "Run in New Tab", target: self, action: #selector(newTabButtonClicked))
+            newTabButton = NSButton(title: NSLocalizedString("Run in New Tab", tableName: "AppKit", comment: "在新标签页中运行"), target: self, action: #selector(newTabButtonClicked))
             newTabButton.translatesAutoresizingMaskIntoConstraints = false
             buttonsStackView.addArrangedSubview(newTabButton)
         }
 
         if offerCurrent {
-            newTabButton = NSButton(title: "Run in Current Session", target: self, action: #selector(currentSessionButtonClicked))
+            newTabButton = NSButton(title: NSLocalizedString("Run in Current Session", tableName: "AppKit", comment: "在当前会话中运行"), target: self, action: #selector(currentSessionButtonClicked))
             newTabButton.translatesAutoresizingMaskIntoConstraints = false
             buttonsStackView.addArrangedSubview(newTabButton)
         }
@@ -406,22 +406,23 @@ class CommandURLHandler: NSObject {
     @objc
     func show(completion: ((CommandURLHandler) -> ())?) {
         if _action == .runSilently {
-            var parts = ["Run command", "“" + self.command + "”"]
+            var parts = [NSLocalizedString("Run command", tableName: "AppKit", comment: "运行命令"), "“" + self.command + "”"]
             if let username {
-                parts.append("as \(username)")
+                parts.append(String(format: NSLocalizedString("as %@", tableName: "AppKit", comment: "以 %@ 身份"), username))
             }
             if let hostname, !hostname.isEmpty {
-                parts.append("on \(hostname)")
+                parts.append(String(format: NSLocalizedString("on %@", tableName: "AppKit", comment: "在 %@"), hostname))
             }
             if let directory {
-                parts.append("in \(directory)")
+                parts.append(String(format: NSLocalizedString("in %@", tableName: "AppKit", comment: "在 %@ 中"), directory))
             }
-            let selection = iTermWarning.show(withTitle: parts.joined(separator: " ") + "?\nIt will run silently in the background.",
-                                              actions: [ "OK", "Cancel"],
+            let selection = iTermWarning.show(withTitle: parts.joined(separator: " ") + NSLocalizedString("?\nIt will run silently in the background.", tableName: "AppKit", comment: "？\n它将在后台静默运行。"),
+                                              actions: [NSLocalizedString("OK", tableName: "AppKit", comment: "好"),
+                                                        NSLocalizedString("Cancel", tableName: "AppKit", comment: "取消")],
                                               accessory: nil,
                                               identifier: "NoSyncRunCommand_\(self.command)",
                                               silenceable: .kiTermWarningTypePermanentlySilenceable,
-                                              heading: "Run Command?",
+                                              heading: NSLocalizedString("Run Command?", tableName: "AppKit", comment: "运行命令？"),
                                               window: nil)
             if selection == .kiTermWarningSelection0 {
                 _action = .runSilently
@@ -451,7 +452,7 @@ class CommandURLHandler: NSObject {
             defer: false
         )
         window.contentView = contentView
-        window.title = "Run Command from URL"
+        window.title = NSLocalizedString("Run Command from URL", tableName: "AppKit", comment: "从 URL 运行命令")
         window.setContentSize(contentView.fittingSize)
 
         window.center()

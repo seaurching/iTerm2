@@ -29,7 +29,7 @@
         profile = [[ProfileModel sharedInstance] bookmarkWithName:profileName];
         if (!profile) {
             [self setScriptErrorNumber:1];
-            [self setScriptErrorString:[NSString stringWithFormat:@"No profile exists named '%@'",
+            [self setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"No profile exists named '%@'", @"Applescript", [NSBundle bundleForClass:[self class]], @"不存在名为 '%@' 的配置文件"),
                                         profileName]];
             return nil;
         }
@@ -69,20 +69,20 @@
     Profile *profile;
     if (!profileName) {
         [self setScriptErrorNumber:4];
-        [self setScriptErrorString:@"No profile name was specified"];
+        [self setScriptErrorString:NSLocalizedStringFromTableInBundle(@"No profile name was specified", @"Applescript", [NSBundle bundleForClass:[self class]], @"未指定配置文件名称")];
         return nil;
     }
     profile = [[ProfileModel sharedInstance] bookmarkWithName:profileName];
     if (!profile) {
         [self setScriptErrorNumber:1];
-        [self setScriptErrorString:[NSString stringWithFormat:@"No profile exists named '%@'",
+        [self setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"No profile exists named '%@'", @"Applescript", [NSBundle bundleForClass:[self class]], @"不存在名为 '%@' 的配置文件"),
                                     profileName]];
         return nil;
     }
 
     if (!profile[KEY_GUID]) {
         [self setScriptErrorNumber:1];
-        [self setScriptErrorString:[NSString stringWithFormat:@"The profile '%@' is damaged.",
+        [self setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The profile '%@' is damaged.", @"Applescript", [NSBundle bundleForClass:[self class]], @"配置文件 '%@' 已损坏。"),
                                     profileName]];
         return nil;
     }
@@ -90,13 +90,13 @@
     iTermProfileHotKey *profileHotkey = [[iTermHotKeyController sharedInstance] profileHotKeyForGUID:profile[KEY_GUID]];
     if (!profileHotkey) {
         [self setScriptErrorNumber:3];
-        [self setScriptErrorString:[NSString stringWithFormat:@"The profile '%@' does not have a hotkey defined.",
+        [self setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The profile '%@' does not have a hotkey defined.", @"Applescript", [NSBundle bundleForClass:[self class]], @"配置文件 '%@' 未定义热键。"),
                                     profileName]];
         return nil;
     }
     if (profileHotkey.windowController.weaklyReferencedObject) {
         [self setScriptErrorNumber:2];
-        [self setScriptErrorString:[NSString stringWithFormat:@"A hotkey window for profile '%@' already exists. Use “reveal hotkey window” instead.",
+        [self setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"A hotkey window for profile '%@' already exists. Use “reveal hotkey window” instead.", @"Applescript", [NSBundle bundleForClass:[self class]], @"配置文件 '%@' 的热键窗口已存在。请改用“显示热键窗口”。"),
                                     profileName]];
         return nil;
     }

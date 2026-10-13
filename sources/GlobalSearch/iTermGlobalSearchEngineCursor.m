@@ -345,7 +345,7 @@ typedef struct iTermGlobalSearchEngineCursorSearchOutput {
                 return;
             }
             NSAttributedString *groupSnippet =
-                [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Folded region (%lu matches)", (unsigned long)results.count]
+                [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Folded region (%lu matches)", @"GlobalSearchCode", [NSBundle bundleForClass:[self class]], @"Global search: folded region match count"), (unsigned long)results.count]
                                                 attributes:regularAttributes];
             iTermGlobalSearchFoldGroup *group =
                 [[iTermGlobalSearchFoldGroup alloc] initWithSession:strongSelf.session

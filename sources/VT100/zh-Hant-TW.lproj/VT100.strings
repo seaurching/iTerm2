@@ -1,0 +1,7 @@
+/* VT100.strings - zh-Hant-TW */
+"A session" = "一個工作階段";
+"none" = "無";
+"Session status changed" = "工作階段狀態已變更";
+"%@ changed from “%@” to “%@”." = "%@ 從「%@」變為「%@」。";
+"OK" = "確定";
+"Reveal" = "顯示";

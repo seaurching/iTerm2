@@ -22,16 +22,16 @@
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Snippets Menu";
+    return NSLocalizedStringFromTableInBundle(@"Snippets Menu", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for snippets menu component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"When clicked, opens a menu of snippets. Snippets are saved text strings that can be pasted quickly.";
+    return NSLocalizedStringFromTableInBundle(@"When clicked, opens a menu of snippets. Snippets are saved text strings that can be pasted quickly.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for snippets menu component");
 }
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
                                           textColor:(NSColor *)textColor {
-    return @"Snippet…";
+    return NSLocalizedStringFromTableInBundle(@"Snippet…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for snippets menu component");
 }
 
 - (BOOL)statusBarComponentCanStretch {
@@ -39,7 +39,7 @@
 }
 
 - (nullable NSString *)stringValue {
-    return @"Send Snippet…";
+    return NSLocalizedStringFromTableInBundle(@"Send Snippet…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status bar string value for snippets menu component");
 }
 
 - (nullable NSString *)stringValueForCurrentWidth {
@@ -83,7 +83,7 @@
 
     [menu addItem:[NSMenuItem separatorItem]];
 
-    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"Edit Snippets…" action:@selector(editSnippets:) keyEquivalent:@""];
+    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Edit Snippets…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to edit snippets") action:@selector(editSnippets:) keyEquivalent:@""];
     item.target = self;
     [menu addItem:item];
 

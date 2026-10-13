@@ -131,15 +131,15 @@ static NSString *GetProfileName(NSString *guid) {
 + (NSString *)stringForSelectionMovementUnit:(PTYTextViewSelectionExtensionUnit)unit {
     switch (unit) {
         case kPTYTextViewSelectionExtensionUnitLine:
-            return @"By Line";
+            return NSLocalizedStringFromTableInBundle(@"By Line", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Selection movement unit: By Line");
         case kPTYTextViewSelectionExtensionUnitCharacter:
-            return @"By Character";
+            return NSLocalizedStringFromTableInBundle(@"By Character", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Selection movement unit: By Character");
         case kPTYTextViewSelectionExtensionUnitWord:
-            return @"By Word";
+            return NSLocalizedStringFromTableInBundle(@"By Word", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Selection movement unit: By Word");
         case kPTYTextViewSelectionExtensionUnitBigWord:
-            return @"By WORD";
+            return NSLocalizedStringFromTableInBundle(@"By WORD", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Selection movement unit: By WORD");
         case kPTYTextViewSelectionExtensionUnitMark:
-            return @"By Mark";
+            return NSLocalizedStringFromTableInBundle(@"By Mark", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Selection movement unit: By Mark");
     }
     XLog(@"Unrecognized selection movement unit %@", @(unit));
     return @"";
@@ -217,191 +217,191 @@ static NSString *GetProfileName(NSString *guid) {
 
     switch (_keyAction) {
         case KEY_ACTION_MOVE_TAB_LEFT:
-            actionString = @"Move Tab Left";
+            actionString = NSLocalizedStringFromTableInBundle(@"Move Tab Left", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Move Tab Left");
             break;
         case KEY_ACTION_MOVE_TAB_RIGHT:
-            actionString = @"Move Tab Right";
+            actionString = NSLocalizedStringFromTableInBundle(@"Move Tab Right", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Move Tab Right");
             break;
         case KEY_ACTION_NEXT_MRU_TAB:
-            actionString = @"Cycle Tabs Forward";
+            actionString = NSLocalizedStringFromTableInBundle(@"Cycle Tabs Forward", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Cycle Tabs Forward");
             break;
         case KEY_ACTION_PREVIOUS_MRU_TAB:
-            actionString = @"Cycle Tabs Backward";
+            actionString = NSLocalizedStringFromTableInBundle(@"Cycle Tabs Backward", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Cycle Tabs Backward");
             break;
         case KEY_ACTION_NEXT_PANE:
-            actionString = @"Next Pane";
+            actionString = NSLocalizedStringFromTableInBundle(@"Next Pane", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Next Pane");
             break;
         case KEY_ACTION_PREVIOUS_PANE:
-            actionString = @"Previous Pane";
+            actionString = NSLocalizedStringFromTableInBundle(@"Previous Pane", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Previous Pane");
             break;
         case KEY_ACTION_NEXT_SESSION:
-            actionString = @"Next Tab";
+            actionString = NSLocalizedStringFromTableInBundle(@"Next Tab", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Next Tab");
             break;
         case KEY_ACTION_NEXT_WINDOW:
-            actionString = @"Next Window";
+            actionString = NSLocalizedStringFromTableInBundle(@"Next Window", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Next Window");
             break;
         case KEY_ACTION_PREVIOUS_SESSION:
-            actionString = @"Previous Tab";
+            actionString = NSLocalizedStringFromTableInBundle(@"Previous Tab", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Previous Tab");
             break;
         case KEY_ACTION_PREVIOUS_WINDOW:
-            actionString = @"Previous Window";
+            actionString = NSLocalizedStringFromTableInBundle(@"Previous Window", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Previous Window");
             break;
         case KEY_ACTION_SCROLL_END:
-            actionString = @"Scroll To End";
+            actionString = NSLocalizedStringFromTableInBundle(@"Scroll To End", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Scroll To End");
             break;
         case KEY_ACTION_SCROLL_HOME:
-            actionString = @"Scroll To Top";
+            actionString = NSLocalizedStringFromTableInBundle(@"Scroll To Top", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Scroll To Top");
             break;
         case KEY_ACTION_SCROLL_LINE_DOWN:
-            actionString = @"Scroll One Line Down";
+            actionString = NSLocalizedStringFromTableInBundle(@"Scroll One Line Down", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Scroll One Line Down");
             break;
         case KEY_ACTION_SCROLL_LINE_UP:
-            actionString = @"Scroll One Line Up";
+            actionString = NSLocalizedStringFromTableInBundle(@"Scroll One Line Up", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Scroll One Line Up");
             break;
         case KEY_ACTION_SCROLL_PAGE_DOWN:
-            actionString = @"Scroll One Page Down";
+            actionString = NSLocalizedStringFromTableInBundle(@"Scroll One Page Down", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Scroll One Page Down");
             break;
         case KEY_ACTION_SCROLL_PAGE_UP:
-            actionString = @"Scroll One Page Up";
+            actionString = NSLocalizedStringFromTableInBundle(@"Scroll One Page Up", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Scroll One Page Up");
             break;
         case KEY_ACTION_ESCAPE_SEQUENCE:
-            actionString = [NSString stringWithFormat:@"%@ %@", @"Send ^[", _parameter];
+            actionString = [NSString stringWithFormat:@"%@ %@", NSLocalizedStringFromTableInBundle(@"Send ^[", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: send escape sequence"), _parameter];
             break;
         case KEY_ACTION_HEX_CODE:
-            actionString = [NSString stringWithFormat: @"%@ %@", @"Send Hex Codes:", _parameter];
+            actionString = [NSString stringWithFormat: @"%@ %@", NSLocalizedStringFromTableInBundle(@"Send Hex Codes:", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: send hex codes"), _parameter];
             break;
         case KEY_ACTION_VIM_TEXT:
-            actionString = [NSString stringWithFormat:@"%@ \"%@\"", @"Send:", _parameter];
+            actionString = [NSString stringWithFormat:@"%@ \"%@\"", NSLocalizedStringFromTableInBundle(@"Send:", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: send text"), _parameter];
             break;
         case KEY_ACTION_VIM_TEXT_NO_BROADCAST:
-            actionString = [NSString stringWithFormat:@"%@ \"%@\"", @"Send (no broadcast):", _parameter];
+            actionString = [NSString stringWithFormat:@"%@ \"%@\"", NSLocalizedStringFromTableInBundle(@"Send (no broadcast):", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: send text no broadcast"), _parameter];
             break;
         case KEY_ACTION_TEXT:
-            actionString = [NSString stringWithFormat:@"%@ \"%@\"", @"Send:", _parameter];
+            actionString = [NSString stringWithFormat:@"%@ \"%@\"", NSLocalizedStringFromTableInBundle(@"Send:", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: send text"), _parameter];
             break;
         case KEY_ACTION_SEND_SNIPPET: {
             iTermSnippet *snippet = [[iTermSnippetsModel sharedInstance] snippetWithActionKey:_parameter];
             if (snippet) {
-                actionString = [NSString stringWithFormat:@"Send Snippet “%@”", snippet.displayTitle];
+                actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Send Snippet “%@”", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: send snippet"), snippet.displayTitle];
             } else {
-                actionString = @"Send Deleted Snippet (no action)";
+                actionString = NSLocalizedStringFromTableInBundle(@"Send Deleted Snippet (no action)", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Send Deleted Snippet (no action)");
             }
             break;
         }
         case KEY_ACTION_COMPOSE:
-            actionString = [NSString stringWithFormat:@"Compose “%@”", _parameter];
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Compose “%@”", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: compose"), _parameter];
             break;
         case KEY_ACTION_SEND_TMUX_COMMAND:
-            actionString = [NSString stringWithFormat:@"tmux: %@", _parameter];
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"tmux: %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: tmux command"), _parameter];
             break;
         case KEY_ACTION_RUN_COPROCESS:
-            actionString = [NSString stringWithFormat:@"Run Coprocess \"%@\"",
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Run Coprocess \"%@\"", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: run coprocess"),
 						    _parameter];
             break;
         case KEY_ACTION_SELECT_MENU_ITEM: {
             NSArray *parts = [_parameter componentsSeparatedByString:@"\n"];
-            actionString = [NSString stringWithFormat:@"%@ “%@”", @"Select Menu Item", parts.firstObject];
+            actionString = [NSString stringWithFormat:@"%@ “%@”", NSLocalizedStringFromTableInBundle(@"Select Menu Item", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: select menu item"), parts.firstObject];
             break;
         }
         case KEY_ACTION_NEW_WINDOW_WITH_PROFILE:
             if ([[ProfileModel sharedInstance] bookmarkWithGuid:_parameter]) {
-                actionString = [NSString stringWithFormat:@"New Window with \"%@\" Profile", GetProfileName(_parameter)];
+                actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"New Window with \"%@\" Profile", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: new window with profile"), GetProfileName(_parameter)];
             } else {
-                actionString = @"New Window with unavailable Profile";
+                actionString = NSLocalizedStringFromTableInBundle(@"New Window with unavailable Profile", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: New Window with unavailable Profile");
             }
             break;
         case KEY_ACTION_NEW_TAB_WITH_PROFILE:
             if ([[ProfileModel sharedInstance] bookmarkWithGuid:_parameter]) {
-                actionString = [NSString stringWithFormat:@"New Tab with \"%@\" Profile", GetProfileName(_parameter)];
+                actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"New Tab with \"%@\" Profile", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: new tab with profile"), GetProfileName(_parameter)];
             } else {
-                actionString = @"New Tab with unavailable Profile";
+                actionString = NSLocalizedStringFromTableInBundle(@"New Tab with unavailable Profile", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: New Tab with unavailable Profile");
             }
             break;
         case KEY_ACTION_SPLIT_HORIZONTALLY_WITH_PROFILE:
             if ([[ProfileModel sharedInstance] bookmarkWithGuid:_parameter]) {
-                actionString = [NSString stringWithFormat:@"Split Horizontally with \"%@\" Profile", GetProfileName(_parameter)];
+                actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Split Horizontally with \"%@\" Profile", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: split horizontally with profile"), GetProfileName(_parameter)];
             } else {
-                actionString = @"Split Horizontally with unavailable Profile";
+                actionString = NSLocalizedStringFromTableInBundle(@"Split Horizontally with unavailable Profile", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Split Horizontally with unavailable Profile");
             }
             break;
         case KEY_ACTION_SPLIT_VERTICALLY_WITH_PROFILE:
             if ([[ProfileModel sharedInstance] bookmarkWithGuid:_parameter]) {
-                actionString = [NSString stringWithFormat:@"Split Vertically with \"%@\" Profile", GetProfileName(_parameter)];
+                actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Split Vertically with \"%@\" Profile", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: split vertically with profile"), GetProfileName(_parameter)];
             } else {
-                actionString = @"Split Vertically with unavailable Profile";
+                actionString = NSLocalizedStringFromTableInBundle(@"Split Vertically with unavailable Profile", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Split Vertically with unavailable Profile");
             }
             break;
         case KEY_ACTION_SET_PROFILE:
             if ([[ProfileModel sharedInstance] bookmarkWithGuid:_parameter]) {
-                actionString = [NSString stringWithFormat:@"Change Profile to \"%@\"", GetProfileName(_parameter)];
+                actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Change Profile to \"%@\"", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: change profile"), GetProfileName(_parameter)];
             } else {
-                actionString = @"Change Profile to unavailable profile";
+                actionString = NSLocalizedStringFromTableInBundle(@"Change Profile to unavailable profile", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Change Profile to unavailable profile");
             }
             break;
         case KEY_ACTION_LOAD_COLOR_PRESET:
-            actionString = [NSString stringWithFormat:@"Load Color Preset \"%@\"", _parameter];
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Load Color Preset \"%@\"", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: load color preset"), _parameter];
             break;
         case KEY_ACTION_SEND_C_H_BACKSPACE:
-            actionString = @"Send ^H Backspace";
+            actionString = NSLocalizedStringFromTableInBundle(@"Send ^H Backspace", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Send ^H Backspace");
             break;
         case KEY_ACTION_SEND_C_QM_BACKSPACE:
-            actionString = @"Send ^? Backspace";
+            actionString = NSLocalizedStringFromTableInBundle(@"Send ^? Backspace", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Send ^? Backspace");
             break;
         case KEY_ACTION_IGNORE:
-            actionString = @"Ignore";
+            actionString = NSLocalizedStringFromTableInBundle(@"Ignore", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Ignore");
             break;
         case KEY_ACTION_BYPASS:
-            actionString = @"Bypass Terminal";
+            actionString = NSLocalizedStringFromTableInBundle(@"Bypass Terminal", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Bypass Terminal");
             break;
         case KEY_ACTION_IR_FORWARD:
-            actionString = @"Unsupported Command";
+            actionString = NSLocalizedStringFromTableInBundle(@"Unsupported Command", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Unsupported Command");
             break;
         case KEY_ACTION_IR_BACKWARD:
-            actionString = @"Start Instant Replay";
+            actionString = NSLocalizedStringFromTableInBundle(@"Start Instant Replay", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Start Instant Replay");
             break;
         case KEY_ACTION_SELECT_PANE_LEFT:
-            actionString = @"Select Split Pane on Left";
+            actionString = NSLocalizedStringFromTableInBundle(@"Select Split Pane on Left", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Select Split Pane on Left");
             break;
         case KEY_ACTION_SELECT_PANE_RIGHT:
-            actionString = @"Select Split Pane on Right";
+            actionString = NSLocalizedStringFromTableInBundle(@"Select Split Pane on Right", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Select Split Pane on Right");
             break;
         case KEY_ACTION_SELECT_PANE_ABOVE:
-            actionString = @"Select Split Pane Above";
+            actionString = NSLocalizedStringFromTableInBundle(@"Select Split Pane Above", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Select Split Pane Above");
             break;
         case KEY_ACTION_SELECT_PANE_BELOW:
-            actionString = @"Select Split Pane Below";
+            actionString = NSLocalizedStringFromTableInBundle(@"Select Split Pane Below", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Select Split Pane Below");
             break;
         case KEY_ACTION_DO_NOT_REMAP_MODIFIERS:
-            actionString = @"Do Not Remap Modifiers";
+            actionString = NSLocalizedStringFromTableInBundle(@"Do Not Remap Modifiers", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Do Not Remap Modifiers");
             break;
         case KEY_ACTION_REMAP_LOCALLY:
-            actionString = @"Remap Modifiers in iTerm2 Only";
+            actionString = NSLocalizedStringFromTableInBundle(@"Remap Modifiers in iTerm2 Only", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Remap Modifiers in iTerm2 Only");
             break;
         case KEY_ACTION_TOGGLE_FULLSCREEN:
-            actionString = @"Toggle Fullscreen";
+            actionString = NSLocalizedStringFromTableInBundle(@"Toggle Fullscreen", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Toggle Fullscreen");
             break;
         case KEY_ACTION_TOGGLE_HOTKEY_WINDOW_PINNING:
-            actionString = @"Toggle Pin Hotkey Window";
+            actionString = NSLocalizedStringFromTableInBundle(@"Toggle Pin Hotkey Window", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Toggle Pin Hotkey Window");
             break;
         case KEY_ACTION_UNDO:
-            actionString = @"Undo";
+            actionString = NSLocalizedStringFromTableInBundle(@"Undo", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Undo");
             break;
         case KEY_ACTION_FIND_REGEX:
-            actionString = [NSString stringWithFormat:@"Find Regex “%@”", _parameter];
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Find Regex “%@”", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: find regex"), _parameter];
             break;
         case KEY_FIND_AGAIN_DOWN:
-            actionString = @"Find Again Down";
+            actionString = NSLocalizedStringFromTableInBundle(@"Find Again Down", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Find Again Down");
             break;
         case KEY_FIND_AGAIN_UP:
-            actionString = @"Find Again Up";
+            actionString = NSLocalizedStringFromTableInBundle(@"Find Again Up", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Find Again Up");
             break;
         case KEY_ACTION_PASTE_SPECIAL_FROM_SELECTION: {
             NSString *pasteDetails =
                 [iTermPasteSpecialViewController descriptionForCodedSettings:_parameter];
             if (pasteDetails.length) {
-                actionString = [NSString stringWithFormat:@"Paste from Selection: %@", pasteDetails];
+                actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Paste from Selection: %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: paste from selection"), pasteDetails];
             } else {
-                actionString = @"Paste from Selection";
+                actionString = NSLocalizedStringFromTableInBundle(@"Paste from Selection", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Paste from Selection");
             }
             break;
         }
@@ -409,99 +409,99 @@ static NSString *GetProfileName(NSString *guid) {
             NSString *pasteDetails =
                 [iTermPasteSpecialViewController descriptionForCodedSettings:_parameter];
             if (pasteDetails.length) {
-                actionString = [NSString stringWithFormat:@"Paste: %@", pasteDetails];
+                actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Paste: %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: paste"), pasteDetails];
             } else {
-                actionString = @"Paste";
+                actionString = NSLocalizedStringFromTableInBundle(@"Paste", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Paste");
             }
             break;
         }
         case KEY_ACTION_MOVE_END_OF_SELECTION_LEFT:
-            actionString = [NSString stringWithFormat:@"Move End of Selection Left %@",
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Move End of Selection Left %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: move end of selection left"),
                             [self.class stringForSelectionMovementUnit:_parameter.integerValue]];
             break;
         case KEY_ACTION_MOVE_END_OF_SELECTION_RIGHT:
-            actionString = [NSString stringWithFormat:@"Move End of Selection Right %@",
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Move End of Selection Right %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: move end of selection right"),
                             [self.class stringForSelectionMovementUnit:_parameter.integerValue]];
             break;
         case KEY_ACTION_MOVE_START_OF_SELECTION_LEFT:
-            actionString = [NSString stringWithFormat:@"Move Start of Selection Left %@",
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Move Start of Selection Left %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: move start of selection left"),
                             [self.class stringForSelectionMovementUnit:_parameter.integerValue]];
             break;
         case KEY_ACTION_MOVE_START_OF_SELECTION_RIGHT:
-            actionString = [NSString stringWithFormat:@"Move Start of Selection Right %@",
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Move Start of Selection Right %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: move start of selection right"),
                             [self.class stringForSelectionMovementUnit:_parameter.integerValue]];
             break;
 
         case KEY_ACTION_DECREASE_HEIGHT:
-            actionString = @"Decrease Height";
+            actionString = NSLocalizedStringFromTableInBundle(@"Decrease Height", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Decrease Height");
             break;
         case KEY_ACTION_INCREASE_HEIGHT:
-            actionString = @"Increase Height";
+            actionString = NSLocalizedStringFromTableInBundle(@"Increase Height", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Increase Height");
             break;
 
         case KEY_ACTION_DECREASE_WIDTH:
-            actionString = @"Decrease Width";
+            actionString = NSLocalizedStringFromTableInBundle(@"Decrease Width", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Decrease Width");
             break;
         case KEY_ACTION_INCREASE_WIDTH:
-            actionString = @"Increase Width";
+            actionString = NSLocalizedStringFromTableInBundle(@"Increase Width", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Increase Width");
             break;
 
         case KEY_ACTION_SWAP_PANE_LEFT:
-            actionString = @"Swap With Split Pane on Left";
+            actionString = NSLocalizedStringFromTableInBundle(@"Swap With Split Pane on Left", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Swap With Split Pane on Left");
             break;
         case KEY_ACTION_SWAP_PANE_RIGHT:
-            actionString = @"Swap With Split Pane on Right";
+            actionString = NSLocalizedStringFromTableInBundle(@"Swap With Split Pane on Right", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Swap With Split Pane on Right");
             break;
         case KEY_ACTION_SWAP_PANE_ABOVE:
-            actionString = @"Swap With Split Pane Above";
+            actionString = NSLocalizedStringFromTableInBundle(@"Swap With Split Pane Above", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Swap With Split Pane Above");
             break;
         case KEY_ACTION_SWAP_PANE_BELOW:
-            actionString = @"Swap With Split Pane Below";
+            actionString = NSLocalizedStringFromTableInBundle(@"Swap With Split Pane Below", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Swap With Split Pane Below");
             break;
         case KEY_ACTION_TOGGLE_MOUSE_REPORTING:
-            actionString = @"Toggle Mouse Reporting";
+            actionString = NSLocalizedStringFromTableInBundle(@"Toggle Mouse Reporting", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Toggle Mouse Reporting");
             break;
         case KEY_ACTION_INVOKE_SCRIPT_FUNCTION:
-            actionString = [NSString stringWithFormat:@"Call %@", _parameter];
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Call %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: call script function"), _parameter];
             break;
         case KEY_ACTION_DUPLICATE_TAB:
-            actionString = @"Duplicate Tab";
+            actionString = NSLocalizedStringFromTableInBundle(@"Duplicate Tab", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Duplicate Tab");
             break;
         case KEY_ACTION_SEQUENCE: {
             NSArray<NSString *> *names = [[_parameter keyBindingActionsFromSequenceParameter] mapWithBlock:^id _Nullable(iTermKeyBindingAction * _Nonnull action) {
                 return [action displayName];
             }];
-            return [names componentsJoinedByString:@", then "];
+            return [names componentsJoinedByString:NSLocalizedStringFromTableInBundle(@", then ", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: sequence join")];
         }
         default:
-            actionString = [NSString stringWithFormat: @"%@ %d", @"Unknown Action ID", _keyAction];
+            actionString = [NSString stringWithFormat: @"%@ %d", NSLocalizedStringFromTableInBundle(@"Unknown Action ID", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: unknown action"), _keyAction];
             break;
         case KEY_ACTION_MOVE_TO_SPLIT_PANE:
-            actionString = @"Move to Split Pane";
+            actionString = NSLocalizedStringFromTableInBundle(@"Move to Split Pane", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Move to Split Pane");
             break;
         case KEY_ACTION_SWAP_WITH_NEXT_PANE:
-            actionString = @"Swap with Next Pane";
+            actionString = NSLocalizedStringFromTableInBundle(@"Swap with Next Pane", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Swap with Next Pane");
             break;
         case KEY_ACTION_SWAP_WITH_PREVIOUS_PANE:
-            actionString = @"Swap with Previous Pane";
+            actionString = NSLocalizedStringFromTableInBundle(@"Swap with Previous Pane", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Swap with Previous Pane");
             break;
         case KEY_ACTION_COPY_OR_SEND:
-            actionString = @"Copy Selection or Send ^C";
+            actionString = NSLocalizedStringFromTableInBundle(@"Copy Selection or Send ^C", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Copy Selection or Send ^C");
             break;
         case KEY_ACTION_PASTE_OR_SEND:
-            actionString = @"Paste or Send ^V";
+            actionString = NSLocalizedStringFromTableInBundle(@"Paste or Send ^V", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Paste or Send ^V");
             break;
         case KEY_ACTION_ALERT_ON_NEXT_MARK:
-            actionString = @"Alert on Next Mark";
+            actionString = NSLocalizedStringFromTableInBundle(@"Alert on Next Mark", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: Alert on Next Mark");
             break;
         case KEY_ACTION_COPY_INTERPOLATED_STRING:
-            actionString = [NSString stringWithFormat:@"Copy Interpolated String “%@”", _parameter];
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Copy Interpolated String “%@”", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: copy interpolated string"), _parameter];
             break;
         case KEY_ACTION_COPY_MODE:
-            actionString = [NSString stringWithFormat:@"Copy mode: %@", _parameter];
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Copy mode: %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: copy mode"), _parameter];
             break;
         case KEY_ACTION_TOGGLE_SETTING:
-            actionString = [NSString stringWithFormat:@"Toggle %@", self.toggleSettingLabel];
+            actionString = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Toggle %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding action: toggle setting"), self.toggleSettingLabel];
             break;
     }
 
@@ -509,15 +509,15 @@ static NSString *GetProfileName(NSString *guid) {
         case iTermActionApplyModeCurrentSession:
             return actionString;
         case iTermActionApplyModeAllSessions:
-            return [NSString stringWithFormat:@"In all sessions, %@", actionString];
+            return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"In all sessions, %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding apply mode: all sessions"), actionString];
         case iTermActionApplyModeUnfocusedSessions:
-            return [NSString stringWithFormat:@"In unfocused sessions, %@", actionString];
+            return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"In unfocused sessions, %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding apply mode: unfocused sessions"), actionString];
         case iTermActionApplyModeAllInWindow:
-            return [NSString stringWithFormat:@"In all sessions in the window, %@", actionString];
+            return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"In all sessions in the window, %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding apply mode: all in window"), actionString];
         case iTermActionApplyModeAllInTab:
-            return [NSString stringWithFormat:@"In all sessions in the tab, %@", actionString];
+            return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"In all sessions in the tab, %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding apply mode: all in tab"), actionString];
         case iTermActionApplyModeBroadcasting:
-            return [NSString stringWithFormat:@"In all broadcasted-to sessions, %@", actionString];
+            return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"In all broadcasted-to sessions, %@", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key binding apply mode: broadcasting"), actionString];
     }
     return actionString;
 }

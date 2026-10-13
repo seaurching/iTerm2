@@ -270,7 +270,7 @@ static BOOL CPKColorHasValidColorSpace(NSColor *color) {
     NSButton *button = [[NSButton alloc] initWithFrame:frame];
     button.bordered = NO;
     button.image = image;
-    button.title = @"Default Picker";
+    button.title = NSLocalizedStringFromTableInBundle(@"Default Picker", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"默认选择器按钮标题");
     button.imagePosition = NSImageAbove;
     [button sizeToFit];
     frame = button.frame;
@@ -286,7 +286,7 @@ static BOOL CPKColorHasValidColorSpace(NSColor *color) {
         button.bordered = NO;
         button.image = image;
         button.imagePosition = NSImageAbove;
-        button.title = @"No Color";
+        button.title = NSLocalizedStringFromTableInBundle(@"No Color", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"无颜色按钮标题");
         [button sizeToFit];
         [button setTarget:self];
         [button setAction:@selector(noColorChosenInSystemColorPicker:)];

@@ -327,7 +327,7 @@ static ContextMenuActionDeclaration ContextMenuActionDeclarationForTag(ContextMe
 
 - (void)updateHelpText {
     if (_useInterpolatedStringsButton.state == NSControlStateValueOn) {
-        NSString *html = @"You can use captured strings from the Smart Selection's regular expression in the parameter. Use \\(matches[i]) where i=0 for the entire match and i>0 for capture groups. For other values, see <a href=\"https://iterm2.com/documentation-scripting-fundamentals.html\">Scripting Fundamentals</a> and <a href=\"https://iterm2.com/documentation-variables.html#session-context\">Variables Reference (Session Context)</a>.";
+        NSString *html = NSLocalizedStringFromTableInBundle(@"You can use captured strings from the Smart Selection's regular expression in the parameter. Use \\(matches[i]) where i=0 for the entire match and i>0 for capture groups. For other values, see <a href=\"https://iterm2.com/documentation-scripting-fundamentals.html\">Scripting Fundamentals</a> and <a href=\"https://iterm2.com/documentation-variables.html#session-context\">Variables Reference (Session Context)</a>.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
         _parameterInfoTextField.attributedStringValue = [NSAttributedString attributedStringWithHTML:html
@@ -336,7 +336,7 @@ static ContextMenuActionDeclaration ContextMenuActionDeclarationForTag(ContextMe
         _parameterInfoTextField.selectable = YES;
         _parameterInfoTextField.allowsEditingTextAttributes = YES;
     } else {
-        _parameterInfoTextField.stringValue = @"You can use captured strings from the Smart Selection's regular expression in the parameter. Use \\0 for match, \\1…\\9 for match groups, \\d for directory, \\u for user, \\h for host.";
+        _parameterInfoTextField.stringValue = NSLocalizedStringFromTableInBundle(@"You can use captured strings from the Smart Selection's regular expression in the parameter. Use \\0 for match, \\1…\\9 for match groups, \\d for directory, \\u for user, \\h for host.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     }
 }
 
@@ -381,7 +381,7 @@ static ContextMenuActionDeclaration ContextMenuActionDeclarationForTag(ContextMe
         if (_browser && !gContextMenuActionDeclarations[i].browser) {
             continue;
         }
-        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:gContextMenuActionDeclarations[i].title
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(gContextMenuActionDeclarations[i].title, @"Settings", [NSBundle bundleForClass:[self class]], @"context menu action title")
                                                       action:nil
                                                keyEquivalent:@""];
         item.tag = gContextMenuActionDeclarations[i].tag;
@@ -412,11 +412,11 @@ static ContextMenuActionDeclaration ContextMenuActionDeclarationForTag(ContextMe
 
     NSString *title = action[kTitleKey];
     if (title.length == 0) {
-        title = @"Untitled Action";
+        title = NSLocalizedStringFromTableInBundle(@"Untitled Action", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     }
     NSAttributedString *nameAttributedString = [[NSAttributedString alloc] initWithString:title
                                                                                attributes:self.nameAttributes];
-    NSAttributedString *actionAttributedString = [[NSAttributedString alloc] initWithString:decl.title
+    NSAttributedString *actionAttributedString = [[NSAttributedString alloc] initWithString:NSLocalizedStringFromTableInBundle(decl.title, @"Settings", [NSBundle bundleForClass:[self class]], @"context menu action title")
                                                                                  attributes:self.regularAttributes];
     id parameterAttributedString = nil;
     NSString *parameter = action[kParameterKey];
@@ -507,12 +507,12 @@ static ContextMenuActionDeclaration ContextMenuActionDeclarationForTag(ContextMe
     _parameter.stringValue = item[kParameterKey] ?: @"";
     NSNumber *action = [NSNumber castFrom:item[kActionKey]] ?: @0;
     [_action selectItemWithTag:action.integerValue];
-    _parameterLabel.stringValue = ContextMenuActionDeclarationForTag(action.integerValue).parameterLabel;
+    _parameterLabel.stringValue = NSLocalizedStringFromTableInBundle(ContextMenuActionDeclarationForTag(action.integerValue).parameterLabel, @"Settings", [NSBundle bundleForClass:[self class]], @"context menu parameter label");
     _parameterLabel.hidden = NO;
     _parameter.hidden = NO;
     _parameterInfoTextField.hidden = NO;
     if (action.integerValue == kCopyContextMenuAction) {
-        _parameter.placeholderString = @"Leave empty to copy matching text";
+        _parameter.placeholderString = NSLocalizedStringFromTableInBundle(@"Leave empty to copy matching text", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     } else {
         _parameter.placeholderString = @"";
     }

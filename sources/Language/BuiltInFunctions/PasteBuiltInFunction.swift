@@ -28,11 +28,11 @@ extension PasteBuiltInFunction: iTermBuiltInFunctionProtocol {
             context: .session,
             sideEffectsPlaceholder: "[paste]") { parameters, completion in
                 guard let sessionID = parameters["session_id"] as? String else {
-                    completion(nil, error(message: "Missing session_id. This shouldn't happen so please report a bug."))
+                    completion(nil, error(message: NSLocalizedString("Missing session_id. This shouldn't happen so please report a bug.", tableName: "Language", comment: "Paste error: missing session_id")))
                     return
                 }
                 guard let session = iTermController.sharedInstance().session(withGUID: sessionID) else {
-                    completion(nil, error(message: "No such session"))
+                    completion(nil, error(message: NSLocalizedString("No such session", tableName: "Language", comment: "Paste error: no such session")))
                     return
                 }
                 session.textview?.paste(nil)

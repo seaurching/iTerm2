@@ -4,7 +4,27 @@
    version = "1.8">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES">
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "All">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "  # &#x5c06; plists/development/&lt;lproj&gt;/ &#x4e0b;&#x7684;&#x672c;&#x5730;&#x5316;&#x6587;&#x4ef6;&#x540c;&#x6b65;&#x5230; plists/&lt;lproj&gt;/&#10;  # &#xff08;&#x9700;&#x52fe;&#x9009; &quot;Provide build settings from&quot; &#x4ee5;&#x83b7;&#x5f97; $SRCROOT&#xff09;&#10;  &#10;  set -eu&#10;  cd &quot;$SRCROOT/plists&quot;&#10;  echo &quot;cp -f release-iTerm2.plist iTerm2.plist&quot;&#10;  cp -f release-iTerm2.plist iTerm2.plist&#10;  for src in release/*.lproj/*; do&#10;      [ -f &quot;$src&quot; ] || continue&#10;      lproj=&quot;${src#release/}&quot;; lproj=&quot;${lproj%%/*}&quot;&#10;      file=&quot;${src##*/}&quot;&#10;      mkdir -p &quot;$lproj&quot;&#10;      dest=&quot;$lproj/$file&quot;&#10;      cp -f &quot;$src&quot; &quot;$dest&quot;&#10;      echo &quot;Pre-action: &#x540c;&#x6b65; release/${lproj}/${file} -&gt; ${lproj}/${file}&quot;&#10;  done&#10;"
+               shellToInvoke = "/bin/sh">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "874206460564169600CFC3F1"
+                     BuildableName = "iTerm2.app"
+                     BlueprintName = "iTerm2"
+                     ReferencedContainer = "container:iTerm2.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -28,6 +48,24 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       enableAddressSanitizer = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "set -eu&#10;cd &quot;$SRCROOT/plists&quot;&#10;echo &quot;cp -f dev-iTerm2.plist iTerm2.plist&quot;&#10;cp -f dev-iTerm2.plist iTerm2.plist&#10;for src in development/*.lproj/*; do&#10;    [ -f &quot;$src&quot; ] || continue&#10;    #development/zh-Hans.lproj/xxx -&gt; zh-Hans.lproj&#10;    lproj=&quot;${src#development/}&quot;; lproj=&quot;${lproj%%/*}&quot; &#10;    file=&quot;${src##*/}&quot;&#10;    mkdir -p &quot;$lproj&quot;&#10;    dest=&quot;$lproj/$file&quot;&#10;    cp -f &quot;$src&quot; &quot;$dest&quot;&#10;    echo &quot;Pre-action: &#x540c;&#x6b65; development/${lproj}/${file} -&gt; ${lproj}/${file}&quot;&#10;done&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "874206460564169600CFC3F1"
+                     BuildableName = "iTerm2.app"
+                     BlueprintName = "iTerm2"
+                     ReferencedContainer = "container:iTerm2.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <AdditionalOptions>
          <AdditionalOption
             key = "NSZombieEnabled"
@@ -54,6 +92,25 @@
       queueDebuggingEnabled = "No"
       disablePerformanceAntipatternChecker = "YES"
       migratedStopOnEveryIssue = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# &#x5c06; plists/development/&lt;lproj&gt;/ &#x4e0b;&#x7684;&#x672c;&#x5730;&#x5316;&#x6587;&#x4ef6;&#x540c;&#x6b65;&#x5230; plists/&lt;lproj&gt;/&#10;# &#xff08;&#x9700;&#x52fe;&#x9009; &quot;Provide build settings from&quot; &#x4ee5;&#x83b7;&#x5f97; $SRCROOT&#xff09;&#10;set -eu&#10;cd &quot;$SRCROOT/plists&quot;&#10;echo &quot;cp -f dev-iTerm2.plist iTerm2.plist&quot;&#10;cp -p -f dev-iTerm2.plist iTerm2.plist&#10;for src in development/*.lproj/*; do&#10;    [ -f &quot;$src&quot; ] || continue&#10;    lproj=&quot;${src#development/}&quot;;&#10;    lproj=&quot;${lproj%%/*}&quot;   # development/zh-Hans.lproj/xxx -&gt; zh-Hans.lproj&#10;    file=&quot;${src##*/}&quot;&#10;    mkdir -p &quot;$lproj&quot;&#10;    dest=&quot;$lproj/$file&quot;&#10;    cp -f &quot;$src&quot; &quot;$dest&quot;&#10;    echo &quot;Pre-action: &#x540c;&#x6b65; development/${lproj}/${file} -&gt; ${lproj}/${file}&quot;&#10;done&#10;"
+               shellToInvoke = "/bin/sh">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "874206460564169600CFC3F1"
+                     BuildableName = "iTerm2.app"
+                     BlueprintName = "iTerm2"
+                     ReferencedContainer = "container:iTerm2.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -111,6 +168,24 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "set -eu&#10;cd &quot;$SRCROOT/plists&quot;&#10;echo &quot;cp -f release-iTerm2.plist iTerm2.plist&quot;&#10;cp -f release-iTerm2.plist iTerm2.plist&#10;for src in release/*.lproj/*; do&#10;    [ -f &quot;$src&quot; ] || continue&#10;    lproj=&quot;${src#release/}&quot;; lproj=&quot;${lproj%%/*}&quot;&#10;    file=&quot;${src##*/}&quot;&#10;    mkdir -p &quot;$lproj&quot;&#10;    dest=&quot;$lproj/$file&quot;&#10;    cp -f &quot;$src&quot; &quot;$dest&quot;&#10;    echo &quot;Pre-action: &#x540c;&#x6b65; release/${lproj}/${file} -&gt; ${lproj}/${file}&quot;&#10;done&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "874206460564169600CFC3F1"
+                     BuildableName = "iTerm2.app"
+                     BlueprintName = "iTerm2"
+                     ReferencedContainer = "container:iTerm2.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -126,7 +201,25 @@
       buildConfiguration = "Nightly">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Nightly"
+      buildConfiguration = "Deployment"
       revealArchiveInOrganizer = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "set -eu&#10;cd &quot;$SRCROOT/plists&quot;&#10;echo &quot;cp -f release-iTerm2.plist iTerm2.plist&quot;&#10;cp -f release-iTerm2.plist iTerm2.plist&#10;for src in release/*.lproj/*; do&#10;    [ -f &quot;$src&quot; ] || continue&#10;    # development/zh-Hans.lproj/xxx -&gt; zh-Hans.lproj&#10;    lproj=&quot;${src#release/}&quot;; lproj=&quot;${lproj%%/*}&quot;&#10;    file=&quot;${src##*/}&quot;&#10;    mkdir -p &quot;$lproj&quot;&#10;    dest=&quot;$lproj/$file&quot;&#10;    cp -f &quot;$src&quot; &quot;$dest&quot;&#10;    echo &quot;Pre-action: &#x540c;&#x6b65; release/${lproj}/${file} -&gt; ${lproj}/${file}&quot;&#10;  done&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "874206460564169600CFC3F1"
+                     BuildableName = "iTerm2.app"
+                     BlueprintName = "iTerm2"
+                     ReferencedContainer = "container:iTerm2.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
    </ArchiveAction>
 </Scheme>

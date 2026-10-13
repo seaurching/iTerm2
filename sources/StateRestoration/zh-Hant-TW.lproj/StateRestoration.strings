@@ -1,0 +1,16 @@
+"Wrong number of items in row: %@" = "列中項目數錯誤：%@";
+"Bad row: %@" = "錯誤的列：%@";
+"Two roots found" = "發現兩個根節點";
+"Dangling parent pointer %@ from %@" = "懸空的父指標 %@ 來自 %@";
+"No such record or wrong type" = "無此記錄或類型錯誤";
+"Some windows had trouble restoring last time iTerm2 launched. Try again?" = "上次啟動 iTerm2 時某些視窗復原遇到問題。要重試嗎？";
+"OK" = "確定";
+"Cancel" = "取消";
+"Restore Windows?" = "復原視窗？";
+"Still restoring your windows…" = "仍在復原您的視窗…";
+"iTerm2 is taking longer than usual to verify your saved windows and tabs. This usually means the system is busy and it’s safe to keep waiting, but a damaged state restoration database could also cause it. You can discard the saved windows instead if you’d rather not wait." = "iTerm2 驗證您儲存的視窗和分頁所需的時間比平常長。這通常表示系統繁忙，繼續等待是安全的，但狀態復原資料庫損壞也可能導致此情況。如果您不想等待，可以選擇捨棄已儲存的視窗。";
+"Keep Waiting" = "繼續等待";
+"Discard Saved Windows" = "捨棄已儲存的視窗";
+"Failed to migrate session database (adding generation column): %@" = "遷移工作階段資料庫失敗（新增 generation 欄位）：%@";
+"Failed to migrate session database (adding large_data column): %@" = "遷移工作階段資料庫失敗（新增 large_data 欄位）：%@";
+"Unknown error" = "未知錯誤";

@@ -1,0 +1,13 @@
+/* VT100Screen.strings - Base */
+"Archive Restored" = "Archive Restored";
+"Session Contents Restored on %@" = "Session Contents Restored on %@";
+"ssh exited" = "ssh exited";
+"%@ ssh sessions ended." = "%@ ssh sessions ended.";
+"%@ — now at %@." = "%@ — now at %@.";
+"%@." = "%@.";
+"%@ trigger" = "%@ trigger";
+"Out-of-date version of it2ssh detected. Please upgrade it2ssh." = "Out-of-date version of it2ssh detected. Please upgrade it2ssh.";
+"Future version of it2ssh detected. Please upgrade iTerm2." = "Future version of it2ssh detected. Please upgrade iTerm2.";
+"Recovering ssh connection…" = "Recovering ssh connection…";
+"ssh connection recovered!" = "ssh connection recovered!";
+"   Started %@" = "   Started %@";

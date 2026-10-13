@@ -183,11 +183,11 @@ final class CompanionPluginClient: NSObject, @unchecked Sendable {
     private func callPromise(_ function: String, _ args: [Any]) async throws -> JSValue {
         try await withCheckedThrowingContinuation { (cont: CheckedContinuation<JSValue, Error>) in
             q.async { [weak self] in
-                guard let self else { cont.resume(throwing: PluginError(reason: "plugin client gone")); return }
+                guard let self else { cont.resume(throwing: PluginError(reason: NSLocalizedString("plugin client gone", tableName: "Companion", comment: "插件客户端已释放"))); return }
                 let c = self.context()
                 guard let f = c.objectForKeyedSubscript(function), !f.isUndefined,
                       let promise = f.call(withArguments: args) else {
-                    cont.resume(throwing: PluginError(reason: "plugin function \(function) unavailable"))
+                    cont.resume(throwing: PluginError(reason: String(format: NSLocalizedString("plugin function %@ unavailable", tableName: "Companion", comment: "插件功能不可用"), function)))
                     return
                 }
                 var done = false
@@ -195,7 +195,7 @@ final class CompanionPluginClient: NSObject, @unchecked Sendable {
                     if !done { done = true; cont.resume(returning: value ?? JSValue(undefinedIn: c)) }
                 }
                 let onReject: @convention(block) (JSValue?) -> Void = { value in
-                    if !done { done = true; cont.resume(throwing: PluginError(reason: value?.toString() ?? "rejected")) }
+                    if !done { done = true; cont.resume(throwing: PluginError(reason: value?.toString() ?? NSLocalizedString("rejected", tableName: "Companion", comment: "Promise 拒绝兜底"))) }
                 }
                 promise.invokeMethod("then", withArguments: [JSValue(object: onResolve, in: c)!,
                                                               JSValue(object: onReject, in: c)!])
@@ -207,11 +207,11 @@ final class CompanionPluginClient: NSObject, @unchecked Sendable {
     private func callValue(_ function: String, _ args: [Any]) async throws -> JSValue {
         try await withCheckedThrowingContinuation { (cont: CheckedContinuation<JSValue, Error>) in
             q.async { [weak self] in
-                guard let self else { cont.resume(throwing: PluginError(reason: "plugin client gone")); return }
+                guard let self else { cont.resume(throwing: PluginError(reason: NSLocalizedString("plugin client gone", tableName: "Companion", comment: "插件客户端已释放"))); return }
                 let c = self.context()
                 guard let f = c.objectForKeyedSubscript(function), !f.isUndefined,
                       let value = f.call(withArguments: args) else {
-                    cont.resume(throwing: PluginError(reason: "plugin function \(function) unavailable"))
+                    cont.resume(throwing: PluginError(reason: String(format: NSLocalizedString("plugin function %@ unavailable", tableName: "Companion", comment: "插件功能不可用"), function)))
                     return
                 }
                 cont.resume(returning: value)

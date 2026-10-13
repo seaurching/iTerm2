@@ -42,13 +42,13 @@ static NSString *const iTermBatteryComponentKnobKeyShowTime = @"ShowTime";
 
 - (NSArray<iTermStatusBarComponentKnob *> *)statusBarComponentKnobs {
     iTermStatusBarComponentKnob *showPercentageKnob =
-    [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Show Percentage"
+    [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Show Percentage", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for showing battery percentage")
                                                       type:iTermStatusBarComponentKnobTypeCheckbox
                                                placeholder:nil
                                               defaultValue:@YES
                                                        key:iTermBatteryComponentKnobKeyShowPercentage];
     iTermStatusBarComponentKnob *showEstimatedTimeKnob =
-    [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Show Estimated Time"
+    [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Show Estimated Time", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for showing estimated battery time")
                                                       type:iTermStatusBarComponentKnobTypeCheckbox
                                                placeholder:nil
                                               defaultValue:@NO
@@ -83,16 +83,16 @@ static NSString *const iTermBatteryComponentKnobKeyShowTime = @"ShowTime";
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Battery Level";
+    return NSLocalizedStringFromTableInBundle(@"Battery Level", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for battery level component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Shows current battery level and its recent history.";
+    return NSLocalizedStringFromTableInBundle(@"Shows current battery level and its recent history.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for battery level component");
 }
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
                                           textColor:(NSColor *)textColor {
-    return @"95% ▂▃▅▇ Batt";
+    return NSLocalizedStringFromTableInBundle(@"95% ▂▃▅▇ Batt", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for battery level component");
 }
 
 - (BOOL)statusBarComponentCanStretch {

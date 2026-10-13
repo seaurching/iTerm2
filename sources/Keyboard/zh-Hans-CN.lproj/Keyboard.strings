@@ -1,0 +1,358 @@
+/* Selection movement unit */
+"By Line" = "按行";
+
+/* Selection movement unit */
+"By Character" = "按字符";
+
+/* Selection movement unit */
+"By Word" = "按词";
+
+/* Selection movement unit */
+"By WORD" = "按 WORD";
+
+/* Selection movement unit */
+"By Mark" = "按标记";
+
+/* Key binding action */
+"Move Tab Left" = "左移标签页";
+
+/* Key binding action */
+"Move Tab Right" = "右移标签页";
+
+/* Key binding action */
+"Cycle Tabs Forward" = "向前循环切换标签页";
+
+/* Key binding action */
+"Cycle Tabs Backward" = "向后循环切换标签页";
+
+/* Key binding action */
+"Next Pane" = "下一窗格";
+
+/* Key binding action */
+"Previous Pane" = "上一窗格";
+
+/* Key binding action */
+"Next Tab" = "下一标签页";
+
+/* Key binding action */
+"Next Window" = "下一窗口";
+
+/* Key binding action */
+"Previous Tab" = "上一标签页";
+
+/* Key binding action */
+"Previous Window" = "上一窗口";
+
+/* Key binding action */
+"Scroll To End" = "滚动至末尾";
+
+/* Key binding action */
+"Scroll To Top" = "滚动至顶部";
+
+/* Key binding action */
+"Scroll One Line Down" = "向下滚动一行";
+
+/* Key binding action */
+"Scroll One Line Up" = "向上滚动一行";
+
+/* Key binding action */
+"Scroll One Page Down" = "向下滚动一页";
+
+/* Key binding action */
+"Scroll One Page Up" = "向上滚动一页";
+
+/* Key binding action: send escape sequence */
+"Send ^[" = "发送 ^[";
+
+/* Key binding action: send hex codes */
+"Send Hex Codes:" = "发送十六进制码：";
+
+/* Key binding action: send text */
+"Send:" = "发送：";
+
+/* Key binding action: send text no broadcast */
+"Send (no broadcast):" = "发送（不广播）：";
+
+/* Key binding action: send snippet */
+"Send Snippet “%@”" = "发送代码片段 “%@”";
+
+/* Key binding action */
+"Send Deleted Snippet (no action)" = "发送已删除的代码片段（无操作）";
+
+/* Key binding action: compose */
+"Compose “%@”" = "组合 “%@”";
+
+/* Key binding action: tmux command */
+"tmux: %@" = "tmux: %@";
+
+/* Key binding action: run coprocess */
+"Run Coprocess \"%@\"" = "运行协同进程 \"%@\"";
+
+/* Key binding action: select menu item */
+"Select Menu Item" = "选择菜单项";
+
+/* Key binding action: new window with profile */
+"New Window with \"%@\" Profile" = "使用 \"%@\" 配置文件的新窗口";
+
+/* Key binding action */
+"New Window with unavailable Profile" = "使用不可用配置文件的新窗口";
+
+/* Key binding action: new tab with profile */
+"New Tab with \"%@\" Profile" = "使用 \"%@\" 配置文件的新标签页";
+
+/* Key binding action */
+"New Tab with unavailable Profile" = "使用不可用配置文件的新标签页";
+
+/* Key binding action: split horizontally with profile */
+"Split Horizontally with \"%@\" Profile" = "使用 \"%@\" 配置文件水平分屏";
+
+/* Key binding action */
+"Split Horizontally with unavailable Profile" = "使用不可用配置文件水平分屏";
+
+/* Key binding action: split vertically with profile */
+"Split Vertically with \"%@\" Profile" = "使用 \"%@\" 配置文件垂直分屏";
+
+/* Key binding action */
+"Split Vertically with unavailable Profile" = "使用不可用配置文件垂直分屏";
+
+/* Key binding action: change profile */
+"Change Profile to \"%@\"" = "将配置文件更改为 \"%@\"";
+
+/* Key binding action */
+"Change Profile to unavailable profile" = "更改为不可用的配置文件";
+
+/* Key binding action: load color preset */
+"Load Color Preset \"%@\"" = "加载颜色预设 \"%@\"";
+
+/* Key binding action */
+"Send ^H Backspace" = "发送 ^H 退格";
+
+/* Key binding action */
+"Send ^? Backspace" = "发送 ^? 退格";
+
+/* Key binding action */
+"Ignore" = "忽略";
+
+/* Key binding action */
+"Bypass Terminal" = "绕过终端";
+
+/* Key binding action */
+"Unsupported Command" = "不支持的命令";
+
+/* Key binding action */
+"Start Instant Replay" = "开始即时回放";
+
+/* Key binding action */
+"Select Split Pane on Left" = "选择左侧分屏窗格";
+
+/* Key binding action */
+"Select Split Pane on Right" = "选择右侧分屏窗格";
+
+/* Key binding action */
+"Select Split Pane Above" = "选择上方分屏窗格";
+
+/* Key binding action */
+"Select Split Pane Below" = "选择下方分屏窗格";
+
+/* Key binding action */
+"Do Not Remap Modifiers" = "不重新映射修饰键";
+
+/* Key binding action */
+"Remap Modifiers in iTerm2 Only" = "仅在 iTerm2 中重新映射修饰键";
+
+/* Key binding action */
+"Toggle Fullscreen" = "切换全屏";
+
+/* Key binding action */
+"Toggle Pin Hotkey Window" = "切换固定热键窗口";
+
+/* Key binding action */
+"Undo" = "撤销";
+
+/* Key binding action: find regex */
+"Find Regex “%@”" = "查找正则表达式 “%@”";
+
+/* Key binding action */
+"Find Again Down" = "向下再次查找";
+
+/* Key binding action */
+"Find Again Up" = "向上再次查找";
+
+/* Key binding action: paste from selection */
+"Paste from Selection: %@" = "从选区粘贴：%@";
+
+/* Key binding action */
+"Paste from Selection" = "从选区粘贴";
+
+/* Key binding action: paste */
+"Paste: %@" = "粘贴：%@";
+
+/* Key binding action */
+"Paste" = "粘贴";
+
+/* Key binding action: move end of selection left */
+"Move End of Selection Left %@" = "将选区终点左移 %@";
+
+/* Key binding action: move end of selection right */
+"Move End of Selection Right %@" = "将选区终点右移 %@";
+
+/* Key binding action: move start of selection left */
+"Move Start of Selection Left %@" = "将选区起点左移 %@";
+
+/* Key binding action: move start of selection right */
+"Move Start of Selection Right %@" = "将选区起点右移 %@";
+
+/* Key binding action */
+"Decrease Height" = "减小高度";
+
+/* Key binding action */
+"Increase Height" = "增大高度";
+
+/* Key binding action */
+"Decrease Width" = "减小宽度";
+
+/* Key binding action */
+"Increase Width" = "增大宽度";
+
+/* Key binding action */
+"Swap With Split Pane on Left" = "与左侧分屏窗格交换";
+
+/* Key binding action */
+"Swap With Split Pane on Right" = "与右侧分屏窗格交换";
+
+/* Key binding action */
+"Swap With Split Pane Above" = "与上方分屏窗格交换";
+
+/* Key binding action */
+"Swap With Split Pane Below" = "与下方分屏窗格交换";
+
+/* Key binding action */
+"Toggle Mouse Reporting" = "切换鼠标报告";
+
+/* Key binding action: call script function */
+"Call %@" = "调用 %@";
+
+/* Key binding action */
+"Duplicate Tab" = "复制标签页";
+
+/* Key binding action: sequence join */
+", then " = "，然后 ";
+
+/* Key binding action: unknown action */
+"Unknown Action ID" = "未知操作 ID";
+
+/* Key binding action */
+"Move to Split Pane" = "移至分屏窗格";
+
+/* Key binding action */
+"Swap with Next Pane" = "与下一窗格交换";
+
+/* Key binding action */
+"Swap with Previous Pane" = "与上一窗格交换";
+
+/* Key binding action */
+"Copy Selection or Send ^C" = "复制选区或发送 ^C";
+
+/* Key binding action */
+"Paste or Send ^V" = "粘贴或发送 ^V";
+
+/* Key binding action */
+"Alert on Next Mark" = "在下一个标记处提醒";
+
+/* Key binding action: copy interpolated string */
+"Copy Interpolated String “%@”" = "复制插值字符串 “%@”";
+
+/* Key binding action: copy mode */
+"Copy mode: %@" = "复制模式：%@";
+
+/* Key binding action: toggle setting */
+"Toggle %@" = "切换 %@";
+
+/* Key binding apply mode: all sessions */
+"In all sessions, %@" = "在所有会话中，%@";
+
+/* Key binding apply mode: unfocused sessions */
+"In unfocused sessions, %@" = "在未聚焦的会话中，%@";
+
+/* Key binding apply mode: all in window */
+"In all sessions in the window, %@" = "在此窗口的所有会话中，%@";
+
+/* Key binding apply mode: all in tab */
+"In all sessions in the tab, %@" = "在此标签页的所有会话中，%@";
+
+/* Key binding apply mode: broadcasting */
+"In all broadcasted-to sessions, %@" = "在所有广播目标会话中，%@";
+
+/* Key name */
+"Del→" = "Del→";
+
+/* Key name */
+"←Delete" = "←删除";
+
+/* Key name */
+"End" = "End";
+
+/* Key name */
+"Help" = "Help";
+
+/* Key name */
+"Home" = "Home";
+
+/* Key name */
+"Numlock" = "数字锁定";
+
+/* Key name */
+"Page Down" = "下一页";
+
+/* Key name */
+"Page Up" = "上一页";
+
+/* Key name */
+"Insert" = "插入";
+
+/* Key name */
+"Space" = "空格";
+
+/* Key name */
+"Return ↩" = "回车 ↩";
+
+/* Key name */
+"Esc ⎋" = "Esc ⎋";
+
+/* Key name */
+"Tab ↦" = "Tab ↦";
+
+/* Key name */
+"Tab ↤" = "Tab ↤";
+
+/* Secure keyboard entry alert title */
+"Secure keyboard entry is enabled.\n\nIn macOS 12 and later, enabling Secure Keyboard Entry prevents other programs from being activated. This affects the `open` command as well as the panel shown when using Touch ID for sudo." = "已启用安全键盘输入。\n\n在 macOS 12 及更高版本中，启用安全键盘输入会阻止激活其他程序。这会影响 `open` 命令以及使用 Touch ID 进行 sudo 时显示的面板。";
+
+/* Secure keyboard entry alert OK button */
+"OK" = "确定";
+
+/* Secure keyboard entry alert heading */
+"Secure Keyboard Entry Enabled" = "已启用安全键盘输入";
+
+/* Undo close shortcut warning: keep new shortcut button */
+"Keep New Shortcut" = "保留新快捷键";
+
+/* Undo close shortcut warning: restore button */
+"Restore ⌘⇧T to Show Tabs" = "恢复 ⌘⇧T 显示标签页";
+
+/* Undo close shortcut warning heading */
+"Keyboard Shortcut Changed" = "快捷键已更改";
+
+/* Undo close shortcut warning body */
+"⌘⇧T now restores recently closed tabs (Undo Close). The Show Tabs in Fullscreen shortcut has moved to ⌘⇧U.\n\nWould you like to keep ⌘⇧T as the shortcut for Show Tabs in Fullscreen by adding a key binding?" = "⌘⇧T 现在会恢复最近关闭的标签页（撤销关闭）。显示标签页（全屏）的快捷键已移至 ⌘⇧U。\n\n是否要通过添加快捷键绑定，将 ⌘⇧T 保留为显示标签页（全屏）的快捷键？";
+
+/* Vim key parser error: missing closing bracket */
+"Missing closing '>'" = "缺少闭合的“>”";
+
+/* Vim key parser error: invalid key */
+"Invalid key: <%@" = "无效按键：<%@";
+
+/* Vim key parser error: problem location */
+"%@ at index %d in %@" = "%1$@ 位于 %3$@ 的索引 %2$d 处";
+
+"Cancel" = "取消";

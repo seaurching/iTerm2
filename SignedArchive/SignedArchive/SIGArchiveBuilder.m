@@ -53,7 +53,7 @@
     NSOutputStream *combinedOutputStream = [NSOutputStream outputStreamToMemory];
     if (!combinedOutputStream) {
         if (error) {
-            *error = [SIGError errorWithCode:SIGErrorCodeIOWrite detail:@"Could not create write stream"];
+            *error = [SIGError errorWithCode:SIGErrorCodeIOWrite detail:NSLocalizedStringFromTable(@"Could not create write stream", @"signed_archive", @"无法创建写入流")];
         }
         return NO;
     }
@@ -147,7 +147,7 @@
         if (errorOut) {
             *errorOut = [SIGError errorWrapping:error
                                          code:SIGErrorCodeIORead
-                                         detail:@"Error checking file size"];
+                                         detail:NSLocalizedStringFromTable(@"Error checking file size", @"signed_archive", @"检查文件大小时出错")];
         }
         return NO;
     }

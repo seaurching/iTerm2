@@ -509,17 +509,17 @@ extension LLM.Message.StatusUpdate {
     var displayString: String {
         switch self {
         case .webSearchStarted:
-            "Searching the web…"
+            NSLocalizedString("Searching the web…", tableName: "AITermXC", comment: "正在搜索网页…")
         case .webSearchFinished(let query):
             if let query {
-                "Finished searching the web for \(query)."
+                String(format: NSLocalizedString("Finished searching the web for %@.", tableName: "AITermXC", comment: "已完成网页搜索：%@"), query)
             } else {
-                "Finished searching the web."
+                NSLocalizedString("Finished searching the web.", tableName: "AITermXC", comment: "已完成网页搜索。")
             }
         case .codeInterpreterStarted:
-            "Executing code…"
+            NSLocalizedString("Executing code…", tableName: "AITermXC", comment: "正在执行代码…")
         case .codeInterpreterFinished:
-            "Finished executing code"
+            NSLocalizedString("Finished executing code", tableName: "AITermXC", comment: "代码执行完成")
         case .reasoningSummaryUpdate(let text): text
         case .multipart(let subparts):
             Self.subpartsForDisplay(subparts).map { $0.displayString }.joined(separator: "\n")

@@ -335,7 +335,12 @@
 }
 
 - (NSString *)label {
-    return @"shell";
+    return NSLocalizedStringFromTableInBundle(
+        @"shell",
+        @"Accessibility",
+        [NSBundle bundleForClass:[self class]],
+        @"Accessibility label for terminal shell"
+    );
 }
 
 - (NSInteger)numberOfCharacters {

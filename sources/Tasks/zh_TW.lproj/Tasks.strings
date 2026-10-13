@@ -1,0 +1,15 @@
+"Failed to launch coprocess." = "啟動輔助處理序失敗。";
+"OK" = "確定";
+"Unable to fork child process: you may have too many processes already running." = "無法分支子處理序：您可能已經執行了太多處理序。";
+"%@ The system error was: %s" = "%@ 系統錯誤為：%s";
+"Unable to fork!" = "無法分支子處理序！";
+"Error" = "錯誤";
+"An error was encountered while creating a temporary file with mkstemps. Verify that %@ exists and is writable." = "使用 mkstemps 建立暫存檔案時遇到錯誤。請驗證 %@ 是否存在且可寫入。";
+"Problem Starting iTerm2 Daemon" = "啟動 iTerm2 常駐程式時發生問題";
+"Neither ~/Library/Application Support/iTerm2 nor ~/.iterm2 are writable directories. This prevents the session restoration server from running. Please correct the problem and restart iTerm2." = "~/Library/Application Support/iTerm2 與 ~/.iterm2 都不是可寫入目錄。這會阻止工作階段還原伺服器執行。請修正此問題並重新啟動 iTerm2。";
+"Required File Missing" = "缺少必要的檔案";
+"The iTermServer executable is missing from the application bundle. This indicates iTerm2 is corrupted or incomplete. Please reinstall iTerm2 from the official website." = "應用程式套件中缺少 iTermServer 可執行檔。這表示 iTerm2 已損壞或不完整。請從官方網站重新安裝 iTerm2。";
+"Quit" = "結束";
+"Could not copy %@ to %@: %@" = "無法將 %@ 拷貝到 %@：%@";
+"Could not check permissions on %@" = "無法檢查 %@ 的權限";
+"Could not set 0700 permissions on %@" = "無法為 %@ 設定 0700 權限";

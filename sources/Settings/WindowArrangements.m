@@ -205,11 +205,11 @@ static NSInteger sWindowArrangementGeneration;
                completion:(void (^)(NSString *name, iTermSavePanelItem *saveItem))completion {
     NSAlert *alert = [[NSAlert alloc] init];
     alert.messageText = prompt;
-    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: OK button")];
     if (offerExport) {
-        [alert addButtonWithTitle:@"Save to File with Contents…"];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Save to File with Contents…", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: save to file button")];
     }
-    [alert addButtonWithTitle:@"Cancel"];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: cancel button")];
 
     NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 300, 24)];
     [input setStringValue:defaultValue];
@@ -259,7 +259,7 @@ static NSInteger sWindowArrangementGeneration;
         df.dateFormat = format;
 
         NSString *dateString = [df stringFromDate:now];
-        NSString *name = [NSString stringWithFormat:@"Arrangement (%@)", dateString];
+        NSString *name = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Arrangement (%@)", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: auto name format"), dateString];
 
         if (![WindowArrangements hasWindowArrangement:name]) {
             return name;
@@ -274,7 +274,7 @@ static NSInteger sWindowArrangementGeneration;
 
     for (NSInteger i = 2; ; i++) {
         NSString *dateString = [msDF stringFromDate:now];
-        NSString *name = [NSString stringWithFormat:@"Arrangement (%@) %ld", dateString, (long)i];
+        NSString *name = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Arrangement (%@) %ld", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: auto name with index format"), dateString, (long)i];
 
         if (![WindowArrangements hasWindowArrangement:name]) {
             return name;
@@ -283,7 +283,7 @@ static NSInteger sWindowArrangementGeneration;
 }
 
 + (void)nameForNewArrangement:(void (^)(NSString *))completion {
-    [WindowArrangements showAlertWithText:@"Name for saved window arrangement:"
+    [WindowArrangements showAlertWithText:NSLocalizedStringFromTableInBundle(@"Name for saved window arrangement:", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: name prompt")
                              defaultInput:[self nameForNewArrangement]
                               offerExport:NO
                                completion:^(NSString *name, iTermSavePanelItem *saveItem) {
@@ -293,10 +293,10 @@ static NSInteger sWindowArrangementGeneration;
         }
         if ([WindowArrangements hasWindowArrangement:name]) {
             NSAlert *alert = [[NSAlert alloc] init];
-            alert.messageText = @"Replace Existing Saved Window Arrangement?";
-            alert.informativeText = @"There is an existing saved window arrangement with this name. Would you like to replace it with the current arrangement?";
-            [alert addButtonWithTitle:@"Yes"];
-            [alert addButtonWithTitle:@"No"];
+            alert.messageText = NSLocalizedStringFromTableInBundle(@"Replace Existing Saved Window Arrangement?", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: replace existing prompt");
+            alert.informativeText = NSLocalizedStringFromTableInBundle(@"There is an existing saved window arrangement with this name. Would you like to replace it with the current arrangement?", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: replace existing message");
+            [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Yes", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: yes button")];
+            [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"No", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: no button")];
             if ([alert runModal] == NSAlertSecondButtonReturn) {
                 completion(nil);
                 return;
@@ -307,7 +307,7 @@ static NSInteger sWindowArrangementGeneration;
 }
 
 + (void)selectNameAndWhetherToIncludeContentsWithCompletion:(void (^)(NSString *name, iTermSavePanelItem *saveItem))completion {
-    [self showAlertWithText:@"Name for saved window arrangement:"
+    [self showAlertWithText:NSLocalizedStringFromTableInBundle(@"Name for saved window arrangement:", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: name prompt")
                defaultInput:[self nameForNewArrangement]
                 offerExport:YES
                  completion:completion];
@@ -361,10 +361,10 @@ static NSInteger sWindowArrangementGeneration;
     NSDictionary *value = [dict[oldName] copy];
     if (dict[newName]) {
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Replace Arrangement?";
-        alert.informativeText = [NSString stringWithFormat:@"An arrangement named “%@” already exists. Would you like to replace it?", newName];
-        [alert addButtonWithTitle:@"OK"];
-        [alert addButtonWithTitle:@"Cancel"];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Replace Arrangement?", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: replace prompt short");
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"An arrangement named “%@” already exists. Would you like to replace it?", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: replace exists message"), newName];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: OK button")];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"Window arrangements: cancel button")];
         if ([alert runSheetModalForWindow:self.view.window] == NSAlertSecondButtonReturn) {
             textField.stringValue = oldName;
             return;

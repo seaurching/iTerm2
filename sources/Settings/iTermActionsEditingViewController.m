@@ -62,8 +62,8 @@ static NSString *const iTermActionsEditingPasteboardType = @"com.googlecode.iter
                                                [weakSelf actionsDidChange:notification];
                                            }];
     [container addViewToSearchIndex:_tableView
-                        displayName:@"Actions"
-                            phrases:@[ @"Actions" ]
+                        displayName:NSLocalizedStringFromTableInBundle(@"Actions", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
+                            phrases:@[ NSLocalizedStringFromTableInBundle(@"Actions", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                                 key:kPreferenceKeyActions];
 }
 
@@ -250,24 +250,24 @@ static NSString *const iTermActionsEditingPasteboardType = @"com.googlecode.iter
                                                   encoding:NSUTF8StringEncoding
                                                      error:&error];
     if (!content || error) {
-        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"While loading %@: %@", url.path, error.localizedDescription]
-                                   actions:@[ @"OK" ]
+        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"While loading %@: %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), url.path, error.localizedDescription]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                                  accessory:nil
                                 identifier:@"NoSyncImportActionsFailed"
                                silenceable:kiTermWarningTypePersistent
-                                   heading:[NSString stringWithFormat:@"Import Failed"]
+                                   heading:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Import Failed", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]
                                     window:self.view.window];
         return;
     }
 
     id root = [NSJSONSerialization it_objectForJsonString:content error:&error];
     if (!root) {
-        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"While parsing %@: %@", url.path, error.localizedDescription]
-                                   actions:@[ @"OK" ]
+        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"While parsing %@: %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), url.path, error.localizedDescription]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                                  accessory:nil
                                 identifier:@"NoSyncImportActionsFailed"
                                silenceable:kiTermWarningTypePersistent
-                                   heading:[NSString stringWithFormat:@"Import Failed"]
+                                   heading:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Import Failed", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]
                                     window:self.view.window];
         return;
     }
@@ -295,12 +295,12 @@ static NSString *const iTermActionsEditingPasteboardType = @"com.googlecode.iter
 }
 
 - (void)showEncodingErrorForURL:(NSURL *)url {
-    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Malformed file at %@", url.path]
-                               actions:@[ @"OK" ]
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed file at %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), url.path]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                              accessory:nil
                             identifier:@"NoSyncActionEncodingError"
                            silenceable:kiTermWarningTypePersistent
-                               heading:[NSString stringWithFormat:@"Import Failed"]
+                               heading:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Import Failed", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]
                                 window:self.view.window];
 }
 
@@ -316,13 +316,13 @@ static NSString *const iTermActionsEditingPasteboardType = @"com.googlecode.iter
     NSString *json = [NSJSONSerialization it_jsonStringForObject:array];
     [json writeToSaveItem:item completionHandler:^(NSError *error) {
         if (error) {
-            [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Error saving to %@: %@",
+            [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error saving to %@: %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
                                                 item.displayName, error.localizedDescription]
-                                       actions:@[ @"OK" ]
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                                      accessory:nil
                                     identifier:@"NoSyncActionWritingError"
                                    silenceable:kiTermWarningTypePersistent
-                                       heading:[NSString stringWithFormat:@"Export Failed"]
+                                       heading:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Export Failed", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]
                                         window:self.view.window];
         } else {
             [item revealInFinderIfLocal];

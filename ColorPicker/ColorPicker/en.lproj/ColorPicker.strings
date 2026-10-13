@@ -1,0 +1,11 @@
+/* ColorPicker.strings - en */
+"Cancel" = "Cancel";
+"Default Picker" = "Default Picker";
+"Enter a name for this new saved color:" = "Enter a name for this new saved color:";
+"Name this color" = "Name this color";
+"No Color" = "No Color";
+"OK" = "OK";
+"Open System Preferences" = "Open System Preferences";
+"Permission Needed" = "Permission Needed";
+"The eyedropper needs Screen Recording permission to work." = "The eyedropper needs Screen Recording permission to work.";
+"The eyedropper requires screen recording permission.\n\nYou can enable this by adding %@ to System Preferences > Security & Privacy > Privacy > Screen Recording." = "The eyedropper requires screen recording permission.\n\nYou can enable this by adding %@ to System Preferences > Security & Privacy > Privacy > Screen Recording.";

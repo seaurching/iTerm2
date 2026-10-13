@@ -172,7 +172,7 @@
         if (error) {
             *error = archiveError ?: [NSError errorWithDomain:@"com.googlecode.iterm2"
                                                          code:-1
-                                                     userInfo:@{ NSLocalizedDescriptionKey: @"Failed to create archive of folder." }];
+                                                     userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Failed to create archive of folder.", @"Categories", [NSBundle mainBundle], @"无法创建文件夹的归档。") }];
         }
         return nil;
     }
@@ -190,7 +190,7 @@
         if (error) {
             *error = [NSError errorWithDomain:@"com.googlecode.iterm2"
                                          code:-1
-                                     userInfo:@{ NSLocalizedDescriptionKey: @"Failed to write temporary archive file." }];
+                                     userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Failed to write temporary archive file.", @"Categories", [NSBundle mainBundle], @"无法写入临时归档文件。") }];
         }
         return nil;
     }

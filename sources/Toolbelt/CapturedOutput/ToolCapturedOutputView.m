@@ -83,11 +83,11 @@ static NSString *const iTermCapturedOutputToolTableViewCellIdentifier = @"ToolCa
         if (@available(macOS 10.16, *)) {
             _clearButton.bezelStyle = NSBezelStyleRegularSquare;
             _clearButton.bordered = NO;
-            _clearButton.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolTrash) accessibilityDescription:@"Clear"];
+            _clearButton.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolTrash) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Clear", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"清除")];
             _clearButton.imagePosition = NSImageOnly;
             _clearButton.frame = NSMakeRect(0, 0, 22, 22);
         } else {
-            [_clearButton setTitle:@"Clear"];
+            [_clearButton setTitle:NSLocalizedStringFromTableInBundle(@"Clear", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"清除")];
             [_clearButton setButtonType:NSButtonTypeMomentaryPushIn];
             [_clearButton setBezelStyle:NSBezelStyleSmallSquare];
             [_clearButton sizeToFit];
@@ -120,7 +120,7 @@ static NSString *const iTermCapturedOutputToolTableViewCellIdentifier = @"ToolCa
         tableView_.menu.delegate = self;
         tableView_.intercellSpacing = NSMakeSize(0, 2);
         NSMenuItem *item;
-        item = [[NSMenuItem alloc] initWithTitle:@"Toggle Checkmark"
+        item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Toggle Checkmark", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"切换复选标记菜单项")
                                           action:@selector(toggleCheckmark:)
                                    keyEquivalent:@""];
         [tableView_.menu addItem:item];

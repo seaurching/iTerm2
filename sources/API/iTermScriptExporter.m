@@ -42,13 +42,13 @@
                completion:(void (^)(NSString *errorMessage, NSURL *zipURL))completion {
     NSURL *relativeURL = [self relativeURLFromFullURL:fullURL];
     if (!relativeURL) {
-        completion(@"Invalid location (not under Scripts folder).", nil);
+        completion(NSLocalizedStringFromTableInBundle(@"Invalid location (not under Scripts folder).", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script export error"), nil);
         return;
     }
 
     BOOL fullEnvironment = NO;
     if (![self urlContainsScript:fullURL fullEnvironment:&fullEnvironment]) {
-        completion(@"No found script at selected location.", nil);
+        completion(NSLocalizedStringFromTableInBundle(@"No found script at selected location.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script export error"), nil);
         return;
     }
     NSString *name = [fullURL.path lastPathComponent];
@@ -112,7 +112,7 @@
     NSString *absSetupPath = [fullURL URLByAppendingPathComponent:@"setup.cfg"].path;
     iTermSetupCfgParser *setupParser = [[iTermSetupCfgParser alloc] initWithPath:absSetupPath];
     if (setupParser.dependenciesError) {
-        completion(@"Could not parse install_requires in setup.cfg", nil);
+        completion(NSLocalizedStringFromTableInBundle(@"Could not parse install_requires in setup.cfg", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script export error"), nil);
         return;
     }
 
@@ -132,7 +132,7 @@
                   callbackQueue:callbackQueue
                      completion:^(BOOL ok) {
                          if (!ok) {
-                             completion(@"Failed to create zip file.", nil);
+                             completion(NSLocalizedStringFromTableInBundle(@"Failed to create zip file.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Script export error"), nil);
                              return;
                          }
                          if (signingIdentity) {

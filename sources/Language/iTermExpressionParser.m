@@ -54,7 +54,7 @@
             if (error) {
                 *error = [NSError errorWithDomain:@"com.iterm2.call"
                                              code:3
-                                         userInfo:@{ NSLocalizedDescriptionKey: @"Expected function call, not a value" }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Expected function call, not a value", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: expected function call not a value") }];
             }
             return nil;
 
@@ -71,7 +71,7 @@
             if (error) {
                 *error = [NSError errorWithDomain:@"com.iterm2.call"
                                              code:3
-                                         userInfo:@{ NSLocalizedDescriptionKey: @"Expected single function call" }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Expected single function call", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: expected single function call") }];
             }
             return nil;
 
@@ -79,14 +79,14 @@
             if (error) {
                 *error = [NSError errorWithDomain:@"com.iterm2.call"
                                              code:3
-                                         userInfo:@{ NSLocalizedDescriptionKey: @"Expected function call, not nil" }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Expected function call, not nil", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: expected function call not nil") }];
             }
             return nil;
         case iTermParsedExpressionTypeInterpolatedString:
             if (error) {
                 *error = [NSError errorWithDomain:@"com.iterm2.call"
                                              code:3
-                                         userInfo:@{ NSLocalizedDescriptionKey: @"Expected function call, not an interpolated string" }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Expected function call, not an interpolated string", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: expected function call not interpolated string") }];
             }
             return nil;
     }
@@ -270,7 +270,7 @@
 
 - (iTermParsedExpression *)parsedExpressionWithReferenceToPath:(NSString *)path {
     if (![_scope userWritableContainerExistsForPath:path]) {
-        return [[iTermParsedExpression alloc] initWithErrorCode:3 reason:[NSString stringWithFormat:@"Can’t form reference to non-existent or read-only container for variable %@", path]];
+        return [[iTermParsedExpression alloc] initWithErrorCode:3 reason:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Can’t form reference to non-existent or read-only container for variable %@", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: cannot form reference to container"), path]];
     }
     iTermVariableReference *ref = [[iTermVariableReference alloc] initWithPath:path
                                                                         vendor:_scope];
@@ -298,7 +298,7 @@
     // The user must write "var?" explicitly to treat undefined as null.
     // The ConditionalExpression '?' rule will optionalize when appropriate.
     NSString *fallbackError;
-    fallbackError = [NSString stringWithFormat:@"Reference to undefined variable \"%@\". Change it to \"%@?\" to treat the undefined value as null.", indirectValue.path, indirectValue.path];
+    fallbackError = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Reference to undefined variable \"%@\". Change it to \"%@?\" to treat the undefined value as null.", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: reference to undefined variable"), indirectValue.path, indirectValue.path];
     return [[iTermParsedExpression alloc] initWithObject:indirectValue.value
                                               errorReason:fallbackError];
 }
@@ -411,7 +411,7 @@
     // Succeed iff this is an array dereference, like \(user.myarray[1])
     NSArray *array = [NSArray castFrom:untypedValue];
     if (!array) {
-        NSString *reason = [NSString stringWithFormat:@"Variable “%@” is of type %@, not array", path, NSStringFromClass([untypedValue class])];
+        NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Variable “%@” is of type %@, not array", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: variable not array"), path, NSStringFromClass([untypedValue class])];
         return [[iTermIndirectValue alloc] initWithError:reason path:path];
     }
 
@@ -421,12 +421,12 @@
         NSError *error;
         NSNumber *indexValue = [indexExpression synchronousValueWithSideEffectsAllowed:NO scope:_scope error:&error];
         if (error) {
-            NSString *reason = [NSString stringWithFormat:@"Error evaluating index expression: %@", error.localizedDescription];
+            NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error evaluating index expression: %@", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: error evaluating index expression"), error.localizedDescription];
             return [[iTermIndirectValue alloc] initWithError:reason path:path];
         }
         const NSInteger index = indexValue.integerValue;
         if (index < 0 || index >= array.count) {
-            NSString *reason = [NSString stringWithFormat:@"Index %@ out of range of “%@”, which has %@ value%@", @(index), path, @(array.count), array.count == 1 ? @"" : @"s"];
+            NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Index %@ out of range of “%@”, which has %@ values", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: index out of range"), @(index), path, @(array.count)];
             return [[iTermIndirectValue alloc] initWithError:reason path:path];
         }
         return [[iTermIndirectValue alloc] initWithValue:array[index] path:path];
@@ -435,6 +435,7 @@
 
 - (void)loadRulesAndTransforms {
     __weak __typeof(self) weakSelf = self;
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 
     [_grammarProcessor addProductionRule:@"callsequence ::= <callsequence> ';' <call>"
                            treeTransform:^id(CPSyntaxTree *syntaxTree) {
@@ -495,7 +496,7 @@
         if ([path isEqualToString:@"null"]) {
             NSError *error = [NSError errorWithDomain:@"com.iterm2.parser"
                                                  code:2
-                                             userInfo:@{ NSLocalizedDescriptionKey: @"&null is never allowed" }];
+                                             userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"&null is never allowed", @"Language", bundle, @"Parse error: null never allowed") }];
             return [[iTermParsedExpression alloc] initWithError:error];
         }
         [weakSelf indirectValueWithPath:path index:nil];  // just for the recording scope side-effect
@@ -762,7 +763,7 @@
         if (!indexExpression) {
             // Cannot convert index to numeric expression (e.g., NSNull, string, array)
             NSString *path = syntaxTree.children[0];
-            NSString *errorMsg = [NSString stringWithFormat:@"Array index for \"%@\" must be a number, not %@",
+            NSString *errorMsg = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Array index for \"%@\" must be a number, not %@", @"Language", bundle, @"Parse error: array index must be number"),
                                   path, NSStringFromClass([numberParsedExpression.object class])];
             return [[iTermIndirectValue alloc] initWithError:errorMsg path:path];
         }
@@ -797,7 +798,7 @@
 
     NSError *error = [NSError errorWithDomain:@"com.iterm2.parser"
                                          code:2
-                                     userInfo:@{ NSLocalizedDescriptionKey: @"Syntax error" }];
+                                     userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Syntax error", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: syntax error") }];
     return [[iTermParsedExpression alloc] initWithError:error];
 }
 
@@ -828,9 +829,9 @@
         return [NSString stringWithFormat:@"“%@”", anObject];
     }];
     NSString *expectedString = [quotedExpected componentsJoinedByString:@", "];
-    NSString *reason = [NSString stringWithFormat:@"Syntax error at index %@ of “%@”. Expected%@: %@",
+    NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Syntax error at index %@ of “%@”. Expected%@: %@", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: syntax error at index"),
                         @(inputStream.peekToken.characterNumber), _input,
-                        quotedExpected.count > 1 ? @" one of" : @"",
+                        quotedExpected.count > 1 ? NSLocalizedStringFromTableInBundle(@" one of", @"Language", [NSBundle bundleForClass:[self class]], @"Parse error: expected one of fragment") : @"",
                         expectedString];
     _error = [NSError errorWithDomain:@"com.iterm2.parser"
                                  code:3

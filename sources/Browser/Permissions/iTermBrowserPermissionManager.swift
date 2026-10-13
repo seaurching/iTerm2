@@ -217,12 +217,12 @@ extension iTermBrowserPermissionManager {
     
     private func showPermissionDialog(for permissionType: BrowserPermissionType, origin: String) async -> BrowserPermissionDecision {
         let alert = NSAlert()
-        alert.messageText = "Allow \(permissionType.displayName)"
-        alert.informativeText = "The website \(origin) wants to access \(permissionType.displayName.lowercased())."
-        alert.addButton(withTitle: "Allow")
-        alert.addButton(withTitle: "Block")
+        alert.messageText = String(format: NSLocalizedString("Allow %@", tableName: "Browser", comment: "允许 %@"), permissionType.displayName)
+        alert.informativeText = String(format: NSLocalizedString("The website %@ wants to access %@.", tableName: "Browser", comment: "网站 %@ 想要访问 %@。"), origin, permissionType.displayName.lowercased())
+        alert.addButton(withTitle: NSLocalizedString("Allow", tableName: "Browser", comment: "允许"))
+        alert.addButton(withTitle: NSLocalizedString("Block", tableName: "Browser", comment: "阻止"))
         alert.alertStyle = .informational
-        
+
         let response = alert.runModal()
         return response == .alertFirstButtonReturn ? .granted : .denied
     }

@@ -1,0 +1,7 @@
+/* VT100.strings - Base */
+"A session" = "A session";
+"none" = "none";
+"Session status changed" = "Session status changed";
+"%@ changed from “%@” to “%@”." = "%@ changed from “%@” to “%@”.";
+"OK" = "OK";
+"Reveal" = "Reveal";

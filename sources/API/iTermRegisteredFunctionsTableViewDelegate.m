@@ -61,18 +61,18 @@
                 role = @"RPC";
                 break;
             case ITMRPCRegistrationRequest_Role_SessionTitle:
-                role = @"Title Provider";
+                role = NSLocalizedStringFromTableInBundle(@"Title Provider", @"APIFiles", [NSBundle bundleForClass:[self class]], @"标题提供者");
                 break;
             case ITMRPCRegistrationRequest_Role_StatusBarComponent:
-                role = @"Status Bar Component";
+                role = NSLocalizedStringFromTableInBundle(@"Status Bar Component", @"APIFiles", [NSBundle bundleForClass:[self class]], @"状态栏组件");
                 break;
             case ITMRPCRegistrationRequest_Role_ContextMenu:
-                role = @"Context Menu Provider";
+                role = NSLocalizedStringFromTableInBundle(@"Context Menu Provider", @"APIFiles", [NSBundle bundleForClass:[self class]], @"上下文菜单提供者");
                 break;
         }
         id connectionKey = subs[signature].firstObject;
         iTermScriptHistoryEntry *entry =  [[iTermAPIHelper sharedInstance] scriptHistoryEntryForConnectionKey:connectionKey];
-        NSString *script = entry.name ?: @"Unknown";
+        NSString *script = entry.name ?: NSLocalizedStringFromTableInBundle(@"Unknown", @"APIFiles", [NSBundle bundleForClass:[self class]], @"未知");
         return [[iTermRegisteredFunctionProxy alloc] initWithSignature:signature role:role script:script];
     }];
 }

@@ -1,0 +1,24 @@
+/* Alert: keyboard input will be broadcast */
+"Keyboard input will be sent to %@." = "Keyboard input will be sent to %@.";
+
+/* Alert button: OK */
+"OK" = "OK";
+
+/* Broadcast destination: no sessions */
+"no sessions" = "no sessions";
+
+/* Broadcast destination: all panes in all tabs */
+"all panes in all tabs in this window" = "all panes in all tabs in this window";
+
+/* Broadcast destination: N panes across all tabs */
+"%@ panes across all tabs in this window" = "%@ panes across all tabs in this window";
+
+/* Broadcast destination: all panes in current tab */
+"all panes in the current tab" = "all panes in the current tab";
+
+/* Broadcast destination: N panes in current tab */
+"%@ panes in the current tab" = "%@ panes in the current tab";
+
+/* Broadcast destination: multiple sessions */
+"multiple sessions" = "multiple sessions";
+

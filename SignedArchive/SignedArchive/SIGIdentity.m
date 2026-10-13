@@ -30,7 +30,7 @@
     CFTypeRef result = NULL;
     OSErr err = SecItemCopyMatching((__bridge CFDictionaryRef)query, &result);
     if (err != noErr) {
-        NSLog(@"Unable to create keychain search: %d", err);
+        NSLog(NSLocalizedStringFromTable(@"Unable to create keychain search: %d", @"signed_archive", @"无法创建钥匙串搜索：%d"), err);
         return @[];
     }
 

@@ -1,0 +1,74 @@
+/* Menu item: overflow profiles not shown */
+"[%d profiles not shown]" = "[%d profiles not shown]";
+
+/* Menu item: open all profiles */
+"Open All" = "Open All";
+
+/* Menu item: open all profiles in new window */
+"Open All in New Window" = "Open All in New Window";
+
+/* Alert: about to open many profiles */
+"You are about to open %d profiles." = "You are about to open %d profiles.";
+
+/* Alert button: OK */
+"OK" = "OK";
+
+/* Notification title: creating a tab */
+"Creating a tab" = "Creating a tab";
+
+/* Notification detail: tab preference now respected */
+"The system preference to open a tab instead of a window is now respected in iTerm2." = "The system preference to open a tab instead of a window is now respected in iTerm2.";
+
+/* Alert heading: open untrusted arrangement */
+"Open the arrangement “%@”?" = "Open the arrangement “%@”?";
+
+/* Alert button: open the arrangement */
+"Open" = "Open";
+
+/* Trust gate body: explanation of arrangement risks */
+"Window arrangements embed session profiles, which can run commands, connect to remote hosts, and configure triggers or smart-selection actions that execute when the terminal sees matching output. Opening an arrangement from an untrusted source is equivalent to running a program they gave you." = "Window arrangements embed session profiles, which can run commands, connect to remote hosts, and configure triggers or smart-selection actions that execute when the terminal sees matching output. Opening an arrangement from an untrusted source is equivalent to running a program they gave you.";
+
+/* Trust gate body: list header */
+"This arrangement contains:" = "This arrangement contains:";
+
+/* Trust gate body: trust warning */
+"Open it only if you trust where it came from." = "Open it only if you trust where it came from.";
+
+/* Trust gate finding: embedded session profile */
+"embedded session profile" = "embedded session profile";
+
+/* Trust gate finding: custom command */
+"custom command" = "custom command";
+
+/* Trust gate finding suffix: custom command */
+" that will run when the arrangement opens" = " that will run when the arrangement opens";
+
+/* Trust gate finding: SSH connection */
+"SSH connection" = "SSH connection";
+
+/* Trust gate finding suffix: SSH connection */
+" that will be opened automatically" = " that will be opened automatically";
+
+/* Trust gate finding: session */
+"session" = "session";
+
+/* Trust gate finding suffix: session initial text */
+" with text that will be typed into the terminal on startup" = " with text that will be typed into the terminal on startup";
+
+/* Trust gate finding: trigger */
+"trigger" = "trigger";
+
+/* Trust gate finding suffix: trigger */
+" that runs actions when matching output appears" = " that runs actions when matching output appears";
+
+/* Trust gate finding: smart-selection rule */
+"smart-selection rule" = "smart-selection rule";
+
+/* Trust gate finding suffix: smart-selection rule */
+" with custom actions" = " with custom actions";
+
+/* Trust gate: count + noun (singular) */
+"%d %@" = "%d %@";
+
+/* Trust gate: count + noun (plural) */
+"%d %@s" = "%d %@s";

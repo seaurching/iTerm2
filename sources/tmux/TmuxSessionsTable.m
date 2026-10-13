@@ -225,9 +225,9 @@ extern NSString *kWindowPasteboardType;
 - (NSString *)nameForNewSessionWithNumber:(int)n
 {
     if (n == 0) {
-        return @"New Session";
+        return NSLocalizedStringFromTableInBundle(@"New Session", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux sessions table: new session default name");
     } else {
-        return [NSString stringWithFormat:@"New Session %d", n + 1];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"New Session %d", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux sessions table: new session numbered name"), n + 1];
     }
 }
 

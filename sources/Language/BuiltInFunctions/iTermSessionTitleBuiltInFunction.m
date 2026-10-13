@@ -232,7 +232,7 @@ static NSString *const iTermSessionTitleSession = @"session";
                 return windowName;
             }
         }
-        return @"Shell";
+        return NSLocalizedStringFromTableInBundle(@"Shell", @"Language", [NSBundle bundleForClass:[self class]], @"Session title: default Shell component");
     }
     if (titleComponents & (iTermTitleComponentsSessionName | iTermTitleComponentsTemporarySessionName)) {
         name = effectiveSessionName;

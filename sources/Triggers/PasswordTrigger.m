@@ -11,7 +11,7 @@
 #import "iTerm2SharedARC-Swift.h"
 #import "NSArray+iTerm.h"
 
-static NSString *PasswordTriggerPlaceholderString = @"Open Password Manager to Unlock";
+static NSString *PasswordTriggerPlaceholderString;
 
 @interface PasswordTrigger ()
 @property(nonatomic, copy) NSArray *accountNames;
@@ -19,15 +19,19 @@ static NSString *PasswordTriggerPlaceholderString = @"Open Password Manager to U
 
 @implementation PasswordTrigger
 
++ (void)load {
+    PasswordTriggerPlaceholderString = NSLocalizedStringFromTableInBundle(@"Open Password Manager to Unlock", @"Triggers", [NSBundle bundleForClass:[self class]], @"密码触发器占位符：打开密码管理器以解锁");
+}
+
 + (NSString *)title {
-    return @"Open Password Manager…";
+    return NSLocalizedStringFromTableInBundle(@"Open Password Manager…", @"Triggers", [NSBundle bundleForClass:[self class]], @"密码管理器触发器标题");
 }
 
 - (NSString *)description {
     if ([NSString castFrom:self.param].length > 0) {
-        return [NSString stringWithFormat:@"Open Password Manager to “%@”", self.param];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Open Password Manager to “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"密码管理器触发器描述"), self.param];
     } else {
-        return @"Open Password Manager";
+        return NSLocalizedStringFromTableInBundle(@"Open Password Manager", @"Triggers", [NSBundle bundleForClass:[self class]], @"密码管理器触发器：无参数描述");
     }
 }
 

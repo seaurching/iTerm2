@@ -32,36 +32,36 @@ class ClaudeCodeOnboarding: NSObject {
 
         var title: String {
             switch self {
-            case .enablePythonAPI: return "Enable Python API"
-            case .installHook: return "Install Hook"
-            case .showToolbelt: return "Show Toolbelt"
-            case .installWorkgroup: return "Install Workgroup"
-            case .installTriggers: return "Auto-Enter Workgroup"
+            case .enablePythonAPI: return NSLocalizedString("Enable Python API", tableName: "ClaudeCodeXC", comment: "启用 Python API")
+            case .installHook: return NSLocalizedString("Install Hook", tableName: "ClaudeCodeXC", comment: "安装 Hook")
+            case .showToolbelt: return NSLocalizedString("Show Toolbelt", tableName: "ClaudeCodeXC", comment: "显示工具栏")
+            case .installWorkgroup: return NSLocalizedString("Install Workgroup", tableName: "ClaudeCodeXC", comment: "安装工作组")
+            case .installTriggers: return NSLocalizedString("Auto-Enter Workgroup", tableName: "ClaudeCodeXC", comment: "自动进入工作组")
             }
         }
 
         var buttonTitle: String {
             switch self {
-            case .enablePythonAPI: return "Enable"
-            case .installHook: return "Install"
-            case .showToolbelt: return "Show"
-            case .installWorkgroup: return "Install"
-            case .installTriggers: return "Install"
+            case .enablePythonAPI: return NSLocalizedString("Enable", tableName: "ClaudeCodeXC", comment: "启用")
+            case .installHook: return NSLocalizedString("Install", tableName: "ClaudeCodeXC", comment: "安装")
+            case .showToolbelt: return NSLocalizedString("Show", tableName: "ClaudeCodeXC", comment: "显示")
+            case .installWorkgroup: return NSLocalizedString("Install", tableName: "ClaudeCodeXC", comment: "安装")
+            case .installTriggers: return NSLocalizedString("Install", tableName: "ClaudeCodeXC", comment: "安装")
             }
         }
 
         var description: String {
             switch self {
             case .enablePythonAPI:
-                return "The Claude Code integration relies on iTerm2\u{2019}s Python API to find sessions running Claude and track their status.\n\nThe Python API is currently disabled. Setup can\u{2019}t continue until it is enabled. Click Enable to turn it on."
+                return NSLocalizedString("The Claude Code integration relies on iTerm2\u{2019}s Python API to find sessions running Claude and track their status.\n\nThe Python API is currently disabled. Setup can\u{2019}t continue until it is enabled. Click Enable to turn it on.", tableName: "ClaudeCodeXC", comment: "Claude Code 集成依赖 iTerm2 的 Python API 来发现运行 Claude 的会话并跟踪其状态。\n\nPython API 当前已禁用。启用前无法继续设置。点击“启用”将其打开。")
             case .installHook:
-                return "Install a Claude Code hook that lets iTerm2 detect Claude\u{2019}s state (working, waiting, idle) and display it in the Session Status tool.\n\nThis adds a hook to your Claude Code settings that runs automatically as Claude works."
+                return NSLocalizedString("Install a Claude Code hook that lets iTerm2 detect Claude\u{2019}s state (working, waiting, idle) and display it in the Session Status tool.\n\nThis adds a hook to your Claude Code settings that runs automatically as Claude works.", tableName: "ClaudeCodeXC", comment: "安装 Claude Code hook，让 iTerm2 检测 Claude 的状态（工作中、等待中、空闲）并在“会话状态”工具中显示。\n\n这会在你的 Claude Code 设置中添加一个 hook，随着 Claude 工作自动运行。")
             case .showToolbelt:
-                return "Show the toolbelt and enable the Session Status tool. The toolbelt appears on the right side of your terminal window.\n\nYou can toggle the toolbelt from View > Toolbelt > Show Toolbelt, or with the shortcut \u{2318}\u{21E7}B."
+                return NSLocalizedString("Show the toolbelt and enable the Session Status tool. The toolbelt appears on the right side of your terminal window.\n\nYou can toggle the toolbelt from View > Toolbelt > Show Toolbelt, or with the shortcut \u{2318}\u{21E7}B.", tableName: "ClaudeCodeXC", comment: "显示工具栏并启用“会话状态”工具。工具栏出现在终端窗口右侧。\n\n你可以从“显示 > 工具栏 > 显示工具栏”切换工具栏，或使用快捷键 \u{2318}\u{21E7}B。")
             case .installWorkgroup:
-                return "Install the Claude Code workgroup, which groups your main Claude session with two peer sessions: a diff viewer and a code-review session. You can switch between them with one click.\n\nYou can customize this layout later in Settings > Shortcuts > Workgroups."
+                return NSLocalizedString("Install the Claude Code workgroup, which groups your main Claude session with two peer sessions: a diff viewer and a code-review session. You can switch between them with one click.\n\nYou can customize this layout later in Settings > Shortcuts > Workgroups.", tableName: "ClaudeCodeXC", comment: "安装 Claude Code 工作组，它将你的主 Claude 会话与两个同级会话分组：一个差异查看器和一个代码审查会话。你可以一键切换它们。\n\n你可以稍后在“设置 > 快捷键 > 工作组”中自定义此布局。")
             case .installTriggers:
-                return "Pick the terminal profiles where you run claude. iTerm2 will add triggers so the Claude Code workgroup is entered automatically when claude starts and exited when it stops.\n\nWithout this, you can still enter the workgroup manually via Shell > Workgroups > Claude Code."
+                return NSLocalizedString("Pick the terminal profiles where you run claude. iTerm2 will add triggers so the Claude Code workgroup is entered automatically when claude starts and exited when it stops.\n\nWithout this, you can still enter the workgroup manually via Shell > Workgroups > Claude Code.", tableName: "ClaudeCodeXC", comment: "选择你运行 claude 的终端配置文件。iTerm2 会添加触发器，使 Claude Code 工作组在 claude 启动时自动进入，在 claude 停止时自动退出。\n\n若不安装，你仍可通过“Shell > 工作组 > Claude Code”手动进入工作组。")
             }
         }
     }
@@ -762,7 +762,7 @@ class ClaudeCodeOnboarding: NSObject {
             styleMask: [.titled, .closable],
             backing: .buffered,
             defer: false)
-        panel.title = "Claude Code Integration Setup"
+        panel.title = NSLocalizedString("Claude Code Integration Setup", tableName: "ClaudeCodeXC", comment: "Claude Code 集成设置")
         panel.isFloatingPanel = true
         panel.hidesOnDeactivate = true
         panel.delegate = self
@@ -807,7 +807,7 @@ class ClaudeCodeOnboarding: NSObject {
         // Button bar at the bottom
         let buttonY: CGFloat = 15
 
-        nextButton = NSButton(title: "Next", target: self, action: #selector(nextPressed(_:)))
+        nextButton = NSButton(title: NSLocalizedString("Next", tableName: "ClaudeCodeXC", comment: "下一步"), target: self, action: #selector(nextPressed(_:)))
         nextButton.bezelStyle = .rounded
         nextButton.frame = NSRect(x: contentView.bounds.width - margin - 80,
                                   y: buttonY,
@@ -816,7 +816,7 @@ class ClaudeCodeOnboarding: NSObject {
         nextButton.autoresizingMask = [.minXMargin, .maxYMargin]
         contentView.addSubview(nextButton)
 
-        doItButton = NSButton(title: "Do It", target: self, action: #selector(doItPressed(_:)))
+        doItButton = NSButton(title: NSLocalizedString("Do It", tableName: "ClaudeCodeXC", comment: "执行"), target: self, action: #selector(doItPressed(_:)))
         doItButton.bezelStyle = .rounded
         doItButton.keyEquivalent = "\r"
         doItButton.frame = NSRect(x: nextButton.frame.minX - 90,
@@ -826,7 +826,7 @@ class ClaudeCodeOnboarding: NSObject {
         doItButton.autoresizingMask = [.minXMargin, .maxYMargin]
         contentView.addSubview(doItButton)
 
-        backButton = NSButton(title: "Back", target: self, action: #selector(backPressed(_:)))
+        backButton = NSButton(title: NSLocalizedString("Back", tableName: "ClaudeCodeXC", comment: "返回"), target: self, action: #selector(backPressed(_:)))
         backButton.bezelStyle = .rounded
         backButton.frame = NSRect(x: margin,
                                   y: buttonY,
@@ -843,15 +843,14 @@ class ClaudeCodeOnboarding: NSObject {
         let sheetPadding: CGFloat = 24
         let textWidth = sheetWidth - sheetPadding * 2
 
-        let titleLabel = NSTextField(labelWithString: "Before You Start")
+        let titleLabel = NSTextField(labelWithString: NSLocalizedString("Before You Start", tableName: "ClaudeCodeXC", comment: "开始之前"))
         titleLabel.font = NSFont.boldSystemFont(ofSize: 16)
         titleLabel.frame.size.width = textWidth
         titleLabel.sizeToFit()
         introTitleLabel = titleLabel
 
         let lead = NSTextField(wrappingLabelWithString:
-            "Don’t panic! All of this can be undone later via "
-            + "iTerm2 > Uninstall Claude Code Integration.")
+            NSLocalizedString("Don\u{2019}t panic! All of this can be undone later via iTerm2 > Uninstall Claude Code Integration.", tableName: "ClaudeCodeXC", comment: "别担心！所有这些稍后都可以通过 iTerm2 > 卸载 Claude Code 集成来撤销。"))
         lead.font = NSFont.systemFont(ofSize: 13)
         lead.textColor = .labelColor
         lead.isSelectable = false
@@ -872,7 +871,7 @@ class ClaudeCodeOnboarding: NSObject {
         disclosure.sizeToFit()
         introDisclosureButton = disclosure
 
-        let disclosureLabel = NSTextField(labelWithString: "What gets changed")
+        let disclosureLabel = NSTextField(labelWithString: NSLocalizedString("What gets changed", tableName: "ClaudeCodeXC", comment: "会更改哪些内容"))
         disclosureLabel.font = NSFont.systemFont(ofSize: 13)
         disclosureLabel.textColor = .labelColor
         disclosureLabel.isSelectable = false
@@ -880,11 +879,7 @@ class ClaudeCodeOnboarding: NSObject {
         introDisclosureLabel = disclosureLabel
 
         let details = NSTextField(wrappingLabelWithString:
-            "\u{2022} iTerm2\u{2019}s Python API is enabled\n"
-            + "\u{2022} A cc-status hook is added to ~/.claude/settings.json\n"
-            + "\u{2022} The toolbelt is shown\n"
-            + "\u{2022} A Claude Code workgroup is added to iTerm2\u{2019}s settings\n"
-            + "\u{2022} Enter/Exit Workgroup triggers are added to the profiles you pick")
+            NSLocalizedString("\u{2022} iTerm2\u{2019}s Python API is enabled\n\u{2022} A cc-status hook is added to ~/.claude/settings.json\n\u{2022} The toolbelt is shown\n\u{2022} A Claude Code workgroup is added to iTerm2\u{2019}s settings\n\u{2022} Enter/Exit Workgroup triggers are added to the profiles you pick", tableName: "ClaudeCodeXC", comment: "• 启用 iTerm2 的 Python API\n• 在 ~/.claude/settings.json 中添加 cc-status hook\n• 显示工具栏\n• 在 iTerm2 的设置中添加 Claude Code 工作组\n• 在你选择的配置文件中添加进入/退出工作组触发器"))
         details.font = NSFont.systemFont(ofSize: 13)
         details.textColor = .secondaryLabelColor
         details.isSelectable = false
@@ -895,7 +890,7 @@ class ClaudeCodeOnboarding: NSObject {
         // Always-visible link to the full writeup, regardless of the
         // disclosure state. Sits below the "What gets changed" row so
         // users who want the whole story can read it on the web.
-        let helpLink = LinkButton(title: "Learn more about the Claude Code integration",
+        let helpLink = LinkButton(title: NSLocalizedString("Learn more about the Claude Code integration", tableName: "ClaudeCodeXC", comment: "了解更多关于 Claude Code 集成的信息"),
                                   target: self,
                                   action: #selector(openIntegrationHelp(_:)))
         helpLink.font = NSFont.systemFont(ofSize: 13)
@@ -903,7 +898,7 @@ class ClaudeCodeOnboarding: NSObject {
         helpLink.sizeToFit()
         introHelpLink = helpLink
 
-        let continueButton = NSButton(title: "Continue",
+        let continueButton = NSButton(title: NSLocalizedString("Continue", tableName: "ClaudeCodeXC", comment: "继续"),
                                       target: self,
                                       action: #selector(dismissIntroSheet(_:)))
         continueButton.bezelStyle = .rounded
@@ -1107,10 +1102,10 @@ class ClaudeCodeOnboarding: NSObject {
         doItButton.isHidden = false
 
         if isLastStep {
-            nextButton.title = "Close"
+            nextButton.title = NSLocalizedString("Close", tableName: "ClaudeCodeXC", comment: "关闭")
             nextButton.isEnabled = true
         } else {
-            nextButton.title = "Next"
+            nextButton.title = NSLocalizedString("Next", tableName: "ClaudeCodeXC", comment: "下一步")
             // Show Toolbelt is optional: Next is always enabled so the
             // user can skip it. The default-button logic below keeps
             // Show as the default until the toolbelt has actually been
@@ -1386,8 +1381,8 @@ class ClaudeCodeOnboarding: NSObject {
         } catch {
             RLog("Onboarding: failed to write settings.json: \(error)")
             let alert = NSAlert()
-            alert.messageText = "Failed to install hook"
-            alert.informativeText = "Could not write to \(settingsURL.path): \(error.localizedDescription)"
+            alert.messageText = NSLocalizedString("Failed to install hook", tableName: "ClaudeCodeXC", comment: "安装 hook 失败")
+            alert.informativeText = String(format: NSLocalizedString("Could not write to %@: %@", tableName: "ClaudeCodeXC", comment: "无法写入 %@：%@"), settingsURL.path, error.localizedDescription)
             alert.runModal()
             return false
         }
@@ -1532,13 +1527,13 @@ class ClaudeCodeOnboarding: NSObject {
         let orphanCount = orphanScan.sessionCount
         if orphanCount > 0 {
             let title = orphanCount == 1
-                ? "Also update 1 session whose profile is missing"
-                : "Also update \(orphanCount) sessions whose profiles are missing"
+                ? NSLocalizedString("Also update 1 session whose profile is missing", tableName: "ClaudeCodeXC", comment: "同时更新 1 个配置文件缺失的会话")
+                : String(format: NSLocalizedString("Also update %d sessions whose profiles are missing", tableName: "ClaudeCodeXC", comment: "同时更新 %d 个配置文件缺失的会话"), orphanCount)
             let checkbox = NSButton(
                 checkboxWithTitle: title,
                 target: nil,
                 action: nil)
-            checkbox.toolTip = "Includes running sessions that were created from a profile that has since been deleted."
+            checkbox.toolTip = NSLocalizedString("Includes running sessions that were created from a profile that has since been deleted.", tableName: "ClaudeCodeXC", comment: "包括从已删除的配置文件创建的正在运行的会话。")
             checkbox.state = .on
             checkbox.translatesAutoresizingMaskIntoConstraints = true
             checkbox.sizeToFit()
@@ -1569,12 +1564,10 @@ class ClaudeCodeOnboarding: NSObject {
         }
 
         let alert = NSAlert()
-        alert.messageText = "Install Auto-Enter Triggers"
-        alert.informativeText = "Pick the profiles you\u{2019}ll run claude in. "
-            + "We\u{2019}ll add Enter/Exit Workgroup triggers to each one so the "
-            + "Claude Code workgroup is entered automatically."
-        alert.addButton(withTitle: "Install")
-        alert.addButton(withTitle: "Cancel")
+        alert.messageText = NSLocalizedString("Install Auto-Enter Triggers", tableName: "ClaudeCodeXC", comment: "安装自动进入触发器")
+        alert.informativeText = NSLocalizedString("Pick the profiles you\u{2019}ll run claude in. We\u{2019}ll add Enter/Exit Workgroup triggers to each one so the Claude Code workgroup is entered automatically.", tableName: "ClaudeCodeXC", comment: "选择你要运行 claude 的配置文件。我们会为每个配置文件添加进入/退出工作组触发器，使 Claude Code 工作组自动进入。")
+        alert.addButton(withTitle: NSLocalizedString("Install", tableName: "ClaudeCodeXC", comment: "安装"))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "ClaudeCodeXC", comment: "取消"))
         alert.accessoryView = accessoryView
 
         // Pre-select every visible row so the default action is "all
@@ -1771,18 +1764,13 @@ class ClaudeCodeOnboarding: NSObject {
             profiles: [(guid: String, name: String)]) -> DynamicProfileChoice {
         let listed = profiles.map { "\u{2022} \($0.name)" }.joined(separator: "\n")
         let warning = iTermWarning()
-        warning.heading = "Dynamic Profiles Selected"
-        warning.title = "These profiles are dynamic and not marked "
-            + "\u{201C}rewritable,\u{201D} so iTerm2 normally regenerates them "
-            + "from disk and any change here would be lost:\n\n\(listed)\n\n"
-            + "iTerm2 can write the triggers back to dynamic profiles when "
-            + "they\u{2019}re marked rewritable. Rewriting can change the "
-            + "order of values in the underlying file."
+        warning.heading = NSLocalizedString("Dynamic Profiles Selected", tableName: "ClaudeCodeXC", comment: "已选择动态配置文件")
+        warning.title = String(format: NSLocalizedString("These profiles are dynamic and not marked \u{201C}rewritable,\u{201D} so iTerm2 normally regenerates them from disk and any change here would be lost:\n\n%@\n\niTerm2 can write the triggers back to dynamic profiles when they\u{2019}re marked rewritable. Rewriting can change the order of values in the underlying file.", tableName: "ClaudeCodeXC", comment: "这些配置文件是动态的且未标记为“可重写”，因此 iTerm2 通常会从磁盘重新生成它们，此处的任何更改都会丢失：\n\n%@\n\n当动态配置文件标记为可重写时，iTerm2 可以将触发器写回。重写可能会更改底层文件中值的顺序。"), listed)
         warning.warningType = .kiTermWarningTypePersistent
         warning.actionLabels = [
-            "Mark Rewritable & Install",
-            "Skip Dynamic Profiles",
-            "Cancel"
+            NSLocalizedString("Mark Rewritable & Install", tableName: "ClaudeCodeXC", comment: "标记为可重写并安装"),
+            NSLocalizedString("Skip Dynamic Profiles", tableName: "ClaudeCodeXC", comment: "跳过动态配置文件"),
+            NSLocalizedString("Cancel", tableName: "ClaudeCodeXC", comment: "取消")
         ]
         switch warning.runModal() {
         case .kiTermWarningSelection0:

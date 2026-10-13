@@ -37,7 +37,7 @@ NSString *const SIGErrorDomain = @"com.iterm2.sig";
         return [self errorWrapping:otherError code:code detail:[self localizedDescriptionFcode:code]];
     }
 
-    NSString *innerDetail = otherError.localizedDescription ?: [NSString stringWithFormat:@"%@ error code %@",
+    NSString *innerDetail = otherError.localizedDescription ?: [NSString stringWithFormat:NSLocalizedStringFromTable(@"%@ error code %@", @"signed_archive", @"错误域与错误代码的兜底描述"),
                                                                 otherError.domain, @(otherError.code)];
     NSString *description = [NSString stringWithFormat:@"%@: %@", detail, innerDetail];
     return [self errorWithCode:code detail:description];
@@ -48,53 +48,53 @@ NSString *const SIGErrorDomain = @"com.iterm2.sig";
 + (NSString *)localizedDescriptionFcode:(SIGErrorCode)code {
     switch (code) {
         case SIGErrorCodeConsistency:
-            return @"Inconsistency discovered";
+            return NSLocalizedStringFromTable(@"Inconsistency discovered", @"signed_archive", @"发现数据不一致");
         case SIGErrorCodeIOWrite:
-            return @"Error writing destination file";
+            return NSLocalizedStringFromTable(@"Error writing destination file", @"signed_archive", @"写入目标文件时出错");
         case SIGErrorCodeIORead:
-            return @"Error reading source file";
+            return NSLocalizedStringFromTable(@"Error reading source file", @"signed_archive", @"读取源文件时出错");
         case SIGErrorCodeNoPrivateKey:
-            return @"No private key found";
+            return NSLocalizedStringFromTable(@"No private key found", @"signed_archive", @"未找到私钥");
         case SIGErrorCodeNoCertificate:
-            return @"No certificate found";
+            return NSLocalizedStringFromTable(@"No certificate found", @"signed_archive", @"未找到证书");
         case SIGErrorCodeNoMetadata:
-            return @"No metadata found";
+            return NSLocalizedStringFromTable(@"No metadata found", @"signed_archive", @"未找到元数据");
         case SIGErrorCodeNoSignature:
-            return @"No signature found";
+            return NSLocalizedStringFromTable(@"No signature found", @"signed_archive", @"未找到签名");
         case SIGErrorCodeNoPayload:
-            return @"No payload found";
+            return NSLocalizedStringFromTable(@"No payload found", @"signed_archive", @"未找到有效负载");
         case SIGErrorCodeNoHeader:
-            return @"No header found";
+            return NSLocalizedStringFromTable(@"No header found", @"signed_archive", @"未找到文件头");
         case SIGErrorCodeAlgorithmCreationFailed:
-            return @"Could not create algorithm";
+            return NSLocalizedStringFromTable(@"Could not create algorithm", @"signed_archive", @"无法创建算法");
         case SIGErrorCodeVersionTooNew:
-            return @"This file is from a newer version of this app and cannot be loaded. Please upgrade and try again";
+            return NSLocalizedStringFromTable(@"This file is from a newer version of this app and cannot be loaded. Please upgrade and try again", @"signed_archive", @"此文件来自更高版本的应用，无法加载。请升级后重试");
         case SIGErrorCodeMalformedMetadata:
-            return @"Metadata chunk malformed";
+            return NSLocalizedStringFromTable(@"Metadata chunk malformed", @"signed_archive", @"元数据块格式错误");
         case SIGErrorCodeDeprecatedOldVersion:
-            return @"This file is in an older format that is no longer supported because its authenticity cannot be guaranteed. It cannot be opened by this version of the app";
+            return NSLocalizedStringFromTable(@"This file is in an older format that is no longer supported because its authenticity cannot be guaranteed. It cannot be opened by this version of the app", @"signed_archive", @"此文件使用了已不再支持的旧格式，因为无法保证其真实性，当前版本的应用无法打开");
         case SIGErrorCodeMalformedHeader:
-            return @"Header chunk malformed";
+            return NSLocalizedStringFromTable(@"Header chunk malformed", @"signed_archive", @"文件头块格式错误");
         case SIGErrorCodeUnsupportedAlgorithm:
-            return @"Unsupported algorithm";
+            return NSLocalizedStringFromTable(@"Unsupported algorithm", @"signed_archive", @"不支持的算法");
         case SIGErrorCodeUnknown:
-            return @"Unknown or unexpected error";
+            return NSLocalizedStringFromTable(@"Unknown or unexpected error", @"signed_archive", @"未知或意外错误");
         case SIGErrorCodeInputFileMalformed:
-            return @"Input file malformed";
+            return NSLocalizedStringFromTable(@"Input file malformed", @"signed_archive", @"输入文件格式错误");
         case SIGErrorCodeInputMalformedCertificate:
-            return @"Malformed certificate";
+            return NSLocalizedStringFromTable(@"Malformed certificate", @"signed_archive", @"证书格式错误");
         case SIGErrorCodeTrust:
-            return @"Error creating trust object";
+            return NSLocalizedStringFromTable(@"Error creating trust object", @"signed_archive", @"创建信任对象时出错");
         case SIGErrorCodeTrustUserDeny:
-            return @"Trust chain verification failed by user preference";
+            return NSLocalizedStringFromTable(@"Trust chain verification failed by user preference", @"signed_archive", @"信任链验证因用户设置而失败");
         case SIGErrorCodeTrustMisconfiguration:
-            return @"Trust chain verification internal error";
+            return NSLocalizedStringFromTable(@"Trust chain verification internal error", @"signed_archive", @"信任链验证内部错误");
         case SIGErrorCodeTrustFailed:
-            return @"Trust chain verification failed";
+            return NSLocalizedStringFromTable(@"Trust chain verification failed", @"signed_archive", @"信任链验证失败");
         case SIGErrorCodeSignatureDoesNotMatchPayload:
-            return @"Signature does not match payload";
+            return NSLocalizedStringFromTable(@"Signature does not match payload", @"signed_archive", @"签名与有效负载不匹配");
     }
-    return @"Unknown error";
+    return NSLocalizedStringFromTable(@"Unknown error", @"signed_archive", @"未知错误");
 }
 
 @end

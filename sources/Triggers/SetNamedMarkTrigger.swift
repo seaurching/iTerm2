@@ -8,11 +8,11 @@
 @objc(iTermSetNamedMarkTrigger)
 class SetNamedMarkTrigger: Trigger {
     override var description: String {
-        return "Set Named Mark to \(self.param ?? "")"
+        return String(format: NSLocalizedString("Set Named Mark to %@", tableName: "Triggers", comment: "设置命名标记触发器描述"), String(describing: self.param ?? ""))
     }
 
     override static var title: String {
-        return "Set Named Mark"
+        return NSLocalizedString("Set Named Mark", tableName: "Triggers", comment: "设置命名标记触发器标题")
     }
 
     override func takesParameter() -> Bool {
@@ -26,7 +26,7 @@ class SetNamedMarkTrigger: Trigger {
     }
 
     override func triggerOptionalParameterPlaceholder(withInterpolation interpolation: Bool) -> String? {
-        return "Name for this mark"
+        return NSLocalizedString("Name for this mark", tableName: "Triggers", comment: "占位符：标记名称")
     }
 
     override func performAction(withCapturedStrings strings: [String],

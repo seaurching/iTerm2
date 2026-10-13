@@ -78,34 +78,34 @@ class iTermBrowserToolbar: NSView {
 
     private func setupButtons() {
         backButton = HoverButton(symbolName: SFSymbol.chevronLeft.rawValue,
-                                 accessibilityDescription: "Back")
+                                 accessibilityDescription: NSLocalizedString("Back", tableName: "Browser", comment: "后退"))
         backButton.target = self
         backButton.action = #selector(backTapped)
         setupLongPressForButton(backButton, action: #selector(showBackHistory))
         addSubview(backButton)
 
         forwardButton = HoverButton(symbolName: SFSymbol.chevronRight.rawValue,
-                                    accessibilityDescription: "Forward")
+                                    accessibilityDescription: NSLocalizedString("Forward", tableName: "Browser", comment: "前进"))
         forwardButton.target = self
         forwardButton.action = #selector(forwardTapped)
         setupLongPressForButton(forwardButton, action: #selector(showForwardHistory))
         addSubview(forwardButton)
 
         reloadButton = HoverButton(symbolName: SFSymbol.arrowClockwise.rawValue,
-                                   accessibilityDescription: "Reload")
+                                   accessibilityDescription: NSLocalizedString("Reload", tableName: "Browser", comment: "重新加载"))
         reloadButton.target = self
         reloadButton.action = #selector(reloadTapped)
         addSubview(reloadButton)
         
         stopButton = HoverButton(symbolName: SFSymbol.xmark.rawValue,
-                                 accessibilityDescription: "Stop")
+                                 accessibilityDescription: NSLocalizedString("Stop", tableName: "Browser", comment: "停止"))
         stopButton.target = self
         stopButton.action = #selector(stopTapped)
         stopButton.isHidden = true  // Initially hidden, shown during loading
         addSubview(stopButton)
         
         devNullIndicator = HoverButton(symbolName: SFSymbol.eyeSlash.rawValue,
-                                       accessibilityDescription: "Dev Null Mode")
+                                       accessibilityDescription: NSLocalizedString("Dev Null Mode", tableName: "Browser", comment: "Dev Null 模式"))
         devNullIndicator.target = self
         devNullIndicator.action = #selector(devNullIndicatorTapped)
         devNullIndicator.isHidden = true  // Initially hidden, shown only in /dev/null mode
@@ -119,7 +119,7 @@ class iTermBrowserToolbar: NSView {
         addSubview(indicatorsView)
         
         menuButton = HoverButton(symbolName: SFSymbol.line3Horizontal.rawValue,
-                                 accessibilityDescription: "Menu")
+                                 accessibilityDescription: NSLocalizedString("Menu", tableName: "Browser", comment: "菜单"))
         menuButton.target = self
         menuButton.action = #selector(menuTapped)
         addSubview(menuButton)
@@ -314,7 +314,7 @@ class iTermBrowserToolbar: NSView {
             if readerAvailable {
                 // Reader Mode menu item
                 let isReaderModeActive = delegate?.browserToolbarIsReaderModeActive() ?? false
-                let readerModeTitle = isReaderModeActive ? "Exit Reader Mode" : "Reader Mode"
+                let readerModeTitle = isReaderModeActive ? NSLocalizedString("Exit Reader Mode", tableName: "Browser", comment: "退出阅读模式") : NSLocalizedString("Reader Mode", tableName: "Browser", comment: "阅读模式")
                 let readerModeIcon = isReaderModeActive ? SFSymbol.docTextFill.rawValue : SFSymbol.docText.rawValue
                 let readerModeItem = NSMenuItem(title: readerModeTitle, action: #selector(readerModeMenuItemSelected), keyEquivalent: "")
                 readerModeItem.target = self
@@ -324,7 +324,7 @@ class iTermBrowserToolbar: NSView {
 
                 // Distraction Removal menu item
                 let isDistractionRemovalActive = delegate?.browserToolbarIsDistractionRemovalActive() ?? false
-                let distractionRemovalTitle = isDistractionRemovalActive ? "Exit Distraction Removal" : "Remove Distractions"
+                let distractionRemovalTitle = isDistractionRemovalActive ? NSLocalizedString("Exit Distraction Removal", tableName: "Browser", comment: "退出干扰移除") : NSLocalizedString("Remove Distractions", tableName: "Browser", comment: "移除干扰")
                 let distractionRemovalIcon = isDistractionRemovalActive ? SFSymbol.target.rawValue : SFSymbol.scope.rawValue
                 let distractionRemovalItem = NSMenuItem(title: distractionRemovalTitle, action: #selector(distractionRemovalMenuItemSelected), keyEquivalent: "")
                 distractionRemovalItem.target = self
@@ -334,7 +334,7 @@ class iTermBrowserToolbar: NSView {
 
                 menu.addItem(NSMenuItem.separator())
 
-                let askAIItem = NSMenuItem(title: "Ask AI…", action: #selector(askAIMenuItemSelected), keyEquivalent: "")
+                let askAIItem = NSMenuItem(title: NSLocalizedString("Ask AI…", tableName: "Browser", comment: "询问 AI…"), action: #selector(askAIMenuItemSelected), keyEquivalent: "")
                 askAIItem.target = self
                 askAIItem.image = NSImage(systemSymbolName: SFSymbol.sparkles.rawValue, accessibilityDescription: nil)
                 menu.addItem(askAIItem)
@@ -342,7 +342,7 @@ class iTermBrowserToolbar: NSView {
             }
 
             if devNullIndicator.isHidden {
-                let bookmarkTitle = isBookmarked ? "Remove Bookmark" : "Add Bookmark"
+                let bookmarkTitle = isBookmarked ? NSLocalizedString("Remove Bookmark", tableName: "Browser", comment: "移除书签") : NSLocalizedString("Add Bookmark", tableName: "Browser", comment: "添加书签")
                 let bookmarkIcon = isBookmarked ? SFSymbol.bookmarkFill.rawValue : SFSymbol.bookmark.rawValue
                 let bookmarkItem = NSMenuItem(title: bookmarkTitle, action: #selector(bookmarkMenuItemSelected), keyEquivalent: "")
                 bookmarkItem.target = self
@@ -353,13 +353,13 @@ class iTermBrowserToolbar: NSView {
                 menu.addItem(NSMenuItem.separator())
 
                 // Manage Bookmarks menu item
-                let manageBookmarksItem = NSMenuItem(title: "Manage Bookmarks", action: #selector(manageBookmarksMenuItemSelected), keyEquivalent: "")
+                let manageBookmarksItem = NSMenuItem(title: NSLocalizedString("Manage Bookmarks", tableName: "Browser", comment: "管理书签"), action: #selector(manageBookmarksMenuItemSelected), keyEquivalent: "")
                 manageBookmarksItem.target = self
                 manageBookmarksItem.image = NSImage(systemSymbolName: SFSymbol.book.rawValue, accessibilityDescription: nil)
                 menu.addItem(manageBookmarksItem)
 
                 // History menu item
-                let historyItem = NSMenuItem(title: "History", action: #selector(historyMenuItemSelected), keyEquivalent: "")
+                let historyItem = NSMenuItem(title: NSLocalizedString("History", tableName: "Browser", comment: "历史记录"), action: #selector(historyMenuItemSelected), keyEquivalent: "")
                 historyItem.target = self
                 historyItem.image = NSImage(systemSymbolName: SFSymbol.clock.rawValue, accessibilityDescription: nil)
                 menu.addItem(historyItem)
@@ -369,7 +369,7 @@ class iTermBrowserToolbar: NSView {
 
 #if DEBUG
             // Debug Autofill menu item (debug builds only)
-            let debugAutofillItem = NSMenuItem(title: "Debug Autofill Fields", action: #selector(debugAutofillMenuItemSelected), keyEquivalent: "")
+            let debugAutofillItem = NSMenuItem(title: NSLocalizedString("Debug Autofill Fields", tableName: "Browser", comment: "调试自动填充字段"), action: #selector(debugAutofillMenuItemSelected), keyEquivalent: "")
             debugAutofillItem.target = self
             debugAutofillItem.image = NSImage(systemSymbolName: SFSymbol.magnifyingglassCircle.rawValue, accessibilityDescription: nil)
             menu.addItem(debugAutofillItem)
@@ -383,7 +383,7 @@ class iTermBrowserToolbar: NSView {
                 let sortedPermissionTypes = permissions.keys.sorted { $0.displayName < $1.displayName }
                 for key in sortedPermissionTypes {
                     let value = permissions[key]!
-                    let item = NSMenuItem(title: "Reset " + key.displayName +  " Permission (" + value.displayName + ")",
+                    let item = NSMenuItem(title: String(format: NSLocalizedString("Reset %@ Permission (%@)", tableName: "Browser", comment: "重置 %@ 权限（%@）"), key.displayName, value.displayName),
                                           action: #selector(resetPermission(_:)),
                                           keyEquivalent: "")
                     item.image = NSImage(systemSymbolName: SFSymbol.handRaised.rawValue, accessibilityDescription: nil)
@@ -395,7 +395,7 @@ class iTermBrowserToolbar: NSView {
             }
 
             if delegate?.browserToolbarIsCurrentPageMuted() == true {
-                let item = NSMenuItem(title: "Unmute Current Page",
+                let item = NSMenuItem(title: NSLocalizedString("Unmute Current Page", tableName: "Browser", comment: "取消静音当前页面"),
                                       action: #selector(unmute(_:)),
                                       keyEquivalent: "")
                 item.image = NSImage(systemSymbolName: SFSymbol.speakerSlash.rawValue, accessibilityDescription: nil)
@@ -406,7 +406,7 @@ class iTermBrowserToolbar: NSView {
             }
 
             // Settings menu item
-            let settingsItem = NSMenuItem(title: "Settings", action: #selector(settingsMenuItemSelected), keyEquivalent: "")
+            let settingsItem = NSMenuItem(title: NSLocalizedString("Settings", tableName: "Browser", comment: "设置"), action: #selector(settingsMenuItemSelected), keyEquivalent: "")
             settingsItem.target = self
             settingsItem.image = NSImage(systemSymbolName: SFSymbol.gearshape.rawValue, accessibilityDescription: nil)
             menu.addItem(settingsItem)
@@ -502,15 +502,15 @@ class iTermBrowserToolbar: NSView {
     }
     
     private func showDevNullInfoPopover() {
-        devNullIndicator.it_showInformativeMessage(withMarkdown: """
+        devNullIndicator.it_showInformativeMessage(withMarkdown: NSLocalizedString("""
         ## /dev/null Mode
-        
+
         Your browsing activity is not being saved. No history, bookmarks, or other data will be stored.
-        
+
         This mode is set in the browser’s Profile under **Settings > Profile > Web > Privacy**.
-        
+
         ## 🙈 🙉 🙊
-        """)
+        """, tableName: "Browser", comment: "/dev/null 模式\n\n您的浏览活动不会被保存。不会存储任何历史记录、书签或其他数据。\n\n此模式在浏览器的个人资料中设置，路径为 **设置 > 个人资料 > Web > 隐私**。"))
     }
     
     // MARK: - Long Press History

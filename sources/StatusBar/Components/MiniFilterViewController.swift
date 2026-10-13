@@ -43,7 +43,7 @@ class MiniFilterField: iTermMiniSearchField {
         }
         cell.setButtonType(.toggle)
         let filterImage = NSImage(systemSymbolName: SFSymbol.lineHorizontal3DecreaseCircle.rawValue,
-                                  accessibilityDescription: "Filter")
+                                  accessibilityDescription: NSLocalizedString("Filter", tableName: "StatusBar", bundle: Bundle(for: Self.self), comment: "Accessibility description for filter icon"))
         let tinted = iconColor.map { filterImage?.it_image(withTintColor: $0) } ?? filterImage
         cell.image = tinted
         cell.alternateImage = tinted

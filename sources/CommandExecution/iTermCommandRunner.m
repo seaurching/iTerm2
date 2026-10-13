@@ -48,7 +48,7 @@ static NSString *const iTermCommandRunnerErrorDomain = @"com.iterm2.command-runn
         if (string) {
             [errorText appendString:string];
         } else {
-            [errorText appendString:@"\n[non-UTF-8 output]\n"];
+            [errorText appendString:NSLocalizedStringFromTableInBundle(@"\n[non-UTF-8 output]\n", @"Categories", [NSBundle mainBundle], @"Error text: non-UTF-8 output placeholder")];
         }
         static NSInteger maxLength = 1024 * 1024;
         if (errorText.length > maxLength) {
@@ -390,20 +390,20 @@ static NSMutableArray<iTermBufferedCommandRunner *> *gCommandRunners;
         return;
     }
     iTermWarning *warning = [[iTermWarning alloc] init];
-    warning.title = [NSString stringWithFormat:@"The following command returned a non-zero exit code:\n\n“%@ %@”",
+    warning.title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The following command returned a non-zero exit code:\n\n“%@ %@”", @"Categories", [NSBundle mainBundle], @"Warning title: command returned non-zero exit code"),
                      runner.command,
                      [runner.arguments componentsJoinedByString:@" "]];
-    warning.heading = @"Command Failed";
+    warning.heading = NSLocalizedStringFromTableInBundle(@"Command Failed", @"Categories", [NSBundle mainBundle], @"Warning heading: command failed");
     static const iTermSingleUseWindowOptions options = iTermSingleUseWindowOptionsShortLived;
     NSMutableData *inject = [runner.output mutableCopy];
-    NSString *truncationWarning = [NSString stringWithFormat:@"\n%c[m;[output truncated]\n", 27];
+    NSString *truncationWarning = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"\n%c[m;[output truncated]\n", @"Categories", [NSBundle mainBundle], @"Terminal injection: output truncated notice"), 27];
     if (runner.truncated) {
         [inject appendData:[truncationWarning dataUsingEncoding:NSUTF8StringEncoding]];
     }
     [inject it_replaceOccurrencesOfData:[NSData dataWithBytes:"\n" length:1]
                                withData:[NSData dataWithBytes:"\r\n" length:2]];
-    warning.warningActions = @[ [iTermWarningAction warningActionWithLabel:@"OK" block:nil],
-                                [iTermWarningAction warningActionWithLabel:@"View" block:^(iTermWarningSelection selection) {
+    warning.warningActions = @[ [iTermWarningAction warningActionWithLabel:NSLocalizedStringFromTableInBundle(@"OK", @"Categories", [NSBundle mainBundle], @"Button: OK") block:nil],
+                                [iTermWarningAction warningActionWithLabel:NSLocalizedStringFromTableInBundle(@"View", @"Categories", [NSBundle mainBundle], @"Button: view command output") block:^(iTermWarningSelection selection) {
                                     [[iTermController sharedInstance] openSingleUseWindowWithCommand:@"/usr/bin/true"
                                                                                            arguments:nil
                                                                                               inject:inject

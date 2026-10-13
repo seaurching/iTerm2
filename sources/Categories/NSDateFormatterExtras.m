@@ -30,50 +30,50 @@
     theTime *= -1;
     if (theTime < 60) {
         if (lowerCase) {
-            return @"moments ago";
+            return NSLocalizedStringFromTableInBundle(@"moments ago", @"Categories", [NSBundle mainBundle], @"Relative time: moments ago (lowercase)");
         } else {
-            return @"Moments ago";
+            return NSLocalizedStringFromTableInBundle(@"Moments ago", @"Categories", [NSBundle mainBundle], @"Relative time: Moments ago (capitalized)");
         }
     } else if (theTime < 3600) {
         int diff = round(theTime / 60);
         if (diff == 1) {
-            return [NSString stringWithFormat:@"1 minute ago"];
+            return NSLocalizedStringFromTableInBundle(@"1 minute ago", @"Categories", [NSBundle mainBundle], @"Relative time: 1 minute ago");
         }
-        return [NSString stringWithFormat:@"%d minutes ago", diff];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%d minutes ago", @"Categories", [NSBundle mainBundle], @"Relative time: N minutes ago"), diff];
     } else if (theTime < 86400) {
         int diff = round(theTime / 60 / 60);
         if (diff == 1) {
-            return [NSString stringWithFormat:@"1 hour ago"];
+            return NSLocalizedStringFromTableInBundle(@"1 hour ago", @"Categories", [NSBundle mainBundle], @"Relative time: 1 hour ago");
         }
-        return [NSString stringWithFormat:@"%d hours ago", diff];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%d hours ago", @"Categories", [NSBundle mainBundle], @"Relative time: N hours ago"), diff];
     } else if (theTime < 604800) {
         int diff = round(theTime / 60 / 60 / 24);
         if (diff == 1) {
             if (lowerCase) {
-                return @"yesterday";
+                return NSLocalizedStringFromTableInBundle(@"yesterday", @"Categories", [NSBundle mainBundle], @"Relative time: yesterday (lowercase)");
             } else {
-                return @"Yesterday";
+                return NSLocalizedStringFromTableInBundle(@"Yesterday", @"Categories", [NSBundle mainBundle], @"Relative time: Yesterday (capitalized)");
             }
         }
         if (diff == 7) {
             if (lowerCase) {
-                return @"one week ago";
+                return NSLocalizedStringFromTableInBundle(@"one week ago", @"Categories", [NSBundle mainBundle], @"Relative time: one week ago (lowercase)");
             } else {
-                return @"One week ago";
+                return NSLocalizedStringFromTableInBundle(@"One week ago", @"Categories", [NSBundle mainBundle], @"Relative time: One week ago (capitalized)");
             }
         }
-        return[NSString stringWithFormat:@"%d days ago", diff];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%d days ago", @"Categories", [NSBundle mainBundle], @"Relative time: N days ago"), diff];
     } else {
         int diff = round(theTime / 60 / 60 / 24 / 7);
         if (diff == 1) {
             if (lowerCase) {
-                return @"last week";
+                return NSLocalizedStringFromTableInBundle(@"last week", @"Categories", [NSBundle mainBundle], @"Relative time: last week (lowercase)");
             } else {
-                return @"Last week";
+                return NSLocalizedStringFromTableInBundle(@"Last week", @"Categories", [NSBundle mainBundle], @"Relative time: Last week (capitalized)");
             }
 
         }
-        return [NSString stringWithFormat:@"%d weeks ago", diff];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%d weeks ago", @"Categories", [NSBundle mainBundle], @"Relative time: N weeks ago"), diff];
     }
 }
 
@@ -87,35 +87,35 @@
 
 + (NSString *)compactDateDifferenceStringFromTimeDelta:(NSTimeInterval)theTime {
     if (theTime < 60) {
-        return @"< 1 min";
+        return NSLocalizedStringFromTableInBundle(@"< 1 min", @"Categories", [NSBundle mainBundle], @"Compact relative time: less than 1 minute");
     } else if (theTime < 3600) {
         int diff = round(theTime / 60);
         if (diff == 1) {
-            return [NSString stringWithFormat:@"1 min"];
+            return NSLocalizedStringFromTableInBundle(@"1 min", @"Categories", [NSBundle mainBundle], @"Compact relative time: 1 minute");
         }
-        return [NSString stringWithFormat:@"%d min", diff];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%d min", @"Categories", [NSBundle mainBundle], @"Compact relative time: N minutes"), diff];
     } else if (theTime < 86400) {
         int diff = round(theTime / 60 / 60);
         if (diff == 1) {
-            return [NSString stringWithFormat:@"1 hour"];
+            return NSLocalizedStringFromTableInBundle(@"1 hour", @"Categories", [NSBundle mainBundle], @"Compact relative time: 1 hour");
         }
-        return [NSString stringWithFormat:@"%d hrs", diff];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%d hrs", @"Categories", [NSBundle mainBundle], @"Compact relative time: N hours"), diff];
     } else if (theTime < 604800) {
         int diff = round(theTime / 60 / 60 / 24);
         if (diff == 1) {
-            return [NSString stringWithFormat:@"1 day"];
+            return NSLocalizedStringFromTableInBundle(@"1 day", @"Categories", [NSBundle mainBundle], @"Compact relative time: 1 day");
         }
         if (diff == 7) {
-            return [NSString stringWithFormat:@"1 week"];
+            return NSLocalizedStringFromTableInBundle(@"1 week", @"Categories", [NSBundle mainBundle], @"Compact relative time: 1 week");
         }
-        return[NSString stringWithFormat:@"%d days", diff];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%d days", @"Categories", [NSBundle mainBundle], @"Compact relative time: N days"), diff];
     } else {
         int diff = round(theTime / 60 / 60 / 24 / 7);
         if (diff == 1) {
-            return [NSString stringWithFormat:@"1 week"];
+            return NSLocalizedStringFromTableInBundle(@"1 week", @"Categories", [NSBundle mainBundle], @"Compact relative time: 1 week");
 
         }
-        return [NSString stringWithFormat:@"%d wks", diff];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%d wks", @"Categories", [NSBundle mainBundle], @"Compact relative time: N weeks"), diff];
     }
 }
 
@@ -124,7 +124,7 @@
     const NSTimeInterval interval = fabs(seconds);
 
     if (interval == 0) {
-        return @"Baseline";
+        return NSLocalizedStringFromTableInBundle(@"Baseline", @"Categories", [NSBundle mainBundle], @"High-res relative time: zero baseline label");
     }
     NSString *sign = negative ? @"-" : @"+";
 

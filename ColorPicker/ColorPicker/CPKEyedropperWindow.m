@@ -42,10 +42,10 @@ const NSTimeInterval kUpdateInterval = 1.0 / 60.0;
 + (void)complainAboutScreenCapturePermission {
     if (@available(macOS 10.15, *)) {
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Permission Needed";
-        alert.informativeText = @"The eyedropper needs Screen Recording permission to work.";
-        [alert addButtonWithTitle:@"OK"];
-        [alert addButtonWithTitle:@"Cancel"];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Permission Needed", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"需要权限警告标题");
+        alert.informativeText = NSLocalizedStringFromTableInBundle(@"The eyedropper needs Screen Recording permission to work.", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"需要屏幕录制权限警告内容");
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"确定按钮标题")];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"取消按钮标题")];
         if ([alert runModal] == NSAlertFirstButtonReturn) {
             CGRequestScreenCaptureAccess();
             NSURL *URL = [NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"];
@@ -55,10 +55,10 @@ const NSTimeInterval kUpdateInterval = 1.0 / 60.0;
     }
 
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Permission Needed";
-    alert.informativeText = [NSString stringWithFormat:@"The eyedropper requires screen recording permission.\n\nYou can enable this by adding %@ to System Preferences > Security & Privacy > Privacy > Screen Recording.", [NSRunningApplication currentApplication].localizedName];
-    [alert addButtonWithTitle:@"Open System Preferences"];
-    [alert addButtonWithTitle:@"Cancel"];
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Permission Needed", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"需要权限警告标题");
+    alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The eyedropper requires screen recording permission.\n\nYou can enable this by adding %@ to System Preferences > Security & Privacy > Privacy > Screen Recording.", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"需要屏幕录制权限警告内容2"), [NSRunningApplication currentApplication].localizedName];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Open System Preferences", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"打开系统偏好设置按钮标题")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"取消按钮标题")];
     if ([alert runModal] == NSAlertFirstButtonReturn) {
         NSURL *URL = [NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"];
         [[NSWorkspace sharedWorkspace] openURL:URL];

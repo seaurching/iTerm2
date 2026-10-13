@@ -173,7 +173,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
     
     info = [self defineControl:_profileNameField
                            key:KEY_NAME
-                   displayName:@"Profile name"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Profile name", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for profile name field")
                           type:kPreferenceInfoTypeStringTextField];
     __weak PreferenceInfo *weakInfo = info;
     info.customSettingChangedHandler = ^(id sender) {
@@ -228,7 +228,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
 
     info = [self defineControl:_icon
                            key:KEY_ICON
-                   displayName:@"Profile icon"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Profile icon", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for profile icon")
                           type:kPreferenceInfoTypePopup];
     info.onChange = ^{
         [weakSelf iconDidChange];
@@ -242,31 +242,31 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
 
     [self defineControl:_profileShortcut
                     key:KEY_SHORTCUT
-            displayName:@"Open profile shortcut keystroke"
+            displayName:NSLocalizedStringFromTableInBundle(@"Open profile shortcut keystroke", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for profile shortcut")
                    type:kPreferenceInfoTypePopup
          settingChanged:^(id sender) { [weakSelf setShortcutValueToSelectedItem]; }
                  update:^BOOL { [weakSelf updateShortcutTitles]; return YES; }];
 
     [self defineControl:_tagsTokenField
                     key:KEY_TAGS
-            displayName:@"Profile tags"
+            displayName:NSLocalizedStringFromTableInBundle(@"Profile tags", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for profile tags")
                    type:kPreferenceInfoTypeTokenField];
 
     [self defineControl:_commandType
                     key:KEY_CUSTOM_COMMAND
-            displayName:@"Profile uses login shell, custom shell, or custom command"
+            displayName:NSLocalizedStringFromTableInBundle(@"Profile uses login shell, custom shell, or custom command", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for command type")
                    type:kPreferenceInfoTypePopup
          settingChanged:^(id sender) { [weakSelf commandTypeDidChange]; }
                  update:^BOOL { [weakSelf updateCommandType]; return YES; }];
 
     [self defineControl:_initialURL
                     key:KEY_INITIAL_URL
-            displayName:@"Initial URL for Browser mode"
+            displayName:NSLocalizedStringFromTableInBundle(@"Initial URL for Browser mode", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for initial URL")
                    type:kPreferenceInfoTypeStringTextField];
 
     info = [self defineControl:_profileType
                            key:KEY_PROFILE_TYPE_PHONY
-                   displayName:@"Profile type"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Profile type", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for profile type")
                           type:kPreferenceInfoTypeSegmentedControl];
     info.syntheticGetter = ^id{
         if ([[weakSelf stringForKey:KEY_CUSTOM_COMMAND] isEqualToString:kProfilePreferenceCommandTypeBrowserValue]) {
@@ -305,7 +305,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
 
     info = [self defineControl:_customCommand
                            key:KEY_COMMAND_LINE
-                   displayName:@"Profile custom command"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Profile custom command", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for custom command")
                           type:kPreferenceInfoTypeStringTextField];
     info.shouldBeEnabled = ^BOOL {
         __strong __typeof(weakSelf) strongSelf = self;
@@ -329,7 +329,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
 
     [self defineControl:_initialDirectoryType
                     key:KEY_CUSTOM_DIRECTORY
-            displayName:@"Profile initial working directory"
+            displayName:NSLocalizedStringFromTableInBundle(@"Profile initial working directory", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for initial working directory")
                    type:kPreferenceInfoTypeMatrix
          settingChanged:^(id sender) { [weakSelf directoryTypeDidChange]; }
                  update:^BOOL { [weakSelf updateDirectoryType]; return YES; }];
@@ -358,14 +358,14 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
         return [[weakSelf objectForKey:KEY_WORKING_DIRECTORY] isEqual:NSHomeDirectory()];
     };
     [self addViewToSearchIndex:_editBadgeButton
-                   displayName:@"Edit badge appearance"
-                       phrases:@[ @"Badge font",
-                                  @"Badge minum and maximum width",
-                                  @"Badge right and top margins" ]
+                   displayName:NSLocalizedStringFromTableInBundle(@"Edit badge appearance", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for edit badge button")
+                       phrases:@[ NSLocalizedStringFromTableInBundle(@"Badge font", @"Settings", [NSBundle bundleForClass:[self class]], @"Search phrase for badge font"),
+                                  NSLocalizedStringFromTableInBundle(@"Badge minum and maximum width", @"Settings", [NSBundle bundleForClass:[self class]], @"Search phrase for badge width"),
+                                  NSLocalizedStringFromTableInBundle(@"Badge right and top margins", @"Settings", [NSBundle bundleForClass:[self class]], @"Search phrase for badge margins") ]
                            key:nil];
     [self defineControl:_badgeText
                     key:KEY_BADGE_FORMAT
-            displayName:@"Profile badge"
+            displayName:NSLocalizedStringFromTableInBundle(@"Profile badge", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for badge text")
                    type:kPreferenceInfoTypeStringTextField];
     _badgeTextFieldDelegate =
         [[iTermFunctionCallTextFieldDelegate alloc] initWithPathSource:[iTermVariableHistory pathSourceForContext:iTermVariablesSuggestionContextSession]
@@ -396,7 +396,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
 
     [self defineControl:_titleSettings
                     key:KEY_TITLE_COMPONENTS
-            displayName:@"Profile title options"
+            displayName:NSLocalizedStringFromTableInBundle(@"Profile title options", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for title settings")
                    type:kPreferenceInfoTypePopup
          settingChanged:^(id sender) { [weakSelf toggleSelectedTitleComponent]; }
                  update:^BOOL {
@@ -445,7 +445,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
     };
 
     [self addViewToSearchIndex:_urlSchemes
-                   displayName:@"URL schemes handled by profile"
+                   displayName:NSLocalizedStringFromTableInBundle(@"URL schemes handled by profile", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for URL schemes")
                        phrases:@[ @"ssh", @"http", @"https" ]
                            key:nil];
 
@@ -747,7 +747,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
             NSArray<NSString *> *parts = [param componentsInShellCommand];
             if ([parts.firstObject isEqual:@"/bin/bash"]) {
                 // Apple's bash disables sourcing ENV when --posix is set 🤬
-                *reasonOut = @"Shell integration needs a newer version of bash.";
+                *reasonOut = NSLocalizedStringFromTableInBundle(@"Shell integration needs a newer version of bash.", @"Settings", [NSBundle bundleForClass:[self class]], @"Reason that shell integration is disabled for old bash");
                 return NO;
             }
             NSString *shell = [parts.firstObject lastPathComponent];
@@ -756,7 +756,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
                 *reasonOut = nil;
                 return YES;
             } else if (shell) {
-                *reasonOut = [NSString stringWithFormat:@"Automatic loading doesn’t work with %@", shell];
+                *reasonOut = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Automatic loading doesn’t work with %@", @"Settings", [NSBundle bundleForClass:[self class]], @"Reason that automatic loading doesn't work with a shell"), shell];
                 return NO;
             } else {
                 *reasonOut = nil;
@@ -766,7 +766,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
         case iTermGeneralProfilePreferenceCustomCommandTagLoginShell: {
             if ([self.loginShell isEqual:@"/bin/bash"]) {
                 // Apple's bash disables sourcing ENV when --posix is set 🤬
-                *reasonOut = @"Shell integration needs a newer version of bash.";
+                *reasonOut = NSLocalizedStringFromTableInBundle(@"Shell integration needs a newer version of bash.", @"Settings", [NSBundle bundleForClass:[self class]], @"Reason that shell integration is disabled for old bash");
                 return NO;
             }
             NSString *shell = [self.loginShell lastPathComponent];
@@ -775,7 +775,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
                 *reasonOut = nil;
                 return YES;
             } else if (shell) {
-                *reasonOut = [NSString stringWithFormat:@"Automatic loading doesn’t work with %@", shell];
+                *reasonOut = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Automatic loading doesn’t work with %@", @"Settings", [NSBundle bundleForClass:[self class]], @"Reason that automatic loading doesn't work with a shell"), shell];
                 return NO;
             } else {
                 *reasonOut = nil;
@@ -783,11 +783,11 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
             }
         }
         case iTermGeneralProfilePreferenceCustomCommandTagSSH:
-            *reasonOut = @"Requires bash, fish, tcsh, xonsh, or zsh.";
+            *reasonOut = NSLocalizedStringFromTableInBundle(@"Requires bash, fish, tcsh, xonsh, or zsh.", @"Settings", [NSBundle bundleForClass:[self class]], @"Reason for SSH shell integration requirement");
             return YES;
 
         case iTermGeneralProfilePreferenceCustomCommandTagBrowser:
-            *reasonOut = @"Not available with browser tabs";
+            *reasonOut = NSLocalizedStringFromTableInBundle(@"Not available with browser tabs", @"Settings", [NSBundle bundleForClass:[self class]], @"Reason shell integration is not available for browser tabs");
             return NO;
     }
     return NO;
@@ -839,9 +839,9 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
     [super updateBrowserSpecific];
     NSMenuItem *item = [_icon.menu itemWithTag:iTermProfileIconAutomatic];
     if ([[self stringForKey:KEY_CUSTOM_COMMAND] isEqualToString:kProfilePreferenceCommandTypeBrowserValue]) {
-        item.title = @"Favicon";
+        item.title = NSLocalizedStringFromTableInBundle(@"Favicon", @"Settings", [NSBundle bundleForClass:[self class]], @"Icon menu item for favicon");
     } else {
-        item.title = @"Built-in Icon for Current App";
+        item.title = NSLocalizedStringFromTableInBundle(@"Built-in Icon for Current App", @"Settings", [NSBundle bundleForClass:[self class]], @"Icon menu item for built-in app icon");
     }
 }
 
@@ -910,9 +910,9 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
         return;
     }
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Plugin Invalid";
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Plugin Invalid", @"Settings", [NSBundle bundleForClass:[self class]], @"Alert title for invalid browser plugin");
     alert.informativeText = error;
-    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"OK button in plugin invalid alert")];
     [alert runSheetModalForWindow:self.view.window];
 }
 
@@ -1029,12 +1029,12 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
             NSString *rhs = obj2[@"CFBundleURLSchemes"][0];
             return [lhs compare:rhs];
         }];
-        [_urlSchemes addItemWithTitle:@"Select URL Schemes…"];
+        [_urlSchemes addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Select URL Schemes…", @"Settings", [NSBundle bundleForClass:[self class]], @"URL schemes popup placeholder item")];
         for (NSDictionary *dict in urlArray) {
             NSString *scheme = dict[@"CFBundleURLSchemes"][0];
             [_urlSchemes addItemWithTitle:scheme];
         }
-        [_urlSchemes setTitle:@"Select URL Schemes…"];
+        [_urlSchemes setTitle:NSLocalizedStringFromTableInBundle(@"Select URL Schemes…", @"Settings", [NSBundle bundleForClass:[self class]], @"URL schemes popup title")];
     }
 
     [[_urlSchemes menu] setAutoenablesItems:YES];
@@ -1116,7 +1116,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
 - (void)handleCommandWarningClick:(NSClickGestureRecognizer *)recognizer {
     NSString *pathEnv = [[[NSProcessInfo processInfo] environment] objectForKey:@"PATH"];
     NSArray *paths = [pathEnv componentsSeparatedByString:@":"];
-    NSString *message = [NSString stringWithFormat:@"Command not found. You may need to specify the full path because your shell is not used when running this command. The search path contains the following folders: %@.", [paths componentsJoinedWithOxfordComma]];
+    NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Command not found. You may need to specify the full path because your shell is not used when running this command. The search path contains the following folders: %@.", @"Settings", [NSBundle bundleForClass:[self class]], @"Warning that command was not found and path info"), [paths componentsJoinedWithOxfordComma]];
     [_commandWarningImageView it_showWarning:message];
 }
 
@@ -1257,17 +1257,17 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
     NSString *value = [self stringForKey:KEY_CUSTOM_COMMAND];
     if ([value isEqualToString:kProfilePreferenceCommandTypeCustomValue]) {
         [_commandType selectItemWithTag:iTermGeneralProfilePreferenceCustomCommandTagCustom];
-        _customCommand.placeholderString = @"Enter command to run when a new session is created";
+        _customCommand.placeholderString = NSLocalizedStringFromTableInBundle(@"Enter command to run when a new session is created", @"Settings", [NSBundle bundleForClass:[self class]], @"Placeholder for custom command");
     } else if ([value isEqualToString:kProfilePreferenceCommandTypeCustomShellValue]) {
         [_commandType selectItemWithTag:iTermGeneralProfilePreferenceCustomCommandTagCustomShell];
-        _customCommand.placeholderString = @"Enter full path to shell";
+        _customCommand.placeholderString = NSLocalizedStringFromTableInBundle(@"Enter full path to shell", @"Settings", [NSBundle bundleForClass:[self class]], @"Placeholder for custom shell path");
         [self removeWhitespaceFromCustomCommand];
     } else if ([value isEqualToString:kProfilePreferenceCommandTypeSSHValue]) {
         [_commandType selectItemWithTag:iTermGeneralProfilePreferenceCustomCommandTagSSH];
-        _customCommand.placeholderString = @"Arguments to ssh";
+        _customCommand.placeholderString = NSLocalizedStringFromTableInBundle(@"Arguments to ssh", @"Settings", [NSBundle bundleForClass:[self class]], @"Placeholder for SSH arguments");
     } else if ([value isEqualToString:kProfilePreferenceCommandTypeBrowserValue]) {
         [_commandType selectItemWithTag:iTermGeneralProfilePreferenceCustomCommandTagBrowser];
-        _customCommand.placeholderString = @"Initial URL";
+        _customCommand.placeholderString = NSLocalizedStringFromTableInBundle(@"Initial URL", @"Settings", [NSBundle bundleForClass:[self class]], @"Placeholder for initial URL in browser mode");
     } else {
         [_commandType selectItemWithTag:iTermGeneralProfilePreferenceCustomCommandTagLoginShell];
     }
@@ -1467,17 +1467,17 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
         }
     }
 
-    titleSettings.title = customName ?: [iTermSessionTitleBuiltInFunction titleForSessionName:@"Name"
-                                                                                  profileName:@"Profile"
-                                                                                          job:@"Job"
-                                                                                  commandLine:@"Job+Args"
-                                                                                          pwd:@"PWD"
-                                                                                          tty:@"TTY"
-                                                                                         user:@"User"
-                                                                                         host:@"Host"
+    titleSettings.title = customName ?: [iTermSessionTitleBuiltInFunction titleForSessionName:NSLocalizedStringFromTableInBundle(@"Name", @"Settings", [NSBundle bundleForClass:[self class]], @"Sample session name for title preview")
+                                                                                  profileName:NSLocalizedStringFromTableInBundle(@"Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"Sample profile name for title preview")
+                                                                                          job:NSLocalizedStringFromTableInBundle(@"Job", @"Settings", [NSBundle bundleForClass:[self class]], @"Sample job for title preview")
+                                                                                  commandLine:NSLocalizedStringFromTableInBundle(@"Job+Args", @"Settings", [NSBundle bundleForClass:[self class]], @"Sample command line for title preview")
+                                                                                          pwd:NSLocalizedStringFromTableInBundle(@"PWD", @"Settings", [NSBundle bundleForClass:[self class]], @"Sample pwd for title preview")
+                                                                                          tty:NSLocalizedStringFromTableInBundle(@"TTY", @"Settings", [NSBundle bundleForClass:[self class]], @"Sample tty for title preview")
+                                                                                         user:NSLocalizedStringFromTableInBundle(@"User", @"Settings", [NSBundle bundleForClass:[self class]], @"Sample user for title preview")
+                                                                                         host:NSLocalizedStringFromTableInBundle(@"Host", @"Settings", [NSBundle bundleForClass:[self class]], @"Sample host for title preview")
                                                                                 homeDirectory:nil
                                                                                      tmuxPane:nil
-                                                                                     iconName:@"“Shell”"
+                                                                                     iconName:NSLocalizedStringFromTableInBundle(@"“Shell”", @"Settings", [NSBundle bundleForClass:[self class]], @"Sample icon name for title preview")
                                                                                    windowName:@""
                                                                                tmuxWindowName:nil
                                                                               tmuxWindowTitle:nil
@@ -1486,16 +1486,45 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
                                                                                    components:value
                                                                                 isWindowTitle:NO];
 
+    // Capture the designed gap between the popup and the help button before
+    // sizeToFit can widen the popup for a long localized title; measuring it
+    // afterwards would make the difference meaningless (even negative). Only
+    // the _titleSettings popup is resized below, so only capture for it.
+    static CGFloat helpGap = -1;
+    if (titleSettings == _titleSettings && helpGap < 0) {
+        helpGap = MAX((CGFloat)0, NSMinX(_customTitleHelp.frame) - NSMaxX(titleSettings.frame));
+    }
     [titleSettings sizeToFit];
     NSRect frame = titleSettings.frame;
-    CGFloat maxWidth = frame.size.width;
     if (titleSettings == _titleSettings) {
-        maxWidth = MIN(maxWidth, NSMinX(_customTitleHelp.frame) - NSMinX(frame) - 5);
+        // The selected title is a concatenation of components and can be wider
+        // than the widest menu item that sizeToFit accounts for. Grow the popup
+        // to fit the current title, sliding the help button along so the gap
+        // between them stays as designed. Shrink it back when the title shortens.
+        NSPopUpButton *probe = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
+        probe.font = titleSettings.font;
+        probe.controlSize = titleSettings.controlSize;
+        // sizeToFit only accounts for the title when it is in a menu item; an empty
+        // menu measures a constant minimum width regardless of the title.
+        probe.menu = [[NSMenu alloc] init];
+        [probe.menu addItem:[[NSMenuItem alloc] initWithTitle:titleSettings.title action:nil keyEquivalent:@""]];
+        probe.title = titleSettings.title;
+        [probe sizeToFit];
+        CGFloat desiredWidth = MAX(NSWidth(probe.frame), frame.size.width);
+        NSRect helpFrame = _customTitleHelp.frame;
+        CGFloat maxPopupWidth = NSWidth(titleSettings.superview.bounds) - NSMinX(frame) - helpGap - NSWidth(helpFrame);
+        // Clamp to the space available; never let sizeToFit's width (which can
+        // exceed maxPopupWidth for long localized titles) win, or the help
+        // button is pushed out of the window.
+        frame.size.width = MIN(desiredWidth, MAX((CGFloat)0, maxPopupWidth));
+        titleSettings.frame = frame;
+        helpFrame.origin.x = NSMaxX(frame) + helpGap;
+        _customTitleHelp.frame = helpFrame;
     } else if (titleSettings.superview) {
-        maxWidth = MIN(maxWidth, NSMaxX(titleSettings.superview.bounds) - NSMinX(frame) - 5);
+        CGFloat maxWidth = MIN(frame.size.width, NSMaxX(titleSettings.superview.bounds) - NSMinX(frame) - 5);
+        frame.size.width = maxWidth;
+        titleSettings.frame = frame;
     }
-    frame.size.width = maxWidth;
-    titleSettings.frame = frame;
 }
 
 - (IBAction)titleHelp:(id)sender {

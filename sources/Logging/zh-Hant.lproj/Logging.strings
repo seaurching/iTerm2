@@ -1,0 +1,35 @@
+/* Debug log: critical error alert message */
+"A critical error occurred and a debug log was created. Please send /tmp/debuglog.txt to the developers." = "發生了嚴重錯誤，已建立除錯記錄。請將 /tmp/debuglog.txt 傳送給開發者。";
+
+/* Session log: could not write to session log title */
+"Couldn’t write to session log" = "無法寫入工作階段記錄";
+
+/* Debug log: critical error alert title */
+"Critical Error" = "嚴重錯誤";
+
+/* Debug log: logging enabled alert title */
+"Debug Logging Enabled" = "除錯記錄已啟用";
+
+/* Debug log: logging stopped alert title */
+"Debug Logging Stopped" = "除錯記錄已停止";
+
+/* Debug log: failed to save warning title */
+"Failed to save debug log: %@" = "儲存除錯記錄失敗：%@";
+
+/* Session log: logging folder not found title */
+"Logging Folder Not Found" = "未找到記錄資料夾";
+
+/* Debug log: alert OK button */
+"OK" = "好";
+
+/* Debug log: logging enabled alert message */
+"Please reproduce the bug. Then toggle debug logging again to save the log." = "請重現 Bug，然後再次切換除錯記錄以儲存記錄。";
+
+/* Debug log: logging stopped alert message */
+"Please send /tmp/debuglog.txt to the developers." = "請將 /tmp/debuglog.txt 傳送給開發者。";
+
+/* Debug log: failed to save heading */
+"Problem Saving Debug Log" = "儲存除錯記錄時發生問題";
+
+/* Debug log: could not open file for writing */
+"could not open %@ for writing" = "無法開啟 %@ 進行寫入";

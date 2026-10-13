@@ -1,0 +1,24 @@
+/* Alert: keyboard input will be broadcast */
+"Keyboard input will be sent to %@." = "键盘输入将发送到%@。";
+
+/* Alert button: OK */
+"OK" = "确定";
+
+/* Broadcast destination: no sessions */
+"no sessions" = "无会话";
+
+/* Broadcast destination: all panes in all tabs */
+"all panes in all tabs in this window" = "此窗口中所有标签页的所有窗格";
+
+/* Broadcast destination: N panes across all tabs */
+"%@ panes across all tabs in this window" = "此窗口所有标签页中的 %@ 个窗格";
+
+/* Broadcast destination: all panes in current tab */
+"all panes in the current tab" = "当前标签页中的所有窗格";
+
+/* Broadcast destination: N panes in current tab */
+"%@ panes in the current tab" = "当前标签页中的 %@ 个窗格";
+
+/* Broadcast destination: multiple sessions */
+"multiple sessions" = "多个会话";
+

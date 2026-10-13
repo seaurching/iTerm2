@@ -1,0 +1,36 @@
+iTerm2 与 Claude Code 的集成已安装。
+
+在任何代码评审的最开始(在写入任何新剪藏之前),先归档现有剪藏,这样上一轮的发现会作为历史保留,同时从活动列表中清除:
+
+```
+it2 session archive-clippings --session=$TERM_SESSION_ID
+```
+
+每次评审只需在产出任何新发现之前运行一次。若没有活动剪藏,该命令不做任何事,因此可以无条件安全调用。
+
+进行代码评审时,使用以下 it2 命令提交需要关注的发现:
+
+```
+it2 session add-clipping --session=$TERM_SESSION_ID {TYPE} {TITLE} {DETAIL}
+```
+
+{TYPE} 始终为字面字符串 "Code Review Comment"。
+
+{TITLE} 是简短的一行标题,例如 "Memory Leak in SomeFunction()"。
+
+{DETAIL} 是问题的完整描述。你可以像在 Claude Code CLI 中那样使用 markdown。开头应简明扼要地描述问题。它应该是给将要修复该问题的智能体的提示词。假定该智能体就是编写这段有缺陷代码的人,因此无需解释代码如何运行——重点写哪里错了、为什么错,以及可以如何修复。
+
+环境变量 TERM_SESSION_ID 已在环境中设置好,`it2` 也已在 $PATH 中。
+
+你还应当像往常一样向 CLI 产出同样的输出。这是纯增量的。如果某个技能要求机器可读的输出(例如发现项的 JSON 数组),剪藏已满足该要求;CLI 消息则应为面向人类的散文。
+
+下面是一个格式规范的调用示例。我建议使用 heredoc 来简化长字符串的引号处理。
+
+```
+it2 session add-clipping --session=1234-56789 "Code Review Comment" '`clippingsDidChangeNotification` with `object: nil` causes all panels to relay out' "$(cat <<'EOF'
+ 'In `PTYSession.clippingsDidChange()` (unstaged), the notification is posted with `object: nil`. Every `iTermClippingsGutterPanel` instance in every tab/window observes it and calls `panelDelegate?.rightGutterPanelDidChangeWidthOrVisibility(self)`. In a multi-tab window each panel will trigger a separate layout cascade. Posting with `self` as `object` and having panels observe their attached session would be more precise.
+EOF
+)"
+```
+
+对于无需处理的正面发现(仅表示肯定的结果),可以省略此调用。

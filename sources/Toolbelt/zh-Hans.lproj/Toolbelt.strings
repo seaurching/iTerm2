@@ -1,0 +1,15 @@
+/* Toolbelt.strings - zh-Hans */
+"Toggle Checkmark" = "切换复选标记";
+"Actions" = "动作";
+"Captured Output" = "捕获的输出";
+"Command History" = "命令历史";
+"Recent Directories" = "最近目录";
+"Jobs" = "作业";
+"Notes" = "备忘录";
+"Paste History" = "粘贴历史";
+"Profiles" = "配置文件";
+"Snippets" = "代码片段";
+"Named Marks" = "命名标记";
+"Session Status" = "会话状态";
+"Clear" = "清除";
+"The session no longer exists" = "该会话已不存在。";

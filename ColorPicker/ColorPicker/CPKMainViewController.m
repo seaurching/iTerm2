@@ -107,10 +107,10 @@ static const CGFloat kBottomMargin = 8;
     self.controlsView.swatchColor = _selectedColor;
     self.controlsView.addFavoriteBlock = ^() {
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Name this color";
-        alert.informativeText = @"Enter a name for this new saved color:";
-        [alert addButtonWithTitle:@"OK"];
-        [alert addButtonWithTitle:@"Cancel"];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Name this color", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"命名颜色警告标题");
+        alert.informativeText = NSLocalizedStringFromTableInBundle(@"Enter a name for this new saved color:", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"命名颜色警告内容");
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"确定按钮标题")];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"取消按钮标题")];
 
         NSTextField *input =
             [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 200, 24)];

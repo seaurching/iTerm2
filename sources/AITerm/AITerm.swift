@@ -470,8 +470,8 @@ class AITermController {
                 it_fatalError()
             case .webResponse(let response):
                 if let error = response.error, !error.isEmpty {
-                    let provider = llmProvider?.displayName ?? "server"
-                    var message = "Error from \(provider): \(error)"
+                    let provider = llmProvider?.displayName ?? NSLocalizedString("server", tableName: "AITermXC", comment: "服务器")
+                    var message = String(format: NSLocalizedString("Error from %@: %@", tableName: "AITermXC", comment: "来自 %@ 的错误：%@"), provider, error)
                     if let reason = LLMErrorParser.errorReason(data: response.data.lossyData), !reason.isEmpty {
                         message += " " + reason
                     }
@@ -502,7 +502,7 @@ class AITermController {
                         .components(separatedBy: "\n")
                         .map { "    " + $0 }
                         .joined(separator: "\n")
-                    delegate?.aitermController(self, didStreamUpdate: "\n\n**Request failed**\n\n\(details)")
+                    delegate?.aitermController(self, didStreamUpdate: "\n\n" + NSLocalizedString("**Request failed**", tableName: "AITermXC", comment: "**请求失败**") + "\n\n\(details)")
                 }
                 delegate?.aitermController(self, didFailWithError: error)
             case .word(let word):
@@ -532,7 +532,7 @@ class AITermController {
             // .begin would request registration again and recurse forever.
             // Fail instead of overflowing the stack.
             guard self.registration != nil else {
-                handle(event: .error(AIError("Could not obtain a valid API key registration for this model’s provider.")))
+                handle(event: .error(AIError(NSLocalizedString("Could not obtain a valid API key registration for this model’s provider.", tableName: "AITermXC", comment: "无法获取此模型提供商的有效 API 密钥注册。"))))
                 return
             }
             handle(event: .begin)
@@ -562,11 +562,7 @@ class AITermController {
     // companion app) with no real key and no cost. No genuine provider key is
     // ever this string.
     static let reviewPlaceholderAPIKey = "placeholder"
-    static let reviewPlaceholderResponse =
-        "This is a demonstration response from the iTerm2 AI assistant. " +
-        "iTerm2 is configured with a placeholder key for App Review, so no " +
-        "external AI service is contacted and no data leaves your Mac. To get " +
-        "real answers, set your AI provider's API key in iTerm2 Settings > AI."
+    static let reviewPlaceholderResponse = NSLocalizedString("This is a demonstration response from the iTerm2 AI assistant. iTerm2 is configured with a placeholder key for App Review, so no external AI service is contacted and no data leaves your Mac. To get real answers, set your AI provider's API key in iTerm2 Settings > AI.", tableName: "AITermXC", comment: "这是来自 iTerm2 AI 助手的演示回复。iTerm2 配置了用于 App 审核的占位密钥，因此不会联系任何外部 AI 服务，也不会有任何数据离开你的 Mac。要获取真实答案，请在 iTerm2 设置 > AI 中设置你的 AI 提供商的 API 密钥。")
 
     static var provider: LLMProvider? {
         if let model = LLMMetadata.model() {
@@ -587,7 +583,7 @@ class AITermController {
 
     private func requestCompletion(messages: [Message], registration: Registration, stream: ((String) -> ())?) {
         guard let llmProvider else {
-            handle(event: .error(AIError("No AI model configured in settings.")))
+            handle(event: .error(AIError(NSLocalizedString("No AI model configured in settings.", tableName: "AITermXC", comment: "设置中未配置 AI 模型。"))))
             return
         }
         if llmProvider.model.api == .appleIntelligence {
@@ -615,7 +611,7 @@ class AITermController {
         builder.frozenHistoryElements = frozenHistoryElements
         builder.stream = stream != nil
         guard llmProvider.urlIsValid else {
-            handle(event: .error(AIError("Invalid URL for AI provider of \(iTermPreferences.string(forKey: kPreferenceKeyAITermURL) ?? "(nil)")")))
+            handle(event: .error(AIError(String(format: NSLocalizedString("Invalid URL for AI provider of %@", tableName: "AITermXC", comment: "AI 提供商的 URL 无效：%@"), iTermPreferences.string(forKey: kPreferenceKeyAITermURL) ?? "(nil)"))))
             return
         }
         let request: WebRequest
@@ -641,7 +637,7 @@ class AITermController {
     private func requestCreateVectorStore(name: String,
                                           registration: Registration) {
         guard let llmProvider else {
-            handle(event: .error(AIError("No AI model configured in settings.")))
+            handle(event: .error(AIError(NSLocalizedString("No AI model configured in settings.", tableName: "AITermXC", comment: "设置中未配置 AI 模型。"))))
             return
         }
         let builder = LLMVectorStoreCreator(name: name,
@@ -662,7 +658,7 @@ class AITermController {
                 case .success(let webResponse):
                     if let error = webResponse.error, !error.isEmpty {
                         let provider = llmProvider.displayName
-                        var message = "Error from \(provider): \(error)"
+                        var message = String(format: NSLocalizedString("Error from %@: %@", tableName: "AITermXC", comment: "来自 %@ 的错误：%@"), provider, error)
                         if let reason = LLMErrorParser.errorReason(data: webResponse.data.lossyData), !reason.isEmpty {
                             message += " " + reason
                         }
@@ -688,14 +684,14 @@ class AITermController {
                                              vectorStoreID: String,
                                              registration: Registration) {
         guard let llmProvider else {
-            handle(event: .error(AIError("No AI model configured in settings.")))
+            handle(event: .error(AIError(NSLocalizedString("No AI model configured in settings.", tableName: "AITermXC", comment: "设置中未配置 AI 模型。"))))
             return
         }
         guard let builder = LLMVectorStoreAdder(provider: llmProvider,
                                                 apiKey: registration.apiKey,
                                                 fileIDs: fileIDs,
                                                 vectorStoreID: vectorStoreID) else {
-            handle(event: .error(AIError("Vector stores are not supported with this LLM vendor")))
+            handle(event: .error(AIError(NSLocalizedString("Vector stores are not supported with this LLM vendor", tableName: "AITermXC", comment: "此 LLM 供应商不支持向量存储"))))
             return
         }
         let request: WebRequest
@@ -713,7 +709,7 @@ class AITermController {
                 case .success(let webResponse):
                     if let error = webResponse.error, !error.isEmpty {
                         let provider = llmProvider.displayName
-                        var message = "Error from \(provider): \(error)"
+                        var message = String(format: NSLocalizedString("Error from %@: %@", tableName: "AITermXC", comment: "来自 %@ 的错误：%@"), provider, error)
                         if let reason = LLMErrorParser.errorReason(data: webResponse.data.lossyData), !reason.isEmpty {
                             message += " " + reason
                         }
@@ -732,7 +728,7 @@ class AITermController {
                                                 batchID: try builder.batchIDFromResponse(webResponse.data.lossyData),
                                                 registration: registration)
                     case .cancelled, .failed:
-                        handle(event: .error(AIError("Adding file to vector store failed")))
+                        handle(event: .error(AIError(NSLocalizedString("Adding file to vector store failed", tableName: "AITermXC", comment: "添加文件到向量存储失败"))))
                     }
                 case .failure(let error):
                     handle(event: .error(error))
@@ -755,14 +751,14 @@ class AITermController {
                                            batchID: String,
                                            registration: Registration) {
         guard let llmProvider else {
-            handle(event: .error(AIError("No AI model configured in settings.")))
+            handle(event: .error(AIError(NSLocalizedString("No AI model configured in settings.", tableName: "AITermXC", comment: "设置中未配置 AI 模型。"))))
             return
         }
         guard let builder = LLMVectorStoreBatchStatusChecker(provider: llmProvider,
                                                              apiKey: registration.apiKey,
                                                              batchID: batchID,
                                                              vectorStoreID: vectorStoreID) else {
-            handle(event: .error(AIError("Vector stores are not supported with this LLM vendor")))
+            handle(event: .error(AIError(NSLocalizedString("Vector stores are not supported with this LLM vendor", tableName: "AITermXC", comment: "此 LLM 供应商不支持向量存储"))))
             return
         }
         let request: WebRequest
@@ -779,7 +775,7 @@ class AITermController {
                 case .success(let webResponse):
                     if let error = webResponse.error, !error.isEmpty {
                         let provider = llmProvider.displayName
-                        var message = "Error from \(provider): \(error)"
+                        var message = String(format: NSLocalizedString("Error from %@: %@", tableName: "AITermXC", comment: "来自 %@ 的错误：%@"), provider, error)
                         if let reason = LLMErrorParser.errorReason(data: webResponse.data.lossyData), !reason.isEmpty {
                             message += " " + reason
                         }
@@ -791,8 +787,8 @@ class AITermController {
                     switch status {
                     case .cancelled, .failed:
                         state = .ground
-                        handle(event: .error(AIError("An error occurred while ingesting files to vector storage")))
-                        delegate?.aitermControllerDidFailToAddFilesToVectorStore(self, error: AIError("The file may not be well formed."))
+                        handle(event: .error(AIError(NSLocalizedString("An error occurred while ingesting files to vector storage", tableName: "AITermXC", comment: "将文件导入向量存储时发生错误"))))
+                        delegate?.aitermControllerDidFailToAddFilesToVectorStore(self, error: AIError(NSLocalizedString("The file may not be well formed.", tableName: "AITermXC", comment: "文件格式可能不正确。")))
                     case .completed:
                         delegate?.aitermControllerDidAddFilesToVectorStore(self)
                         state = .ground
@@ -816,14 +812,14 @@ class AITermController {
                                    content: Data,
                                    registration: Registration) {
         guard let llmProvider else {
-            handle(event: .error(AIError("No AI model configured in settings.")))
+            handle(event: .error(AIError(NSLocalizedString("No AI model configured in settings.", tableName: "AITermXC", comment: "设置中未配置 AI 模型。"))))
             return
         }
         guard let builder = LLMFileUploader(provider: llmProvider,
                                             apiKey: registration.apiKey,
                                             fileName: name,
                                             content: content) else {
-            handle(event: .error(AIError("File upload not supported with this LLM vendor")))
+            handle(event: .error(AIError(NSLocalizedString("File upload not supported with this LLM vendor", tableName: "AITermXC", comment: "此 LLM 供应商不支持文件上传"))))
             return
         }
         let request: WebRequest
@@ -841,7 +837,7 @@ class AITermController {
                 case .success(let webResponse):
                     if let error = webResponse.error, !error.isEmpty {
                         let provider = llmProvider.displayName
-                        var message = "Error from \(provider): \(error)"
+                        var message = String(format: NSLocalizedString("Error from %@: %@", tableName: "AITermXC", comment: "来自 %@ 的错误：%@"), provider, error)
                         if let reason = LLMErrorParser.errorReason(data: webResponse.data.lossyData), !reason.isEmpty {
                             message += " " + reason
                         }
@@ -870,7 +866,7 @@ class AITermController {
 
     private func parseStreamingResponse(data: Data, final: Bool, parserState: StreamParserState) -> StreamParserState? {
         guard let llmProvider else {
-            handle(event: .error(AIError("No AI model configured in settings.")))
+            handle(event: .error(AIError(NSLocalizedString("No AI model configured in settings.", tableName: "AITermXC", comment: "设置中未配置 AI 模型。"))))
             return nil
         }
         var accumulatingMessage = parserState.message
@@ -952,7 +948,7 @@ class AITermController {
         DLog("------- parse new stream response of length \(data.count) -------------")
         let string = String(data: parserState.buffer + data, encoding: .utf8) ?? ""
         guard let parser = llmProvider.streamingResponseParser(stream: true) else {
-            handle(event: .error(AIError("Streaming is not supported by this language model in iTerm2. You can disable streaming in Settings > General > AI.")))
+            handle(event: .error(AIError(NSLocalizedString("Streaming is not supported by this language model in iTerm2. You can disable streaming in Settings > General > AI.", tableName: "AITermXC", comment: "此语言模型在 iTerm2 中不支持流式传输。您可以在 设置 > 通用 > AI 中禁用流式传输。"))))
             return nil
         }
         var (first, rest) = parser.splitFirstJSONEvent(from: string)
@@ -977,9 +973,9 @@ class AITermController {
                 self.doFunctionCall(accumulatingMessage, call: call)
                 accumulatingMessage.body = .uninitialized
             case .functionOutput:
-                it_fatalError("Server should not send function output")
+                it_fatalError(NSLocalizedString("Server should not send function output", tableName: "AITermXC", comment: "服务器不应发送函数输出"))
             case .multipart:
-                it_fatalError("Should not accumulate multipart")
+                it_fatalError(NSLocalizedString("Should not accumulate multipart", tableName: "AITermXC", comment: "不应累积多部分"))
             }
             accumulatingMessage.body = .uninitialized
         }
@@ -999,7 +995,7 @@ class AITermController {
                     }
                     do {
                         guard var parser = llmProvider.streamingResponseParser(stream: true) else {
-                            handle(event: .error(AIError("Streaming is not supported by this language model in iTerm2. You can disable streaming in Settings > General > AI.")))
+                            handle(event: .error(AIError(NSLocalizedString("Streaming is not supported by this language model in iTerm2. You can disable streaming in Settings > General > AI.", tableName: "AITermXC", comment: "此语言模型在 iTerm2 中不支持流式传输。您可以在 设置 > 通用 > AI 中禁用流式传输。"))))
                             return nil
                         }
                         let response = try parser.parse(data: firstData)
@@ -1067,7 +1063,7 @@ class AITermController {
                     }
                 }
                 guard let parser = llmProvider.streamingResponseParser(stream: true) else {
-                    handle(event: .error(AIError("Streaming is not supported by this language model in iTerm2. You can disable streaming in Settings > General > AI.")))
+                    handle(event: .error(AIError(NSLocalizedString("Streaming is not supported by this language model in iTerm2. You can disable streaming in Settings > General > AI.", tableName: "AITermXC", comment: "此语言模型在 iTerm2 中不支持流式传输。您可以在 设置 > 通用 > AI 中禁用流式传输。"))))
                     return nil
                 }
 
@@ -1139,13 +1135,13 @@ class AITermController {
 
     private func parseNonStreamingResponse(data: Data) {
         guard let llmProvider else {
-            handle(event: .error(AIError("No AI model configured in settings.")))
+            handle(event: .error(AIError(NSLocalizedString("No AI model configured in settings.", tableName: "AITermXC", comment: "设置中未配置 AI 模型。"))))
             return
         }
         do {
             var parser = llmProvider.responseParser()
             guard let response = try parser.parse(data: data) else {
-                delegate?.aitermController(self, didFailWithError: AIError("Unexpected end of file from server"))
+                delegate?.aitermController(self, didFailWithError: AIError(NSLocalizedString("Unexpected end of file from server", tableName: "AITermXC", comment: "服务器意外结束文件")))
                 return
             }
             if let id = response.newlyCreatedResponseID {
@@ -1162,7 +1158,7 @@ class AITermController {
             // function call in the body (multipart-aware via Message.function_call)
             // and dispatch it; otherwise offer the text.
             guard let messageToDispatch = response.choiceMessages.first else {
-                delegate?.aitermController(self, didFailWithError: AIError("Empty response from server"))
+                delegate?.aitermController(self, didFailWithError: AIError(NSLocalizedString("Empty response from server", tableName: "AITermXC", comment: "服务器返回空响应")))
                 return
             }
             if let functionCall = messageToDispatch.function_call {
@@ -1170,7 +1166,7 @@ class AITermController {
                 return
             }
             guard let choice = messageToDispatch.trimmedString else {
-                delegate?.aitermController(self, didFailWithError: AIError("Empty response from server"))
+                delegate?.aitermController(self, didFailWithError: AIError(NSLocalizedString("Empty response from server", tableName: "AITermXC", comment: "服务器返回空响应")))
                 return
             }
             // Surface the reasoning scalar BEFORE offerChoice so the delegate
@@ -1186,9 +1182,9 @@ class AITermController {
             delegate?.aitermController(self, offerChoice: choice)
         } catch {
             if let reason = LLMErrorParser.errorReason(data: data) {
-                handle(event: .error(AIError("Could not decode response: " + reason)))
+                handle(event: .error(AIError(NSLocalizedString("Could not decode response: ", tableName: "AITermXC", comment: "无法解码响应：") + reason)))
             } else {
-                handle(event: .error(AIError("Failed to decode API response: \(error). Data is: \(data.stringOrHex)")))
+                handle(event: .error(AIError(String(format: NSLocalizedString("Failed to decode API response: %@. Data is: %@", tableName: "AITermXC", comment: "解码 API 响应失败：%@。数据为：%@"), "\(error)", data.stringOrHex))))
             }
         }
     }
@@ -1200,7 +1196,7 @@ class AITermController {
     // response. Text only: function calls and attachments are out of scope.
     private func requestAppleIntelligenceCompletion(messages: [Message]) {
         guard #available(macOS 26, *) else {
-            handle(event: .error(AIError("Apple Intelligence requires macOS 26 or later.")))
+            handle(event: .error(AIError(NSLocalizedString("Apple Intelligence requires macOS 26 or later.", tableName: "AITermXC", comment: "Apple Intelligence 需要 macOS 26 或更高版本。"))))
             return
         }
         let system = messages
@@ -1255,7 +1251,7 @@ class AITermController {
                     self.state = .ground
                     self.delegate?.aitermController(self, offerChoice: text)
                 case .failure(let error):
-                    self.handle(event: .error(AIError("Apple Intelligence error: \(error.localizedDescription)")))
+                    self.handle(event: .error(AIError(String(format: NSLocalizedString("Apple Intelligence error: %@", tableName: "AITermXC", comment: "Apple Intelligence 错误：%@"), error.localizedDescription))))
                 }
             }
         }
@@ -1283,7 +1279,7 @@ class AITermController {
 
     private func doFunctionCall(_ message: Message, call functionCall: LLM.FunctionCall) {
         guard llmProvider != nil else {
-            handle(event: .error(AIError("No AI model configured in settings.")))
+            handle(event: .error(AIError(NSLocalizedString("No AI model configured in settings.", tableName: "AITermXC", comment: "设置中未配置 AI 模型。"))))
             return
         }
         switch state {
@@ -1394,7 +1390,7 @@ class AITermController {
                 }
                 return
             }
-            let missingFunction = "There is no registered function by that name. Try again."
+            let missingFunction = NSLocalizedString("There is no registered function by that name. Try again.", tableName: "AITermXC", comment: "没有按该名称注册的函数。请重试。")
             // A model that keeps emitting an unknown/hallucinated tool name is
             // the same runaway the real-tool failure branch guards against, so
             // it shares the bound. Successful tool calls and final answers reset

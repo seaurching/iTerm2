@@ -37,7 +37,7 @@
     [_button setButtonType:NSButtonTypeMomentaryPushIn];
     [_button setTarget:self];
     [_button setAction:@selector(buttonPressed:)];
-    [_button setTitle:@"Configure Action…"];
+    [_button setTitle:NSLocalizedStringFromTableInBundle(@"Configure Action…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"配置操作…")];
     [_button setBezelStyle:NSBezelStyleTexturedRounded];
     [_button sizeToFit];
     [self.view addSubview:_button];

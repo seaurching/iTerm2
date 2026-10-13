@@ -72,16 +72,16 @@ class iTermJobInfoPopoverViewController: NSViewController, NSTableViewDataSource
         view.controller = self
         view.autoresizingMask = [.width, .height]
 
-        let commandHeader = Self.headerLabel("Command")
+        let commandHeader = Self.headerLabel(NSLocalizedString("Command", tableName: "ProcessInfo", comment: "Process info: command header"))
         commandValue = Self.valueLabel(fullCommand, wrapping: true)
 
-        let directoryHeader = Self.headerLabel("Working Directory")
-        directoryValue = Self.valueLabel("Loading…", wrapping: true)
+        let directoryHeader = Self.headerLabel(NSLocalizedString("Working Directory", tableName: "ProcessInfo", comment: "Process info: working directory header"))
+        directoryValue = Self.valueLabel(NSLocalizedString("Loading…", tableName: "ProcessInfo", comment: "Process info: loading placeholder"), wrapping: true)
 
-        let pidHeader = Self.headerLabel("Process ID")
+        let pidHeader = Self.headerLabel(NSLocalizedString("Process ID", tableName: "ProcessInfo", comment: "Process info: process id header"))
         pidValue = Self.valueLabel("\(pid)", wrapping: false)
 
-        let startedHeader = Self.headerLabel("Started")
+        let startedHeader = Self.headerLabel(NSLocalizedString("Started", tableName: "ProcessInfo", comment: "Process info: started header"))
         startedValue = Self.valueLabel(startedDescription(), wrapping: false)
 
         topFields = [commandHeader, commandValue, directoryHeader, directoryValue,
@@ -101,19 +101,19 @@ class iTermJobInfoPopoverViewController: NSViewController, NSTableViewDataSource
         loadEnvironment()
         loadFileDescriptors()
 
-        environmentHeader = Self.headerLabel("Environment")
+        environmentHeader = Self.headerLabel(NSLocalizedString("Environment", tableName: "ProcessInfo", comment: "Process info: environment header"))
         view.addSubview(environmentHeader)
         (environmentScrollView, environmentTableView) =
-            makeTableScrollView(columns: [(identifier: "key", title: "Variable", width: 130),
-                                          (identifier: "value", title: "Value", width: 0)])
+            makeTableScrollView(columns: [(identifier: "key", title: NSLocalizedString("Variable", tableName: "ProcessInfo", comment: "Process info: environment variable column"), width: 130),
+                                          (identifier: "value", title: NSLocalizedString("Value", tableName: "ProcessInfo", comment: "Process info: environment value column"), width: 0)])
         view.addSubview(environmentScrollView)
 
-        fileDescriptorHeader = Self.headerLabel("Open Files & Sockets")
+        fileDescriptorHeader = Self.headerLabel(NSLocalizedString("Open Files & Sockets", tableName: "ProcessInfo", comment: "Process info: open files header"))
         view.addSubview(fileDescriptorHeader)
         (fileDescriptorScrollView, fileDescriptorTableView) =
-            makeTableScrollView(columns: [(identifier: "fd", title: "FD", width: 36),
-                                          (identifier: "type", title: "Type", width: 58),
-                                          (identifier: "detail", title: "Detail", width: 0)])
+            makeTableScrollView(columns: [(identifier: "fd", title: NSLocalizedString("FD", tableName: "ProcessInfo", comment: "Process info: file descriptor column"), width: 36),
+                                          (identifier: "type", title: NSLocalizedString("Type", tableName: "ProcessInfo", comment: "Process info: type column"), width: 58),
+                                          (identifier: "detail", title: NSLocalizedString("Detail", tableName: "ProcessInfo", comment: "Process info: detail column"), width: 0)])
         view.addSubview(fileDescriptorScrollView)
 
         self.view = view
@@ -162,13 +162,13 @@ class iTermJobInfoPopoverViewController: NSViewController, NSTableViewDataSource
 
     private func copyButton(action: Selector) -> NSButton {
         let image = NSImage.it_image(forSymbolName: SFSymbol.docOnDoc.rawValue,
-                                     accessibilityDescription: "Copy") ?? NSImage()
+                                     accessibilityDescription: NSLocalizedString("Copy", tableName: "ProcessInfo", comment: "Process info: copy accessibility")) ?? NSImage()
         let button = NSButton(image: image, target: self, action: action)
         button.isBordered = false
         button.imagePosition = .imageOnly
         button.imageScaling = .scaleProportionallyDown
         button.contentTintColor = .secondaryLabelColor
-        button.toolTip = "Copy"
+        button.toolTip = NSLocalizedString("Copy", tableName: "ProcessInfo", comment: "Process info: copy tooltip")
         // Clicking the button should not steal first responder (the popover
         // stays keyed off the outline view / space bar).
         button.refusesFirstResponder = true
@@ -233,7 +233,7 @@ class iTermJobInfoPopoverViewController: NSViewController, NSTableViewDataSource
             startTimeFetched = true
         }
         guard let start = startTime else {
-            return "Unknown"
+            return NSLocalizedString("Unknown", tableName: "ProcessInfo", comment: "Process info: unknown value")
         }
         let absolute = DateFormatter.localizedString(from: start, dateStyle: .medium, timeStyle: .short)
         let formatter = DateComponentsFormatter()
@@ -241,7 +241,7 @@ class iTermJobInfoPopoverViewController: NSViewController, NSTableViewDataSource
         formatter.maximumUnitCount = 2
         formatter.unitsStyle = .abbreviated
         if let elapsed = formatter.string(from: max(0, -start.timeIntervalSinceNow)), !elapsed.isEmpty {
-            return "\(absolute) (\(elapsed) ago)"
+            return String(format: NSLocalizedString("%1$@ (%2$@ ago)", tableName: "ProcessInfo", comment: "Process info: started time with elapsed"), absolute, elapsed)
         }
         return absolute
     }
@@ -257,7 +257,7 @@ class iTermJobInfoPopoverViewController: NSViewController, NSTableViewDataSource
     private func setWorkingDirectory(_ pwd: String?) {
         let hasValue = (pwd?.isEmpty == false)
         workingDirectory = hasValue ? pwd : nil
-        directoryValue.stringValue = hasValue ? pwd! : "Unknown"
+        directoryValue.stringValue = hasValue ? pwd! : NSLocalizedString("Unknown", tableName: "ProcessInfo", comment: "Process info: unknown value")
         copyDirectoryButton.isEnabled = (workingDirectory != nil)
         // Re-layout to accommodate a possibly multi-line directory.
         relayout(forWidth: view.bounds.width)
@@ -290,7 +290,7 @@ class iTermJobInfoPopoverViewController: NSViewController, NSTableViewDataSource
         }
         let rectInScreen = window.convertToScreen(button.convert(button.bounds, to: nil))
         let topLeft = NSPoint(x: rectInScreen.maxX + 6, y: rectInScreen.maxY)
-        ToastWindowController.showToast(withMessage: "Copied",
+        ToastWindowController.showToast(withMessage: NSLocalizedString("Copied", tableName: "ProcessInfo", comment: "Process info: copied toast"),
                                         duration: 1,
                                         topLeftScreenCoordinate: topLeft,
                                         pointSize: 12)

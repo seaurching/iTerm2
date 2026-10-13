@@ -39,7 +39,7 @@ struct LLMFileUploader {
     func webRequest() throws -> WebRequest {
         let body = try body()
         guard let url = provider.uploadURL() else {
-            throw AIError("File upload is not supported with this LLM provider")
+            throw AIError(NSLocalizedString("File upload is not supported with this LLM provider", tableName: "AITermXC", comment: "此 LLM 提供商不支持文件上传"))
         }
         return WebRequest(headers: headers,
                           method: method,

@@ -6,6 +6,7 @@
 //
 
 #import "ObjCExceptions.h"
+#import "iTermWarning.h"
 
 NSError * _Nullable ObjCTryImpl(void (^NS_NOESCAPE block)(void)) {
     @try {
@@ -16,6 +17,6 @@ NSError * _Nullable ObjCTryImpl(void (^NS_NOESCAPE block)(void)) {
                                    code:0
                                userInfo:@{ NSUnderlyingErrorKey: e,
                                            NSDebugDescriptionErrorKey: e.userInfo ?: @{ },
-                                           NSLocalizedFailureReasonErrorKey: (e.reason ?: @"Unknown reason") }];
+                                           NSLocalizedFailureReasonErrorKey: (e.reason ?: NSLocalizedStringFromTableInBundle(@"Unknown reason", @"Infrastructure", [NSBundle bundleForClass:[iTermWarning class]], @"Fallback failure reason when exception reason is nil")) }];
     }
 }

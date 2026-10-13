@@ -24,7 +24,14 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
     // A persistent link to phone-install instructions, shown near the top in
     // every state. The companion app lives outside the Mac, so this is the only
     // affordance that gets the user to their phone.
-    private let installAppButton = NSButton(title: "Install Companion App on your iPhone", target: nil, action: nil)
+    private let installAppButton = NSButton(
+        title: NSLocalizedString(
+            "Install Companion App on your iPhone",
+            tableName: "Companion",
+            comment: "安装伴侣应用按钮标题"),
+        target: nil,
+        action: nil
+    )
 
     // MARK: Dynamic top
     private let qrImageView = NSImageView()
@@ -39,11 +46,25 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
     // updated once a second by relayStatusTimer while the window is open.
     private let relayStatusLabel = NSTextField(labelWithString: "")
     private var relayStatusTimer: Timer?
-    private let unpairButton = NSButton(title: "Unpair", target: nil, action: nil)
+    private let unpairButton = NSButton(
+        title: NSLocalizedString(
+            "Unpair",
+            tableName: "Companion",
+            comment: "取消配对按钮标题"
+        ),
+        target: nil,
+        action: nil
+    )
     // Shown in the paired state: a caption and the pairing's relay room name in
     // lowercase hex, selectable so it can be copied for support. Both hidden
     // outside the paired state (hideTopContent).
-    private let roomNameCaptionLabel = NSTextField(labelWithString: "Relay room name")
+    private let roomNameCaptionLabel = NSTextField(
+        labelWithString: NSLocalizedString(
+            "Relay room name",
+            tableName: "Companion",
+            comment: "Relay room name caption"
+        )
+    )
     private let roomNameLabel = NSTextField(wrappingLabelWithString: "")
     // A remedy for the AI/admin prerequisites (e.g. "Reveal in Settings"). The
     // companion plugin and consent have their own controls in the bottom
@@ -52,17 +73,39 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
     // SAS confirmation: shown in place of the QR once the handshake completes,
     // asking the user to type the code the phone is displaying.
     private let sasField = NSTextField(string: "")
-    private let sasVerifyButton = NSButton(title: "Verify", target: nil, action: nil)
-    private let sasCancelButton = NSButton(title: "Cancel Pairing", target: nil, action: nil)
+    private let sasVerifyButton = NSButton(
+        title: NSLocalizedString(
+            "Verify",
+            tableName: "Companion",
+            comment: "验证按钮标题"
+        ),
+        target: nil,
+        action: nil
+    )
+    private let sasCancelButton = NSButton(
+        title: NSLocalizedString(
+            "Cancel Pairing",
+            tableName: "Companion",
+            comment: "取消配对按钮标题"
+        ),
+        target: nil,
+        action: nil
+    )
 
     // MARK: Fixed bottom settings section (always visible)
     private let sectionSeparator = NSBox()
     // The consent setting. Always shown, never conditional on the plugin:
     // checking it grants consent (set(...), which prompts for authorization);
     // unchecking revokes it. Mirrors the AI plugin's enable checkbox.
-    private let consentCheckbox = NSButton(checkboxWithTitle: "Allow companion device pairing",
-                                           target: nil,
-                                           action: nil)
+    private let consentCheckbox = NSButton(
+        checkboxWithTitle: NSLocalizedString(
+            "Allow companion device pairing",
+            tableName: "Companion",
+            comment: "允许伴侣设备配对复选框标题"
+        ),
+        target: nil,
+        action: nil
+    )
     // The plugin setting: a status line (with a reload icon to its left that
     // re-checks the plugin) above a Reveal in Finder / Download Plugin… button.
     // Always shown.
@@ -94,7 +137,11 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
                             backing: .buffered,
                             defer: false)
         panel.isFloatingPanel = true
-        panel.title = "Companion Device Settings"
+        panel.title = NSLocalizedString(
+            "Companion Device Settings",
+            tableName: "Companion",
+            comment: "伴侣设备设置面板标题"
+        )
         super.init(window: panel)
         panel.delegate = self
         buildContent()
@@ -167,24 +214,56 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
         switch gate {
         case .aiAdminDisabled:
             // No remedy to offer: this is an administrator decision.
-            showBlockedTop("Generative AI features have been disabled. Check with your system administrator.")
+            showBlockedTop(NSLocalizedString(
+                "Generative AI features have been disabled. Check with your system administrator.",
+                tableName: "Companion",
+                comment: "AI disabled notice"
+            ))
         case .aiPluginMissing:
-            showBlockedTop("You must install the AI plugin before you can pair a companion device.",
-                           remedyTitle: "Reveal in Settings") {
+            showBlockedTop(NSLocalizedString(
+                "You must install the AI plugin before you can pair a companion device.",
+                tableName: "Companion",
+                comment: "AI plugin required notice"),
+                remedyTitle: NSLocalizedString(
+                    "Reveal in Settings",
+                    tableName: "Companion",
+                    comment: "Reveal AI plugin settings button"
+                )
+            ) {
                 PreferencePanel.sharedInstance().openToPreference(withKey: kPhonyPreferenceKeyInstallAIPlugin)
             }
         case .aiConsentNeeded:
-            showBlockedTop("You must enable AI features in settings before you can pair a companion device.",
-                           remedyTitle: "Reveal") {
+            showBlockedTop(NSLocalizedString(
+                "You must enable AI features in settings before you can pair a companion device.",
+                tableName: "Companion",
+                comment: "AI features disabled notice"),
+                remedyTitle: NSLocalizedString(
+                    "Reveal",
+                    tableName: "Companion",
+                    comment: "Reveal AI settings button"
+                )
+            ) {
                 PreferencePanel.sharedInstance().openToPreference(withKey: kPreferenceKeyEnableAI)
             }
         case .companionAdminDisabled:
             // No remedy to offer: this is an administrator decision.
-            showBlockedTop("Companion device pairing has been disabled. Check with your system administrator.")
+            showBlockedTop(NSLocalizedString(
+                "Companion device pairing has been disabled. Check with your system administrator.",
+                tableName: "Companion",
+                comment: "Pairing disabled notice"
+            ))
         case .companionPluginMissing:
-            showBlockedTop("Install the iTerm2 Companion plugin below, then allow companion device pairing.")
+            showBlockedTop(NSLocalizedString(
+                "Install the iTerm2 Companion plugin below, then allow companion device pairing.",
+                tableName: "Companion",
+                comment: "Plugin install required notice"
+            ))
         case .companionConsentNeeded:
-            showBlockedTop("Turn on “Allow companion device pairing” below to begin.")
+            showBlockedTop(NSLocalizedString(
+                "Turn on “Allow companion device pairing” below to begin.",
+                tableName: "Companion",
+                comment: "Enable pairing notice"
+            ))
         case .allowed:
             if controller.isConnected || controller.hasPairedDevice {
                 showPairedState()
@@ -234,22 +313,56 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
         case .connected(let since):
             relayStatusLabel.isHidden = false
             relayStatusLabel.textColor = .secondaryLabelColor
-            relayStatusLabel.stringValue = "Connected to relay for \(Self.elapsed(since))"
+            relayStatusLabel.stringValue = String(
+                format:
+                    NSLocalizedString(
+                        "Connected to relay for %@",
+                        tableName: "Companion",
+                        comment: "Relay connected status"
+                    ),
+                Self.elapsed(since)
+            )
         case .reconnecting(let lastAttempt):
             relayStatusLabel.isHidden = false
             relayStatusLabel.textColor = .systemYellow
             if let lastAttempt {
-                relayStatusLabel.stringValue = "Not connected to relay (last try \(Self.elapsed(lastAttempt)) ago)"
+                relayStatusLabel.stringValue = String(
+                    format:
+                        NSLocalizedString(
+                            "Not connected to relay (last try %@ ago)",
+                            tableName: "Companion",
+                            comment: "Relay disconnected with last attempt"
+                        ),
+                    Self.elapsed(lastAttempt)
+                )
             } else {
-                relayStatusLabel.stringValue = "Not connected to relay"
+                relayStatusLabel.stringValue = NSLocalizedString(
+                    "Not connected to relay",
+                    tableName: "Companion",
+                    comment: "Relay disconnected"
+                )
             }
         case .quotaExceeded(let retryAt):
             relayStatusLabel.isHidden = false
             relayStatusLabel.textColor = .systemOrange
             let wait = Self.remaining(until: retryAt)
             relayStatusLabel.stringValue = wait.isEmpty
-                ? "Daily relay data limit reached (reconnecting…)"
-                : "Daily relay data limit reached (retry in \(wait))"
+                ? String(
+                    format:
+                        NSLocalizedString(
+                            "Daily relay data limit reached (reconnecting…)",
+                            tableName: "Companion",
+                            comment: "Quota reached, reconnecting"
+                        ))
+                : String(
+                    format:
+                        NSLocalizedString(
+                            "Daily relay data limit reached (retry in %@)",
+                            tableName: "Companion",
+                            comment: "Quota reached, retry countdown"
+                        ),
+                    wait
+                )
         }
     }
 
@@ -282,13 +395,13 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
         consentCheckbox.state = SecureUserDefaults.instance.enableCompanionPairing.value ? .on : .off
 
         if CompanionPlugin.instance().isSuccess {
-            pluginDetailLabel.stringValue = "iTerm2 Companion plugin installed and working ✅"
+            pluginDetailLabel.stringValue = NSLocalizedString("iTerm2 Companion plugin installed and working ✅", tableName: "Companion", comment: "Plugin installed status")
             pluginDetailLabel.textColor = .systemGreen
-            setPluginAction(title: "Reveal in Finder") { [weak self] in self?.revealPluginInFinder() }
+            setPluginAction(title: NSLocalizedString("Reveal in Finder", tableName: "Companion", comment: "Reveal plugin button")) { [weak self] in self?.revealPluginInFinder() }
         } else {
-            pluginDetailLabel.stringValue = "iTerm2 Companion plugin not installed"
+            pluginDetailLabel.stringValue = NSLocalizedString("iTerm2 Companion plugin not installed", tableName: "Companion", comment: "Plugin not installed status")
             pluginDetailLabel.textColor = .secondaryLabelColor
-            setPluginAction(title: "Download Plugin…") {
+            setPluginAction(title: NSLocalizedString("Download Plugin…", tableName: "Companion", comment: "Download plugin button")) {
                 if let url = URL(string: "https://iterm2.com/companion-plugin.html") {
                     NSWorkspace.shared.open(url)
                 }
@@ -449,10 +562,10 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
     private func showReadyToPair() {
         controller.stopAdvertising()
         hideTopContent()
-        instructionsLabel.stringValue = "Pair a companion device to use iTerm2 from your iPhone."
+        instructionsLabel.stringValue = NSLocalizedString("Pair a companion device to use iTerm2 from your iPhone.", tableName: "Companion", comment: "Unpaired instructions")
         setStatus("", color: .secondaryLabelColor)
         gateAction = { [weak self] in self?.startFreshPairingFlow() }
-        presentPrimaryButton(title: "Show QR Code")
+        presentPrimaryButton(title: NSLocalizedString("Show QR Code", tableName: "Companion", comment: "Show QR code button"))
     }
 
     /// Build the placeholder once: a real QR of a throwaway string, Gaussian
@@ -487,7 +600,7 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
             sasField.isHidden = false
             sasVerifyButton.isHidden = false
             sasCancelButton.isHidden = false
-            instructionsLabel.stringValue = "Type the 6-digit code shown on your iPhone. This confirms you’re pairing with your own phone."
+            instructionsLabel.stringValue = NSLocalizedString("Type the 6-digit code shown on your iPhone. This confirms you’re pairing with your own phone.", tableName: "Companion", comment: "SAS entry instructions")
             sasField.stringValue = ""
             updateSASVerifyEnabled()  // empty -> Verify disabled until 6 digits
             window?.makeFirstResponder(sasField)
@@ -534,11 +647,11 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
             self?.showPairedState()
         }
         controller.onFailed = { [weak self] message in
-            self?.setStatus("Pairing failed: \(message)", color: .systemRed)
+            self?.setStatus(String(format: NSLocalizedString("Pairing failed: %@", tableName: "Companion", comment: "Pairing failure status"), message), color: .systemRed)
         }
         controller.onDisconnect = { [weak self] in
             guard let self else { return }
-            self.setStatus("Device disconnected.", color: .secondaryLabelColor)
+            self.setStatus(NSLocalizedString("Device disconnected.", tableName: "Companion", comment: "Device disconnected status"), color: .secondaryLabelColor)
             // Reflect the drop in the paired-state instructions right away
             // rather than waiting for the next poll.
             if self.currentGate == .allowed, self.controller.hasPairedDevice {
@@ -556,7 +669,7 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
                 // the code below), so the retry uses a fresh QR.
                 self?.qrImageView.alphaValue = 1.0
                 self?.qrImageView.isHidden = false
-                self?.instructionsLabel.stringValue = "In the iTerm2 Buddy app on your iPhone, tap Scan and point the camera at this code."
+                self?.instructionsLabel.stringValue = NSLocalizedString("In the iTerm2 Buddy app on your iPhone, tap Scan and point the camera at this code.", tableName: "Companion", comment: "QR scanning instructions")
             }
         }
         controller.onPairingCodeChanged = { [weak self] code in
@@ -584,8 +697,13 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
             roomNameLabel.isHidden = false
         }
         updatePairedConnectionText()
-        setStatus("To pair a different device, unpair first. Unpairing kicks the device off and deletes the pairing keys.",
-                  color: .secondaryLabelColor)
+        setStatus(
+            NSLocalizedString(
+                "To pair a different device, unpair first. Unpairing kicks the device off and deletes the pairing keys.",
+                tableName: "Companion",
+                comment: "已配对状态下的换设备提示"
+            ),
+            color: .secondaryLabelColor)
     }
 
     /// Set the paired-state instructions and checkmark color from the live
@@ -593,16 +711,16 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
     /// or dropping while the gate (still .allowed) does not change.
     private func updatePairedConnectionText() {
         if controller.isConnected {
-            instructionsLabel.stringValue = "A companion device is paired and connected."
+            instructionsLabel.stringValue = NSLocalizedString("A companion device is paired and connected.", tableName: "Companion", comment: "Paired and connected status")
             checkmarkImageView.contentTintColor = .systemGreen
         } else if controller.isListening {
             // Parked at the relay, just waiting for the phone to come back.
-            instructionsLabel.stringValue = "A companion device is paired. Waiting for it to connect."
+            instructionsLabel.stringValue = NSLocalizedString("A companion device is paired. Waiting for it to connect.", tableName: "Companion", comment: "Paired waiting status")
             checkmarkImageView.contentTintColor = .tertiaryLabelColor
         } else {
             // Not listening at all: the phone cannot reach this Mac. The poll in
             // refreshGateState nudges a resume, so word it as transient.
-            instructionsLabel.stringValue = "A companion device is paired but iTerm2 isn’t listening for it yet. Reconnecting…"
+            instructionsLabel.stringValue = NSLocalizedString("A companion device is paired but iTerm2 isn’t listening for it yet. Reconnecting…", tableName: "Companion", comment: "Paired reconnecting status")
             checkmarkImageView.contentTintColor = .systemYellow
         }
         updateRelayStatusLabel()
@@ -616,7 +734,7 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
         guard !pairingAuthInFlight else { return }
         pairingAuthInFlight = true
         // The system sheet appears over the window; show a neutral prompt behind.
-        showBlockedTop("Authenticate to pair a companion device with this Mac.")
+        showBlockedTop(NSLocalizedString("Authenticate to pair a companion device with this Mac.", tableName: "Companion", comment: "Authenticate prompt"))
         Task { [weak self] in
             guard let self else { return }
             let authenticated = await self.controller.authenticateToPair()
@@ -632,8 +750,8 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
             if authenticated {
                 self.beginFreshPairing()
             } else {
-                self.showBlockedTop("Authentication is required to pair a companion device.",
-                                    remedyTitle: "Authenticate") { [weak self] in
+                self.showBlockedTop(NSLocalizedString("Authentication is required to pair a companion device.", tableName: "Companion", comment: "Auth required notice"),
+                                    remedyTitle: NSLocalizedString("Authenticate", tableName: "Companion", comment: "Authenticate button")) { [weak self] in
                     self?.startFreshPairingFlow()
                 }
             }
@@ -644,11 +762,11 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
         hideTopContent()
         qrImageView.alphaValue = 1.0
         qrImageView.isHidden = false
-        instructionsLabel.stringValue = "In the iTerm2 Buddy app on your iPhone, tap Scan and point the camera at this code."
+        instructionsLabel.stringValue = NSLocalizedString("In the iTerm2 Buddy app on your iPhone, tap Scan and point the camera at this code.", tableName: "Companion", comment: "QR scanning instructions")
         do {
             let code = try controller.startPairing()
             qrImageView.image = CompanionPairingController.qrImage(for: code.urlString(), pointSize: 240)
-            setStatus("Waiting for your iPhone…", color: .secondaryLabelColor)
+            setStatus(NSLocalizedString("Waiting for your iPhone…", tableName: "Companion", comment: "正在等待你的 iPhone…"), color: .secondaryLabelColor)
         } catch {
             setStatus("Could not start pairing: \(error.localizedDescription)", color: .systemRed)
         }
@@ -695,7 +813,7 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
     private func buildContent() {
         guard let content = window?.contentView else { return }
 
-        let title = NSTextField(labelWithString: "Companion Device Settings")
+        let title = NSTextField(labelWithString: NSLocalizedString("Companion Device Settings", tableName: "Companion", comment: "Settings window title label"))
         title.font = .boldSystemFont(ofSize: 18)
         title.alignment = .center
         title.frame = NSRect(x: 20, y: 556, width: 320, height: 28)
@@ -737,7 +855,7 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
         checkmarkImageView.frame = NSRect(x: 115, y: 274, width: 130, height: 130)
         let checkConfig = NSImage.SymbolConfiguration(pointSize: 96, weight: .regular)
         let checkImage = NSImage(systemSymbolName: SFSymbol.checkmarkCircleFill.rawValue,
-                                 accessibilityDescription: "Companion device connection status")?
+                                 accessibilityDescription: NSLocalizedString("Companion device connection status", tableName: "Companion", comment: "对勾无障碍描述"))?
             .withSymbolConfiguration(checkConfig)
         // Must be a template for contentTintColor to apply; .withSymbolConfiguration
         // can clear the flag. Template rendering also keeps the checkmark as a
@@ -845,9 +963,9 @@ final class CompanionPairingWindowController: NSWindowController, NSWindowDelega
         recheckButton.isBordered = false
         recheckButton.imageScaling = .scaleProportionallyDown
         recheckButton.image = NSImage(systemSymbolName: SFSymbol.arrowClockwise.rawValue,
-                                      accessibilityDescription: "Check again")?
+                                      accessibilityDescription: NSLocalizedString("Check again", tableName: "Companion", comment: "重新检查按钮无障碍描述"))?
             .withSymbolConfiguration(NSImage.SymbolConfiguration(pointSize: 12, weight: .regular))
-        recheckButton.toolTip = "Check again for the plugin"
+        recheckButton.toolTip = NSLocalizedString("Check again for the plugin", tableName: "Companion", comment: "重新检查插件工具提示")
         content.addSubview(recheckButton)
 
         pluginActionButton.target = self

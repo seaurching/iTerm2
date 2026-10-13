@@ -63,7 +63,7 @@ class iTermBrowserWelcomePageHandler: NSObject, iTermBrowserPageHandler {
             """
             
             guard let data = redirectHTML.data(using: .utf8) else {
-                urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserWelcomePageHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to encode redirect HTML"]))
+                urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserWelcomePageHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Failed to encode redirect HTML", tableName: "Browser", comment: "编码重定向 HTML 失败")]))
                 return
             }
             
@@ -78,7 +78,7 @@ class iTermBrowserWelcomePageHandler: NSObject, iTermBrowserPageHandler {
         let htmlToServe = generateWelcomeHTML()
         
         guard let data = htmlToServe.data(using: .utf8) else {
-            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserWelcomePageHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to encode HTML"]))
+            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserWelcomePageHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Failed to encode HTML", tableName: "Browser", comment: "编码 HTML 失败")]))
             return
         }
         

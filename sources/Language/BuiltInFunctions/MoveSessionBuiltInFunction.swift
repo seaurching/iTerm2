@@ -25,7 +25,7 @@ class MoveSessionBuiltInFunction: iTermBuiltInFunction {
                       let before = parameters["before"] as? Bool else {
                     completion(nil, NSError(domain: "com.iterm2.move-session",
                                             code: 1,
-                                            userInfo: [NSLocalizedDescriptionKey: "Invalid argument"]))
+                                            userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Invalid argument", tableName: "Language", comment: "Move session error: invalid argument")]))
                     return
                 }
                 do {
@@ -47,22 +47,22 @@ class MoveSessionBuiltInFunction: iTermBuiltInFunction {
               let destination = iTermController.sharedInstance().session(withGUID: destinationID) else {
             throw NSError(domain: "com.iterm2.move-session",
                           code: 2,
-                          userInfo: [NSLocalizedDescriptionKey: "Invalid session ID"])
+                          userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Invalid session ID", tableName: "Language", comment: "Move session error: invalid session ID")])
         }
         if !source.is(compatibleWith: destination) {
             throw NSError(domain: "com.iterm2.move-session",
                           code: 3,
-                          userInfo: [NSLocalizedDescriptionKey: "Sessions are not compatible"])
+                          userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Sessions are not compatible", tableName: "Language", comment: "Move session error: sessions not compatible")])
         }
         guard let sourceTab = source.delegate as? PTYTab, let destinationTab = destination.delegate as? PTYTab else {
             throw NSError(domain: "com.iterm2.move-session",
                           code: 5,
-                          userInfo: [NSLocalizedDescriptionKey: "Session has no tab"])
+                          userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Session has no tab", tableName: "Language", comment: "Move session error: session has no tab")])
         }
         if sourceTab.lockedSession == source || destinationTab.lockedSession == destination {
             throw NSError(domain: "com.iterm2.move-session",
                           code: 6,
-                          userInfo: [NSLocalizedDescriptionKey: "Can't move locked session"])
+                          userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Can't move locked session", tableName: "Language", comment: "Move session error: cant move locked session")])
         }
         if destinationTab.hasMaximizedPane() {
             destinationTab.unmaximize()

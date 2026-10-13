@@ -40,7 +40,7 @@ class FileAttachmentSubpartView: NSView {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) has not been implemented")
+        it_fatalError(NSLocalizedString("init(coder:) has not been implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     override func hitTest(_ point: NSPoint) -> NSView? {
@@ -111,11 +111,11 @@ class FileAttachmentSubpartView: NSView {
     private func setupContextMenu() {
         let menu = NSMenu()
 
-        let revealItem = NSMenuItem(title: "Reveal in Finder", action: #selector(revealInFinder), keyEquivalent: "")
+        let revealItem = NSMenuItem(title: NSLocalizedString("Reveal in Finder", tableName: "AITermXC", comment: "在 Finder 中显示"), action: #selector(revealInFinder), keyEquivalent: "")
         revealItem.target = self
         menu.addItem(revealItem)
 
-        let openItem = NSMenuItem(title: "Open", action: #selector(openFile), keyEquivalent: "")
+        let openItem = NSMenuItem(title: NSLocalizedString("Open", tableName: "AITermXC", comment: "打开"), action: #selector(openFile), keyEquivalent: "")
         openItem.target = self
         menu.addItem(openItem)
 

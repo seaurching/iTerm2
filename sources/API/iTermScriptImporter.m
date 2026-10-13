@@ -75,7 +75,7 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
     DLog(@"downloadedURL=%@ userInitiated=%@ offerAutoLauch=%@", downloadedURL, @(userInitiated), @(offerAutoLaunch));
     if (sInstallingScript) {
         RLog(@"already installing");
-        completion(@"Another import is in progress. Please try again after it completes.", NO, nil);
+        completion(NSLocalizedStringFromTableInBundle(@"Another import is in progress. Please try again after it completes.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"error message when import is already running"), NO, nil);
         return;
     }
 
@@ -128,7 +128,7 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
             DLog(@"Unzip finished with %@", error);
             if (error) {
                 [pleaseWait.window close];
-                completion([NSString stringWithFormat: @"Could not unzip archive: %@", error.localizedDescription], NO, nil);
+                completion([NSString stringWithFormat: NSLocalizedStringFromTableInBundle(@"Could not unzip archive: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"error message when unzip fails"), error.localizedDescription], NO, nil);
                 sInstallingScript = NO;
                 return;
             }
@@ -163,7 +163,7 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
         DLog(@"Is .its");
         if (![verifier smellsLikeSignedArchive:NULL]) {
             DLog(@"Doesn't smell like signed archive");
-            completion(nil, @"This script archive is corrupt and cannot be installed.", NO, NO, NO);
+            completion(nil, NSLocalizedStringFromTableInBundle(@"This script archive is corrupt and cannot be installed.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"error message for corrupt archive"), NO, NO, NO);
             return;
         }
         
@@ -183,7 +183,7 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
         return;
     }
     if (requireSignature) {
-        completion(nil, @"This is not a valid iTerm2 script archive.", NO, NO, NO);
+        completion(nil, NSLocalizedStringFromTableInBundle(@"This is not a valid iTerm2 script archive.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"error message for non-its file with requireSignature"), NO, NO, NO);
         return;
     }
     completion(url, nil, NO, NO, NO);
@@ -198,7 +198,7 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
     DLog(@"ok=%@ zipURL=%@ requireSignature=%@", @(ok), zipURL, @(requireSignature));
     if (!ok) {
         DLog(@"Not OK");
-        completion(nil, error.localizedDescription ?: @"Unknown error", NO, NO, NO);
+        completion(nil, error.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"Unknown error", @"APIFiles", [NSBundle bundleForClass:[self class]], @"fallback error message"), NO, NO, NO);
         return;
     }
     
@@ -206,13 +206,13 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
         NSData *data = [[verifier.reader signingCertificates:nil] firstObject];
         if (!data) {
             DLog(@"No cert data");
-            completion(nil, @"Could not find certificate after verficiation (nil data)", NO, NO, NO);
+            completion(nil, NSLocalizedStringFromTableInBundle(@"Could not find certificate after verficiation (nil data)", @"APIFiles", [NSBundle bundleForClass:[self class]], @"error when certificate data is nil after verification"), NO, NO, NO);
             return;
         }
         SIGCertificate *cert = [[SIGCertificate alloc] initWithData:data];
         if (!cert) {
             DLog(@"Bad data");
-            completion(nil, @"Could not find certificate after verficiation (bad data)", NO, NO, NO);
+            completion(nil, NSLocalizedStringFromTableInBundle(@"Could not find certificate after verficiation (bad data)", @"APIFiles", [NSBundle bundleForClass:[self class]], @"error when certificate data is bad after verification"), NO, NO, NO);
             return;
         }
         [self confirmInstallationOfVerifiedArchive:verifier.reader
@@ -221,7 +221,7 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
             RLog(@"Confirmation ok=%@ reveal=%@", @(ok), @(reveal));
             if (!ok) {
                 DLog(@"Canceled");
-                completion(nil, @"Installation canceled by user request.", NO, NO, YES);
+                completion(nil, NSLocalizedStringFromTableInBundle(@"Installation canceled by user request.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"error message when user cancels installation"), NO, NO, YES);
                 return;
             }
             DLog(@"Will copy payload");
@@ -248,7 +248,7 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
     const BOOL ok = [verifier copyPayloadToURL:zipURL error:&innerError];
     DLog(@"%@", innerError);
     if (!ok) {
-        completion(nil, innerError.localizedDescription ?: @"Unknown error");
+        completion(nil, innerError.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"Unknown error", @"APIFiles", [NSBundle bundleForClass:[self class]], @"fallback error message"));
         return;
     }
     completion(zipURL, nil);
@@ -263,15 +263,15 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
                              withCertificate:(SIGCertificate *)cert
                                   completion:(void (^)(BOOL ok, BOOL toTemp))completion {
     DLog(@"Confirming");
-    NSString *body = [NSString stringWithFormat:@"The signature of ”%@” has been verified. The author is:\n\n%@\n\nWould you like to install it?",
+    NSString *body = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The signature of “%@” has been verified. The author is:\n\n%@\n\nWould you like to install it?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"confirmation message showing verified signature author"),
                       reader.url.lastPathComponent,
-                      ((cert.name ?: cert.longDescription) ?: @"Unknown")];
+                      ((cert.name ?: cert.longDescription) ?: NSLocalizedStringFromTableInBundle(@"Unknown", @"APIFiles", [NSBundle bundleForClass:[self class]], @"unknown author fallback"))];
     iTermWarningSelection selection = [iTermWarning showWarningWithTitle:body
-                                                                 actions:@[ @"OK", @"Cancel", @"Reveal Contents" ]
+                                                                 actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:[self class]], @"OK button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Cancel button"), NSLocalizedStringFromTableInBundle(@"Reveal Contents", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Reveal Contents button") ]
                                                                accessory:nil
                                                               identifier:nil
                                                              silenceable:kiTermWarningTypePersistent
-                                                                 heading:@"Confirm Installation"
+                                                                 heading:NSLocalizedStringFromTableInBundle(@"Confirm Installation", @"APIFiles", [NSBundle bundleForClass:[self class]], @"dialog heading for confirming installation")
                                                                   window:nil];
     completion(selection != kiTermWarningSelection1, selection == kiTermWarningSelection2);
 }
@@ -330,10 +330,10 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
         RLog(@"Failed to extract archive from container");
         if (deprecated) {
             DLog(@"deprecated");
-            completion(@"This archive was created by an older version of iTerm2. This kind of archive is no longer supported and cannot be installed.", NO, nil);
+            completion(NSLocalizedStringFromTableInBundle(@"This archive was created by an older version of iTerm2. This kind of archive is no longer supported and cannot be installed.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"error message for deprecated archive format"), NO, nil);
         } else {
             DLog(@"invalid");
-            completion(@"Archive does not contain a valid iTerm2 script", NO, nil);
+            completion(NSLocalizedStringFromTableInBundle(@"Archive does not contain a valid iTerm2 script", @"APIFiles", [NSBundle bundleForClass:[self class]], @"error message for invalid archive content"), NO, nil);
         }
         return;
     }
@@ -342,12 +342,12 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
         DLog(@"Already have a script named %@", archive.name);
         iTermWarningSelection selection = kiTermWarningSelection0;
         if (!avoidUI) {
-            selection = [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"A script named “%@” is already installed", archive.name]
-                                                   actions:@[ @"Replace Script", @"Cancel" ]
+            selection = [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"A script named “%@” is already installed", @"APIFiles", [NSBundle bundleForClass:[self class]], @"warning message for duplicate script name"), archive.name]
+                                                   actions:@[ NSLocalizedStringFromTableInBundle(@"Replace Script", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Replace Script button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Cancel button") ]
                                                  accessory:nil
                                                 identifier:nil
                                                silenceable:kiTermWarningTypePersistent
-                                                   heading:@"Script Already Exists"
+                                                   heading:NSLocalizedStringFromTableInBundle(@"Script Already Exists", @"APIFiles", [NSBundle bundleForClass:[self class]], @"dialog heading for script already exists warning")
                                                     window:nil];
         }
         if (selection == kiTermWarningSelection0) {
@@ -359,7 +359,7 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
             // move-aside flow fixed). Abort the replace and leave the script untouched.
             NSString *backup = [self moveAsideScriptNamed:archive.name];
             if (backup == nil) {
-                completion([NSString stringWithFormat:@"Could not replace “%@”: the existing script could not be moved aside, so it was left unchanged.", archive.name],
+                completion([NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not replace “%@”: the existing script could not be moved aside, so it was left unchanged.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"error message when move-aside fails"), archive.name],
                            NO, nil);
                 return;
             }
@@ -394,8 +394,8 @@ static NSString *const iTermInstallStagingPrefix = @".installing-";
                 [self restoreReplacedScriptToPath:[[[NSFileManager defaultManager] scriptsPath] stringByAppendingPathComponent:archive.name]
                                        fromBackup:replacedScriptBackup];
                 NSString *message = canceled
-                    ? [NSString stringWithFormat:@"Replacing “%@” was canceled. The existing script was kept.", archive.name]
-                    : (error.localizedDescription ?: @"The script could not be installed.");
+                    ? [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Replacing “%@” was canceled. The existing script was kept.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"message when replace was canceled"), archive.name]
+                    : (error.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"The script could not be installed.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"fallback install failure message"));
                 completion(message, NO, nil);
                 return;
             }

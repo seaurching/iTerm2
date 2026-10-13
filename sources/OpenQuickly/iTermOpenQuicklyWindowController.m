@@ -108,7 +108,7 @@
     if (@available(macOS 10.16, *)) {
         {
             NSImage *image = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolMagnifyingglass)
-                                       accessibilityDescription:@"Search icon"];
+                                       accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Search icon", @"OpenQuickly", [NSBundle bundleForClass:[self class]], @"Open Quickly: search icon accessibility")];
             NSImageSymbolConfiguration *config =
             [NSImageSymbolConfiguration configurationWithPointSize:21
                                                             weight:NSFontWeightRegular];
@@ -119,7 +119,7 @@
             [NSImageSymbolConfiguration configurationWithPointSize:14
                                                             weight:NSFontWeightRegular];
             NSImage *image = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolXmarkCircleFill)
-                                       accessibilityDescription:@"Clear search query"];
+                                       accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Clear search query", @"OpenQuickly", [NSBundle bundleForClass:[self class]], @"Open Quickly: clear search accessibility")];
             [_xButton setImage:[image imageWithSymbolConfiguration:config]];
             NSRect frame = _xButton.frame;
             const CGFloat delta = 2;
@@ -313,9 +313,9 @@
     PTYTab *tab = (PTYTab *)session.delegate;
     NSString *windowTitle = tab.realParentWindow.window.title ?: @"";
     if (windowTitle.length == 0) {
-        return [NSString stringWithFormat:@"Tab %d", tab.objectCount];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Tab %d", @"OpenQuickly", [NSBundle bundleForClass:[self class]], @"Open Quickly: tab preview"), tab.objectCount];
     }
-    return [NSString stringWithFormat:@"Tab %d · %@", tab.objectCount, windowTitle];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Tab %d · %@", @"OpenQuickly", [NSBundle bundleForClass:[self class]], @"Open Quickly: tab preview with title"), tab.objectCount, windowTitle];
 }
 
 - (void)refreshPreview {
@@ -518,9 +518,9 @@
                                                              window:nil];
                         } else {
                             NSAlert *alert = [[NSAlert alloc] init];
-                            [alert setMessageText:@"Function Call Result"];
-                            [alert setInformativeText:[NSString stringWithFormat:@"%@ returned:\n%@", item.identifier, [value description]]];
-                            [alert addButtonWithTitle:@"OK"];
+                            [alert setMessageText:NSLocalizedStringFromTableInBundle(@"Function Call Result", @"OpenQuickly", [NSBundle bundleForClass:[self class]], @"Open Quickly: function call result alert title")];
+                            [alert setInformativeText:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ returned:\n%@", @"OpenQuickly", [NSBundle bundleForClass:[self class]], @"Open Quickly: function call result informative text"), item.identifier, [value description]]];
+                            [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"OpenQuickly", [NSBundle bundleForClass:[self class]], @"Open Quickly: function call result OK button")];
                             [alert runModal];
                         }
                     }];
@@ -578,7 +578,7 @@
     result.imageView.image = item.icon;
 
     result.textField.attributedStringValue =
-        item.title ?: [[NSAttributedString alloc] initWithString:@"Untitled" attributes:@{}];
+        item.title ?: [[NSAttributedString alloc] initWithString:NSLocalizedStringFromTableInBundle(@"Untitled", @"OpenQuickly", [NSBundle bundleForClass:[self class]], @"Open Quickly: untitled item") attributes:@{}];
     [result.textField.cell setLineBreakMode:NSLineBreakByTruncatingTail];
     if (item.detail) {
         result.detailTextField.attributedStringValue = item.detail;

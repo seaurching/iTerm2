@@ -1,0 +1,72 @@
+/* Default alert title when no heading is set */
+"Warning" = "警告";
+
+/* Alert informative text: explaining why a suppressed alert is shown */
+"%@\n\nThis alert had a saved selection of “%@”. It is being shown because “Always show alerts with remembered selections” is turned on in iTerm2 > Suppressed Alerts." = "%@\n\n此警告已保存选择“%@”。显示此警告是因为“iTerm2 > 已抑制的警告”中开启了“始终显示带有已记住选择的警告”。";
+
+/* Alert button: permanently forget saved selection */
+"Permanently Forget Saved Selection" = "永久忘记已保存的选择";
+
+/* Suppression button: suppress for 10 minutes (single action) */
+"Suppress this message for ten minutes" = "在十分钟内不显示此消息";
+
+/* Suppression button: remember choice for 10 minutes (multiple actions) */
+"Remember my choice for ten minutes" = "在十分钟内记住我的选择";
+
+/* Suppression button: suppress for 30 days (single action) */
+"Suppress this message for 30 days" = "在 30 天内不显示此消息";
+
+/* Suppression button: remember choice for 30 days (multiple actions) */
+"Remember my choice for 30 days" = "在 30 天内记住我的选择";
+
+/* Suppression button: suppress permanently (single action) */
+"Suppress this message permanently" = "永久不显示此消息";
+
+/* Suppression button: remember choice permanently (multiple actions) */
+"Remember my choice" = "记住我的选择";
+
+/* Fallback failure reason when exception reason is nil */
+"Unknown reason" = "未知原因";
+
+/* Label in color menu item */
+"Tab Color:" = "标签页颜色：";
+
+/* Accessibility description for eyedropper icon */
+"Color Picker" = "取色器";
+
+/* Overlay label when no image is selected */
+"No Image Selected — Click to set" = "未选择图像 — 点击设置";
+
+/* Overlay label when image is set, click to change */
+"Click to change" = "点击更改";
+
+/* Placeholder text while recording a shortcut */
+"Recording" = "正在录制";
+
+/* Placeholder text when shortcut is empty and enabled */
+"Click to Set" = "点击设置";
+
+/* Alert: confirm using a commonly used keystroke */
+"Are you sure you want to use “%@” %@? This looks like a commonly used keystroke." = "您确定要使用“%@” %@吗？这看起来是一个常用按键。";
+
+/* Alert button: OK */
+"OK" = "确定";
+
+/* Alert heading: confirm shortcut */
+"Confirm Shortcut" = "确认快捷键";
+
+/* Button title: open in browser */
+"Open in %@" = "在%@中打开";
+
+/* Fallback browser name */
+"Default Browser" = "默认浏览器";
+
+/* JS alert: error sending return value to JavaScript */
+"Caught error while sending return value to javascript: " = "向 JavaScript 发送返回值时捕获到错误：";
+
+/* Fallback error description */
+"Unknown error" = "未知错误";
+
+/* Error description: JavaScript evaluation failed */
+"Error evaluating '%@' at line %@: %@" = "评估 '%@' 时出错（第 %@ 行）：%@";
+

@@ -261,7 +261,7 @@
 
 + (NSImage *)it_hamburgerForClass:(Class)theClass {
     if (@available(macOS 10.16, *)) {
-        return [self it_imageForSymbolName:SFSymbolGetString(SFSymbolEllipsisCircle) accessibilityDescription:@"Menu"];
+        return [self it_imageForSymbolName:SFSymbolGetString(SFSymbolEllipsisCircle) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Menu", @"Categories", [NSBundle mainBundle], @"菜单")];
     }
     return [NSImage it_imageNamed:@"Hamburger" forClass:theClass];
 }

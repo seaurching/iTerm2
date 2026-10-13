@@ -8,11 +8,11 @@
 @objc(iTermFoldTrigger)
 class FoldTrigger: Trigger {
     override var description: String {
-        return "Fold to \(self.param ?? "")"
+        return String(format: NSLocalizedString("Fold to %@", tableName: "Triggers", comment: "折叠触发器描述"), String(describing: self.param ?? ""))
     }
 
     override static var title: String {
-        return "Fold to Named Mark"
+        return NSLocalizedString("Fold to Named Mark", tableName: "Triggers", comment: "折叠触发器标题")
     }
 
     override func takesParameter() -> Bool {
@@ -26,7 +26,7 @@ class FoldTrigger: Trigger {
     }
 
     override func triggerOptionalParameterPlaceholder(withInterpolation interpolation: Bool) -> String? {
-        return "Name of Mark"
+        return NSLocalizedString("Name of Mark", tableName: "Triggers", comment: "占位符：标记名称")
     }
 
     override func performAction(withCapturedStrings strings: [String],

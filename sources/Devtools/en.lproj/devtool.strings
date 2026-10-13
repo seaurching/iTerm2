@@ -1,0 +1,10 @@
+"ERROR: No default profile found\n" = "ERROR: No default profile found\n";
+"ERROR: Default profile has no GUID\n" = "ERROR: Default profile has no GUID\n";
+"ERROR: Legacy render failed: %@\n" = "ERROR: Legacy render failed: %@\n";
+"ERROR: GPU render failed: %@\n" = "ERROR: GPU render failed: %@\n";
+"Session has no textview" = "Session has no textview";
+"Legacy render returned nil" = "Legacy render returned nil";
+"No Metal device" = "No Metal device";
+"Session has no view" = "Session has no view";
+"No screen" = "No screen";
+"Metal capture returned nil" = "Metal capture returned nil";

@@ -37,6 +37,11 @@
 @end
 
 @implementation iTermPreferencesInnerTabContainerView
+
+- (void)awakeFromNib {
+    [self it_adaptInlineRowsForLocalization];
+}
+
 @end
 
 NSString *const kPreferenceDidChangeFromOtherPanel = @"kPreferenceDidChangeFromOtherPanel";
@@ -570,16 +575,16 @@ NSString *const iTermPreferencesDidToggleIndicateNonDefaultValues = @"iTermPrefe
     NSString *team = [iTermAppSignatureValidator currentAppTeamID];
     NSString *message;
     if (!team) {
-        message = @"A required file appears to be missing or corrupted and iTerm2’s code signature could not be verified. You should download a fresh copy of the app and reinstall it.";
+        message = NSLocalizedStringFromTableInBundle(@"A required file appears to be missing or corrupted and iTerm2’s code signature could not be verified. You should download a fresh copy of the app and reinstall it.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     } else if (![team isEqualToString:@"H7V7XYVQ7D"]) {
-        message = @"A required file appears to be missing or corrupted and iTerm2’s code signature did not match that of the official distribution. You should download a fresh copy of the app and reinstall it.";
+        message = NSLocalizedStringFromTableInBundle(@"A required file appears to be missing or corrupted and iTerm2’s code signature did not match that of the official distribution. You should download a fresh copy of the app and reinstall it.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     } else {
-        message = @"A required file appears to be missing or corrupted, yet against all odds the code signature for iTerm2 is valid. Please file a bug at https://iterm2.com/bugs";
+        message = NSLocalizedStringFromTableInBundle(@"A required file appears to be missing or corrupted, yet against all odds the code signature for iTerm2 is valid. Please file a bug at https://iterm2.com/bugs", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     }
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Application Corrupt"];
-    [alert setInformativeText:[NSString stringWithFormat:@"While trying to load the setting for “%@”: %@", key, message]];
-    [alert addButtonWithTitle:@"OK"];
+    [alert setMessageText:NSLocalizedStringFromTableInBundle(@"Application Corrupt", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+    [alert setInformativeText:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"While trying to load the setting for “%@”: %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), key, message]];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
     [alert setAlertStyle:NSAlertStyleCritical];
     [alert runModal];
     exit(1);
@@ -668,11 +673,11 @@ NSString *const iTermPreferencesDidToggleIndicateNonDefaultValues = @"iTermPrefe
     }
     NSSlider *slider = [NSSlider castFrom:control];
     if (slider) {
-        [phrases addObject:@"slider"];
+        [phrases addObject:NSLocalizedStringFromTableInBundle(@"slider", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
     }
     CPKColorWell *colorWell = [CPKColorWell castFrom:control];
     if (colorWell) {
-        [phrases addObject:@"color"];
+        [phrases addObject:NSLocalizedStringFromTableInBundle(@"color", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
     }
     NSTextField *textField = [NSTextField castFrom:control];
     if (textField) {

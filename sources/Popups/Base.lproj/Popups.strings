@@ -1,0 +1,5 @@
+/* Popups: command history footer */
+"Press ⇧⏎ or ⌥⏎ to send command." = "Press ⇧⏎ or ⌥⏎ to send command.";
+
+/* Popups: pasteboard history secure keyboard footer */
+"⚠️ Secure keyboard entry disables paste history." = "⚠️ Secure keyboard entry disables paste history.";

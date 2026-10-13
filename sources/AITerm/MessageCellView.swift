@@ -28,7 +28,7 @@ class MessageCellView: NSView {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) not implemented")
+        it_fatalError(NSLocalizedString("init(coder:) not implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     deinit {
@@ -66,19 +66,19 @@ class MessageCellView: NSView {
     override var menu: NSMenu? {
         get {
             DLog("menu \(self)")
-            let menu = NSMenu(title: "Context Menu")
+            let menu = NSMenu(title: NSLocalizedString("Context Menu", tableName: "AITermXC", comment: "上下文菜单"))
             if editable {
-                let editItem = NSMenuItem(title: "Edit", action: #selector(editMenuItemClicked(_:)), keyEquivalent: "")
+                let editItem = NSMenuItem(title: NSLocalizedString("Edit", tableName: "AITermXC", comment: "编辑"), action: #selector(editMenuItemClicked(_:)), keyEquivalent: "")
                 editItem.target = self
                 menu.addItem(editItem)
             }
 
-            let copyItem = NSMenuItem(title: "Copy", action: #selector(copyMenuItemClicked(_:)), keyEquivalent: "")
+            let copyItem = NSMenuItem(title: NSLocalizedString("Copy", tableName: "AITermXC", comment: "复制"), action: #selector(copyMenuItemClicked(_:)), keyEquivalent: "")
             copyItem.target = self
             menu.addItem(copyItem)
 
             if editable {
-                let forkItem = NSMenuItem(title: "Fork", action: #selector(forkMenuItemClicked(_:)), keyEquivalent: "")
+                let forkItem = NSMenuItem(title: NSLocalizedString("Fork", tableName: "AITermXC", comment: "分叉"), action: #selector(forkMenuItemClicked(_:)), keyEquivalent: "")
                 forkItem.target = self
                 menu.addItem(forkItem)
             }
@@ -91,7 +91,7 @@ class MessageCellView: NSView {
     }
 
     @objc func copyMenuItemClicked(_ sender: Any) {
-        it_fatalError("Subclass must implement this")
+        it_fatalError(NSLocalizedString("Subclass must implement this", tableName: "AITermXC", comment: "子类必须实现此方法"))
     }
     @objc func forkMenuItemClicked(_ sender: Any) {
         if let id = messageUniqueID {

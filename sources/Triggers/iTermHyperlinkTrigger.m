@@ -15,11 +15,11 @@
 @implementation iTermHyperlinkTrigger
 
 + (NSString *)title {
-    return @"Make Hyperlink…";
+    return NSLocalizedStringFromTableInBundle(@"Make Hyperlink…", @"Triggers", [NSBundle bundleForClass:[self class]], @"创建超链接触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Make Hyperlink with URL “%@”", self.param];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Make Hyperlink with URL “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"创建超链接触发器描述"), self.param];
 }
 
 - (BOOL)takesParameter {

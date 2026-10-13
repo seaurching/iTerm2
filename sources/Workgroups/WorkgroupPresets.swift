@@ -21,11 +21,11 @@ enum WorkgroupPresets {
     static let all: [WorkgroupPreset] = [
         WorkgroupPreset(
             identifier: "codingAgentPlusDiff",
-            displayName: "Coding Agent + Diff",
+            displayName: NSLocalizedString("Coding Agent + Diff", tableName: "Workgroups", comment: "预设：编码代理+Diff"),
             build: buildCodingAgentPlusDiff),
         WorkgroupPreset(
             identifier: "codingAgentPlusDiffPlusCodeReview",
-            displayName: "Coding Agent + Diff + Code Review",
+            displayName: NSLocalizedString("Coding Agent + Diff + Code Review", tableName: "Workgroups", comment: "预设：编码代理+Diff+代码评审"),
             build: { buildCodingAgentPlusDiffPlusCodeReview() })
     ]
 
@@ -60,13 +60,13 @@ enum WorkgroupPresets {
                            .changedFileSelector,
                            .gitBaseSelector,
                            .navigation(WorkgroupNavigationShortcuts.defaults)],
-            displayName: "Diff",
+            displayName: NSLocalizedString("Diff", tableName: "Workgroups", comment: "Diff预设显示名称"),
             perFileCommand: "git diff \\(gitBase) -- \\(file)",
             mode: .diff)
 
         return iTermWorkgroup(
             uniqueIdentifier: UUID().uuidString,
-            name: "Coding Agent + Diff",
+            name: NSLocalizedString("Coding Agent + Diff", tableName: "Workgroups", comment: "编码代理+Diff工作组名称"),
             sessions: [root, diff])
     }
 
@@ -80,7 +80,7 @@ enum WorkgroupPresets {
         rootID: String = UUID().uuidString,
         diffID: String = UUID().uuidString,
         reviewID: String = UUID().uuidString,
-        name: String = "Coding Agent + Diff + Code Review"
+        name: String = NSLocalizedString("Coding Agent + Diff + Code Review", tableName: "Workgroups", comment: "编码代理+Diff+代码评审工作组名称")
     ) -> iTermWorkgroup {
         let main = iTermWorkgroupSessionConfig(
             uniqueIdentifier: rootID,
@@ -90,7 +90,7 @@ enum WorkgroupPresets {
             command: "",
             urlString: "",
             toolbarItems: [.modeSwitcher, .gitStatus, .autoRequestReviewWhenIdle],
-            displayName: "Chat")
+            displayName: NSLocalizedString("Chat", tableName: "Workgroups", comment: "Chat预设显示名称"))
 
         let diff = iTermWorkgroupSessionConfig(
             uniqueIdentifier: diffID,
@@ -103,7 +103,7 @@ enum WorkgroupPresets {
                            .changedFileSelector,
                            .gitBaseSelector,
                            .navigation(WorkgroupNavigationShortcuts.defaults)],
-            displayName: "Diff",
+            displayName: NSLocalizedString("Diff", tableName: "Workgroups", comment: "Diff预设显示名称"),
             perFileCommand: "git difftool -y -x vimdiff \\(gitBase) -- \\(file)",
             mode: .diff)
 
@@ -122,7 +122,7 @@ enum WorkgroupPresets {
             toolbarItems: [.modeSwitcher,
                            .reload(WorkgroupToolbarShortcut.reloadDefault),
                            .autoSendClippingsWhenIdle],
-            displayName: "Code Review",
+            displayName: NSLocalizedString("Code Review", tableName: "Workgroups", comment: "代码评审预设显示名称"),
             mode: .codeReview)
 
         return iTermWorkgroup(

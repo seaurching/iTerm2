@@ -21,7 +21,7 @@ class ImportExport: NSObject {
         let savePanel = NSSavePanel()
         savePanel.allowedContentTypes = ["itermexport"].compactMap { UTType(filenameExtension: $0) }
         savePanel.nameFieldStringValue = "iTerm2 State.itermexport"
-        savePanel.title = "Export iTerm2 Settings and Data"
+        savePanel.title = NSLocalizedString("Export iTerm2 Settings and Data", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")
 
         let response = savePanel.runModal()
         guard response == NSApplication.ModalResponse.OK else {
@@ -42,27 +42,27 @@ class ImportExport: NSObject {
             RLog("Failed: \(error)")
             switch error {
             case ImportExportError.failedToCreateTempDir(let reason):
-                return .failure("Failed to create temporary directory: \(reason)")
+                return .failure(String(format: NSLocalizedString("Failed to create temporary directory: %@", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), reason))
             case ImportExportError.failedToCreateIntermediateFolder(let reason):
-                return .failure("Failed to create folder: \(reason)")
+                return .failure(String(format: NSLocalizedString("Failed to create folder: %@", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), reason))
             case ImportExportError.failedToCopyFile(let reason):
-                return .failure("Failed to copy file: \(reason)")
+                return .failure(String(format: NSLocalizedString("Failed to copy file: %@", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), reason))
             case ImportExportError.failedToSaveFile(let reason):
-                return .failure("Failed to save file: \(reason)")
+                return .failure(String(format: NSLocalizedString("Failed to save file: %@", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), reason))
             case ImportExportError.bug(let reason):
-                return .failure("A bug was encountered: \(reason). Please report this at https://iterm2.com/bugs")
+                return .failure(String(format: NSLocalizedString("A bug was encountered: %@. Please report this at https://iterm2.com/bugs", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), reason))
             case ImportExportError.failedToCreateArchive(let reason):
-                return .failure("Failed to create archive: \(reason)")
+                return .failure(String(format: NSLocalizedString("Failed to create archive: %@", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), reason))
             case ImportExportError.failedToLoadFile(let reason):
-                return .failure("Failed to load file: \(reason)")
+                return .failure(String(format: NSLocalizedString("Failed to load file: %@", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), reason))
             case ImportExportError.corruptDataFound(let reason):
-                return .failure("Malformed data found: \(reason)")
+                return .failure(String(format: NSLocalizedString("Malformed data found: %@", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), reason))
             case ImportExportError.scriptExportFailed(let reason):
-                return .failure("Script could not be exported: \(reason)")
+                return .failure(String(format: NSLocalizedString("Script could not be exported: %@", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), reason))
             case ImportExportError.failedToInstallPythonRuntime:
-                return .failure("Failed to install Python runtime")
+                return .failure(NSLocalizedString("Failed to install Python runtime", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""))
             default:
-                return .failure("Unexpected error: \(error.localizedDescription)")
+                return .failure(String(format: NSLocalizedString("Unexpected error: %@", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), error.localizedDescription))
             }
         }
     }
@@ -91,12 +91,13 @@ class ImportExport: NSObject {
 
         do {
             let selection = iTermWarning.show(
-                withTitle: "Any needed Python runtimes will be installed and secure settings will be updated, which may require you to enter your password. Then iTerm2 will restart and finish importing. This can take several minutes.",
-                actions: ["OK", "Cancel"],
+                withTitle: NSLocalizedString("Any needed Python runtimes will be installed and secure settings will be updated, which may require you to enter your password. Then iTerm2 will restart and finish importing. This can take several minutes.", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""),
+                actions: [NSLocalizedString("OK", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""),
+                          NSLocalizedString("Cancel", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")],
                 accessory: nil,
                 identifier: nil,
                 silenceable: .kiTermWarningTypePersistent,
-                heading: "Importing Settings and Data",
+                heading: NSLocalizedString("Importing Settings and Data", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""),
                 window: nil)
             if selection == .kiTermWarningSelection1 {
                 return nil
@@ -125,12 +126,14 @@ class ImportExport: NSObject {
     @objc
     static func eraseAll(window: NSWindow?) -> String? {
         let exportSelection = iTermWarning.show(
-            withTitle: "Would you like to export your settings and data first? You will be able to re-import the exported file later if you change your mind.",
-            actions: ["Export First", "Skip Export", "Cancel"],
+            withTitle: NSLocalizedString("Would you like to export your settings and data first? You will be able to re-import the exported file later if you change your mind.", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""),
+            actions: [NSLocalizedString("Export First", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""),
+                      NSLocalizedString("Skip Export", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""),
+                      NSLocalizedString("Cancel", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")],
             accessory: nil,
             identifier: nil,
             silenceable: .kiTermWarningTypePersistent,
-            heading: "Erase All Settings and Data",
+            heading: NSLocalizedString("Erase All Settings and Data", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""),
             window: window)
 
         switch exportSelection {
@@ -150,11 +153,11 @@ class ImportExport: NSObject {
                 // export, not erase, and the erase has not happened.
                 _ = iTermWarning.show(
                     withTitle: message,
-                    actions: ["OK"],
+                    actions: [NSLocalizedString("OK", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")],
                     accessory: nil,
                     identifier: nil,
                     silenceable: .kiTermWarningTypePersistent,
-                    heading: "Problem Exporting Settings and Data",
+                    heading: NSLocalizedString("Problem Exporting Settings and Data", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""),
                     window: window)
                 return nil
             }
@@ -169,27 +172,13 @@ class ImportExport: NSObject {
         let confirmHeading: String
         let actionLabel: String
         if dryRun {
-            confirmTitle = """
-            Dry-run mode is enabled. iTerm2 will log to Console.app what it would erase and stay running. Nothing will actually be deleted.
-            """
-            confirmHeading = "Dry-Run Erase?"
-            actionLabel = "Run Dry Run"
+            confirmTitle = NSLocalizedString("Dry-run mode is enabled. iTerm2 will log to Console.app what it would erase and stay running. Nothing will actually be deleted.", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")
+            confirmHeading = NSLocalizedString("Dry-Run Erase?", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")
+            actionLabel = NSLocalizedString("Run Dry Run", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")
         } else {
-            confirmTitle = """
-            The following will be erased and iTerm2 will quit immediately:
-
-            \u{2022} Preferences (profiles, key bindings, arrangements, advanced settings)
-            \u{2022} Saved windows and sessions
-            \u{2022} Python API scripts and runtimes
-            \u{2022} Secure settings
-            \u{2022} The contents of ~/.iterm2 and ~/Library/Application Support/iTerm2
-
-            Items stored in the macOS Keychain (such as the AI API key and Password Manager entries) are not erased and must be removed manually from Keychain Access if you want them gone too. On systems with networked home directories, secure settings stored under /usr/local are written by an administrator and may also need to be removed manually.
-
-            This cannot be undone.
-            """
-            confirmHeading = "Erase Everything?"
-            actionLabel = "Erase Everything and Quit"
+            confirmTitle = NSLocalizedString("The following will be erased and iTerm2 will quit immediately:\n\n\u{2022} Preferences (profiles, key bindings, arrangements, advanced settings)\n\u{2022} Saved windows and sessions\n\u{2022} Python API scripts and runtimes\n\u{2022} Secure settings\n\u{2022} The contents of ~/.iterm2 and ~/Library/Application Support/iTerm2\n\nItems stored in the macOS Keychain (such as the AI API key and Password Manager entries) are not erased and must be removed manually from Keychain Access if you want them gone too. On systems with networked home directories, secure settings stored under /usr/local are written by an administrator and may also need to be removed manually.\n\nThis cannot be undone.", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")
+            confirmHeading = NSLocalizedString("Erase Everything?", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")
+            actionLabel = NSLocalizedString("Erase Everything and Quit", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")
         }
 
         let warning = iTermWarning()
@@ -197,7 +186,7 @@ class ImportExport: NSObject {
         warning.heading = confirmHeading
         let eraseAction = iTermWarningAction(label: actionLabel, block: nil)
         eraseAction.destructive = !dryRun
-        warning.warningActions = [iTermWarningAction(label: "Cancel"), eraseAction]
+        warning.warningActions = [iTermWarningAction(label: NSLocalizedString("Cancel", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")), eraseAction]
         warning.warningType = .kiTermWarningTypePersistent
         warning.window = window
         let confirm = warning.runModal()
@@ -210,12 +199,12 @@ class ImportExport: NSObject {
             _exit(0)
         }
         _ = iTermWarning.show(
-            withTitle: "iTerm2 logged what it would have erased to Console.app. Nothing was actually deleted because the “Dry-run Erase All Settings and Data” advanced setting is enabled.",
-            actions: ["OK"],
+            withTitle: NSLocalizedString("iTerm2 logged what it would have erased to Console.app. Nothing was actually deleted because the “Dry-run Erase All Settings and Data” advanced setting is enabled.", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""),
+            actions: [NSLocalizedString("OK", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "")],
             accessory: nil,
             identifier: nil,
             silenceable: .kiTermWarningTypePersistent,
-            heading: "Dry Run Complete",
+            heading: NSLocalizedString("Dry Run Complete", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""),
             window: window)
         return nil
     }
@@ -391,16 +380,16 @@ private struct ImportExportConfig {
     }
     var entities: [Entity] = [
         Entity(key: "python-runtimes",
-               displayName: "Python Runtimes",
+               displayName: NSLocalizedString("Python Runtimes", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "Import/Export entity display name"),
                flavor: .pythonRuntimes),
         Entity(key: "secure-user-defaults",
-               displayName: "Secure Settings",
+               displayName: NSLocalizedString("Secure Settings", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "Import/Export entity display name"),
                flavor: .secureUserDefaults),
         Entity(key: "disable-automation-auth",
-               displayName: "Python API Authorization Setting",
+               displayName: NSLocalizedString("Python API Authorization Setting", tableName: "iTerm", comment: "Import/Export entity display name"),
                flavor: .disableAutomationAuth),
         Entity(key: "user-defaults",
-               displayName: "User Defaults",
+               displayName: NSLocalizedString("User Defaults", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "Import/Export entity display name"),
                flavor: .userDefaults),
         Entity(key: "dot-iterm2",
                displayName: "~/.iterm2",
@@ -422,7 +411,7 @@ private struct ImportExportConfig {
                                              "servers",
                                              "version.txt"]))),
         Entity(key: "scripts",
-               displayName: "Python API Scripts",
+               displayName: NSLocalizedString("Python API Scripts", tableName: "iTerm", comment: "Import/Export entity display name"),
                flavor: .scripts),
     ]
 }
@@ -478,7 +467,7 @@ private class Importer {
 
     func importEntities(from url: URL) throws {
         let tempDir = try makeTempDir()
-        setStatus("Extracting Archive")
+        setStatus(NSLocalizedString("Extracting Archive", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""))
         if NSData.untar(fromArchive: url, to: tempDir) != 0 {
             return
         }
@@ -501,7 +490,7 @@ private class Importer {
                               from baseURL: URL,
                               phase: Phase) throws {
         let url = baseURL.appendingPathComponent(entity.key)
-        setStatus("Importing \(entity.displayName)")
+        setStatus(String(format: NSLocalizedString("Importing %@", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), entity.displayName))
         switch entity.flavor {
         case .pythonRuntimes:
             switch phase {
@@ -769,11 +758,11 @@ private struct PythonRuntimesImporterExporter {
             if !install(requirement: nil) {
                 throw ImportExportError.failedToInstallPythonRuntime
             }
-            setStatus?("Installing Python runtime \(i) of \(n)")
+            setStatus?(String(format: NSLocalizedString("Installing Python runtime %d of %d", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), i, n))
             i += 1
         }
         for requirement in info.requirements {
-            setStatus?("Installing Python runtime \(i) of \(n)")
+            setStatus?(String(format: NSLocalizedString("Installing Python runtime %d of %d", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), i, n))
             i += 1
             DLog("Install \(requirement)")
             if !install(requirement: requirement) {
@@ -1058,7 +1047,7 @@ private struct ScriptsImporterExporter {
         }
         for (i, path) in items.enumerated() {
             DLog("\(path)")
-            setStatus?("Import script \(i + 1) of \(items.count)")
+            setStatus?(String(format: NSLocalizedString("Import script %d of %d", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: ""), i + 1, items.count))
             importScript(from: path, autolaunch: path.lastPathComponent.hasPrefix("autolaunch"))
         }
     }
@@ -1147,7 +1136,7 @@ fileprivate extension Dictionary {
         guard let plistData = try? PropertyListSerialization.data(fromPropertyList: self,
                                                                   format: .xml,
                                                                   options: 0) else {
-            throw ImportExportError.bug("Failed to serialize user defaults")
+            throw ImportExportError.bug(NSLocalizedString("Failed to serialize user defaults", tableName: "Settings", bundle: Bundle(for: ImportExport.self), comment: "Bug reason: failed to serialize user defaults"))
         }
 
         do {

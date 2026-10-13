@@ -41,7 +41,7 @@ struct AISafetyClassifierBackend: AutoModeClassifier.Backend {
                     // error to "unsafe" -> manual approval.
                     guard AIAvailabilityProbe.check() else {
                         continuation.resume(throwing: AIError(
-                            "Apple Intelligence is unavailable; the command safety check will not fall back to a cloud provider."))
+                            NSLocalizedString("Apple Intelligence is unavailable; the command safety check will not fall back to a cloud provider.", tableName: "AITermXC", comment: "Apple Intelligence 不可用；命令安全检查将不会回退到云端提供商。")))
                         return
                     }
                 } else {
@@ -49,7 +49,7 @@ struct AISafetyClassifierBackend: AutoModeClassifier.Backend {
                     // there is nothing to classify with, so fail closed.
                     guard AITermControllerRegistrationHelper.instance.registration != nil else {
                         continuation.resume(
-                            throwing: AIError("No AI model is configured to classify command safety."))
+                            throwing: AIError(NSLocalizedString("No AI model is configured to classify command safety.", tableName: "AITermXC", comment: "未配置 AI 模型来对命令安全性进行分类。")))
                         return
                     }
                 }
@@ -73,7 +73,7 @@ struct AISafetyClassifierBackend: AutoModeClassifier.Backend {
                             continuation.resume(returning: content)
                         } else {
                             continuation.resume(
-                                throwing: AIError("Empty response from classifier model."))
+                                throwing: AIError(NSLocalizedString("Empty response from classifier model.", tableName: "AITermXC", comment: "分类器模型返回空响应。")))
                         }
                     case .failure(let error):
                         continuation.resume(throwing: error)

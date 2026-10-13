@@ -127,12 +127,12 @@ static NSString *const INTERCHANGE_TOUCH_BAR_ITEMS = @"Touch Bar Items";
         [_presetsPopup.menu addItem:[NSMenuItem separatorItem]];
     }
     NSMenuItem *item;
-    item = [[NSMenuItem alloc] initWithTitle:@"Import…"
+    item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Import…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                       action:@selector(importMenuItem:)
                                keyEquivalent:@""];
     item.target = self;
     [_presetsPopup.menu addItem:item];
-    item = [[NSMenuItem alloc] initWithTitle:@"Export…"
+    item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Export…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                       action:@selector(exportMenuItem:)
                                keyEquivalent:@""];
     item.target = self;
@@ -146,15 +146,15 @@ static NSString *const INTERCHANGE_TOUCH_BAR_ITEMS = @"Touch Bar Items";
 
 - (void)addViewsToSearchIndex:(iTermPreferencesBaseViewController *)vc {
     [vc addViewToSearchIndex:_addTouchBarItem
-                 displayName:@"Add touch bar item"
+                 displayName:NSLocalizedStringFromTableInBundle(@"Add touch bar item", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                      phrases:@[]
                          key:nil];
     [vc addViewToSearchIndex:_presetsPopup
-                 displayName:@"Key binding presets"
+                 displayName:NSLocalizedStringFromTableInBundle(@"Key binding presets", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                      phrases:@[]
                          key:nil];
     [vc addViewToSearchIndex:_touchBarMitigationsButton
-                 displayName:@"Touch bar mitigations"
+                 displayName:NSLocalizedStringFromTableInBundle(@"Touch bar mitigations", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                      phrases:@[ @"Haptic feedback for esc key",
                                 @"Key click sound for esc key",
                                 @"Visual indicator for esc key" ]
@@ -529,12 +529,12 @@ static NSString *const INTERCHANGE_TOUCH_BAR_ITEMS = @"Touch Bar Items";
 
 - (NSNumber *)removeBeforeLoading:(NSString *)thing {
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Remove all key mappings before %@?", thing]
-                               actions:@[ @"Keep", @"Remove", @"Cancel" ]
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Remove all key mappings before %@?", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), thing]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"Keep", @"Settings", [NSBundle bundleForClass:[self class]], @"警告按钮标题"), NSLocalizedStringFromTableInBundle(@"Remove", @"Settings", [NSBundle bundleForClass:[self class]], @"警告按钮标题"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"警告按钮标题") ]
                              accessory:nil
                             identifier:@"RemoveExistingGlobalKeyMappingsBeforeLoading"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Load Preset"
+                               heading:NSLocalizedStringFromTableInBundle(@"Load Preset", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                 window:self.view.window];
     switch (selection) {
         case kiTermWarningSelection0:

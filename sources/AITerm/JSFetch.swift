@@ -84,7 +84,7 @@ class PluginClient {
             do {
                 jsonData = try JSONEncoder().encode(request)
             } catch {
-                throw PluginError(reason: "Could not encode request to plugin: \(error)")
+                throw PluginError(reason: String(format: NSLocalizedString("Could not encode request to plugin: %@", tableName: "AITermXC", comment: "无法编码请求到插件：%@"), "\(error)"))
             }
             let jsonString = String(data: jsonData, encoding: .utf8)!
             args = [jsonString]
@@ -225,7 +225,7 @@ class PluginClient {
         DLog("callSync \(functionName)")
         // Create a JSContext
         guard let context = JSContext() else {
-            throw PluginError(reason: "Could not create context for plugin")
+            throw PluginError(reason: NSLocalizedString("Could not create context for plugin", tableName: "AITermXC", comment: "无法为插件创建上下文"))
         }
         registerFunctions(context: context, stream: stream)
         context.evaluateScript(code)
@@ -235,26 +235,26 @@ class PluginClient {
             exc = exception?.toString()
         }
         if let exc {
-            throw PluginError(reason: "Javascript exception: \(exc)")
+            throw PluginError(reason: String(format: NSLocalizedString("Javascript exception: %@", tableName: "AITermXC", comment: "JavaScript 异常：%@"), exc))
         }
 
         // Call the JavaScript function with the JSON string
         let result = context.objectForKeyedSubscript(functionName).call(withArguments: arguments)
         guard let result else {
-            throw PluginError(reason: "Plugin unexpectedly returned null")
+            throw PluginError(reason: NSLocalizedString("Plugin unexpectedly returned null", tableName: "AITermXC", comment: "插件意外返回 null"))
         }
         // Get JSON string from result
         guard let jsonResponse = result.toString() else {
-            throw PluginError(reason: "Unexpected output from plugin: \(result)")
+            throw PluginError(reason: String(format: NSLocalizedString("Unexpected output from plugin: %@", tableName: "AITermXC", comment: "插件意外输出：%%@"), "\(result)"))
         }
         // Convert JSON string back to WebResponse
         guard let responseData = jsonResponse.data(using: .utf8) else {
-            throw PluginError(reason: "Non-UTF-8 result from plugin: \(jsonResponse)")
+            throw PluginError(reason: String(format: NSLocalizedString("Non-UTF-8 result from plugin: %@", tableName: "AITermXC", comment: "插件返回非 UTF-8 结果：%@"), jsonResponse))
         }
         do {
             return try JSONDecoder().decode(ResponseType.self, from: responseData)
         } catch {
-            throw PluginError(reason: "Error running plugin: \(error)")
+            throw PluginError(reason: String(format: NSLocalizedString("Error running plugin: %@", tableName: "AITermXC", comment: "运行插件出错：%%@"), "\(error)"))
         }
     }
 
@@ -265,7 +265,7 @@ class PluginClient {
         DLog("callAsync \(functionName)")
         // Create a JSContext
         guard let context = JSContext() else {
-            throw PluginError(reason: "Could not create context for plugin")
+            throw PluginError(reason: NSLocalizedString("Could not create context for plugin", tableName: "AITermXC", comment: "无法为插件创建上下文"))
         }
 
         // Register performHTTPRequest or any other required function
@@ -281,13 +281,13 @@ class PluginClient {
 
         // Retrieve the JavaScript function
         guard let function = context.objectForKeyedSubscript(functionName) else {
-            throw PluginError(reason: "Function \(functionName) not found")
+            throw PluginError(reason: String(format: NSLocalizedString("Function %@ not found", tableName: "AITermXC", comment: "未找到函数 %@"), functionName))
         }
 
         // Call the JavaScript function which returns a Promise
         DLog("Call with arguments: \(arguments)")
         guard let result = function.call(withArguments: arguments) else {
-            throw PluginError(reason: "JavaScript function call failed")
+            throw PluginError(reason: NSLocalizedString("JavaScript function call failed", tableName: "AITermXC", comment: "JavaScript 函数调用失败"))
         }
 
         // Initialize semaphore for waiting on the asynchronous JavaScript call
@@ -297,7 +297,7 @@ class PluginClient {
 
         let handleWebResponse = { responseBody in
             guard let jsonResponse = JSValue(object: responseBody, in: context).toString() else {
-                error = PluginError(reason: "Unexpected output from plugin")
+                error = PluginError(reason: NSLocalizedString("Unexpected output from plugin", tableName: "AITermXC", comment: "插件意外输出"))
                 semaphore.signal()
                 return
             }
@@ -305,12 +305,12 @@ class PluginClient {
                 if let responseData = jsonResponse.data(using: .utf8) {
                     response = try JSONDecoder().decode(ResponseType.self, from: responseData)
                 } else {
-                    error = PluginError(reason: "Non-UTF-8 result from plugin: \(jsonResponse)")
+                    error = PluginError(reason: String(format: NSLocalizedString("Non-UTF-8 result from plugin: %@", tableName: "AITermXC", comment: "插件返回非 UTF-8 结果：%@"), jsonResponse))
                 }
             } catch let decodeError {
                 DLog("Response is:")
                 DLog(jsonResponse)
-                error = PluginError(reason: "Error decoding response: \(decodeError)")
+                error = PluginError(reason: String(format: NSLocalizedString("Error decoding response: %@", tableName: "AITermXC", comment: "解码响应出错：%%@"), "\(decodeError)"))
             }
             semaphore.signal()
         }
@@ -338,7 +338,7 @@ class PluginClient {
         } else if let error = error {
             throw error
         } else {
-            throw PluginError(reason: "Unknown error occurred")
+            throw PluginError(reason: NSLocalizedString("Unknown error occurred", tableName: "AITermXC", comment: "发生未知错误"))
         }
     }
 }

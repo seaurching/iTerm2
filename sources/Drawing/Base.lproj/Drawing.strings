@@ -1,0 +1,32 @@
+/* Drawing.strings - Indicator help text */
+
+"Keyboard input gets broadcast to other sessions." = "Keyboard input gets broadcast to other sessions.";
+"Keyboard input from another session gets broadcast to this one, but this session is not an input source for broadcasting (anything you type here stays here)." = "Keyboard input from another session gets broadcast to this one, but this session is not an input source for broadcasting (anything you type here stays here).";
+"This is a maximized split pane." = "This is a maximized split pane.";
+"A coprocess is running." = "A coprocess is running.";
+"Will alert on next mark." = "Will alert on next mark.";
+"All output is currently suppressed." = "All output is currently suppressed.";
+"Zoomed in." = "Zoomed in.";
+"Filtering." = "Filtering.";
+"In copy mode. See [documentation](https://iterm2.com/documentation-copymode.html) for details." = "In copy mode. See [documentation](https://iterm2.com/documentation-copymode.html) for details.";
+"Debug logging is enabled." = "Debug logging is enabled.";
+"Secure Keyboard Entry is enabled. Select iTerm2 > Secure Keyboard Entry to disable.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)" = "Secure Keyboard Entry is enabled. Select iTerm2 > Secure Keyboard Entry to disable.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)";
+"Secure Keyboard Entry is enabled because another app has turned it on.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)" = "Secure Keyboard Entry is enabled because another app has turned it on.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)";
+"This Hotkey Window is pinned." = "This Hotkey Window is pinned.";
+"AI Chats can view or control this session.\n * [Unlink from AI Chat](iterm2:unlink-session-chat?s=%@&t=%@)\n * [Reveal AI Chat](iterm2:reveal-chat-for-session?s=%@&t=%@)" = "AI Chats can view or control this session.\n * [Unlink from AI Chat](iterm2:unlink-session-chat?s=%@&t=%@)\n * [Reveal AI Chat](iterm2:reveal-chat-for-session?s=%@&t=%@)";
+"Commands run in this session are automatically sent to an AI chat, along with their output. [Stop sending](iterm2:disable-streaming-session-chat?s=%@&t=%@)" = "Commands run in this session are automatically sent to an AI chat, along with their output. [Stop sending](iterm2:disable-streaming-session-chat?s=%@&t=%@)";
+"This command is running within another session.\n * [Return to Enclosing Session](iterm2:pop-channel?s=%@&t=%@)" = "This command is running within another session.\n * [Return to Enclosing Session](iterm2:pop-channel?s=%@&t=%@)";
+"Keyboard input is being buffered and will be sent when a trigger stops buffering." = "Keyboard input is being buffered and will be sent when a trigger stops buffering.";
+"Showing alerts with remembered selections. Disable in iTerm2 > Suppressed Alerts." = "Showing alerts with remembered selections. Disable in iTerm2 > Suppressed Alerts.";
+"In screenshot mode. Close the screenshot panel to return to normal." = "In screenshot mode. Close the screenshot panel to return to normal.";
+
+/* Shared image store: failed to load image from path */
+"Failed to load image from %@" = "Failed to load image from %@";
+/* Text drawing helper debug: begin drawing string */
+"Begin drawing string: %@" = "Begin drawing string: %@";
+/* CoreText line rendering debug: begin run */
+"Begin run %@" = "Begin run %@";
+/* CoreText line rendering debug: begin glyph */
+"  begin glyph %@" = "  begin glyph %@";
+/* CoreText line rendering debug: glyph begins new character or column */
+"  This glyph begins a new character or column. xOffset<-%@, xOriginForCurrentColumn<-%@" = "  This glyph begins a new character or column. xOffset<-%@, xOriginForCurrentColumn<-%@";

@@ -43,6 +43,9 @@
 #import "NSStringITerm.h"
 #import "ScreenChar.h"
 
+#define ScreenCharLocalized(key, comment) \
+    NSLocalizedStringFromTableInBundle((key), @"ScreenChar", [NSBundle mainBundle], (comment))
+
 static NSString *const kScreenCharComplexCharMapKey = @"Complex Char Map";
 static NSString *const kScreenCharSpacingCombiningMarksKey = @"Spacing Combining Marks";
 static NSString *const kScreenCharInverseComplexCharMapKey = @"Inverse Complex Char Map";
@@ -744,25 +747,25 @@ static NSString *ScreenCharColorDescription(unsigned int red,
         case ColorModeAlternate:
             switch (red) {
                 case ALTSEM_DEFAULT:
-                    return fg ? @"Default fg" : @"Default bg";
+                    return fg ? ScreenCharLocalized(@"Default fg", @"Screen char: default foreground color") : ScreenCharLocalized(@"Default bg", @"Screen char: default background color");
                 case ALTSEM_SELECTED:
-                    return @"Selected";
+                    return ScreenCharLocalized(@"Selected", @"Screen char: selected color");
                 case ALTSEM_CURSOR:
-                    return @"Cursor";
+                    return ScreenCharLocalized(@"Cursor", @"Screen char: cursor color");
                 case ALTSEM_REVERSED_DEFAULT:
-                    return fg ? @"Default bg" : @"Default fg";
+                    return fg ? ScreenCharLocalized(@"Default bg", @"Screen char: default background color") : ScreenCharLocalized(@"Default fg", @"Screen char: default foreground color");
                 case ALTSEM_SYSTEM_MESSAGE:
-                    return @"System";
+                    return ScreenCharLocalized(@"System", @"Screen char: system message color");
             }
-            return @"Invalid";
+            return ScreenCharLocalized(@"Invalid", @"Screen char: invalid color");
 
         case ColorModeNormal:
             if (red < 16) {
                 NSString *color = @"";
-                NSArray<NSString *> *names = @[ @"Black", @"Red", @"Green", @"Yellow", @"Blue",
-                                                @"Magenta", @"Cyan", @"White" ];
+                NSArray<NSString *> *names = @[ ScreenCharLocalized(@"Black", @"Screen char: ANSI black color"), ScreenCharLocalized(@"Red", @"Screen char: ANSI red color"), ScreenCharLocalized(@"Green", @"Screen char: ANSI green color"), ScreenCharLocalized(@"Yellow", @"Screen char: ANSI yellow color"), ScreenCharLocalized(@"Blue", @"Screen char: ANSI blue color"),
+                                                ScreenCharLocalized(@"Magenta", @"Screen char: ANSI magenta color"), ScreenCharLocalized(@"Cyan", @"Screen char: ANSI cyan color"), ScreenCharLocalized(@"White", @"Screen char: ANSI white color") ];
                 if (red > 7) {
-                    color = [color stringByAppendingString:@"ANSI Bright "];
+                    color = [color stringByAppendingString:ScreenCharLocalized(@"ANSI Bright ", @"Screen char: ANSI bright color prefix")];
                 }
                 color = [color stringByAppendingString:names[red & 7]];
                 return color;
@@ -781,7 +784,7 @@ static NSString *ScreenCharColorDescription(unsigned int red,
             return [NSString stringWithFormat:@"external(fallback=24bit(%@,%@,%@))",
                     @(red), @(green), @(blue)];
     }
-    return @"Invalid";
+    return ScreenCharLocalized(@"Invalid", @"Screen char: invalid color");
 }
 
 NSString *VT100TerminalColorValueDescription(VT100TerminalColorValue value, BOOL fg) {
@@ -794,51 +797,51 @@ NSString *ScreenCharDescription(screen_char_t c) {
     }
     NSMutableArray<NSString *> *attrs = [NSMutableArray array];
     if (c.bold) {
-        [attrs addObject:@"Bold"];
+        [attrs addObject:ScreenCharLocalized(@"Bold", @"Screen char: bold attribute")];
     }
     if (c.faint) {
-        [attrs addObject:@"Faint"];
+        [attrs addObject:ScreenCharLocalized(@"Faint", @"Screen char: faint attribute")];
     }
     if (c.italic) {
-        [attrs addObject:@"Italic"];
+        [attrs addObject:ScreenCharLocalized(@"Italic", @"Screen char: italic attribute")];
     }
     if (c.blink) {
-        [attrs addObject:@"Blink"];
+        [attrs addObject:ScreenCharLocalized(@"Blink", @"Screen char: blink attribute")];
     }
     if (c.invisible) {
-        [attrs addObject:@"Invisible"];
+        [attrs addObject:ScreenCharLocalized(@"Invisible", @"Screen char: invisible attribute")];
     }
     if (c.guarded) {
-        [attrs addObject:@"Guarded"];
+        [attrs addObject:ScreenCharLocalized(@"Guarded", @"Screen char: guarded attribute")];
     }
     if (c.underline) {
         switch (ScreenCharGetUnderlineStyle(c)) {
             case VT100UnderlineStyleSingle:
-                [attrs addObject:@"Underline"];
+                [attrs addObject:ScreenCharLocalized(@"Underline", @"Screen char: underline attribute")];
                 break;
             case VT100UnderlineStyleCurly:
-                [attrs addObject:@"Curly-Underline"];
+                [attrs addObject:ScreenCharLocalized(@"Curly-Underline", @"Screen char: curly underline attribute")];
                 break;
             case VT100UnderlineStyleDouble:
-                [attrs addObject:@"Double-Underline"];
+                [attrs addObject:ScreenCharLocalized(@"Double-Underline", @"Screen char: double underline attribute")];
                 break;
             case VT100UnderlineStyleDotted:
-                [attrs addObject:@"Dotted-Underline"];
+                [attrs addObject:ScreenCharLocalized(@"Dotted-Underline", @"Screen char: dotted underline attribute")];
                 break;
             case VT100UnderlineStyleDashed:
-                [attrs addObject:@"Dashed-Underline"];
+                [attrs addObject:ScreenCharLocalized(@"Dashed-Underline", @"Screen char: dashed underline attribute")];
                 break;
         }
     }
     if (c.strikethrough) {
-        [attrs addObject:@"Strike"];
+        [attrs addObject:ScreenCharLocalized(@"Strike", @"Screen char: strikethrough attribute")];
     }
     if (c.inverse) {
-        [attrs addObject:@"Inverse"];
+        [attrs addObject:ScreenCharLocalized(@"Inverse", @"Screen char: inverse attribute")];
     }
     switch (c.rtlStatus) {
         case RTLStatusUnknown:
-            [attrs addObject:@"Dir-Unk"];
+            [attrs addObject:ScreenCharLocalized(@"Dir-Unk", @"Screen char: unknown direction attribute")];
             break;
         case RTLStatusLTR:
             [attrs addObject:@"LTR"];
@@ -851,7 +854,7 @@ NSString *ScreenCharDescription(screen_char_t c) {
     if (style.length) {
         style = [@"; " stringByAppendingString:style];
     }
-    return [NSString stringWithFormat:@"fg=%@ bg=%@%@",
+    return [NSString stringWithFormat:ScreenCharLocalized(@"fg=%@ bg=%@%@", @"Screen char: foreground/background color description format"),
             ScreenCharColorDescription(c.foregroundColor,
                                        c.fgGreen,
                                        c.fgBlue,

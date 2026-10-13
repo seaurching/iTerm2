@@ -61,19 +61,19 @@ public enum TransportError: Error, Equatable, LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .closed:
-            return "The connection was closed"
+            return NSLocalizedString("The connection was closed", bundle: .module, comment: "Transport closed error")
         case .frameTooLarge(let size, let maximum):
-            return "Received a frame of \(size) bytes, larger than the limit of \(maximum)"
+            return String(format: NSLocalizedString("Received a frame of %d bytes, larger than the limit of %d", bundle: .module, comment: "Frame too large error"), size, maximum)
         case .malformedFrame:
-            return "Received a malformed frame"
+            return NSLocalizedString("Received a malformed frame", bundle: .module, comment: "Malformed frame error")
         case .connectionFailed(let reason):
             return reason
         case .quotaExceeded:
-            return "The relay's daily data limit was reached"
+            return NSLocalizedString("The relay's daily data limit was reached", bundle: .module, comment: "Quota exceeded error")
         case .reResolve:
-            return "This relay no longer serves the pairing; re-resolving to the current host"
+            return NSLocalizedString("This relay no longer serves the pairing; re-resolving to the current host", bundle: .module, comment: "Re-resolve error")
         case .displaced:
-            return "Another connection took over this pairing's slot"
+            return NSLocalizedString("Another connection took over this pairing's slot", bundle: .module, comment: "Displaced error")
         }
     }
 }

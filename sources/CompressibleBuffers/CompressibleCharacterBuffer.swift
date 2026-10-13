@@ -111,7 +111,7 @@ class EfficientDecoderError: LocalizedError {
     private let _reason: String?
 
     var errorDescription: String? {
-        return _reason ?? "An error occurred while decoding an object"
+        return _reason ?? NSLocalizedString("An error occurred while decoding an object", tableName: "CompressibleBuffers", bundle: Bundle(for: EfficientDecoderError.self), comment: "Fallback error description when decoding an object fails")
     }
     init() {
         _reason = nil

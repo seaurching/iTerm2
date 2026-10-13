@@ -164,7 +164,7 @@
     CFArrayRef array;
     OSStatus err = SecTrustCopyAnchorCertificates(&array);
     if (err != noErr) {
-        NSLog(@"Failed to get root certs: %@",
+        NSLog(NSLocalizedStringFromTable(@"Failed to get root certs: %@", @"signed_archive", @"获取根证书失败：%@"),
               (__bridge_transfer NSString *)SecCopyErrorMessageString(err, NULL));
         return NO;
     }
@@ -185,7 +185,7 @@
     OSErr err = SecItemCopyMatching((__bridge CFDictionaryRef)query, &result);
     if (err != noErr) {
         if (![self certificateIsRootWithName:name]) {
-            NSLog(@"Failed to get certificate: %@",
+            NSLog(NSLocalizedStringFromTable(@"Failed to get certificate: %@", @"signed_archive", @"获取证书失败：%@"),
                   (__bridge_transfer NSString *)SecCopyErrorMessageString(err, NULL));
         }
         return nil;

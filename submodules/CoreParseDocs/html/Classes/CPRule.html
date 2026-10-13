@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>CPRule Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">CoreParse </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Beelsebob</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/name">name</option>
+		
+		<option value="//api/name/representitiveClass">representitiveClass</option>
+		
+		<option value="//api/name/rightHandSideElements">rightHandSideElements</option>
+		
+		<option value="//api/name/tag">tag</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/ruleWithName:rightHandSideElements:">+ ruleWithName:rightHandSideElements:</option>
+		
+		<option value="//api/name/ruleWithName:rightHandSideElements:representitiveClass:">+ ruleWithName:rightHandSideElements:representitiveClass:</option>
+		
+		<option value="//api/name/ruleWithName:rightHandSideElements:tag:">+ ruleWithName:rightHandSideElements:tag:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithName:rightHandSideElements:">- initWithName:rightHandSideElements:</option>
+		
+		<option value="//api/name/initWithName:rightHandSideElements:representitiveClass:">- initWithName:rightHandSideElements:representitiveClass:</option>
+		
+		<option value="//api/name/initWithName:rightHandSideElements:tag:">- initWithName:rightHandSideElements:tag:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">CPRule Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Conforms to</th>
+	<td>NSCoding</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>CPRule.h<br />CPRule.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The CPRule class represents a context free rule.</p>
+
+<p>Rules are used to specify how your language is structured - each rule specifies that the non-terminal on their left
+can be constructed by finding the sequence specified on the right hand side.</p>
+
+<p>Rules are added to CPGrammars to construct a language to parse.</p>
+
+<p>During parsing, a <a href="../Classes/CPParser.html">CPParser</a> will inform its delegate of which CPRule it has matched to form a reduction.  The <a href="#//api/name/tag">tag</a>
+property is provided to allow you to easily identify which rule has been matched.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Creating and Initialising a Rule" name="task_Creating and Initialising a Rule"></a>
+						<h2 class="task-title">Creating and Initialising a Rule</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/ruleWithName:rightHandSideElements:" title="ruleWithName:rightHandSideElements:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/ruleWithName:rightHandSideElements:">+&nbsp;ruleWithName:rightHandSideElements:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (id)ruleWithName:(NSString *)<em>name</em> rightHandSideElements:(NSArray *)<em>rightHandSideElements</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>name</code></th>
+						<td><p>The non-terminal the rule reduces.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rightHandSideElements</code></th>
+						<td><p>An array of CPGrammarSymbols that make up the right hand side of the rule.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a CPRule based on the right hand side and non-terminal <a href="#//api/name/name">name</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/ruleWithName:rightHandSideElements:tag:">+ ruleWithName:rightHandSideElements:tag:</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/ruleWithName:rightHandSideElements:representitiveClass:">+ ruleWithName:rightHandSideElements:representitiveClass:</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/initWithName:rightHandSideElements:">- initWithName:rightHandSideElements:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPRule.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/ruleWithName:rightHandSideElements:tag:" title="ruleWithName:rightHandSideElements:tag:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/ruleWithName:rightHandSideElements:tag:">+&nbsp;ruleWithName:rightHandSideElements:tag:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.
+Also specifies a <a href="#//api/name/tag">tag</a> by which the rule can be identified in a parser delegate</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (id)ruleWithName:(NSString *)<em>name</em> rightHandSideElements:(NSArray *)<em>rightHandSideElements</em> tag:(NSUInteger)<em>tag</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>name</code></th>
+						<td><p>The non-terminal the rule reduces.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rightHandSideElements</code></th>
+						<td><p>An array of CPGrammarSymbols that make up the right hand side of the rule.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>tag</code></th>
+						<td><p>A <a href="#//api/name/tag">tag</a> to identify the rule by.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a CPRule based on the right hand side and non-terminal <a href="#//api/name/name">name</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.
+Also specifies a <a href="#//api/name/tag">tag</a> by which the rule can be identified in a parser delegate</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/ruleWithName:rightHandSideElements:">+ ruleWithName:rightHandSideElements:</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/ruleWithName:rightHandSideElements:representitiveClass:">+ ruleWithName:rightHandSideElements:representitiveClass:</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/initWithName:rightHandSideElements:tag:">- initWithName:rightHandSideElements:tag:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPRule.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/ruleWithName:rightHandSideElements:representitiveClass:" title="ruleWithName:rightHandSideElements:representitiveClass:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/ruleWithName:rightHandSideElements:representitiveClass:">+&nbsp;ruleWithName:rightHandSideElements:representitiveClass:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.
+Also specifies the class to allocate to represent this rule.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (id)ruleWithName:(NSString *)<em>name</em> rightHandSideElements:(NSArray *)<em>rightHandSideElements</em> representitiveClass:(Class)<em>representitiveClass</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>name</code></th>
+						<td><p>The non-terminal the rule reduces.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rightHandSideElements</code></th>
+						<td><p>An array of CPGrammarSymbols that make up the right hand side of the rule.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>representitiveClass</code></th>
+						<td><p>The class used to represent this rule.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a CPRule based on the right hand side and non-terminal <a href="#//api/name/name">name</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.
+Also specifies the class to allocate to represent this rule.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/ruleWithName:rightHandSideElements:">+ ruleWithName:rightHandSideElements:</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/ruleWithName:rightHandSideElements:tag:">+ ruleWithName:rightHandSideElements:tag:</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/initWithName:rightHandSideElements:representitiveClass:">- initWithName:rightHandSideElements:representitiveClass:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPRule.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithName:rightHandSideElements:" title="initWithName:rightHandSideElements:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithName:rightHandSideElements:">&ndash;&nbsp;initWithName:rightHandSideElements:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialises a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> rightHandSideElements:(NSArray *)<em>rightHandSideElements</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>name</code></th>
+						<td><p>The non-terminal the rule reduces.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rightHandSideElements</code></th>
+						<td><p>An array of CPGrammarSymbols that make up the right hand side of the rule.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a CPRule based on the right hand side and non-terminal <a href="#//api/name/name">name</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initialises a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/initWithName:rightHandSideElements:tag:">- initWithName:rightHandSideElements:tag:</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/ruleWithName:rightHandSideElements:">+ ruleWithName:rightHandSideElements:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPRule.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithName:rightHandSideElements:tag:" title="initWithName:rightHandSideElements:tag:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithName:rightHandSideElements:tag:">&ndash;&nbsp;initWithName:rightHandSideElements:tag:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialises a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.
+Also specifies a <a href="#//api/name/tag">tag</a> by which the rule can be identified in a parser delegate</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> rightHandSideElements:(NSArray *)<em>rightHandSideElements</em> tag:(NSUInteger)<em>tag</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>name</code></th>
+						<td><p>The non-terminal the rule reduces.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rightHandSideElements</code></th>
+						<td><p>An array of CPGrammarSymbols that make up the right hand side of the rule.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>tag</code></th>
+						<td><p>A <a href="#//api/name/tag">tag</a> to identify the rule by.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a CPRule based on the right hand side and non-terminal <a href="#//api/name/name">name</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initialises a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.
+Also specifies a <a href="#//api/name/tag">tag</a> by which the rule can be identified in a parser delegate</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/initWithName:rightHandSideElements:">- initWithName:rightHandSideElements:</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/ruleWithName:rightHandSideElements:tag:">+ ruleWithName:rightHandSideElements:tag:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPRule.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithName:rightHandSideElements:representitiveClass:" title="initWithName:rightHandSideElements:representitiveClass:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithName:rightHandSideElements:representitiveClass:">&ndash;&nbsp;initWithName:rightHandSideElements:representitiveClass:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialises a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.
+Also specifies the class to allocate to represent this rule.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> rightHandSideElements:(NSArray *)<em>rightHandSideElements</em> representitiveClass:(Class)<em>representitiveClass</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>name</code></th>
+						<td><p>The non-terminal the rule reduces.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>rightHandSideElements</code></th>
+						<td><p>An array of CPGrammarSymbols that make up the right hand side of the rule.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>representitiveClass</code></th>
+						<td><p>The class used to represent this rule.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a CPRule based on the right hand side and non-terminal <a href="#//api/name/name">name</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initialises a rule based on a non-terminal <a href="#//api/name/name">name</a> and an array of grammar symbols to make up the right hand side.
+Also specifies the class to allocate to represent this rule.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/initWithName:rightHandSideElements:">- initWithName:rightHandSideElements:</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/initWithName:rightHandSideElements:tag:">- initWithName:rightHandSideElements:tag:</a></p></code></li>
+					
+					<li><code><p><a href="#//api/name/ruleWithName:rightHandSideElements:representitiveClass:">+ ruleWithName:rightHandSideElements:representitiveClass:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPRule.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Configuring a Rule" name="task_Configuring a Rule"></a>
+						<h2 class="task-title">Configuring a Rule</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="method-title"><code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Specifies the name of the non-terminal this rule describes.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readwrite, retain) NSString *name</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Specifies the name of the non-terminal this rule describes.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPRule.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/rightHandSideElements" title="rightHandSideElements"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rightHandSideElements">&nbsp;&nbsp;rightHandSideElements</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Specifies the right hand side of the rule.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readwrite, copy) NSArray *rightHandSideElements</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Specifies the right hand side of the rule.</p>
+
+<p>Elements of this array must be CPGrammarSymbols.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPRule.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/tag" title="tag"></a>
+	<h3 class="method-title"><code><a href="#//api/name/tag">&nbsp;&nbsp;tag</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>A tag used to identify the rule in the parser delegate.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readwrite, assign) NSUInteger tag</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>A tag used to identify the rule in the parser delegate.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPRule.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/representitiveClass" title="representitiveClass"></a>
+	<h3 class="method-title"><code><a href="#//api/name/representitiveClass">&nbsp;&nbsp;representitiveClass</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The class used to represent syntax trees based off this rule.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readwrite, assign) Class representitiveClass</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The class used to represent syntax trees based off this rule.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPRule.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2026 Beelsebob. All rights reserved. Updated: 2026-09-19</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

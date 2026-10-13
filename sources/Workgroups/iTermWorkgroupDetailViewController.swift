@@ -45,12 +45,12 @@ class iTermWorkgroupDetailViewController: NSViewController {
         let root = NSView(frame: NSRect(x: 0, y: 0, width: 640, height: 420))
 
         emptyLabel = NSTextField(labelWithString:
-            "Select a workgroup on the left or click + to create one.")
+            NSLocalizedString("Select a workgroup on the left or click + to create one.", tableName: "Workgroups", comment: "空工作组选择引导标签"))
         emptyLabel.textColor = .secondaryLabelColor
         emptyLabel.alignment = .center
         root.addSubview(emptyLabel)
 
-        whatIsButton = NSButton(title: "What is a Workgroup?",
+        whatIsButton = NSButton(title: NSLocalizedString("What is a Workgroup?", tableName: "Workgroups", comment: "什么是工作组按钮标题"),
                                 target: self,
                                 action: #selector(whatIsAWorkgroupClicked(_:)))
         whatIsButton.bezelStyle = .rounded
@@ -59,7 +59,7 @@ class iTermWorkgroupDetailViewController: NSViewController {
         root.addSubview(whatIsButton)
 
         nameField = NSTextField(frame: .zero)
-        nameField.placeholderString = "Workgroup name"
+        nameField.placeholderString = NSLocalizedString("Workgroup name", tableName: "Workgroups", comment: "工作组名称占位符")
         nameField.delegate = self
         root.addSubview(nameField)
 
@@ -297,11 +297,7 @@ class iTermWorkgroupDetailViewController: NSViewController {
     // MARK: - + / − actions
 
     @objc private func whatIsAWorkgroupClicked(_ sender: NSButton) {
-        let markdown = "A **Workgroup** turns a single session into a "
-            + "coordinated set of related sessions, each with its own "
-            + "command and toolbar; see the "
-            + "[Workgroups documentation](https://iterm2.com/documentation-workgroups.html) "
-            + "for the full story."
+        let markdown = NSLocalizedString("A **Workgroup** turns a single session into a coordinated set of related sessions, each with its own command and toolbar; see the [Workgroups documentation](https://iterm2.com/documentation-workgroups.html) for the full story.", tableName: "Workgroups", comment: "“什么是工作组？”按钮的帮助文本，含 Markdown 链接")
         sender.it_showInformativeMessage(withMarkdown: markdown)
     }
 
@@ -319,18 +315,18 @@ class iTermWorkgroupDetailViewController: NSViewController {
         // Disable AppKit's target-based auto-enable so our own
         // isEnabled flags aren't overridden right before display.
         menu.autoenablesItems = false
-        let peer = menu.addItem(withTitle: "Add Peer",
+        let peer = menu.addItem(withTitle: NSLocalizedString("Add Peer", tableName: "Workgroups", comment: "添加对等体菜单项"),
                                 action: #selector(addPeer),
                                 keyEquivalent: "")
         peer.target = self
-        let split = menu.addItem(withTitle: "Add Split",
+        let split = menu.addItem(withTitle: NSLocalizedString("Add Split", tableName: "Workgroups", comment: "添加分屏菜单项"),
                                  action: #selector(addSplit),
                                  keyEquivalent: "")
         split.target = self
         // No split from anywhere inside a peer group — that includes
         // both the host (ambiguous target) and the peers themselves.
         split.isEnabled = !sessionIsInPeerGroup(selID: selID)
-        let tab = menu.addItem(withTitle: "Add Tab",
+        let tab = menu.addItem(withTitle: NSLocalizedString("Add Tab", tableName: "Workgroups", comment: "添加标签页菜单项"),
                                action: #selector(addTab),
                                keyEquivalent: "")
         tab.target = self
@@ -417,7 +413,7 @@ class iTermWorkgroupDetailViewController: NSViewController {
             displayName: displayName)
         wg.sessions.append(newSession)
         enforceModeSwitcherInvariant(on: &wg)
-        parentEditor?.replaceSelectedWorkgroup(wg, actionName: "Add Session")
+        parentEditor?.replaceSelectedWorkgroup(wg, actionName: NSLocalizedString("Add Session", tableName: "Workgroups", comment: "添加会话撤销操作名称"))
         // Select the newly-added session so the user can configure it
         // straight away (and so the visual preview shows it).
         if let row = outlineRow(forSessionID: newSession.uniqueIdentifier) {
@@ -444,7 +440,7 @@ class iTermWorkgroupDetailViewController: NSViewController {
         }
         wg.sessions.removeAll { toDelete.contains($0.uniqueIdentifier) }
         enforceModeSwitcherInvariant(on: &wg)
-        parentEditor?.replaceSelectedWorkgroup(wg, actionName: "Remove Session")
+        parentEditor?.replaceSelectedWorkgroup(wg, actionName: NSLocalizedString("Remove Session", tableName: "Workgroups", comment: "移除会话撤销操作名称"))
     }
 
     // Each "peer group" is a non-peer session (the host) plus every
@@ -509,7 +505,7 @@ extension iTermWorkgroupDetailViewController: NSTextFieldDelegate {
               var wg = currentWorkgroup,
               wg.name != nameField.stringValue else { return }
         wg.name = nameField.stringValue
-        parentEditor?.replaceSelectedWorkgroup(wg, actionName: "Rename Workgroup")
+        parentEditor?.replaceSelectedWorkgroup(wg, actionName: NSLocalizedString("Rename Workgroup", tableName: "Workgroups", comment: "重命名工作组撤销操作名称"))
     }
 }
 
@@ -573,15 +569,15 @@ extension iTermWorkgroupDetailViewController: NSOutlineViewDataSource, NSOutline
     private func displayLabel(for session: iTermWorkgroupSessionConfig) -> String {
         switch session.kind {
         case .root:
-            return "Main session"
+            return NSLocalizedString("Main session", tableName: "Workgroups", comment: "主会话标签")
         case .peer:
-            return "Peer: \(session.displayName)"
+            return String(format: NSLocalizedString("Peer: %@", tableName: "Workgroups", comment: "对等体标签"), session.displayName)
         case .split(let s):
-            let dir = s.orientation == .vertical ? "Vertical" : "Horizontal"
+            let dir = s.orientation == .vertical ? NSLocalizedString("Vertical", tableName: "Workgroups", comment: "垂直方向标签") : NSLocalizedString("Horizontal", tableName: "Workgroups", comment: "水平方向标签")
             let pct = Int((s.location * 100).rounded())
-            return "Split: \(dir) \(pct)%"
+            return String(format: NSLocalizedString("Split: %@ %d%%", tableName: "Workgroups", comment: "分屏标签"), dir, pct)
         case .tab:
-            return "Tab"
+            return NSLocalizedString("Tab", tableName: "Workgroups", comment: "标签页标签")
         }
     }
 }
@@ -619,6 +615,6 @@ extension iTermWorkgroupDetailViewController: WorkgroupVisualViewDelegate {
         }) else { return }
         wg.sessions[idx] = s
         parentEditor?.replaceSelectedWorkgroup(wg,
-                                               actionName: "Change Split Location")
+                                               actionName: NSLocalizedString("Change Split Location", tableName: "Workgroups", comment: "更改分屏位置撤销操作名称"))
     }
 }

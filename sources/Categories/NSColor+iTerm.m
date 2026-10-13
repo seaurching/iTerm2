@@ -914,7 +914,7 @@ BOOL iTermSRGBColorFromHexString(NSString *hexString, iTermSRGBColor *colorOut) 
     int green = [dict[kEncodedColorDictionaryGreenComponent] doubleValue] * 255;
     int blue = [dict[kEncodedColorDictionaryBlueComponent] doubleValue] * 255;
     if (space) {
-        return [NSString stringWithFormat:@"#%02x%02x%02x in color space “%@”", red, green, blue, space];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"#%02x%02x%02x in color space “%@”", @"Categories", [NSBundle mainBundle], @"Human-readable color description with color space"), red, green, blue, space];
     } else {
         return [NSString stringWithFormat:@"#%02x%02x%02x", red, green, blue];
     }

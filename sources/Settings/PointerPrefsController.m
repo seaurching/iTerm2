@@ -300,13 +300,13 @@ typedef enum {
 {
     switch (n) {
         case 1:
-            return @"single click";
+            return NSLocalizedStringFromTableInBundle(@"single click", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         case 2:
-            return @"double click";
+            return NSLocalizedStringFromTableInBundle(@"double click", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         case 3:
-            return @"triple click";
+            return NSLocalizedStringFromTableInBundle(@"triple click", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         case 4:
-            return @"quad click";
+            return NSLocalizedStringFromTableInBundle(@"quad click", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         default:
             return @"(error)";  // shouldn't happen
     }
@@ -316,26 +316,26 @@ typedef enum {
 {
     switch (n) {
         case -1:
-            return @"Unknown button";
+            return NSLocalizedStringFromTableInBundle(@"Unknown button", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         case kLeftButton:
-            return @"Left button";
+            return NSLocalizedStringFromTableInBundle(@"Left button", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         case kRightButton:
-            return @"Right button";
+            return NSLocalizedStringFromTableInBundle(@"Right button", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         case kMiddleButton:
-            return @"Middle button";
+            return NSLocalizedStringFromTableInBundle(@"Middle button", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         default:
-            return [NSString stringWithFormat:@"Button #%d", n+1];
+            return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Button #%d", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), n+1];
     }
 }
 
 + (NSDictionary *)gestureNamesDict
 {
-    NSDictionary *names = @{ kThreeFingerClickGesture: @"Three-finger Tap",
-                             kThreeFingerSwipeRight: @"Three-finger Swipe Right",
-                             kThreeFingerSwipeLeft: @"Three-finger Swipe Left",
-                             kThreeFingerSwipeUp: @"Three-finger Swipe Up",
-                             kThreeFingerSwipeDown: @"Three-finger Swipe Down",
-                             kForceTouchSingleClick: @"Force Touch Single Click" };
+    NSDictionary *names = @{ kThreeFingerClickGesture: NSLocalizedStringFromTableInBundle(@"Three-finger Tap", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
+                             kThreeFingerSwipeRight: NSLocalizedStringFromTableInBundle(@"Three-finger Swipe Right", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
+                             kThreeFingerSwipeLeft: NSLocalizedStringFromTableInBundle(@"Three-finger Swipe Left", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
+                             kThreeFingerSwipeUp: NSLocalizedStringFromTableInBundle(@"Three-finger Swipe Up", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
+                             kThreeFingerSwipeDown: NSLocalizedStringFromTableInBundle(@"Three-finger Swipe Down", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
+                             kForceTouchSingleClick: NSLocalizedStringFromTableInBundle(@"Force Touch Single Click", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") };
     return names;
 }
 
@@ -406,39 +406,39 @@ typedef enum {
 + (NSDictionary *)localizedActionMap
 {
     NSDictionary *names = [NSDictionary dictionaryWithObjectsAndKeys:
-                           @"Ignore", kIgnoreAction,
-                           @"Invoke Script Function…", kInvokeScriptFunction,
-                           @"Paste from Clipboard…", kPasteFromClipboardPointerAction,
-                           @"Paste from Selection…", kPasteFromSelectionPointerAction,
-                           @"Extend Selection", kExtendSelectionPointerAction,
-                           @"Open URL/Semantic History", kOpenTargetPointerAction,
-                           @"Open URL in background", kOpenTargetInBackgroundPointerAction,
-                           @"Smart Selection", kSmartSelectionPointerAction,
-                           @"Smart Selection Ignoring Newlines", kSmartSelectionIgnoringNewlinesPointerAction,
-                           @"Open Context Menu", kContextMenuPointerAction,
-                           @"Next Tab", kNextTabPointerAction,
-                           @"Previous Tab", kPrevTabPointerAction,
-                           @"Next Window", kNextWindowPointerAction,
-                           @"Previous Window", kPrevWindowPointerAction,
-                           @"Move Pane", kMovePanePointerAction,
-                           @"Send Escape Sequence…", kSendEscapeSequencePointerAction,
-                           @"Send Hex Code…", kSendHexCodePointerAction,
-                           @"Send Text…", kSendTextPointerAction,
-                           @"Select Pane Left", kSelectPaneLeftPointerAction,
-                           @"Select Pane Right", kSelectPaneRightPointerAction,
-                           @"Select Pane Above", kSelectPaneAbovePointerAction,
-                           @"Select Pane Below", kSelectPaneBelowPointerAction,
-                           @"New Window With Profile…", kNewWindowWithProfilePointerAction,
-                           @"New Tab With Profile…", kNewWindowWithProfilePointerAction,
-                           @"New Tab With Profile…", kNewTabWithProfilePointerAction,
-                           @"New Vertical Split With Profile…", kNewVerticalSplitWithProfilePointerAction,
-                           @"New Horizontal Split With Profile…", kNewHorizontalSplitWithProfilePointerAction,
-                           @"QuickLook", kQuickLookAction,
-                           @"Select Menu Item", kSelectMenuItemPointerAction,
-                           @"Copy Link Address", kCopyLinkAddressPointerAction,
-                           @"Select Next Pane", kSelectNextPanePointerAction,
-                           @"Select Previous Pane", kSelectPreviousPanePointerAction,
-                           @"Copy or Paste", kCopyOrPastePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Ignore", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kIgnoreAction,
+                           NSLocalizedStringFromTableInBundle(@"Invoke Script Function…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kInvokeScriptFunction,
+                           NSLocalizedStringFromTableInBundle(@"Paste from Clipboard…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kPasteFromClipboardPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Paste from Selection…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kPasteFromSelectionPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Extend Selection", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kExtendSelectionPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Open URL/Semantic History", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kOpenTargetPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Open URL in background", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kOpenTargetInBackgroundPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Smart Selection", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSmartSelectionPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Smart Selection Ignoring Newlines", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSmartSelectionIgnoringNewlinesPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Open Context Menu", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kContextMenuPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Next Tab", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kNextTabPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Previous Tab", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kPrevTabPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Next Window", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kNextWindowPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Previous Window", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kPrevWindowPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Move Pane", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kMovePanePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Send Escape Sequence…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSendEscapeSequencePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Send Hex Code…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSendHexCodePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Send Text…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSendTextPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Select Pane Left", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSelectPaneLeftPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Select Pane Right", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSelectPaneRightPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Select Pane Above", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSelectPaneAbovePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Select Pane Below", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSelectPaneBelowPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"New Window With Profile…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kNewWindowWithProfilePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"New Tab With Profile…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kNewWindowWithProfilePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"New Tab With Profile…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kNewTabWithProfilePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"New Vertical Split With Profile…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kNewVerticalSplitWithProfilePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"New Horizontal Split With Profile…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kNewHorizontalSplitWithProfilePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"QuickLook", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kQuickLookAction,
+                           NSLocalizedStringFromTableInBundle(@"Select Menu Item", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSelectMenuItemPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Copy Link Address", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kCopyLinkAddressPointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Select Next Pane", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSelectNextPanePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Select Previous Pane", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kSelectPreviousPanePointerAction,
+                           NSLocalizedStringFromTableInBundle(@"Copy or Paste", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), kCopyOrPastePointerAction,
                            nil];
     return names;
 }
@@ -475,7 +475,7 @@ typedef enum {
         name = [names objectForKey:action];
     }
     if (!name) {
-        name = @"(Unknown)";
+        name = NSLocalizedStringFromTableInBundle(@"(Unknown)", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     }
     return name;
 }
@@ -489,7 +489,7 @@ typedef enum {
         name = [names objectForKey:action];
     }
     if (!name) {
-        name = @"(Unknown)";
+        name = NSLocalizedStringFromTableInBundle(@"(Unknown)", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     }
     if (action) {
         switch ([PointerPrefsController argumentTypeForAction:action]) {
@@ -525,7 +525,7 @@ typedef enum {
                 if (!title.length) {
                     break;
                 }
-                return [NSString stringWithFormat:@"Select Menu Item “%@”", title];
+                return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Select Menu Item “%@”", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), title];
             }
         }
     }
@@ -915,8 +915,8 @@ typedef enum {
             [editArgumentField_ setEnabled:YES];
             [editArgumentButton_ setHidden:YES];
             _menuItemPopupView.hidden = YES;
-            [editArgumentLabel_ setStringValue:@"Esc +"];
-            [[editArgumentField_ cell] setPlaceholderString:@"characters to send"];
+            [editArgumentLabel_ setStringValue:NSLocalizedStringFromTableInBundle(@"Esc +", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+            [[editArgumentField_ cell] setPlaceholderString:NSLocalizedStringFromTableInBundle(@"characters to send", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             [editArgumentField_ setStringValue:currentArg];
             [editArgumentField_ setRefusesFirstResponder:NO];
             [editArgumentField_ setSelectable:YES];
@@ -930,8 +930,8 @@ typedef enum {
             [editArgumentField_ setEnabled:YES];
             [editArgumentButton_ setHidden:YES];
             _menuItemPopupView.hidden = YES;
-            [editArgumentLabel_ setStringValue:@"Hex codes:"];
-            [[editArgumentField_ cell] setPlaceholderString:@"ex: 0x7f 0x20"];
+            [editArgumentLabel_ setStringValue:NSLocalizedStringFromTableInBundle(@"Hex codes:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+            [[editArgumentField_ cell] setPlaceholderString:NSLocalizedStringFromTableInBundle(@"ex: 0x7f 0x20", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             [editArgumentField_ setStringValue:currentArg];
             _pasteSpecialViewContainer.hidden = YES;
             editArgumentField_.delegate = nil;
@@ -943,8 +943,8 @@ typedef enum {
             [editArgumentField_ setEnabled:YES];
             [editArgumentButton_ setHidden:YES];
             _menuItemPopupView.hidden = YES;
-            [editArgumentLabel_ setStringValue:@"Text:"];
-            [[editArgumentField_ cell] setPlaceholderString:@"Enter value to send"];
+            [editArgumentLabel_ setStringValue:NSLocalizedStringFromTableInBundle(@"Text:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+            [[editArgumentField_ cell] setPlaceholderString:NSLocalizedStringFromTableInBundle(@"Enter value to send", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             [editArgumentField_ setStringValue:currentArg];
             _pasteSpecialViewContainer.hidden = YES;
             editArgumentField_.delegate = nil;
@@ -956,8 +956,8 @@ typedef enum {
             [editArgumentField_ setEnabled:YES];
             [editArgumentButton_ setHidden:YES];
             _menuItemPopupView.hidden = YES;
-            [editArgumentLabel_ setStringValue:@"Text:"];
-            [[editArgumentField_ cell] setPlaceholderString:@"Enter function invocation"];
+            [editArgumentLabel_ setStringValue:NSLocalizedStringFromTableInBundle(@"Text:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+            [[editArgumentField_ cell] setPlaceholderString:NSLocalizedStringFromTableInBundle(@"Enter function invocation", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             [editArgumentField_ setStringValue:currentArg];
             _pasteSpecialViewContainer.hidden = YES;
             _invocationDelegate = [[iTermFunctionCallTextFieldDelegate alloc] initWithPathSource:[iTermVariableHistory pathSourceForContext:iTermVariablesSuggestionContextSession]
@@ -971,7 +971,7 @@ typedef enum {
             [editArgumentField_ setHidden:YES];
             [editArgumentButton_ setHidden:NO];
             _menuItemPopupView.hidden = YES;
-            [editArgumentLabel_ setStringValue:@"Profile:"];
+            [editArgumentLabel_ setStringValue:NSLocalizedStringFromTableInBundle(@"Profile:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             [editArgumentButton_ populateWithProfilesSelectingGuid:currentArg
                                                       profileTypes:ProfileTypeAll];
             _pasteSpecialViewContainer.hidden = YES;

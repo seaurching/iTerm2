@@ -32,19 +32,18 @@ NSString *const iTermStatusBarSwiftyStringComponentExpressionKey = @"expression"
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Interpolated String";
+    return NSLocalizedStringFromTableInBundle(@"Interpolated String", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for interpolated string component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Shows the evaluation of a string with inline expressions which may include session "
-           @"variables or the output of registered scripting functions";
+    return NSLocalizedStringFromTableInBundle(@"Shows the evaluation of a string with inline expressions which may include session variables or the output of registered scripting functions", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for interpolated string component");
 }
 
 - (NSArray<iTermStatusBarComponentKnob *> *)statusBarComponentKnobs {
     iTermStatusBarComponentKnob *expressionKnob =
-        [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"String Value:"
+        [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"String Value:", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for string value")
                                                           type:iTermStatusBarComponentKnobTypeText
-                                                   placeholder:@"String with \\(expressions)"
+                                                   placeholder:NSLocalizedStringFromTableInBundle(@"String with \\(expressions)", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Placeholder for string value field")
                                                   defaultValue:@""
                                                            key:iTermStatusBarSwiftyStringComponentExpressionKey];
     return [@[ expressionKnob ] arrayByAddingObjectsFromArray:[super statusBarComponentKnobs]];
@@ -58,7 +57,7 @@ NSString *const iTermStatusBarSwiftyStringComponentExpressionKey = @"expression"
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
                                           textColor:(NSColor *)textColor {
     if (!_swiftyString.swiftyString.length) {
-        return @"\\(expression)";
+        return NSLocalizedStringFromTableInBundle(@"\\(expression)", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for interpolated string component");
     } else {
         return _swiftyString.swiftyString;
     }
@@ -93,11 +92,11 @@ NSString *const iTermStatusBarSwiftyStringComponentExpressionKey = @"expression"
 - (void)onClick:(id)sender {
     if (_errorReason) {
         [iTermWarning showWarningWithTitle:_errorReason
-                                   actions:@[ @"OK" ]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"StatusBar", [NSBundle bundleForClass:[self class]], @"OK button") ]
                                  accessory:nil
                                 identifier:@"NoSyncInterpolatedStatusBarComponentError"
                                silenceable:kiTermWarningTypePersistent
-                                   heading:@"Error"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Error", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Error alert heading")
                                     window:self.statusBarComponentView.window];
     }
 }
@@ -128,7 +127,7 @@ NSString *const iTermStatusBarSwiftyStringComponentExpressionKey = @"expression"
                               error:(NSError *)error {
     static NSString *ladybug = @"🐞";
     if (error != nil) {
-        NSString *message = [NSString stringWithFormat:@"Error while evaluating “%@”:\n%@", expression, error.localizedDescription];
+        NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error while evaluating “%@”:\n%@", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Error message when evaluating an interpolated string fails"), expression, error.localizedDescription];
         [[iTermScriptHistoryEntry globalEntry] addOutput:message completion:^{}];
         _errorReason = message;
         return ladybug;

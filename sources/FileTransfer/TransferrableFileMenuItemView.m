@@ -127,7 +127,7 @@ static CGFloat TransferrableFileMenuItemViewRightMargin(void) {
     NSString *sizeString;
     if (_size >= 0) {
         sizeString =
-            [NSString stringWithFormat:@"%@ of %@",
+            [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ of %@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Progress: bytes transferred of total"),
                 [NSString it_formatBytes:_bytesTransferred],
                 [NSString it_formatBytes:_size]];
     } else {

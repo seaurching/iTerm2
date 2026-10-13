@@ -336,9 +336,9 @@ static PreferencePanel *gSessionsPreferencePanel;
     }
     NSString *repr = defaultString;
     if (!repr.length) {
-        repr = @"Empty Default";
+        repr = NSLocalizedStringFromTableInBundle(@"Empty Default", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     }
-    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"Reset to %@", repr]
+    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Reset to %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), repr]
                                                   action:@selector(resetPrefToDefaultValue:)
                                            keyEquivalent:@""];
     item.target = self;
@@ -590,14 +590,14 @@ static iTermPreferencesSearchEngine *gSearchEngine;
         self.window.toolbarStyle = NSWindowToolbarStylePreference;
     }
 
-    _globalToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolGearshape) accessibilityDescription:@"General"];
-    _appearanceToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolEye) accessibilityDescription:@"Appearance"];
-    _keyboardToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolKeyboard) accessibilityDescription:@"Keys"];
-    _arrangementsToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolMacwindowOnRectangle) accessibilityDescription:@"Arrangements"];
-    _profilesToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolPerson) accessibilityDescription:@"Profiles"];
-    _mouseToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolCursorarrowMotionlines) accessibilityDescription:@"Pointer"];
-    _advancedToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolGearshape2) accessibilityDescription:@"Advanced"];
-    _shortcutsToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolBoltCircle) accessibilityDescription:@"Shortcuts"];
+    _globalToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolGearshape) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"General", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+    _appearanceToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolEye) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Appearance", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+    _keyboardToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolKeyboard) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Keys", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+    _arrangementsToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolMacwindowOnRectangle) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Arrangements", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+    _profilesToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolPerson) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Profiles", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+    _mouseToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolCursorarrowMotionlines) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Pointer", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+    _advancedToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolGearshape2) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Advanced", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+    _shortcutsToolbarItem.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolBoltCircle) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Shortcuts", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
 
     _globalTabViewItem.view = _generalPreferencesViewController.view;
     _appearanceTabViewItem.view = _appearancePreferencesViewController.view;
@@ -616,15 +616,15 @@ static iTermPreferencesSearchEngine *gSearchEngine;
 
     if (_editCurrentSessionMode) {
         [self layoutSubviewsForEditCurrentSessionMode];
-        self.window.title = @"Edit Session";
+        self.window.title = NSLocalizedStringFromTableInBundle(@"Edit Session", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     } else {
         [_toolbar setVisible:YES];
         [self resizeWindowForTabViewItem:_globalTabViewItem animated:NO];
         NSString *suiteName = [iTermUserDefaults customSuiteName];
         if (suiteName.length > 0) {
-            self.window.title = [NSString stringWithFormat:@"Settings: %@", suiteName];
+            self.window.title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Settings: %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), suiteName];
         } else {
-            self.window.title = @"Settings";
+            self.window.title = NSLocalizedStringFromTableInBundle(@"Settings", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
         }
     }
 
@@ -677,7 +677,7 @@ static iTermPreferencesSearchEngine *gSearchEngine;
     }
     [self window];
     for (NSTabViewItem *tabViewItem in _tabView.tabViewItems) {
-        if ([tabViewItem.identifier isEqualToString:@"Profiles"]) {
+        if ([tabViewItem.identifier isEqualToString:NSLocalizedStringFromTableInBundle(@"Profiles", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")]) {
             continue;
         }
         iTermPreferencesBaseViewController *vc = [self viewControllerForTabViewItem:tabViewItem];
@@ -1017,8 +1017,8 @@ andEditComponentWithIdentifier:(NSString *)identifier
             }
         }
 
-        NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Search Options"];
-        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:@"Show indicators for non-default values"
+        NSMenu *menu = [[NSMenu alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Search Options", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
+        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Show indicators for non-default values", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                                           action:@selector(toggleIndicateNonDefaultValues:)
                                                    keyEquivalent:@""];
         menuItem.target = self;
@@ -1251,8 +1251,12 @@ andEditComponentWithIdentifier:(NSString *)identifier
         return;
     }
 
-    iTermSizeRememberingView *theView = (iTermSizeRememberingView *)tabViewItem.view;
-    [theView resetToOriginalSize];
+    // The tab's view may not be an iTermSizeRememberingView (e.g., a plain NSView
+    // in a differently-nested hierarchy), so check before calling into it.
+    id theView = tabViewItem.view;
+    if ([theView respondsToSelector:@selector(resetToOriginalSize)]) {
+        [(iTermSizeRememberingView *)theView resetToOriginalSize];
+    }
     NSRect rect = self.window.frame;
     NSPoint topLeft = rect.origin;
     topLeft.y += rect.size.height;

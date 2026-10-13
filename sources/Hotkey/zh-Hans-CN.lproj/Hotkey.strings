@@ -1,0 +1,45 @@
+/* Notification title: cannot switch apps due to secure keyboard entry */
+"Can’t Switch Apps" = "无法切换应用";
+
+/* Notification description: cannot switch back to app due to secure keyboard entry */
+"Can’t switch back to %@ because another app has enabled secure keyboard entry." = "无法切换回 %@，因为另一个应用已启用安全键盘输入。";
+
+/* Notification title: hotkeys unavailable */
+"Hotkeys Unavailable" = "快捷键不可用";
+
+/* Notification description: hotkeys unavailable due to secure keyboard input */
+"Another app has enabled secure keyboard input. That prevents hotkey windows from being shown." = "另一个应用已启用安全键盘输入。这会阻止显示快捷键窗口。";
+
+/* Fallback name for a profile with no name */
+"Unnamed Profile" = "未命名配置文件";
+
+/* Alert message: dynamic profiles are children of hotkey profile */
+"You have dynamic profiles whose “Dynamic Profile Parent Name” is set to your hotkey window's profile, “%@.” Because multiple hotkey windows are now supported, the hotkey will now toggle a separate window for each of these profiles. Please update your dynamic profiles appropriately. The affected profiles are:\\n%@" = "您有动态配置文件，其“动态配置文件父项名称”设置为您的快捷键窗口的配置文件“%@。”由于现在支持多个快捷键窗口，快捷键现在将为每个配置文件切换单独的窗口。请适当更新您的动态配置文件。受影响的配置文件为：\\n%@";
+
+/* Alert button: OK */
+"OK" = "确定";
+
+/* Alert message: hotkey profile is a dynamic profile needing update */
+"Your hotkey window‘s profile is a dynamic profile named “%@.” It needs to be updated for this version of iTerm2 because hotkey settings are now stored in the profile." = "您的快捷键窗口的配置文件是名为“%@”的动态配置文件。它需要为此版本的 iTerm2 进行更新，因为快捷键设置现在存储在配置文件中。";
+
+/* Alert button: update the dynamic profile file */
+"Update File" = "更新文件";
+
+/* Alert button: show what to add to the profile */
+"Show Me What to Add" = "显示需要添加的内容";
+
+/* Alert button: remove hotkey from profile */
+"Remove Hotkey" = "移除快捷键";
+
+/* Alert heading: problem updating hotkey window */
+"Problem Updating Hotkey Window" = "更新快捷键窗口时出现问题";
+
+/* Alert title: changes to make for hotkey migration */
+"Changes to Make" = "需要进行的更改";
+
+/* Alert informative text: settings to add to a dynamic profile */
+"Add these settings to the profile named “%@” in “%@”:\\n%@" = "将这些设置添加到名为“%@”的配置文件（在“%@”中）：\\n%@";
+
+/* Alert button: copy migration instructions to pasteboard */
+"Copy to Pasteboard" = "复制到剪贴板";
+

@@ -280,7 +280,7 @@ NSString *const iTermEncoderGraphRecordGenerationKeySuffix = @"_Generation";
     id instance = [desiredClass castFrom:_pod[key]];
     if (!instance) {
         if (error) {
-            *error = [[NSError alloc] initWithDomain:@"com.iterm2.graph-record" code:1 userInfo:@{ NSLocalizedDescriptionKey: @"No such record or wrong type" }];
+            *error = [[NSError alloc] initWithDomain:@"com.iterm2.graph-record" code:1 userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"No such record or wrong type", @"StateRestoration", [NSBundle bundleForClass:[self class]], @"graph record: missing record error") }];
         }
         return nil;
     }

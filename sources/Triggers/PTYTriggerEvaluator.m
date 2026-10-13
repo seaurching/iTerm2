@@ -86,7 +86,7 @@ NSString *const PTYSessionSlownessEventExecute = @"execute";
 - (NSString *)stats {
     iTermTabularFormatter *formatter = [iTermHistogram tabularFormatterTime];
     for (Trigger *trigger in _triggers) {
-        NSString *label = [NSString stringWithFormat:@"Trigger “%@” with regex “%@”",
+        NSString *label = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Trigger “%@” with regex “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"统计：触发器名称与正则"),
                            trigger.name, trigger.regex];
         [trigger.performanceHistogram addTo:formatter precision:2 units:@"µs" label:label];
     }

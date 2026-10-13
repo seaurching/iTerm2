@@ -240,7 +240,7 @@
         return nil;
     }
     if ([[iTermSecureKeyboardEntryController sharedInstance] isEnabled]) {
-        return @"⚠️ Secure keyboard entry disables paste history.";
+        return NSLocalizedStringFromTableInBundle(@"⚠️ Secure keyboard entry disables paste history.", @"Popups", [NSBundle bundleForClass:[self class]], @"Popups: pasteboard history secure keyboard footer");
     }
     return nil;
 }

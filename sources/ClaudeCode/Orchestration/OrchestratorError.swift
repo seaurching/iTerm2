@@ -49,13 +49,13 @@ enum OrchestratorError: Error {
         case .ambiguousWorkgroup(let name, let candidateIDs):
             return "Workgroup name \u{201C}\(name)\u{201D} matches \(candidateIDs.count) active workgroups; use the workgroup_id instead. Candidates: \(candidateIDs.joined(separator: ", "))"
         case .permissionDenied:
-            return "User denied permission for this action."
+            return NSLocalizedString("User denied permission for this action.", tableName: "ClaudeCodeXC", comment: "用户拒绝了对该操作的许可。")
         case .targetNoLongerExists(let sessionGuid):
             return "Target session no longer exists: session_guid=\(sessionGuid)"
         case .malformedArgs(let reason):
             return "Malformed arguments: \(reason)"
         case .timeout:
-            return "The operation timed out."
+            return NSLocalizedString("The operation timed out.", tableName: "ClaudeCodeXC", comment: "操作超时。")
         case .unsupported(let reason):
             return "Unsupported: \(reason)"
         case .notImplemented(let detail):

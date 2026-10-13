@@ -1,0 +1,9 @@
+/* TryingTooHard.strings - en */
+"There's a lot of printing going on. Want to keep allowing it?" = "There's a lot of printing going on. Want to keep allowing it?";
+"Allow" = "Allow";
+"Disable Temporarily" = "Disable Temporarily";
+"Disable Permanently" = "Disable Permanently";
+"Allow Printing?" = "Allow Printing?";
+"The Touch ID install script is missing from the iTerm2 application bundle." = "The Touch ID install script is missing from the iTerm2 application bundle.";
+"OK" = "OK";
+"Cannot Enable Touch ID for Sudo" = "Cannot Enable Touch ID for Sudo";

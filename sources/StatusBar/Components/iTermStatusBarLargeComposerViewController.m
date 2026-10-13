@@ -93,7 +93,7 @@
     IBOutlet NSButton *_help;
     IBOutlet NSView *_accessories;
     IBOutlet NSScrollView *_scrollView;
-    IBOutlet NSView *_engageAI;
+    IBOutlet NSButton *_engageAI;
     IBOutlet NSTextField *_aiCompletionWarning;
     IBOutlet NSTextField *_sendTip;
 
@@ -108,6 +108,7 @@
     self.textView.textColor = [NSColor textColor];
     self.textView.insertionPointColor = [NSColor textColor];
     self.textView.font = [NSFont fontWithName:@"Menlo" size:11];
+    _engageAI.alternateImage = [NSImage imageNamed:@"SparklesSquareFilledOnSquare"];
     _aiCompletionWarning.hidden = ![[iTermSecureUserDefaults instance] aiCompletionsEnabled] || ![iTermAdvancedSettingsModel generativeAIAllowed];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(secureUserDefaultDidChange:)
@@ -298,11 +299,11 @@
             [weakSelf.textView.window makeFirstResponder:weakSelf.textView];
         } second:^(NSError *error) {
             [iTermWarning showWarningWithTitle:error.localizedDescription
-                                       actions:@[ @"OK" ]
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"StatusBar", [NSBundle bundleForClass:[self class]], @"OK button") ]
                                      accessory:nil
                                     identifier:nil
                                    silenceable:kiTermWarningTypePersistent
-                                       heading:@"AI Error"
+                                       heading:NSLocalizedStringFromTableInBundle(@"AI Error", @"StatusBar", [NSBundle bundleForClass:[self class]], @"AI error warning heading")
                                         window:weakSelf.view.window];
         }];
     }];
@@ -334,22 +335,22 @@
     _popoverVC.textView.defaultParagraphStyle = style;
 
     NSArray<NSString*> *lines = @[
-        @"^⇧↑\tAdd cursor above",
-        @"^⇧↓\tAdd cursor below",
-        @"^⇧-click\tAdd cursor",
-        @"⌥-drag\tAdd cursors"
+        [NSString stringWithFormat:@"^⇧↑\t%@", NSLocalizedStringFromTableInBundle(@"Add cursor above", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")],
+        [NSString stringWithFormat:@"^⇧↓\t%@", NSLocalizedStringFromTableInBundle(@"Add cursor below", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")],
+        [NSString stringWithFormat:@"^⇧-click\t%@", NSLocalizedStringFromTableInBundle(@"Add cursor", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")],
+        [NSString stringWithFormat:@"⌥-drag\t%@", NSLocalizedStringFromTableInBundle(@"Add cursors", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")]
     ];
     if ([iTermAdvancedSettingsModel generativeAIAllowed]) {
-        lines = [lines arrayByAddingObject:@"⌘Y\tNatural language AI lookup"];
+        lines = [lines arrayByAddingObject:[NSString stringWithFormat:@"⌘Y\t%@", NSLocalizedStringFromTableInBundle(@"Natural language AI lookup", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")]];
     }
     lines = [lines arrayByAddingObjectsFromArray:@[
-        @"⌘F\tOpen Find bar",
-        @"⌥⌘V\tOpen in Advanced Paste",
-        @"⌘-click\tOpen in explainshell.com",
-        @"⇧↩\tSend contents or selection",
-        @"⌥⇧↩\tSend command at cursor",
-        @"⌥↩\tEnqueue command at cursor",
-        @"⇧⌘;\tView command history"
+        [NSString stringWithFormat:@"⌘F\t%@", NSLocalizedStringFromTableInBundle(@"Open Find bar", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")],
+        [NSString stringWithFormat:@"⌥⌘V\t%@", NSLocalizedStringFromTableInBundle(@"Open in Advanced Paste", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")],
+        [NSString stringWithFormat:@"⌘-click\t%@", NSLocalizedStringFromTableInBundle(@"Open in explainshell.com", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")],
+        [NSString stringWithFormat:@"⇧↩\t%@", NSLocalizedStringFromTableInBundle(@"Send contents or selection", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")],
+        [NSString stringWithFormat:@"⌥⇧↩\t%@", NSLocalizedStringFromTableInBundle(@"Send command at cursor", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")],
+        [NSString stringWithFormat:@"⌥↩\t%@", NSLocalizedStringFromTableInBundle(@"Enqueue command at cursor", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")],
+        [NSString stringWithFormat:@"⇧⌘;\t%@", NSLocalizedStringFromTableInBundle(@"View command history", @"StatusBar", [NSBundle bundleForClass:self.class], @"Help popover shortcut description")]
     ]];
     [_popoverVC appendString:[lines componentsJoinedByString:@"\n"]];
     [_popoverVC.textView.textStorage addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, _popoverVC.textView.textStorage.string.length)];
@@ -464,8 +465,8 @@
         }
         NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:entry.timeOfLastUse.doubleValue];
         return [[iTermCompletionItem alloc] initWithValue:value
-                                                   detail:[NSString stringWithFormat:@"Last used %@", [NSDateFormatter dateDifferenceStringFromDate:date
-                                                                                                                                            options:iTermDateDifferenceOptionsLowercase]]
+                                                   detail:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Last used %@", @"StatusBar", [NSBundle bundleForClass:[self class]], @"History entry detail format"), [NSDateFormatter dateDifferenceStringFromDate:date
+                                                                                                                                                                                                            options:iTermDateDifferenceOptionsLowercase]]
                                                      kind:iTermCompletionItemKindHistory];
     }];
 }

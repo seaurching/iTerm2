@@ -37,15 +37,15 @@ class StatusBarTriggersComponent: iTermStatusBarTextComponent {
     }
 
     override func statusBarComponentShortDescription() -> String {
-        return "Triggers Menu"
+        return NSLocalizedString("Triggers Menu", tableName: "StatusBar", bundle: Bundle(for: Self.self), comment: "Short description for triggers menu component")
     }
 
     override func statusBarComponentDetailedDescription() -> String {
-        return "When clicked, opens a menu of triggers. You can use it to enable or disable triggers."
+        return NSLocalizedString("When clicked, opens a menu of triggers. You can use it to enable or disable triggers.", tableName: "StatusBar", bundle: Bundle(for: Self.self), comment: "Detailed description for triggers menu component")
     }
 
     override func statusBarComponentExemplar(withBackgroundColor backgroundColor: NSColor, textColor: NSColor) -> Any {
-        return "Triggers…"
+        return NSLocalizedString("Triggers…", tableName: "StatusBar", bundle: Bundle(for: Self.self), comment: "Exemplar text for triggers menu component")
     }
 
     override func statusBarComponentCanStretch() -> Bool {
@@ -53,7 +53,7 @@ class StatusBarTriggersComponent: iTermStatusBarTextComponent {
     }
 
     private var stringValue: String {
-        return "Triggers…"
+        return NSLocalizedString("Triggers…", tableName: "StatusBar", bundle: Bundle(for: Self.self), comment: "Status bar string value for triggers menu component")
     }
 
     override func stringValueForCurrentWidth() -> String? {
@@ -102,8 +102,8 @@ class StatusBarTriggersComponent: iTermStatusBarTextComponent {
             menu.addItem(item)
         }
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(NSMenuItem(title: "Add Trigger…", action: #selector(addTrigger(_:)), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "Edit Triggers…", action: #selector(editTriggers(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: NSLocalizedString("Add Trigger…", tableName: "StatusBar", bundle: Bundle(for: Self.self), comment: "Menu item to add trigger"), action: #selector(addTrigger(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: NSLocalizedString("Edit Triggers…", tableName: "StatusBar", bundle: Bundle(for: Self.self), comment: "Menu item to edit triggers"), action: #selector(editTriggers(_:)), keyEquivalent: ""))
 
         menu.popUp(positioning: menu.items.first!, at: NSPoint.zero, in: containingView)
     }

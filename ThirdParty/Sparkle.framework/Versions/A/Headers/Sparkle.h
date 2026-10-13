@@ -12,6 +12,8 @@
 // This list should include the shared headers. It doesn't matter if some of them aren't shared (unless
 // there are name-space collisions) so we can list all of them to start with:
 
+#import "SUBinaryDeltaCommon.h"
+#import "SUInstallerProtocol.h"
 #import "SUAppcast.h"
 #import "SUAppcastItem.h"
 #import "SUStandardVersionComparator.h"

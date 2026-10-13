@@ -224,7 +224,7 @@ static id iTermVariablesNewProxy(NSString *name, id value, BOOL isAlias, NSStrin
 }
 
 - (NSString *)path {
-    return @"Scope";
+    return NSLocalizedStringFromTableInBundle(@"Scope", @"APIFiles", [NSBundle bundleForClass:[self class]], @"作用域");
 }
 
 - (NSString *)value {
@@ -245,7 +245,7 @@ static id iTermVariablesNewProxy(NSString *name, id value, BOOL isAlias, NSStrin
     self = [super init];
     if (self) {
         _root = [[iTermVariablesScopeProxy alloc] initWithScope:scope];
-        _root.debugInfo = @"Root";
+        _root.debugInfo = NSLocalizedStringFromTableInBundle(@"Root", @"APIFiles", [NSBundle bundleForClass:[self class]], @"根");
     }
     return self;
 }

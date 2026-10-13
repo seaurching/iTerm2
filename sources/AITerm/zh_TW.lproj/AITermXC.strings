@@ -1,0 +1,599 @@
+/* AITerm.strings - 简体中文 */
+
+/* ChatViewController.swift */
+"AI Chat" = "AI 對話";
+"Send Automatically" = "自動傳送";
+"Ask Each Time" = "每次詢問";
+"Never Allow" = "從不允許";
+"Confirm Change" = "確認更改";
+"Link this session to AI chat?" = "將此工作階段連結到 AI 對話？";
+"All terminal content will be sent to AI, which may go to a third party. Ensure this is safe to do before proceeding." = "所有終端機內容將傳送至 AI，可能涉及第三方。請確保安全後再繼續。";
+"Privacy Warning" = "隱私警告";
+"Untitled Chat" = "無標題對話";
+"No Chats" = "沒有對話";
+"Are you sure you want to delete this chat? This action cannot be undone." = "確定要刪除此對話嗎？此操作無法撤銷。";
+"Delete Chat?" = "刪除對話？";
+"Enable orchestration mode?" = "啟用編排模式？";
+"Enable Orchestration" = "啟用編排模式";
+"Disable Orchestration" = "停用編排模式";
+"Reveal Linked Terminal Session" = "顯示已連結的終端機工作階段";
+"Unlink Terminal Session" = "取消連結終端機工作階段";
+"Put Chat in Linked Terminal Session" = "將對話放入已連結的終端機工作階段";
+"Send Commands & Output to AI Automatically" = "自動將命令和輸出傳送給 AI";
+"Link Terminal Session" = "連結終端機工作階段";
+"Reveal Linked Web Browser Session" = "顯示已連結的 Web 瀏覽器工作階段";
+"Unlink Web Browser Session" = "取消連結 Web 瀏覽器工作階段";
+"Put Chat in Linked Browser Session" = "將對話放入已連結的瀏覽器工作階段";
+"Link Browser Session" = "連結瀏覽器工作階段";
+"Help" = "幫助";
+"Select a Session" = "選擇工作階段";
+"Allow Once" = "允許一次";
+"Always Allow" = "始終允許";
+"Deny this Time" = "本次拒絕";
+"Always Deny" = "始終拒絕";
+"Approve" = "批准";
+"Deny" = "拒絕";
+"Not Now" = "暫不";
+"Revoke" = "撤銷";
+"Link" = "連結";
+"Stop" = "停止";
+"Cancel" = "取消";
+"Delete" = "刪除";
+"OK" = "好";
+"Provided automatically" = "自動提供";
+"Always" = "始終";
+"Never" = "從不";
+"Ask" = "詢問";
+"Are you sure you want to delete %@ chats? This action cannot be undone." = "確定要刪除 %@ 個對話嗎？此操作無法撤銷。";
+"Delete %@ Chats?" = "刪除 %@ 個對話？";
+
+/* ChatWindowController.swift */
+"AI Chat could not open because of a problem loading the database. Verify there is only one instance of iTerm2 running." = "AI 對話無法開啟，因為載入資料庫時出現問題。請確認只有一個 iTerm2 例項正在執行。";
+"Error" = "錯誤";
+"There was a problem initializing the database" = "初始化資料庫時出現問題";
+"Toggle Chat List" = "切換對話列表";
+"Show or hide the chat list" = "顯示或隱藏對話列表";
+"Provider" = "提供商";
+"Select AI provider for new chats" = "為新對話選擇 AI 提供商";
+"Model" = "模型";
+"Select AI model" = "選擇 AI 模型";
+"Thinking" = "思考";
+"Toggle Thinking" = "切換思考模式";
+"Enable or disable thinking/reasoning mode" = "啟用或停用思考/推理模式";
+"Effort" = "推理力度";
+"Reasoning Effort" = "推理力度";
+"Select reasoning effort" = "選擇推理力度";
+"Speed" = "速度";
+"Select AI service tier" = "選擇 AI 服務等級";
+"Web Search" = "網頁搜尋";
+"Toggle Web Search" = "切換網頁搜尋";
+"Enable or disable web search" = "啟用或停用網頁搜尋";
+"Session" = "工作階段";
+"Link Session" = "連結工作階段";
+"Link or unlink terminal/browser session" = "連結或取消連結終端機/瀏覽器工作階段";
+"Rename Chat" = "重命名對話";
+"Choose a new name for this chat." = "為此對話選擇一個新名稱。";
+"Rename" = "重命名";
+"The chat could not be renamed." = "無法重新命名對話。";
+"Rename Failed" = "重新命名失敗";
+"New Chat" = "新建對話";
+
+/* ChatToolbar.swift */
+"Allow AI to perform web search?" = "允許 AI 進行網頁搜尋？";
+"Enable high-effort reasoning? Slower but may produce better results." = "啟用高強度推理？速度較慢但可能產生更好的結果。";
+"Select the AI provider for this chat before sending the first message." = "在傳送第一條訊息前為此對話選擇 AI 提供商。";
+"The provider is fixed after the first real message in a chat." = "傳送第一條真實訊息後提供商將固定。";
+"Select a model for this chat. The provider is fixed after the chat is created." = "為此對話選擇模型。對話建立後提供商將固定。";
+"The model is fixed after the chat starts." = "對話開始後模型將固定。";
+"Select a model for this chat." = "為此對話選擇模型。";
+"Only one model is available for this chat." = "此對話只有一個可用模型。";
+"Select reasoning effort for models that support it" = "為支援推理力度的模型選擇推理力度";
+"Select OpenAI service tier. Priority is faster; Flex is lower-cost and slower." = "選擇 OpenAI 服務等級。Priority 更快；Flex 更便宜但較慢。";
+"None" = "無";
+"Minimal" = "最低";
+"Low" = "低";
+"Medium" = "中";
+"High" = "高";
+"Auto" = "自動";
+"Standard" = "標準";
+"Priority (Fast)" = "Priority（快速）";
+"Flex (Slow)" = "Flex（慢速）";
+
+/* ChatInputView.swift */
+"Send" = "傳送";
+"Type a message…" = "輸入訊息…";
+"Attach files" = "附加文件";
+"Attach" = "附加";
+"Insert Path" = "插入路徑";
+"Attach File?" = "附加文件？";
+"Attach Files?" = "附加文件？";
+"Attachment not supported" = "不支持的附件";
+"Attachments not supported" = "不支持的附件";
+"Type a message, or @ to mention a session…" = "輸入訊息，或使用 @ 提及工作階段…";
+
+/* ChatListViewController.swift */
+"Delete Chat" = "刪除對話";
+
+/* ChatSplitViewController.swift */
+"Show chat list" = "顯示對話列表";
+"Hide chat list" = "隱藏對話列表";
+
+/* InlineChatToolbarView.swift */
+"New chat" = "新建對話";
+"Switch to another chat" = "切換到其他對話";
+"Hide chat" = "隱藏對話";
+
+/* MessageCellView.swift */
+"Edit" = "編輯";
+"Copy" = "複製";
+"Fork" = "分叉";
+
+/* MultipartMessageCellView.swift */
+"Code Interpreter" = "程式碼直譯器";
+
+/* FileAttachmentSubpartView.swift */
+"Reveal in Finder" = "在 Finder 中顯示";
+"Open" = "開啟";
+
+/* DateCellView.swift */
+"Invalid date" = "無效日期";
+"Today" = "今天";
+"Yesterday" = "昨天";
+
+/* iTermAITermGatekeeper.swift */
+"Generative AI features have been disabled. Check with your system administrator." = "生成式 AI 功能已被停用。請聯絡系統管理員。";
+"Feature Unavailable" = "功能不可用";
+"You must install the AI plugin before you can use this feature." = "您必須先安裝 AI 外掛才能使用此功能。";
+"Reveal in Settings" = "在設定中顯示";
+"Plugin Missing" = "插件缺失";
+"You must enable AI features in settings before you can use this feature." = "您必須先在設定中啟用 AI 功能才能使用此功能。";
+"Reveal" = "顯示";
+
+/* AIModelCatalogUpdater.swift */
+"Check for AI Model Updates?" = "檢查 AI 模型更新？";
+"Allow" = "允許";
+
+/* ChatAgent.swift */
+"Share Terminal Contents Automatically?" = "自動分享終端機內容？";
+"Turn On" = "開啟";
+
+/* RemoteCommand+Mac.swift */
+"Enable Command Safety Checking?" = "啟用命令安全檢查？";
+"Switch to My Model" = "切換到我的模型";
+"Keep Apple Intelligence" = "保留 Apple Intelligence";
+"Command Safety Checking Has Changed" = "命令安全檢查已更改";
+
+/* RemoteCommand.swift */
+"Checking if you're at a shell prompt" = "正在檢查您是否在 Shell 提示符處";
+"Executing `%@`" = "正在執行 `%@`";
+"Checking the exit status of the last command" = "正在檢查上一個命令的退出狀態";
+"Reviewing the history of commands you have run in this session" = "正在檢視您在此工作階段中執行的命令歷史";
+"Viewing the last command you ran in this session" = "正在檢視您在此工作階段中執行的最後一個命令";
+"Reading your current command prompt" = "正在讀取您當前的命令提示符";
+"Searching the history of commands you have run in this session" = "正在搜尋您在此工作階段中執行的命令歷史";
+"Fetching the output of a previously run command" = "正在獲取先前執行的命令的輸出";
+"Reading the visible screen" = "正在讀取可見螢幕";
+"Querying the size of your terminal window" = "正在查詢終端機視窗大小";
+"Determining which shell you use" = "正在確定您使用的 Shell";
+"Checking if you are using SSH" = "正在檢查您是否在使用 SSH";
+"Getting the current host name of this terminal session" = "正在獲取此終端機工作階段的當前主機名";
+"Checking your username" = "正在檢查您的使用者名稱";
+"Discovering your current directory" = "正在發現您當前的目錄";
+"Pasting to the clipboard" = "正在貼上到剪貼簿";
+"Typing `%@` into the current session" = "正在當前工作階段中輸入 `%@`";
+"Erasing the current command line" = "正在擦除當前命令列";
+"Checking the manpage for `%@`" = "正在檢視 `%@` 的手冊頁";
+"Creating %@" = "正在建立 %@";
+"Search in browser for %@" = "在瀏覽器中搜索 %@";
+"Navigate to %@" = "導航到 %@";
+"Search the web for “%@”" = "在網上搜索 “%@”";
+"Get the current URL" = "獲取當前 URL";
+"View the current web page" = "檢視當前網頁";
+"Restarting this session" = "正在重啟此工作階段";
+"The AI Agent would like to check if you're at a shell prompt" = "AI 智慧體想要檢查您是否在 Shell 提示符處";
+"The AI Agent would like to execute `%@`" = "AI 智慧體想要執行 `%@`";
+"The AI Agent would like to check the exit status of the last command" = "AI 智慧體想要檢查上一個命令的退出狀態";
+"The AI Agent would like to review the history of commands you have run in this session" = "AI 智慧體想要檢視您在此工作階段中執行的命令歷史";
+"The AI Agent would like to view the last command you ran in this session" = "AI 智慧體想要檢視您在此工作階段中執行的最後一個命令";
+"The AI Agent would like to read your current command prompt" = "AI 智慧體想要讀取您當前的命令提示符";
+"The AI Agent would like to search the history of commands you have run in this session" = "AI 智慧體想要搜尋您在此工作階段中執行的命令歷史";
+"The AI Agent would like to fetch the output of a previously run command" = "AI 智慧體想要獲取先前執行的命令的輸出";
+"The AI Agent would like to read the visible screen of your terminal session" = "AI 智慧體想要讀取您終端機工作階段的可見螢幕";
+"The AI Agent would like to query the size of your terminal window" = "AI 智慧體想要查詢您的終端機視窗大小";
+"The AI Agent would like to determine which shell you use" = "AI 智慧體想要確定您使用的 Shell";
+"The AI Agent would like to check if you are using SSH" = "AI 智慧體想要檢查您是否在使用 SSH";
+"The AI Agent would like to get the current host name of this terminal session" = "AI 智慧體想要獲取此終端機工作階段的當前主機名";
+"The AI Agent would like to check your username" = "AI 智慧體想要檢查您的使用者名稱";
+"The AI Agent would like to know your current directory" = "AI 智慧體想要知道您當前的目錄";
+"The AI Agent would like to paste to the clipboard" = "AI 智慧體想要貼上到剪貼簿";
+"The AI Agent would like to type `%@` into the current session" = "AI 智慧體想要在當前工作階段中輸入 `%@`";
+"The AI Agent would like to erase the current command line" = "AI 智慧體想要擦除當前命令列";
+"The AI Agent would like to check the manpage for `%@`" = "AI 智慧體想要檢視 `%@` 的手冊頁";
+"The AI Agent would like to create a file named `%@`" = "AI 智慧體想要建立名為 `%@` 的檔案";
+"The AI agent would like to search the current web page for “%@”" = "AI 智慧體想要搜尋當前網頁中的 “%@”";
+"The AI agent would like to navigate to %@" = "AI 智慧體想要導航到 %@";
+"The AI agent would like to search the web for “%@”" = "AI 智慧體想要在網上搜索 “%@”";
+"The AI agent would like to get the current URL" = "AI 智慧體想要獲取當前 URL";
+"The AI agent would like to view the current web page" = "AI 智慧體想要檢視當前網頁";
+"The AI Agent would like to restart this session, which kills any running jobs" = "AI 智慧體想要重啟此工作階段，這將終止所有正在執行的任務";
+
+/* RemoteCommand+Mac.swift */
+"iTerm2 can use AI to check the safety of commands suggested by your AI agent. Would you like to enable safety checking?\n\nWhen enabled, each proposed command will be sent to your configured AI provider for a safety check." = "iTerm2 可以使用 AI 檢查您的 AI 智慧體建議的命令的安全性。是否要啟用安全檢查？\n\n啟用後，每個擬執行的命令將傳送給您配置的 AI 提供商進行安全檢查。";
+"Until now, iTerm2 checked the safety of AI-suggested commands on your Mac using Apple Intelligence, at no cost. It can now use your configured AI model instead, which is more accurate but sends each checked command to your AI provider and may incur charges.\n\nSwitch to your configured model? If you decline, iTerm2 keeps using Apple Intelligence." = "迄今為止，iTerm2 使用 Apple Intelligence 在您的 Mac 上免費檢查 AI 建議命令的安全性。現在它可以改用您配置的 AI 模型，更準確但會將每個檢查的命令傳送給您的 AI 提供商，可能會產生費用。\n\n是否切換到您配置的模型？如果拒絕，iTerm2 將繼續使用 Apple Intelligence。";
+
+/* AIConnectionTester.swift */
+"Placeholder key in use: AI responses are simulated for App Review and no external service is contacted." = "正在使用佔位金鑰：AI 回應為 App Review 模擬，不聯絡任何外部服務。";
+"Could not build a request: %@" = "無法構建請求：%@";
+"The server responded but its reply could not be understood: %@" = "伺服器已回應，但無法理解其回覆：%@";
+
+/* AIModelCatalogUpdater.swift */
+"iTerm2 can keep its built-in list of AI models current by periodically downloading a cryptographically signed list from iterm2.com. No terminal content or personal data is sent. Allow this?" = "iTerm2 可以通過定期從 iterm2.com 下載加密簽名的列表來保持其內建 AI 模型列表最新。不會發送任何終端機內容或個人資料。是否允許？";
+
+/* ChatAgent.swift */
+
+/* AITermControllerObjC.swift */
+"Thinking…" = "思考中…";
+
+/* ChatViewController.swift */
+"The user declined to allow this function call to execute." = "使用者拒絕允許此函式呼叫執行。";
+"Unknown function call name" = "未知的函式呼叫名稱";
+"Explain the output of %@ based on [attached terminal content](%@)." = "解釋 %@ 的輸出";
+"Explain the output of %@ based on some no-longer-available content." = "解釋 %@ 的輸出";
+"*Note: The command output was truncated because it exceeded the maximum number of lines supported by AI Chat*" = "*注意：命令輸出因超出 AI 對話支援的最大行數而被截斷*";
+"(Unnamed session)" = "(未命名工作階段)";
+"terminal" = "終端機";
+"browser" = "瀏覽器";
+"This chat is no longer linked to a terminal session." = "此對話不再連結到終端機工作階段。";
+"This chat is no longer linked to a web browser session." = "此對話不再連結到 Web 瀏覽器工作階段。";
+"The user did not link a web browser session to chat, so the function could not be run." = "使用者未將 Web 瀏覽器工作階段連結到對話，因此無法執行該功能。";
+"The user did not link a terminal session to chat, so the function could not be run." = "使用者未將終端機工作階段連結到對話，因此無法執行該功能。";
+"AI attempted to perform an action, but no web browser session is linked to this chat so it failed." = "AI 嘗試執行操作，但此對話未連結到 Web 瀏覽器工作階段，因此操作失敗。";
+"AI attempted to perform an action, but no terminal session is linked to this chat so it failed." = "AI 嘗試執行操作，但此對話未連結到終端機工作階段，因此操作失敗。";
+"The user declined to allow function calling. Try to find another way to assist." = "使用者拒絕允許函式呼叫。請嘗試其他方式提供幫助。";
+"Waiting for a session to be selected…" = "等待選擇工作階段…";
+"Terminal commands will no longer be sent to AI automatically." = "終端機命令將不再自動傳送給 AI。";
+"All terminal commands in the linked session will be sent to AI automatically." = "連結工作階段中的所有終端機命令將自動傳送給 AI。";
+"Terminal commands will no longer be sent to AI automatically. Automatic sending always terminates when iTerm2 restarts or the current chat changes." = "終端機命令將不再自動傳送給 AI。自動傳送會在 iTerm2 重啟或當前對話更改時終止。";
+"Linking gives the AI access to this session subject to your per-call permission." = "連結後 AI 將根據您的逐次許可訪問此工作階段。";
+"**Orchestration** is an alternative mode where the AI can coordinate multiple sessions." = "**編排模式**是一種替代模式，AI 可以協調多個工作階段。";
+"**Orchestration** lets the AI coordinate across multiple terminal sessions. It can read the contents of any session, and you grant a one-time approval before it controls a session instead of approving every call. It also runs in **auto mode**: each command the AI proposes is checked for safety by your AI provider, and anything risky is held for your review." = "**編排模式**允許 AI 跨多個終端機工作階段進行協調。它可以讀取任何工作階段的內容，您只需在其控制某個工作階段之前授予一次性審批，而不是逐次審批每個呼叫。它還以**自動模式**執行：AI 提出的每個命令都會由您的 AI 提供商進行安全檢查，任何有風險的操作都會暫扣，等待您審核。";
+"It uses automatic safety checking and one-time per-session approval instead of fine-grained permissions." = "它使用自動安全檢查和每工作階段一次性審批，而不是細粒度權限。";
+"You can use these buttons or the info button menu at the top of the chat window to control AI permissions for this chat." = "您可以使用這些按鈕或對話視窗頂部的資訊按鈕選單來控制此對話的 AI 許可權。";
+"**Open a new session?**" = "**開啟新工作階段？**";
+"**Run this command?**" = "**執行此命令？**";
+"**Allow repeated screen reads?**" = "**允許重複讀取螢幕？**";
+"session" = "工作階段";
+"workgroup" = "工作組";
+"The AI agent needs to run commands in a live %@ session, but none is attached to this chat." = "AI 智慧體需要在即時%@工作階段中執行命令，但此對話未附加任何工作階段。";
+"You @-mentioned it, so the agent can act there without asking. Revoke to require approval again." = "您 @提及了它，因此智慧體可以在那裡執行操作而無需詢問。撤銷後需要再次審批。";
+"Unnamed session" = "未命名工作階段";
+"This chat is not linked to any web browser session." = "此對話未連結到任何 Web 瀏覽器工作階段。";
+"This chat is not linked to any terminal session." = "此對話未連結到任何終端機工作階段。";
+"Orchestration enabled. Agent can see content of all sessions." = "編排模式已啟用。智慧體可以檢視所有工作階段的內容。";
+"Orchestration disabled." = "編排模式已停用。";
+
+/* ChatDatabase.swift */
+"This chat is no longer linked to a terminal session." = "此對話不再連結到終端機工作階段。";
+"This chat is no longer linked to a web browser session." = "此對話不再連結到 Web 瀏覽器工作階段。";
+
+/* AITerm.swift */
+"Cancel" = "取消";
+
+/* ChatProviderBinding.swift */
+/* iTermAIError.swift */
+
+/* ChatCellView.swift */
+"Chat" = "對話";
+
+/* ChatTitleStyling.swift */
+"Orchestrator chat" = "編排對話";
+
+/* TerminalCommandMessageCellView.swift */
+"Command icon" = "命令圖示";
+
+/* ChatSessionMentionAttachment.swift */
+"iTerm2 session" = "iTerm2 工作階段";
+
+/* ChatMentionPickerController.swift */
+"Workgroup" = "工作組";
+
+/* AICompletion.swift */
+"You are offering command line completion suggestions and descriptions." = "您正在提供命令列補全建議和描述。";
+"Respond with one description + suggestion per line." = "每行回覆一個描述 + 建議。";
+"Each line should consist of a 2-5 word description, followed by a tab, followed by the suggestion." = "每行應包含 2-5 個詞的描述，後跟一個製表符，再跟建議。";
+"Return no more than %@ lines. You may return fewer or none rather than poor quality suggestions." = "返回不超過 %@ 行。您可以返回更少或不返回，而不是返回低質量的建議。";
+"The current working directory is %@" = "當前工作目錄是 %@";
+"The user appears to be entering the name of a command to execute, not one of its arguments, so completions should be for executable commands likely to be present on the system." = "使用者似乎正在輸入要執行的命令名稱，而不是其引數，因此補全應該是系統上可能存在的可執行命令。";
+"The suggestion in each line you respond with is a candidate to append after what has been typed so far." = "您回覆的每一行中的建議都是在已輸入內容之後追加的候選。";
+"Previously run commands in chronological order are:" = "按時間順序排列的先前執行的命令是：";
+"(end of command list)" = "（命令列表結束）";
+"Your suggestions should take recently run commands into consideration: if possible, suggest a command that builds on what the user has begun." = "您的建議應考慮最近執行的命令：如果可能，建議一個基於使用者已開始輸入的命令。";
+"Do not make up or invent file or directory names." = "不要編造或虛構檔案或目錄名稱。";
+"If a suggestion would end with a filename, use %@ instead." = "如果建議以檔名結尾，請改用 %@。";
+"Do not invent other kinds of placeholders such as {{MESSAGE}} or {{DIRECTORY}}. Use plain English, like \"message\", instead." = "不要發明其他型別的佔位符，如 {{MESSAGE}} 或 {{DIRECTORY}}。請使用普通英文，如 \"message\"。";
+"Instead, your suggestion may end with the longest common prefix of valid filename completions, which is: %@" = "相反，您的建議可以以有效檔名補全的最長公共字首結尾，即：%@";
+"The text the user has entered so far, which needs completion, is:" = "使用者到目前為止輸入的需要補全的文本是：";
+"Additionally, there is some text after the cursor. Use this to come up with better suggestions, assuming it will be used after what you suggest or that your suggestion will replace some of it. It is:" = "此外，游標後面有一些文本。請利用這些文本提出更好的建議，假設它將在您建議的內容之後使用，或者您的建議將替換其中一部分。它是：";
+
+/* AIExplanationRequest.swift */
+"After this paragraph I will attach the output of %@, which the user needs help understanding." = "在此段落之後，我將附加 %@ 的輸出，使用者需要幫助理解。";
+"After this paragraph I will attach some text from a terminal emulator that the user needs help understanding." = "在此段落之後，我將附加來自終端機模擬器的一些文本，使用者需要幫助理解。";
+"The beginning of the command output is not included because it was extremely long. What you see is just the latter part of it." = "命令輸出的開頭未包含在內，因為它非常長。您看到的只是它的後半部分。";
+"Annotations should explain parts of the output that the user likely wants to know more about, such as error messages, abstruse terms of art, tersely formatted messages, or anything non-obvious." = "註釋應解釋使用者可能想了解更多關於輸出的部分，例如錯誤訊息、深奧的術語、簡潔格式的訊息或任何不明顯的內容。";
+"Respond with a sequence of annotations." = "用一系列註釋來回復。";
+"Since the user asked for this to be explained, you should always add at least one annotation." = "由於使用者要求解釋此內容，您應始終新增至少一個註釋。";
+"You should respond to their question with a main response and, if needed, annotations of the text provided below." = "您應該用主要回復來回答他們的問題，如果需要，還可以對下面提供的文本進行註釋。";
+"The entirety of the main response should be wrapped in <response>…</response> tags." = "主要回復的全部內容應包裹在 <response>…</response> 標籤中。";
+"The main response should be markdown. < and & must be ampersand encoded." = "主要回復應為 markdown 格式。< 和 & 必須使用 & 編碼。";
+"You may also choose to include annotations that are relevant to the question." = "您也可以選擇包含與問題相關的註釋。";
+"Annotations will be displayed to the user next to the parts of the terminal emulator's content." = "註釋將在終端機模擬器內容的部分旁邊顯示給使用者。";
+"Don't annotate anything obvious, like self-explanatory comments in code." = "不要註釋任何明顯的內容，如程式碼中不言自明的註釋。";
+"Never use a substring as its own annotation." = "永遠不要使用子字串作為自己的註釋。";
+"An example of a good annotation: `Error: text file busy` might be annotated as `This usually happens when you try to modify or delete an executable that is currently running`." = "一個好註釋的例子：`Error: text file busy` 可以註釋為 `當您嘗試修改或刪除當前正在執行的執行檔時，通常會發生這種情況`。";
+"Use ampersand escaping like HTML if you need to use a quotation mark or an ampersand." = "如果您需要使用引號或 & 符號，請使用類似 HTML 的 & 跳脫。";
+"You may provide more than one annotation per line of input if needed." = "如果需要，您可以為每行輸入提供多個註釋。";
+"Avoid overlapping annotations because they lead to a confusing user interface." = "避免重疊註釋，因為它們會導致混亂的使用者介面。";
+"I have added markup to help identify line numbers." = "我已新增標記以幫助識別行號。";
+"Each line is wrapped in <line n=\"number\">…</line>." = "每行都包裹在 <line n=\"number\">…</line> 中。";
+"The text to annotate follows:" = "要註釋的文本如下：";
+"Stop using <annotation> and <response>. I am no longer parsing them. What follows will be a regular conversation. Here is the next prompt from the user: " = "停止使用 <annotation> 和 <response>。我不再解析它們。接下來將是普通對話。以下是使用者的下一個提示：";
+
+/* ChatClient.swift */
+"The user denied permission to use function calling in this terminal session. Do not try again." = "使用者拒絕了在此終端機工作階段中使用函式呼叫的許可權。請勿重試。";
+"AI will not execute this command." = "AI 不會執行此命令。";
+
+/* AITerm.swift */
+"Could not obtain a valid API key registration for this model’s provider." = "無法獲取此模型提供商的有效 API 金鑰註冊。";
+"Vector stores are not supported with this LLM vendor" = "此 LLM 供應商不支援向量儲存庫";
+"Adding file to vector store failed" = "新增檔案到向量儲存庫失敗";
+"An error occurred while ingesting files to vector storage" = "將檔案匯入向量儲存庫時發生錯誤";
+"The file may not be well formed." = "檔案格式可能不正確。";
+"File upload not supported with this LLM vendor" = "此 LLM 供應商不支援檔案上傳";
+"Streaming is not supported by this language model in iTerm2. You can disable streaming in Settings > General > AI." = "此語言模型在 iTerm2 中不支援流式傳輸。您可以在 設定 > 通用 > AI 中停用流式傳輸。";
+"Unexpected end of file from server" = "伺服器意外結束檔案";
+"Empty response from server" = "伺服器返回空回應";
+"Apple Intelligence requires macOS 26 or later." = "Apple Intelligence 需要 macOS 26 或更高版本。";
+"Apple Intelligence error: %@" = "Apple Intelligence 錯誤：%@";
+"Invalid URL for AI provider of %@" = "AI 提供商的 URL 無效：%@";
+"Could not decode response: " = "無法解碼回應：";
+"Failed to decode API response: %@. Data is: %@" = "解碼 API 回應失敗：%@。資料為：%@";
+
+/* AISafetyClassifierBackend.swift */
+"No AI model is configured to classify command safety." = "未配置 AI 模型來對命令安全性進行分類。";
+"Empty response from classifier model." = "分類器模型返回空回應。";
+
+/* AIConversation.swift */
+"You must provide a valid API key to use AI features in iTerm2." = "您必須提供有效的 API 金鑰才能使用 iTerm2 中的 AI 功能。";
+"You must provide a valid API key to use AI features in iTerm2" = "您必須提供有效的 API 金鑰才能使用 iTerm2 中的 AI 功能";
+
+/* AITermControllerObjC.swift */
+"AI features are not enabled or the API key is missing." = "AI 功能未啟用或 API 金鑰缺失。";
+
+/* ChatBlobAssembler.swift */
+"Failed to splice frozen chat history into the request body" = "將凍結的對話歷史拼接到請求體中失敗";
+
+/* LLMFiles.swift */
+"File upload is not supported with this LLM provider" = "此 LLM 提供商不支援檔案上傳";
+
+/* LLMRequestBuilder.swift */
+"Apple Intelligence does not use HTTP requests" = "Apple Intelligence 不使用 HTTP 請求";
+
+/* LLMVectorStore.swift */
+"Adding to vector store is not supported with this LLM provider" = "此 LLM 提供商不支援新增到向量儲存庫";
+"Failed to add files to vector store: %@" = "新增檔案到向量儲存庫失敗：%@";
+"The vector store has not been enabled in settings" = "向量儲存庫未在設定中啟用";
+"No vector store is available for this LLM provider." = "此 LLM 提供商沒有可用的向量儲存庫。";
+
+/* MessagePrepPipeline.swift */
+"Chat agent no longer exists" = "對話智慧體不再存在";
+"Missing vector store ID" = "缺少向量儲存庫 ID";
+"Failed to zip attached files" = "壓縮附件失敗";
+
+/* AIPluginClient.swift */
+"Plugin not found" = "未找到插件";
+"Plugin missing from app bundle or not readable" = "外掛缺失或不可讀";
+"Plugin code not valid UTF-8" = "外掛模組碼不是有效的 UTF-8";
+"Signature missing from app bundle or not readable" = "簽名缺失或不可讀";
+"Signature of AI plugin is malformed" = "AI 外掛簽名格式錯誤";
+"The plugin's signature is invalid. Reinstall the plugin or upgrade iTerm2." = "外掛簽名無效。請重新安裝外掛或升級 iTerm2。";
+"Plugin not allowed by administator." = "管理員不允許此外掛。";
+"Unable to determine version of AI plugin. Reinstall it and upgrade iTerm2 if possible." = "無法確定 AI 外掛版本。請重新安裝並在可能時升級 iTerm2。";
+
+/* LLM.swift */
+"Searching the web…" = "正在搜尋網頁…";
+"Finished searching the web for %@." = "已完成網頁搜尋：%@。";
+"Finished searching the web." = "已完成網頁搜尋。";
+"Executing code…" = "正在執行程式碼…";
+"Finished executing code" = "程式碼執行完成";
+
+/* MarkdownHelpers.swift */
+"Finished searching the web for **%@**." = "已完成網頁搜尋：**%@**。";
+
+/* Message.swift */
+"Stopped sending commands to AI" = "已停止向 AI 傳送命令";
+"Sending commands to AI automatically" = "正在自動向 AI 傳送命令";
+
+/* it_fatalError messages */
+"Server should not send function output" = "伺服器不應傳送函式輸出";
+"Should not accumulate multipart" = "不應累積多部分";
+"Streaming not supported in the objective c interface" = "Objective-C 介面不支援流式傳輸";
+"User commands should not reach fetchCompletion" = "使用者命令不應到達 fetchCompletion";
+"User should not create vector store" = "使用者不應建立向量儲存庫";
+"User-sent attachments not supported" = "不支援使用者傳送的附件";
+"Agent should not send userCommand" = "智慧體不應傳送 userCommand";
+"Server-sent attachments are not yet supported" = "尚不支援伺服器傳送的附件";
+"init(coder:) has not been implemented" = "init(coder:) 未實現";
+"init(coder:) not implemented" = "init(coder:) 未實現";
+"User messages should not be in model" = "使用者訊息不應在模型中";
+"Append-type messages should not be in model" = "追加型別的訊息不應在模型中";
+"user command not allowed in model" = "模型中不允許使用者命令";
+"Append type messages not allowed in model" = "模型中不允許追加型別的訊息";
+"Subclass must implement this" = "子類必須實現此方法";
+"Unsupported user-sent attachment type" = "不支援的使用者傳送附件型別";
+"Pipeline has unsatisfiable dependencies" = "管道有無法滿足的依賴關係";
+"Apple Intelligence does not parse HTTP responses" = "Apple Intelligence 不解析 HTTP 回應";
+
+/* ChatAgent.swift */
+
+/* LLMProvider.swift */
+
+/* AITerm.swift */
+"Error from %@: %@" = "來自 %@ 的錯誤：%@";
+"**Request failed**" = "**請求失敗**";
+"No AI model configured in settings." = "設定中未配置 AI 模型。";
+"Could not obtain a valid API key registration for this model’s provider." = "無法取得此模型供應商的有效 API 金鑰註冊。";
+"This is a demonstration response from the iTerm2 AI assistant. iTerm2 is configured with a placeholder key for App Review, so no external AI service is contacted and no data leaves your Mac. To get real answers, set your AI provider's API key in iTerm2 Settings > AI." = "這是來自 iTerm2 AI 助手的示範回覆。iTerm2 設定了用於 App 審核的佔位金鑰，因此不會聯絡任何外部 AI 服務，也不會有任何資料離開您的 Mac。若要取得真實答案，請在 iTerm2 設定 > AI 中設定您的 AI 供應商的 API 金鑰。";
+
+/* AIExplanationRequest.swift */
+"Explain %@" = "解釋 %@";
+"Each annotation you write should look like this: <annotation line=\"N\" text=\"A useful explanation of the annotated substring\" substring=\"text that occurs on line N that you wish to annotate\"/>." = "您編寫的每個註解應如下所示：<annotation line=\"N\" text=\"對所註解子字串的有用說明\" substring=\"您希望註解的第 N 行上出現的文字\"/>。";
+
+/* AISafetyClassifierBackend.swift */
+"Apple Intelligence is unavailable; the command safety check will not fall back to a cloud provider." = "Apple Intelligence 無法使用；命令安全檢查將不會回退到雲端供應商。";
+
+/* Message.swift */
+"Selecting session…" = "正在選擇工作階段…";
+"Finished executing command" = "已完成執行命令";
+"Ran `%@`" = "已執行 `%@`";
+"Empty message" = "空訊息";
+
+/* ChatViewController.swift */
+"AI can %@" = "AI 可以 %@";
+"When a terminal session is linked to this chat, the AI may view terminal contents and run commands in that session. You will be prompted to grant permission before it is able to view, type to, or modify a terminal session." = "當終端機工作階段連結到此對話時，AI 可以檢視終端機內容並在該工作階段中執行命令。在它能夠檢視、輸入或修改終端機工作階段之前，系統會提示您授予權限。";
+
+/* ChatInputView.swift */
+"Add the %@ dropped files to your message as attachments, or insert their paths as text?" = "將 %@ 個拖入的檔案作為附件加入到您的訊息中，還是以文字形式插入其路徑？";
+"↩ to submit" = "↩ 提交";
+"%@ doesn’t accept this file type as a chat attachment: %@." = "%@ 不接受此檔案類型作為對話附件：%@。";
+"the current AI provider" = "目前的 AI 供應商";
+
+/* ChatCellView.swift */
+"AI is typing…" = "AI 正在輸入…";
+
+/* MarkdownHelpers.swift */
+"Copied" = "已複製";
+
+/* ChatListViewController.swift */
+"Delete %ld Chats" = "刪除 %ld 個對話";
+
+/* ChatToolbar.swift */
+"Effort: %@" = "推理力度：%@";
+"Enable high-effort reasoning?" = "啟用高強度推理？";
+"Tier: %@" = "等級：%@";
+"Web search image" = "網頁搜尋圖片";
+"XHigh" = "極高";
+
+/* ChatMentionPickerController.swift */
+"Tab %@" = "分頁 %@";
+"Tab %@ · %@" = "分頁 %@ · %@";
+"Window %@" = "視窗 %@";
+
+/* ChatSessionMentionAttachment.swift */
+"Untitled session" = "未命名工作階段";
+
+/* RemoteCommand.swift */
+"Provide Screen Contents Automatically" = "自動提供螢幕內容";
+"Provide Terminal State Automatically" = "自動提供終端機狀態";
+
+"By setting this permission to “Always Allow”, terminal state will be sent automatically on every message you send in this chat.\nThis includes:\n • The current or last command and its exit status\n •The window size\n • Your shell\n • The current working directory, username, and hostname." = "將此權限設為“始終允許”後，在此對話中您傳送的每則訊息都會自動傳送終端機狀態。\n這包括：\n • 目前或最後一條指令及其退出狀態\n •視窗大小\n • 您的 shell\n • 目前工作目錄、使用者名稱和主機名稱。";
+"By setting this permission to “Always Allow”, the current visible screen of your terminal session will be sent automatically on every message you send in this chat." = "將此權限設為“始終允許”後，在此對話中您傳送的每則訊息都會自動傳送終端機工作階段目前可見的螢幕內容。";
+
+/* ChatInputView.swift */
+"\nYou can click on a link in this message or on a yellow underline in the terminal to reveal an annotation." = "\n你可以點按訊息中的連結或終端機中的黃色底線來檢視批註。";
+"**Allow agent to control %@ \\u{201c}%@\\u{201d}?**" = "**允許代理程式控制 %1$@「%2$@」嗎?**";
+"**Enable orchestration for this chat?**\n\n" = "**為此對話啟用編排?**\n\n";
+"**Granted this chat permission to control \\u{201c}%@\\u{201d}.**" = "**已授予此對話控制「%@」的權限。**";
+"**Link this chat to %@ session \\u{201C}%@\\u{201D}, or enable orchestration?**" = "**將此對話連結到 %1$@工作階段「%2$@」,還是啟用編排?**";
+"**Request failed**\n\n%@" = "**請求失敗**\n\n%@";
+"*If you grant or deny permission, it affects only this chat conversation while linked to this particular terminal session. You can change permissions in the chat Info menu.*" = "*如果你授予或拒絕權限,僅影響此對話在連結到該終端機工作階段期間的行為。你可以在對話的「資訊」選單中更改權限。*";
+"A vector store was created" = "已建立向量儲存庫。";
+"AI Model" = "AI 模型";
+"AI Provider" = "AI 供應商";
+"AI Speed" = "AI 速度";
+"Add \\u{201c}%@\\u{201d} to your message as an attachment, or insert its path as text?" = "將「%@」作為附件加入你的訊息,還是將其路徑作為文字插入?";
+"Cancelled." = "已取消。";
+"Cassette delivery had neither response nor error" = "Cassette 傳遞既無回應也無錯誤";
+"Chat about %@" = "就此主題:%@";
+"Context Menu" = "情境選單";
+"Could not create context for plugin" = "無法為外掛模組建立上下文";
+"Could not encode request to plugin: %@" = "無法將請求編碼給外掛模組:%@";
+"Detail: %@" = "詳細資訊:%@";
+"Don’t Allow" = "不允許";
+"Error decoding response: %@" = "解碼回應出錯:%@";
+"Error running plugin: %@" = "執行外掛模組出錯:%@";
+"Failed to enable orchestration: %@. The chat remains in its current mode." = "啟用編排失敗:%@。對話保持目前模式。";
+"Failed to surface the request: %@" = "呈現請求失敗:%@";
+"Failed to upload %@: %@" = "上傳 %@ 失敗:%@";
+"Function %@ not found" = "找不到函式 %@";
+"I [annotated](%@) “%@”: %@" = "我[批註](%1$@)了「%2$@」:%3$@";
+"Invalid version string: %@" = "無效的版本字串:%@";
+"JavaScript function call failed" = "JavaScript 函式呼叫失敗";
+"Javascript exception: %@" = "JavaScript 例外:%@";
+"Non-UTF-8 result from plugin: %@" = "外掛模組回傳了非 UTF-8 結果:%@";
+"Orchestration is now active for the rest of this conversation. The orchestration toolset (send_text, get_state, list_workgroups, register_watch, start_code_review, etc.) is available to you now and you may call those tools in the continuation of this turn or any subsequent turn." = "編排現已在本對話的其餘部分生效。編排工具集（send_text、get_state、list_workgroups、register_watch、start_code_review 等）現已可用,你可以在本輪的後續操作或之後的任意輪次中呼叫這些工具。";
+"Please assign a short, specific name to this chat, less than 30 characters in length, but descriptive. It will be shown in a chat list UI. Respond with only the name of the chat." = "請為這個對話起一個簡短、具體且有描述性的名稱,長度不超過 30 個字元。它將顯示在對話列表介面中。只回覆對話名稱本身。";
+"Plugin has version %@ but iTerm2 expects %@. Upgrade one or both." = "外掛模組版本為 %@,但 iTerm2 需要 %@。請升級其中之一。";
+"Plugin unexpectedly returned null" = "外掛模組意外回傳 null";
+"Reached state: %@" = "達到狀態:%@";
+"Role: %@" = "角色:%@";
+"Screen last changed: %@" = "螢幕最後變化:%@";
+"Text ends with an unescaped backslash." = "文字以未跳脫的反斜線結尾。";
+"The URL is not valid." = "URL 無效。";
+"The connection succeeded. The model responded normally." = "連線成功。模型正常回應。";
+"The messages for this chat could not be loaded." = "無法載入此對話的訊息。";
+"There was a problem adding files to the vector store: %@" = "向向量儲存庫加入檔案時出現問題:%@";
+"There was a problem creating a vector store database: %@" = "建立向量儲存庫資料庫時出現問題:%@";
+"This chat has been linked to terminal session \\u{201c}%@\\u{201d}" = "此對話已連結到終端機工作階段「%@」";
+"This chat has been linked to web browser session \\u{201c}%@\\u{201d}" = "此對話已連結到網頁瀏覽器工作階段「%@」";
+"This chat uses \\u{201c}%@\\u{201d}, and \\u{201c}%@\\u{201d} belongs to a different AI provider. A chat cannot change providers once the conversation has started; start a new chat to use \\u{201c}%@\\u{201d}." = "此對話使用「%1$@」,而「%2$@」屬於另一個 AI 供應商。對話開始後無法更換供應商;請新增對話以使用「%3$@」。";
+"Unexpected exception: %@" = "意外例外:%@";
+"Unexpected output from plugin" = "外掛模組意外回傳空輸出";
+"Unexpected output from plugin: %@" = "外掛模組意外輸出:%@";
+"Unknown Platform" = "未知平臺";
+"Unknown error occurred" = "發生未知錯誤";
+"Upload of %@ finished." = "上傳 %@ 完成。";
+"Uploading…" = "正在上傳…";
+"User declined to enable orchestration." = "使用者拒絕啟用編排。";
+"Workgroup: %@" = "工作群組:%@";
+"Would you like to grant AI **%@** permission?" = "是否授予 AI **%@** 權限?";
+"[Attached file]" = "[附件檔案]";
+"cancelled" = "已取消";
+"iTerm2 can include this session’s visible screen and terminal state with every message you send in AI chats where you’ve allowed it, so the assistant sees what you see. You can turn this off any time from a chat’s permission settings." = "在你允許的 AI 對話中,iTerm2 可以在你傳送每則訊息時附帶此工作階段的可見螢幕與終端機狀態,讓助理看到你所看到的。你可以隨時在對話的權限設定中關閉此功能。";
+"⚠️ **The AI safety check flagged this command as potentially dangerous. Review it with care.**\n\n" = "⚠️ **AI 安全檢查標記此命令可能有危險。請謹慎檢視。**\n\n";
+"🛑 The text to analyze was too long. Select a portion of it and try again." = "🛑 要分析的文字過長。請選擇其中一部分後重試。";
+"After the tab, the suggestion should begin with the literal text the user has entered so far." = "定位鍵之後,建議應以使用者目前已輸入的字面文字開頭。";
+"I am logged in as %@@%@" = "我以 %@@%@ 登入";
+"I executed the following command line:" = "我執行了以下命令列:";
+"It produced this output:" = "它產生了以下輸出:";
+"My current directory was:" = "我目前的工作目錄是:";
+"Note: iTerm2 already sent a push notification to the user's iPhone for this event. Do not send another." = "註:iTerm2 已就此事向使用者的 iPhone 傳送了推播通知。請勿再傳。";
+"Note: the user asked for a push notification but notifications are unavailable right now, so make sure they see this in chat." = "註:使用者要求推播通知,但目前通知不可用,請確保使用者在對話中看到此訊息。";
+"Note: the user may be away from their Mac. If they asked to be told when this happened, also send a push notification with the notify tool." = "註:使用者可能不在 Mac 前。如果使用者要求在發生此事時被告知,請同時用 notify 工具傳送推播通知。";
+"Streaming not supported in the objective C interface" = "Objective-C 介面不支援串流傳輸";
+"The current hostname is %@" = "目前主機名稱是 %@";
+"The exit status of the command was %@" = "命令的退出狀態是 %@";
+"The user has asked this question about it: \\u{201c}%@\\u{201d}" = "使用者就此提出了這個問題:「%@」";
+"iTerm2 is sending you this message automatically because the user enabled sending terminal commands to AI for assistance. If you can provide useful non-obvious insights, respond with those. Do not restate information that is obvious from the output. If there is nothing important to say, just respond with \"Got it.\"" = "iTerm2 自動向你傳送這則訊息,是因為使用者開啟了將終端機命令傳送給 AI 尋求協助的功能。如果你能提供有用的非顯而易見的見解,請回覆這些見解。不要複述從輸出中顯而易見的資訊。如果沒有重要的內容要說,只需回覆 \"Got it.\"。";
+"Unknown backslash escape “%@”. Recognized: \\\\, \\n, \\r, \\t, \\uXXXX." = "未知反斜線跳脫「%@」。支援的跳脫:\\\\、\\n、\\r、\\t、\\uXXXX。";
+"Truncated \\\\uXXXX escape (needs exactly four hex digits)." = "\\uXXXX 跳脫被截斷(需要恰好四位十六進位數字)。";
+"For example, if the command so far was `git re` then you might suggest `Rewrite commit history\\tgit rebase`, `Rewrite commit history\\tgit revert`, and `Move branch pointer\\tgit reset`. " = "例如,若目前已輸入的命令是 `git re`,你可以建議 `Rewrite commit history\\tgit rebase`、`Rewrite commit history\\tgit revert` 和 `Move branch pointer\\tgit reset`。 ";
+"You can suggest more than one additional word when you can tell from context that it would be a good suggestion. For example, if the user frequently runs `grep ERROR <file> | sort | uniq` and you see that the text so far is `grep ERROR myfile.txt` your response could include `Count unique errors\\tgrep ERROR myfile.txt | sort | uniq`" = "當你能從上下文判斷出會是好的建議時,可以建議多個補充詞。例如,若使用者經常執行 `grep ERROR <file> | sort | uniq` 而你看到已輸入的文字是 `grep ERROR myfile.txt`,你的回應可以包含 `Count unique errors\\tgrep ERROR myfile.txt | sort | uniq`";
+"server" = "伺服器";
+"There is no registered function by that name. Try again." = "沒有按該名稱註冊的函數。請重試。";
+"This message requires a newer version of iTerm2 to view." = "檢視此訊息需要更新版本的 iTerm2。";
+"The request violated Gemini's safety rules." = "該請求違反了 Gemini 的安全規則。";
+"While parsing a function call request" = "解析函式呼叫請求時";
+"I have attached files for you to use.\n" = "我已附上檔案供你使用。\n";
+"I was unable to complete the function call: " = "我未能完成此函式呼叫：";
+"If a zip file is provided (this is rare), you should extract it and analyze the contents in the context of the accompanying messages." = "如果提供了 zip 檔案（這種情況很少見），你應將其解壓縮並結合隨附訊息的內容進行分析。";
+"AI token limit exceeded because the conversation reached its maximum length" = "對話長度達到上限，超出 AI token 限制。";
+"Write to the Clipboard" = "寫入剪貼簿";
+"Write to the File System" = "寫入檔案系統";
+"Act in Web Browser" = "在 Web 瀏覽器中操作";
+
+"[iTerm2 was restarted before this tool call completed. The call did not finish; assume no side effects took place and re-issue if needed.]" = "[iTerm2 在此函式呼叫完成前被重新啟動。呼叫未完成；可假定未產生任何副作用，如有需要請重新發起。]";
+"Check Terminal State" = "檢查終端機狀態";
+"Run Commands" = "執行命令";
+"View Contents" = "檢視內容";
+"Control Terminal" = "控制終端機";
+"View Manpages" = "檢視手冊頁";

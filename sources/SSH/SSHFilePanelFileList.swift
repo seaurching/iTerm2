@@ -73,10 +73,10 @@ class SSHFilePanelFileList: NSScrollView {
 
         var title: String {
             switch self {
-            case .name: return "Name"
-            case .dateModified: return "Date Created"
-            case .size: return "Size"
-            case .kind: return "Kind"
+            case .name: return NSLocalizedString("Name", tableName: "SSH", comment: "file list: name column title")
+            case .dateModified: return NSLocalizedString("Date Created", tableName: "SSH", comment: "file list: date column title")
+            case .size: return NSLocalizedString("Size", tableName: "SSH", comment: "file list: size column title")
+            case .kind: return NSLocalizedString("Kind", tableName: "SSH", comment: "file list: kind column title")
             }
         }
 
@@ -514,7 +514,7 @@ class SSHFilePanelFileList: NSScrollView {
         guard let size = size else { return "--" }
 
         if size == 0 {
-            return "Zero bytes"
+            return NSLocalizedString("Zero bytes", tableName: "SSH", comment: "file list: zero bytes")
         }
 
         let formatter = ByteCountFormatter()
@@ -572,36 +572,36 @@ class SSHFilePanelFileList: NSScrollView {
             let pathExtension = (file.name as NSString).pathExtension.lowercased()
             switch pathExtension {
             case "png", "jpg", "jpeg", "gif", "bmp", "tiff":
-                return "\(pathExtension.uppercased()) image"
+                return String(format: NSLocalizedString("%@ image", tableName: "SSH", comment: "file list: image kind"), pathExtension.uppercased())
             case "txt", "md", "rtf":
-                return "Text document"
+                return NSLocalizedString("Text document", tableName: "SSH", comment: "file list: text document kind")
             case "pdf":
-                return "PDF document"
+                return NSLocalizedString("PDF document", tableName: "SSH", comment: "file list: pdf document kind")
             case "mp4", "mov", "avi", "mkv":
-                return "Video"
+                return NSLocalizedString("Video", tableName: "SSH", comment: "file list: video kind")
             case "mp3", "wav", "aac", "flac":
-                return "Audio"
+                return NSLocalizedString("Audio", tableName: "SSH", comment: "file list: audio kind")
             case "zip", "tar", "gz", "bz2":
-                return "Archive"
+                return NSLocalizedString("Archive", tableName: "SSH", comment: "file list: archive kind")
             case "lua":
-                return "Lua script"
+                return NSLocalizedString("Lua script", tableName: "SSH", comment: "file list: lua script kind")
             case "nvim":
-                return "Neovim config"
+                return NSLocalizedString("Neovim config", tableName: "SSH", comment: "file list: neovim config kind")
             case "sh":
-                return "Shell script"
+                return NSLocalizedString("Shell script", tableName: "SSH", comment: "file list: shell script kind")
             case "m":
-                return "Objective-C source"
+                return NSLocalizedString("Objective-C source", tableName: "SSH", comment: "file list: objc source kind")
             case "":
-                return "Document"
+                return NSLocalizedString("Document", tableName: "SSH", comment: "file list: document kind")
             default:
-                return "Document"
+                return NSLocalizedString("Document", tableName: "SSH", comment: "file list: document kind default")
             }
         case .folder:
-            return "Folder"
+            return NSLocalizedString("Folder", tableName: "SSH", comment: "file list: folder kind")
         case .host:
-            return "Host"
+            return NSLocalizedString("Host", tableName: "SSH", comment: "file list: host kind")
         case .symlink:
-            return "Alias"
+            return NSLocalizedString("Alias", tableName: "SSH", comment: "file list: alias kind")
         }
     }
 }
@@ -1010,7 +1010,7 @@ extension SSHFilePanelFileList: NSFilePromiseProviderDelegate {
               let endpoint = userInfo["endpoint"] as? SSHEndpoint,
               let fullPath = userInfo["fullPath"] as? String else {
             DLog("Missing file information for promise")
-            let error = NSError(domain: "SSHFilePanelError", code: 1, userInfo: [NSLocalizedDescriptionKey: "Missing file information"])
+            let error = NSError(domain: "SSHFilePanelError", code: 1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Missing file information", tableName: "SSH", comment: "file list: missing file info error")])
             completionHandler(error)
             return
         }

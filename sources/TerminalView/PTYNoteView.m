@@ -59,7 +59,7 @@ const CGFloat kDragAreaSize = 5;
     NSImage *closeImage;
     if (@available(macOS 11.0, *)) {
         closeImage = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolTrash)
-                               accessibilityDescription:@"Delete annotation"];
+                               accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Delete annotation", @"TerminalView", [NSBundle bundleForClass:[self class]], @"note view: delete annotation accessibility")];
         NSColor *tintColor = self.effectiveAppearance.it_isDark ? [NSColor whiteColor] : [NSColor blackColor];
         closeImage = [closeImage it_imageWithTintColor:tintColor];
     } else {

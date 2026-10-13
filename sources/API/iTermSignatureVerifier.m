@@ -22,14 +22,14 @@ static NSString *const iTermSignatureVerifierErrorDomain = @"com.iterm2.signatur
     if (!publicKeyData) {
         return [[NSError alloc] initWithDomain:iTermSignatureVerifierErrorDomain
                                           code:iTermSignatureVerifierErrorCodeBadPublicKeyError
-                                      userInfo:@{ NSLocalizedDescriptionKey: @"Invalid public key format" }];
+                                      userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Invalid public key format", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无效的公钥格式") }];
     }
 
     iTermSignatureVerifier *verifier = [[self alloc] initWithPublicKeyData:publicKeyData];
     if (!verifier) {
         return [[NSError alloc] initWithDomain:iTermSignatureVerifierErrorDomain
                                           code:iTermSignatureVerifierErrorCodeBadPublicKeyError
-                                      userInfo:@{ NSLocalizedDescriptionKey: @"Could not initialize verifier. Bad public key?" }];
+                                      userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Could not initialize verifier. Bad public key?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无法初始化验证器。公钥错误？") }];
     }
 
     return [verifier validateFileURL:url withEncodedSignature:encodedSignature];
@@ -74,7 +74,7 @@ static NSString *const iTermSignatureVerifierErrorDomain = @"com.iterm2.signatur
         if (error) {
             *error = [NSError errorWithDomain:iTermSignatureVerifierErrorDomain
                                          code:iTermSignatureVerifierErrorCodeFileNotFound
-                                     userInfo:@{ NSLocalizedDescriptionKey : @"File not found" }];
+                                     userInfo:@{ NSLocalizedDescriptionKey : NSLocalizedStringFromTableInBundle(@"File not found", @"APIFiles", [NSBundle bundleForClass:[self class]], @"文件未找到") }];
         }
         return nil;
     }
@@ -93,7 +93,7 @@ static NSString *const iTermSignatureVerifierErrorDomain = @"com.iterm2.signatur
         if (error) {
             *error = [NSError errorWithDomain:iTermSignatureVerifierErrorDomain
                                          code:iTermSignatureVerifierErrorCodeReadError
-                                     userInfo:@{ NSLocalizedDescriptionKey : @"Could not read input file" }];
+                                     userInfo:@{ NSLocalizedDescriptionKey : NSLocalizedStringFromTableInBundle(@"Could not read input file", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无法读取输入文件") }];
         }
         return nil;
     }
@@ -114,7 +114,7 @@ static NSString *const iTermSignatureVerifierErrorDomain = @"com.iterm2.signatur
     if (!signature) {
         return [[NSError alloc] initWithDomain:iTermSignatureVerifierErrorDomain
                                           code:iTermSignatureVerifierErrorCodeBase64Error
-                                      userInfo:@{ NSLocalizedDescriptionKey: @"Could not base-64 decode signature" }];
+                                      userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Could not base-64 decode signature", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无法 base64 解码签名") }];
     }
 
     NSError *digestErr = nil;
@@ -136,7 +136,7 @@ static NSString *const iTermSignatureVerifierErrorDomain = @"com.iterm2.signatur
         }
         return [[NSError alloc] initWithDomain:iTermSignatureVerifierErrorDomain
                                           code:iTermSignatureVerifierErrorCodeSignatureDoesNotMatchError
-                                      userInfo:@{ NSLocalizedDescriptionKey: @"RSA signature does not match. Data does not match signature or wrong public key." }];
+                                      userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"RSA signature does not match. Data does not match signature or wrong public key.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"RSA 签名不匹配。数据与签名不匹配或公钥错误。") }];
     }
 
     return nil;

@@ -289,7 +289,7 @@ final class ConductorIT2Demux {
                     // command has started we drop silently (above) to avoid racing its
                     // output down the same channel.
                     sendLine(connid, IT2FrameType.stderr,
-                             "it2: request too large (over \(Self.maxFrameLength / (1 << 20)) MiB over SSH integration); run it locally instead")
+                             String(format: NSLocalizedString("it2: request too large (over %@ MiB over SSH integration); run it locally instead", tableName: "SSH", comment: "conductor it2: request too large stderr"), Self.maxFrameLength / (1 << 20)))
                     finish(connid, code: 2)
                 }
                 return
@@ -332,7 +332,7 @@ final class ConductorIT2Demux {
         conn.started = true
         guard let object = try? JSONSerialization.jsonObject(with: hello) as? [String: Any] else {
             logger("Malformed HELLO for \(connid)")
-            sendLine(connid, IT2FrameType.stderr, "it2: malformed request")
+            sendLine(connid, IT2FrameType.stderr, NSLocalizedString("it2: malformed request", tableName: "SSH", comment: "conductor it2: malformed request stderr"))
             finish(connid, code: 2)
             return
         }
@@ -343,7 +343,7 @@ final class ConductorIT2Demux {
         // same-user process timing many connections recover the nonce byte by byte.
         guard !expected.isEmpty, it2ConstantTimeEqual(helloNonce, expected) else {
             logger("it2 HELLO nonce mismatch for \(connid)")
-            sendLine(connid, IT2FrameType.stderr, "it2: authorization failed")
+            sendLine(connid, IT2FrameType.stderr, NSLocalizedString("it2: authorization failed", tableName: "SSH", comment: "conductor it2: authorization failed stderr"))
             finish(connid, code: 1)
             return
         }
@@ -541,7 +541,7 @@ extension Conductor {
                     return cancel
                 }
                 guard iTermAPIHelper.isEnabled() else {
-                    emitStderr("The iTerm2 Python API is not enabled (Settings > General > Magic).")
+                    emitStderr(NSLocalizedString("The iTerm2 Python API is not enabled (Settings > General > Magic).", tableName: "SSH", comment: "conductor it2: api not enabled stderr"))
                     finish(2)
                     return cancel
                 }
@@ -555,7 +555,7 @@ extension Conductor {
                         return
                     }
                     guard granted else {
-                        emitStderr("Permission denied: iTerm2 API access was not granted for this session.")
+                        emitStderr(NSLocalizedString("Permission denied: iTerm2 API access was not granted for this session.", tableName: "SSH", comment: "conductor it2: permission denied stderr"))
                         finish(1)
                         return
                     }

@@ -322,12 +322,12 @@ BOOL gShowRememberedAlerts = NO;
 
 - (NSAlert *)makeAlert {
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = _heading ?: @"Warning";
+    alert.messageText = _heading ?: NSLocalizedStringFromTableInBundle(@"Warning", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Default alert title when no heading is set");
 
     // If this warning is being shown due to the "always show alerts with remembered
     // selections" mode, prepend explanatory text.
     if (_shownDueToRememberedAlertsMode && _savedSelectionLabel) {
-        alert.informativeText = [NSString stringWithFormat:@"%@\n\nThis alert had a saved selection of “%@”. It is being shown because “Always show alerts with remembered selections” is turned on in iTerm2 > Suppressed Alerts.", _title, _savedSelectionLabel];
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@\n\nThis alert had a saved selection of “%@”. It is being shown because “Always show alerts with remembered selections” is turned on in iTerm2 > Suppressed Alerts.", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Alert informative text: explaining why a suppressed alert is shown"), _title, _savedSelectionLabel];
     } else {
         alert.informativeText = _title;
     }
@@ -364,7 +364,7 @@ BOOL gShowRememberedAlerts = NO;
 
     // Add "Permanently Forget Saved Selection" button when in remembered alerts mode.
     if (_shownDueToRememberedAlertsMode && _identifier) {
-        [alert addButtonWithTitle:@"Permanently Forget Saved Selection"];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Permanently Forget Saved Selection", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Alert button: permanently forget saved selection")];
     }
 
     int numNonCancelActions = [_warningActions count];
@@ -378,25 +378,25 @@ BOOL gShowRememberedAlerts = NO;
     if (_warningType == kiTermWarningTypeTemporarilySilenceable) {
         assert(_identifier);
         if (numNonCancelActions == 1) {
-            alert.suppressionButton.title = @"Suppress this message for ten minutes";
+            alert.suppressionButton.title = NSLocalizedStringFromTableInBundle(@"Suppress this message for ten minutes", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Suppression button: suppress for 10 minutes (single action)");
         } else if (numNonCancelActions > 1) {
-            alert.suppressionButton.title = @"Remember my choice for ten minutes";
+            alert.suppressionButton.title = NSLocalizedStringFromTableInBundle(@"Remember my choice for ten minutes", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Suppression button: remember choice for 10 minutes (multiple actions)");
         }
         alert.showsSuppressionButton = YES;
     } else if (_warningType == kiTermWarningTypeSilenceableForOneMonth) {
         assert(_identifier);
         if (numNonCancelActions == 1) {
-            alert.suppressionButton.title = @"Suppress this message for 30 days";
+            alert.suppressionButton.title = NSLocalizedStringFromTableInBundle(@"Suppress this message for 30 days", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Suppression button: suppress for 30 days (single action)");
         } else if (numNonCancelActions > 1) {
-            alert.suppressionButton.title = @"Remember my choice for 30 days";
+            alert.suppressionButton.title = NSLocalizedStringFromTableInBundle(@"Remember my choice for 30 days", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Suppression button: remember choice for 30 days (multiple actions)");
         }
         alert.showsSuppressionButton = YES;
     } else if (_warningType == kiTermWarningTypePermanentlySilenceable) {
         assert(_identifier);
         if (numNonCancelActions == 1) {
-            alert.suppressionButton.title = @"Suppress this message permanently";
+            alert.suppressionButton.title = NSLocalizedStringFromTableInBundle(@"Suppress this message permanently", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Suppression button: suppress permanently (single action)");
         } else if (numNonCancelActions > 1) {
-            alert.suppressionButton.title = @"Remember my choice";
+            alert.suppressionButton.title = NSLocalizedStringFromTableInBundle(@"Remember my choice", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Suppression button: remember choice permanently (multiple actions)");
         }
         alert.showsSuppressionButton = YES;
     }

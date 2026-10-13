@@ -14,7 +14,7 @@
 static NSError *Extract(NSString *source, NSString *destination) {
     NSURL *destinationURL = [NSURL fileURLWithPath:destination];
     if (!destinationURL) {
-        return [SIGError errorWithCode:SIGErrorCodeIOWrite detail:@"Destination filename malformed."];
+        return [SIGError errorWithCode:SIGErrorCodeIOWrite detail:NSLocalizedStringFromTable(@"Destination filename malformed.", @"signed_archive", @"目标文件名格式错误")];
     }
     SIGArchiveVerifier *verifier = [[SIGArchiveVerifier alloc] initWithURL:[NSURL fileURLWithPath:source]];
     __block BOOL result;
@@ -33,13 +33,13 @@ static NSError *Extract(NSString *source, NSString *destination) {
     if (errorResult) {
         return errorResult;
     }
-    return [SIGError errorWithCode:SIGErrorCodeUnknown detail:@"Verification failed for an unknown reason"];
+    return [SIGError errorWithCode:SIGErrorCodeUnknown detail:NSLocalizedStringFromTable(@"Verification failed for an unknown reason", @"signed_archive", @"验证失败，原因未知")];
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         if (argc != 3) {
-            fprintf(stderr, "Usage: extract file.in file.out");
+            fprintf(stderr, "%s", [NSLocalizedStringFromTable(@"Usage: extract file.in file.out", @"signed_archive", @"用法：extract 输入文件 输出文件") UTF8String]);
             return 1;
         }
         NSError *error = Extract([NSString stringWithUTF8String:argv[1]],

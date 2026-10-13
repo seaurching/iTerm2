@@ -117,7 +117,7 @@ static const CGFloat kCollapsedHeight = 51;
     switch (_transferrableFile.status) {
         case kTransferrableFileStatusUnstarted:
         case kTransferrableFileStatusStarting:
-            view.statusMessage = @"Starting…";
+            view.statusMessage = NSLocalizedStringFromTableInBundle(@"Starting…", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: starting");
             [self collapse];
             break;
 
@@ -125,32 +125,32 @@ static const CGFloat kCollapsedHeight = 51;
             [self expand];
             [view.progressIndicator setHidden:[_transferrableFile fileSize] < 0];
             if (self.transferrableFile.isDownloading) {
-                view.statusMessage = @"Downloading…";
+                view.statusMessage = NSLocalizedStringFromTableInBundle(@"Downloading…", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: downloading");
             } else {
-                view.statusMessage = @"Uploading…";
+                view.statusMessage = NSLocalizedStringFromTableInBundle(@"Uploading…", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: uploading");
             }
             [self showMenu];
             break;
 
         case kTransferrableFileStatusFinishedSuccessfully:
             [self collapse];
-            view.statusMessage = @"Finished";
+            view.statusMessage = NSLocalizedStringFromTableInBundle(@"Finished", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: finished");
             break;
 
         case kTransferrableFileStatusFinishedWithError:
             [self collapse];
-            view.statusMessage = @"Failed";
+            view.statusMessage = NSLocalizedStringFromTableInBundle(@"Failed", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: failed");
             [self showMenu];
             break;
 
         case kTransferrableFileStatusCancelling:
             [self expand];
-            view.statusMessage = @"Cancelling…";
+            view.statusMessage = NSLocalizedStringFromTableInBundle(@"Cancelling…", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: cancelling");
             break;
 
         case kTransferrableFileStatusCancelled:
             [self collapse];
-            view.statusMessage = @"Cancelled";
+            view.statusMessage = NSLocalizedStringFromTableInBundle(@"Cancelled", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: cancelled");
             break;
     }
     [view setNeedsDisplay:YES];
@@ -192,37 +192,37 @@ static const CGFloat kCollapsedHeight = 51;
 - (NSString *)stringForStatus:(TransferrableFileStatus)status {
     switch (_transferrableFile.status) {
         case kTransferrableFileStatusUnstarted:
-            return @"Unstarted";
+            return NSLocalizedStringFromTableInBundle(@"Unstarted", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: unstarted");
         case kTransferrableFileStatusStarting:
-            return @"Starting";
+            return NSLocalizedStringFromTableInBundle(@"Starting", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: starting");
         case kTransferrableFileStatusTransferring:
-            return @"Transferring";
+            return NSLocalizedStringFromTableInBundle(@"Transferring", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: transferring");
         case kTransferrableFileStatusFinishedSuccessfully:
-            return @"Finished";
+            return NSLocalizedStringFromTableInBundle(@"Finished", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: finished");
         case kTransferrableFileStatusFinishedWithError:
-            return [NSString stringWithFormat:@"Failed with error “%@”", [_transferrableFile error]];
+            return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Failed with error “%@”", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: failed with error"), [_transferrableFile error]];
         case kTransferrableFileStatusCancelling:
-            return @"Waiting to cancel";
+            return NSLocalizedStringFromTableInBundle(@"Waiting to cancel", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: waiting to cancel");
         case kTransferrableFileStatusCancelled:
-            return @"Canceled by user";
+            return NSLocalizedStringFromTableInBundle(@"Canceled by user", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Status: canceled by user");
     }
 }
 
 - (void)getInfo:(id)sender {
     NSString *extra = @"";
     if (_transferrableFile.destination) {
-        extra = [NSString stringWithFormat:@"\nDestination: %@",
+        extra = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"\nDestination: %@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Get Info: destination"),
                        _transferrableFile.destination];
     } else if (_transferrableFile.localPath) {
-        extra = [NSString stringWithFormat:@"\nLocal path: %@",
+        extra = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"\nLocal path: %@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Get Info: local path"),
                        _transferrableFile.localPath];
     }
-    NSString *text = [NSString stringWithFormat:@"%@\n\nStatus: %@%@",
+    NSString *text = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@\n\nStatus: %@%@", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Get Info: file transfer summary"),
                       [_transferrableFile displayName],
                       [self stringForStatus:_transferrableFile.status],
                       extra];
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"File Transfer Summary";
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"File Transfer Summary", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Alert title: file transfer summary");
     alert.informativeText = text;
     [alert layout];
     [alert runModal];

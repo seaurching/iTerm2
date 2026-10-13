@@ -101,14 +101,14 @@ class Subexpression: NSObject {
             switch self {
             case .negate:
                 guard let num = value as? NSNumber else {
-                    throw iTermError("Cannot negate non-numeric value")
+                    throw iTermError(NSLocalizedString("Cannot negate non-numeric value", tableName: "Language", comment: "Subexpression error: cannot negate non-numeric"))
                 }
                 return execute(num.doubleValue)
 
             case .logicalNot:
                 // Only numbers allowed for logical not
                 guard let num = value as? NSNumber else {
-                    throw iTermError("Logical not requires numeric operand, got \(type(of: value))")
+                    throw iTermError(String(format: NSLocalizedString("Logical not requires numeric operand, got %@", tableName: "Language", comment: "Subexpression error: logical not requires numeric"), String(describing: type(of: value))))
                 }
                 return execute(num.doubleValue)
             }
@@ -217,7 +217,7 @@ class Subexpression: NSObject {
                 // Arithmetic requires numbers
                 let (ln, rn) = numberize((lhs, rhs))
                 guard let lhsNum = ln as? NSNumber, let rhsNum = rn as? NSNumber else {
-                    throw iTermError("Arithmetic operations require numeric operands")
+                    throw iTermError(NSLocalizedString("Arithmetic operations require numeric operands", tableName: "Language", comment: "Subexpression error: arithmetic requires numeric"))
                 }
                 return execute(lhs: lhsNum.doubleValue, rhs: rhsNum.doubleValue)
 
@@ -235,7 +235,7 @@ class Subexpression: NSObject {
                 // Logical operators require numbers
                 let (ln, rn) = numberize((lhs, rhs))
                 guard let lhsNum = ln as? NSNumber, let rhsNum = rn as? NSNumber else {
-                    throw iTermError("Logical operations require numeric operands")
+                    throw iTermError(NSLocalizedString("Logical operations require numeric operands", tableName: "Language", comment: "Subexpression error: logical requires numeric"))
                 }
                 return execute(lhs: lhsNum.doubleValue, rhs: rhsNum.doubleValue)
             }
@@ -260,7 +260,7 @@ class Subexpression: NSObject {
                 case .greaterThanOrEqual:
                     return NSNumber(value: comparison != .orderedAscending)
                 default:
-                    throw iTermError("Invalid relational operation")
+                    throw iTermError(NSLocalizedString("Invalid relational operation", tableName: "Language", comment: "Subexpression error: invalid relational operation"))
                 }
             }
 
@@ -277,7 +277,7 @@ class Subexpression: NSObject {
                 case .greaterThanOrEqual:
                     return NSNumber(value: comparison >= 0)
                 default:
-                    throw iTermError("Invalid relational operation")
+                    throw iTermError(NSLocalizedString("Invalid relational operation", tableName: "Language", comment: "Subexpression error: invalid relational operation"))
                 }
             }
 
@@ -295,12 +295,12 @@ class Subexpression: NSObject {
                 case .lessThanOrEqual, .greaterThanOrEqual:
                     return NSNumber(value: bothNull)
                 default:
-                    throw iTermError("Invalid relational operation")
+                    throw iTermError(NSLocalizedString("Invalid relational operation", tableName: "Language", comment: "Subexpression error: invalid relational operation"))
                 }
             }
 
             // Different types: relational operators return error
-            throw iTermError("Cannot compare incompatible types with relational operators. Left-hand side is \(type(of: lhs)), right-hand side is \(type(of: rhs))")
+            throw iTermError(String(format: NSLocalizedString("Cannot compare incompatible types with relational operators. Left-hand side is %@, right-hand side is %@", tableName: "Language", comment: "Subexpression error: cannot compare incompatible types"), String(describing: type(of: lhs)), String(describing: type(of: rhs))))
         }
 
         private func lexicographicCompare(lhs: NSArray, rhs: NSArray) -> Int {
@@ -483,7 +483,7 @@ class Subexpression: NSObject {
     @objc(initNegated:)
     convenience init(negated expression: Subexpression?) {
         guard let expression = expression else {
-            self.init(error: "Nil operand in unary operation")
+            self.init(error: NSLocalizedString("Nil operand in unary operation", tableName: "Language", comment: "表达式求值错误：一元运算的操作数为空"))
             return
         }
         self.init(negated: expression)
@@ -492,7 +492,7 @@ class Subexpression: NSObject {
     @objc(initLogicalNot:)
     convenience init(logicalNot expression: Subexpression?) {
         guard let expression = expression else {
-            self.init(error: "Nil operand in logical not operation")
+            self.init(error: NSLocalizedString("Nil operand in logical not operation", tableName: "Language", comment: "表达式求值错误：逻辑非运算的操作数为空"))
             return
         }
         self.init(logicalNot: expression)
@@ -510,7 +510,7 @@ class Subexpression: NSObject {
     @objc(init:minus:)
     convenience init(lhs: Subexpression?, minus rhs: Subexpression?) {
         guard let lhs = lhs, let rhs = rhs else {
-            self.init(error: "Nil operand in binary operation (-)")
+            self.init(error: NSLocalizedString("Nil operand in binary operation (-)", tableName: "Language", comment: "表达式求值错误：二元运算 (-) 的操作数为空"))
             return
         }
         self.init(lhs: lhs, minus: rhs)
@@ -528,7 +528,7 @@ class Subexpression: NSObject {
     @objc(init:dividedBy:)
     convenience init(lhs: Subexpression?, dividedBy rhs: Subexpression?) {
         guard let lhs = lhs, let rhs = rhs else {
-            self.init(error: "Nil operand in binary operation (/)")
+            self.init(error: NSLocalizedString("Nil operand in binary operation (/)", tableName: "Language", comment: "表达式求值错误：二元运算 (/) 的操作数为空"))
             return
         }
         self.init(lhs: lhs, dividedBy: rhs)
@@ -609,7 +609,7 @@ class Subexpression: NSObject {
     @objc(initCondition:whenTrue:otherwise:)
     convenience init(condition: Subexpression?, whenTrue: Subexpression?, whenFalse: Subexpression?) {
         guard let condition = condition, let whenTrue = whenTrue, let whenFalse = whenFalse else {
-            self.init(error: "Nil operand in ternary operation")
+            self.init(error: NSLocalizedString("Nil operand in ternary operation", tableName: "Language", comment: "表达式求值错误：三元运算的操作数为空"))
             return
         }
         self.init(condition: condition, whenTrue: whenTrue, whenFalse: whenFalse)
@@ -666,19 +666,19 @@ class Subexpression: NSObject {
         case let .literal(number):
             return number
         case .stringLiteral:
-            throw iTermError("Cannot convert string literal to number")
+            throw iTermError(NSLocalizedString("Cannot convert string literal to number", tableName: "Language", comment: "Subexpression error: cannot convert string to number"))
         case .nullLiteral:
-            throw iTermError("Cannot convert null to number")
+            throw iTermError(NSLocalizedString("Cannot convert null to number", tableName: "Language", comment: "Subexpression error: cannot convert null to number"))
         case .indirect(let iv):
             guard let value = iv.synchronousValue(scope: scope) else {
-                throw iTermError("IndirectValue.synchronousValue returned nil")
+                throw iTermError(NSLocalizedString("IndirectValue.synchronousValue returned nil", tableName: "Language", comment: "Subexpression error: indirect value returned nil"))
             }
             guard let number = value as? NSNumber else {
-                throw iTermError("IndirectValue.synchronousValue returned non-NSNumber type \(type(of: value))")
+                throw iTermError(String(format: NSLocalizedString("IndirectValue.synchronousValue returned non-NSNumber type %@", tableName: "Language", comment: "Subexpression error: indirect value returned non-number"), String(describing: type(of: value))))
             }
             return number
         case .functionCall:
-            throw iTermError("Cannot evaluate function call synchronously")
+            throw iTermError(NSLocalizedString("Cannot evaluate function call synchronously", tableName: "Language", comment: "Subexpression error: cannot evaluate function call synchronously"))
         case .unaryOperation(operand: let operand, operation: let operation):
             return try operation.execute(operand.synchronousValue(sideEffectsAllowed: sideEffectsAllowed,
                                                               scope: scope).doubleValue)
@@ -708,7 +708,7 @@ class Subexpression: NSObject {
                 return try rhs.synchronousValue(sideEffectsAllowed: sideEffectsAllowed, scope: scope)
             }
         case .error(let message):
-            throw iTermError("Subexpression error: \(message)")
+            throw iTermError(String(format: NSLocalizedString("Subexpression error: %@", tableName: "Language", comment: "Subexpression error: wrapper"), message))
         }
     }
 
@@ -719,7 +719,7 @@ class Subexpression: NSObject {
         } else if let number = value as? NSNumber {
             return number.boolValue
         } else {
-            throw iTermError("Type mismatch: expected number but got \(type(of: value))")
+            throw iTermError(String(format: NSLocalizedString("Type mismatch: expected number but got %@", tableName: "Language", comment: "Subexpression error: type mismatch expected number"), String(describing: type(of: value))))
         }
     }
 
@@ -742,7 +742,7 @@ class Subexpression: NSObject {
                 return NSNull()
             }
         case .functionCall:
-            throw iTermError("Cannot evaluate function call synchronously")
+            throw iTermError(NSLocalizedString("Cannot evaluate function call synchronously", tableName: "Language", comment: "Subexpression error: cannot evaluate function call synchronously"))
         case .unaryOperation(operand: let operand, operation: let operation):
             let val = try operand.synchronousValueAny(sideEffectsAllowed: sideEffectsAllowed, scope: scope)
             return try operation.executeTyped(val)
@@ -758,7 +758,7 @@ class Subexpression: NSObject {
                 return try rhs.synchronousValueAny(sideEffectsAllowed: sideEffectsAllowed, scope: scope)
             }
         case .error(let message):
-            throw iTermError("Subexpression error: \(message)")
+            throw iTermError(String(format: NSLocalizedString("Subexpression error: %@", tableName: "Language", comment: "Subexpression error: wrapper"), message))
         }
     }
 

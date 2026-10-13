@@ -53,7 +53,7 @@ class iTermWorkgroupsEditingViewController: NSViewController {
         tableView.allowsMultipleSelection = false
         tableView.rowSizeStyle = .default
         let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier("name"))
-        column.title = "Name"
+        column.title = NSLocalizedString("Name", tableName: "Workgroups", comment: "名称列标题")
         column.resizingMask = .autoresizingMask
         tableView.addTableColumn(column)
         tableView.dataSource = self
@@ -78,7 +78,7 @@ class iTermWorkgroupsEditingViewController: NSViewController {
         presetPopup = NSPopUpButton(frame: .zero, pullsDown: true)
         presetPopup.bezelStyle = .rounded
         presetPopup.controlSize = .regular
-        let titleItem = NSMenuItem(title: "Add Preset",
+        let titleItem = NSMenuItem(title: NSLocalizedString("Add Preset", tableName: "Workgroups", comment: "添加预设菜单项"),
                                    action: nil, keyEquivalent: "")
         presetPopup.menu?.addItem(titleItem)
         for preset in WorkgroupPresets.all {
@@ -246,7 +246,7 @@ class iTermWorkgroupsEditingViewController: NSViewController {
 
     private func addWorkgroup() {
         pushUndo()
-        let wg = iTermWorkgroup.newEmpty(name: "Untitled Workgroup")
+        let wg = iTermWorkgroup.newEmpty(name: NSLocalizedString("Untitled Workgroup", tableName: "Workgroups", comment: "新建工作组的默认名称"))
         iTermWorkgroupModel.instance.add(wg)
         if let idx = iTermWorkgroupModel.instance.workgroups.firstIndex(where: {
             $0.uniqueIdentifier == wg.uniqueIdentifier
@@ -284,7 +284,7 @@ class iTermWorkgroupsEditingViewController: NSViewController {
             target.pushUndo()
             iTermWorkgroupModel.instance.setAll(snapshot)
         }
-        view.window?.undoManager?.setActionName("Change Workgroups")
+        view.window?.undoManager?.setActionName(NSLocalizedString("Change Workgroups", tableName: "Workgroups", comment: "撤销菜单动作名称"))
     }
 
     func replaceSelectedWorkgroup(_ updated: iTermWorkgroup,

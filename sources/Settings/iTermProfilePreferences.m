@@ -439,7 +439,7 @@ typedef struct {
             validationBlocks[key] = ^BOOL(id value) { return [value isKindOfClass:[NSString class]]; };
         }
         for (NSString *key in color) {
-            typeHelp[key] = @"Colors can be specified as 3- or 6-digit hex strings such as \"#f8a\" like in HTML. By default it uses the sRGB color space. To use P3 instead, place p3 before the # as in: \"p3#f8a\". While you can use a string literal here, typically this would come from a string-valued variable or function.";
+            typeHelp[key] = NSLocalizedStringFromTableInBundle(@"Colors can be specified as 3- or 6-digit hex strings such as \"#f8a\" like in HTML. By default it uses the sRGB color space. To use P3 instead, place p3 before the # as in: \"p3#f8a\". While you can use a string literal here, typically this would come from a string-valued variable or function.", @"Settings", [NSBundle bundleForClass:[self class]], @"type help");
             validationBlocks[key] = ^BOOL(id value) {
                 return ([value isKindOfClass:[NSDictionary class]] &&
                         [value isColorValue]);
@@ -477,7 +477,7 @@ typedef struct {
                 }
                 return nil;
             };
-            typeHelp[key] = @"Checkboxes accept numbers (0 is false and any other number is true), strings containing a number, or strings like \"true\" and \"false\". While you can use a numeric literal here, typically this would come from a number-valued variable or function.";
+            typeHelp[key] = NSLocalizedStringFromTableInBundle(@"Checkboxes accept numbers (0 is false and any other number is true), strings containing a number, or strings like \"true\" and \"false\". While you can use a numeric literal here, typically this would come from a number-valued variable or function.", @"Settings", [NSBundle bundleForClass:[self class]], @"type help");
         }
         for (NSString *key in stringArrays) {
             validationBlocks[key] = ^BOOL(id value) {
@@ -856,7 +856,7 @@ typedef struct {
             KEY_BINDINGS:                                           @"Variable bindings"
         };
     }
-    return dict[key];
+    return NSLocalizedStringFromTableInBundle(dict[key], @"Settings", [NSBundle bundleForClass:[self class]], @"profile preference description");
 }
 
 + (NSDictionary *)defaultValueMap {

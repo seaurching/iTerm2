@@ -30,7 +30,7 @@ class PleaseWaitWindow: NSWindow {
         vev.state = .active
         contentView?.addSubview(vev)
 
-        cancelButton = NSButton(title: "Cancel", target: self, action: #selector(cancel(_:)))
+        cancelButton = NSButton(title: NSLocalizedString("Cancel", tableName: "StatusWindowsViews", comment: "please wait: cancel button"), target: self, action: #selector(cancel(_:)))
         messageLabel.stringValue = message
         messageLabel.isEditable = false
         messageLabel.isSelectable = false

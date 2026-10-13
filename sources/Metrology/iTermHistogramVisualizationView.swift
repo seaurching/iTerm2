@@ -87,8 +87,8 @@ struct iTermHistogramBarChart: View {
                                         Spacer()
                                     }
                                     VStack(alignment: .leading, spacing: 2) {
-                                        Text("Duration: \(bucket.range.lowerBound, specifier: "%.1f")µs–\(bucket.range.upperBound, specifier: "%.1f")µs")
-                                        Text("Count: \(bucket.y)")
+                                        Text(String(format: NSLocalizedString("Duration: %.1fµs–%.1fµs", tableName: "Metrology", comment: "Metrology: chart duration tooltip"), bucket.range.lowerBound, bucket.range.upperBound))
+                                        Text(String(format: NSLocalizedString("Count: %lld", tableName: "Metrology", comment: "Metrology: chart count tooltip"), bucket.y))
                                     }
                                     .font(.caption)
                                     .padding(4)
@@ -144,14 +144,14 @@ struct iTermHistogramBarChart: View {
     private var chartContent: some ChartContent {
         ForEach(buckets, id: \.x) { bucket in
             RectangleMark(
-                xStart: .value("Start", bucket.range.lowerBound),
-                xEnd: .value("End", bucket.range.upperBound),
-                yStart: .value("Count", 0),
-                yEnd: .value("Count", bucket.y)
+                xStart: .value(NSLocalizedString("Start", tableName: "Metrology", comment: "Metrology: chart start axis"), bucket.range.lowerBound),
+                xEnd: .value(NSLocalizedString("End", tableName: "Metrology", comment: "Metrology: chart end axis"), bucket.range.upperBound),
+                yStart: .value(NSLocalizedString("Count", tableName: "Metrology", comment: "Metrology: chart count axis"), 0),
+                yEnd: .value(NSLocalizedString("Count", tableName: "Metrology", comment: "Metrology: chart count axis"), bucket.y)
             )
             .foregroundStyle(selectedX == bucket.x ? .purple : .blue)
         }
-        RuleMark(x: .value("Mean", meanValue))
+        RuleMark(x: .value(NSLocalizedString("Mean", tableName: "Metrology", comment: "Metrology: chart mean axis"), meanValue))
             .foregroundStyle(.red.opacity(0.75))
             .lineStyle(StrokeStyle(lineWidth: 2))
     }

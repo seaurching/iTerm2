@@ -19,6 +19,10 @@ static NSString *const kFactoryDefaultsGlobalPreset = @"Factory Defaults";
 
 @implementation iTermPresetKeyMappings
 
++ (NSString *)localizedFactoryDefaultsPresetName {
+    return NSLocalizedStringFromTableInBundle(@"Factory Defaults", @"Settings", [NSBundle bundleForClass:[self class]], @"Factory Defaults preset name");
+}
+
 + (NSDictionary *)readPresetKeyMappingsFromPlist:(NSString *)thePlist {
     NSString *plistFile = [[NSBundle bundleForClass:[self class]] pathForResource:thePlist
                                                                            ofType:@"plist"];
@@ -54,7 +58,7 @@ static NSString *const kFactoryDefaultsGlobalPreset = @"Factory Defaults";
 }
 
 + (NSArray *)globalPresetNames {
-    return @[ kFactoryDefaultsGlobalPreset ];
+    return @[ [self localizedFactoryDefaultsPresetName] ];
 }
 
 + (NSArray<NSString *> *)presetKeyMappingsNames {
@@ -86,7 +90,7 @@ static NSString *const kFactoryDefaultsGlobalPreset = @"Factory Defaults";
 }
 
 + (void)setGlobalKeyMappingsToPreset:(NSString *)presetName byReplacingAll:(BOOL)replaceAll {
-    assert([presetName isEqualToString:kFactoryDefaultsGlobalPreset]);
+    assert([presetName isEqualToString:[self localizedFactoryDefaultsPresetName]] || [presetName isEqualToString:kFactoryDefaultsGlobalPreset]);
     if (!replaceAll) {
         NSDictionary *globalKeyMap = [iTermKeyMappings globalKeyMap];
         globalKeyMap = [globalKeyMap it_dictionaryByMergingSerializedKeystrokeKeyedDictionary:self.defaultGlobalKeyMap];

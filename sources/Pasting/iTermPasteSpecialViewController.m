@@ -139,10 +139,10 @@ static NSString *const kSubstitution = @"Substitution";
         units = @"ms";
         multiplier = 0.001;
     } else if (duration < 60) {
-        units = @"sec";
+        units = NSLocalizedStringFromTableInBundle(@"sec", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: seconds unit");
         multiplier = 1;
     } else {
-        units = @"min";
+        units = NSLocalizedStringFromTableInBundle(@"min", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: minutes unit");
         multiplier = 60;
     }
 
@@ -453,16 +453,16 @@ static NSString *const kSubstitution = @"Substitution";
     }
 
     if (tabTransform == kTabTransformConvertToSpaces) {
-        [components addObject:[NSString stringWithFormat:@"Tabs->%@ spcs", dict[kNumberOfSpacesPerTab]]];
+        [components addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Tabs->%@ spcs", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: tabs to spaces setting"), dict[kNumberOfSpacesPerTab]]];
     } else if (tabTransform == kTabTransformEscapeWithCtrlV) {
         [components addObject:@"^V+Tab"];
     }
 
     double delay = [dict[kDelayBetweenChunks] doubleValue];
     if (delay > 1) {
-        [components addObject:@"V.Slow"];
+        [components addObject:NSLocalizedStringFromTableInBundle(@"V.Slow", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: very slow setting")];
     } else if (delay > 0.25) {
-        [components addObject:@"Slow"];
+        [components addObject:NSLocalizedStringFromTableInBundle(@"Slow", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: slow setting")];
     } else if ([dict[kChunkSize] integerValue] > 100000) {
         [components addObject:@"HugeChunks"];
     }

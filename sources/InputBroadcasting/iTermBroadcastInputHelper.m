@@ -215,8 +215,8 @@ NSString *const iTermBroadcastDomainsDidChangeNotification = @"iTermBroadcastDom
             DLog(@"off -> !off");
             NSWindow *window = [self.delegate broadcastInputHelperWindowForWarnings:self];
             DLog(@"Warn…");
-            if ([iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Keyboard input will be sent to %@.", [self formatDestinationsForMode:mode]]
-                                           actions:@[ @"OK", @"Cancel" ]
+            if ([iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Keyboard input will be sent to %@.", @"InputBroadcasting", [NSBundle bundleForClass:[self class]], @"Alert: keyboard input will be broadcast"), [self formatDestinationsForMode:mode]]
+                                           actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"InputBroadcasting", [NSBundle bundleForClass:[self class]], @"Alert button: OK"), @"Cancel" ]
                                         identifier:@"NoSyncSuppressBroadcastInputWarning"
                                        silenceable:kiTermWarningTypePermanentlySilenceable
                                             window:window] == kiTermWarningSelection1) {
@@ -243,27 +243,27 @@ NSString *const iTermBroadcastDomainsDidChangeNotification = @"iTermBroadcastDom
 - (NSString *)formatDestinationsForMode:(BroadcastMode)mode {
     switch (mode) {
         case BROADCAST_OFF:
-            return @"no sessions";
+            return NSLocalizedStringFromTableInBundle(@"no sessions", @"InputBroadcasting", [NSBundle bundleForClass:[self class]], @"Broadcast destination: no sessions");
         case BROADCAST_TO_ALL_TABS: {
             const NSInteger count = [[self allSessions] count];
             if (count < 2) {
-                return @"all panes in all tabs in this window";
+                return NSLocalizedStringFromTableInBundle(@"all panes in all tabs in this window", @"InputBroadcasting", [NSBundle bundleForClass:[self class]], @"Broadcast destination: all panes in all tabs");
             }
-            return [NSString stringWithFormat:@"%@ panes across all tabs in this window", @(count)];
+            return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ panes across all tabs in this window", @"InputBroadcasting", [NSBundle bundleForClass:[self class]], @"Broadcast destination: N panes across all tabs"), @(count)];
         }
             break;
         case BROADCAST_TO_ALL_PANES: {
             // Just this tab
             const NSInteger count = [[self.delegate broadcastInputHelperSessionsInCurrentTab:self includeExited:NO] count];
             if (count < 2) {
-                return @"all panes in the current tab";
+                return NSLocalizedStringFromTableInBundle(@"all panes in the current tab", @"InputBroadcasting", [NSBundle bundleForClass:[self class]], @"Broadcast destination: all panes in current tab");
             } else {
-                return [NSString stringWithFormat:@"%@ panes in the current tab", @(count)];
+                return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ panes in the current tab", @"InputBroadcasting", [NSBundle bundleForClass:[self class]], @"Broadcast destination: N panes in current tab"), @(count)];
             }
         }
             break;
         case BROADCAST_CUSTOM:
-            return @"multiple sessions";
+            return NSLocalizedStringFromTableInBundle(@"multiple sessions", @"InputBroadcasting", [NSBundle bundleForClass:[self class]], @"Broadcast destination: multiple sessions");
     }
 }
 

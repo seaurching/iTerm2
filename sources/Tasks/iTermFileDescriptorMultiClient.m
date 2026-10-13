@@ -785,7 +785,7 @@ static NSString *iTermMultiServerStringForMessageFromClient(iTermMultiServerClie
         [rateLimit performRateLimitedBlock:^{
             DLog(@"Called");
             NSAlert *alert = [[NSAlert alloc] init];
-            alert.messageText = @"Problem Starting iTerm2 Daemon";
+            alert.messageText = NSLocalizedStringFromTableInBundle(@"Problem Starting iTerm2 Daemon", @"Tasks", [NSBundle bundleForClass:[self class]], @"daemon: problem starting alert title");
             alert.informativeText = message;
             [alert runModal];
         }];
@@ -832,7 +832,7 @@ static NSString *iTermMultiServerStringForMessageFromClient(iTermMultiServerClie
     NSString *desiredPath = [self serverPath];
     if (!desiredPath) {
         [self showError:nil
-                message:[NSString stringWithFormat:@"Neither ~/Library/Application Support/iTerm2 nor ~/.iterm2 are writable directories. This prevents the session restoration server from running. Please correct the problem and restart iTerm2."]
+                message:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Neither ~/Library/Application Support/iTerm2 nor ~/.iterm2 are writable directories. This prevents the session restoration server from running. Please correct the problem and restart iTerm2.", @"Tasks", [NSBundle bundleForClass:[self class]], @"daemon: no writable directory message")]
                  badURL:nil];
         return nil;
     }
@@ -849,10 +849,10 @@ static NSString *iTermMultiServerStringForMessageFromClient(iTermMultiServerClie
         if (!sourcePath || ![fileManager fileExistsAtPath:sourcePath]) {
             dispatch_sync(dispatch_get_main_queue(), ^{
                 NSAlert *alert = [[NSAlert alloc] init];
-                alert.messageText = @"Required File Missing";
-                alert.informativeText = @"The iTermServer executable is missing from the application bundle. This indicates iTerm2 is corrupted or incomplete. Please reinstall iTerm2 from the official website.";
+                alert.messageText = NSLocalizedStringFromTableInBundle(@"Required File Missing", @"Tasks", [NSBundle bundleForClass:[self class]], @"daemon: required file missing alert title");
+                alert.informativeText = NSLocalizedStringFromTableInBundle(@"The iTermServer executable is missing from the application bundle. This indicates iTerm2 is corrupted or incomplete. Please reinstall iTerm2 from the official website.", @"Tasks", [NSBundle bundleForClass:[self class]], @"daemon: iTermServer missing informative");
                 alert.alertStyle = NSAlertStyleCritical;
-                [alert addButtonWithTitle:@"Quit"];
+                [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Quit", @"Tasks", [NSBundle bundleForClass:[self class]], @"daemon: quit button")];
                 [alert runModal];
 
                 // Terminate the application
@@ -867,7 +867,7 @@ static NSString *iTermMultiServerStringForMessageFromClient(iTermMultiServerClie
                               error:&error];
         if (error) {
             [self showError:error
-                    message:[NSString stringWithFormat:@"Could not copy %@ to %@: %@", sourcePath, desiredPath, error.localizedDescription]
+                    message:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not copy %@ to %@: %@", @"Tasks", [NSBundle bundleForClass:[self class]], @"daemon: copy failed message"), sourcePath, desiredPath, error.localizedDescription]
                      badURL:[NSURL fileURLWithPath:desiredPath]];
             return nil;
         }
@@ -879,7 +879,7 @@ static NSString *iTermMultiServerStringForMessageFromClient(iTermMultiServerClie
         NSDictionary *attributes = [fileManager attributesOfItemAtPath:desiredPath error:&error];
         if (error) {
             [self showError:error
-                    message:[NSString stringWithFormat:@"Could not check permissions on %@", desiredPath]
+                    message:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not check permissions on %@", @"Tasks", [NSBundle bundleForClass:[self class]], @"daemon: check permissions failed message"), desiredPath]
                      badURL:[NSURL fileURLWithPath:desiredPath]];
             return nil;
         }
@@ -897,7 +897,7 @@ static NSString *iTermMultiServerStringForMessageFromClient(iTermMultiServerClie
                                                 error:&error];
         if (error) {
             [self showError:error
-                    message:[NSString stringWithFormat:@"Could not set 0700 permissions on %@", desiredPath]
+                    message:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not set 0700 permissions on %@", @"Tasks", [NSBundle bundleForClass:[self class]], @"daemon: set permissions failed message"), desiredPath]
                      badURL:[NSURL fileURLWithPath:desiredPath]];
             return nil;
         }

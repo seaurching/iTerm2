@@ -1,0 +1,34 @@
+/* Applescript.strings - English */
+
+/* iTermApplescriptPythonCommands.m - Python script commands */
+"No script name was specified" = "No script name was specified";
+"Script not found" = "Script not found";
+"No string to invoke was specified" = "No string to invoke was specified";
+
+/* iTermNewWindowCommand.m / iTermWindowScriptingImpl.m - Window commands */
+"No profile exists named '%@'" = "No profile exists named '%@'";
+"No profile name was specified" = "No profile name was specified";
+"The profile '%@' is damaged." = "The profile '%@' is damaged.";
+"The profile '%@' does not have a hotkey defined." = "The profile '%@' does not have a hotkey defined.";
+"A hotkey window for profile '%@' already exists. Use “reveal hotkey window” instead." = "A hotkey window for profile '%@' already exists. Use “reveal hotkey window” instead.";
+
+/* iTermRequestCookieCommand.m - Cookie request command */
+"The Python API is not enabled." = "The Python API is not enabled.";
+"An app" = "An app";
+"%@ requests a reusable API cookie." = "%@ requests a reusable API cookie.";
+"_24 Hours" = "_24 Hours";
+"Forever" = "Forever";
+"Always Allow All Apps" = "Always Allow All Apps";
+"Deny" = "Deny";
+"User denied the reusable cookie request." = "User denied the reusable cookie request.";
+
+/* PTYSession+Scripting.m - Session scripting commands */
+"Only one of text or contents of file should be specified." = "Only one of text or contents of file should be specified.";
+"Neither text nor contents of file was specified." = "Neither text nor contents of file was specified.";
+"No name given" = "No name given";
+"No value given" = "No value given";
+"Only user variables may be set. Name must start with “user.”." = "Only user variables may be set. Name must start with “user.”.";
+"No profile named %@" = "No profile named %@";
+"Reusable API cookie granted (24 hours) by Applescript." = "Reusable API cookie granted (24 hours) by Applescript.";
+"Permanent reusable API cookie granted by Applescript." = "Permanent reusable API cookie granted by Applescript.";
+"Automation auth disabled. Single-use API cookie granted by Applescript." = "Automation auth disabled. Single-use API cookie granted by Applescript.";

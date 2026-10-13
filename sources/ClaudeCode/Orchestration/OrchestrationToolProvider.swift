@@ -374,73 +374,69 @@ final class OrchestrationToolProvider: ToolProvider {
         let dict = (args.value as? [String: Any]) ?? [:]
         switch name {
         case "list_workgroups":
-            return "Looking up workgroups"
+            return NSLocalizedString("Looking up workgroups", tableName: "ClaudeCodeXC", comment: "正在查找工作组")
         case "get_state":
-            return "Checking state of " + sessionDescription(args: dict)
+            return String(format: NSLocalizedString("Checking state of %@", tableName: "ClaudeCodeXC", comment: "正在检查 %@ 的状态"), sessionDescription(args: dict))
         case "get_screen_contents":
-            return "Reading screen of " + sessionDescription(args: dict)
+            return String(format: NSLocalizedString("Reading screen of %@", tableName: "ClaudeCodeXC", comment: "正在读取 %@ 的屏幕"), sessionDescription(args: dict))
         case "scroll_wheel":
             // direction defaults to "up" (reveal older content) at the
             // dispatcher; mirror that here so the bubble matches behavior.
             let direction = (dict["direction"] as? String) ?? "up"
-            let what = (direction == "down") ? "newer" : "older"
-            return "Scrolling " + sessionDescription(args: dict)
-                + " to show \(what) content"
+            let what = (direction == "down") ? NSLocalizedString("newer", tableName: "ClaudeCodeXC", comment: "较新") : NSLocalizedString("older", tableName: "ClaudeCodeXC", comment: "较旧")
+            return String(format: NSLocalizedString("Scrolling %@ to show %@ content", tableName: "ClaudeCodeXC", comment: "正在滚动 %@ 以显示%@内容"), sessionDescription(args: dict), what)
         case "list_workgroup_clippings":
-            return "Listing clippings in " + workgroupDescription(args: dict)
+            return String(format: NSLocalizedString("Listing clippings in %@", tableName: "ClaudeCodeXC", comment: "正在列出 %@ 中的剪藏"), workgroupDescription(args: dict))
         case "send_text":
             let text = (dict["text"] as? String) ?? ""
-            return "Typing into " + sessionDescription(args: dict)
-                + ": " + previewQuote(text)
+            return String(format: NSLocalizedString("Typing into %@: %@", tableName: "ClaudeCodeXC", comment: "正在向 %@ 输入：%@"), sessionDescription(args: dict), previewQuote(text))
         case "interrupt":
-            return "Interrupting " + sessionDescription(args: dict)
+            return String(format: NSLocalizedString("Interrupting %@", tableName: "ClaudeCodeXC", comment: "正在中断 %@"), sessionDescription(args: dict))
         case "add_workgroup_clipping":
-            let title = (dict["title"] as? String) ?? "(untitled)"
-            return "Posting clipping \u{201C}\(title)\u{201D} to "
-                + workgroupDescription(args: dict)
+            let title = (dict["title"] as? String) ?? NSLocalizedString("(untitled)", tableName: "ClaudeCodeXC", comment: "(无标题)")
+            return String(format: NSLocalizedString("Posting clipping \u{201C}%@\u{201D} to %@", tableName: "ClaudeCodeXC", comment: "正在将剪藏 \u{201C}%@\u{201D} 发布到 %@"), title, workgroupDescription(args: dict))
         case "start_session":
             if let cmd = dict["command"] as? String, !cmd.isEmpty {
-                return "Starting new session: `\(cmd)`"
+                return String(format: NSLocalizedString("Starting new session: `%@`", tableName: "ClaudeCodeXC", comment: "正在启动新会话：`%@`"), cmd)
             }
-            return "Starting new session"
+            return NSLocalizedString("Starting new session", tableName: "ClaudeCodeXC", comment: "正在启动新会话")
         case "start_code_review":
             let promptLabel: String
             if let name = dict["prompt_name"] as? String, !name.isEmpty {
-                promptLabel = "with saved prompt \u{201C}\(name)\u{201D}"
+                promptLabel = String(format: NSLocalizedString("with saved prompt \u{201C}%@\u{201D}", tableName: "ClaudeCodeXC", comment: "使用已保存的提示词 \u{201C}%@\u{201D}"), name)
             } else if let custom = dict["custom_prompt"] as? String, !custom.isEmpty {
-                promptLabel = "with " + previewQuote(custom)
+                promptLabel = String(format: NSLocalizedString("with %@", tableName: "ClaudeCodeXC", comment: "使用 %@"), previewQuote(custom))
             } else {
-                promptLabel = "with the default prompt"
+                promptLabel = NSLocalizedString("with the default prompt", tableName: "ClaudeCodeXC", comment: "使用默认提示词")
             }
-            return "Kicking off Code Review on " + sessionDescription(args: dict)
-                + " " + promptLabel
+            return String(format: NSLocalizedString("Kicking off Code Review on %@ %@", tableName: "ClaudeCodeXC", comment: "正在对 %@ 发起代码审查 %@"), sessionDescription(args: dict), promptLabel)
         case "register_watch":
             // Session-bound register_watch carries no session_guid (the target
             // is the chat's linked session); render that as "the linked session"
             // rather than the "(unknown session)" fallback.
             let hasGuid = (dict["session_guid"] as? String).map { !$0.isEmpty } ?? false
-            let target = hasGuid ? sessionDescription(args: dict) : "the linked session"
+            let target = hasGuid ? sessionDescription(args: dict) : NSLocalizedString("the linked session", tableName: "ClaudeCodeXC", comment: "链接的会话")
             if let condition = dict["condition"] as? String, !condition.isEmpty {
-                return "Will notify when " + target + " satisfies: " + previewQuote(condition)
+                return String(format: NSLocalizedString("Will notify when %@ satisfies: %@", tableName: "ClaudeCodeXC", comment: "将在 %@ 满足以下条件时通知：%@"), target, previewQuote(condition))
             }
             let state = (dict["target_state"] as? String) ?? "?"
-            return "Will notify when " + target + " becomes **\(state)**"
+            return String(format: NSLocalizedString("Will notify when %@ becomes **%@**", tableName: "ClaudeCodeXC", comment: "将在 %@ 变为 **%@** 时通知"), target, state)
         case "unregister_watch":
-            return "Cancelling a watch"
+            return NSLocalizedString("Cancelling a watch", tableName: "ClaudeCodeXC", comment: "正在取消监视")
         case "list_watches":
-            return "Listing active watches"
+            return NSLocalizedString("Listing active watches", tableName: "ClaudeCodeXC", comment: "正在列出活动监视")
         default:
             if name.hasPrefix("session_") {
                 let raw = String(name.dropFirst("session_".count))
                 if raw == "execute_command",
                    let cmd = dict["command"] as? String,
                    !cmd.isEmpty {
-                    return "Executing `\(cmd.escapedForMarkdownCode.truncatedWithTrailingEllipsis(to: 80))`"
+                    return String(format: NSLocalizedString("Executing `%@`", tableName: "ClaudeCodeXC", comment: "正在执行 `%@`"), cmd.escapedForMarkdownCode.truncatedWithTrailingEllipsis(to: 80))
                 }
                 // Use the @<guid> mention form (not a bare backticked guid) so
                 // OrchestrationMentionRenderer rewrites it to the session's name
                 // (or "[defunct session]" when it no longer resolves).
-                return "\(prettifyToolName(raw)) in " + sessionDescription(args: dict)
+                return String(format: NSLocalizedString("%@ in %@", tableName: "ClaudeCodeXC", comment: "%@ 位于 %@ 中"), prettifyToolName(raw), sessionDescription(args: dict))
             }
             return prettifyToolName(name)
         }
@@ -460,7 +456,7 @@ final class OrchestrationToolProvider: ToolProvider {
     // orchestrator's text bubbles use.
     private static func sessionDescription(args dict: [String: Any]) -> String {
         guard let guid = dict["session_guid"] as? String, !guid.isEmpty else {
-            return "_(unknown session)_"
+            return NSLocalizedString("_(unknown session)_", tableName: "ClaudeCodeXC", comment: "_(未知会话)_")
         }
         return "@\(guid)"
     }
@@ -470,7 +466,7 @@ final class OrchestrationToolProvider: ToolProvider {
     // renderer's regex understands.
     private static func workgroupDescription(args dict: [String: Any]) -> String {
         guard let wg = dict["workgroup_id"] as? String, !wg.isEmpty else {
-            return "_unknown workgroup_"
+            return NSLocalizedString("_unknown workgroup_", tableName: "ClaudeCodeXC", comment: "_未知工作组_")
         }
         return "@\(wg)"
     }

@@ -1,0 +1,107 @@
+/* Metal unavailable: no GPU */
+"no usable GPU found on this machine." = "no usable GPU found on this machine.";
+
+/* Metal unavailable: disabled in settings */
+"GPU Renderer is disabled in Settings > General." = "GPU Renderer is disabled in Settings > General.";
+
+/* Metal unavailable: not a terminal */
+"the current session is not a terminal." = "the current session is not a terminal.";
+
+/* Metal unavailable: ligatures enabled */
+"ligatures are enabled. You can disable them in Settings > Profiles > Text > Use ligatures." = "ligatures are enabled. You can disable them in Settings > Profiles > Text > Use ligatures.";
+
+/* Metal unavailable: initializing */
+"the GPU renderer is initializing. It should be ready soon." = "the GPU renderer is initializing. It should be ready soon.";
+
+/* Metal unavailable: invalid size */
+"the session is too large or too small." = "the session is too large or too small.";
+
+/* Metal unavailable: session initializing */
+"the session is initializing." = "the session is initializing.";
+
+/* Metal unavailable: transparency not supported */
+"transparent windows are not supported. They can be disabled in Settings > Profiles > Window > Transparency." = "transparent windows are not supported. They can be disabled in Settings > Profiles > Window > Transparency.";
+
+/* Metal unavailable: vertical spacing */
+"the font's vertical spacing set to less than 100%. You can change it in Settings > Profiles > Text > Change Font." = "the font's vertical spacing set to less than 100%. You can change it in Settings > Profiles > Text > Change Font.";
+
+/* Metal unavailable: margins too small */
+"terminal window margins are too small. You can edit them in Settings > Advanced." = "terminal window margins are too small. You can edit them in Settings > Advanced.";
+
+/* Metal unavailable: annotations open */
+"annotations or URL shortcuts are open." = "annotations or URL shortcuts are open.";
+
+/* Metal unavailable: natively rendered items */
+"this session has natively rendered items." = "this session has natively rendered items.";
+
+/* Metal unavailable: find panel open */
+"the find panel is open." = "the find panel is open.";
+
+/* Metal unavailable: paste indicator open */
+"the paste progress indicator is open." = "the paste progress indicator is open.";
+
+/* Metal unavailable: announcement visible */
+"an announcement (yellow bar) is visible." = "an announcement (yellow bar) is visible.";
+
+/* Metal unavailable: URL preview visible */
+"a URL preview is visible." = "a URL preview is visible.";
+
+/* Metal unavailable: window resizing */
+"the window is being resized." = "the window is being resized.";
+
+/* Metal unavailable: not on power */
+"the computer is not connected to power. You can enable GPU rendering while disconnected from power in Settings > General > Advanced GPU Settings." = "the computer is not connected to power. You can enable GPU rendering while disconnected from power in Settings > General > Advanced GPU Settings.";
+
+/* Metal unavailable: session idle */
+"the session is idle. You can enable Metal while idle in Settings > Advanced." = "the session is idle. You can enable Metal while idle in Settings > Advanced.";
+
+/* Metal unavailable: too many panes */
+"This tab has too many split panes" = "This tab has too many split panes";
+
+/* Metal unavailable: no keyboard focus */
+"the window does not have keyboard focus." = "the window does not have keyboard focus.";
+
+/* Metal unavailable: tab inactive */
+"this tab is not active." = "this tab is not active.";
+
+/* Metal unavailable: tab bar visible */
+"the tab bar is temporarily visible." = "the tab bar is temporarily visible.";
+
+/* Metal unavailable: screen config changed */
+"the screen configuration has just changed." = "the screen configuration has just changed.";
+
+/* Metal unavailable: context alloc failure */
+"of a temporary failure to allocate a graphics context." = "of a temporary failure to allocate a graphics context.";
+
+/* Metal unavailable: tab being dragged */
+"a tab is being dragged." = "a tab is being dragged.";
+
+/* Metal unavailable: no window */
+"the current session has no window (this shouldn't happen)." = "the current session has no window (this shouldn't happen).";
+
+/* Metal unavailable: scp drop targets */
+"secure copy drop targets are visible." = "secure copy drop targets are visible.";
+
+/* Metal unavailable: swiping tabs */
+"swiping between tabs" = "swiping between tabs";
+
+/* Metal unavailable: split pane dragged */
+"a split pane is being dragged." = "a split pane is being dragged.";
+
+/* Metal unavailable: window obscured */
+"the window is mostly under another window." = "the window is mostly under another window.";
+
+/* Metal unavailable: low power mode */
+"macOS is in low power mode." = "macOS is in low power mode.";
+
+/* Metal unavailable: internal error */
+"of an internal error. Please file a bug report!" = "of an internal error. Please file a bug report!";
+
+/* Metal: cursor image loading warning reason */
+"While loading the key cursor image" = "While loading the key cursor image";
+
+/* Metal timestamps: repeat row label */
+"(repeat)" = "(repeat)";
+
+/* Metal: FPS meter display */
+" [Frame %d: %d fps] " = " [Frame %d: %d fps] ";

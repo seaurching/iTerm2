@@ -1,0 +1,604 @@
+/* AITerm.strings - English */
+
+/* ChatViewController.swift */
+"AI Chat" = "AI Chat";
+"Send Automatically" = "Send Automatically";
+"Ask Each Time" = "Ask Each Time";
+"Never Allow" = "Never Allow";
+"Confirm Change" = "Confirm Change";
+"Link this session to AI chat?" = "Link this session to AI chat?";
+"All terminal content will be sent to AI, which may go to a third party. Ensure this is safe to do before proceeding." = "All terminal content will be sent to AI, which may go to a third party. Ensure this is safe to do before proceeding.";
+"Privacy Warning" = "Privacy Warning";
+"Untitled Chat" = "Untitled Chat";
+"No Chats" = "No Chats";
+"Are you sure you want to delete this chat? This action cannot be undone." = "Are you sure you want to delete this chat? This action cannot be undone.";
+"Delete Chat?" = "Delete Chat?";
+"Enable orchestration mode?" = "Enable orchestration mode?";
+"Enable Orchestration" = "Enable Orchestration";
+"Disable Orchestration" = "Disable Orchestration";
+"Reveal Linked Terminal Session" = "Reveal Linked Terminal Session";
+"Unlink Terminal Session" = "Unlink Terminal Session";
+"Put Chat in Linked Terminal Session" = "Put Chat in Linked Terminal Session";
+"Send Commands & Output to AI Automatically" = "Send Commands & Output to AI Automatically";
+"Link Terminal Session" = "Link Terminal Session";
+"Reveal Linked Web Browser Session" = "Reveal Linked Web Browser Session";
+"Unlink Web Browser Session" = "Unlink Web Browser Session";
+"Put Chat in Linked Browser Session" = "Put Chat in Linked Browser Session";
+"Link Browser Session" = "Link Browser Session";
+"Help" = "Help";
+"Select a Session" = "Select a Session";
+"Allow Once" = "Allow Once";
+"Always Allow" = "Always Allow";
+"Deny this Time" = "Deny this Time";
+"Always Deny" = "Always Deny";
+"Approve" = "Approve";
+"Deny" = "Deny";
+"Not Now" = "Not Now";
+"Revoke" = "Revoke";
+"Link" = "Link";
+"Stop" = "Stop";
+"Cancel" = "Cancel";
+"Delete" = "Delete";
+"OK" = "OK";
+"Provided automatically" = "Provided automatically";
+"Always" = "Always";
+"Never" = "Never";
+"Ask" = "Ask";
+"Are you sure you want to delete %@ chats? This action cannot be undone." = "Are you sure you want to delete %@ chats? This action cannot be undone.";
+"Delete %@ Chats?" = "Delete %@ Chats?";
+
+/* ChatWindowController.swift */
+"AI Chat could not open because of a problem loading the database. Verify there is only one instance of iTerm2 running." = "AI Chat could not open because of a problem loading the database. Verify there is only one instance of iTerm2 running.";
+"Error" = "Error";
+"There was a problem initializing the database" = "There was a problem initializing the database";
+"Toggle Chat List" = "Toggle Chat List";
+"Show or hide the chat list" = "Show or hide the chat list";
+"Provider" = "Provider";
+"Select AI provider for new chats" = "Select AI provider for new chats";
+"Model" = "Model";
+"Select AI model" = "Select AI model";
+"Thinking" = "Thinking";
+"Toggle Thinking" = "Toggle Thinking";
+"Enable or disable thinking/reasoning mode" = "Enable or disable thinking/reasoning mode";
+"Effort" = "Effort";
+"Reasoning Effort" = "Reasoning Effort";
+"Select reasoning effort" = "Select reasoning effort";
+"Speed" = "Speed";
+"Select AI service tier" = "Select AI service tier";
+"Web Search" = "Web Search";
+"Toggle Web Search" = "Toggle Web Search";
+"Enable or disable web search" = "Enable or disable web search";
+"Session" = "Session";
+"Link Session" = "Link Session";
+"Link or unlink terminal/browser session" = "Link or unlink terminal/browser session";
+"Rename Chat" = "Rename Chat";
+"Choose a new name for this chat." = "Choose a new name for this chat.";
+"Rename" = "Rename";
+"The chat could not be renamed." = "The chat could not be renamed.";
+"Rename Failed" = "Rename Failed";
+"New Chat" = "New Chat";
+
+/* ChatToolbar.swift */
+"Allow AI to perform web search?" = "Allow AI to perform web search?";
+"Enable high-effort reasoning? Slower but may produce better results." = "Enable high-effort reasoning? Slower but may produce better results.";
+"Select the AI provider for this chat before sending the first message." = "Select the AI provider for this chat before sending the first message.";
+"The provider is fixed after the first real message in a chat." = "The provider is fixed after the first real message in a chat.";
+"Select a model for this chat. The provider is fixed after the chat is created." = "Select a model for this chat. The provider is fixed after the chat is created.";
+"The model is fixed after the chat starts." = "The model is fixed after the chat starts.";
+"Select a model for this chat." = "Select a model for this chat.";
+"Only one model is available for this chat." = "Only one model is available for this chat.";
+"Select reasoning effort for models that support it" = "Select reasoning effort for models that support it";
+"Select OpenAI service tier. Priority is faster; Flex is lower-cost and slower." = "Select OpenAI service tier. Priority is faster; Flex is lower-cost and slower.";
+"None" = "None";
+"Minimal" = "Minimal";
+"Low" = "Low";
+"Medium" = "Medium";
+"High" = "High";
+"Auto" = "Auto";
+"Standard" = "Standard";
+"Priority (Fast)" = "Priority (Fast)";
+"Flex (Slow)" = "Flex (Slow)";
+
+/* ChatInputView.swift */
+"Send" = "Send";
+"Type a message…" = "Type a message…";
+"Attach files" = "Attach files";
+"Attach" = "Attach";
+"Insert Path" = "Insert Path";
+"Attach File?" = "Attach File?";
+"Attach Files?" = "Attach Files?";
+"Attachment not supported" = "Attachment not supported";
+"Attachments not supported" = "Attachments not supported";
+"Type a message, or @ to mention a session…" = "Type a message, or @ to mention a session…";
+
+/* ChatListViewController.swift */
+"Delete Chat" = "Delete Chat";
+
+/* ChatSplitViewController.swift */
+"Show chat list" = "Show chat list";
+"Hide chat list" = "Hide chat list";
+
+/* InlineChatToolbarView.swift */
+"New chat" = "New chat";
+"Switch to another chat" = "Switch to another chat";
+"Hide chat" = "Hide chat";
+
+/* MessageCellView.swift */
+"Edit" = "Edit";
+"Copy" = "Copy";
+"Fork" = "Fork";
+
+/* MultipartMessageCellView.swift */
+"Code Interpreter" = "Code Interpreter";
+
+/* FileAttachmentSubpartView.swift */
+"Reveal in Finder" = "Reveal in Finder";
+"Open" = "Open";
+
+/* DateCellView.swift */
+"Invalid date" = "Invalid date";
+"Today" = "Today";
+"Yesterday" = "Yesterday";
+
+/* iTermAITermGatekeeper.swift */
+"Generative AI features have been disabled. Check with your system administrator." = "Generative AI features have been disabled. Check with your system administrator.";
+"Feature Unavailable" = "Feature Unavailable";
+"You must install the AI plugin before you can use this feature." = "You must install the AI plugin before you can use this feature.";
+"Reveal in Settings" = "Reveal in Settings";
+"Plugin Missing" = "Plugin Missing";
+"You must enable AI features in settings before you can use this feature." = "You must enable AI features in settings before you can use this feature.";
+"Reveal" = "Reveal";
+
+/* AIModelCatalogUpdater.swift */
+"Check for AI Model Updates?" = "Check for AI Model Updates?";
+"Allow" = "Allow";
+
+/* ChatAgent.swift */
+"Share Terminal Contents Automatically?" = "Share Terminal Contents Automatically?";
+"Turn On" = "Turn On";
+
+/* RemoteCommand+Mac.swift */
+"Enable Command Safety Checking?" = "Enable Command Safety Checking?";
+"Switch to My Model" = "Switch to My Model";
+"Keep Apple Intelligence" = "Keep Apple Intelligence";
+"Command Safety Checking Has Changed" = "Command Safety Checking Has Changed";
+
+/* RemoteCommand.swift */
+"Checking if you're at a shell prompt" = "Checking if you're at a shell prompt";
+"Executing `%@`" = "Executing `%@`";
+"Checking the exit status of the last command" = "Checking the exit status of the last command";
+"Reviewing the history of commands you have run in this session" = "Reviewing the history of commands you have run in this session";
+"Viewing the last command you ran in this session" = "Viewing the last command you ran in this session";
+"Reading your current command prompt" = "Reading your current command prompt";
+"Searching the history of commands you have run in this session" = "Searching the history of commands you have run in this session";
+"Fetching the output of a previously run command" = "Fetching the output of a previously run command";
+"Reading the visible screen" = "Reading the visible screen";
+"Querying the size of your terminal window" = "Querying the size of your terminal window";
+"Determining which shell you use" = "Determining which shell you use";
+"Checking if you are using SSH" = "Checking if you are using SSH";
+"Getting the current host name of this terminal session" = "Getting the current host name of this terminal session";
+"Checking your username" = "Checking your username";
+"Discovering your current directory" = "Discovering your current directory";
+"Pasting to the clipboard" = "Pasting to the clipboard";
+"Typing `%@` into the current session" = "Typing `%@` into the current session";
+"Erasing the current command line" = "Erasing the current command line";
+"Checking the manpage for `%@`" = "Checking the manpage for `%@`";
+"Creating %@" = "Creating %@";
+"Search in browser for %@" = "Search in browser for %@";
+"Navigate to %@" = "Navigate to %@";
+"Search the web for “%@”" = "Search the web for “%@”";
+"Get the current URL" = "Get the current URL";
+"View the current web page" = "View the current web page";
+"Restarting this session" = "Restarting this session";
+"The AI Agent would like to check if you're at a shell prompt" = "The AI Agent would like to check if you're at a shell prompt";
+"The AI Agent would like to execute `%@`" = "The AI Agent would like to execute `%@`";
+"The AI Agent would like to check the exit status of the last command" = "The AI Agent would like to check the exit status of the last command";
+"The AI Agent would like to review the history of commands you have run in this session" = "The AI Agent would like to review the history of commands you have run in this session";
+"The AI Agent would like to view the last command you ran in this session" = "The AI Agent would like to view the last command you ran in this session";
+"The AI Agent would like to read your current command prompt" = "The AI Agent would like to read your current command prompt";
+"The AI Agent would like to search the history of commands you have run in this session" = "The AI Agent would like to search the history of commands you have run in this session";
+"The AI Agent would like to fetch the output of a previously run command" = "The AI Agent would like to fetch the output of a previously run command";
+"The AI Agent would like to read the visible screen of your terminal session" = "The AI Agent would like to read the visible screen of your terminal session";
+"The AI Agent would like to query the size of your terminal window" = "The AI Agent would like to query the size of your terminal window";
+"The AI Agent would like to determine which shell you use" = "The AI Agent would like to determine which shell you use";
+"The AI Agent would like to check if you are using SSH" = "The AI Agent would like to check if you are using SSH";
+"The AI Agent would like to get the current host name of this terminal session" = "The AI Agent would like to get the current host name of this terminal session";
+"The AI Agent would like to check your username" = "The AI Agent would like to check your username";
+"The AI Agent would like to know your current directory" = "The AI Agent would like to know your current directory";
+"The AI Agent would like to paste to the clipboard" = "The AI Agent would like to paste to the clipboard";
+"The AI Agent would like to type `%@` into the current session" = "The AI Agent would like to type `%@` into the current session";
+"The AI Agent would like to erase the current command line" = "The AI Agent would like to erase the current command line";
+"The AI Agent would like to check the manpage for `%@`" = "The AI Agent would like to check the manpage for `%@`";
+"The AI Agent would like to create a file named `%@`" = "The AI Agent would like to create a file named `%@`";
+"The AI agent would like to search the current web page for “%@”" = "The AI agent would like to search the current web page for “%@”";
+"The AI agent would like to navigate to %@" = "The AI agent would like to navigate to %@";
+"The AI agent would like to search the web for “%@”" = "The AI agent would like to search the web for “%@”";
+"The AI agent would like to get the current URL" = "The AI agent would like to get the current URL";
+"The AI agent would like to view the current web page" = "The AI agent would like to view the current web page";
+"The AI Agent would like to restart this session, which kills any running jobs" = "The AI Agent would like to restart this session, which kills any running jobs";
+
+/* RemoteCommand+Mac.swift */
+"iTerm2 can use AI to check the safety of commands suggested by your AI agent. Would you like to enable safety checking?\n\nWhen enabled, each proposed command will be sent to your configured AI provider for a safety check." = "iTerm2 can use AI to check the safety of commands suggested by your AI agent. Would you like to enable safety checking?\n\nWhen enabled, each proposed command will be sent to your configured AI provider for a safety check.";
+"Until now, iTerm2 checked the safety of AI-suggested commands on your Mac using Apple Intelligence, at no cost. It can now use your configured AI model instead, which is more accurate but sends each checked command to your AI provider and may incur charges.\n\nSwitch to your configured model? If you decline, iTerm2 keeps using Apple Intelligence." = "Until now, iTerm2 checked the safety of AI-suggested commands on your Mac using Apple Intelligence, at no cost. It can now use your configured AI model instead, which is more accurate but sends each checked command to your AI provider and may incur charges.\n\nSwitch to your configured model? If you decline, iTerm2 keeps using Apple Intelligence.";
+
+/* AIConnectionTester.swift */
+"Placeholder key in use: AI responses are simulated for App Review and no external service is contacted." = "Placeholder key in use: AI responses are simulated for App Review and no external service is contacted.";
+"Could not build a request: %@" = "Could not build a request: %@";
+"The server responded but its reply could not be understood: %@" = "The server responded but its reply could not be understood: %@";
+
+/* AIModelCatalogUpdater.swift */
+"iTerm2 can keep its built-in list of AI models current by periodically downloading a cryptographically signed list from iterm2.com. No terminal content or personal data is sent. Allow this?" = "iTerm2 can keep its built-in list of AI models current by periodically downloading a cryptographically signed list from iterm2.com. No terminal content or personal data is sent. Allow this?";
+
+/* ChatAgent.swift */
+
+/* AITermControllerObjC.swift */
+"Thinking…" = "Thinking…";
+
+/* ChatViewController.swift */
+"The user declined to allow this function call to execute." = "The user declined to allow this function call to execute.";
+"Unknown function call name" = "Unknown function call name";
+"Explain the output of %@ based on [attached terminal content](%@)." = "Explain the output of %@ based on [attached terminal content](%@).";
+"Explain the output of %@ based on some no-longer-available content." = "Explain the output of %@ based on some no-longer-available content.";
+"*Note: The command output was truncated because it exceeded the maximum number of lines supported by AI Chat*" = "*Note: The command output was truncated because it exceeded the maximum number of lines supported by AI Chat*";
+"(Unnamed session)" = "(Unnamed session)";
+"terminal" = "terminal";
+"browser" = "browser";
+"This chat is no longer linked to a terminal session." = "This chat is no longer linked to a terminal session.";
+"This chat is no longer linked to a web browser session." = "This chat is no longer linked to a web browser session.";
+"The user did not link a web browser session to chat, so the function could not be run." = "The user did not link a web browser session to chat, so the function could not be run.";
+"The user did not link a terminal session to chat, so the function could not be run." = "The user did not link a terminal session to chat, so the function could not be run.";
+"AI attempted to perform an action, but no web browser session is linked to this chat so it failed." = "AI attempted to perform an action, but no web browser session is linked to this chat so it failed.";
+"AI attempted to perform an action, but no terminal session is linked to this chat so it failed." = "AI attempted to perform an action, but no terminal session is linked to this chat so it failed.";
+"The user declined to allow function calling. Try to find another way to assist." = "The user declined to allow function calling. Try to find another way to assist.";
+"Waiting for a session to be selected…" = "Waiting for a session to be selected…";
+"Terminal commands will no longer be sent to AI automatically." = "Terminal commands will no longer be sent to AI automatically.";
+"All terminal commands in the linked session will be sent to AI automatically." = "All terminal commands in the linked session will be sent to AI automatically.";
+"Terminal commands will no longer be sent to AI automatically. Automatic sending always terminates when iTerm2 restarts or the current chat changes." = "Terminal commands will no longer be sent to AI automatically. Automatic sending always terminates when iTerm2 restarts or the current chat changes.";
+"Linking gives the AI access to this session subject to your per-call permission." = "Linking gives the AI access to this session subject to your per-call permission.";
+"**Orchestration** is an alternative mode where the AI can coordinate multiple sessions." = "**Orchestration** is an alternative mode where the AI can coordinate multiple sessions.";
+"**Orchestration** lets the AI coordinate across multiple terminal sessions. It can read the contents of any session, and you grant a one-time approval before it controls a session instead of approving every call. It also runs in **auto mode**: each command the AI proposes is checked for safety by your AI provider, and anything risky is held for your review." = "**Orchestration** lets the AI coordinate across multiple terminal sessions. It can read the contents of any session, and you grant a one-time approval before it controls a session instead of approving every call. It also runs in **auto mode**: each command the AI proposes is checked for safety by your AI provider, and anything risky is held for your review.";
+"It uses automatic safety checking and one-time per-session approval instead of fine-grained permissions." = "It uses automatic safety checking and one-time per-session approval instead of fine-grained permissions.";
+"You can use these buttons or the info button menu at the top of the chat window to control AI permissions for this chat." = "You can use these buttons or the info button menu at the top of the chat window to control AI permissions for this chat.";
+"**Open a new session?**" = "**Open a new session?**";
+"**Run this command?**" = "**Run this command?**";
+"**Allow repeated screen reads?**" = "**Allow repeated screen reads?**";
+"session" = "session";
+"workgroup" = "workgroup";
+"The AI agent needs to run commands in a live %@ session, but none is attached to this chat." = "The AI agent needs to run commands in a live %@ session, but none is attached to this chat.";
+"You @-mentioned it, so the agent can act there without asking. Revoke to require approval again." = "You @-mentioned it, so the agent can act there without asking. Revoke to require approval again.";
+"Unnamed session" = "Unnamed session";
+"This chat is not linked to any web browser session." = "This chat is not linked to any web browser session.";
+"This chat is not linked to any terminal session." = "This chat is not linked to any terminal session.";
+
+/* ChatDatabase.swift */
+"This chat is no longer linked to a terminal session." = "This chat is no longer linked to a terminal session.";
+"This chat is no longer linked to a web browser session." = "This chat is no longer linked to a web browser session.";
+
+/* ChatViewController.swift */
+"Orchestration enabled. Agent can see content of all sessions." = "Orchestration enabled. Agent can see content of all sessions.";
+"Orchestration disabled." = "Orchestration disabled.";
+"(Unnamed session)" = "(Unnamed session)";
+"terminal" = "terminal";
+"browser" = "browser";
+
+/* AITerm.swift */
+"Cancel" = "Cancel";
+
+/* ChatProviderBinding.swift */
+/* iTermAIError.swift */
+
+/* ChatCellView.swift */
+"Chat" = "Chat";
+
+/* ChatTitleStyling.swift */
+"Orchestrator chat" = "Orchestrator chat";
+
+/* TerminalCommandMessageCellView.swift */
+"Command icon" = "Command icon";
+
+/* ChatSessionMentionAttachment.swift */
+"iTerm2 session" = "iTerm2 session";
+
+/* ChatMentionPickerController.swift */
+"Workgroup" = "Workgroup";
+
+/* AICompletion.swift */
+"You are offering command line completion suggestions and descriptions." = "You are offering command line completion suggestions and descriptions.";
+"Respond with one description + suggestion per line." = "Respond with one description + suggestion per line.";
+"Each line should consist of a 2-5 word description, followed by a tab, followed by the suggestion." = "Each line should consist of a 2-5 word description, followed by a tab, followed by the suggestion.";
+"Return no more than %@ lines. You may return fewer or none rather than poor quality suggestions." = "Return no more than %@ lines. You may return fewer or none rather than poor quality suggestions.";
+"The current working directory is %@" = "The current working directory is %@";
+"The user appears to be entering the name of a command to execute, not one of its arguments, so completions should be for executable commands likely to be present on the system." = "The user appears to be entering the name of a command to execute, not one of its arguments, so completions should be for executable commands likely to be present on the system.";
+"The suggestion in each line you respond with is a candidate to append after what has been typed so far." = "The suggestion in each line you respond with is a candidate to append after what has been typed so far.";
+"Previously run commands in chronological order are:" = "Previously run commands in chronological order are:";
+"(end of command list)" = "(end of command list)";
+"Your suggestions should take recently run commands into consideration: if possible, suggest a command that builds on what the user has begun." = "Your suggestions should take recently run commands into consideration: if possible, suggest a command that builds on what the user has begun.";
+"Do not make up or invent file or directory names." = "Do not make up or invent file or directory names.";
+"If a suggestion would end with a filename, use %@ instead." = "If a suggestion would end with a filename, use %@ instead.";
+"Do not invent other kinds of placeholders such as {{MESSAGE}} or {{DIRECTORY}}. Use plain English, like \"message\", instead." = "Do not invent other kinds of placeholders such as {{MESSAGE}} or {{DIRECTORY}}. Use plain English, like \"message\", instead.";
+"Instead, your suggestion may end with the longest common prefix of valid filename completions, which is: %@" = "Instead, your suggestion may end with the longest common prefix of valid filename completions, which is: %@";
+"The text the user has entered so far, which needs completion, is:" = "The text the user has entered so far, which needs completion, is:";
+"Additionally, there is some text after the cursor. Use this to come up with better suggestions, assuming it will be used after what you suggest or that your suggestion will replace some of it. It is:" = "Additionally, there is some text after the cursor. Use this to come up with better suggestions, assuming it will be used after what you suggest or that your suggestion will replace some of it. It is:";
+
+/* AIExplanationRequest.swift */
+"After this paragraph I will attach the output of %@, which the user needs help understanding." = "After this paragraph I will attach the output of %@, which the user needs help understanding.";
+"After this paragraph I will attach some text from a terminal emulator that the user needs help understanding." = "After this paragraph I will attach some text from a terminal emulator that the user needs help understanding.";
+"The beginning of the command output is not included because it was extremely long. What you see is just the latter part of it." = "The beginning of the command output is not included because it was extremely long. What you see is just the latter part of it.";
+"Annotations should explain parts of the output that the user likely wants to know more about, such as error messages, abstruse terms of art, tersely formatted messages, or anything non-obvious." = "Annotations should explain parts of the output that the user likely wants to know more about, such as error messages, abstruse terms of art, tersely formatted messages, or anything non-obvious.";
+"Respond with a sequence of annotations." = "Respond with a sequence of annotations.";
+"Since the user asked for this to be explained, you should always add at least one annotation." = "Since the user asked for this to be explained, you should always add at least one annotation.";
+"You should respond to their question with a main response and, if needed, annotations of the text provided below." = "You should respond to their question with a main response and, if needed, annotations of the text provided below.";
+"The entirety of the main response should be wrapped in <response>…</response> tags." = "The entirety of the main response should be wrapped in <response>…</response> tags.";
+"The main response should be markdown. < and & must be ampersand encoded." = "The main response should be markdown. < and & must be ampersand encoded.";
+"You may also choose to include annotations that are relevant to the question." = "You may also choose to include annotations that are relevant to the question.";
+"Annotations will be displayed to the user next to the parts of the terminal emulator's content." = "Annotations will be displayed to the user next to the parts of the terminal emulator's content.";
+"Don't annotate anything obvious, like self-explanatory comments in code." = "Don't annotate anything obvious, like self-explanatory comments in code.";
+"Never use a substring as its own annotation." = "Never use a substring as its own annotation.";
+"An example of a good annotation: `Error: text file busy` might be annotated as `This usually happens when you try to modify or delete an executable that is currently running`." = "An example of a good annotation: `Error: text file busy` might be annotated as `This usually happens when you try to modify or delete an executable that is currently running`.";
+"Use ampersand escaping like HTML if you need to use a quotation mark or an ampersand." = "Use ampersand escaping like HTML if you need to use a quotation mark or an ampersand.";
+"You may provide more than one annotation per line of input if needed." = "You may provide more than one annotation per line of input if needed.";
+"Avoid overlapping annotations because they lead to a confusing user interface." = "Avoid overlapping annotations because they lead to a confusing user interface.";
+"I have added markup to help identify line numbers." = "I have added markup to help identify line numbers.";
+"Each line is wrapped in <line n=\"number\">…</line>." = "Each line is wrapped in <line n=\"number\">…</line>.";
+"The text to annotate follows:" = "The text to annotate follows:";
+"Stop using <annotation> and <response>. I am no longer parsing them. What follows will be a regular conversation. Here is the next prompt from the user: " = "Stop using <annotation> and <response>. I am no longer parsing them. What follows will be a regular conversation. Here is the next prompt from the user: ";
+
+/* ChatClient.swift */
+"The user denied permission to use function calling in this terminal session. Do not try again." = "The user denied permission to use function calling in this terminal session. Do not try again.";
+"AI will not execute this command." = "AI will not execute this command.";
+
+/* AITerm.swift */
+"Could not obtain a valid API key registration for this model’s provider." = "Could not obtain a valid API key registration for this model’s provider.";
+"Vector stores are not supported with this LLM vendor" = "Vector stores are not supported with this LLM vendor";
+"Adding file to vector store failed" = "Adding file to vector store failed";
+"An error occurred while ingesting files to vector storage" = "An error occurred while ingesting files to vector storage";
+"The file may not be well formed." = "The file may not be well formed.";
+"File upload not supported with this LLM vendor" = "File upload not supported with this LLM vendor";
+"Streaming is not supported by this language model in iTerm2. You can disable streaming in Settings > General > AI." = "Streaming is not supported by this language model in iTerm2. You can disable streaming in Settings > General > AI.";
+"Unexpected end of file from server" = "Unexpected end of file from server";
+"Empty response from server" = "Empty response from server";
+"Apple Intelligence requires macOS 26 or later." = "Apple Intelligence requires macOS 26 or later.";
+"Apple Intelligence error: %@" = "Apple Intelligence error: %@";
+"Invalid URL for AI provider of %@" = "Invalid URL for AI provider of %@";
+"Could not decode response: " = "Could not decode response: ";
+"Failed to decode API response: %@. Data is: %@" = "Failed to decode API response: %@. Data is: %@";
+
+/* AISafetyClassifierBackend.swift */
+"No AI model is configured to classify command safety." = "No AI model is configured to classify command safety.";
+"Empty response from classifier model." = "Empty response from classifier model.";
+
+/* AIConversation.swift */
+"You must provide a valid API key to use AI features in iTerm2." = "You must provide a valid API key to use AI features in iTerm2.";
+"You must provide a valid API key to use AI features in iTerm2" = "You must provide a valid API key to use AI features in iTerm2";
+
+/* AITermControllerObjC.swift */
+"AI features are not enabled or the API key is missing." = "AI features are not enabled or the API key is missing.";
+
+/* ChatBlobAssembler.swift */
+"Failed to splice frozen chat history into the request body" = "Failed to splice frozen chat history into the request body";
+
+/* LLMFiles.swift */
+"File upload is not supported with this LLM provider" = "File upload is not supported with this LLM provider";
+
+/* LLMRequestBuilder.swift */
+"Apple Intelligence does not use HTTP requests" = "Apple Intelligence does not use HTTP requests";
+
+/* LLMVectorStore.swift */
+"Adding to vector store is not supported with this LLM provider" = "Adding to vector store is not supported with this LLM provider";
+"Failed to add files to vector store: %@" = "Failed to add files to vector store: %@";
+"The vector store has not been enabled in settings" = "The vector store has not been enabled in settings";
+"No vector store is available for this LLM provider." = "No vector store is available for this LLM provider.";
+
+/* MessagePrepPipeline.swift */
+"Chat agent no longer exists" = "Chat agent no longer exists";
+"Missing vector store ID" = "Missing vector store ID";
+"Failed to zip attached files" = "Failed to zip attached files";
+
+/* AIPluginClient.swift */
+"Plugin not found" = "Plugin not found";
+"Plugin missing from app bundle or not readable" = "Plugin missing from app bundle or not readable";
+"Plugin code not valid UTF-8" = "Plugin code not valid UTF-8";
+"Signature missing from app bundle or not readable" = "Signature missing from app bundle or not readable";
+"Signature of AI plugin is malformed" = "Signature of AI plugin is malformed";
+"The plugin's signature is invalid. Reinstall the plugin or upgrade iTerm2." = "The plugin's signature is invalid. Reinstall the plugin or upgrade iTerm2.";
+"Plugin not allowed by administator." = "Plugin not allowed by administator.";
+"Unable to determine version of AI plugin. Reinstall it and upgrade iTerm2 if possible." = "Unable to determine version of AI plugin. Reinstall it and upgrade iTerm2 if possible.";
+
+/* LLM.swift */
+"Searching the web…" = "Searching the web…";
+"Finished searching the web for %@." = "Finished searching the web for %@.";
+"Finished searching the web." = "Finished searching the web.";
+"Executing code…" = "Executing code…";
+"Finished executing code" = "Finished executing code";
+
+/* MarkdownHelpers.swift */
+"Finished searching the web for **%@**." = "Finished searching the web for **%@**.";
+
+/* Message.swift */
+"Stopped sending commands to AI" = "Stopped sending commands to AI";
+"Sending commands to AI automatically" = "Sending commands to AI automatically";
+
+/* it_fatalError messages */
+"Server should not send function output" = "Server should not send function output";
+"Should not accumulate multipart" = "Should not accumulate multipart";
+"Streaming not supported in the objective c interface" = "Streaming not supported in the objective c interface";
+"User commands should not reach fetchCompletion" = "User commands should not reach fetchCompletion";
+"User should not create vector store" = "User should not create vector store";
+"User-sent attachments not supported" = "User-sent attachments not supported";
+"Agent should not send userCommand" = "Agent should not send userCommand";
+"Server-sent attachments are not yet supported" = "Server-sent attachments are not yet supported";
+"init(coder:) has not been implemented" = "init(coder:) has not been implemented";
+"init(coder:) not implemented" = "init(coder:) not implemented";
+"User messages should not be in model" = "User messages should not be in model";
+"Append-type messages should not be in model" = "Append-type messages should not be in model";
+"user command not allowed in model" = "user command not allowed in model";
+"Append type messages not allowed in model" = "Append type messages not allowed in model";
+"Subclass must implement this" = "Subclass must implement this";
+"Unsupported user-sent attachment type" = "Unsupported user-sent attachment type";
+"Pipeline has unsatisfiable dependencies" = "Pipeline has unsatisfiable dependencies";
+"Apple Intelligence does not parse HTTP responses" = "Apple Intelligence does not parse HTTP responses";
+
+/* ChatAgent.swift */
+
+/* LLMProvider.swift */
+
+/* AITerm.swift */
+"Error from %@: %@" = "Error from %@: %@";
+"**Request failed**" = "**Request failed**";
+"No AI model configured in settings." = "No AI model configured in settings.";
+"Could not obtain a valid API key registration for this model’s provider." = "Could not obtain a valid API key registration for this model’s provider.";
+"This is a demonstration response from the iTerm2 AI assistant. iTerm2 is configured with a placeholder key for App Review, so no external AI service is contacted and no data leaves your Mac. To get real answers, set your AI provider's API key in iTerm2 Settings > AI." = "This is a demonstration response from the iTerm2 AI assistant. iTerm2 is configured with a placeholder key for App Review, so no external AI service is contacted and no data leaves your Mac. To get real answers, set your AI provider's API key in iTerm2 Settings > AI.";
+
+/* AIExplanationRequest.swift */
+"Explain %@" = "Explain %@";
+"Each annotation you write should look like this: <annotation line=\"N\" text=\"A useful explanation of the annotated substring\" substring=\"text that occurs on line N that you wish to annotate\"/>." = "Each annotation you write should look like this: <annotation line=\"N\" text=\"A useful explanation of the annotated substring\" substring=\"text that occurs on line N that you wish to annotate\"/>.";
+
+/* AISafetyClassifierBackend.swift */
+"Apple Intelligence is unavailable; the command safety check will not fall back to a cloud provider." = "Apple Intelligence is unavailable; the command safety check will not fall back to a cloud provider.";
+
+/* Message.swift */
+"Selecting session…" = "Selecting session…";
+"Finished executing command" = "Finished executing command";
+"Ran `%@`" = "Ran `%@`";
+"Empty message" = "Empty message";
+
+/* ChatViewController.swift */
+"AI can %@" = "AI can %@";
+"When a terminal session is linked to this chat, the AI may view terminal contents and run commands in that session. You will be prompted to grant permission before it is able to view, type to, or modify a terminal session." = "When a terminal session is linked to this chat, the AI may view terminal contents and run commands in that session. You will be prompted to grant permission before it is able to view, type to, or modify a terminal session.";
+
+/* ChatInputView.swift */
+"Add the %@ dropped files to your message as attachments, or insert their paths as text?" = "Add the %@ dropped files to your message as attachments, or insert their paths as text?";
+"↩ to submit" = "↩ to submit";
+"%@ doesn’t accept this file type as a chat attachment: %@." = "%@ doesn’t accept this file type as a chat attachment: %@.";
+"the current AI provider" = "the current AI provider";
+
+/* ChatCellView.swift */
+"AI is typing…" = "AI is typing…";
+
+/* MarkdownHelpers.swift */
+"Copied" = "Copied";
+
+/* ChatListViewController.swift */
+"Delete %ld Chats" = "Delete %ld Chats";
+
+/* ChatToolbar.swift */
+"Effort: %@" = "Effort: %@";
+"Enable high-effort reasoning?" = "Enable high-effort reasoning?";
+"Tier: %@" = "Tier: %@";
+"Web search image" = "Web search image";
+"XHigh" = "XHigh";
+
+/* ChatMentionPickerController.swift */
+"Tab %@" = "Tab %@";
+"Tab %@ · %@" = "Tab %@ · %@";
+"Window %@" = "Window %@";
+
+/* ChatSessionMentionAttachment.swift */
+"Untitled session" = "Untitled session";
+
+/* RemoteCommand.swift */
+"Provide Screen Contents Automatically" = "Provide Screen Contents Automatically";
+"Provide Terminal State Automatically" = "Provide Terminal State Automatically";
+
+"By setting this permission to “Always Allow”, terminal state will be sent automatically on every message you send in this chat.\nThis includes:\n • The current or last command and its exit status\n •The window size\n • Your shell\n • The current working directory, username, and hostname." = "By setting this permission to “Always Allow”, terminal state will be sent automatically on every message you send in this chat.\nThis includes:\n • The current or last command and its exit status\n •The window size\n • Your shell\n • The current working directory, username, and hostname.";
+"By setting this permission to “Always Allow”, the current visible screen of your terminal session will be sent automatically on every message you send in this chat." = "By setting this permission to “Always Allow”, the current visible screen of your terminal session will be sent automatically on every message you send in this chat.";
+
+/* ChatInputView.swift */
+"\nYou can click on a link in this message or on a yellow underline in the terminal to reveal an annotation." = "\nYou can click on a link in this message or on a yellow underline in the terminal to reveal an annotation.";
+"**Allow agent to control %@ \\u{201c}%@\\u{201d}?**" = "**Allow agent to control %@ \\u{201c}%@\\u{201d}?**";
+"**Enable orchestration for this chat?**\n\n" = "**Enable orchestration for this chat?**\n\n";
+"**Granted this chat permission to control \\u{201c}%@\\u{201d}.**" = "**Granted this chat permission to control \\u{201c}%@\\u{201d}.**";
+"**Link this chat to %@ session \\u{201C}%@\\u{201D}, or enable orchestration?**" = "**Link this chat to %@ session \\u{201C}%@\\u{201D}, or enable orchestration?**";
+"**Request failed**\n\n%@" = "**Request failed**\n\n%@";
+"*If you grant or deny permission, it affects only this chat conversation while linked to this particular terminal session. You can change permissions in the chat Info menu.*" = "*If you grant or deny permission, it affects only this chat conversation while linked to this particular terminal session. You can change permissions in the chat Info menu.*";
+"A vector store was created" = "A vector store was created";
+"AI Model" = "AI Model";
+"AI Provider" = "AI Provider";
+"AI Speed" = "AI Speed";
+"Add \\u{201c}%@\\u{201d} to your message as an attachment, or insert its path as text?" = "Add \\u{201c}%@\\u{201d} to your message as an attachment, or insert its path as text?";
+"Cancelled." = "Cancelled.";
+"Cassette delivery had neither response nor error" = "Cassette delivery had neither response nor error";
+"Chat about %@" = "Chat about %@";
+"Context Menu" = "Context Menu";
+"Could not create context for plugin" = "Could not create context for plugin";
+"Could not encode request to plugin: %@" = "Could not encode request to plugin: %@";
+"Detail: %@" = "Detail: %@";
+"Don’t Allow" = "Don’t Allow";
+"Error decoding response: %@" = "Error decoding response: %@";
+"Error running plugin: %@" = "Error running plugin: %@";
+"Failed to enable orchestration: %@. The chat remains in its current mode." = "Failed to enable orchestration: %@. The chat remains in its current mode.";
+"Failed to surface the request: %@" = "Failed to surface the request: %@";
+"Failed to upload %@: %@" = "Failed to upload %@: %@";
+"Function %@ not found" = "Function %@ not found";
+"I [annotated](%@) “%@”: %@" = "I [annotated](%@) “%@”: %@";
+"Invalid version string: %@" = "Invalid version string: %@";
+"JavaScript function call failed" = "JavaScript function call failed";
+"Javascript exception: %@" = "Javascript exception: %@";
+"Non-UTF-8 result from plugin: %@" = "Non-UTF-8 result from plugin: %@";
+"Orchestration is now active for the rest of this conversation. The orchestration toolset (send_text, get_state, list_workgroups, register_watch, start_code_review, etc.) is available to you now and you may call those tools in the continuation of this turn or any subsequent turn." = "Orchestration is now active for the rest of this conversation. The orchestration toolset (send_text, get_state, list_workgroups, register_watch, start_code_review, etc.) is available to you now and you may call those tools in the continuation of this turn or any subsequent turn.";
+"Please assign a short, specific name to this chat, less than 30 characters in length, but descriptive. It will be shown in a chat list UI. Respond with only the name of the chat." = "Please assign a short, specific name to this chat, less than 30 characters in length, but descriptive. It will be shown in a chat list UI. Respond with only the name of the chat.";
+"Plugin has version %@ but iTerm2 expects %@. Upgrade one or both." = "Plugin has version %@ but iTerm2 expects %@. Upgrade one or both.";
+"Plugin unexpectedly returned null" = "Plugin unexpectedly returned null";
+"Reached state: %@" = "Reached state: %@";
+"Role: %@" = "Role: %@";
+"Screen last changed: %@" = "Screen last changed: %@";
+"Text ends with an unescaped backslash." = "Text ends with an unescaped backslash.";
+"The URL is not valid." = "The URL is not valid.";
+"The connection succeeded. The model responded normally." = "The connection succeeded. The model responded normally.";
+"The messages for this chat could not be loaded." = "The messages for this chat could not be loaded.";
+"There was a problem adding files to the vector store: %@" = "There was a problem adding files to the vector store: %@";
+"There was a problem creating a vector store database: %@" = "There was a problem creating a vector store database: %@";
+"This chat has been linked to terminal session \\u{201c}%@\\u{201d}" = "This chat has been linked to terminal session \\u{201c}%@\\u{201d}";
+"This chat has been linked to web browser session \\u{201c}%@\\u{201d}" = "This chat has been linked to web browser session \\u{201c}%@\\u{201d}";
+"This chat uses \\u{201c}%@\\u{201d}, and \\u{201c}%@\\u{201d} belongs to a different AI provider. A chat cannot change providers once the conversation has started; start a new chat to use \\u{201c}%@\\u{201d}." = "This chat uses \\u{201c}%@\\u{201d}, and \\u{201c}%@\\u{201d} belongs to a different AI provider. A chat cannot change providers once the conversation has started; start a new chat to use \\u{201c}%@\\u{201d}.";
+"Unexpected exception: %@" = "Unexpected exception: %@";
+"Unexpected output from plugin" = "Unexpected output from plugin";
+"Unexpected output from plugin: %@" = "Unexpected output from plugin: %@";
+"Unknown Platform" = "Unknown Platform";
+"Unknown error occurred" = "Unknown error occurred";
+"Upload of %@ finished." = "Upload of %@ finished.";
+"Uploading…" = "Uploading…";
+"User declined to enable orchestration." = "User declined to enable orchestration.";
+"Workgroup: %@" = "Workgroup: %@";
+"Would you like to grant AI **%@** permission?" = "Would you like to grant AI **%@** permission?";
+"[Attached file]" = "[Attached file]";
+"cancelled" = "cancelled";
+"iTerm2 can include this session’s visible screen and terminal state with every message you send in AI chats where you’ve allowed it, so the assistant sees what you see. You can turn this off any time from a chat’s permission settings." = "iTerm2 can include this session’s visible screen and terminal state with every message you send in AI chats where you’ve allowed it, so the assistant sees what you see. You can turn this off any time from a chat’s permission settings.";
+"⚠️ **The AI safety check flagged this command as potentially dangerous. Review it with care.**\n\n" = "⚠️ **The AI safety check flagged this command as potentially dangerous. Review it with care.**\n\n";
+"🛑 The text to analyze was too long. Select a portion of it and try again." = "🛑 The text to analyze was too long. Select a portion of it and try again.";
+"After the tab, the suggestion should begin with the literal text the user has entered so far." = "After the tab, the suggestion should begin with the literal text the user has entered so far.";
+"I am logged in as %@@%@" = "I am logged in as %@@%@";
+"I executed the following command line:" = "I executed the following command line:";
+"It produced this output:" = "It produced this output:";
+"My current directory was:" = "My current directory was:";
+"Note: iTerm2 already sent a push notification to the user's iPhone for this event. Do not send another." = "Note: iTerm2 already sent a push notification to the user's iPhone for this event. Do not send another.";
+"Note: the user asked for a push notification but notifications are unavailable right now, so make sure they see this in chat." = "Note: the user asked for a push notification but notifications are unavailable right now, so make sure they see this in chat.";
+"Note: the user may be away from their Mac. If they asked to be told when this happened, also send a push notification with the notify tool." = "Note: the user may be away from their Mac. If they asked to be told when this happened, also send a push notification with the notify tool.";
+"Streaming not supported in the objective C interface" = "Streaming not supported in the objective C interface";
+"The current hostname is %@" = "The current hostname is %@";
+"The exit status of the command was %@" = "The exit status of the command was %@";
+"The user has asked this question about it: \\u{201c}%@\\u{201d}" = "The user has asked this question about it: \\u{201c}%@\\u{201d}";
+"iTerm2 is sending you this message automatically because the user enabled sending terminal commands to AI for assistance. If you can provide useful non-obvious insights, respond with those. Do not restate information that is obvious from the output. If there is nothing important to say, just respond with \"Got it.\"" = "iTerm2 is sending you this message automatically because the user enabled sending terminal commands to AI for assistance. If you can provide useful non-obvious insights, respond with those. Do not restate information that is obvious from the output. If there is nothing important to say, just respond with \"Got it.\"";
+"For example, if the command so far was `git re` then you might suggest `Rewrite commit history\\tgit rebase`, `Rewrite commit history\\tgit revert`, and `Move branch pointer\\tgit reset`. " = "For example, if the command so far was `git re` then you might suggest `Rewrite commit history\\tgit rebase`, `Rewrite commit history\\tgit revert`, and `Move branch pointer\\tgit reset`. ";
+"Truncated \\\\uXXXX escape (needs exactly four hex digits)." = "Truncated \\\\uXXXX escape (needs exactly four hex digits).";
+"Unknown backslash escape “%@”. Recognized: \\\\, \\n, \\r, \\t, \\uXXXX." = "Unknown backslash escape “%@”. Recognized: \\\\, \\n, \\r, \\t, \\uXXXX.";
+"You can suggest more than one additional word when you can tell from context that it would be a good suggestion. For example, if the user frequently runs `grep ERROR <file> | sort | uniq` and you see that the text so far is `grep ERROR myfile.txt` your response could include `Count unique errors\\tgrep ERROR myfile.txt | sort | uniq`" = "You can suggest more than one additional word when you can tell from context that it would be a good suggestion. For example, if the user frequently runs `grep ERROR <file> | sort | uniq` and you see that the text so far is `grep ERROR myfile.txt` your response could include `Count unique errors\\tgrep ERROR myfile.txt | sort | uniq`";
+"server" = "server";
+"There is no registered function by that name. Try again." = "There is no registered function by that name. Try again.";
+"This message requires a newer version of iTerm2 to view." = "This message requires a newer version of iTerm2 to view.";
+"The request violated Gemini's safety rules." = "The request violated Gemini's safety rules.";
+"While parsing a function call request" = "While parsing a function call request";
+"I have attached files for you to use.\n" = "I have attached files for you to use.\n";
+"I was unable to complete the function call: " = "I was unable to complete the function call: ";
+"If a zip file is provided (this is rare), you should extract it and analyze the contents in the context of the accompanying messages." = "If a zip file is provided (this is rare), you should extract it and analyze the contents in the context of the accompanying messages.";
+"AI token limit exceeded because the conversation reached its maximum length" = "AI token limit exceeded because the conversation reached its maximum length";
+"Write to the Clipboard" = "Write to the Clipboard";
+"Write to the File System" = "Write to the File System";
+"Act in Web Browser" = "Act in Web Browser";
+
+"[iTerm2 was restarted before this tool call completed. The call did not finish; assume no side effects took place and re-issue if needed.]" = "[iTerm2 was restarted before this tool call completed. The call did not finish; assume no side effects took place and re-issue if needed.]";
+"Check Terminal State" = "Check Terminal State";
+"Run Commands" = "Run Commands";
+"View Contents" = "View Contents";
+"Control Terminal" = "Control Terminal";
+"View Manpages" = "View Manpages";

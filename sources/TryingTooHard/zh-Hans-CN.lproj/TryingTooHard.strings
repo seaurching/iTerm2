@@ -1,0 +1,9 @@
+/* TryingTooHard.strings - zh-Hans-CN */
+"There's a lot of printing going on. Want to keep allowing it?" = "正在大量打印内容。要继续允许吗？";
+"Allow" = "允许";
+"Disable Temporarily" = "暂时禁用";
+"Disable Permanently" = "永久禁用";
+"Allow Printing?" = "允许打印？";
+"The Touch ID install script is missing from the iTerm2 application bundle." = "iTerm2 应用程序包中缺少 Touch ID 安装脚本。";
+"OK" = "确定";
+"Cannot Enable Touch ID for Sudo" = "无法为 Sudo 启用 Touch ID";

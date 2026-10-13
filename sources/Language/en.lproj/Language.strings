@@ -1,0 +1,313 @@
+/* Parse error: expected one of fragment */
+" one of" = " one of";
+
+/* Apply layout error: unexpected error type */
+"%@: %@" = "%@: %@";
+
+/* Parse error: null never allowed */
+"&null is never allowed" = "&null is never allowed";
+
+/* URL encode error: argument not string */
+"Argument must be a string (was %@)" = "Argument must be a string (was %@)";
+
+/* Array count error: argument not array */
+"Argument must be an array (was %@)" = "Argument must be an array (was %@)";
+
+/* Subexpression error: arithmetic requires numeric */
+"Arithmetic operations require numeric operands" = "Arithmetic operations require numeric operands";
+
+/* Array count error: array argument null */
+"Array argument must be non-null" = "Array argument must be non-null";
+
+/* Indirect value error: array index out of bounds */
+"Array index %d out of bounds for array of size %d in \"%@\"." = "Array index %d out of bounds for array of size %d in \"%@\".";
+
+/* Parse error: array index must be number */
+"Array index for \"%@\" must be a number, not %@" = "Array index for \"%@\" must be a number, not %@";
+
+/* Indirect value error: array index must be number */
+"Array index must be a number" = "Array index must be a number";
+
+/* Move session error: cant move locked session */
+"Can't move locked session" = "Can't move locked session";
+
+/* Subexpression error: cannot compare incompatible types */
+"Cannot compare incompatible types with relational operators. Left-hand side is %@, right-hand side is %@" = "Cannot compare incompatible types with relational operators. Left-hand side is %@, right-hand side is %@";
+
+/* Subexpression error: cannot convert null to number */
+"Cannot convert null to number" = "Cannot convert null to number";
+
+/* Subexpression error: cannot convert string to number */
+"Cannot convert string literal to number" = "Cannot convert string literal to number";
+
+/* Subexpression error: cannot evaluate function call synchronously */
+"Cannot evaluate function call synchronously" = "Cannot evaluate function call synchronously";
+
+/* Subexpression error: cannot negate non-numeric */
+"Cannot negate non-numeric value" = "Cannot negate non-numeric value";
+
+/* Parse error: cannot form reference to container */
+"Can’t form reference to non-existent or read-only container for variable %@" = "Can’t form reference to non-existent or read-only container for variable %@";
+
+/* Evaluator: error evaluating expression output */
+"Error evaluating expression %@: %@\n" = "Error evaluating expression %@: %@\n";
+
+/* Parse error: error evaluating index expression */
+"Error evaluating index expression: %@" = "Error evaluating index expression: %@";
+
+/* Script call error: expected function call not value */
+"Expected a function call, not a value" = "Expected a function call, not a value";
+
+/* Parse error: expected function call not a value */
+"Expected function call, not a value" = "Expected function call, not a value";
+
+/* Parse error: expected function call not interpolated string */
+"Expected function call, not an interpolated string" = "Expected function call, not an interpolated string";
+
+/* Parse error: expected function call not nil */
+"Expected function call, not nil" = "Expected function call, not nil";
+
+/* Parse error: expected single function call */
+"Expected single function call" = "Expected single function call";
+
+/* Move tab to window error: failed to create new window */
+"Failed to create new window" = "Failed to create new window";
+
+/* Move pane error: insert failed */
+"Failed to insert session" = "Failed to insert session";
+
+/* Move session to new tab error: failed to move session */
+"Failed to move session" = "Failed to move session";
+
+/* Move session to new window error: failed */
+"Failed to move session to new window" = "Failed to move session to new window";
+
+/* Script call error: in call to */
+"In call to %@: %@" = "In call to %@: %@";
+
+/* Parse error: index out of range */
+"Index %@ out of range of “%@”, which has %@ values" = "Index %@ out of range of “%@”, which has %@ values";
+
+/* Indirect value error: indexing non-array */
+"Indexing a non-array %@" = "Indexing a non-array %@";
+
+/* Subexpression error: indirect value returned nil */
+"IndirectValue.synchronousValue returned nil" = "IndirectValue.synchronousValue returned nil";
+
+/* Subexpression error: indirect value returned non-number */
+"IndirectValue.synchronousValue returned non-NSNumber type %@" = "IndirectValue.synchronousValue returned non-NSNumber type %@";
+
+/* Move session error: invalid argument */
+"Invalid argument" = "Invalid argument";
+
+/* Built-in function error: invalid argument */
+"Invalid argument %@ to %@" = "Invalid argument %@ to %@";
+
+/* Set status error: invalid dot_color */
+"Invalid dot_color (expected #rrggbb)" = "Invalid dot_color (expected #rrggbb)";
+
+/* Tmux format error: invalid format */
+"Invalid format" = "Invalid format";
+
+/* Evaluator error: invalid parsed expression type */
+"Invalid parsed expression type %@" = "Invalid parsed expression type %@";
+
+/* Built-in function error: invalid reference */
+"Invalid reference “%@” to %@" = "Invalid reference “%@” to %@";
+
+/* Subexpression error: invalid relational operation */
+"Invalid relational operation" = "Invalid relational operation";
+
+/* Move session error: invalid session ID */
+"Invalid session ID" = "Invalid session ID";
+
+/* Set status error: invalid text_color */
+"Invalid text_color (expected #rrggbb)" = "Invalid text_color (expected #rrggbb)";
+
+/* Parsed expression: invalid type */
+"Invalid type: %@" = "Invalid type: %@";
+
+/* Indirect value error: invalid variable reference */
+"Invalid variable reference %@" = "Invalid variable reference %@";
+
+/* Move session to new tab error: invalid window ID */
+"Invalid window ID" = "Invalid window ID";
+
+/* Generic evaluator: invocation failed output */
+"Invocation of “%@” failed with error:\n%@\n" = "Invocation of “%@” failed with error:\n%@\n";
+
+/* Apply layout spec error: tree too deep */
+"Layout tree at %@ is too deep (%d)" = "Layout tree at %@ is too deep (%d)";
+
+/* Subexpression error: logical not requires numeric */
+"Logical not requires numeric operand, got %@" = "Logical not requires numeric operand, got %@";
+
+/* Subexpression error: logical requires numeric */
+"Logical operations require numeric operands" = "Logical operations require numeric operands";
+
+/* Tmux format error: missing session_id */
+"Missing %@. This shouldn't happen so please report a bug." = "Missing %@. This shouldn't happen so please report a bug.";
+
+/* Apply layout spec error: missing field */
+"Missing field '%@' at %@" = "Missing field '%@' at %@";
+
+/* Add clipping error: missing required argument */
+"Missing required argument" = "Missing required argument";
+
+/* Move session to new tab/window error: missing session argument */
+"Missing session argument" = "Missing session argument";
+
+/* Set status error: missing session_id */
+"Missing session_id" = "Missing session_id";
+
+/* Built-in function error: missing session_id */
+"Missing session_id. This shouldn't happen so please report a bug." = "Missing session_id. This shouldn't happen so please report a bug.";
+
+/* Apply layout error: missing spec argument */
+"Missing spec_json_b64 argument" = "Missing spec_json_b64 argument";
+
+/* Indirect value error: missing value */
+"Missing value" = "Missing value";
+
+/* Object error: no method found */
+"No method found on %@ with signature %@" = "No method found on %@ with signature %@";
+
+/* Object error: no object with ID */
+"No object with ID %@" = "No object with ID %@";
+
+/* Built-in function error: no such session */
+"No such session" = "No such session";
+
+/* Move tab to window error: no such tab */
+"No such tab" = "No such tab";
+
+/* Indirect value error: non-object in array */
+"Non-object found in array at index %d: %@" = "Non-object found in array at index %d: %@";
+
+/* Alert error: checkboxes count mismatch */
+"Number of checkboxes does not match number of defaults" = "Number of checkboxes does not match number of defaults";
+
+/* Script call error: object not found */
+"Object with identifier “%@” not found" = "Object with identifier “%@” not found";
+
+/* Parse error: reference to undefined variable */
+"Reference to undefined variable \"%@\". Change it to \"%@?\" to treat the undefined value as null." = "Reference to undefined variable \"%@\". Change it to \"%@?\" to treat the undefined value as null.";
+
+/* Apply layout spec error: nested same orientation */
+"Same-orientation splitter nesting at %@ (vertical inside vertical or horizontal inside horizontal)" = "Same-orientation splitter nesting at %@ (vertical inside vertical or horizontal inside horizontal)";
+
+/* Apply layout resolver error: orphaned session */
+"Session %@ in tab %@ is unaccounted for; it must appear in the new layout or in close_sessions/close_tabs" = "Session %@ in tab %@ is unaccounted for; it must appear in the new layout or in close_sessions/close_tabs";
+
+/* Apply layout spec error: duplicate session ID */
+"Session GUID '%@' appears more than once in the spec" = "Session GUID '%@' appears more than once in the spec";
+
+/* Move session/pane error: session has no tab */
+"Session has no tab" = "Session has no tab";
+
+/* Move session error: session has no window */
+"Session has no window" = "Session has no window";
+
+/* Move pane error: session locked */
+"Session is locked" = "Session is locked";
+
+/* Move session error: sessions not compatible */
+"Sessions are not compatible" = "Sessions are not compatible";
+
+/* Session title: default Shell component */
+"Shell" = "Shell";
+
+/* Apply layout spec error: splitter too few children */
+"Splitter at %@ has %d children; must have at least 2" = "Splitter at %@ has %d children; must have at least 2";
+
+/* Subexpression error: wrapper */
+"Subexpression error: %@" = "Subexpression error: %@";
+
+/* Parse error: syntax error */
+"Syntax error" = "Syntax error";
+
+/* Parse error: syntax error at index */
+"Syntax error at index %@ of “%@”. Expected%@: %@" = "Syntax error at index %@ of “%@”. Expected%@: %@";
+
+/* Apply layout resolver error: tmux tab not supported */
+"Tab %@ is a tmux integration tab; layout application is not supported on tmux tabs" = "Tab %@ is a tmux integration tab; layout application is not supported on tmux tabs";
+
+/* Move tab to window error: tab has no window */
+"Tab has no window" = "Tab has no window";
+
+/* Move pane error: tab has only one session */
+"Tab has only one session" = "Tab has only one session";
+
+/* Apply layout resolver error: new tabs not supported */
+"The 'new_tabs' field is not supported by apply_layout" = "The 'new_tabs' field is not supported by apply_layout";
+
+/* Apply layout resolver error: new windows not supported */
+"The 'new_windows' field is not supported by apply_layout" = "The 'new_windows' field is not supported by apply_layout";
+
+/* Script call error: timeout evaluating arguments */
+"Timeout (%@ sec) while evaluating invocation “%@”. The timeout occurred while evaluating the following arguments to %@: %@" = "Timeout (%@ sec) while evaluating invocation “%@”. The timeout occurred while evaluating the following arguments to %@: %@";
+
+/* Script call error: timeout waiting for return */
+"Timeout (%@ sec) while evaluating invocation “%@”. The timeout occurred while waiting for %@ to return." = "Timeout (%@ sec) while evaluating invocation “%@”. The timeout occurred while waiting for %@ to return.";
+
+/* Tmux format error: type mismatch */
+"Type mismatch for %@. Must be a path reference." = "Type mismatch for %@. Must be a path reference.";
+
+/* Built-in function error: type mismatch */
+"Type mismatch for argument %@. Expected %@ but got %@." = "Type mismatch for argument %@. Expected %@ but got %@.";
+
+/* Subexpression error: type mismatch expected number */
+"Type mismatch: expected number but got %@" = "Type mismatch: expected number but got %@";
+
+/* Built-in function error: undeclared identifier */
+"Undeclared identifier %@" = "Undeclared identifier %@";
+
+/* Script call error: undefined function */
+"Undefined function with signature “%@”" = "Undefined function with signature “%@”";
+
+/* Parsed expression: unknown error fallback */
+"Unknown error" = "Unknown error";
+
+/* Apply layout spec error: unknown leaf kind */
+"Unknown leaf kind at %@ (must be session_id, new_session, or splitter)" = "Unknown leaf kind at %@ (must be session_id, new_session, or splitter)";
+
+/* Apply layout resolver error: unknown profile */
+"Unknown profile: %@" = "Unknown profile: %@";
+
+/* Apply layout resolver error: unknown session */
+"Unknown session: %@" = "Unknown session: %@";
+
+/* Apply layout resolver error: unknown tab */
+"Unknown tab: %@" = "Unknown tab: %@";
+
+/* Apply layout resolver error: unknown window */
+"Unknown window: %@" = "Unknown window: %@";
+
+/* Parse error: variable not array */
+"Variable “%@” is of type %@, not array" = "Variable “%@” is of type %@, not array";
+
+/* Move tab to window error: window has only one tab */
+"Window has only one tab" = "Window has only one tab";
+
+/* Apply layout spec error: wrong type */
+"Wrong type at %@: expected %@" = "Wrong type at %@: expected %@";
+
+/* Script call error: interpolated string not allowed */
+"interpolated string not allowed" = "interpolated string not allowed";
+
+/* Script call error: nil not allowed */
+"nil not allowed" = "nil not allowed";
+
+/* Apply layout error: invalid base64 JSON */
+"spec_json_b64 is not valid base64-encoded JSON" = "spec_json_b64 is not valid base64-encoded JSON";
+
+/* URL encode error: string argument null */
+"string argument must be non-null" = "string argument must be non-null";
+
+/* Move pane error: tmux async */
+"tmux sessions are moved asynchronously" = "tmux sessions are moved asynchronously";
+"Nil operand in unary operation" = "Nil operand in unary operation";
+"Nil operand in logical not operation" = "Nil operand in logical not operation";
+"Nil operand in binary operation (-)" = "Nil operand in binary operation (-)";
+"Nil operand in binary operation (/)" = "Nil operand in binary operation (/)";
+"Nil operand in ternary operation" = "Nil operand in ternary operation";

@@ -45,12 +45,7 @@ class ConductorFileTransfer: TransferrableFile {
     }
 
     override func displayName() -> String? {
-        return """
-        iTerm2 SSH Integration Protocol
-        User name: \(path.username ?? "(unknown)")")
-        Host: \(path.hostname!)
-        File: \(path.path!)"
-        """
+        return String(format: NSLocalizedString("iTerm2 SSH Integration Protocol\nUser name: %@\")\nHost: %@\nFile: %@\"", tableName: "SSH", comment: "ConductorFileTransfer: display name"), path.username ?? NSLocalizedString("(unknown)", tableName: "SSH", comment: "ConductorFileTransfer: unknown username"), path.hostname!, path.path!)
     }
 
     override func shortName() -> String? {
@@ -58,7 +53,7 @@ class ConductorFileTransfer: TransferrableFile {
     }
 
     override func subheading() -> String? {
-        path.hostname! + " via SSH Integration"
+        String(format: NSLocalizedString("%@ via SSH Integration", tableName: "SSH", comment: "ConductorFileTransfer: subheading"), path.hostname!)
     }
 
     override func authRequestor() -> String? {
@@ -98,7 +93,7 @@ class ConductorFileTransfer: TransferrableFile {
 
     private func temporaryFilePath() throws -> String {
         guard let downloads = FileManager.default.downloadsDirectory() else {
-            throw ConductorFileTransferError("Unable to find Downloads folder")
+            throw ConductorFileTransferError(NSLocalizedString("Unable to find Downloads folder", tableName: "SSH", comment: "ConductorFileTransfer: downloads folder missing error"))
         }
         let tempFileName = ".iTerm2.\(UUID().uuidString)"
         return downloads.appendingPathComponent(tempFileName)
@@ -153,12 +148,12 @@ class ConductorFileTransfer: TransferrableFile {
     func didFinishSuccessfully() {
         if state == .downloading {
             if !quarantine(_localPath, sourceURL: url) {
-                _error = "Failed to quarantine"
+                _error = NSLocalizedString("Failed to quarantine", tableName: "SSH", comment: "ConductorFileTransfer: quarantine failed error")
                 FileTransferManager.sharedInstance().transferrableFile(self, didFinishTransmissionWithError: ConductorFileTransferError(_error))
                 return
             }
             guard let attributes = try? FileManager.default.attributesOfItem(atPath: _localPath!) else {
-                _error = "Could not get attributes of \(_localPath!)"
+                _error = String(format: NSLocalizedString("Could not get attributes of %@", tableName: "SSH", comment: "ConductorFileTransfer: attributes error"), _localPath!)
                 FileTransferManager.sharedInstance().transferrableFile(self, didFinishTransmissionWithError: ConductorFileTransferError(_error))
                 return
             }
@@ -218,14 +213,14 @@ class ConductorFileTransfer: TransferrableFile {
         do {
             let attrs = try FileManager.default.attributesOfItem(atPath: path)
             guard let size = attrs[FileAttributeKey.size] as? Int else {
-                _error = "Could not get size of file: \(path)"
+                _error = String(format: NSLocalizedString("Could not get size of file: %@", tableName: "SSH", comment: "ConductorFileTransfer: size error"), path)
                 state = .failed
                 FileTransferManager.sharedInstance().transferrableFile(self, didFinishTransmissionWithError: ConductorFileTransferError(_error))
                 return nil
             }
             return size
         } catch {
-            _error = "No such file: \(path)"
+            _error = String(format: NSLocalizedString("No such file: %@", tableName: "SSH", comment: "ConductorFileTransfer: no such file error"), path)
             FileTransferManager.sharedInstance().transferrableFile(self, didFinishTransmissionWithError: error)
             state = .failed
             return nil
@@ -270,7 +265,7 @@ class ConductorFileTransfer: TransferrableFile {
 
     override func localPath() -> String? {
         if data != nil {
-            return "(In memory)"
+            return NSLocalizedString("(In memory)", tableName: "SSH", comment: "ConductorFileTransfer: in memory path")
         }
         return _localPath
     }

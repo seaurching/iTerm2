@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApplicationDescription</key>
+	<string>iTerm2 是一款免费的终端模拟器。</string>
+	<key>Connections</key>
+	<array>
+		<dict>
+			<key>IsIncoming</key>
+			<false/>
+			<key>Host</key>
+			<string>iterm2.com</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Port</key>
+			<string>443</string>
+			<key>Relevance</key>
+			<string>Default</string>
+			<key>Purpose</key>
+			<string>iTerm2 需要连接到 iterm2.com 以检查并下载软件更新。</string>
+			<key>DenyConsequences</key>
+			<string>如果您拒绝此连接，将不会收到新版本发布通知，也无法更新脚本 API 的 Python 运行时。</string>
+		</dict>
+		<dict>
+			<key>IsIncoming</key>
+			<false/>
+			<key>Host</key>
+			<string>*</string>
+			<key>NetworkProtocol</key>
+			<string>TCP</string>
+			<key>Purpose</key>
+			<string>在 iTerm2 中运行的应用程序可能会打开网络连接。</string>
+			<key>DenyConsequences</key>
+			<string>当前命令将无法继续执行。</string>
+		</dict>
+	</array>
+</dict>
+</plist>

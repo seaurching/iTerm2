@@ -120,7 +120,7 @@ static NSInteger SIGArchiveVerifiedLowestSupportedVersion = 2;
                    error:(out NSError **)errorOut {
     if (!_verified) {
         if (errorOut) {
-            *errorOut = [SIGError errorWithCode:SIGErrorCodeConsistency detail:@"Application error: archive not verified"];
+            *errorOut = [SIGError errorWithCode:SIGErrorCodeConsistency detail:NSLocalizedStringFromTable(@"Application error: archive not verified", @"signed_archive", @"应用错误：归档未验证")];
         }
         return NO;
     }
@@ -239,7 +239,7 @@ static NSInteger SIGArchiveVerifiedLowestSupportedVersion = 2;
     NSArray<NSString *> *const supportedDigestTypes = SIGVerificationDigestAlgorithmNames();
     if (![supportedDigestTypes containsObject:digestType]) {
         if (error) {
-            NSString *detail = [NSString stringWithFormat:@"Algorithm \"%@\" not supported", digestType];
+            NSString *detail = [NSString stringWithFormat:NSLocalizedStringFromTable(@"Algorithm \"%@\" not supported", @"signed_archive", @"不支持的算法 \"%@\""), digestType];
             *error = [SIGError errorWithCode:SIGErrorCodeUnsupportedAlgorithm detail:detail];
         }
         return NO;
@@ -382,7 +382,7 @@ static NSInteger SIGArchiveVerifiedLowestSupportedVersion = 2;
     _reader = [[SIGArchiveReader alloc] initWithURL:_url];
     if (!_reader) {
         _readerLoadError = [SIGError errorWithCode:SIGErrorCodeUnknown
-                                            detail:@"Could not create archive reader"];
+                                            detail:NSLocalizedStringFromTable(@"Could not create archive reader", @"signed_archive", @"无法创建归档读取器")];
         return;
     }
     

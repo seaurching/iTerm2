@@ -40,12 +40,12 @@ class ProfileDocument: NSObject {
                 newName != name,
                 let profileWithName = ProfileModel.sharedInstance().bookmark(withName: name) {
                 let selection = iTermWarning.show(
-                    withTitle: "Would you like to open the profile formerly named \(name) that is now called \(newName) (which this shortcut refers to), or the profile that currently has the name \(name)?",
-                    actions: [ "Open \(name)", "Open \(newName)", "Cancel"],
+                    withTitle: String(format: NSLocalizedString("Would you like to open the profile formerly named %@ that is now called %@ (which this shortcut refers to), or the profile that currently has the name %@?", tableName: "AppKit", comment: "您想打开曾用名为 %@ 但现在已更名为 %@（此快捷方式所指向的配置文件），还是当前名为 %@ 的配置文件？"), name, newName, name),
+                    actions: [ String(format: NSLocalizedString("Open %@", tableName: "AppKit", comment: "打开 %@"), name), String(format: NSLocalizedString("Open %@", tableName: "AppKit", comment: "打开 %@"), newName), NSLocalizedString("Cancel", tableName: "AppKit", comment: "取消")],
                     accessory: nil,
                     identifier: "NoSyncOpenRenamedProfile",
                     silenceable: .kiTermWarningTypePermanentlySilenceable,
-                    heading: "Profile Renamed",
+                    heading: NSLocalizedString("Profile Renamed", tableName: "AppKit", comment: "配置文件已重命名"),
                     window: controller.currentTerminal?.window())
                 switch selection {
                 case .kiTermWarningSelection0:
@@ -76,7 +76,7 @@ class ProfileDocument: NSObject {
         }
         let basePath = appSupport.appending(pathComponent: folder)
         queue.async {
-            let linkURL = URL(fileURLWithPath: basePath.appending(pathComponent: "New “\(name)” tab"))
+            let linkURL = URL(fileURLWithPath: basePath.appending(pathComponent: String(format: NSLocalizedString("New “%@” tab", tableName: "AppKit", comment: "新建“%@”标签页"), name)))
             if cache[guid] != name {
                 try? FileManager.default.createDirectory(atPath: basePath, withIntermediateDirectories: false)
                 // Use a fresh UUID because profile names are subject to change and you don't want

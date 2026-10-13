@@ -1,0 +1,8 @@
+"iTerm is not the default handler for %@. Would you like to set iTerm as the default handler?" = "iTerm 不是 %@ 的默认处理程序。是否要将 iTerm 设为默认处理程序？";
+"There is currently no handler." = "目前没有处理程序。";
+"OK" = "确定";
+"Cancel" = "取消";
+"The current handler is: %@" = "当前处理程序为：%@";
+"There is no application set to open the document “%@”" = "没有设置用于打开文稿“%@”的应用程序";
+"Choose an application on your computer to open this file." = "选择您电脑上的一个应用程序来打开此文件。";
+"Choose Application…" = "选择应用程序…";

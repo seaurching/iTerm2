@@ -239,7 +239,7 @@ NSString *const iTermSessionBuriedStateChangeTabNotification = @"iTermSessionBur
         if (!clientName.length) {
             clientName = @"tmux";
         }
-        NSString *title = [NSString stringWithFormat:@"%@%@ — %@", [iTermAdvancedSettingsModel tmuxTitlePrefix], clientName, window.name];
+        NSString *title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@%@ — %@", @"BuriedSessions", [NSBundle bundleForClass:[self class]], @"Hidden tmux window menu item title (prefix + client name + window name)"), [iTermAdvancedSettingsModel tmuxTitlePrefix], clientName, window.name];
         NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:title
                                                       action:@selector(disinterTmuxWindow:)
                                                keyEquivalent:@""];

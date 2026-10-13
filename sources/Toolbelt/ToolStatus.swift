@@ -116,7 +116,7 @@ class ToolStatus: NSView {
         settingsButton.bezelStyle = .regularSquare
         settingsButton.isBordered = false
         settingsButton.image = NSImage(systemSymbolName: "gearshape",
-                                       accessibilityDescription: "Settings")
+                                       accessibilityDescription: NSLocalizedString("Settings", tableName: "Toolbelt", comment: "tool status: settings button accessibility"))
         settingsButton.imagePosition = .imageOnly
         settingsButton.target = self
         settingsButton.action = #selector(showSettings(_:))
@@ -297,7 +297,7 @@ extension ToolStatus {
         updateSelectionWithoutChangingFirstResponder()
     }
 
-    static let helpMarkdown = """
+    static let helpMarkdown = NSLocalizedString("""
     ## Session Status
 
     The **Session Status** tool shows the status of sessions across all tabs. Each entry displays the \
@@ -334,7 +334,7 @@ extension ToolStatus {
 
     Right-click a row and choose **Snooze** to move it to the bottom of the list and \
     dim it. A snoozed entry automatically un-snoozes the next time its status changes.
-    """
+    """, tableName: "Toolbelt", comment: "tool status: help markdown text")
 }
 
 // MARK: - Private methods
@@ -493,15 +493,15 @@ private extension ToolStatus {
         let symbol: SFSymbol = armed ? .bellBadge : .bell
         notifyButton.state = armed ? .on : .off
         notifyButton.image = NSImage(systemSymbolName: symbol.rawValue,
-                                     accessibilityDescription: "Notify on status change")
+                                     accessibilityDescription: NSLocalizedString("Notify on status change", tableName: "Toolbelt", comment: "tool status: notify button accessibility"))
         if armed {
             notifyButton.toolTip = targetingSession
-                ? "Watching the selected session for a status change. An alert will appear on the next change, then turn this off."
-                : "Watching this window for a session status change. An alert will appear on the next change, then turn this off."
+                ? NSLocalizedString("Watching the selected session for a status change. An alert will appear on the next change, then turn this off.", tableName: "Toolbelt", comment: "tool status: watching selected session tooltip")
+                : NSLocalizedString("Watching this window for a session status change. An alert will appear on the next change, then turn this off.", tableName: "Toolbelt", comment: "tool status: watching window tooltip")
         } else {
             notifyButton.toolTip = targetingSession
-                ? "Notify with an alert when the selected session’s status changes."
-                : "Notify with an alert when any session in this window changes status."
+                ? NSLocalizedString("Notify with an alert when the selected session’s status changes.", tableName: "Toolbelt", comment: "tool status: notify selected session tooltip")
+                : NSLocalizedString("Notify with an alert when any session in this window changes status.", tableName: "Toolbelt", comment: "tool status: notify any session tooltip")
         }
     }
 
@@ -884,7 +884,7 @@ private extension ToolStatus {
                     let modString = NSString.modifierSymbols(mask: mask)
                     return "\(modString)\(ordinal)"
                 }
-                return "Pane \(ordinal)"
+                return String(format: NSLocalizedString("Pane %ld", tableName: "Toolbelt", comment: "tool status: pane shortcut label"), ordinal)
             }
         }
         // Session is in a different tab — show tab shortcut
@@ -897,7 +897,7 @@ private extension ToolStatus {
             return nil
         }
         if tabTag.rawValue == iTermPreferencesModifierTag.preferenceModifierTagNone.rawValue {
-            return "Tab \(tabIndex)"
+            return String(format: NSLocalizedString("Tab %ld", tableName: "Toolbelt", comment: "tool status: tab shortcut label"), tabIndex)
         }
         let mask = iTermPreferences.mask(for: tabTag)
         let modString = NSString.modifierSymbols(mask: mask)
@@ -1073,7 +1073,7 @@ extension ToolStatus: NSMenuDelegate {
         // A merged row stands for a whole workgroup, so its checkmark reflects
         // (and its toggle affects) every member, not just the representative.
         let members = groupMemberSessionIDs(forRepresentative: sessionID)
-        let item = NSMenuItem(title: "Snooze",
+        let item = NSMenuItem(title: NSLocalizedString("Snooze", tableName: "Toolbelt", comment: "tool status: snooze menu item"),
                               action: #selector(toggleSnooze(_:)),
                               keyEquivalent: "")
         item.target = self

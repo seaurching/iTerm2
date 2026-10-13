@@ -1,0 +1,6 @@
+/* Default name for a Sixel image */
+"Sixel Image" = "Sixel 图像";
+
+/* Fallback name for an image with no name */
+"Unnamed file" = "未命名文件";
+

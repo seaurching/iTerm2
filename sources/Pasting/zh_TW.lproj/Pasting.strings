@@ -1,0 +1,214 @@
+/* Pasting: paste path action */
+"Paste Path" = "貼上路徑";
+
+/* Pasting: paste paths action */
+"Paste Paths" = "貼上路徑";
+
+/* Pasting: paste base64 contents action */
+"Paste Base64-Encoded Contents" = "貼上 Base64 編碼內容";
+
+/* Pasting: paste base64 archive action */
+"Paste Base64-Encoded Archive (tar.gz)" = "貼上 Base64 編碼封存檔 (tar.gz)";
+
+/* Pasting: paste as text action */
+"Paste as Text" = "貼上為文字";
+
+/* Pasting: upload action */
+"Upload" = "上傳";
+
+/* Pasting: upload and paste path action */
+"Upload and Paste Path" = "上傳並貼上路徑";
+
+/* Pasting: cancel action */
+"Cancel" = "取消";
+
+/* Pasting: copied file gone error */
+"The copied file no longer exists." = "複製的檔案已不存在。";
+
+/* Pasting: some files gone error */
+"%d of %d files no longer exist. Proceeding with remaining files." = "%d 個檔案（共 %d 個）已不存在。將使用剩餘檔案繼續。";
+
+/* Pasting: file paste warning title */
+"How would you like to paste %@?" = "您想如何貼上%@？";
+
+/* Pasting: paste folder heading */
+"Paste Folder" = "貼上資料夾";
+
+/* Pasting: paste file heading */
+"Paste File" = "貼上檔案";
+
+/* Pasting: paste files heading */
+"Paste Files" = "貼上檔案";
+
+/* Pasting: folder prefix fragment */
+" the folder " = " 資料夾 ";
+
+/* Pasting: multiple files description */
+"“%@” and %d other files" = "「%@」等 %d 個其他檔案";
+
+/* Pasting: paste failed alert title */
+"Paste Failed" = "貼上失敗";
+
+/* Pasting: paste failed OK button */
+"OK" = "好";
+
+/* Pasting: save temp and paste path action */
+"Save to Temp File and Paste Path" = "儲存到暫存檔並貼上路徑";
+
+/* Pasting: unknown image type fallback */
+"some" = "某種";
+
+/* Pasting: image paste warning title */
+"The clipboard contains %1$@ image data (%2$@). How would you like to paste it?" = "剪貼板包含 %1$@ 影像資料（%2$@）。您想如何貼上它？";
+
+/* Pasting: paste image heading */
+"Paste Image" = "貼上影像";
+
+/* Pasting: PNG image type */
+"a PNG" = "一張 PNG";
+
+/* Pasting: JPEG image type */
+"a JPEG" = "一張 JPEG";
+
+/* Pasting: GIF image type */
+"a GIF" = "一張 GIF";
+
+/* Pasting: TIFF image type */
+"a TIFF" = "一張 TIFF";
+
+/* Pasting: BMP image type */
+"a BMP" = "一張 BMP";
+
+/* Pasting: WebP image type */
+"a WebP" = "一張 WebP";
+
+/* Pasting: HEIC image type */
+"a HEIC" = "一張 HEIC";
+
+/* Pasting: unknown image type article */
+"an" = "一種";
+
+/* Pasting: temp dir error */
+"Could not create temporary directory." = "無法建立暫存目錄。";
+
+/* Pasting: save image error */
+"Could not save image to temporary file: %@" = "無法將影像儲存到暫存檔：%@";
+
+/* Pasting: read file error */
+"Could not read file “%@”." = "無法讀取檔案「%@」。";
+
+/* Pasting: archive error */
+"Could not create archive of “%@”: %@" = "無法建立「%@」的封存檔：%@";
+
+/* Pasting: large base64 warning title */
+"OK to paste %@ bytes of base64-encoded data?" = "確定貼上 %@ 位元組的 Base64 編碼資料？";
+
+/* Pasting: large paste heading */
+"Large Paste" = "大量貼上";
+
+/* Pasting: not utf8 error */
+"File “%@” is not valid UTF-8 text." = "檔案「%@」不是有效的 UTF-8 文字。";
+
+/* Pasting: char limit warning title */
+"OK to paste %@ characters?" = "確定貼上 %@ 個字元？";
+
+/* Pasting: advanced button */
+"Advanced…" = "進階…";
+
+/* Pasting: char limit heading */
+"Paste Limit Exceeded" = "超過貼上限制";
+
+/* Pasting: paste button */
+"Paste" = "貼上";
+
+/* Pasting: paste without newline button */
+"Paste Without Newline" = "貼上但不含換行";
+
+/* Pasting: multiline at prompt warning */
+"OK to paste %d lines at shell prompt?" = "確定在 Shell 提示符下貼上 %d 行？";
+
+/* Pasting: multiline warning */
+"OK to paste %d lines?" = "確定貼上 %d 行？";
+
+/* Pasting: one line at prompt warning */
+"OK to paste one line ending in a newline at shell prompt?" = "確定在 Shell 提示符下貼上一行以換行結尾的內容？";
+
+/* Pasting: one line warning */
+"OK to paste one line ending in a newline?" = "確定貼上一行以換行結尾的內容？";
+
+/* Pasting: multiline heading */
+"Confirm Multi-Line Paste" = "確認多行貼上";
+
+/* Pasting: tabs warning title */
+"You're about to paste a string with tabs." = "您即將貼上一個包含定位字元的字串。";
+
+/* Pasting: convert tabs button */
+"Convert tabs to spaces" = "將定位字元轉換為空格";
+
+/* Pasting: text label */
+"Text: “%@”" = "文字：「%@」";
+
+/* Pasting: unknown type fallback */
+"Unknown Type" = "未知類型";
+
+/* Pasting: type label */
+"%@: “%@”" = "%@：「%@」";
+
+/* Pasting: multiple file names label */
+"Multiple file names" = "多個檔案名";
+
+/* Pasting: file name label */
+"File name" = "檔案名";
+
+/* Pasting: contents of label */
+"Contents of %@" = "%@ 的內容";
+
+/* Pasting: stats label */
+"%@ byte%@ in %@ line%@." = "%1$@ 位元組，%3$@ 行。";
+
+/* Pasting: instant duration */
+"Instant" = "即時";
+
+/* Pasting: error updating settings title */
+"Error Updating Settings" = "更新設定時發生錯誤";
+
+/* Pasting: clipboard reporting error informative */
+"An error occurred while removing the file that authorizes clipboard reporting: %@.
+As long as this file exists, clipboard reporting could be enabled by programs running on this computer." = "刪除授權剪貼板報告的檔案時發生錯誤：%@。
+只要此檔案存在，此電腦上執行的程式就可能啟用剪貼板報告。";
+
+/* Pasting: reveal in finder button */
+"Reveal in Finder" = "在 Finder 中顯示";
+
+/* Pasting: enable clipboard reporting title */
+"Really Enable Clipboard Reporting?" = "確定要啟用剪貼板報告嗎？";
+
+/* Pasting: enable clipboard reporting informative */
+"Reporting the content of the clipboard to apps running inside iTerm2 may expose sensitive information such as passwords. Think carefully before enabling this." = "將剪貼板內容報告給在 iTerm2 內執行的應用程式可能會泄露密碼等敏感資訊。啟用前請慎重考慮。";
+
+/* Pasting: sending label */
+"Sending…" = "傳送中…";
+
+/* Pasting: send keystrokes accessibility */
+"Send keystrokes to terminal" = "傳送按鍵到終端機";
+
+/* Pasting: keystroke passthrough tooltip */
+"Type directly to the terminal (for example to answer a password prompt) instead of queueing your keystrokes until the paste finishes." = "直接輸入到終端機（例如回答密碼提示），而不是將按鍵排隊直到貼上完成。";
+
+/* Pasting: queued hint message */
+"Typing is queued while pasting. Click the keyboard to toggle queueing." = "貼上期間按鍵已排隊。點擊鍵盤切換排隊狀態。";
+
+/* Pasting: seconds unit */
+"sec" = "秒";
+
+/* Pasting: minutes unit */
+"min" = "分";
+
+/* Pasting: tabs to spaces setting */
+"Tabs->%@ spcs" = "Tab->%@ 空格";
+
+/* Pasting: very slow setting */
+"V.Slow" = "極慢";
+
+/* Pasting: slow setting */
+"Slow" = "慢";

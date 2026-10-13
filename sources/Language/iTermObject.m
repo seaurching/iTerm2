@@ -35,7 +35,7 @@ void iTermCallMethodByIdentifier(NSString *identifier,
     if (!object) {
         completion(nil,
                    iTermMethodCallError(iTermAPIHelperErrorCodeInvalidIdentifier,
-                                        @"No object with ID %@",
+                                        NSLocalizedStringFromTableInBundle(@"No object with ID %@", @"Language", [NSBundle bundleForClass:[iTermBuiltInFunctions class]], @"Object error: no object with ID"),
                                         identifier));
         return;
     }
@@ -62,7 +62,7 @@ void iTermCallMethodByIdentifierWithConnectionKey(NSString *identifier,
     if (!object) {
         completion(nil,
                    iTermMethodCallError(iTermAPIHelperErrorCodeInvalidIdentifier,
-                                        @"No object with ID %@",
+                                        NSLocalizedStringFromTableInBundle(@"No object with ID %@", @"Language", [NSBundle bundleForClass:[iTermBuiltInFunctions class]], @"Object error: no object with ID"),
                                         identifier));
         return;
     }
@@ -80,7 +80,7 @@ void iTermCallMethodOnObjectWithConnectionKey(id<iTermObject> object,
     if (!method) {
         completion(nil,
                    iTermMethodCallError(iTermAPIHelperErrorCodeUnregisteredFunction,
-                                        @"No method found on %@ with signature %@",
+                                        NSLocalizedStringFromTableInBundle(@"No method found on %@ with signature %@", @"Language", [NSBundle bundleForClass:[iTermBuiltInFunctions class]], @"Object error: no method found"),
                                         object,
                                         signature));
         return;

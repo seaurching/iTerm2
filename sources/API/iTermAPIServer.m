@@ -176,7 +176,7 @@ NSString *const iTermAPIServerConnectionClosed = @"iTermAPIServerConnectionClose
         _inProcessConnectionKeys = [[NSCountedSet alloc] init];
         _unixSocket = [iTermSocket unixDomainSocket];
         if (!_unixSocket) {
-            XLog(@"Failed to create unix socket");
+            XLog(@"%@", NSLocalizedStringFromTableInBundle(@"Failed to create unix socket", @"APIFiles", [NSBundle bundleForClass:[self class]], @"创建 unix 套接字失败"));
             return nil;
         }
         _pendingConnections = [NSMutableArray array];
@@ -235,7 +235,7 @@ NSString *const iTermAPIServerConnectionClosed = @"iTermAPIServerConnectionClose
     socketAddress = [iTermSocketAddress socketAddressWithPath:path];
     unlink(path.UTF8String);
     if (![_unixSocket bindToAddress:socketAddress]) {
-        XLog(@"Failed to bind");
+        XLog(@"%@", NSLocalizedStringFromTableInBundle(@"Failed to bind", @"APIFiles", [NSBundle bundleForClass:[self class]], @"绑定失败"));
         return NO;
     }
     chmod([iTermAPIServer unixSocketPath].UTF8String, (S_IRUSR | S_IWUSR));
@@ -244,7 +244,7 @@ NSString *const iTermAPIServerConnectionClosed = @"iTermAPIServerConnectionClose
         [self didAcceptConnectionOnFileDescriptor:fd fromAddress:clientAddress euid:euid retries:1];
     }];
     if (!ok) {
-        XLog(@"Failed to listen");
+        XLog(@"%@", NSLocalizedStringFromTableInBundle(@"Failed to listen", @"APIFiles", [NSBundle bundleForClass:[self class]], @"监听失败"));
         return NO;
     }
 
@@ -460,7 +460,7 @@ NSString *const iTermAPIServerConnectionClosed = @"iTermAPIServerConnectionClose
     if (!connection.euid || connection.euid.unsignedIntValue != geteuid()) {
         RLog(@"Deny bad euid %@ != mine of %@", connection.euid, @(geteuid()));
         dispatch_async(connection.queue, ^{
-            NSString *reason = [NSString stringWithFormat:@"Peer's euid of %@ not equal to my euid of %@",
+            NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Peer's euid of %@ not equal to my euid of %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"对等方的 euid 与我的 euid 不匹配"),
                                 connection.euid, @(geteuid())];
             [[NSNotificationCenter defaultCenter] postNotificationName:iTermAPIServerConnectionRejected
                                                                 object:nil
@@ -508,10 +508,10 @@ NSString *const iTermAPIServerConnectionClosed = @"iTermAPIServerConnectionClose
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:iTermAPIServerConnectionRejected
                                                                 object:nil
-                                                              userInfo:@{ @"reason": @"Failed to read request from connection",
+                                                              userInfo:@{ @"reason": NSLocalizedStringFromTableInBundle(@"Failed to read request from connection", @"APIFiles", [NSBundle bundleForClass:[self class]], @"从连接读取请求失败"),
                                                                           @"pids": pids }];
         });
-        completion(NO, @"Failed to read request from HTTP connection");
+        completion(NO, NSLocalizedStringFromTableInBundle(@"Failed to read request from HTTP connection", @"APIFiles", [NSBundle bundleForClass:[self class]], @"从 HTTP 连接读取请求失败"));
         return;
     }
     if (![request.URL.path isEqualToString:@"/"]) {
@@ -521,10 +521,10 @@ NSString *const iTermAPIServerConnectionClosed = @"iTermAPIServerConnectionClose
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:iTermAPIServerConnectionRejected
                                                                 object:nil
-                                                              userInfo:@{ @"reason": [NSString stringWithFormat:@"Bad request. URL path was %@, but should be /", request.URL.path],
+                                                              userInfo:@{ @"reason": [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Bad request. URL path was %@, but should be /", @"APIFiles", [NSBundle bundleForClass:[self class]], @"请求错误。URL 路径应为 /"), request.URL.path],
                                                                           @"pids": pids }];
         });
-        completion(NO, [NSString stringWithFormat:@"Path %@ not known", request.URL.path]);
+        completion(NO, [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Path %@ not known", @"APIFiles", [NSBundle bundleForClass:[self class]], @"未知路径 %@"), request.URL.path]);
         return;
     }
     NSString *authReason = nil;
@@ -574,13 +574,13 @@ NSString *const iTermAPIServerConnectionClosed = @"iTermAPIServerConnectionClose
                 if (disableAuthUI) {
                     [[NSNotificationCenter defaultCenter] postNotificationName:iTermAPIServerConnectionRejected
                                                                         object:nil
-                                                                      userInfo:@{ @"reason": reason ?: @"Unknown reason",
+                                                                      userInfo:@{ @"reason": reason ?: NSLocalizedStringFromTableInBundle(@"Unknown reason", @"APIFiles", [NSBundle bundleForClass:[self class]], @"未知原因"),
                                                                                   @"job": displayName ?: [NSNull null],
                                                                                   @"pids": pids }];
                 } else {
                     [[NSNotificationCenter defaultCenter] postNotificationName:iTermAPIServerConnectionRejected
                                                                         object:request.allHTTPHeaderFields[@"x-iterm2-key"]
-                                                                      userInfo:@{ @"reason": reason ?: @"Unknown reason",
+                                                                      userInfo:@{ @"reason": reason ?: NSLocalizedStringFromTableInBundle(@"Unknown reason", @"APIFiles", [NSBundle bundleForClass:[self class]], @"未知原因"),
                                                                                   @"job": displayName ?: [NSNull null],
                                                                                   @"pids": pids }];
                 }
@@ -598,7 +598,7 @@ NSString *const iTermAPIServerConnectionClosed = @"iTermAPIServerConnectionClose
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:iTermAPIServerConnectionRejected
                                                                 object:request.allHTTPHeaderFields[@"x-iterm2-key"]
-                                                              userInfo:@{ @"reason": authReason ?: @"Unknown reason",
+                                                              userInfo:@{ @"reason": authReason ?: NSLocalizedStringFromTableInBundle(@"Unknown reason", @"APIFiles", [NSBundle bundleForClass:[self class]], @"未知原因"),
                                                                           @"pids": pids }];
         });
         dispatch_async(connection.queue, ^{
@@ -628,7 +628,7 @@ NSString *const iTermAPIServerConnectionClosed = @"iTermAPIServerConnectionClose
 // Runs on execution queue
 - (void)dispatchRequestWhileNotInTransaction:(ITMClientOriginatedMessage *)request
                                   connection:(id<iTermAPIServerConnection>)webSocketConnection {
-    ITAssertWithMessage(!self.transaction, @"Already in a transaction");
+    ITAssertWithMessage(!self.transaction, @"%@", NSLocalizedStringFromTableInBundle(@"Already in a transaction", @"APIFiles", [NSBundle bundleForClass:[self class]], @"已在事务中"));
 
     __weak __typeof(self) weakSelf = self;
     if (request.submessageOneOfCase == ITMClientOriginatedMessage_Submessage_OneOfCase_TransactionRequest) {
@@ -1041,13 +1041,13 @@ NSString *const iTermAPIServerConnectionClosed = @"iTermAPIServerConnectionClose
 
 - (void)handleMalformedRequest:(ITMClientOriginatedMessage *)request connection:(id<iTermAPIServerConnection>)webSocketConnection {
     ITMServerOriginatedMessage *response = [self newResponseForRequest:request];
-    response.error = @"Invalid request. Upgrade iTerm2 to a newer version.";
+    response.error = NSLocalizedStringFromTableInBundle(@"Invalid request. Upgrade iTerm2 to a newer version.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"API server error");
     [self finishHandlingRequestWithResponse:response onConnection:webSocketConnection];
 }
 
 - (void)handleUnhandleableRequest:(ITMClientOriginatedMessage *)request connection:(id<iTermAPIServerConnection>)webSocketConnection {
     ITMServerOriginatedMessage *response = [self newResponseForRequest:request];
-    response.error = @"Not ready. This is a bug! Please report it at https://iterm2.com/bugs";
+    response.error = NSLocalizedStringFromTableInBundle(@"Not ready. This is a bug! Please report it at https://iterm2.com/bugs", @"APIFiles", [NSBundle bundleForClass:[self class]], @"API server error");
     [self finishHandlingRequestWithResponse:response onConnection:webSocketConnection];
 }
 

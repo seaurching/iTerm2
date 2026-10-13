@@ -103,7 +103,7 @@ struct LLMVectorStoreAdder {
     func webRequest() throws -> WebRequest {
         let body = try body()
         guard let url = provider.addFileToVectorStoreURL(apiKey: apiKey, vectorStoreID: vectorStoreID) else {
-            throw AIError("Adding to vector store is not supported with this LLM provider")
+            throw AIError(NSLocalizedString("Adding to vector store is not supported with this LLM provider", tableName: "AITermXC", comment: "此 LLM 提供商不支持添加到向量存储"))
         }
         return WebRequest(headers: headers,
                           method: method,
@@ -130,7 +130,7 @@ struct LLMVectorStoreAdder {
 
     func statusFromResponse(_ response: Data) throws -> Status {
         if let error = try? JSONDecoder().decode(ErrorResponse.self, from: response) {
-            throw AIError("Failed to add files to vector store: \(error.error.message)")
+            throw AIError(String(format: NSLocalizedString("Failed to add files to vector store: %@", tableName: "AITermXC", comment: "添加文件到向量存储失败：%@"), error.error.message))
         }
         return try JSONDecoder().decode(Response.self,
                                         from: response).status
@@ -178,9 +178,9 @@ struct LLMVectorStoreCreator {
     func webRequest() throws -> WebRequest {
         guard let body = try body(), let url = provider.createVectorStoreURL(apiKey: apiKey) else {
             if LLMMetadata.hostIsOpenAIAPI(url: provider.url(apiKey: apiKey, streaming: false)) {
-                throw AIError("The vector store has not been enabled in settings")
+                throw AIError(NSLocalizedString("The vector store has not been enabled in settings", tableName: "AITermXC", comment: "向量存储未在设置中启用"))
             }
-            throw AIError("No vector store is available for this LLM provider.")
+            throw AIError(NSLocalizedString("No vector store is available for this LLM provider.", tableName: "AITermXC", comment: "此 LLM 提供商没有可用的向量存储。"))
         }
         return WebRequest(headers: headers,
                           method: method,

@@ -1,0 +1,140 @@
+/* Regex visualization: regex parse error message */
+"The regular expression could not be parsed." = "The regular expression could not be parsed.";
+/* Regex visualization: comment group label */
+"comment" = "comment";
+
+/* Regex visualization: atomic group label */
+"atomic" = "atomic";
+
+/* Regex visualization: lookahead label */
+"lookahead" = "lookahead";
+
+/* Regex visualization: negative lookahead label */
+"negative lookahead" = "negative lookahead";
+
+/* Regex visualization: lookbehind label */
+"lookbehind" = "lookbehind";
+
+/* Regex visualization: negative lookbehind label */
+"negative lookbehind" = "negative lookbehind";
+
+/* Regex visualization: negated character class label */
+"not" = "not";
+
+/* Regex visualization: start of line anchor */
+"start of line" = "start of line";
+
+/* Regex visualization: end of line anchor */
+"end of line" = "end of line";
+
+/* Regex visualization: start of input anchor */
+"start of input" = "start of input";
+
+/* Regex visualization: word boundary anchor */
+"word boundary" = "word boundary";
+
+/* Regex visualization: non-word boundary anchor */
+"non-word boundary" = "non-word boundary";
+
+/* Regex visualization: end of previous match anchor */
+"end of previous match" = "end of previous match";
+
+/* Regex visualization: end of input before final newline anchor */
+"end of input (before final newline)" = "end of input (before final newline)";
+
+/* Regex visualization: end of input anchor */
+"end of input" = "end of input";
+
+/* Regex visualization: lazy zero-or-more quantifier */
+"*? (lazy)" = "*? (lazy)";
+
+/* Regex visualization: possessive zero-or-more quantifier */
+"*+ (possessive)" = "*+ (possessive)";
+
+/* Regex visualization: lazy one-or-more quantifier */
+"+? (lazy)" = "+? (lazy)";
+
+/* Regex visualization: possessive one-or-more quantifier */
+"++ (possessive)" = "++ (possessive)";
+
+/* Regex visualization: lazy optional quantifier */
+"?? (lazy)" = "?? (lazy)";
+
+/* Regex visualization: possessive optional quantifier */
+"?+ (possessive)" = "?+ (possessive)";
+
+/* Regex visualization: lazy quantifier suffix */
+" (lazy)" = " (lazy)";
+
+/* Regex visualization: possessive quantifier suffix */
+" (possessive)" = " (possessive)";
+
+/* Regex visualization: flags label */
+"flags: %@" = "flags: %@";
+
+/* Regex visualization: numeric backreference label */
+"group %@" = "group %@";
+
+/* Regex visualization: negated property label */
+"not %@" = "not %@";
+
+/* Regex visualization: control character label */
+"control-%@" = "control-%@";
+
+/* Regex visualization: any character label */
+"[any character]" = "[any character]";
+
+/* Regex visualization: bell character label */
+"[bell]" = "[bell]";
+
+/* Regex visualization: digit character class label */
+"[digit]" = "[digit]";
+
+/* Regex visualization: non-digit character class label */
+"[non-digit]" = "[non-digit]";
+
+/* Regex visualization: escape character label */
+"[escape]" = "[escape]";
+
+/* Regex visualization: form feed character label */
+"[form feed]" = "[form feed]";
+
+/* Regex visualization: horizontal whitespace label */
+"[horizontal whitespace]" = "[horizontal whitespace]";
+
+/* Regex visualization: non-horizontal whitespace label */
+"[non-horizontal whitespace]" = "[non-horizontal whitespace]";
+
+/* Regex visualization: line feed character label */
+"[line feed]" = "[line feed]";
+
+/* Regex visualization: carriage return character label */
+"[carriage return]" = "[carriage return]";
+
+/* Regex visualization: newline character label */
+"[newline]" = "[newline]";
+
+/* Regex visualization: whitespace character class label */
+"[whitespace]" = "[whitespace]";
+
+/* Regex visualization: non-whitespace character class label */
+"[non-whitespace]" = "[non-whitespace]";
+
+/* Regex visualization: tab character label */
+"[tab]" = "[tab]";
+
+/* Regex visualization: vertical whitespace label */
+"[vertical whitespace]" = "[vertical whitespace]";
+
+/* Regex visualization: non-vertical whitespace label */
+"[non-vertical whitespace]" = "[non-vertical whitespace]";
+
+/* Regex visualization: word character class label */
+"[word character]" = "[word character]";
+
+/* Regex visualization: non-word character class label */
+"[non-word character]" = "[non-word character]";
+
+/* Regex visualization: grapheme cluster label */
+"[grapheme cluster]" = "[grapheme cluster]";
+

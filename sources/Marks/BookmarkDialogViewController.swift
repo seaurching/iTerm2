@@ -13,9 +13,9 @@ class BookmarkDialogViewController: NSObject {
     static func show(window: NSWindow, defaultName: String, completion: @escaping (String) -> ()) {
         // Create the modal dialog
         let alert = NSAlert()
-        alert.messageText = "Enter Mark Name"
-        alert.addButton(withTitle: "OK")
-        alert.addButton(withTitle: "Cancel")
+        alert.messageText = NSLocalizedString("Enter Mark Name", tableName: "Marks", comment: "Marks: enter mark name alert title")
+        alert.addButton(withTitle: NSLocalizedString("OK", tableName: "Marks", comment: "Marks: OK button"))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "Marks", comment: "Marks: cancel button"))
 
         // Create the text field
         let textField = NSTextField(frame: NSRect(x: 0, y: 0, width: 300, height: 24))

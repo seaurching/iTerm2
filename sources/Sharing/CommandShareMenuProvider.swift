@@ -36,7 +36,7 @@ class CommandShareMenuProvider: NSObject {
         let command = mark.fullCommand ?? ""
         if !command.isEmpty {
             let snippetTitle = mark.firstLineOfCommand.flatMap { $0.isEmpty ? nil : $0 } ?? command
-            menu.addItem(title: "Add Command as Snippet") { [weak window] in
+            menu.addItem(title: NSLocalizedString("Add Command as Snippet", tableName: "Sharing", bundle: Bundle(for: CommandShareMenuProvider.self), comment: "menu item: add command as snippet")) { [weak window] in
                 CommandShareMenuProvider.addCommandAsSnippet(title: snippetTitle,
                                                              value: command,
                                                              window: window,
@@ -49,7 +49,7 @@ class CommandShareMenuProvider: NSObject {
         let mark = self.mark
         let promisedContent = self.promisedContent
         let defaultBackgroundColor = self.defaultBackgroundColor
-        menu.addItem(title: "Save Command & Output…") { [weak window] in
+        menu.addItem(title: NSLocalizedString("Save Command & Output…", tableName: "Sharing", bundle: Bundle(for: CommandShareMenuProvider.self), comment: "menu item: save command and output")) { [weak window] in
             CommandShareMenuProvider.saveCommandAndOutput(promisedContent: promisedContent,
                                                           defaultBackgroundColor: defaultBackgroundColor,
                                                           mark: mark,
@@ -58,7 +58,7 @@ class CommandShareMenuProvider: NSObject {
 
         menu.addSeparator()
 
-        menu.addItem(title: "Share Command Output…") { [weak view] in
+        menu.addItem(title: NSLocalizedString("Share Command Output…", tableName: "Sharing", bundle: Bundle(for: CommandShareMenuProvider.self), comment: "menu item: share command output")) { [weak view] in
             if let view {
                 CommandShareMenuProvider.shareCommandOutput(locationInWindow: locationInWindow,
                                                             promisedContent: promisedContent,
@@ -69,12 +69,12 @@ class CommandShareMenuProvider: NSObject {
         menu.addSeparator()
 
         if let commandURL {
-            menu.addItem(title: "Copy Command URL to Clipboard") { [weak window] in
+            menu.addItem(title: NSLocalizedString("Copy Command URL to Clipboard", tableName: "Sharing", bundle: Bundle(for: CommandShareMenuProvider.self), comment: "menu item: copy command url to clipboard")) { [weak window] in
                 CommandShareMenuProvider.copyCommandURL(url: commandURL,
                                                         window: window,
                                                         locationInWindow: locationInWindow)
             }
-            menu.addItem(title: "Share Command URL…") { [weak view] in
+            menu.addItem(title: NSLocalizedString("Share Command URL…", tableName: "Sharing", bundle: Bundle(for: CommandShareMenuProvider.self), comment: "menu item: share command url")) { [weak view] in
                 if let view {
                     CommandShareMenuProvider.shareCommandURL(locationInWindow: locationInWindow,
                                                              url: commandURL,
@@ -103,14 +103,14 @@ class CommandShareMenuProvider: NSObject {
             return
         }
         let point = window.convertPoint(toScreen: locationInWindow)
-        ToastWindowController.showToast(withMessage: "Snippet Added",
+        ToastWindowController.showToast(withMessage: NSLocalizedString("Snippet Added", tableName: "Sharing", bundle: Bundle(for: CommandShareMenuProvider.self), comment: "toast: snippet added"),
                                         duration: 1,
                                         topLeftScreenCoordinate: point,
                                         pointSize: 12)
     }
 
     private static func defaultCommand(_ maybeCommand: String?) -> String {
-        let fallback = "iTerm2 Command"
+        let fallback = NSLocalizedString("iTerm2 Command", tableName: "Sharing", bundle: Bundle(for: CommandShareMenuProvider.self), comment: "default save name for command")
         guard let justCommand = maybeCommand else {
             return fallback
         }
@@ -143,7 +143,7 @@ class CommandShareMenuProvider: NSObject {
             return
         }
         let point = window.convertPoint(toScreen: locationInWindow)
-        ToastWindowController.showToast(withMessage: "Copied",
+        ToastWindowController.showToast(withMessage: NSLocalizedString("Copied", tableName: "Sharing", bundle: Bundle(for: CommandShareMenuProvider.self), comment: "toast: copied"),
                                         duration: 1,
                                         topLeftScreenCoordinate: point,
                                         pointSize: 12)

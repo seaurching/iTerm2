@@ -263,12 +263,12 @@ extension PTYSession: iTermBrowserViewControllerDelegate {
     }
 
     func browserViewController(_ controller: iTermBrowserViewController, runCommand command: String) {
-        guard iTermWarning.show(withTitle: "OK to run:\n\(command)",
-                                actions: ["OK", "Cancel"],
+        guard iTermWarning.show(withTitle: String(format: NSLocalizedString("OK to run:\n%@", tableName: "PTYSession", comment: "PTYSession: ok to run warning"), command),
+                                actions: [NSLocalizedString("OK", tableName: "PTYSession", comment: "PTYSession: OK button"), NSLocalizedString("Cancel", tableName: "PTYSession", comment: "PTYSession: cancel button")],
                                 accessory: nil,
                                 identifier: nil,
                                 silenceable: .kiTermWarningTypePersistent,
-                                heading: "Run command?",
+                                heading: NSLocalizedString("Run command?", tableName: "PTYSession", comment: "PTYSession: run command heading"),
                                 window: view?.window) == .kiTermWarningSelection0 else {
             return
         }
@@ -298,12 +298,12 @@ extension PTYSession: iTermBrowserViewControllerDelegate {
     }
 
     func browserViewController(_ controller: iTermBrowserViewController, openFile file: String) {
-        guard iTermWarning.show(withTitle: "OK to open this file?\n\(file)",
-                                actions: ["OK", "Cancel"],
+        guard iTermWarning.show(withTitle: String(format: NSLocalizedString("OK to open this file?\n%@", tableName: "PTYSession", comment: "PTYSession: ok to open file warning"), file),
+                                actions: [NSLocalizedString("OK", tableName: "PTYSession", comment: "PTYSession: OK button"), NSLocalizedString("Cancel", tableName: "PTYSession", comment: "PTYSession: cancel button")],
                                 accessory: nil,
                                 identifier: nil,
                                 silenceable: .kiTermWarningTypePersistent,
-                                heading: "Open file?",
+                                heading: NSLocalizedString("Open file?", tableName: "PTYSession", comment: "PTYSession: open file heading"),
                                 window: view?.window) == .kiTermWarningSelection0 else {
             return
         }

@@ -1,0 +1,16 @@
+"Wrong number of items in row: %@" = "行中项目数错误：%@";
+"Bad row: %@" = "错误的行：%@";
+"Two roots found" = "发现两个根节点";
+"Dangling parent pointer %@ from %@" = "悬空的父指针 %@ 来自 %@";
+"No such record or wrong type" = "无此记录或类型错误";
+"Some windows had trouble restoring last time iTerm2 launched. Try again?" = "上次启动 iTerm2 时某些窗口恢复遇到问题。要重试吗？";
+"OK" = "确定";
+"Cancel" = "取消";
+"Restore Windows?" = "恢复窗口？";
+"Still restoring your windows…" = "仍在恢复您的窗口…";
+"iTerm2 is taking longer than usual to verify your saved windows and tabs. This usually means the system is busy and it’s safe to keep waiting, but a damaged state restoration database could also cause it. You can discard the saved windows instead if you’d rather not wait." = "iTerm2 验证您保存的窗口和标签页所需的时间比平时长。这通常意味着系统繁忙，继续等待是安全的，但状态恢复数据库损坏也可能导致此情况。如果您不想等待，可以选择丢弃已保存的窗口。";
+"Keep Waiting" = "继续等待";
+"Discard Saved Windows" = "丢弃已保存的窗口";
+"Failed to migrate session database (adding generation column): %@" = "迁移会话数据库失败（添加 generation 列）：%@";
+"Failed to migrate session database (adding large_data column): %@" = "迁移会话数据库失败（添加 large_data 列）：%@";
+"Unknown error" = "未知错误";

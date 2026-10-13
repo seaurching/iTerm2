@@ -91,8 +91,8 @@ class iTermBrowserSuggestionsController {
 
             let searchSuggestion = URLSuggestion(
                 url: url,
-                displayText: NSAttributedString(string: "Search for \"\(actualQuery)\"", attributes: midTruncatingAttributes),
-                detail: "Web Search",
+                displayText: NSAttributedString(string: String(format: NSLocalizedString("Search for “%@”", tableName: "Browser", comment: "搜索“%@”"), actualQuery), attributes: midTruncatingAttributes),
+                detail: NSLocalizedString("Web Search", tableName: "Browser", comment: "网页搜索"),
                 type: .webSearch
             )
 
@@ -102,9 +102,9 @@ class iTermBrowserSuggestionsController {
         if let normal = normalizeURL(query) {
             let suggestion = URLSuggestion(
                 url: normal.absoluteString,
-                displayText: NSAttributedString(string: "Navigate to \"\(normal.absoluteString)\"",
+                displayText: NSAttributedString(string: String(format: NSLocalizedString("Navigate to “%@”", tableName: "Browser", comment: "导航至“%@”"), normal.absoluteString),
                                                 attributes: midTruncatingAttributes),
-                detail: "URL",
+                detail: NSLocalizedString("URL", tableName: "Browser", comment: "URL"),
                 type: .navigation
             )
             let urlScore: iTermBrowserSuggestionsController.Score
@@ -202,7 +202,7 @@ class iTermBrowserSuggestionsController {
             let suggestion = URLSuggestion(
                 url: bookmark.url,
                 displayText: displayText,
-                detail: "Bookmark",
+                detail: NSLocalizedString("Bookmark", tableName: "Browser", comment: "书签"),
                 type: .bookmark
             )
             

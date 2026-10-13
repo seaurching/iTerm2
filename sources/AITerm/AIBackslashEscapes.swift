@@ -28,13 +28,13 @@ enum AIBackslashEscapeError: Error, CustomStringConvertible {
     var description: String {
         switch self {
         case .unknownEscape(let s):
-            return "Unknown backslash escape \u{201C}\(s)\u{201D}. Recognized: \\\\, \\n, \\r, \\t, \\uXXXX."
+            return String(format: NSLocalizedString("Unknown backslash escape “%@”. Recognized: \\\\, \\n, \\r, \\t, \\uXXXX.", tableName: "AITermXC", comment: ""), s)
         case .truncatedUnicodeEscape:
-            return "Truncated \\uXXXX escape (needs exactly four hex digits)."
+            return NSLocalizedString("Truncated \\\\uXXXX escape (needs exactly four hex digits).", tableName: "AITermXC", comment: "")
         case .invalidUnicodeScalar(let hex):
             return "\\u\(hex) is not a valid Unicode scalar."
         case .danglingBackslash:
-            return "Text ends with an unescaped backslash."
+            return NSLocalizedString("Text ends with an unescaped backslash.", tableName: "AITermXC", comment: "")
         }
     }
 }

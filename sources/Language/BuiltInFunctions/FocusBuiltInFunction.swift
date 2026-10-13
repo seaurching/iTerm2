@@ -29,11 +29,11 @@ extension FocusBuiltInFunction: iTermBuiltInFunctionProtocol {
             sideEffectsPlaceholder: "[focus]") {
                 parameters, completion in
                 guard let sessionID = parameters["session_id"] as? String else {
-                    completion(nil, error(message: "Missing session_id. This shouldn't happen so please report a bug."))
+                    completion(nil, error(message: NSLocalizedString("Missing session_id. This shouldn't happen so please report a bug.", tableName: "Language", comment: "Focus error: missing session_id")))
                     return
                 }
                 guard let session = iTermController.sharedInstance().anySession(withGUID: sessionID) else {
-                    completion(nil, error(message: "No such session"))
+                    completion(nil, error(message: NSLocalizedString("No such session", tableName: "Language", comment: "Focus error: no such session")))
                     return
                 }
                 execute(session: session, completion: completion)

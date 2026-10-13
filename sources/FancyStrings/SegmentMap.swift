@@ -53,7 +53,7 @@ struct SegmentMap<Payload: Equatable>: Equatable {
 
     /// Returns the payload at a given global index.
     func get(index: Int) -> Payload {
-        precondition(index >= 0 && index < length, "index out of bounds")
+        precondition(index >= 0 && index < length, NSLocalizedString("index out of bounds", tableName: "FancyStrings", comment: "SegmentMap: index out of bounds"))
         let blockIdx = findBlock(forGlobalIndex: index)
         let block = blocks[blockIdx]
         let relativeIndex = index - block.basePrimary
@@ -62,7 +62,7 @@ struct SegmentMap<Payload: Equatable>: Equatable {
     }
 
     private func getRun(at index: Int) -> (payload: Payload, count: Int) {
-        precondition(index >= 0 && index < length, "index out of bounds")
+        precondition(index >= 0 && index < length, NSLocalizedString("index out of bounds", tableName: "FancyStrings", comment: "SegmentMap: index out of bounds"))
         let blockIdx = findBlock(forGlobalIndex: index)
         let block = blocks[blockIdx]
         let relativeIndex = index - block.basePrimary
@@ -91,7 +91,7 @@ struct SegmentMap<Payload: Equatable>: Equatable {
 
     /// Deletes the last `deleteCount` elements.
     mutating func deleteFromEnd(count deleteCount: Int) {
-        precondition(deleteCount >= 0 && deleteCount <= length, "delete count out of bounds")
+        precondition(deleteCount >= 0 && deleteCount <= length, NSLocalizedString("delete count out of bounds", tableName: "FancyStrings", comment: "SegmentMap: delete count out of bounds"))
         let newGlobal = length - deleteCount
         if newGlobal == 0 {
             blocks.removeAll()
@@ -157,7 +157,7 @@ struct SegmentMap<Payload: Equatable>: Equatable {
     }
 
     mutating func append(count: Int, payload: Payload) {
-        precondition(count >= 0, "count must be >= 0")
+        precondition(count >= 0, NSLocalizedString("count must be >= 0", tableName: "FancyStrings", comment: "SegmentMap: count must be non-negative"))
         if blocks.isEmpty {
             blocks.append(Block(basePrimary: 0, runs: []))
         }
@@ -181,7 +181,7 @@ struct SegmentMap<Payload: Equatable>: Equatable {
     subscript(_ subrange: Range<Int>) -> SegmentMap<Payload> {
         precondition(
             subrange.lowerBound >= 0 && subrange.upperBound <= length,
-            "range out of bounds"
+            NSLocalizedString("range out of bounds", tableName: "FancyStrings", comment: "SegmentMap: range out of bounds")
         )
         if subrange.lowerBound == 0 && subrange.upperBound == length {
             return self

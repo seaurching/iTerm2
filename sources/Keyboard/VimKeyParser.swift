@@ -25,12 +25,17 @@ final class VimKeyParser: NSObject {
                                   input: String) -> String {
             let problem = switch self {
             case .missingClosingBracket:
-                "Missing closing '>'"
+                NSLocalizedString("Missing closing '>'", tableName: "Keyboard", comment: "Vim key parser error: missing closing bracket")
             case .invalidKey:
-                "Invalid key: <\(arg.d)>"
+                String(format: NSLocalizedString("Invalid key: <%@", tableName: "Keyboard", comment: "Vim key parser error: invalid key"), arg.d)
             }
 
-            return "\(problem) at index \(range.location) in \(input)"
+            return String(
+                format: NSLocalizedString(
+                    "%@ at index %d in %@",
+                    tableName: "Keyboard",
+                    comment: "Vim key parser error: problem location"
+                ), problem, range.location, input)
         }
     }
 

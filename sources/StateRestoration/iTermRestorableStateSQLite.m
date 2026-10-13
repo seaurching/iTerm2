@@ -145,11 +145,11 @@
         __block BOOL result = NO;
         dispatch_sync(dispatch_get_main_queue(), ^{
             NSAlert *alert = [[NSAlert alloc] init];
-            alert.messageText = @"Still restoring your windows…";
-            alert.informativeText = @"iTerm2 is taking longer than usual to verify your saved windows and tabs. This usually means the system is busy and it’s safe to keep waiting, but a damaged state restoration database could also cause it. You can discard the saved windows instead if you’d rather not wait.";
+            alert.messageText = NSLocalizedStringFromTableInBundle(@"Still restoring your windows…", @"StateRestoration", [NSBundle bundleForClass:[self class]], @"restore sqlite: still restoring alert message");
+            alert.informativeText = NSLocalizedStringFromTableInBundle(@"iTerm2 is taking longer than usual to verify your saved windows and tabs. This usually means the system is busy and it’s safe to keep waiting, but a damaged state restoration database could also cause it. You can discard the saved windows instead if you’d rather not wait.", @"StateRestoration", [NSBundle bundleForClass:[self class]], @"restore sqlite: still restoring alert informative text");
             // Keep Waiting is added first so it is the default action (triggered by Return).
-            [alert addButtonWithTitle:@"Keep Waiting"];
-            [alert addButtonWithTitle:@"Discard Saved Windows"];
+            [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Keep Waiting", @"StateRestoration", [NSBundle bundleForClass:[self class]], @"restore sqlite: keep waiting button")];
+            [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Discard Saved Windows", @"StateRestoration", [NSBundle bundleForClass:[self class]], @"restore sqlite: discard windows button")];
             result = ([alert runModal] == NSAlertSecondButtonReturn);
         });
         return result;

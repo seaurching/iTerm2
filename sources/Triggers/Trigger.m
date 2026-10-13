@@ -471,16 +471,16 @@ NSString * const kTriggerVariableValueRegexKey = @"variableValueRegex";
 
 - (void)evaluationDidFailWithError:(NSError *)error {
     NSString *title =
-    [NSString stringWithFormat:@"The following parameter for a “%@” trigger could not be evaluated:\n\n%@\n\nThe error was:\n\n%@",
+    [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The following parameter for a “%@” trigger could not be evaluated:\n\n%@\n\nThe error was:\n\n%@", @"Triggers", [NSBundle bundleForClass:[self class]], @"错误：触发器参数求值失败标题"),
      [[self class] title],
      _evaluator.expression,
      error.localizedDescription];
     [iTermWarning showWarningWithTitle:title
-                               actions:@[ @"OK" ]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Triggers", [NSBundle bundleForClass:[self class]], @"按钮：确定") ]
                              accessory:nil
                             identifier:@"NoSyncErrorInTriggerParameter"
                            silenceable:kiTermWarningTypeTemporarilySilenceable
-                               heading:@"Error in Trigger Parameter"
+                               heading:NSLocalizedStringFromTableInBundle(@"Error in Trigger Parameter", @"Triggers", [NSBundle bundleForClass:[self class]], @"警告标题：触发器参数错误")
                                 window:nil];
 }
 
@@ -584,7 +584,7 @@ NSString * const kTriggerVariableValueRegexKey = @"variableValueRegex";
     NSString *instantEmoji = self.partialLine ? @"⚡︎ " : nil;
     id jobAttributedString = [NSNull null];
     if ([self.job stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0) {
-        jobAttributedString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Job: %@", self.job]
+        jobAttributedString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Job: %@", @"Triggers", [NSBundle bundleForClass:[self class]], @"触发器列表：作业名"), self.job]
                                                               attributes:self.regularAttributes];
     }
     if ([self.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0) {
@@ -642,9 +642,9 @@ NSString * const kTriggerVariableValueRegexKey = @"variableValueRegex";
             return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"/%@/", self.regex ?: @""]
                                                    attributes:monospacedAttributes];
         case iTermTriggerMatchTypePageContentRegex:
-            return [@[ [[NSAttributedString alloc] initWithString:@"Content: " attributes: plainAttributes],
+            return [@[ [[NSAttributedString alloc] initWithString:NSLocalizedStringFromTableInBundle(@"Content: ", @"Triggers", [NSBundle bundleForClass:[self class]], @"正则信息：内容标签") attributes: plainAttributes],
                       [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"/%@/", self.contentRegex ?: @""] attributes:monospacedAttributes],
-                      [[NSAttributedString alloc] initWithString:@" URL: " attributes: plainAttributes],
+                      [[NSAttributedString alloc] initWithString:NSLocalizedStringFromTableInBundle(@" URL: ", @"Triggers", [NSBundle bundleForClass:[self class]], @"正则信息：URL 标签") attributes: plainAttributes],
                       [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"/%@/", self.regex ?: @""] attributes:monospacedAttributes]
                     ] attributedComponentsJoinedByAttributedString:nil];
         default:
@@ -665,54 +665,54 @@ NSString * const kTriggerVariableValueRegexKey = @"variableValueRegex";
         if ([exitCodeFilter isEqualToString:@"*"]) {
             // Don't add anything for "any" - it's the default
         } else if ([exitCodeFilter isEqualToString:@"0"]) {
-            [parts addObject:@"exit code 0"];
+            [parts addObject:NSLocalizedStringFromTableInBundle(@"exit code 0", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：退出码 0")];
         } else if ([exitCodeFilter isEqualToString:@"!0"]) {
-            [parts addObject:@"non-zero exit code"];
+            [parts addObject:NSLocalizedStringFromTableInBundle(@"non-zero exit code", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：非零退出码")];
         } else {
-            [parts addObject:[NSString stringWithFormat:@"exit code %@", exitCodeFilter]];
+            [parts addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"exit code %@", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：退出码"), exitCodeFilter]];
         }
     }
 
     // Timeout (for idle triggers)
     NSNumber *timeout = self.eventParams[@"timeout"];
     if (timeout) {
-        [parts addObject:[NSString stringWithFormat:@"after %@ seconds", timeout]];
+        [parts addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"after %@ seconds", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：N 秒后"), timeout]];
     }
 
     // Threshold (for long-running command triggers)
     NSNumber *threshold = self.eventParams[@"threshold"];
     if (threshold) {
-        [parts addObject:[NSString stringWithFormat:@"after %@ seconds", threshold]];
+        [parts addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"after %@ seconds", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：N 秒后"), threshold]];
     }
 
     // Sequence ID (for custom escape sequence triggers)
     NSString *sequenceId = self.eventParams[@"sequenceId"];
     if (sequenceId && sequenceId.length > 0) {
-        [parts addObject:[NSString stringWithFormat:@"id: %@", sequenceId]];
+        [parts addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"id: %@", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：序列 ID"), sequenceId]];
     }
 
     // Directory regex (for directory changed triggers)
     NSString *directoryRegex = self.eventParams[@"directoryRegex"];
     if (directoryRegex && directoryRegex.length > 0) {
-        [parts addObject:[NSString stringWithFormat:@"matching /%@/", directoryRegex]];
+        [parts addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"matching /%@/", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：匹配目录正则"), directoryRegex]];
     }
 
     // Host regex (for host changed triggers)
     NSString *hostRegex = self.eventParams[@"hostRegex"];
     if (hostRegex && hostRegex.length > 0) {
-        [parts addObject:[NSString stringWithFormat:@"matching /%@/", hostRegex]];
+        [parts addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"matching /%@/", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：匹配主机正则"), hostRegex]];
     }
 
     // User regex (for user changed triggers)
     NSString *userRegex = self.eventParams[@"userRegex"];
     if (userRegex && userRegex.length > 0) {
-        [parts addObject:[NSString stringWithFormat:@"matching /%@/", userRegex]];
+        [parts addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"matching /%@/", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：匹配用户正则"), userRegex]];
     }
 
     // Command regex (for long-running command triggers)
     NSString *commandRegex = self.eventParams[@"commandRegex"];
     if (commandRegex && commandRegex.length > 0) {
-        [parts addObject:[NSString stringWithFormat:@"command /%@/", commandRegex]];
+        [parts addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"command /%@/", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：命令正则"), commandRegex]];
     }
 
     // Variable name and value regex (for variable changed triggers)
@@ -722,16 +722,16 @@ NSString * const kTriggerVariableValueRegexKey = @"variableValueRegex";
     }
     NSString *variableValueRegex = self.eventParams[kTriggerVariableValueRegexKey];
     if (variableValueRegex && variableValueRegex.length > 0) {
-        [parts addObject:[NSString stringWithFormat:@"matching /%@/", variableValueRegex]];
+        [parts addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"matching /%@/", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：匹配变量值正则"), variableValueRegex]];
     }
 
     // Progress bar filter
     NSString *progressBarFilter = self.eventParams[@"progressBarFilter"];
     if (progressBarFilter) {
         if ([progressBarFilter isEqualToString:@"appeared"]) {
-            [parts addObject:@"appeared"];
+            [parts addObject:NSLocalizedStringFromTableInBundle(@"appeared", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：进度条出现")];
         } else if ([progressBarFilter isEqualToString:@"disappeared"]) {
-            [parts addObject:@"disappeared"];
+            [parts addObject:NSLocalizedStringFromTableInBundle(@"disappeared", @"Triggers", [NSBundle bundleForClass:[self class]], @"事件参数：进度条消失")];
         }
         // Don't add anything for "*" - it's the default (either)
     }

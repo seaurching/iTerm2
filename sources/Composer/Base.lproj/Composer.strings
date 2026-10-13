@@ -1,0 +1,9 @@
+/* Composer.strings
+ * Localized strings for Composer components.
+ */
+
+"This will open %@ in %@." = "This will open %@ in %@.";
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Open ExplainShell?" = "Open ExplainShell?";
+"Syntax Highlighting Rate Limit" = "Syntax Highlighting Rate Limit";

@@ -1,0 +1,32 @@
+/* AppLaunch.strings */
+
+"Cancel" = "Cancel";
+"Companion device pairing has been disabled. Talk to your enterprise system administrator." = "Companion device pairing has been disabled. Talk to your enterprise system administrator.";
+"Erase from Settings" = "Erase from Settings";
+"Feature Unavailable" = "Feature Unavailable";
+"Generative AI features have been disabled. Talk to your enterprise system administrator." = "Generative AI features have been disabled. Talk to your enterprise system administrator.";
+"I Fixed It" = "I Fixed It";
+"Important Change" = "Important Change";
+"iTerm2 no longer warns before a multi-line paste, unless you are at the shell prompt." = "iTerm2 no longer warns before a multi-line paste, unless you are at the shell prompt.";
+"iTerm2's Application Support directory has changed." = "iTerm2's Application Support directory has changed.";
+"Manual Update Needed" = "Manual Update Needed";
+"Move Key" = "Move Key";
+"Move OpenAI API key into the keychain? It is currently stored in User Defaults, which is not as secure." = "Move OpenAI API key into the keychain? It is currently stored in User Defaults, which is not as secure.";
+"No Terminal Window" = "No Terminal Window";
+"Not Now" = "Not Now";
+"Now, only the iTerm2 version is supported. But you have files in both so please move everything from iTerm to iTerm2." = "Now, only the iTerm2 version is supported. But you have files in both so please move everything from iTerm to iTerm2.";
+"OK" = "OK";
+"Open in Finder" = "Open in Finder";
+"Previously, both these directories were supported:\n~/Library/Application Support/iTerm\n~/Library/Application Support/iTerm2." = "Previously, both these directories were supported:\n~/Library/Application Support/iTerm\n~/Library/Application Support/iTerm2.";
+"Remind me Later" = "Remind me Later";
+"Remove Deprecated Key Mappings?" = "Remove Deprecated Key Mappings?";
+"Some profiles have unnecessary key mappings which may interfere with window tiling shortcuts added in macOS Sequoia. These were in the default profile for many years but are no longer needed. Remove the key mappings? It shouldn’t break anything, and it won’t modify the on-disk copy of the dynamic profile." = "Some profiles have unnecessary key mappings which may interfere with window tiling shortcuts added in macOS Sequoia. These were in the default profile for many years but are no longer needed. Remove the key mappings? It shouldn’t break anything, and it won’t modify the on-disk copy of the dynamic profile.";
+"The system Python's iterm2 module is out of date and won't work with this version of iTerm2. Run `%@` to fix it." = "The system Python's iterm2 module is out of date and won't work with this version of iTerm2. Run `%@` to fix it.";
+"Upgrade system Python iterm2 module?" = "Upgrade system Python iterm2 module?";
+"You need an open terminal window to make a screenshot." = "You need an open terminal window to make a screenshot.";
+
+"Copy Command" = "Copy Command";
+
+"Ignore" = "Ignore";
+
+"Learn More" = "Learn More";

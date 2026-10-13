@@ -156,7 +156,7 @@
     if (!_autocomplete) {
         return nil;
     }
-    return @"Press ⇧⏎ or ⌥⏎ to send command.";
+    return NSLocalizedStringFromTableInBundle(@"Press ⇧⏎ or ⌥⏎ to send command.", @"Popups", [NSBundle bundleForClass:[self class]], @"Popups: command history footer");
 }
 
 - (void)moveLeft:(id)sender {

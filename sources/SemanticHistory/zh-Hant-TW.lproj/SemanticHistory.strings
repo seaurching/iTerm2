@@ -1,0 +1,26 @@
+/* Semantic history: scp username cancel button */
+"Cancel" = "取消";
+
+/* Semantic history: enter scp username prompt */
+"Enter username for host %@ to download file with scp" = "輸入主機 %@ 的使用者名稱以使用 scp 下載檔案";
+
+/* Semantic history: OK button */
+"OK" = "好";
+
+/* Semantic history: command failed heading */
+"Semantic History Command Failed" = "語意歷史指令失敗";
+
+/* Semantic history: command failed warning title */
+"The following command returned a non-zero exit code:\n\n“%@”" = "以下指令傳回了非零結束代碼：\n\n「%@」";
+
+/* Semantic history: URL handler command runner title */
+"URL Handler" = "URL 處理器";
+
+/* Semantic history: URL handler failed notification */
+"URL Handler Command Failed" = "URL 處理器指令失敗";
+
+/* Semantic history: command failed view button */
+"View" = "檢視";
+
+/* Semantic history: output truncated notice */
+"[output truncated]" = "[輸出已截斷]";

@@ -1,0 +1,14 @@
+"NSAppleEventsUsageDescription" = "An application in iTerm2 wants to use AppleScript.";
+"NSBluetoothAlwaysUsageDescription" = "An application in iTerm2 wants to use Bluetooth.";
+"NSCalendarsUsageDescription" = "An application in iTerm2 wants to use Calendar data.";
+"NSCameraUsageDescription" = "An application in iTerm2 wants to use the camera.";
+"NSContactsUsageDescription" = "An application in iTerm2 wants to use your contacts.";
+"NSLocalNetworkUsageDescription" = "An application in iTerm2 wants to access the local network.";
+"NSLocationAlwaysUsageDescription" = "An application in iTerm2 wants to use your location information, even in the background.";
+"NSLocationUsageDescription" = "An application in iTerm2 wants to use your location information.";
+"NSLocationWhenInUseUsageDescription" = "An application in iTerm2 wants to use your location information while active.";
+"NSMicrophoneUsageDescription" = "An application in iTerm2 wants to use your microphone.";
+"NSPhotoLibraryUsageDescription" = "An application in iTerm2 wants to use the photo library.";
+"NSRemindersUsageDescription" = "An application in iTerm2 wants to use your reminders.";
+"NSSpeechRecognitionUsageDescription" = "An application in iTerm2 wants to use speech recognition.";
+"NSSystemAdministrationUsageDescription" = "The operation being performed by a program in iTerm2 requires elevated permission.";

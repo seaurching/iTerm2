@@ -1,0 +1,275 @@
+/* API Group - Localization Strings */
+
+/* iTermScriptConsole.m - Button tooltips */
+"Inspector" = "Inspector";
+"Terminate" = "Terminate";
+"Restart" = "Restart";
+"Clear Terminated" = "Clear Terminated";
+"Unknown" = "Unknown";
+
+/* iTermPythonRuntimeDownloader.m */
+"Download Python Runtime?" = "Download Python Runtime?";
+"The Python Runtime is used by Python scripts that work with iTerm2. It must be downloaded to complete the requested action. The download is about %@. OK to download it now?" = "The Python Runtime is used by Python scripts that work with iTerm2. It must be downloaded to complete the requested action. The download is about %@. OK to download it now?";
+"The Python Runtime is used by Python scripts that work with iTerm2. The download is about %@. OK to download it now?" = "The Python Runtime is used by Python scripts that work with iTerm2. The download is about %@. OK to download it now?";
+"Download" = "Download";
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Download Finished" = "Download Finished";
+"✅ The Python runtime is up to date." = "✅ The Python runtime is up to date.";
+"Download Canceled" = "Download Canceled";
+"Python Runtime Unavailable" = "Python Runtime Unavailable";
+"\n\nThe download failed: %@" = "\n\nThe download failed: %@";
+"An iTerm2 Python Runtime with Python version %@ must be downloaded to proceed.%@" = "An iTerm2 Python Runtime with Python version %@ must be downloaded to proceed.%@";
+"An iTerm2 Python Runtime must be downloaded to proceed.%@" = "An iTerm2 Python Runtime must be downloaded to proceed.%@";
+"Download failed ☹️" = "Download failed ☹️";
+"Could not extract archive ☹️" = "Could not extract archive ☹️";
+"Signature Verification Failed" = "Signature Verification Failed";
+"The Python runtime's signature failed validation: %@" = "The Python runtime's signature failed validation: %@";
+"Download finished!" = "Download finished!";
+"Error unzipping python environment" = "Error unzipping python environment";
+"An error occurred while unzipping the downloaded python environment" = "An error occurred while unzipping the downloaded python environment";
+"Invalid filename. Expected `iterm2env-<version>.zip`." = "Invalid filename. Expected `iterm2env-<version>.zip`.";
+"Failed to link from %@ to %@: %@" = "Failed to link from %@ to %@: %@";
+"Dependency Installation Failed" = "Dependency Installation Failed";
+"The following dependencies failed to install: %@" = "The following dependencies failed to install: %@";
+"Output" = "Output";
+"Dependency installation failed" = "Dependency installation failed";
+"Dependency installation failed: could not determine Python version. Please file a bug report at https://iterm2.com/bugs" = "Dependency installation failed: could not determine Python version. Please file a bug report at https://iterm2.com/bugs";
+
+/* iTermOptionalComponentDownloadWindowController.m */
+"Connecting…" = "Connecting…";
+"Server returned status code %@: %@" = "Server returned status code %@: %@";
+"Finding latest version…" = "Finding latest version…";
+"☹️ No usable version found." = "☹️ No usable version found.";
+"☹️ Malformed manifest." = "☹️ Malformed manifest.";
+"Downloading Python runtime…" = "Downloading Python runtime…";
+"Installing…" = "Installing…";
+"Initializing…" = "Initializing…";
+"Cancel" = "Cancel";
+"OK" = "OK";
+"Try Again" = "Try Again";
+"Canceled" = "Canceled";
+"Download Failed" = "Download Failed";
+"%@ of %@" = "%@ of %@";
+
+/* iTermScriptImporter.m - Error and confirmation messages */
+"Another import is in progress. Please try again after it completes." = "Another import is in progress. Please try again after it completes.";
+"Could not unzip archive: %@" = "Could not unzip archive: %@";
+"This script archive is corrupt and cannot be installed." = "This script archive is corrupt and cannot be installed.";
+"This is not a valid iTerm2 script archive." = "This is not a valid iTerm2 script archive.";
+"Unknown error" = "Unknown error";
+"Could not find certificate after verficiation (nil data)" = "Could not find certificate after verficiation (nil data)";
+"Could not find certificate after verficiation (bad data)" = "Could not find certificate after verficiation (bad data)";
+"Installation canceled by user request." = "Installation canceled by user request.";
+"The signature of “%@” has been verified. The author is:\n\n%@\n\nWould you like to install it?" = "The signature of “%@” has been verified. The author is:\n\n%@\n\nWould you like to install it?";
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Reveal Contents" = "Reveal Contents";
+"Confirm Installation" = "Confirm Installation";
+"This archive was created by an older version of iTerm2. This kind of archive is no longer supported and cannot be installed." = "This archive was created by an older version of iTerm2. This kind of archive is no longer supported and cannot be installed.";
+"Archive does not contain a valid iTerm2 script" = "Archive does not contain a valid iTerm2 script";
+"A script named “%@” is already installed" = "A script named “%@” is already installed";
+"Replace Script" = "Replace Script";
+"Script Already Exists" = "Script Already Exists";
+"Could not replace “%@”: the existing script could not be moved aside, so it was left unchanged." = "Could not replace “%@”: the existing script could not be moved aside, so it was left unchanged.";
+"Replacing “%@” was canceled. The existing script was kept." = "Replacing “%@” was canceled. The existing script was kept.";
+"The script could not be installed." = "The script could not be installed.";
+
+/* iTermScriptsMenuController.m - Upgrade warnings */
+"Upgrade Now" = "Upgrade Now";
+"Not Now" = "Not Now";
+"Python Version Changes" = "Python Version Changes";
+"Upgrading "%@"…" = "Upgrading "%@"…";
+"%@ could not be upgraded and still use the previous Python runtime. Each will be upgraded automatically the next time it runs.\n\n• %@" = "%@ could not be upgraded and still use the previous Python runtime. Each will be upgraded automatically the next time it runs.\n\n• %@";
+"Upgrade Incomplete" = "Upgrade Incomplete";
+
+/* iTermScriptsMenuController.m - Performance warnings */
+"It is taking a long time to locate all scripts under %@. Avoid storing many files or using network mounts for the scripts folder.\n\nContinue?" = "It is taking a long time to locate all scripts under %@. Avoid storing many files or using network mounts for the scripts folder.\n\nContinue?";
+"Stop" = "Stop";
+"Continue" = "Continue";
+"Performance Issue" = "Performance Issue";
+"Some scripts will not be available until the app has restarted or you change the scripts folder." = "Some scripts will not be available until the app has restarted or you change the scripts folder.";
+"Scripts Disabled" = "Scripts Disabled";
+
+/* iTermScriptsMenuController.m - Script archive */
+"A script archive named "%@" was found in the Scripts directory. Would you like to install it?" = "A script archive named "%@" was found in the Scripts directory. Would you like to install it?";
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Move to Trash" = "Move to Trash";
+"Install Script Archive?" = "Install Script Archive?";
+
+/* iTermScriptsMenuController.m - Export */
+"Export Failed" = "Export Failed";
+"Failed to create archive" = "Failed to create archive";
+
+/* iTermScriptsMenuController.m - Import */
+"Could Not Install Script" = "Could Not Install Script";
+"Try Again" = "Try Again";
+"Script Imported Successfully" = "Script Imported Successfully";
+"Launch" = "Launch";
+
+/* iTermScriptsMenuController.m - Malformed script */
+"The script "%@" is malformed." = "The script "%@" is malformed.";
+"Reveal" = "Reveal";
+"Cannot Run Script" = "Cannot Run Script";
+
+/* iTermScriptsMenuController.m - Python environment */
+"The Python environment for "%@" is missing (the shared runtime may have been deleted). Rebuild it from its saved requirements now?" = "The Python environment for "%@" is missing (the shared runtime may have been deleted). Rebuild it from its saved requirements now?";
+"Rebuild" = "Rebuild";
+"Rebuild Python Environment?" = "Rebuild Python Environment?";
+"Rebuilding the Python environment…" = "Rebuilding the Python environment…";
+"Could Not Rebuild Environment" = "Could Not Rebuild Environment";
+
+/* iTermScriptsMenuController.m - Installation */
+"Installation Failed" = "Installation Failed";
+"An error occurred while creating the Python environment. The error was: %@" = "An error occurred while creating the Python environment. The error was: %@";
+"An error ocurred while installing the Python runtime. Remove ~/Library/Application Support/iTerm2/iterm2env and try again. The error was: %@" = "An error ocurred while installing the Python runtime. Remove ~/Library/Application Support/iTerm2/iterm2env and try again. The error was: %@";
+"Setting up the Python environment…" = "Setting up the Python environment…";
+
+/* iTermScriptsMenuController.m - New script */
+"Open new script in %@?" = "Open new script in %@?";
+"Show in Finder" = "Show in Finder";
+
+/* iTermScriptsMenuController.m - Save panel */
+"Package names" = "Package names";
+"PyPI Dependencies:" = "PyPI Dependencies:";
+"Python Version:" = "Python Version:";
+"Spaces Not Allowed" = "Spaces Not Allowed";
+"Scripts can't have space characters in their filenames." = "Scripts can't have space characters in their filenames.";
+"Use _ Instead of Space" = "Use _ Instead of Space";
+"Change Name" = "Change Name";
+
+/* iTermScriptsMenuController.m - Script actions */
+"Reveal %@" = "Reveal %@";
+"Problem running script" = "Problem running script";
+"The script at "%@" failed:\n\n%@" = "The script at "%@" failed:\n\n%@";
+
+/* iTermScriptsMenuController.m - Folder validation */
+"Full-environment scripts must be located under in your Application Support/iTerm2/Scripts directory:\n%@" = "Full-environment scripts must be located under in your Application Support/iTerm2/Scripts directory:\n%@";
+"Invalid Folder" = "Invalid Folder";
+
+/* iTermScriptArchive.m - Auto-launch prompts */
+"\U201C%@\U201D would like to launch automatically when iTerm2 starts. Would you like to allow that?" = "\U201C%@\U201D would like to launch automatically when iTerm2 starts. Would you like to allow that?";
+"\U201C%@\U201D can launch automatically when iTerm2 starts. Would you like to allow that?" = "\U201C%@\U201D can launch automatically when iTerm2 starts. Would you like to allow that?";
+"Launch Automatically" = "Launch Automatically";
+"Launch Manually" = "Launch Manually";
+"Allow Auto-Launch?" = "Allow Auto-Launch?";
+
+/* iTermScriptArchive.m - Error messages */
+"Cannot find setup.cfg" = "Cannot find setup.cfg";
+"Could not write to %@" = "Could not write to %@";
+"Python Runtime not downloaded: %@" = "Python Runtime not downloaded: %@";
+"Requested version not available" = "Requested version not available";
+"Canceled by user" = "Canceled by user";
+"An unknown problem occurred" = "An unknown problem occurred";
+"Network error" = "Network error";
+"Failed to install Python package: %@" = "Failed to install Python package: %@";
+"Failed to install Python Runtime: %@" = "Failed to install Python Runtime: %@";
+
+/* iTermUvProvisioner.swift - UV provisioning strings */
+"Downloading uv…" = "Downloading uv…";
+"Python versions are not always compatible across releases, so a bumped script may need small changes." = "Python versions are not always compatible across releases, so a bumped script may need small changes.";
+"A script was written for Python %@, which is no longer available, so it now uses Python %@. " = "A script was written for Python %@, which is no longer available, so it now uses Python %@. ";
+"uv is not installed." = "uv is not installed.";
+"uv %@ is up to date." = "uv %@ is up to date.";
+"Upgraded uv %@ to %@. Updated the Python modules in shared environments." = "Upgraded uv %@ to %@. Updated the Python modules in shared environments.";
+"unknown error" = "unknown error";
+"Could not check for a uv update: %@" = "Could not check for a uv update: %@";
+"Could not download the uv update." = "Could not download the uv update.";
+"The download was canceled." = "The download was canceled.";
+"The uv download was larger than expected and was rejected." = "The uv download was larger than expected and was rejected.";
+"Download Python Support?" = "Download Python Support?";
+"To run Python scripts, iTerm2 needs to download uv (about %@ MB) and a Python interpreter. Additional Python versions are downloaded automatically later if a script needs them. OK to download it now?" = "To run Python scripts, iTerm2 needs to download uv (about %@ MB) and a Python interpreter. Additional Python versions are downloaded automatically later if a script needs them. OK to download it now?";
+"OK" = "OK";
+"Cancel" = "Cancel";
+"The uv download produced no data." = "The uv download produced no data.";
+
+/* iTermDependencyEditorWindowController.m - Dependency editor */
+"[Error]" = "[Error]";
+"Add Dependency" = "Add Dependency";
+"What dependency would you like to add?" = "What dependency would you like to add?";
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Run this Command?" = "Run this Command?";
+"Uninstall of %@ failed. Check the pip output for errors." = "Uninstall of %@ failed. Check the pip output for errors.";
+"Removal Failed" = "Removal Failed";
+"Check the pip output for errors." = "Check the pip output for errors.";
+"Installation Failed" = "Installation Failed";
+"Can't upgrade because %@ already exists" = "Can't upgrade because %@ already exists";
+"Error" = "Error";
+"Please file a bug report at https://iterm2.com/bugs. The following error occurred while upgrading a dependency: %@" = "Please file a bug report at https://iterm2.com/bugs. The following error occurred while upgrading a dependency: %@";
+"Setting up the Python environment…" = "Setting up the Python environment…";
+"Error creating %@: %@" = "Error creating %@: %@";
+"Error moving %@ to %@: %@" = "Error moving %@ to %@: %@";
+"You have asked to downgrade to an older Python version. Dependencies will need to be reinstalled. This may go badly. Are you sure you want to do this?" = "You have asked to downgrade to an older Python version. Dependencies will need to be reinstalled. This may go badly. Are you sure you want to do this?";
+"Confirm Python Downgrade" = "Confirm Python Downgrade";
+"You have asked to upgrade to a newer Python version. Dependencies will need to be reinstalled. OK to continue?" = "You have asked to upgrade to a newer Python version. Dependencies will need to be reinstalled. OK to continue?";
+"Confirm Python Upgrade" = "Confirm Python Upgrade";
+"Rebuilding the Python environment…" = "Rebuilding the Python environment…";
+"Could Not Change Python Version" = "Could Not Change Python Version";
+"Unknown error" = "Unknown error";
+
+/* iTermScriptExporter.m - Export errors */
+"Invalid location (not under Scripts folder)." = "Invalid location (not under Scripts folder).";
+"No found script at selected location." = "No found script at selected location.";
+"Could not parse install_requires in setup.cfg" = "Could not parse install_requires in setup.cfg";
+"Failed to create zip file." = "Failed to create zip file.";
+
+/* iTermSessionPicker.m - Help message */
+"Click the stop icon exit picker mode without making a selection." = "Click the stop icon exit picker mode without making a selection.";
+
+/* iTermScriptConsole.m - Log messages */
+"(%@)" = "(%@)";
+"Connection accepted: %@\n" = "Connection accepted: %@\n";
+"\nConnection closed.\n" = "\nConnection closed.\n";
+
+/* iTermAPIServer.m - Error messages */
+"Invalid request. Upgrade iTerm2 to a newer version." = "Invalid request. Upgrade iTerm2 to a newer version.";
+"Not ready. This is a bug! Please report it at https://iterm2.com/bugs" = "Not ready. This is a bug! Please report it at https://iterm2.com/bugs";
+
+/* iTermInProcessIt2.m - Error message */
+"The iTerm2 Python API is not enabled (Settings > General > Magic)." = "The iTerm2 Python API is not enabled (Settings > General > Magic).";
+
+/* iTermScriptHistory.m - Entry names */
+"iTerm2 App" = "iTerm2 App";
+"Automatic Profile Switching" = "Automatic Profile Switching";
+"Dynamic Profiles" = "Dynamic Profiles";
+"Web Browser %@" = "Web Browser %@";
+"Smart Selection Actions" = "Smart Selection Actions";
+
+/* iTermAPIHelper.m - Alert messages */
+"The location of your Application Support directory appears to have moved or its contents have changed unexpectedly. As a precaution, the authentication mechanism for Python API scripts for iTerm2 has been reverted to always require Automation permission." = "The location of your Application Support directory appears to have moved or its contents have changed unexpectedly. As a precaution, the authentication mechanism for Python API scripts for iTerm2 has been reverted to always require Automation permission.";
+"Reveal Preference" = "Reveal Preference";
+"Python API Permissions Reset" = "Python API Permissions Reset";
+"Do you want to allow all apps running on this machine to use the Python API?\n\nThis will disable the check for Automation permission. If you agree, you'll be prompted for administrator access to make the change." = "Do you want to allow all apps running on this machine to use the Python API?\n\nThis will disable the check for Automation permission. If you agree, you'll be prompted for administrator access to make the change.";
+"More Info" = "More Info";
+"Failed to remove the file "%@": %@\n\nPlease remove this file manually to require Automation permission for the Python API.\n\nThe Python API has been disabled for your security." = "Failed to remove the file "%@": %@\n\nPlease remove this file manually to require Automation permission for the Python API.\n\nThe Python API has been disabled for your security.";
+"Reveal In Finder" = "Reveal In Finder";
+"Error changing API permissions setting" = "Error changing API permissions setting";
+"iTerm2 needs to modify a secure setting." = "iTerm2 needs to modify a secure setting.";
+"The setting could not be changed: %@" = "The setting could not be changed: %@";
+"Failed to make change" = "Failed to make change";
+"Error running "%@":\n%@" = "Error running "%@":\n%@";
+"Reveal in Script Console" = "Reveal in Script Console";
+"%@ Function Call Failed" = "%@ Function Call Failed";
+"Enable Python API?" = "Enable Python API?";
+"The Python API allows scripts you run to control iTerm2 and access all its data." = "The Python API allows scripts you run to control iTerm2 and access all its data.";
+"Could not JSON encode value "%@"" = "Could not JSON encode value "%@"";
+"No function registered for invocation "%@". Ensure the script is running and the function name and argument names are correct." = "No function registered for invocation "%@". Ensure the script is running and the function name and argument names are correct.";
+" There is a similarly named function available with a different signature: %@" = " There is a similarly named function available with a different signature: %@";
+"Unknown reason" = "Unknown reason";
+"Timeout" = "Timeout";
+"Script launched by user action" = "Script launched by user action";
+"All apps are allowed to use the API, per "Settings > General > Magic > Allow all apps to connect"." = "All apps are allowed to use the API, per "Settings > General > Magic > Allow all apps to connect".";
+"UI authorization disabled and no valid cookie was presented." = "UI authorization disabled and no valid cookie was presented.";
+"Another process is trying to use the iTerm2 API. The API allows a script to control iTerm2 and view and modify its contents. Allow the connection?" = "Another process is trying to use the iTerm2 API. The API allows a script to control iTerm2 and view and modify its contents. Allow the connection?";
+"\n\nAlthough you have chosen to allow connections automatically, this script has not presented a valid cookie." = "\n\nAlthough you have chosen to allow connections automatically, this script has not presented a valid cookie.";
+"Always" = "Always";
+"Allow Python API Usage?" = "Allow Python API Usage?";
+"Allowed by user" = "Allowed by user";
+"Denied by user" = "Denied by user";
+"New sessions will contain an environment variable that allows scripts to run without confirmation. Are you sure you want to enable this?" = "New sessions will contain an environment variable that allows scripts to run without confirmation. Are you sure you want to enable this?";
+"Confirm" = "Confirm";
+"Internal error" = "Internal error";
+"Script terminated during function call" = "Script terminated during function call";
+"Disable per-app authentication?" = "Disable per-app authentication?";

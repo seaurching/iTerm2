@@ -29,19 +29,19 @@ enum LayoutMutatorError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .newTabOrWindowNotSupported:
-            return "Creating new tabs or windows via apply_layout is not supported."
+            return NSLocalizedString("Creating new tabs or windows via apply_layout is not supported.", tableName: "TerminalView", comment: "layout mutator: new tab or window not supported")
         case .unknownSession(let guid):
-            return "Unknown session: \(guid)"
+            return String(format: NSLocalizedString("Unknown session: %@", tableName: "TerminalView", comment: "layout mutator: unknown session"), guid)
         case .unknownTab(let guid):
-            return "Unknown tab: \(guid)"
+            return String(format: NSLocalizedString("Unknown tab: %@", tableName: "TerminalView", comment: "layout mutator: unknown tab"), guid)
         case .unknownWindow(let guid):
-            return "Unknown window: \(guid)"
+            return String(format: NSLocalizedString("Unknown window: %@", tableName: "TerminalView", comment: "layout mutator: unknown window"), guid)
         case .unknownProfile(let guid):
-            return "Unknown profile: \(guid)"
+            return String(format: NSLocalizedString("Unknown profile: %@", tableName: "TerminalView", comment: "layout mutator: unknown profile"), guid)
         case .noContextForNewSession:
-            return "Cannot create a new session: there is no existing window to size it against."
+            return NSLocalizedString("Cannot create a new session: there is no existing window to size it against.", tableName: "TerminalView", comment: "layout mutator: no context for new session")
         case .sessionWithoutOwningTab(let guid):
-            return "Session \(guid) has no owning tab"
+            return String(format: NSLocalizedString("Session %@ has no owning tab", tableName: "TerminalView", comment: "layout mutator: session without owning tab"), guid)
         }
     }
 }

@@ -164,7 +164,7 @@ class RegexVisualizationViewController: SVGViewController {
               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             </head>
             <body style="margin:0;padding:0;">
-            The regular expression could not be parsed.
+            \(NSLocalizedString("The regular expression could not be parsed.", tableName: "RegexVisualization", comment: "Regex visualization: regex parse error message"))
             </body>
             </html>
             """

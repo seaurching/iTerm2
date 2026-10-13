@@ -1,0 +1,11 @@
+/* ColorPicker.strings - zh-Hant-TW */
+"Cancel" = "取消";
+"Default Picker" = "預設選擇器";
+"Enter a name for this new saved color:" = "為這個新儲存的顏色輸入名稱：";
+"Name this color" = "為此顏色命名";
+"No Color" = "無顏色";
+"OK" = "好";
+"Open System Preferences" = "打開系統偏好設定";
+"Permission Needed" = "需要權限";
+"The eyedropper needs Screen Recording permission to work." = "取色器需要螢幕錄製權限才能運作。";
+"The eyedropper requires screen recording permission.\n\nYou can enable this by adding %@ to System Preferences > Security & Privacy > Privacy > Screen Recording." = "取色器需要螢幕錄製權限。\n\n您可以透過將%@加入「系統偏好設定 > 安全性與隱私 > 隱私 > 螢幕錄製」來啟用此功能。";

@@ -61,19 +61,19 @@ class ToolNamedMarks: NSView, ToolbeltTool, NSTableViewDelegate, NSTableViewData
         _tableView!.backgroundColor = .clear
 
         addButton = makeToolbeltButton(imageName: SFSymbol.plus.rawValue,
-                                       title: "Add",
+                                       title: NSLocalizedString("Add", tableName: "Toolbelt", comment: "tool named marks: add button title accessibility"),
                                        target: self,
                                        selector: #selector(add(_:)),
                                        frame: frameRect)
         addSubview(addButton!)
         removeButton = makeToolbeltButton(imageName: SFSymbol.minus.rawValue,
-                                          title: "Remove",
+                                          title: NSLocalizedString("Remove", tableName: "Toolbelt", comment: "tool named marks: remove button title accessibility"),
                                           target: self,
                                           selector: #selector(remove(_:)),
                                           frame: frameRect)
         addSubview(removeButton!)
         editButton = makeToolbeltButton(imageName: SFSymbol.pencil.rawValue,
-                                        title: "Edit",
+                                        title: NSLocalizedString("Edit", tableName: "Toolbelt", comment: "tool named marks: edit button title accessibility"),
                                         target: self,
                                         selector: #selector(edit(_:)),
                                         frame: frameRect)
@@ -177,7 +177,7 @@ class ToolNamedMarks: NSView, ToolbeltTool, NSTableViewDelegate, NSTableViewData
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cell = tableView.newTableCellViewWithTextField(usingIdentifier: "ToolNamedMarks",
                                                            font: NSFont.it_toolbelt(),
-                                                           string: marks[row].name ?? "(Unnamed)")
+                                                           string: marks[row].name ?? NSLocalizedString("(Unnamed)", tableName: "Toolbelt", comment: "tool named marks: unnamed mark placeholder"))
         cell.textField?.isEditable = true
         cell.textField?.delegate = self
         return cell

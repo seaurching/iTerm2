@@ -88,20 +88,20 @@
                    type:kPreferenceInfoTypeTokenField];
 
     [self addViewToSearchIndex:_triggersButton
-                   displayName:@"Triggers"
-                       phrases:@[ @"regular expression", @"regex" ]
+                   displayName:NSLocalizedStringFromTableInBundle(@"Triggers", @"Settings", [NSBundle bundleForClass:[self class]], @"search display name")
+                       phrases:@[ NSLocalizedStringFromTableInBundle(@"regular expression", @"Settings", [NSBundle bundleForClass:[self class]], @"search phrase"), NSLocalizedStringFromTableInBundle(@"regex", @"Settings", [NSBundle bundleForClass:[self class]], @"search phrase") ]
                            key:nil];
     [self addViewToSearchIndex:_smartSelectionButton
-                   displayName:@"Smart selection"
-                       phrases:@[ @"regular expression", @"regex" ]
+                   displayName:NSLocalizedStringFromTableInBundle(@"Smart selection", @"Settings", [NSBundle bundleForClass:[self class]], @"search display name")
+                       phrases:@[ NSLocalizedStringFromTableInBundle(@"regular expression", @"Settings", [NSBundle bundleForClass:[self class]], @"search phrase"), NSLocalizedStringFromTableInBundle(@"regex", @"Settings", [NSBundle bundleForClass:[self class]], @"search phrase") ]
                            key:nil];
     [self addViewToSearchIndex:_automaticProfileSwitchingView
-                   displayName:@"Automatic profile switching rules"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Automatic profile switching rules", @"Settings", [NSBundle bundleForClass:[self class]], @"search display name")
                        phrases:@[]
                            key:nil];
     [self addViewToSearchIndex:_semanticHistoryAction
-                   displayName:@"Semantic history"
-                       phrases:@[ @"cmd click", @"open file", @"open url" ]
+                   displayName:NSLocalizedStringFromTableInBundle(@"Semantic history", @"Settings", [NSBundle bundleForClass:[self class]], @"search display name")
+                       phrases:@[ NSLocalizedStringFromTableInBundle(@"cmd click", @"Settings", [NSBundle bundleForClass:[self class]], @"search phrase"), NSLocalizedStringFromTableInBundle(@"open file", @"Settings", [NSBundle bundleForClass:[self class]], @"search phrase"), NSLocalizedStringFromTableInBundle(@"open url", @"Settings", [NSBundle bundleForClass:[self class]], @"search phrase") ]
                            key:nil];
     _enableAPSLogging.state = iTermUserDefaults.enableAutomaticProfileSwitchingLogging ? NSControlStateValueOn : NSControlStateValueOff;
 }
@@ -147,9 +147,9 @@
     _semanticHistoryPrefController.guid = selectedGuid;
     [_boundHostsTableView reloadData];
     if (self.profileType == ProfileTypeBrowser) {
-        _triggersHelp.helpText = @"Triggers are actions you configure to run when certain URLs are visited or text on a web page is found.";
+        _triggersHelp.helpText = NSLocalizedStringFromTableInBundle(@"Triggers are actions you configure to run when certain URLs are visited or text on a web page is found.", @"Settings", [NSBundle bundleForClass:[self class]], @"triggers help text for browser mode");
     } else {
-        _triggersHelp.helpText = @"Triggers watch for text matching a regular expression to arrive in a terminal session and then perform an action in response.";
+        _triggersHelp.helpText = NSLocalizedStringFromTableInBundle(@"Triggers watch for text matching a regular expression to arrive in a terminal session and then perform an action in response.", @"Settings", [NSBundle bundleForClass:[self class]], @"triggers help text");
     }
 }
 
@@ -196,7 +196,7 @@
     [[triggerController.window undoManager] registerUndoWithTarget:self
                                                           selector:@selector(setTriggersValue:)
                                                             object:[self objectForKey:KEY_TRIGGERS]];
-    [[triggerController.window undoManager] setActionName:@"Edit Triggers"];
+    [[triggerController.window undoManager] setActionName:NSLocalizedStringFromTableInBundle(@"Edit Triggers", @"Settings", [NSBundle bundleForClass:[self class]], @"undo action name")];
 
     // No side effects because we don't want the tableview to get reloaded. We'll save when the
     // panel is closed. by setting the _triggersModelHasChanged flag.
@@ -358,12 +358,12 @@
     }
     if (dupProfile) {
         NSString *theTitle;
-        theTitle = [NSString stringWithFormat:@"The profile “%@” is already bound to hostname “%@”.",
+        theTitle = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The profile “%@” is already bound to hostname “%@”.", @"Settings", [NSBundle bundleForClass:[self class]], @"duplicate hostname binding warning"),
                     dupProfile[KEY_NAME], anObject];
-        NSString *removeFromOtherAction = [NSString stringWithFormat:@"Remove from “%@”", dupProfile[KEY_NAME]];
+        NSString *removeFromOtherAction = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Remove from “%@”", @"Settings", [NSBundle bundleForClass:[self class]], @"remove hostname binding from other profile action"), dupProfile[KEY_NAME]];
         switch ([iTermWarning showWarningWithTitle:theTitle
                                            actions:@[ removeFromOtherAction,
-                                                      @"Remove from This Profile" ]
+                                                      NSLocalizedStringFromTableInBundle(@"Remove from This Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"remove hostname binding from this profile action") ]
                                         identifier:nil
                                        silenceable:kiTermWarningTypePersistent
                                             window:self.view.window]) {
@@ -397,8 +397,8 @@
 - (NSCell *)tableView:(NSTableView *)tableView
     dataCellForTableColumn:(NSTableColumn *)tableColumn
                        row:(NSInteger)row {
-    NSTextFieldCell *cell = [[NSTextFieldCell alloc] initTextCell:@"hostname"];
-    [cell setPlaceholderString:@"Enter a rule…"];
+    NSTextFieldCell *cell = [[NSTextFieldCell alloc] initTextCell:NSLocalizedStringFromTableInBundle(@"hostname", @"Settings", [NSBundle bundleForClass:[self class]], @"bound host table cell placeholder")];
+    [cell setPlaceholderString:NSLocalizedStringFromTableInBundle(@"Enter a rule…", @"Settings", [NSBundle bundleForClass:[self class]], @"bound host table cell placeholder string")];
     [cell setEditable:YES];
     return cell;
 }

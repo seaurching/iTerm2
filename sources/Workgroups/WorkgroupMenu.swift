@@ -47,7 +47,7 @@ final class WorkgroupMenu: NSObject, NSMenuDelegate {
         let workgroups = iTermWorkgroupModel.instance.workgroups
         separator?.isHidden = workgroups.isEmpty
         for (index, wg) in workgroups.enumerated() {
-            let title = wg.name.isEmpty ? "Untitled" : wg.name
+            let title = wg.name.isEmpty ? NSLocalizedString("Untitled", tableName: "Workgroups", comment: "未命名工作组") : wg.name
             let entry = NSMenuItem(
                 title: title,
                 action: #selector(enterWorkgroup(_:)),

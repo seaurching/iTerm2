@@ -34,15 +34,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
                                           textColor:(NSColor *)textColor {
-    return @"╠══╣";
+    return NSLocalizedStringFromTableInBundle(@"╠══╣", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for fixed-size spacer component");
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Fixed-size Spacer";
+    return NSLocalizedStringFromTableInBundle(@"Fixed-size Spacer", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for fixed-size spacer component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Adds a fixed amount of space";
+    return NSLocalizedStringFromTableInBundle(@"Adds a fixed amount of space", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for fixed-size spacer component");
 }
 
 - (NSView *)statusBarComponentView {
@@ -65,13 +65,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSArray<iTermStatusBarComponentKnob *> *)statusBarComponentKnobs {
     iTermStatusBarComponentKnob *backgroundColorKnob =
-    [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Color"
+    [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Color", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for color")
                                                       type:iTermStatusBarComponentKnobTypeColor
                                                placeholder:nil
                                               defaultValue:nil
                                                        key:iTermStatusBarSharedBackgroundColorKey];
     iTermStatusBarComponentKnob *widthKnob =
-    [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Width"
+    [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Width", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for width")
                                                       type:iTermStatusBarComponentKnobTypeDouble
                                                placeholder:nil
                                               defaultValue:@5

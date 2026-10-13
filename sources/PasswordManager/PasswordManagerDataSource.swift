@@ -53,7 +53,7 @@ class iTermPasswordManagerAccountFormatting: NSObject {
     @objc(displayNameForAccountName:sourceLabel:)
     static func displayName(accountName: String, sourceLabel: String?) -> String {
         if let source = sourceLabel?.trimmingCharacters(in: .whitespacesAndNewlines), !source.isEmpty {
-            return "\(accountName) (\(source))"
+            return String(format: NSLocalizedString("%@ (%@)", tableName: "PasswordManager", comment: "PasswordManager: account display name"), accountName, source)
         }
         return accountName
     }

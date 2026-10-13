@@ -15,7 +15,7 @@ import AppKit
         var localizedDescription: String {
             switch self {
             case .chatNotFound:
-                "The messages for this chat could not be loaded."
+                NSLocalizedString("The messages for this chat could not be loaded.", tableName: "AITermXC", comment: "无法加载此对话的消息。")
             }
         }
 
@@ -95,12 +95,12 @@ final class ChatWindowController: NSWindowController, DictionaryCodable {
             _instance = ChatWindowController(model: model,
                                              client: client)
         } else if showErrors && _instance == nil {
-            iTermWarning.show(withTitle: "AI Chat could not open because of a problem loading the database. Verify there is only one instance of iTerm2 running.",
-                              actions: ["OK"],
+            iTermWarning.show(withTitle: NSLocalizedString("AI Chat could not open because of a problem loading the database. Verify there is only one instance of iTerm2 running.", tableName: "AITermXC", comment: "AI 对话无法打开"),
+                              actions: [NSLocalizedString("OK", tableName: "AITermXC", comment: "好")],
                               accessory: nil,
                               identifier: nil,
                               silenceable: .kiTermWarningTypePersistent,
-                              heading: "Error",
+                              heading: NSLocalizedString("Error", tableName: "AITermXC", comment: "错误"),
                               window: nil)
         }
         return _instance
@@ -151,7 +151,7 @@ final class ChatWindowController: NSWindowController, DictionaryCodable {
         let chatID = try container.decode(String.self, forKey: .chatID)
         guard let model = ChatListModel.instance,
               let client = ChatClient.instance else {
-            throw AIError("There was a problem initializing the database")
+            throw AIError(NSLocalizedString("There was a problem initializing the database", tableName: "AITermXC", comment: "初始化数据库时出现问题"))
         }
         self.init(model: model, client: client)
 
@@ -159,7 +159,7 @@ final class ChatWindowController: NSWindowController, DictionaryCodable {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) has not been implemented")
+        it_fatalError(NSLocalizedString("init(coder:) has not been implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     func encode(to encoder: any Encoder) throws {
@@ -279,7 +279,7 @@ final class ChatWindowController: NSWindowController, DictionaryCodable {
            let model = model.chat(id: chatID) {
             window.title = model.title
         } else {
-            window.title = "AI Chat"
+            window.title = NSLocalizedString("AI Chat", tableName: "AITermXC", comment: "AI 对话")
         }
 
         // Hide the native title
@@ -343,7 +343,7 @@ final class ChatWindowController: NSWindowController, DictionaryCodable {
 
     private func createNewChat(offerGuid guid: String?, enableOrchestration: Bool = false) {
         do {
-            let chatID = try client.create(chatWithTitle: "New Chat",
+            let chatID = try client.create(chatWithTitle: NSLocalizedString("New Chat", tableName: "AITermXC", comment: "新建对话"),
                                            terminalSessionGuid: nil,
                                            browserSessionGuid: nil,
                                            initialMessages: [],
@@ -439,11 +439,11 @@ extension ChatWindowController: NSToolbarDelegate {
         switch itemIdentifier {
         case .toggleChatList:
             let item = NSToolbarItem(itemIdentifier: itemIdentifier)
-            item.label = "Toggle Chat List"
-            item.paletteLabel = "Toggle Chat List"
-            item.toolTip = "Show or hide the chat list"
+            item.label = NSLocalizedString("Toggle Chat List", tableName: "AITermXC", comment: "切换对话列表")
+            item.paletteLabel = NSLocalizedString("Toggle Chat List", tableName: "AITermXC", comment: "切换对话列表")
+            item.toolTip = NSLocalizedString("Show or hide the chat list", tableName: "AITermXC", comment: "显示或隐藏对话列表")
             item.image = NSImage(systemSymbolName: SFSymbol.sidebarLeft.rawValue,
-                                 accessibilityDescription: "Toggle Chat List")
+                                 accessibilityDescription: NSLocalizedString("Toggle Chat List", tableName: "AITermXC", comment: "切换对话列表"))
             item.target = self
             item.action = #selector(toggleChatList)
             // Standard toolbar buttons get automatic glass backing on macOS 26
@@ -458,9 +458,9 @@ extension ChatWindowController: NSToolbarDelegate {
             if let providerSelector = chatViewController.chatToolbar.providerSelectorButton,
                !providerSelector.isHidden {
                 let item = NSToolbarItem(itemIdentifier: itemIdentifier)
-                item.label = "Provider"
-                item.paletteLabel = "AI Provider"
-                item.toolTip = "Select AI provider for new chats"
+                item.label = NSLocalizedString("Provider", tableName: "AITermXC", comment: "提供商")
+                item.paletteLabel = NSLocalizedString("AI Provider", tableName: "AITermXC", comment: "AI 提供商")
+                item.toolTip = NSLocalizedString("Select AI provider for new chats", tableName: "AITermXC", comment: "为新对话选择 AI 提供商")
                 item.view = providerSelector
                 return item
             }
@@ -470,9 +470,9 @@ extension ChatWindowController: NSToolbarDelegate {
             // Only create if we have multiple models
             if let modelSelector = chatViewController.chatToolbar.modelSelectorButton {
                 let item = NSToolbarItem(itemIdentifier: itemIdentifier)
-                item.label = "Model"
-                item.paletteLabel = "AI Model"
-                item.toolTip = "Select AI model"
+                item.label = NSLocalizedString("Model", tableName: "AITermXC", comment: "模型")
+                item.paletteLabel = NSLocalizedString("AI Model", tableName: "AITermXC", comment: "AI 模型")
+                item.toolTip = NSLocalizedString("Select AI model", tableName: "AITermXC", comment: "选择 AI 模型")
                 item.view = modelSelector
                 return item
             }
@@ -481,9 +481,9 @@ extension ChatWindowController: NSToolbarDelegate {
         case .thinkingToggle:
             if let button = chatViewController.chatToolbar.thinkingButton {
                 let item = NSToolbarItem(itemIdentifier: itemIdentifier)
-                item.label = "Thinking"
-                item.paletteLabel = "Toggle Thinking"
-                item.toolTip = "Enable or disable thinking/reasoning mode"
+                item.label = NSLocalizedString("Thinking", tableName: "AITermXC", comment: "思考")
+                item.paletteLabel = NSLocalizedString("Toggle Thinking", tableName: "AITermXC", comment: "切换思考模式")
+                item.toolTip = NSLocalizedString("Enable or disable thinking/reasoning mode", tableName: "AITermXC", comment: "启用或禁用思考/推理模式")
                 item.view = button
                 return item
             }
@@ -493,9 +493,9 @@ extension ChatWindowController: NSToolbarDelegate {
             if let selector = chatViewController.chatToolbar.reasoningEffortButton,
                !selector.isHidden {
                 let item = NSToolbarItem(itemIdentifier: itemIdentifier)
-                item.label = "Effort"
-                item.paletteLabel = "Reasoning Effort"
-                item.toolTip = "Select reasoning effort"
+                item.label = NSLocalizedString("Effort", tableName: "AITermXC", comment: "推理力度")
+                item.paletteLabel = NSLocalizedString("Reasoning Effort", tableName: "AITermXC", comment: "推理力度")
+                item.toolTip = NSLocalizedString("Select reasoning effort", tableName: "AITermXC", comment: "选择推理力度")
                 item.view = selector
                 return item
             }
@@ -505,9 +505,9 @@ extension ChatWindowController: NSToolbarDelegate {
             if let selector = chatViewController.chatToolbar.serviceTierButton,
                !selector.isHidden {
                 let item = NSToolbarItem(itemIdentifier: itemIdentifier)
-                item.label = "Speed"
-                item.paletteLabel = "AI Speed"
-                item.toolTip = "Select AI service tier"
+                item.label = NSLocalizedString("Speed", tableName: "AITermXC", comment: "速度")
+                item.paletteLabel = NSLocalizedString("AI Speed", tableName: "AITermXC", comment: "AI 速度")
+                item.toolTip = NSLocalizedString("Select AI service tier", tableName: "AITermXC", comment: "选择 AI 服务等级")
                 item.view = selector
                 return item
             }
@@ -516,9 +516,9 @@ extension ChatWindowController: NSToolbarDelegate {
         case .webSearchToggle:
             if let button = chatViewController.chatToolbar.webSearchButton {
                 let item = NSToolbarItem(itemIdentifier: itemIdentifier)
-                item.label = "Web Search"
-                item.paletteLabel = "Toggle Web Search"
-                item.toolTip = "Enable or disable web search"
+                item.label = NSLocalizedString("Web Search", tableName: "AITermXC", comment: "网页搜索")
+                item.paletteLabel = NSLocalizedString("Toggle Web Search", tableName: "AITermXC", comment: "切换网页搜索")
+                item.toolTip = NSLocalizedString("Enable or disable web search", tableName: "AITermXC", comment: "启用或禁用网页搜索")
                 item.view = button
                 return item
             }
@@ -527,9 +527,9 @@ extension ChatWindowController: NSToolbarDelegate {
         case .sessionButton:
             if let button = chatViewController.chatToolbar.sessionButton {
                 let item = NSToolbarItem(itemIdentifier: itemIdentifier)
-                item.label = "Session"
-                item.paletteLabel = "Link Session"
-                item.toolTip = "Link or unlink terminal/browser session"
+                item.label = NSLocalizedString("Session", tableName: "AITermXC", comment: "会话")
+                item.paletteLabel = NSLocalizedString("Link Session", tableName: "AITermXC", comment: "链接会话")
+                item.toolTip = NSLocalizedString("Link or unlink terminal/browser session", tableName: "AITermXC", comment: "链接或取消链接终端/浏览器会话")
                 item.view = button
                 return item
             }
@@ -560,7 +560,7 @@ extension ChatWindowController: NSToolbarDelegate {
             chatListViewController.select(chatID: chat.id)
         } else {
             do {
-                let chatID = try client.create(chatWithTitle: "Chat about \(name)",
+                let chatID = try client.create(chatWithTitle: String(format: NSLocalizedString("Chat about %@", tableName: "AITermXC", comment: "关于 %@ 的对话"), name),
                                                terminalSessionGuid: terminal ? guid : nil,
                                                browserSessionGuid: terminal ? nil : guid,
                                                initialMessages: [],
@@ -692,10 +692,10 @@ extension ChatWindowController: ChatListViewControllerDelegate {
             return
         }
         let alert = NSAlert()
-        alert.messageText = "Rename Chat"
-        alert.informativeText = "Choose a new name for this chat."
-        alert.addButton(withTitle: "Rename")
-        alert.addButton(withTitle: "Cancel")
+        alert.messageText = NSLocalizedString("Rename Chat", tableName: "AITermXC", comment: "重命名对话")
+        alert.informativeText = NSLocalizedString("Choose a new name for this chat.", tableName: "AITermXC", comment: "为此对话选择一个新名称。")
+        alert.addButton(withTitle: NSLocalizedString("Rename", tableName: "AITermXC", comment: "重命名"))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "AITermXC", comment: "取消"))
 
         let field = NSTextField(frame: NSRect(x: 0, y: 0, width: 320, height: 24))
         field.stringValue = chat.title
@@ -719,12 +719,12 @@ extension ChatWindowController: ChatListViewControllerDelegate {
             }
         } catch {
             DLog("Failed to rename chat \(chatID): \(error)")
-            iTermWarning.show(withTitle: "The chat could not be renamed.",
-                              actions: ["OK"],
+            iTermWarning.show(withTitle: NSLocalizedString("The chat could not be renamed.", tableName: "AITermXC", comment: "无法重命名对话。"),
+                              actions: [NSLocalizedString("OK", tableName: "AITermXC", comment: "好")],
                               accessory: nil,
                               identifier: nil,
                               silenceable: .kiTermWarningTypePersistent,
-                              heading: "Rename Failed",
+                              heading: NSLocalizedString("Rename Failed", tableName: "AITermXC", comment: "重命名失败"),
                               window: window)
         }
     }
@@ -763,11 +763,13 @@ extension ChatWindowController: ChatViewControllerDelegate {
         let warning = iTermWarning()
         let count = uniqueChatIDs.count
         warning.title = count == 1
-            ? "Are you sure you want to delete this chat? This action cannot be undone."
-            : "Are you sure you want to delete \(count) chats? This action cannot be undone."
-        warning.heading = count == 1 ? "Delete Chat?" : "Delete \(count) Chats?"
+            ? NSLocalizedString("Are you sure you want to delete this chat? This action cannot be undone.", tableName: "AITermXC", comment: "确定要删除此对话吗？此操作无法撤销。")
+            : String(format: NSLocalizedString("Are you sure you want to delete %@ chats? This action cannot be undone.", tableName: "AITermXC", comment: "确定要删除 %@ 个对话吗？此操作无法撤销。"), "\(count)")
+        warning.heading = count == 1
+            ? NSLocalizedString("Delete Chat?", tableName: "AITermXC", comment: "删除对话？")
+            : String(format: NSLocalizedString("Delete %@ Chats?", tableName: "AITermXC", comment: "删除 %@ 个对话？"), "\(count)")
 
-        let action = iTermWarningAction(label: "Delete") { [weak self] _ in
+        let action = iTermWarningAction(label: NSLocalizedString("Delete", tableName: "AITermXC", comment: "删除")) { [weak self] _ in
             guard let self else {
                 return
             }
@@ -781,7 +783,7 @@ extension ChatWindowController: ChatViewControllerDelegate {
             completion?()
         }
         action.destructive = true
-        warning.warningActions = [ iTermWarningAction(label: "Cancel"), action ]
+        warning.warningActions = [ iTermWarningAction(label: NSLocalizedString("Cancel", tableName: "AITermXC", comment: "取消")), action ]
         warning.warningType = .kiTermWarningTypePersistent
         warning.runModal()
     }

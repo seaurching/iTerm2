@@ -1,0 +1,21 @@
+/* Clippings.strings - zh-Hant-TW */
+"Add" = "新增";
+"Cancel" = "取消";
+"Hide clippings" = "隱藏剪輯";
+"New Clipping" = "新增剪輯";
+"Preview (Space)" = "預覽（空白鍵）";
+"Viewing archived clippings (%d of %d)" = "檢視歸檔剪輯（第 %d 個，共 %d 個）";
+"Add clipping" = "加入剪輯";
+"Remove clipping" = "移除剪輯";
+"Archive clippings" = "封存剪輯";
+"Remove selected clipping" = "移除所選剪輯";
+"Archive all clippings" = "封存全部剪輯";
+"Send clipping" = "傳送剪輯";
+"Copy clipping" = "拷貝剪輯";
+"Send selected to terminal" = "將所選內容傳送到終端機";
+"Copy selected to pasteboard" = "將所選內容拷貝到剪貼簿";
+"Previous archived clippings" = "上一批封存剪輯";
+"Next archived clippings" = "下一批封存剪輯";
+"Show previous archived clippings" = "顯示上一批封存剪輯";
+"Show next archived clippings" = "顯示下一批封存剪輯";
+"Preview clipping" = "預覽剪輯";

@@ -46,7 +46,7 @@ static NSString *const iTermStatusBarActionKey = @"action";
 
 - (NSArray<iTermStatusBarComponentKnob *> *)statusBarComponentKnobs {
     iTermStatusBarComponentKnob *actionKnob =
-    [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Action"
+    [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Action", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for action")
                                                       type:iTermStatusBarComponentKnobTypeAction
                                                placeholder:nil
                                               defaultValue:nil
@@ -74,7 +74,7 @@ static NSString *const iTermStatusBarActionKey = @"action";
                                            sideEffectsAllowed:false
                                                      observer:^(NSString * _Nonnull newValue, NSError *error) {
         if (error != nil) {
-            [[iTermScriptHistoryEntry globalEntry] addOutput:[NSString stringWithFormat:@"Error while evaluating %@ in status bar action button: %@", expression, error]
+            [[iTermScriptHistoryEntry globalEntry] addOutput:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error while evaluating %@ in status bar action button: %@", @"StatusBar", [NSBundle bundleForClass:[iTermStatusBarActionComponent class]], @"Error log format for action button title evaluation"), expression, error]
                                                   completion:^{}];
             return [NSString stringWithFormat:@"🐞 %@", error.localizedDescription];
         }
@@ -84,7 +84,7 @@ static NSString *const iTermStatusBarActionKey = @"action";
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Custom Action";
+    return NSLocalizedStringFromTableInBundle(@"Custom Action", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status bar component short description");
 }
 
 - (BOOL)statusBarComponentCanStretch {
@@ -92,7 +92,7 @@ static NSString *const iTermStatusBarActionKey = @"action";
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Adds a button that performs a user-configurable action, similar to a key binding.";
+    return NSLocalizedStringFromTableInBundle(@"Adds a button that performs a user-configurable action, similar to a key binding.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status bar component detailed description");
 }
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
@@ -101,7 +101,7 @@ static NSString *const iTermStatusBarActionKey = @"action";
     if (dict.count) {
         return self.action.title;
     } else {
-        return @"Custom Action";
+        return NSLocalizedStringFromTableInBundle(@"Custom Action", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for custom action component");
     }
 }
 
@@ -145,16 +145,16 @@ static NSString *const iTermStatusBarActionKey = @"action";
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Actions Menu";
+    return NSLocalizedStringFromTableInBundle(@"Actions Menu", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status bar component short description");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"When clicked, opens a menu of actions. Actions are like custom key bindings, but without a keystroke attached.";
+    return NSLocalizedStringFromTableInBundle(@"When clicked, opens a menu of actions. Actions are like custom key bindings, but without a keystroke attached.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status bar component detailed description");
 }
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
                                           textColor:(NSColor *)textColor {
-    return @"Action…";
+    return NSLocalizedStringFromTableInBundle(@"Action…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for actions menu component");
 }
 
 - (BOOL)statusBarComponentCanStretch {
@@ -162,7 +162,7 @@ static NSString *const iTermStatusBarActionKey = @"action";
 }
 
 - (nullable NSString *)stringValue {
-    return @"Perform Action…";
+    return NSLocalizedStringFromTableInBundle(@"Perform Action…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"String value for actions menu button");
 }
 
 - (nullable NSString *)stringValueForCurrentWidth {
@@ -206,7 +206,7 @@ static NSString *const iTermStatusBarActionKey = @"action";
 
     [menu addItem:[NSMenuItem separatorItem]];
 
-    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"Edit Actions…" action:@selector(editActions:) keyEquivalent:@""];
+    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Edit Actions…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item title for editing actions") action:@selector(editActions:) keyEquivalent:@""];
     item.target = self;
     [menu addItem:item];
 

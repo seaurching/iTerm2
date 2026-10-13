@@ -376,8 +376,8 @@ workingDirectory:(NSString *)workingDirectory
     iTermBackgroundCommandRunner *runner =
         [[iTermBackgroundCommandRunner alloc] initWithCommand:command
                                                         shell:[self.delegate urlActionHelperShell:self]
-                                                        title:@"URL Handler"];
-    runner.notificationTitle = @"URL Handler Command Failed";
+                                                        title:NSLocalizedStringFromTableInBundle(@"URL Handler", @"SemanticHistory", [NSBundle bundleForClass:[self class]], @"Semantic history: URL handler command runner title")];
+    runner.notificationTitle = NSLocalizedStringFromTableInBundle(@"URL Handler Command Failed", @"SemanticHistory", [NSBundle bundleForClass:[self class]], @"Semantic history: URL handler failed notification");
     [runner run];
 }
 
@@ -516,9 +516,9 @@ workingDirectory:(NSString *)workingDirectory
 
 + (NSString *)usernameToDownloadFileOnHost:(NSString *)host {
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = [NSString stringWithFormat:@"Enter username for host %@ to download file with scp", host];
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Cancel"];
+    alert.messageText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Enter username for host %@ to download file with scp", @"SemanticHistory", [NSBundle bundleForClass:[self class]], @"Semantic history: enter scp username prompt"), host];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"SemanticHistory", [NSBundle bundleForClass:[self class]], @"Semantic history: scp username OK button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"SemanticHistory", [NSBundle bundleForClass:[self class]], @"Semantic history: scp username cancel button")];
 
     NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 200, 24)];
     [input setStringValue:NSUserName()];

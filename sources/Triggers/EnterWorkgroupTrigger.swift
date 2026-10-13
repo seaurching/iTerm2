@@ -16,11 +16,11 @@ import Foundation
 @objc(iTermEnterWorkgroupTrigger)
 class EnterWorkgroupTrigger: Trigger {
     override static var title: String {
-        return "Enter Workgroup…"
+        return NSLocalizedString("Enter Workgroup…", tableName: "Triggers", comment: "进入工作组触发器标题")
     }
 
     override var description: String {
-        return "Enter Workgroup “\(displayLabel(forID: effectiveID))”"
+        return String(format: NSLocalizedString("Enter Workgroup “%@”", tableName: "Triggers", comment: "进入工作组触发器描述"), displayLabel(forID: effectiveID))
     }
 
     override func takesParameter() -> Bool {
@@ -74,17 +74,17 @@ class EnterWorkgroupTrigger: Trigger {
     }
 
     private func displayLabel(forID id: String?) -> String {
-        guard let id, !id.isEmpty else { return "(unset)" }
+        guard let id, !id.isEmpty else { return NSLocalizedString("(unset)", tableName: "Triggers", comment: "工作组：未设置") }
         if let wg = availableWorkgroups.first(where: { $0.uniqueIdentifier == id }) {
-            return wg.name.isEmpty ? "Untitled" : wg.name
+            return wg.name.isEmpty ? NSLocalizedString("Untitled", tableName: "Triggers", comment: "工作组：无标题") : wg.name
         }
-        return "(missing)"
+        return NSLocalizedString("(missing)", tableName: "Triggers", comment: "工作组：缺失")
     }
 
     override func menuItemsForPoupupButton() -> [AnyHashable: Any]? {
         var dict: [AnyHashable: Any] = [:]
         for wg in availableWorkgroups {
-            let label = wg.name.isEmpty ? "Untitled" : wg.name
+            let label = wg.name.isEmpty ? NSLocalizedString("Untitled", tableName: "Triggers", comment: "工作组：无标题") : wg.name
             dict[wg.uniqueIdentifier] = label
         }
         return dict

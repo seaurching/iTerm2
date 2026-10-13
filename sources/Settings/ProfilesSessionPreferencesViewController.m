@@ -77,6 +77,7 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
     IBOutlet NSButton *_changeLogDir;
 
     IBOutlet NSButton *_archive;
+    IBOutlet NSButton *_archiveHelp;
     IBOutlet NSImageView *_archiveDirWarning;
     IBOutlet NSButton *_changeArchiveDir;
     IBOutlet NSTextField *_archiveDir;
@@ -102,6 +103,7 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
 
     IBOutlet NSButton *_defaultPaneLocked;
     IBOutlet NSButton *_bufferByDefault;
+    IBOutlet NSButton *_bufferHelp;
     IBOutlet NSTextField *_bufferWarning;
 
     iTermStatusBarSetupViewController *_statusBarSetupViewController;
@@ -145,6 +147,9 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
         return;
     }
     _awoken = YES;
+    [_archive it_fitBeforeHelpButton:_archiveHelp];
+    [_bufferByDefault it_fitBeforeHelpButton:_bufferHelp
+                               trailingViews:@[ _bufferWarning ]];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reloadProfiles)
                                                  name:kReloadAllProfiles
@@ -153,7 +158,7 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
     PreferenceInfo *info;
     info = [self defineControl:_onEndAction
                            key:KEY_SESSION_END_ACTION
-                   displayName:@"Close or restart session on end"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Close or restart session on end", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for session end action")
                           type:kPreferenceInfoTypePopup];
     info.customSettingChangedHandler = ^(id sender) {
         [weakSelf onEndSettingDidChange];
@@ -177,7 +182,7 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
 
     [self defineControl:_undoTimeout
                     key:KEY_UNDO_TIMEOUT
-            displayName:@"Undo close session timeout"
+            displayName:NSLocalizedStringFromTableInBundle(@"Undo close session timeout", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for undo close session timeout")
                    type:kPreferenceInfoTypeIntegerTextField];
 
     info = [self defineControl:_autoLog
@@ -218,7 +223,7 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
 
     [self defineControl:_loggingStyle
                     key:KEY_LOGGING_STYLE
-            displayName:@"Log plain text, igoring control sequences"
+            displayName:NSLocalizedStringFromTableInBundle(@"Log plain text, igoring control sequences", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for logging style")
                    type:kPreferenceInfoTypePopup];
 
     info = [self defineUnsearchableControl:_logDir
@@ -237,7 +242,7 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
 
     info = [self defineControl:_sendCodeWhenIdle
                            key:KEY_SEND_CODE_WHEN_IDLE
-                   displayName:@"Send ASCII code when idle?"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Send ASCII code when idle?", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for send code when idle checkbox")
                           type:kPreferenceInfoTypeCheckbox];
     info.customSettingChangedHandler = ^(id sender) {
         __strong __typeof(weakSelf) strongSelf = weakSelf;
@@ -257,10 +262,8 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
             // Host *
             //   ServerAliveInterval 60
             iTermWarningSelection selection =
-                [iTermWarning showWarningWithTitle:@"You probably don’t want to turn this on. "
-                                                   @"It's not suitable for keeping ssh sessions alive, "
-                                                   @"even with a code of “0”. Are you sure you want this?"
-                                           actions:@[ @"Enable Send Code", @"Cancel" ]
+                [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"You probably don’t want to turn this on. It’s not suitable for keeping ssh sessions alive, even with a code of “0”. Are you sure you want this?", @"Settings", [NSBundle bundleForClass:[self class]], @"Warning when enabling send code when idle")
+                                           actions:@[ NSLocalizedStringFromTableInBundle(@"Enable Send Code", @"Settings", [NSBundle bundleForClass:[self class]], @"Enable send code button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"Cancel button") ]
                                         identifier:kWarnAboutSendCodeWhenIdle
                                        silenceable:kiTermWarningTypePermanentlySilenceable
                                             window:weakSelf.view.window];
@@ -284,13 +287,13 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
 
     info = [self defineControl:_idleCode
                            key:KEY_IDLE_CODE
-                   displayName:@"Send character periodically while idle"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Send character periodically while idle", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for idle code field")
                           type:kPreferenceInfoTypeIntegerTextField];
     info.range = NSMakeRange(0, 256);
 
     [self defineControl:_idlePeriod
                     key:KEY_IDLE_PERIOD
-            displayName:@"Time between sending characters when idle"
+            displayName:NSLocalizedStringFromTableInBundle(@"Time between sending characters when idle", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for idle period field")
                    type:kPreferenceInfoTypeDoubleTextField];
 
     [self updateRemoveJobButtonEnabled];
@@ -352,7 +355,7 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
 
     _progressBarHeightInfo = [self defineControl:_progressBarHeight
                                               key:KEY_PROGRESS_BAR_HEIGHT
-                                      displayName:@"Progress bar height"
+                                      displayName:NSLocalizedStringFromTableInBundle(@"Progress bar height", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for progress bar height field")
                                              type:kPreferenceInfoTypeIntegerTextField];
     _progressBarHeightInfo.shouldBeEnabled = ^BOOL {
         return [weakSelf boolForKey:KEY_ENABLE_PROGRESS_BARS];
@@ -360,7 +363,7 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
     __weak NSView *heightView = _progressBarHeight;
     _progressBarHeightInfo.didClamp = ^(int oobValue) {
         if (oobValue > [iTermPreferences topBottomMargins]) {
-            [heightView it_showInformativeMessageWithMarkdown:@"The progress bar height cannot exceed the top margin’s height. You can adjust it in **Settings > Appearance > Panes > Top & Bottom Margins**."];
+            [heightView it_showInformativeMessageWithMarkdown:NSLocalizedStringFromTableInBundle(@"The progress bar height cannot exceed the top margin’s height. You can adjust it in **Settings > Appearance > Panes > Top & Bottom Margins**.", @"Settings", [NSBundle bundleForClass:[heightView class]], @"Warning that progress bar height exceeds top margin")];
         }
     };
     [_progressBarHeightInfo addShouldBeEnabledDependencyOnSetting:KEY_ENABLE_PROGRESS_BARS
@@ -371,7 +374,7 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
     [self populateProgressBarColorSchemes];
     info = [self defineControl:_progressBarColorScheme
                            key:KEY_PROGRESS_BAR_COLOR_SCHEME
-                   displayName:@"Progress bar color scheme"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Progress bar color scheme", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for progress bar color scheme popup")
                           type:kPreferenceInfoTypeStringPopup];
     info.shouldBeEnabled = ^BOOL {
         return [weakSelf boolForKey:KEY_ENABLE_PROGRESS_BARS];
@@ -440,7 +443,7 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
     };
     [self updateNonDefaultIndicatorVisibleForInfo:info];
     [self addViewToSearchIndex:_configureStatusBar
-                   displayName:@"Configure status bar"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Configure status bar", @"Settings", [NSBundle bundleForClass:[self class]], @"Display name for configure status bar button")
                        phrases:@[]
                            key:nil];
     [self commitControls];
@@ -460,15 +463,15 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
         iTermProgressBarColorSchemeOrange
     ];
     NSDictionary<NSString *, NSString *> *titles = @{
-        iTermProgressBarColorSchemeDefault: @"Default",
-        iTermProgressBarColorSchemeRainbow: @"Rainbow",
-        iTermProgressBarColorSchemeRed: @"Red",
-        iTermProgressBarColorSchemeGreen: @"Green",
-        iTermProgressBarColorSchemeBlue: @"Blue",
-        iTermProgressBarColorSchemeYellow: @"Yellow",
-        iTermProgressBarColorSchemePurple: @"Purple",
-        iTermProgressBarColorSchemeCyan: @"Cyan",
-        iTermProgressBarColorSchemeOrange: @"Orange"
+        iTermProgressBarColorSchemeDefault: NSLocalizedStringFromTableInBundle(@"Default", @"Settings", [NSBundle bundleForClass:[self class]], @"Default progress bar color scheme title"),
+        iTermProgressBarColorSchemeRainbow: NSLocalizedStringFromTableInBundle(@"Rainbow", @"Settings", [NSBundle bundleForClass:[self class]], @"Rainbow progress bar color scheme title"),
+        iTermProgressBarColorSchemeRed: NSLocalizedStringFromTableInBundle(@"Red", @"Settings", [NSBundle bundleForClass:[self class]], @"Red progress bar color scheme title"),
+        iTermProgressBarColorSchemeGreen: NSLocalizedStringFromTableInBundle(@"Green", @"Settings", [NSBundle bundleForClass:[self class]], @"Green progress bar color scheme title"),
+        iTermProgressBarColorSchemeBlue: NSLocalizedStringFromTableInBundle(@"Blue", @"Settings", [NSBundle bundleForClass:[self class]], @"Blue progress bar color scheme title"),
+        iTermProgressBarColorSchemeYellow: NSLocalizedStringFromTableInBundle(@"Yellow", @"Settings", [NSBundle bundleForClass:[self class]], @"Yellow progress bar color scheme title"),
+        iTermProgressBarColorSchemePurple: NSLocalizedStringFromTableInBundle(@"Purple", @"Settings", [NSBundle bundleForClass:[self class]], @"Purple progress bar color scheme title"),
+        iTermProgressBarColorSchemeCyan: NSLocalizedStringFromTableInBundle(@"Cyan", @"Settings", [NSBundle bundleForClass:[self class]], @"Cyan progress bar color scheme title"),
+        iTermProgressBarColorSchemeOrange: NSLocalizedStringFromTableInBundle(@"Orange", @"Settings", [NSBundle bundleForClass:[self class]], @"Orange progress bar color scheme title")
     };
     for (NSString *scheme in schemes) {
         NSString *title = titles[scheme];
@@ -705,9 +708,9 @@ static NSString *const ProfilesSessionPreferencesViewControllerPhonyShortLivedSe
     NSMutableArray *augmented;
     if (jobNames) {
         augmented = [NSMutableArray arrayWithArray:jobNames];
-        [augmented addObject:@"Job Name"];
+        [augmented addObject:NSLocalizedStringFromTableInBundle(@"Job Name", @"Settings", [NSBundle bundleForClass:[self class]], @"Default name for a new job")];
     } else {
-        augmented = [NSMutableArray arrayWithObject:@"Job Name"];
+        augmented = [NSMutableArray arrayWithObject:NSLocalizedStringFromTableInBundle(@"Job Name", @"Settings", [NSBundle bundleForClass:[self class]], @"Default name for a new job")];
     }
     [self setObject:augmented forKey:KEY_JOBS];
     [_jobsTable reloadData];

@@ -13,11 +13,11 @@
 
 + (NSString *)title
 {
-    return @"Send Text…";
+    return NSLocalizedStringFromTableInBundle(@"Send Text…", @"Triggers", [NSBundle bundleForClass:[self class]], @"发送文本触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Send text “%@”", self.param];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Send text “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"发送文本触发器描述"), self.param];
 }
 
 - (BOOL)takesParameter
@@ -26,7 +26,7 @@
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-    return @"Enter text to send";
+    return NSLocalizedStringFromTableInBundle(@"Enter text to send", @"Triggers", [NSBundle bundleForClass:[self class]], @"占位符：输入要发送的文本");
 }
 
 // Requires a live session to send text to

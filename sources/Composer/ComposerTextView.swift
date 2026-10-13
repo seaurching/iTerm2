@@ -39,7 +39,7 @@ class ComposerTextView: MultiCursorTextView {
     @IBOutlet weak var composerDelegate: ComposerTextViewDelegate?
     @objc private(set) var isSettingSuggestion = false
     @objc private(set) var isDoingSyntaxHighlighting = false
-    private let syntaxHighlightingRateLimit = iTermRateLimitedUpdate(name: "Syntax Highlighting Rate Limit",
+    private let syntaxHighlightingRateLimit = iTermRateLimitedUpdate(name: NSLocalizedString("Syntax Highlighting Rate Limit", tableName: "Composer", bundle: Bundle(for: ComposerTextView.self), comment: "Rate limiter name for syntax highlighting"),
                                                                      minimumInterval: 0.05)
 
     // autoMode will be true for auto-composer, in which case it tries to blend in to the terminal

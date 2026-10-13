@@ -8,11 +8,11 @@
 @objc
 class ReaderModeBrowserTrigger: Trigger {
     override var description: String {
-        return "Enter Reader Mode"
+        return NSLocalizedString("Enter Reader Mode", tableName: "Triggers", comment: "进入阅读模式触发器")
     }
 
     override static var title: String {
-        return "Enter Reader Mode"
+        return NSLocalizedString("Enter Reader Mode", tableName: "Triggers", comment: "进入阅读模式触发器")
     }
 
     override func takesParameter() -> Bool {

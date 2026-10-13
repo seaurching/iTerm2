@@ -196,21 +196,56 @@ static const CGFloat kSponsorRowY = 170.0;
     if (self) {
         NSDictionary *myDict = [[NSBundle bundleForClass:[self class]] infoDictionary];
         NSString *const versionNumber = myDict[(NSString *)kCFBundleVersionKey];
-        NSString *versionString = [NSString stringWithFormat: @"Build %@\n\n", versionNumber];
+        NSString *versionString = [
+            NSString stringWithFormat:
+                NSLocalizedStringFromTableInBundle(
+                                                   @"Build %@\n\n",
+                                                   @"iTermAboutWindowController",
+                                                   [NSBundle bundleForClass:[self class]],
+                                                   @"版本号显示"
+                                                   ), versionNumber
+        ];
         NSAttributedString *whatsNew = nil;
         if ([versionNumber hasPrefix:@"3.7."] || [versionString isEqualToString:@"unknown"]) {
-            whatsNew = [self attributedStringWithLinkToURL:iTermAboutWindowControllerWhatsNewURLString
-                                                     title:@"What’s New in 3.7?\n"];
+            whatsNew = [
+                self attributedStringWithLinkToURL:
+                    iTermAboutWindowControllerWhatsNewURLString
+                    title:NSLocalizedStringFromTableInBundle(
+                        @"What’s New in 3.7?\n",
+                        @"iTermAboutWindowController",
+                        [NSBundle bundleForClass:[self class]],
+                        @"3.7版本新功能链接"
+                    )
+            ];
         }
 
-        NSAttributedString *webAString = [self attributedStringWithLinkToURL:@"https://iterm2.com/"
-                                                                       title:@"Home Page"];
-        NSAttributedString *bugsAString =
-                [self attributedStringWithLinkToURL:@"https://iterm2.com/bugs"
-                                              title:@"Report a bug"];
-        NSAttributedString *creditsAString =
-                [self attributedStringWithLinkToURL:@"https://iterm2.com/credits"
-                                              title:@"Credits"];
+        NSAttributedString *webAString = [
+            self attributedStringWithLinkToURL:@"https://iterm2.com/"
+            title:NSLocalizedStringFromTableInBundle(
+                @"Home Page",
+                @"iTermAboutWindowController",
+                [NSBundle bundleForClass:[self class]],
+                @"主页链接"
+            )
+        ];
+        NSAttributedString *bugsAString = [
+            self attributedStringWithLinkToURL:@"https://iterm2.com/bugs"
+            title:NSLocalizedStringFromTableInBundle(
+                @"Report a bug",
+                @"iTermAboutWindowController",
+                [NSBundle bundleForClass:[self class]],
+                @"报告问题链接"
+            )
+        ];
+        NSAttributedString *creditsAString = [
+            self attributedStringWithLinkToURL:@"https://iterm2.com/credits"
+            title:NSLocalizedStringFromTableInBundle(
+                @"Credits",
+                @"iTermAboutWindowController",
+                [NSBundle bundleForClass:[self class]],
+                @"致谢链接"
+            )
+        ];
 
         // Force IBOutlets to be bound by creating window.
         [self window];
@@ -284,7 +319,15 @@ static const CGFloat kSponsorRowY = 170.0;
 }
 
 - (NSAttributedString *)defaultPatronsString {
-    NSString *string = [NSString stringWithFormat:@"Loading supporters…"];
+    NSString *string = [
+        NSString stringWithFormat:
+            NSLocalizedStringFromTableInBundle(
+                @"Loading supporters…",
+                @"iTermAboutWindowController",
+                [NSBundle bundleForClass:[self class]],
+                @"正在加载支持者"
+            )
+    ];
     NSMutableAttributedString *attributedString =
         [[NSMutableAttributedString alloc] initWithString:string
                                                attributes:self.attributes];
@@ -303,9 +346,19 @@ static const CGFloat kSponsorRowY = 170.0;
 
 - (void)setPatrons:(NSArray *)patronNames {
     if (!patronNames.count) {
-        [self setPatronsString:[[NSAttributedString alloc] initWithString:@"Error loading patrons :("
-                                                                attributes:[self attributes]]
-                       animate:NO];
+        [
+            self setPatronsString:[
+                [NSAttributedString alloc] initWithString:
+                    NSLocalizedStringFromTableInBundle(
+                        @"Error loading patrons :(",
+                        @"iTermAboutWindowController",
+                        [NSBundle bundleForClass:[self class]],
+                        @"加载支持者失败"
+                    )
+                attributes:[self attributes]
+            ]
+            animate:NO
+        ];
         return;
     }
 

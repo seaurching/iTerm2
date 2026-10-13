@@ -130,7 +130,7 @@
 }
 
 - (NSString *)displayName {
-    return @"Buried Sessions";
+    return NSLocalizedStringFromTableInBundle(@"Buried Sessions", @"APIFiles", [NSBundle bundleForClass:[self class]], @"隐藏的会话");
 }
 
 - (iTermVariableScope *)scope {

@@ -44,7 +44,7 @@ class iTermBrowserHistoryViewHandler: NSObject, iTermBrowserPageHandler {
         let htmlToServe = generateHistoryHTML()
         
         guard let data = htmlToServe.data(using: .utf8) else {
-            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserHistoryViewHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to encode HTML"]))
+            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserHistoryViewHandler", code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Failed to encode HTML", tableName: "Browser", comment: "编码 HTML 失败")]))
             return
         }
         

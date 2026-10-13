@@ -14,15 +14,15 @@ private class DonateView: NSView {
 @objc(iTermDonateViewController)
 class DonateViewController: NSTitlebarAccessoryViewController {
     private static func textString() -> String {
-        return ["Donate",
-                "Support iTerm2",
-                "iTerm2 is one person’s project. Donate now!",
-                "Keep iTerm2 alive — Donate today!",
-                "Love using iTerm2? Help keep it thriving!",
-                "iTerm2 needs your support – Donate here.",
-                "Help iTerm2 grow – Consider donating.",
-                "Keep the iTerm2 dream alive – Donate!",
-                "Support the creator of iTerm2 – Donate now!",
+        return [NSLocalizedString("Donate", tableName: "Settings", bundle: Bundle(for: DonateViewController.self), comment: ""),
+                NSLocalizedString("Support iTerm2", tableName: "Settings", bundle: Bundle(for: DonateViewController.self), comment: ""),
+                NSLocalizedString("iTerm2 is one person’s project. Donate now!", tableName: "Settings", bundle: Bundle(for: DonateViewController.self), comment: ""),
+                NSLocalizedString("Keep iTerm2 alive — Donate today!", tableName: "Settings", bundle: Bundle(for: DonateViewController.self), comment: ""),
+                NSLocalizedString("Love using iTerm2? Help keep it thriving!", tableName: "Settings", bundle: Bundle(for: DonateViewController.self), comment: ""),
+                NSLocalizedString("iTerm2 needs your support – Donate here.", tableName: "Settings", bundle: Bundle(for: DonateViewController.self), comment: ""),
+                NSLocalizedString("Help iTerm2 grow – Consider donating.", tableName: "Settings", bundle: Bundle(for: DonateViewController.self), comment: ""),
+                NSLocalizedString("Keep the iTerm2 dream alive – Donate!", tableName: "Settings", bundle: Bundle(for: DonateViewController.self), comment: ""),
+                NSLocalizedString("Support the creator of iTerm2 – Donate now!", tableName: "Settings", bundle: Bundle(for: DonateViewController.self), comment: ""),
         ].randomElement()!
     }
 

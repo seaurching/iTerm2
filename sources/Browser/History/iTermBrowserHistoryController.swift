@@ -44,7 +44,7 @@ class iTermBrowserHistoryController {
                 URLSuggestion(
                     url: displayUrl,
                     displayText: NSAttributedString(string: displayUrl, attributes: attributes),
-                    detail: "Visited \(visit.visitCount) time\(visit.visitCount == 1 ? "" : "s")",
+                    detail: String(format: NSLocalizedString("Visited %d time(s)", tableName: "Browser", comment: "访问 %d 次"), visit.visitCount),
                     type: .history)
             }
 

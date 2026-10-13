@@ -257,7 +257,7 @@ final class ChatMentionPickerController: NSObject, NSOutlineViewDataSource, NSOu
                 }
             }
             if !tabNodes.isEmpty {
-                let base = (term.window?.title.isEmpty == false) ? term.window!.title : "Window \(term.number + 1)"
+                let base = (term.window?.title.isEmpty == false) ? term.window!.title : String(format: NSLocalizedString("Window %@", tableName: "AITermXC", comment: "窗口 %@"), NSNumber(value: term.number + 1))
                 let shortcut = windowShortcut(number: Int(term.number), glyphs: windowGlyphs)
                 windowNodes.append(Node(kind: .window,
                                         title: appendShortcut(base, shortcut),
@@ -333,7 +333,7 @@ final class ChatMentionPickerController: NSObject, NSOutlineViewDataSource, NSOu
                     // workgroup, not any one peer.
                     let groupTitle = ChatMentionDisplay.context(for: session)?.workgroup ?? session.name
                     result.append(Node(kind: .tab,
-                                       title: groupTitle.isEmpty ? "Workgroup" : groupTitle,
+                                       title: groupTitle.isEmpty ? NSLocalizedString("Workgroup", tableName: "AITermXC", comment: "工作组") : groupTitle,
                                        session: nil,
                                        children: peerNodes))
                 }
@@ -435,9 +435,9 @@ final class ChatMentionPickerController: NSObject, NSOutlineViewDataSource, NSOu
         guard let tab = session.delegate as? PTYTab else { return "" }
         let windowTitle = tab.realParentWindow()?.window?.title ?? ""
         if windowTitle.isEmpty {
-            return "Tab \(tab.objectCount)"
+            return String(format: NSLocalizedString("Tab %@", tableName: "AITermXC", comment: "标签页 %@"), NSNumber(value: tab.objectCount))
         }
-        return "Tab \(tab.objectCount) · \(windowTitle)"
+        return String(format: NSLocalizedString("Tab %@ · %@", tableName: "AITermXC", comment: "标签页 %@ · %@"), NSNumber(value: tab.objectCount), windowTitle)
     }
 
     // MARK: - Actions
@@ -520,7 +520,7 @@ private final class MentionCellView: NSTableCellView {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) has not been implemented")
+        it_fatalError(NSLocalizedString("init(coder:) has not been implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 }
 

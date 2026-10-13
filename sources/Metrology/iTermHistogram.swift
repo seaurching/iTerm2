@@ -9,14 +9,14 @@ extension iTermHistogram {
     @objc
     static var tabularFormatterTime: TabularFormatter {
         let formatter = TabularFormatter()
-        formatter.defineColumn(label: "Min Time", leftAligned: false)
-        formatter.defineColumn(label: "Distribution", leftAligned: true)
-        formatter.defineColumn(label: "Max Time", leftAligned: false)
-        formatter.defineColumn(label: "# Samples", leftAligned: false)
-        formatter.defineColumn(label: "Mean Time", leftAligned: false)
+        formatter.defineColumn(label: NSLocalizedString("Min Time", tableName: "Metrology", comment: "Metrology: min time column"), leftAligned: false)
+        formatter.defineColumn(label: NSLocalizedString("Distribution", tableName: "Metrology", comment: "Metrology: distribution column"), leftAligned: true)
+        formatter.defineColumn(label: NSLocalizedString("Max Time", tableName: "Metrology", comment: "Metrology: max time column"), leftAligned: false)
+        formatter.defineColumn(label: NSLocalizedString("# Samples", tableName: "Metrology", comment: "Metrology: samples column"), leftAligned: false)
+        formatter.defineColumn(label: NSLocalizedString("Mean Time", tableName: "Metrology", comment: "Metrology: mean time column"), leftAligned: false)
         formatter.defineColumn(label: "P50", leftAligned: false)
         formatter.defineColumn(label: "P95", leftAligned: false)
-        formatter.defineColumn(label: "Total Time", leftAligned: false)
+        formatter.defineColumn(label: NSLocalizedString("Total Time", tableName: "Metrology", comment: "Metrology: total time column"), leftAligned: false)
         formatter.defineColumn(label: "", leftAligned: true)
         return formatter
     }

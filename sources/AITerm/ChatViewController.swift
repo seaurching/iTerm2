@@ -214,7 +214,7 @@ class ChatViewController: NSViewController {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) has not been implemented")
+        it_fatalError(NSLocalizedString("init(coder:) has not been implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     deinit {
@@ -835,7 +835,7 @@ extension ChatViewController {
             updateInlineToolbarTitle()
         } else {
             // Fallback for compatibility
-            view.window?.title = chat?.title ?? "AI Chat"
+            view.window?.title = chat?.title ?? NSLocalizedString("AI Chat", tableName: "AITermXC", comment: "AI 对话")
         }
         tableView.reloadData()
         brokerSubscription?.unsubscribe()
@@ -1088,11 +1088,13 @@ extension ChatViewController {
         if newPermission == .always,
            let autopopulationWarningText = category.autopopulationWarningText {
             let sel = iTermWarning.show(withTitle: autopopulationWarningText,
-                                        actions: ["Send Automatically", "Ask Each Time", "Never Allow"],
+                                        actions: [NSLocalizedString("Send Automatically", tableName: "AITermXC", comment: "自动发送"),
+                                                  NSLocalizedString("Ask Each Time", tableName: "AITermXC", comment: "每次询问"),
+                                                  NSLocalizedString("Never Allow", tableName: "AITermXC", comment: "从不允许")],
                                         accessory: nil,
                                         identifier: nil,
                                         silenceable: .kiTermWarningTypePersistent,
-                                        heading: "Confirm Change",
+                                        heading: NSLocalizedString("Confirm Change", tableName: "AITermXC", comment: "确认更改"),
                                         window: view.window)
             switch sel {
             case .kiTermWarningSelection0:
@@ -1153,7 +1155,7 @@ extension ChatViewController {
             completion(nil)
             return
         }
-        pickSessionPromise = SessionSelector.select(terminal: terminal, reason: "Link this session to AI chat?")
+        pickSessionPromise = SessionSelector.select(terminal: terminal, reason: NSLocalizedString("Link this session to AI chat?", tableName: "AITermXC", comment: "将此会话链接到 AI 对话？"))
         let waitingMessage = Message(chatID: chatID,
                                      author: .agent,
                                      content: .clientLocal(ClientLocal(action: .pickingSession)),
@@ -1207,7 +1209,9 @@ extension ChatViewController {
         }
         try client.publishNotice(
             chatID: chatID,
-            notice: "This chat has been linked to \(terminal ? "terminal" : "web browser") session “\(name?.escapedForMarkdownCode ?? "(Unnamed session)")”")
+            notice: terminal
+                ? String(format: NSLocalizedString("This chat has been linked to terminal session \u{201c}%@\u{201d}", tableName: "AITermXC", comment: "此对话已链接到终端会话"), name?.escapedForMarkdownCode ?? NSLocalizedString("(Unnamed session)", tableName: "AITermXC", comment: "(未命名会话)"))
+                : String(format: NSLocalizedString("This chat has been linked to web browser session \u{201c}%@\u{201d}", tableName: "AITermXC", comment: "此对话已链接到 Web 浏览器会话"), name?.escapedForMarkdownCode ?? NSLocalizedString("(Unnamed session)", tableName: "AITermXC", comment: "(未命名会话)")))
         try? client.publishClientLocalMessage(
             chatID: chatID,
             action: .permissions(terminal: terminal, guid: guid))
@@ -1250,12 +1254,18 @@ extension ChatViewController {
             stopStreaming()
             return
         }
-        let selection = iTermWarning.show(withTitle: "All terminal content will be sent to AI, which may go to a third party. Ensure this is safe to do before proceeding.",
-                                          actions: ["OK", "Cancel"],
+        let selection = iTermWarning.show(withTitle:
+            NSLocalizedString("All terminal content will be sent to AI, which may go to a third party. Ensure this is safe to do before proceeding.",
+                              tableName:"AITermXC",
+                              comment:"隐私警告"),
+                            actions: [
+                                NSLocalizedString("OK", tableName: "AITermXC", comment: "好"),
+                                NSLocalizedString("Cancel", tableName: "AITermXC", comment: "取消")
+                            ],
                                           accessory: nil,
                                           identifier: nil,
                                           silenceable: .kiTermWarningTypePersistent,
-                                          heading: "Privacy Warning",
+                                          heading: NSLocalizedString("Privacy Warning", tableName: "AITermXC", comment: "隐私警告"),
                                           window: nil)
         if selection == .kiTermWarningSelection0 {
             streaming = true
@@ -1267,7 +1277,7 @@ extension ChatViewController {
     }
 
     @objc private func showLinkedSessionHelp(_ sender: Any) {
-        chatToolbar.sessionButton.it_showWarning(withMarkdown: "When a terminal session is linked to this chat, the AI may view terminal contents and run commands in that session. You will be prompted to grant permission before it is able to view, type to, or modify a terminal session.")
+        chatToolbar.sessionButton.it_showWarning(withMarkdown: NSLocalizedString("When a terminal session is linked to this chat, the AI may view terminal contents and run commands in that session. You will be prompted to grant permission before it is able to view, type to, or modify a terminal session.", tableName: "AITermXC", comment: "当终端会话链接到此对话时，AI 可以查看终端内容并在该会话中运行命令。在它能够查看、输入或修改终端会话之前，你会被提示授予权限。"))
     }
 
     @objc private func deleteChat(_ sender: Any) {
@@ -1322,7 +1332,7 @@ extension ChatViewController {
                 OrchestratorClient.instance?.cancelWatchers(forChatID: chatID)
                 try? client.publishNotice(
                     chatID: chatID,
-                    notice: "This chat is no longer linked to a terminal session.")
+                    notice: NSLocalizedString("This chat is no longer linked to a terminal session.", tableName: "AITermXC", comment: "此对话不再链接到终端会话。"))
                 try publishUpdatedPermissions()
             } catch {
                 DLog("\(error)")
@@ -1336,7 +1346,7 @@ extension ChatViewController {
                 try listModel.setBrowserGuid(for: chatID, to: nil)
                 try? client.publishNotice(
                     chatID: chatID,
-                    notice: "This chat is no longer linked to a web browser session.")
+                    notice: NSLocalizedString("This chat is no longer linked to a web browser session.", tableName: "AITermXC", comment: "此对话不再链接到 Web 浏览器会话。"))
                 try publishUpdatedPermissions()
             } catch {
                 DLog("\(error)")
@@ -1434,9 +1444,9 @@ extension ChatViewController: NSTableViewDataSource, NSTableViewDelegate {
                 return cell
 
             case .userCommand:
-                it_fatalError("User messages should not be in model")
+                it_fatalError(NSLocalizedString("User messages should not be in model", tableName: "AITermXC", comment: "用户消息不应在模型中"))
             case .append, .appendAttachment:
-                it_fatalError("Append-type messages should not be in model")
+                it_fatalError(NSLocalizedString("Append-type messages should not be in model", tableName: "AITermXC", comment: "追加类型的消息不应在模型中"))
 
             case .plainText, .markdown, .explanationRequest, .explanationResponse,
                     .remoteCommandRequest, .remoteCommandResponse, .selectSessionRequest,
@@ -1670,8 +1680,8 @@ extension ChatViewController: NSTableViewDataSource, NSTableViewDelegate {
                         try? self.client.respondSuccessfullyToRemoteCommandRequest(
                             inChat: chatID,
                             requestUUID: originalMessage.uniqueID,
-                            message: "The user declined to allow this function call to execute.",
-                            functionCallName: originalMessage.functionCallName ?? "Unknown function call name",
+                            message: NSLocalizedString("The user declined to allow this function call to execute.", tableName: "AITermXC", comment: "用户拒绝允许此函数调用执行。"),
+                            functionCallName: originalMessage.functionCallName ?? NSLocalizedString("Unknown function call name", tableName: "AITermXC", comment: "未知的函数调用名称"),
                             functionCallID: originalMessage.functionCallID,
                             userNotice: nil)
                     }
@@ -1692,8 +1702,8 @@ extension ChatViewController: NSTableViewDataSource, NSTableViewDelegate {
                             try? self.client.respondSuccessfullyToRemoteCommandRequest(
                                 inChat: chatID,
                                 requestUUID: originalMessage.uniqueID,
-                                message: "The user declined to allow this function call to execute.",
-                                functionCallName: originalMessage.functionCallName ?? "Unknown function call name",
+                                message: NSLocalizedString("The user declined to allow this function call to execute.", tableName: "AITermXC", comment: "用户拒绝允许此函数调用执行。"),
+                                functionCallName: originalMessage.functionCallName ?? NSLocalizedString("Unknown function call name", tableName: "AITermXC", comment: "未知的函数调用名称"),
                                 functionCallID: originalMessage.functionCallID,
                                 userNotice: nil)
                         }
@@ -1708,7 +1718,7 @@ extension ChatViewController: NSTableViewDataSource, NSTableViewDelegate {
                 cell.buttonClicked = nil
                 return
             }
-            let functionCallName = remoteCommand.llmMessage.function_call?.name ?? "Unknown function call name"
+            let functionCallName = remoteCommand.llmMessage.function_call?.name ?? NSLocalizedString("Unknown function call name", tableName: "AITermXC", comment: "未知的函数调用名称")
             let functionCallID = remoteCommand.llmMessage.functionCallID
             cell.buttonClicked = { [client, listModel] identifier, messageID in
                 guard messageID == originalMessageID else {
@@ -1725,14 +1735,20 @@ extension ChatViewController: NSTableViewDataSource, NSTableViewDelegate {
                 }
                 guard let guid,
                       let session = iTermController.sharedInstance().anySession(forReference: guid) else {
-                    try? client.publishNotice(chatID: chatID, notice: "This chat is not linked to any \(browser ? "web browser" : "terminal") session.")
+                    try? client.publishNotice(chatID: chatID, notice: browser
+                        ? NSLocalizedString("This chat is not linked to any web browser session.", tableName: "AITermXC", comment: "此对话未链接到任何 Web 浏览器会话。")
+                        : NSLocalizedString("This chat is not linked to any terminal session.", tableName: "AITermXC", comment: "此对话未链接到任何终端会话。"))
                     try? client.respondSuccessfullyToRemoteCommandRequest(
                         inChat: chatID,
                         requestUUID: messageID,
-                        message: "The user did not link a \(browser ? "web browser" : "terminal") session to chat, so the function could not be run.",
+                        message: browser
+                            ? NSLocalizedString("The user did not link a web browser session to chat, so the function could not be run.", tableName: "AITermXC", comment: "用户未将 Web 浏览器会话链接到对话，因此无法运行该功能。")
+                            : NSLocalizedString("The user did not link a terminal session to chat, so the function could not be run.", tableName: "AITermXC", comment: "用户未将终端会话链接到对话，因此无法运行该功能。"),
                         functionCallName: functionCallName,
                         functionCallID: functionCallID,
-                        userNotice: "AI attempted to perform an action, but no \(browser ? "web browser" : "terminal") session is linked to this chat so it failed.")
+                        userNotice: browser
+                            ? NSLocalizedString("AI attempted to perform an action, but no web browser session is linked to this chat so it failed.", tableName: "AITermXC", comment: "AI 尝试执行操作，但此对话未链接到 Web 浏览器会话，因此操作失败。")
+                            : NSLocalizedString("AI attempted to perform an action, but no terminal session is linked to this chat so it failed.", tableName: "AITermXC", comment: "AI 尝试执行操作，但此对话未链接到终端会话，因此操作失败。"))
                     return
                 }
                 let allowed: Bool
@@ -1774,7 +1790,7 @@ extension ChatViewController: NSTableViewDataSource, NSTableViewDelegate {
                     try? self.client.respondSuccessfullyToRemoteCommandRequest(
                         inChat: chatID,
                         requestUUID: messageID,
-                        message: "The user declined to allow function calling. Try to find another way to assist.",
+                        message: NSLocalizedString("The user declined to allow function calling. Try to find another way to assist.", tableName: "AITermXC", comment: "用户拒绝允许函数调用。请尝试其他方式提供帮助。"),
                         functionCallName: functionCallName,
                         functionCallID: functionCallID,
                         userNotice: nil)
@@ -2417,7 +2433,7 @@ extension Message.Content {
                 .paragraphStyle: paragraphStyle,
                 .font: NSFont.systemFont(ofSize: NSFont.systemFontSize)
             ]
-            return NSAttributedString(string: "A vector store was created", attributes: attributes)
+            return NSAttributedString(string: NSLocalizedString("A vector store was created", tableName: "AITermXC", comment: ""), attributes: attributes)
         case .watcherEvent(let payload):
             // Render with the system-message styling so the user
             // sees it's not their own message. Symbol prefix marks
@@ -2426,7 +2442,7 @@ extension Message.Content {
         case .unsupported:
             // A message a newer iTerm2 sent that this build can't decode.
             return AttributedStringForSystemMessageMarkdown(
-                "This message requires a newer version of iTerm2 to view.") {}
+                NSLocalizedString("This message requires a newer version of iTerm2 to view.", tableName: "AITermXC", comment: "查看此消息需要更新版本的 iTerm2。")) {}
         case .plainText(let string, context: _):
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineBreakMode = .byWordWrapping
@@ -2463,12 +2479,12 @@ extension Message.Content {
         case .explanationRequest(request: let request):
             let string =
             if let url = request.url {
-                "Explain the output of \(request.subjectMatter) based on [attached terminal content](\(url))."
+                String(format: NSLocalizedString("Explain the output of %@ based on [attached terminal content](%@).", tableName: "AITermXC", comment: "解释 %@ 的输出"), request.subjectMatter, url.absoluteString)
             } else {
-                "Explain the output of \(request.subjectMatter) based on some no-longer-available content."
+                String(format: NSLocalizedString("Explain the output of %@ based on some no-longer-available content.", tableName: "AITermXC", comment: "解释 %@ 的输出"), request.subjectMatter)
             }
             let epilogue = if request.truncated {
-                "\n*Note: The command output was truncated because it exceeded the maximum number of lines supported by AI Chat*"
+                "\n" + NSLocalizedString("*Note: The command output was truncated because it exceeded the maximum number of lines supported by AI Chat*", tableName: "AITermXC", comment: "*注意：命令输出因超出 AI 对话支持的最大行数而被截断*")
             } else {
                 ""
             }
@@ -2480,12 +2496,12 @@ extension Message.Content {
             case .classic(let request):
                 let specific = request.permissionDescription + "."
                 let warning = if safe == false {
-                    "⚠️ **The AI safety check flagged this command as potentially dangerous. Review it with care.**\n\n"
+                    NSLocalizedString("⚠️ **The AI safety check flagged this command as potentially dangerous. Review it with care.**\n\n", tableName: "AITermXC", comment: "")
                 } else {
                     ""
                 }
-                let general =  "Would you like to grant AI **\(request.content.permissionCategory.rawValue)** permission?"
-                let info = "*If you grant or deny permission, it affects only this chat conversation while linked to this particular terminal session. You can change permissions in the chat Info menu.*"
+                let general = String(format: NSLocalizedString("Would you like to grant AI **%@** permission?", tableName: "AITermXC", comment: ""), request.content.permissionCategory.displayName)
+                let info = NSLocalizedString("*If you grant or deny permission, it affects only this chat conversation while linked to this particular terminal session. You can change permissions in the chat Info menu.*", tableName: "AITermXC", comment: "")
                 return AttributedStringForGPTMarkdown(warning + specific + " " + general + "\n\n" + info,
                                                       linkColor: linkColor,
                                                       textColor: textColor) {}
@@ -2513,7 +2529,7 @@ extension Message.Content {
         case .clientLocal(let clientLocal):
             switch clientLocal.action {
             case .pickingSession:
-                return AttributedStringForSystemMessageMarkdown("Waiting for a session to be selected…") { }
+                return AttributedStringForSystemMessageMarkdown(NSLocalizedString("Waiting for a session to be selected…", tableName: "AITermXC", comment: "等待选择会话…")) { }
             case .executingCommand(let command):
                 return AttributedStringForSystemMessageMarkdown(command.markdownDescription) { }
             case .notice(let message):
@@ -2521,35 +2537,31 @@ extension Message.Content {
             case .streamingChanged(let state):
                 return switch state {
                 case .stopped:
-                    AttributedStringForSystemMessageMarkdown("Terminal commands will no longer be sent to AI automatically.") {}
+                    AttributedStringForSystemMessageMarkdown(NSLocalizedString("Terminal commands will no longer be sent to AI automatically.", tableName: "AITermXC", comment: "终端命令将不再自动发送给 AI。")) {}
                 case .active:
-                    AttributedStringForSystemMessageMarkdown("All terminal commands in the linked session will be sent to AI automatically.") {}
+                    AttributedStringForSystemMessageMarkdown(NSLocalizedString("All terminal commands in the linked session will be sent to AI automatically.", tableName: "AITermXC", comment: "链接会话中的所有终端命令将自动发送给 AI。")) {}
                 case .stoppedAutomatically:
-                    AttributedStringForSystemMessageMarkdown("Terminal commands will no longer be sent to AI automatically. Automatic sending always terminates when iTerm2 restarts or the current chat changes.") {}
+                    AttributedStringForSystemMessageMarkdown(NSLocalizedString("Terminal commands will no longer be sent to AI automatically. Automatic sending always terminates when iTerm2 restarts or the current chat changes.", tableName: "AITermXC", comment: "终端命令将不再自动发送给 AI。自动发送会在 iTerm2 重启或当前对话更改时终止。")) {}
                 }
             case let .offerLink(terminal: terminal, guid: _, name: name):
-                let displayName = name ?? "Unnamed session"
-                let kind = terminal ? "terminal" : "browser"
-                let body = "**Link this chat to \(kind) session \u{201C}\(displayName)\u{201D}, "
-                    + "or enable orchestration?**\n\n"
-                    + "Linking gives the AI access to this \(kind) session subject to "
-                    + "your per-call permission. **Orchestration** is an alternative "
-                    + "mode where the AI can coordinate multiple sessions. "
-                    + "It uses automatic safety checking and one-time per-session approval instead of "
-                    + "fine-grained permissions."
+                let displayName = name ?? NSLocalizedString("Unnamed session", tableName: "AITermXC", comment: "未命名会话")
+                let kind = terminal
+                    ? NSLocalizedString("terminal", tableName: "AITermXC", comment: "终端")
+                    : NSLocalizedString("browser", tableName: "AITermXC", comment: "浏览器")
+                let body = String(format: NSLocalizedString("**Link this chat to %@ session \u{201C}%@\u{201D}, or enable orchestration?**", tableName: "AITermXC", comment: "**将此对话链接到 %@ 会话 \u{201C}%@\u{201D}，还是启用编排模式？**"), kind, displayName)
+                    + "\n\n"
+                    + NSLocalizedString("Linking gives the AI access to this session subject to your per-call permission.", tableName: "AITermXC", comment: "链接后 AI 将根据您的逐次许可访问此会话。")
+                    + " "
+                    + NSLocalizedString("**Orchestration** is an alternative mode where the AI can coordinate multiple sessions.", tableName: "AITermXC", comment: "**编排模式**是一种替代模式，AI 可以协调多个会话。")
+                    + " "
+                    + NSLocalizedString("It uses automatic safety checking and one-time per-session approval instead of fine-grained permissions.", tableName: "AITermXC", comment: "它使用自动安全检查和每会话一次性审批，而不是细粒度权限。")
                 return AttributedStringForSystemMessageMarkdown(body) {}
             case .offerOrchestration:
-                let body = "**Enable orchestration for this chat?**\n\n"
-                    + "**Orchestration** lets the AI coordinate across "
-                    + "multiple terminal sessions. It can read the contents "
-                    + "of any session, and you grant a one-time approval "
-                    + "before it controls a session instead of approving "
-                    + "every call. It also runs in **auto mode**: each "
-                    + "command the AI proposes is checked for safety by your "
-                    + "AI provider, and anything risky is held for your review."
+                let body = NSLocalizedString("**Enable orchestration for this chat?**\n\n", tableName: "AITermXC", comment: "")
+                    + NSLocalizedString("**Orchestration** lets the AI coordinate across multiple terminal sessions. It can read the contents of any session, and you grant a one-time approval before it controls a session instead of approving every call. It also runs in **auto mode**: each command the AI proposes is checked for safety by your AI provider, and anything risky is held for your review.", tableName: "AITermXC", comment: "")
                 return AttributedStringForSystemMessageMarkdown(body) {}
             case .permissions:
-                return AttributedStringForSystemMessageMarkdown("You can use these buttons or the info button menu at the top of the chat window to control AI permissions for this chat.") {}
+                return AttributedStringForSystemMessageMarkdown(NSLocalizedString("You can use these buttons or the info button menu at the top of the chat window to control AI permissions for this chat.", tableName: "AITermXC", comment: "您可以使用这些按钮或对话窗口顶部的信息按钮菜单来控制此对话的 AI 权限。")) {}
             case let .workgroupPermissionRequest(_, workgroupID, workgroupName, summary):
                 // Three distinct prompt shapes share this content type:
                 //   - "spawn": the orchestrator wants to open a brand-new
@@ -2566,50 +2578,52 @@ extension Message.Content {
                 //   - real workgroup_id: workgroup phrasing.
                 let body: String
                 if workgroupID == WorkgroupIntrospection.spawnWorkgroupID {
-                    body = "**Open a new session?**\n\n\(summary)"
+                    body = NSLocalizedString("**Open a new session?**", tableName: "AITermXC", comment: "**打开新会话？**") + "\n\n\(summary)"
                 } else if workgroupID == WorkgroupIntrospection.commandApprovalWorkgroupID {
                     // Per-command safety approval: the orchestrator's safety
                     // gate flagged a command (or file write) and is asking the
                     // user to approve it before it runs. The specifics live in
                     // the summary the dispatcher built.
-                    body = "**Run this command?**\n\n\(summary)"
+                    body = NSLocalizedString("**Run this command?**", tableName: "AITermXC", comment: "**运行此命令？**") + "\n\n\(summary)"
                 } else if workgroupID == WorkgroupIntrospection.watchApprovalWorkgroupID {
                     // One-time consent for a session-bound watch to read the
                     // screen repeatedly when View Contents is set to Ask. Details
                     // (which session, what it watches for) live in the summary.
-                    body = "**Allow repeated screen reads?**\n\n\(summary)"
+                    body = NSLocalizedString("**Allow repeated screen reads?**", tableName: "AITermXC", comment: "**允许重复读取屏幕？**") + "\n\n\(summary)"
                 } else {
                     let kind = workgroupID.hasPrefix(WorkgroupIntrospection.syntheticWorkgroupIDPrefix)
-                        ? "session"
-                        : "workgroup"
-                    body = "**Allow agent to control \(kind) \u{201C}\(workgroupName)\u{201D}?**\n\n\(summary)"
+                        ? NSLocalizedString("session", tableName: "AITermXC", comment: "会话")
+                        : NSLocalizedString("workgroup", tableName: "AITermXC", comment: "工作组")
+                    body = String(format: NSLocalizedString("**Allow agent to control %@ \u{201c}%@\u{201d}?**", tableName: "AITermXC", comment: "**允许智能体控制 %@ \u{201c}%@\u{201d}？**"), kind, workgroupName) + "\n\n\(summary)"
                 }
                 return AttributedStringForSystemMessageMarkdown(body) {}
             case .enableOrchestrationRequest:
-                let body = """
+                let body = NSLocalizedString("""
                 **Enable orchestration?**
 
                 Orchestration mode lets the agent read screen contents from any session. To type \
                 into a session still requires your permission.
-                
+
                 This is a more permissive model than when an agent is linked to \
                 a single session, where there are very fine-grained permission settings.
 
                 Enabling will detach any linked terminal or browser session and switch \
                 the chat to Orchestration mode.
-                """
+                """, tableName: "AITermXC", comment: "编排模式说明")
                 return AttributedStringForSystemMessageMarkdown(body) {}
             case let .orchestrationPermissionGranted(_, name):
-                let body = "**Granted this chat permission to control "
-                    + "\u{201C}\(name)\u{201D}.**\n\n"
-                    + "You @-mentioned it, so the agent can act there "
-                    + "without asking. Revoke to require approval again."
+                let body = String(format: NSLocalizedString("**Granted this chat permission to control \u{201c}%@\u{201d}.**", tableName: "AITermXC", comment: "**已授予此对话控制 \u{201c}%@\u{201d} 的权限。**"), name)
+                    + "\n\n"
+                    + NSLocalizedString("You @-mentioned it, so the agent can act there without asking. Revoke to require approval again.", tableName: "AITermXC", comment: "您 @提及了它，因此智能体可以在那里执行操作而无需询问。撤销后需要再次审批。")
                 return AttributedStringForSystemMessageMarkdown(body) {}
             }
 
         case .selectSessionRequest(_, terminal: let terminal):
+            let kind = terminal
+                ? NSLocalizedString("terminal", tableName: "AITermXC", comment: "终端")
+                : NSLocalizedString("browser", tableName: "AITermXC", comment: "浏览器")
             return AttributedStringForGPTMarkdown(
-                "The AI agent needs to run commands in a live \(terminal ? "terminal" : "web browser") session, but none is attached to this chat.",
+                String(format: NSLocalizedString("The AI agent needs to run commands in a live %@ session, but none is attached to this chat.", tableName: "AITermXC", comment: "AI 智能体需要在实时%@会话中运行命令，但此对话未附加任何会话。"), kind),
                 linkColor: linkColor,
                 textColor: textColor,
                 didCopy: {})
@@ -2647,12 +2661,12 @@ extension Message {
         case .clientLocal(let clientLocal):
             switch clientLocal.action {
             case .pickingSession, .executingCommand:
-                return [.init(title: "Cancel", destructive: true, identifier: "")]
+                return [.init(title: NSLocalizedString("Cancel", tableName: "AITermXC", comment: "取消"), destructive: true, identifier: "")]
             case .notice: return []
             case .streamingChanged(let state):
                 switch state {
                 case .active:
-                    return [.init(title: "Stop", destructive: true, identifier: "")]
+                    return [.init(title: NSLocalizedString("Stop", tableName: "AITermXC", comment: "停止"), destructive: true, identifier: "")]
                 case .stopped, .stoppedAutomatically:
                     return []
                 }
@@ -2661,12 +2675,12 @@ extension Message {
                 // handler in configure(cell:RegularMessageCellView,...);
                 // empty-string ids would conflict with the
                 // single-button cases above.
-                return [.init(title: "Link", destructive: false, identifier: "link"),
-                        .init(title: "Enable Orchestration", destructive: false, identifier: "orchestrate")]
+                return [.init(title: NSLocalizedString("Link", tableName: "AITermXC", comment: "链接"), destructive: false, identifier: "link"),
+                        .init(title: NSLocalizedString("Enable Orchestration", tableName: "AITermXC", comment: "启用编排模式"), destructive: false, identifier: "orchestrate")]
             case .offerOrchestration:
                 // Identifier matches the offerOrchestration buttonClicked
                 // handler in configure(cell:RegularMessageCellView,...).
-                return [.init(title: "Enable Orchestration", destructive: false, identifier: "orchestrate")]
+                return [.init(title: NSLocalizedString("Enable Orchestration", tableName: "AITermXC", comment: "启用编排模式"), destructive: false, identifier: "orchestrate")]
             case let .permissions(terminal: terminal, guid: guid):
                 let rce = RemoteCommandExecutor.instance
                 var buttons = [MessageRendition.Regular.Button]()
@@ -2680,16 +2694,16 @@ extension Message {
                     let state = switch rce.permission(chatID: chatID, inSessionGuid: guid, category: category) {
                     case .always:
                         if category.autopopulatedWhenAlways {
-                            "Provided automatically"
+                            NSLocalizedString("Provided automatically", tableName: "AITermXC", comment: "自动提供")
                         } else {
-                            "Always"
+                            NSLocalizedString("Always", tableName: "AITermXC", comment: "始终")
                         }
                     case .never:
-                        "Never"
+                        NSLocalizedString("Never", tableName: "AITermXC", comment: "从不")
                     case .ask:
-                        "Ask"
+                        NSLocalizedString("Ask", tableName: "AITermXC", comment: "询问")
                     }
-                    buttons.append(.init(title: category.rawValue + ": " + state,
+                    buttons.append(.init(title: category.displayName + ": " + state,
                                          destructive: false,
                                          identifier: category.rawValue))
                 }
@@ -2700,19 +2714,19 @@ extension Message {
                 // wires the buttonClicked handler that parses them and
                 // publishes the matching workgroupPermissionResponse.
                 return [
-                    .init(title: "Approve",
+                    .init(title: NSLocalizedString("Approve", tableName: "AITermXC", comment: "批准"),
                           destructive: false,
                           identifier: "workgroupPermission:\(ApprovalChoice.approve.rawValue):\(requestID)"),
-                    .init(title: "Deny",
+                    .init(title: NSLocalizedString("Deny", tableName: "AITermXC", comment: "拒绝"),
                           destructive: true,
                           identifier: "workgroupPermission:\(ApprovalChoice.deny.rawValue):\(requestID)"),
                 ]
             case let .enableOrchestrationRequest(requestID):
                 return [
-                    .init(title: "Enable Orchestration",
+                    .init(title: NSLocalizedString("Enable Orchestration", tableName: "AITermXC", comment: "启用编排模式"),
                           destructive: false,
                           identifier: "enableOrchestration:\(ApprovalChoice.approve.rawValue):\(requestID)"),
-                    .init(title: "Not Now",
+                    .init(title: NSLocalizedString("Not Now", tableName: "AITermXC", comment: "暂不"),
                           destructive: true,
                           identifier: "enableOrchestration:\(ApprovalChoice.deny.rawValue):\(requestID)"),
                 ]
@@ -2722,21 +2736,21 @@ extension Message {
                 // so handleRevokeOrchestrationPermissionButton splits with
                 // maxSplits 1 and keeps everything after it verbatim.
                 return [
-                    .init(title: "Revoke",
+                    .init(title: NSLocalizedString("Revoke", tableName: "AITermXC", comment: "撤销"),
                           destructive: true,
                           identifier: "revokeOrchestrationPermission:\(scope)"),
                 ]
             }
         case .selectSessionRequest:
-            return [.init(title: "Select a Session", destructive: false, identifier: PickSessionButtonIdentifier.pickSession.rawValue),
-                    .init(title: "Cancel", destructive: true, identifier: PickSessionButtonIdentifier.cancel.rawValue)]
+            return [.init(title: NSLocalizedString("Select a Session", tableName: "AITermXC", comment: "选择会话"), destructive: false, identifier: PickSessionButtonIdentifier.pickSession.rawValue),
+                    .init(title: NSLocalizedString("Cancel", tableName: "AITermXC", comment: "取消"), destructive: true, identifier: PickSessionButtonIdentifier.cancel.rawValue)]
         case .remoteCommandRequest(let payload, safe: _):
             switch payload {
             case .classic:
-                return [.init(title: "Allow Once", destructive: false, identifier: RemoteCommandButtonIdentifier.allowOnce.rawValue),
-                        .init(title: "Always Allow", destructive: false, identifier: RemoteCommandButtonIdentifier.allowAlways.rawValue),
-                        .init(title: "Deny this Time", destructive: true, identifier: RemoteCommandButtonIdentifier.denyOnce.rawValue),
-                        .init(title: "Always Deny", destructive: true, identifier: RemoteCommandButtonIdentifier.denyAlways.rawValue)]
+                return [.init(title: NSLocalizedString("Allow Once", tableName: "AITermXC", comment: "允许一次"), destructive: false, identifier: RemoteCommandButtonIdentifier.allowOnce.rawValue),
+                        .init(title: NSLocalizedString("Always Allow", tableName: "AITermXC", comment: "始终允许"), destructive: false, identifier: RemoteCommandButtonIdentifier.allowAlways.rawValue),
+                        .init(title: NSLocalizedString("Deny this Time", tableName: "AITermXC", comment: "本次拒绝"), destructive: true, identifier: RemoteCommandButtonIdentifier.denyOnce.rawValue),
+                        .init(title: NSLocalizedString("Always Deny", tableName: "AITermXC", comment: "始终拒绝"), destructive: true, identifier: RemoteCommandButtonIdentifier.denyAlways.rawValue)]
             case .external:
                 // Orchestration tool calls aren't per-call gated; no buttons.
                 return []
@@ -2760,7 +2774,7 @@ extension ChatViewController: NSMenuItemValidation {
             if menuItem.state == .on {
                 menuItem.title = autoTitle
             } else {
-                menuItem.title = "AI can \(category.rawValue)"
+                menuItem.title = String(format: NSLocalizedString("AI can %@", tableName: "AITermXC", comment: "AI 可以 %@"), category.displayName)
             }
         }
         return true
@@ -2934,11 +2948,11 @@ extension ChatViewController: ChatToolbarDataSource {
         // disabled (see ChatListModel.setOrchestrationEnabled).
         let orchestrationOn = listModel.chat(id: chatID)?.orchestrationEnabled ?? false
         if orchestrationOn {
-            menu.addItem(withTitle: "Disable Orchestration",
+            menu.addItem(withTitle: NSLocalizedString("Disable Orchestration", tableName: "AITermXC", comment: "禁用编排模式"),
                          action: #selector(disableOrchestration(_:)),
                          target: self)
         } else {
-            menu.addItem(withTitle: "Enable Orchestration",
+            menu.addItem(withTitle: NSLocalizedString("Enable Orchestration", tableName: "AITermXC", comment: "启用编排模式"),
                          action: #selector(enableOrchestration(_:)),
                          target: self)
         }
@@ -2956,12 +2970,12 @@ extension ChatViewController: ChatToolbarDataSource {
             if let guid = model?.terminalSessionGuid,
                iTermController.sharedInstance().anySession(forReference: guid) != nil {
 
-                menu.addItem(withTitle: "Reveal Linked Terminal Session", action: #selector(revealLinkedTerminalSession(_:)), target: self)
-                menu.addItem(withTitle: "Unlink Terminal Session", action: #selector(unlinkTerminalSession(_:)), target: self)
+                menu.addItem(withTitle: NSLocalizedString("Reveal Linked Terminal Session", tableName: "AITermXC", comment: "显示已链接的终端会话"), action: #selector(revealLinkedTerminalSession(_:)), target: self)
+                menu.addItem(withTitle: NSLocalizedString("Unlink Terminal Session", tableName: "AITermXC", comment: "取消链接终端会话"), action: #selector(unlinkTerminalSession(_:)), target: self)
                 // Inline-panel CVCs are already hosted in their session — no
                 // need to offer to put themselves there.
                 if !isInlinePanel {
-                    menu.addItem(withTitle: "Put Chat in Linked Terminal Session",
+                    menu.addItem(withTitle: NSLocalizedString("Put Chat in Linked Terminal Session", tableName: "AITermXC", comment: "将对话放入已链接的终端会话"),
                                  action: #selector(putChatInLinkedTerminalSession(_:)),
                                  target: self)
                 }
@@ -2984,7 +2998,7 @@ extension ChatViewController: ChatToolbarDataSource {
                 menu.addItem(NSMenuItem.separator())
 
                 if haveLinkedTerminalSession {
-                    menu.addItem(withTitle: "Send Commands & Output to AI Automatically",
+                    menu.addItem(withTitle: NSLocalizedString("Send Commands & Output to AI Automatically", tableName: "AITermXC", comment: "自动将命令和输出发送给 AI"),
                                  action: #selector(toggleStream(_:)),
                                  target: self,
                                  state: streaming ? .on : .off,
@@ -2992,7 +3006,7 @@ extension ChatViewController: ChatToolbarDataSource {
                     menu.addItem(NSMenuItem.separator())
                 }
             } else {
-                menu.addItem(withTitle: "Link Terminal Session", action: #selector(objcLinkTerminalSession(_:)), target: self)
+                menu.addItem(withTitle: NSLocalizedString("Link Terminal Session", tableName: "AITermXC", comment: "链接终端会话"), action: #selector(objcLinkTerminalSession(_:)), target: self)
                 menu.addItem(NSMenuItem.separator())
             }
 
@@ -3000,10 +3014,10 @@ extension ChatViewController: ChatToolbarDataSource {
             if let guid = model?.browserSessionGuid,
                iTermController.sharedInstance().anySession(forReference: guid) != nil {
 
-                menu.addItem(withTitle: "Reveal Linked Web Browser Session", action: #selector(revealLinkedBrowserSession(_:)), target: self)
-                menu.addItem(withTitle: "Unlink Web Browser Session", action: #selector(unlinkBrowserSession(_:)), target: self)
+                menu.addItem(withTitle: NSLocalizedString("Reveal Linked Web Browser Session", tableName: "AITermXC", comment: "显示已链接的 Web 浏览器会话"), action: #selector(revealLinkedBrowserSession(_:)), target: self)
+                menu.addItem(withTitle: NSLocalizedString("Unlink Web Browser Session", tableName: "AITermXC", comment: "取消链接 Web 浏览器会话"), action: #selector(unlinkBrowserSession(_:)), target: self)
                 if !isInlinePanel {
-                    menu.addItem(withTitle: "Put Chat in Linked Browser Session",
+                    menu.addItem(withTitle: NSLocalizedString("Put Chat in Linked Browser Session", tableName: "AITermXC", comment: "将对话放入已链接的浏览器会话"),
                                  action: #selector(putChatInLinkedBrowserSession(_:)),
                                  target: self)
                 }
@@ -3014,7 +3028,7 @@ extension ChatViewController: ChatToolbarDataSource {
                     if !category.isBrowserSpecific {
                         continue
                     }
-                    menu.addItem(withTitle: "AI can \(category.rawValue)",
+                    menu.addItem(withTitle: String(format: NSLocalizedString("AI can %@", tableName: "AITermXC", comment: "AI 可以 %@"), category.displayName),
                                  action: #selector(toggleAlwaysAllow(_:)),
                                  target: self,
                                  state: rce.controlState(chatID: chatID,
@@ -3025,13 +3039,13 @@ extension ChatViewController: ChatToolbarDataSource {
                 }
                 menu.addItem(NSMenuItem.separator())
             } else {
-                menu.addItem(withTitle: "Link Browser Session", action: #selector(objcLinkBrowserSession(_:)), target: self)
+                menu.addItem(withTitle: NSLocalizedString("Link Browser Session", tableName: "AITermXC", comment: "链接浏览器会话"), action: #selector(objcLinkBrowserSession(_:)), target: self)
                 menu.addItem(NSMenuItem.separator())
             }
         }
 
 
-        menu.addItem(withTitle: "Help", action: #selector(showLinkedSessionHelp(_:)), target: self)
+        menu.addItem(withTitle: NSLocalizedString("Help", tableName: "AITermXC", comment: "帮助"), action: #selector(showLinkedSessionHelp(_:)), target: self)
 
         // Position the menu just below the button
         let location = NSPoint(x: 0, y: sender.bounds.height)
@@ -3281,7 +3295,7 @@ extension ChatViewController: InlineChatToolbarViewDelegate {
         // chatStorage is kept most-recent-first (see ChatListModel).
         for i in 0..<listModel.count {
             let chat = listModel.chat(at: i)
-            let title = chat.title.isEmpty ? "Untitled Chat" : chat.title
+            let title = chat.title.isEmpty ? NSLocalizedString("Untitled Chat", tableName: "AITermXC", comment: "无标题对话") : chat.title
             let item = NSMenuItem(title: title,
                                   action: #selector(switchToChatFromMenu(_:)),
                                   keyEquivalent: "")
@@ -3313,7 +3327,7 @@ extension ChatViewController: InlineChatToolbarViewDelegate {
             menu.addItem(item)
         }
         if menu.items.isEmpty {
-            let item = NSMenuItem(title: "No Chats", action: nil, keyEquivalent: "")
+            let item = NSMenuItem(title: NSLocalizedString("No Chats", tableName: "AITermXC", comment: "没有对话"), action: nil, keyEquivalent: "")
             item.isEnabled = false
             menu.addItem(item)
         }
@@ -3385,9 +3399,9 @@ class InlinePanelCoordinator: NSObject, ChatViewControllerDelegate {
     func chatViewControllerDeleteSession(_ controller: ChatViewController) {
         guard let chatID = controller.chatID else { return }
         let warning = iTermWarning()
-        warning.title = "Are you sure you want to delete this chat? This action cannot be undone."
-        warning.heading = "Delete Chat?"
-        let action = iTermWarningAction(label: "Delete") { [weak self] _ in
+        warning.title = NSLocalizedString("Are you sure you want to delete this chat? This action cannot be undone.", tableName: "AITermXC", comment: "确定要删除此对话吗？此操作无法撤销。")
+        warning.heading = NSLocalizedString("Delete Chat?", tableName: "AITermXC", comment: "删除对话？")
+        let action = iTermWarningAction(label: NSLocalizedString("Delete", tableName: "AITermXC", comment: "删除")) { [weak self] _ in
             // Runs from iTermWarning.runModal() on the main thread.
             MainActor.assumeIsolated {
                 do {
@@ -3406,7 +3420,7 @@ class InlinePanelCoordinator: NSObject, ChatViewControllerDelegate {
             }
         }
         action.destructive = true
-        warning.warningActions = [iTermWarningAction(label: "Cancel"), action]
+        warning.warningActions = [iTermWarningAction(label: NSLocalizedString("Cancel", tableName: "AITermXC", comment: "取消")), action]
         warning.warningType = .kiTermWarningTypePersistent
         warning.runModal()
     }
@@ -3569,8 +3583,8 @@ extension ChatViewController {
         // stick for the rest of the chat. Users coming from the
         // menu-driven toggle won't know that without being told.
         let alert = NSAlert()
-        alert.messageText = "Enable orchestration mode?"
-        alert.informativeText = """
+        alert.messageText = NSLocalizedString("Enable orchestration mode?", tableName: "AITermXC", comment: "启用编排模式？")
+        alert.informativeText = NSLocalizedString("""
             Orchestration mode lets the agent coordinate across any iTerm2 sessions. \
             It can read screen contents from any session, but to type into a session requires \
             your permission. This is a more permissive model than when an agent is linked to \
@@ -3578,10 +3592,10 @@ extension ChatViewController {
 
             Enabling will detach any linked terminal or browser session and switch \
             the chat to Orchestration mode.
-            """
+            """, tableName: "AITermXC", comment: "编排模式说明")
         alert.alertStyle = .warning
-        alert.addButton(withTitle: "Enable Orchestration")
-        alert.addButton(withTitle: "Cancel")
+        alert.addButton(withTitle: NSLocalizedString("Enable Orchestration", tableName: "AITermXC", comment: "启用编排模式"))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "AITermXC", comment: "取消"))
         guard alert.runModal() == .alertFirstButtonReturn else { return }
         setOrchestrationEnabled(true)
     }
@@ -3638,8 +3652,8 @@ extension ChatViewController {
         }
         inputView.refreshPlaceholder()
         let notice = enabled
-            ? "Orchestration enabled. Agent can see content of all sessions."
-            : "Orchestration disabled."
+            ? NSLocalizedString("Orchestration enabled. Agent can see content of all sessions.", tableName: "AITermXC", comment: "编排模式已启用。智能体可以查看所有会话的内容。")
+            : NSLocalizedString("Orchestration disabled.", tableName: "AITermXC", comment: "编排模式已禁用。")
         try? client.publishNotice(chatID: chatID, notice: notice)
     }
 

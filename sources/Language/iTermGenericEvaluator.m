@@ -190,7 +190,7 @@
         [strongSelf->_missingFunctions unionSet:missing];
         if (error) {
             NSString *message =
-            [NSString stringWithFormat:@"Invocation of “%@” failed with error:\n%@\n",
+            [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Invocation of “%@” failed with error:\n%@\n", @"Language", [NSBundle bundleForClass:[self class]], @"Generic evaluator: invocation failed output"),
              strongSelf.stringToEvaluate,
              [error localizedDescription]];
 

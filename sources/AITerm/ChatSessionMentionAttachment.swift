@@ -29,7 +29,7 @@ class ChatSessionMentionAttachment: NSTextAttachment {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) has not been implemented")
+        it_fatalError(NSLocalizedString("init(coder:) has not been implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     // Builds an atomic mention: a single attachment whose image is the terminal
@@ -110,7 +110,7 @@ class ChatSessionMentionAttachment: NSTextAttachment {
     // in an attachment so it lays out inline with the name.
     private static func iconString(font: NSFont, color: NSColor) -> NSAttributedString? {
         guard let symbol = NSImage(systemSymbolName: SFSymbol.terminal.rawValue,
-                                   accessibilityDescription: "iTerm2 session") else {
+                                   accessibilityDescription: NSLocalizedString("iTerm2 session", tableName: "AITermXC", comment: "iTerm2 会话")) else {
             return nil
         }
         let height = font.ascender - font.descender
@@ -151,7 +151,7 @@ enum ChatMentionDisplay {
            !role.isEmpty {
             return title.isEmpty ? role : "\(role): \(title)"
         }
-        return title.isEmpty ? "Untitled session" : title
+        return title.isEmpty ? NSLocalizedString("Untitled session", tableName: "AITermXC", comment: "未命名会话") : title
     }
 }
 

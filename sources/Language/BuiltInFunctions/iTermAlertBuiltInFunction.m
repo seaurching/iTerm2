@@ -277,7 +277,7 @@
     }
     if ([checkboxes count] != [checkboxDefaults count]) {
         if (completion) {
-            NSString *errorMessage = @"Number of checkboxes does not match number of defaults";
+            NSString *errorMessage = NSLocalizedStringFromTableInBundle(@"Number of checkboxes does not match number of defaults", @"Language", [NSBundle bundleForClass:[self class]], @"Alert error: checkboxes count mismatch");
             NSError *error = [NSError errorWithDomain:@"iTermPolyModalAlertError"
                                                  code:1
                                              userInfo:@{NSLocalizedDescriptionKey: errorMessage}];

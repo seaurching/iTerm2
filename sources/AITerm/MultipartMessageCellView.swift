@@ -379,7 +379,7 @@ class MultipartMessageCellView: MessageCellView {
         header.wantsLayer = true
         updateCodeBlockHeaderColors(header)
 
-        let titleLabel = NSTextField(labelWithString: "Code Interpreter")
+        let titleLabel = NSTextField(labelWithString: NSLocalizedString("Code Interpreter", tableName: "AITermXC", comment: "代码解释器"))
         titleLabel.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize, weight: .medium)
         titleLabel.textColor = effectiveAppearance.it_isDark ? .white : .black
         titleLabel.identifier = NSUserInterfaceItemIdentifier("codeBlockTitle")
@@ -389,15 +389,15 @@ class MultipartMessageCellView: MessageCellView {
         // Same reason as in RegularMessageCellView: prevent NSScrollView's
         // focus-tracking auto-scroll on click.
         copyButton.refusesFirstResponder = true
-        copyButton.title = "Copy"
+        copyButton.title = NSLocalizedString("Copy", tableName: "AITermXC", comment: "复制")
         if #available(macOS 15, *) {
             copyButton.image = NSImage.it_image(forSymbolName: SFSymbol.documentOnDocument.rawValue,
-                                                accessibilityDescription: "Copy",
+                                                accessibilityDescription: NSLocalizedString("Copy", tableName: "AITermXC", comment: "复制"),
                                                 fallbackImageName: "document.on.document",
                                                 for: MultipartMessageCellView.self)
         } else {
             copyButton.image = NSImage.it_image(forSymbolName: SFSymbol.docOnDoc.rawValue,
-                                                accessibilityDescription: "Copy",
+                                                accessibilityDescription: NSLocalizedString("Copy", tableName: "AITermXC", comment: "复制"),
                                                 fallbackImageName: "document.on.document",
                                                 for: MultipartMessageCellView.self)
         }
@@ -490,7 +490,7 @@ class MultipartMessageCellView: MessageCellView {
     }
 
     override func forkMenuItemClicked(_ sender: Any) {
-        it_fatalError("Subclass must implement this")
+        it_fatalError(NSLocalizedString("Subclass must implement this", tableName: "AITermXC", comment: "子类必须实现此方法"))
     }
 
     // MARK: - Static height

@@ -197,7 +197,7 @@ class SSHConfigurationWindowController: NSWindowController {
             if FileManager.default.fileExists(atPath: url.path, isDirectory: &isDir) {
                 // ...and it's either a directory or not executable, throw an error.
                 if isDir.boolValue || !FileManager.default.isExecutableFile(atPath: url.path) {
-                    let errorInfo = [NSLocalizedDescriptionKey: "Selected file must be an executable."]
+                    let errorInfo = [NSLocalizedDescriptionKey: NSLocalizedString("Selected file must be an executable.", tableName: "Settings", comment: "Error when selected SSH binary is not an executable")]
                     throw NSError(domain: NSCocoaErrorDomain, code: NSUserCancelledError, userInfo: errorInfo)
                 }
             }
@@ -214,7 +214,7 @@ class SSHConfigurationWindowController: NSWindowController {
             panelDelegate = SSHBinaryPanelDelegate()
             openPanel.delegate = panelDelegate
 
-            openPanel.title = "Select SSH Binary"
+            openPanel.title = NSLocalizedString("Select SSH Binary", tableName: "Settings", bundle: Bundle(for: SSHConfigurationWindowController.self), comment: "")
             openPanel.canChooseFiles = true
             openPanel.canChooseDirectories = false
             openPanel.allowsMultipleSelection = false
@@ -365,7 +365,7 @@ fileprivate class SSHCopyDestinationView: NSView {
 
         textField = NSTextField()
         textField.stringValue = "~"
-        label = NSTextField(labelWithString: "Destination folder on remote host:")
+        label = NSTextField(labelWithString: NSLocalizedString("Destination folder on remote host:", tableName: "Settings", bundle: Bundle(for: SSHConfigurationWindowController.self), comment: ""))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
 

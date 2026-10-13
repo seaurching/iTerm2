@@ -1,0 +1,35 @@
+/* Debug log: critical error alert message */
+"A critical error occurred and a debug log was created. Please send /tmp/debuglog.txt to the developers." = "发生了严重错误，已创建调试日志。请将 /tmp/debuglog.txt 发送给开发者。";
+
+/* Session log: could not write to session log title */
+"Couldn’t write to session log" = "无法写入会话日志";
+
+/* Debug log: critical error alert title */
+"Critical Error" = "严重错误";
+
+/* Debug log: logging enabled alert title */
+"Debug Logging Enabled" = "调试日志已启用";
+
+/* Debug log: logging stopped alert title */
+"Debug Logging Stopped" = "调试日志已停止";
+
+/* Debug log: failed to save warning title */
+"Failed to save debug log: %@" = "保存调试日志失败：%@";
+
+/* Session log: logging folder not found title */
+"Logging Folder Not Found" = "未找到日志文件夹";
+
+/* Debug log: alert OK button */
+"OK" = "好";
+
+/* Debug log: logging enabled alert message */
+"Please reproduce the bug. Then toggle debug logging again to save the log." = "请复现 Bug，然后再次切换调试日志以保存日志。";
+
+/* Debug log: logging stopped alert message */
+"Please send /tmp/debuglog.txt to the developers." = "请将 /tmp/debuglog.txt 发送给开发者。";
+
+/* Debug log: failed to save heading */
+"Problem Saving Debug Log" = "保存调试日志时出现问题";
+
+/* Debug log: could not open file for writing */
+"could not open %@ for writing" = "无法打开 %@ 进行写入";

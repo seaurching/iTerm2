@@ -1,0 +1,17 @@
+/* SegmentMap: index out of bounds */
+"index out of bounds" = "索引越界";
+
+/* SegmentMap: delete count out of bounds */
+"delete count out of bounds" = "删除数量越界";
+
+/* SegmentMap: count must be non-negative */
+"count must be >= 0" = "数量必须 >= 0";
+
+/* SegmentMap: range out of bounds */
+"range out of bounds" = "范围越界";
+
+/* SubArray: bounds out of range */
+"bounds out of range" = "边界越界";
+
+/* SubArray: range out of bounds */
+"SubArray range out of bounds: %@" = "SubArray 范围越界：%@";

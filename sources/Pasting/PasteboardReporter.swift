@@ -90,24 +90,24 @@ class PasteboardReporter: NSObject {
             return
         }
         let alert = NSAlert()
-        alert.messageText = "Error Updating Settings"
-        alert.informativeText = "An error occurred while removing the file that authorizes clipboard reporting: \(error.localizedDescription).\nAs long as this file exists, clipboard reporting could be enabled by programs running on this computer."
+        alert.messageText = NSLocalizedString("Error Updating Settings", tableName: "Pasting", comment: "Pasting: error updating settings title")
+        alert.informativeText = String(format: NSLocalizedString("An error occurred while removing the file that authorizes clipboard reporting: %@.\nAs long as this file exists, clipboard reporting could be enabled by programs running on this computer.", tableName: "Pasting", comment: "Pasting: clipboard reporting error informative"), error.localizedDescription)
         alert.alertStyle = .warning
-        alert.addButton(withTitle: "Reveal in Finder")
+        alert.addButton(withTitle: NSLocalizedString("Reveal in Finder", tableName: "Pasting", comment: "Pasting: reveal in finder button"))
         alert.runModal()
         NSWorkspace.shared.activateFileViewerSelecting([url])
     }
 
     private static func doubleCheck() -> Bool {
         let alert = NSAlert()
-        alert.messageText = "Really Enable Clipboard Reporting?"
-        alert.informativeText = "Reporting the content of the clipboard to apps running inside iTerm2 may expose sensitive information such as passwords. Think carefully before enabling this."
+        alert.messageText = NSLocalizedString("Really Enable Clipboard Reporting?", tableName: "Pasting", comment: "Pasting: enable clipboard reporting title")
+        alert.informativeText = NSLocalizedString("Reporting the content of the clipboard to apps running inside iTerm2 may expose sensitive information such as passwords. Think carefully before enabling this.", tableName: "Pasting", comment: "Pasting: enable clipboard reporting informative")
         alert.alertStyle = .warning
-        let button = alert.addButton(withTitle: "OK")
+        let button = alert.addButton(withTitle: NSLocalizedString("OK", tableName: "Pasting", comment: "Pasting: enable clipboard reporting OK button"))
         if #available(macOS 11.0, *) {
             button.hasDestructiveAction = true
         }
-        alert.addButton(withTitle: "Cancel")
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "Pasting", comment: "Pasting: enable clipboard reporting cancel button"))
         return alert.runModal() == .alertFirstButtonReturn
     }
 

@@ -270,11 +270,11 @@ class CockpitWindowController: NSWindowController {
         }
         let symbol: SFSymbol = armed ? .bellBadge : .bell
         notifyToolbarItem.image = NSImage(systemSymbolName: symbol.rawValue,
-                                          accessibilityDescription: "Notify on status change")
+                                          accessibilityDescription: NSLocalizedString("Notify on status change", tableName: "ClaudeCodeXC", comment: "状态变化时通知"))
         notifyToolbarItem.isEnabled = enabled
         notifyToolbarItem.toolTip = armed
-            ? "Watching for a status change on the selected item. An alert will appear on the next change, then turn this off."
-            : "Notify with an alert when the selected window or session’s status changes."
+            ? NSLocalizedString("Watching for a status change on the selected item. An alert will appear on the next change, then turn this off.", tableName: "ClaudeCodeXC", comment: "正在监视选定项的状态变化。下次变化时将出现提醒，然后关闭此功能。")
+            : NSLocalizedString("Notify with an alert when the selected window or session’s status changes.", tableName: "ClaudeCodeXC", comment: "当选定窗口或会话的状态变化时通过提醒通知。")
     }
 
     @objc private func notifyArmedDidChange(_ notification: Notification) {
@@ -442,20 +442,20 @@ fileprivate final class CockpitRow {
 
     var shortLabel: String {
         switch self {
-        case .byStatus: return "Status"
-        case .byWindow: return "Window"
-        case .byWorkgroup: return "Workgroup"
+        case .byStatus: return NSLocalizedString("Status", tableName: "ClaudeCodeXC", comment: "状态")
+        case .byWindow: return NSLocalizedString("Window", tableName: "ClaudeCodeXC", comment: "窗口")
+        case .byWorkgroup: return NSLocalizedString("Workgroup", tableName: "ClaudeCodeXC", comment: "工作组")
         }
     }
 
     var tooltip: String {
         switch self {
         case .byStatus:
-            return "Group sessions by status (Waiting / Working / Idle), within each window."
+            return NSLocalizedString("Group sessions by status (Waiting / Working / Idle), within each window.", tableName: "ClaudeCodeXC", comment: "在每个窗口内按状态（等待 / 工作中 / 空闲）对会话分组。")
         case .byWindow:
-            return "Group sessions by window, then by tab and split pane."
+            return NSLocalizedString("Group sessions by window, then by tab and split pane.", tableName: "ClaudeCodeXC", comment: "按窗口对会话分组，再按标签页和分屏。")
         case .byWorkgroup:
-            return "Show only sessions in a workgroup, grouped by workgroup."
+            return NSLocalizedString("Show only sessions in a workgroup, grouped by workgroup.", tableName: "ClaudeCodeXC", comment: "仅显示属于工作组的会话，按工作组分组。")
         }
     }
 
@@ -640,7 +640,7 @@ fileprivate final class CockpitTableCellView: NSTableCellView {
         let bell = CockpitPassthroughImageView()
         let config = NSImage.SymbolConfiguration(pointSize: 11, weight: .regular)
         bell.image = NSImage(systemSymbolName: SFSymbol.bellBadge.rawValue,
-                             accessibilityDescription: "Notify on status change armed")?
+                             accessibilityDescription: NSLocalizedString("Notify on status change armed", tableName: "ClaudeCodeXC", comment: "已开启状态变化通知"))?
             .withSymbolConfiguration(config)
         bell.imageScaling = .scaleProportionallyDown
         bell.isHidden = true
@@ -749,11 +749,11 @@ fileprivate final class CockpitTableCellView: NSTableCellView {
 private func cockpitStateLabel(_ state: SessionState, count: Int) -> String {
     let name: String
     switch state {
-    case .waiting: name = "Waiting"
-    case .working: name = "Working"
-    case .idle, .unknown: name = "Idle"
+    case .waiting: name = NSLocalizedString("Waiting", tableName: "ClaudeCodeXC", comment: "等待")
+    case .working: name = NSLocalizedString("Working", tableName: "ClaudeCodeXC", comment: "工作中")
+    case .idle, .unknown: name = NSLocalizedString("Idle", tableName: "ClaudeCodeXC", comment: "空闲")
     }
-    return "\(name) · \(count)"
+    return String(format: NSLocalizedString("%@ · %d", tableName: "ClaudeCodeXC", comment: "%@ · %d"), name, count)
 }
 
 // MARK: - Data source / delegate
@@ -1061,8 +1061,8 @@ extension CockpitWindowController {
             let buriedRow = rowCache[identity]
                 ?? CockpitRow(identity: identity,
                               kind: .buriedRoot,
-                              title: "Buried Sessions")
-            buriedRow.title = "Buried Sessions"
+                              title: NSLocalizedString("Buried Sessions", tableName: "ClaudeCodeXC", comment: "已隐藏的会话"))
+            buriedRow.title = NSLocalizedString("Buried Sessions", tableName: "ClaudeCodeXC", comment: "已隐藏的会话")
             buriedRow.armed = false
             freshCache[identity] = buriedRow
             buriedRow.children = bucketSessionsByState(
@@ -1129,8 +1129,8 @@ extension CockpitWindowController {
             let buriedRow = rowCache[identity]
                 ?? CockpitRow(identity: identity,
                               kind: .buriedRoot,
-                              title: "Buried Sessions")
-            buriedRow.title = "Buried Sessions"
+                              title: NSLocalizedString("Buried Sessions", tableName: "ClaudeCodeXC", comment: "已隐藏的会话"))
+            buriedRow.title = NSLocalizedString("Buried Sessions", tableName: "ClaudeCodeXC", comment: "已隐藏的会话")
             buriedRow.armed = false
             freshCache[identity] = buriedRow
             buriedRow.children = sessionRows(for: buriedExpanded,
@@ -1594,7 +1594,7 @@ extension CockpitWindowController {
         if raw.isEmpty || raw == prefix {
             return prefix
         }
-        return "\(prefix): \(raw)"
+        return String(format: NSLocalizedString("%@: %@", tableName: "ClaudeCodeXC", comment: "%@：%@"), prefix, raw)
     }
 
     // The live "detail" string a session publishes via its tab status
@@ -1615,7 +1615,7 @@ extension CockpitWindowController {
         // "this is the Diff peer" at a glance, which is the bit users
         // need to identify a peer when their live session names are all
         // the running command's idea of a title.
-        return "\(prefix): \(baseName)"
+        return String(format: NSLocalizedString("%@: %@", tableName: "ClaudeCodeXC", comment: "%@：%@"), prefix, baseName)
     }
 
     // Peer / non-peer role labeling:
@@ -1670,11 +1670,11 @@ extension CockpitWindowController {
         if let title = tab.title, !title.isEmpty {
             return title
         }
-        return "Tab \(positionInWindow)"
+        return String(format: NSLocalizedString("Tab %d", tableName: "ClaudeCodeXC", comment: "标签页 %d"), positionInWindow)
     }
 
     private func cockpitWindowTitlePrefix(for terminal: PseudoTerminal) -> String {
-        return "Window \(terminal.number)"
+        return String(format: NSLocalizedString("Window %d", tableName: "ClaudeCodeXC", comment: "窗口 %d"), terminal.number)
     }
 
     private func cockpitWorkgroupTitle(for instance: iTermWorkgroupInstance) -> String {

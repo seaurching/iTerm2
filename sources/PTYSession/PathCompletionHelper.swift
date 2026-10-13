@@ -142,7 +142,7 @@ class PathCompletionHelper: NSObject {
                                                                                                      suffix: parent),
                                                 detail: CompletionsWindow.attributedString(font: font,
                                                                                            prefix: "",
-                                                                                           suffix: "Parent directory"),
+                                                                                           suffix: NSLocalizedString("Parent directory", tableName: "PTYSession", comment: "PTYSession: parent directory detail")),
                                                 kind: .folder),
                          at: 0)
         }
@@ -184,7 +184,7 @@ class PathCompletionHelper: NSObject {
         completionsWindow = CompletionsWindow(parent: window,
                                               location: rect,
                                               mode: .indicator,
-                                              placeholder: "Getting directory listing…")
+                                              placeholder: NSLocalizedString("Getting directory listing…", tableName: "PTYSession", comment: "PTYSession: getting directory listing placeholder"))
         completionsWindow?.selectionDidChange = { [weak self] _, suggestion in
             self?.selection = suggestion
         }

@@ -102,7 +102,7 @@
 
     entry = [[iTermCachedImage alloc] initWithPath:path image:&image];
     if (!image) {
-        RLog(@"Failed to load image from %@", path);
+        RLog(NSLocalizedStringFromTableInBundle(@"Failed to load image from %@", @"Drawing", [NSBundle bundleForClass:[self class]], @"Shared image store: failed to load image from path"), path);
         return nil;
     }
     [_cache setObject:entry forKey:path];

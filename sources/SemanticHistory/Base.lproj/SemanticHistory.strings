@@ -1,0 +1,26 @@
+/* Semantic history: scp username cancel button */
+"Cancel" = "Cancel";
+
+/* Semantic history: enter scp username prompt */
+"Enter username for host %@ to download file with scp" = "Enter username for host %@ to download file with scp";
+
+/* Semantic history: OK button */
+"OK" = "OK";
+
+/* Semantic history: command failed heading */
+"Semantic History Command Failed" = "Semantic History Command Failed";
+
+/* Semantic history: command failed warning title */
+"The following command returned a non-zero exit code:\n\n“%@”" = "The following command returned a non-zero exit code:\n\n“%@”";
+
+/* Semantic history: URL handler command runner title */
+"URL Handler" = "URL Handler";
+
+/* Semantic history: URL handler failed notification */
+"URL Handler Command Failed" = "URL Handler Command Failed";
+
+/* Semantic history: command failed view button */
+"View" = "View";
+
+/* Semantic history: output truncated notice */
+"[output truncated]" = "[output truncated]";

@@ -1,0 +1,239 @@
+/* Menu item: stop transfer */
+"Stop" = "Stop";
+
+/* Menu item: show in Finder */
+"Show in Finder" = "Show in Finder";
+
+/* Menu item: remove from list */
+"Remove from List" = "Remove from List";
+
+/* Menu item: open file */
+"Open" = "Open";
+
+/* Menu item: get info */
+"Get Info" = "Get Info";
+
+/* Error: file transfer failed with unknown error */
+"File transfer failed with an unknown error" = "File transfer failed with an unknown error";
+
+/* Status: transfer cancelled */
+"Transfer cancelled" = "Transfer cancelled";
+
+/* Alert title: authenticate user */
+"Authenticate %@" = "Authenticate %@";
+
+/* Alert: enter credential to begin transfer */
+"Please enter the %@ for %@ to begin %@." = "Please enter the %@ for %@ to begin %@.";
+
+/* Button: OK */
+"OK" = "OK";
+
+/* Button: cancel */
+"Cancel" = "Cancel";
+
+/* Button: password manager */
+"Password Manager…" = "Password Manager…";
+
+/* Display name: secure copy details */
+"Secure copy\nUser name: %@\nHost: %@\nFile: %@" = "Secure copy\nUser name: %@\nHost: %@\nFile: %@";
+
+/* Protocol name: secure copy */
+"secure copy" = "secure copy";
+
+/* Error: invalid path */
+"Invalid path: %@" = "Invalid path: %@";
+
+/* Error: invalid filename */
+"Invalid filename" = "Invalid filename";
+
+/* Error: could not connect */
+"Could not connect." = "Could not connect.";
+
+/* Error: connection failed */
+"Connection failed: %@" = "Connection failed: %@";
+
+/* Warning: failed to connect, check hostname */
+"Failed to connect to %@:%d. Double-check that the host name is correct." = "Failed to connect to %@:%d. Double-check that the host name is correct.";
+
+/* Button: ok */
+"Ok" = "Ok";
+
+/* Button: help */
+"Help" = "Help";
+
+/* Heading: connection failed */
+"Connection Failed" = "Connection Failed";
+
+/* Prompt: password */
+"password" = "password";
+
+/* Prompt: passphrase for private key */
+"passphrase for private key “%@”:" = "passphrase for private key “%@”:";
+
+/* Prompt: correct passphrase for key */
+"correct passphrase for “%@”:" = "correct passphrase for “%@”:";
+
+/* Error: authentication failed */
+"Authentication failed." = "Authentication failed.";
+
+/* Error: authentication error */
+"Authentication error." = "Authentication error.";
+
+/* Error: downloads folder not writable */
+"Downloads folder not writable. Tried %@" = "Downloads folder not writable. Tried %@";
+
+/* Error: downloads folder not writable */
+"Downloads folder not writable" = "Downloads folder not writable";
+
+/* Error: quarantine error */
+"Quarantine Error" = "Quarantine Error";
+
+/* Error: download failed */
+"Download failed" = "Download failed";
+
+/* Error: upload failed */
+"Upload failed" = "Upload failed";
+
+/* Warning: connect to host */
+"Connect to %@?" = "Connect to %@?";
+
+/* Heading: connect to new host */
+"Connect to New Host?" = "Connect to New Host?";
+
+/* Error: canceled by user */
+"Canceled by user" = "Canceled by user";
+
+/* Error: cannot read file */
+"Cannot read file: %@" = "Cannot read file: %@";
+
+/* Alert title: notice */
+"Notice" = "Notice";
+
+/* Alert title: problem connecting to host */
+"Problem connecting to %@" = "Problem connecting to %@";
+
+/* Alert: could not read known_hosts */
+"Could not read the known_hosts file.\nAs a result, the authenticity of host '%@' can't be established.%@ key fingerprint is %@. Connect anyway?" = "Could not read the known_hosts file.\nAs a result, the authenticity of host '%@' can't be established.%@ key fingerprint is %@. Connect anyway?";
+
+/* Alert title: warning */
+"Warning!" = "Warning!";
+
+/* Alert: remote host identification has changed */
+"REMOTE HOST IDENTIFICATION HAS CHANGED!\n\nThe %@ key fingerprint of host '%@' has changed. It is %@.\n\nSomeone could be eavesdropping on you right now (man-in-the-middle attack)!\nIt is also possible that a host key has just been changed.\nConnect anyway?" = "REMOTE HOST IDENTIFICATION HAS CHANGED!\n\nThe %@ key fingerprint of host '%@' has changed. It is %@.\n\nSomeone could be eavesdropping on you right now (man-in-the-middle attack)!\nIt is also possible that a host key has just been changed.\nConnect anyway?";
+
+/* Alert title: first time connecting to host */
+"First time connecting to %@" = "First time connecting to %@";
+
+/* Alert: authenticity of host cannot be established */
+"The authenticity of host '%@' can't be established.\n\n%@ key fingerprint is %@.\n\nConnect anyway?" = "The authenticity of host '%@' can't be established.\n\n%@ key fingerprint is %@.\n\nConnect anyway?";
+
+/* Prompt: where to save download */
+"Where would you like to save this download?" = "Where would you like to save this download?";
+
+/* Action: save to Downloads */
+"Save to Downloads" = "Save to Downloads";
+
+/* Action: choose destination */
+"Choose…" = "Choose…";
+
+/* Heading: save terminal-initiated download */
+"Save Terminal-Initiated Download" = "Save Terminal-Initiated Download";
+
+/* Name: unnamed file */
+"Unnamed file" = "Unnamed file";
+
+/* Subheading: terminal download */
+"Terminal download" = "Terminal download";
+
+/* Error: canceled */
+"Canceled." = "Canceled.";
+
+/* Error: no data received */
+"No data received." = "No data received.";
+
+/* Error: file corrupted not valid base64 */
+"File corrupted (not valid base64)." = "File corrupted (not valid base64).";
+
+/* Error: failed to set quarantine */
+"Failed to set quarantine." = "Failed to set quarantine.";
+
+/* Prompt: file exists, keep both or replace */
+"A file named %@ already exists. Keep both files or replace the existing file?" = "A file named %@ already exists. Keep both files or replace the existing file?";
+
+/* Action: keep both files */
+"Keep Both" = "Keep Both";
+
+/* Action: replace existing file */
+"Replace" = "Replace";
+
+/* Heading: overwrite existing file */
+"Overwrite existing file?" = "Overwrite existing file?";
+
+/* Noun: download */
+"Download" = "Download";
+
+/* Noun: upload */
+"Upload" = "Upload";
+
+/* Notification: transfer finished */
+"%@ finished for “%@”." = "%@ finished for “%@”.";
+
+/* Notification: transfer failed */
+"%@ failed for “%@”." = "%@ failed for “%@”.";
+
+/* Warning: file could not be quarantined or deleted */
+"The file at “%@” could not be quarantined or deleted! It is dangerous and should be removed." = "The file at “%@” could not be quarantined or deleted! It is dangerous and should be removed.";
+
+/* Heading: danger */
+"Danger!" = "Danger!";
+
+/* Progress: bytes transferred of total */
+"%@ of %@" = "%@ of %@";
+
+/* Status: starting */
+"Starting…" = "Starting…";
+
+/* Status: downloading */
+"Downloading…" = "Downloading…";
+
+/* Status: uploading */
+"Uploading…" = "Uploading…";
+
+/* Status: finished */
+"Finished" = "Finished";
+
+/* Status: failed */
+"Failed" = "Failed";
+
+/* Status: cancelling */
+"Cancelling…" = "Cancelling…";
+
+/* Status: cancelled */
+"Cancelled" = "Cancelled";
+
+/* Status: unstarted */
+"Unstarted" = "Unstarted";
+
+/* Status: starting */
+"Starting" = "Starting";
+
+/* Status: transferring */
+"Transferring" = "Transferring";
+
+/* Status: failed with error */
+"Failed with error “%@”" = "Failed with error “%@”";
+
+/* Status: waiting to cancel */
+"Waiting to cancel" = "Waiting to cancel";
+
+/* Get Info: destination */
+"\nDestination: %@" = "\nDestination: %@";
+
+/* Get Info: local path */
+"\nLocal path: %@" = "\nLocal path: %@";
+
+/* Get Info: file transfer summary */
+"%@\n\nStatus: %@%@" = "%@\n\nStatus: %@%@";
+
+/* Alert title: file transfer summary */
+"File Transfer Summary" = "File Transfer Summary";

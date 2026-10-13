@@ -20,14 +20,14 @@
 @implementation CaptureTrigger
 
 + (NSString *)title {
-    return @"Capture Output";
+    return NSLocalizedStringFromTableInBundle(@"Capture Output", @"Triggers", [NSBundle bundleForClass:[self class]], @"捕获输出触发器");
 }
 
 - (NSString *)description {
     if ([NSString castFrom:self.param].length > 0) {
-        return [NSString stringWithFormat:@"Capture output, running “%@” on double-click", self.param];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Capture output, running “%@” on double-click", @"Triggers", [NSBundle bundleForClass:[self class]], @"捕获触发器描述"), self.param];
     } else {
-        return @"Capture Output";
+        return NSLocalizedStringFromTableInBundle(@"Capture Output", @"Triggers", [NSBundle bundleForClass:[self class]], @"捕获输出触发器");
     }
 }
 
@@ -36,7 +36,7 @@
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-    return @"Coprocess to run on activation";
+    return NSLocalizedStringFromTableInBundle(@"Coprocess to run on activation", @"Triggers", [NSBundle bundleForClass:[self class]], @"占位符：激活时运行的协进程");
 }
 
 - (void)showCaptureOutputToolInSession:(id<iTermTriggerSession>)aSession {

@@ -403,7 +403,7 @@ struct LLMGeminiResponseParser: LLMResponseParser {
                 return []
             case "SAFETY":
                 return [LLM.Message(role: role,
-                                    content: "The request violated Gemini's safety rules.")]
+                                    content: NSLocalizedString("The request violated Gemini's safety rules.", tableName: "AITermXC", comment: "该请求违反了 Gemini 的安全规则。"))]
             default:
                 return [LLM.Message(role: role,
                                     content: "Failed to generate a response with reason: \(reason).")]

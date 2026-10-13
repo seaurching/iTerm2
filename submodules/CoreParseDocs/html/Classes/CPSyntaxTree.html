@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>CPSyntaxTree Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">CoreParse </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Beelsebob</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/children">children</option>
+		
+		<option value="//api/name/rule">rule</option>
+		
+		<option value="//api/name/tagValues">tagValues</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/syntaxTreeWithRule:children:">+ syntaxTreeWithRule:children:</option>
+		
+		<option value="//api/name/syntaxTreeWithRule:children:tagValues:">+ syntaxTreeWithRule:children:tagValues:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/childAtIndex:">- childAtIndex:</option>
+		
+		<option value="//api/name/initWithRule:children:">- initWithRule:children:</option>
+		
+		<option value="//api/name/initWithRule:children:tagValues:">- initWithRule:children:tagValues:</option>
+		
+		<option value="//api/name/valueForTag:">- valueForTag:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">CPSyntaxTree Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>CPSyntaxTree.h<br />CPSyntaxTree.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The CPSyntaxTree class represents a node in a syntax tree.</p>
+
+<p>Syntax trees carry the <a href="#//api/name/rule">rule</a> that was matched to create the tree and the child elements that in order match up with the right hand side of the <a href="#//api/name/rule">rule</a>.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Creating and Initialising a Syntax Tree" name="task_Creating and Initialising a Syntax Tree"></a>
+						<h2 class="task-title">Creating and Initialising a Syntax Tree</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/syntaxTreeWithRule:children:" title="syntaxTreeWithRule:children:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/syntaxTreeWithRule:children:">+&nbsp;syntaxTreeWithRule:children:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates a syntax tree based on a <a href="#//api/name/rule">rule</a> and some child trees.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (id)syntaxTreeWithRule:(CPRule *)<em>nonTerminal</em> children:(NSArray *)<em>children</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>nonTerminal</code></th>
+						<td><p>The <a href="#//api/name/rule">rule</a> that was matched to create this tree node.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>children</code></th>
+						<td><p>The child trees that represent the components of the right hand side of the <a href="#//api/name/rule">rule</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a syntax tree with apropriate <a href="#//api/name/children">children</a>, and matching a specified <a href="#//api/name/rule">rule</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates a syntax tree based on a <a href="#//api/name/rule">rule</a> and some child trees.</p><div class="bug"><p><strong>Bug:</strong> Warning this method is deprecated, use <a href="#//api/name/syntaxTreeWithRule:children:tagValues:">syntaxTreeWithRule:children:tagValues:</a> instead.</p></div>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p>syntaxTreeWithRule:children:<a href="#//api/name/tagValues">@property tagValues</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPSyntaxTree.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithRule:children:" title="initWithRule:children:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithRule:children:">&ndash;&nbsp;initWithRule:children:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialises a syntax tree based on a <a href="#//api/name/rule">rule</a> and some child trees.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)initWithRule:(CPRule *)<em>nonTerminal</em> children:(NSArray *)<em>children</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>nonTerminal</code></th>
+						<td><p>The <a href="#//api/name/rule">rule</a> that was matched to create this tree node.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>children</code></th>
+						<td><p>The child trees that represent the components of the right hand side of the <a href="#//api/name/rule">rule</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a syntax tree with apropriate <a href="#//api/name/children">children</a>, and matching a specified <a href="#//api/name/rule">rule</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initialises a syntax tree based on a <a href="#//api/name/rule">rule</a> and some child trees.</p><div class="bug"><p><strong>Bug:</strong> Warning this method is deprecated, use <a href="#//api/name/initWithRule:children:tagValues:">initWithRule:children:tagValues:</a> instead.</p></div>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/initWithRule:children:tagValues:">- initWithRule:children:tagValues:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPSyntaxTree.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/syntaxTreeWithRule:children:tagValues:" title="syntaxTreeWithRule:children:tagValues:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/syntaxTreeWithRule:children:tagValues:">+&nbsp;syntaxTreeWithRule:children:tagValues:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates a syntax tree based on a <a href="#//api/name/rule">rule</a> and some child trees.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (id)syntaxTreeWithRule:(CPRule *)<em>nonTerminal</em> children:(NSArray *)<em>children</em> tagValues:(NSDictionary *)<em>tagValues</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>nonTerminal</code></th>
+						<td><p>The <a href="#//api/name/rule">rule</a> that was matched to create this tree node.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>children</code></th>
+						<td><p>The child trees that represent the components of the right hand side of the <a href="#//api/name/rule">rule</a>.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>tagValues</code></th>
+						<td><p>The values of each tag beneath the <a href="#//api/name/rule">rule</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a syntax tree with apropriate <a href="#//api/name/children">children</a>, and matching a specified <a href="#//api/name/rule">rule</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates a syntax tree based on a <a href="#//api/name/rule">rule</a> and some child trees.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/initWithRule:children:tagValues:">- initWithRule:children:tagValues:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPSyntaxTree.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithRule:children:tagValues:" title="initWithRule:children:tagValues:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithRule:children:tagValues:">&ndash;&nbsp;initWithRule:children:tagValues:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialises a syntax tree based on a <a href="#//api/name/rule">rule</a> and some child trees.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)initWithRule:(CPRule *)<em>nonTerminal</em> children:(NSArray *)<em>children</em> tagValues:(NSDictionary *)<em>tagValues</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>nonTerminal</code></th>
+						<td><p>The <a href="#//api/name/rule">rule</a> that was matched to create this tree node.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>children</code></th>
+						<td><p>The child trees that represent the components of the right hand side of the <a href="#//api/name/rule">rule</a>.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>tagValues</code></th>
+						<td><p>The values of each tag beneath the <a href="#//api/name/rule">rule</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a syntax tree with apropriate <a href="#//api/name/children">children</a>, and matching a specified <a href="#//api/name/rule">rule</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initialises a syntax tree based on a <a href="#//api/name/rule">rule</a> and some child trees.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p>syntaxTreeWithRule:children:<a href="#//api/name/tagValues">@property tagValues</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPSyntaxTree.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Configuring a Syntax Tree" name="task_Configuring a Syntax Tree"></a>
+						<h2 class="task-title">Configuring a Syntax Tree</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/rule" title="rule"></a>
+	<h3 class="method-title"><code><a href="#//api/name/rule">&nbsp;&nbsp;rule</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The rule matched to create this syntax tree.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readonly, retain) CPRule *rule</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The rule matched to create this syntax tree.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPSyntaxTree.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/children" title="children"></a>
+	<h3 class="method-title"><code><a href="#//api/name/children">&nbsp;&nbsp;children</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The children that match the right hand side of the matched <a href="#//api/name/rule">rule</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readonly, copy) NSArray *children</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The children that match the right hand side of the matched <a href="#//api/name/rule">rule</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPSyntaxTree.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/tagValues" title="tagValues"></a>
+	<h3 class="method-title"><code><a href="#//api/name/tagValues">&nbsp;&nbsp;tagValues</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The values of any tags found on the right hand side of the <a href="#//api/name/rule">rule</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readonly, copy) NSDictionary *tagValues</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The values of any tags found on the right hand side of the <a href="#//api/name/rule">rule</a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPSyntaxTree.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/valueForTag:" title="valueForTag:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/valueForTag:">&ndash;&nbsp;valueForTag:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the value of a specific tag.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)valueForTag:(NSString *)<em>tagName</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>tagName</code></th>
+						<td><p>The name of the tag you want the value of.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The sub syntax tree associated with that tag.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the value of a specific tag.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPSyntaxTree.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/childAtIndex:" title="childAtIndex:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/childAtIndex:">&ndash;&nbsp;childAtIndex:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the child at a specific index.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)childAtIndex:(NSUInteger)<em>idx</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>idx</code></th>
+						<td><p>The index of the child you want to retrieve.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The child at that index.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the child at a specific index.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPSyntaxTree.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2026 Beelsebob. All rights reserved. Updated: 2026-09-19</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

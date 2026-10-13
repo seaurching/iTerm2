@@ -50,7 +50,7 @@ extension LLM {
                 DLog("\(error.localizedDescription)")
                 try? completion(.failure(AIError.wrapping(
                     error: error,
-                    context: "While parsing a function call request")))
+                    context: NSLocalizedString("While parsing a function call request", tableName: "AITermXC", comment: "解析函数调用请求时"))))
             }
         }
     }

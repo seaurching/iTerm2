@@ -29,11 +29,11 @@
 
 + (NSString *)title
 {
-    return @"Run Command…";
+    return NSLocalizedStringFromTableInBundle(@"Run Command…", @"Triggers", [NSBundle bundleForClass:[self class]], @"运行命令触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Run Command “%@”", self.param];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Run Command “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"运行命令触发器描述"), self.param];
 }
 
 - (BOOL)takesParameter
@@ -42,7 +42,7 @@
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-    return @"Enter command to run";
+    return NSLocalizedStringFromTableInBundle(@"Enter command to run", @"Triggers", [NSBundle bundleForClass:[self class]], @"占位符：输入要运行的命令");
 }
 
 - (NSSet<NSNumber *> *)allowedMatchTypes {

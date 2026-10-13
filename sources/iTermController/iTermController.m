@@ -858,7 +858,7 @@ replaceInitialDirectoryForSessionWithGUID:(NSString *)guid
     }
     if ([[ProfileModel sharedInstance] numberOfBookmarks] > MAX_MENU_ITEMS) {
         int overflow = [[ProfileModel sharedInstance] numberOfBookmarks] - MAX_MENU_ITEMS;
-        NSMenuItem* overflowItem = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"[%d profiles not shown]", overflow]
+        NSMenuItem* overflowItem = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"[%d profiles not shown]", @"iTermController", [NSBundle bundleForClass:[self class]], @"Menu item: overflow profiles not shown"), overflow]
                                                            action:nil
                                                     keyEquivalent:@""];
         [subMenu addItem:overflowItem];
@@ -869,7 +869,7 @@ replaceInitialDirectoryForSessionWithGUID:(NSString *)guid
 
     if (openAllSelector && count > 1) {
         [subMenu addItem:[NSMenuItem separatorItem]];
-        aMenuItem = [[NSMenuItem alloc] initWithTitle:@"Open All"
+        aMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Open All", @"iTermController", [NSBundle bundleForClass:[self class]], @"Menu item: open all profiles")
                                                action:openAllSelector
                                         keyEquivalent:@""];
         if (@available(macOS 26, *)) {
@@ -890,7 +890,7 @@ replaceInitialDirectoryForSessionWithGUID:(NSString *)guid
         [subMenu addItem:aMenuItem];
 
         // Add alternate -------------------------------------------------------
-        aMenuItem = [[NSMenuItem alloc] initWithTitle:@"Open All in New Window"
+        aMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Open All in New Window", @"iTermController", [NSBundle bundleForClass:[self class]], @"Menu item: open all profiles in new window")
                                                action:openAllSelector
                                         keyEquivalent:@""];
         modifierMask = NSEventModifierFlagCommand | NSEventModifierFlagControl;
@@ -926,10 +926,10 @@ replaceInitialDirectoryForSessionWithGUID:(NSString *)guid
 }
 
 - (BOOL)shouldOpenManyProfiles:(int)count {
-    NSString *theTitle = [NSString stringWithFormat:@"You are about to open %d profiles.", count];
+    NSString *theTitle = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"You are about to open %d profiles.", @"iTermController", [NSBundle bundleForClass:[self class]], @"Alert: about to open many profiles"), count];
     iTermWarningSelection selection =
         [iTermWarning showWarningWithTitle:theTitle
-                                   actions:@[ @"OK", @"Cancel" ]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"iTermController", [NSBundle bundleForClass:[self class]], @"Alert button: OK"), @"Cancel" ]
                                 identifier:@"AboutToOpenManyProfiles"
                                silenceable:kiTermWarningTypePermanentlySilenceable
                                     window:nil];
@@ -1215,8 +1215,8 @@ replaceInitialDirectoryForSessionWithGUID:(NSString *)guid
     if (!haveUsedOlderVersion) {
         return;
     }
-    [[iTermNotificationController sharedInstance] postNotificationWithTitle:@"Creating a tab"
-                                                                     detail:@"The system preference to open a tab instead of a window is now respected in iTerm2."
+    [[iTermNotificationController sharedInstance] postNotificationWithTitle:NSLocalizedStringFromTableInBundle(@"Creating a tab", @"iTermController", [NSBundle bundleForClass:[self class]], @"Notification title: creating a tab")
+                                                                     detail:NSLocalizedStringFromTableInBundle(@"The system preference to open a tab instead of a window is now respected in iTerm2.", @"iTermController", [NSBundle bundleForClass:[self class]], @"Notification detail: tab preference now respected")
                                                                         URL:[NSURL URLWithString:@"https://gitlab.com/gnachman/iterm2/wikis/Prefer-Tabs-When-Opening-Documents"]];
     iTermUserDefaults.haveBeenWarnedAboutTabDockSetting = YES;
 #endif

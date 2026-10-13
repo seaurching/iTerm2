@@ -39,11 +39,11 @@ extension SetStatusBuiltInFunction: iTermBuiltInFunctionProtocol {
             sideEffectsPlaceholder: "[set_status]") { parameters, completion in
                 DLog("set_status \(parameters)")
                 guard let sessionID = parameters["session_id"] as? String else {
-                    completion(nil, error(message: "Missing session_id"))
+                    completion(nil, error(message: NSLocalizedString("Missing session_id", tableName: "Language", comment: "Set status error: missing session_id")))
                     return
                 }
                 guard let session = iTermController.sharedInstance().anySession(withGUID: sessionID) else {
-                    completion(nil, error(message: "No such session"))
+                    completion(nil, error(message: NSLocalizedString("No such session", tableName: "Language", comment: "Set status error: no such session")))
                     return
                 }
 
@@ -64,7 +64,7 @@ extension SetStatusBuiltInFunction: iTermBuiltInFunctionProtocol {
                     } else {
                         var textColor = iTermSRGBColor(r: 0, g: 0, b: 0)
                         guard iTermSRGBColorFromHexString(textColorHex, &textColor) else {
-                            completion(nil, error(message: "Invalid text_color (expected #rrggbb)"))
+                            completion(nil, error(message: NSLocalizedString("Invalid text_color (expected #rrggbb)", tableName: "Language", comment: "Set status error: invalid text_color")))
                             return
                         }
                         update.statusColorPresence = .set
@@ -78,7 +78,7 @@ extension SetStatusBuiltInFunction: iTermBuiltInFunctionProtocol {
                     } else {
                         var dotColor = iTermSRGBColor(r: 0, g: 0, b: 0)
                         guard iTermSRGBColorFromHexString(dotColorHex, &dotColor) else {
-                            completion(nil, error(message: "Invalid dot_color (expected #rrggbb)"))
+                            completion(nil, error(message: NSLocalizedString("Invalid dot_color (expected #rrggbb)", tableName: "Language", comment: "Set status error: invalid dot_color")))
                             return
                         }
                         update.indicatorPresence = .set
@@ -118,11 +118,11 @@ extension SetStatusBuiltInFunction: iTermBuiltInFunctionProtocol {
             context: .session,
             sideEffectsPlaceholder: nil) { parameters, completion in
                 guard let sessionID = parameters["session_id"] as? String else {
-                    completion(nil, error(message: "Missing session_id"))
+                    completion(nil, error(message: NSLocalizedString("Missing session_id", tableName: "Language", comment: "Set status error: missing session_id")))
                     return
                 }
                 guard let session = iTermController.sharedInstance().anySession(withGUID: sessionID) else {
-                    completion(nil, error(message: "No such session"))
+                    completion(nil, error(message: NSLocalizedString("No such session", tableName: "Language", comment: "Set status error: no such session")))
                     return
                 }
                 completion(NSNumber(value: session.tabStatus?.backgroundTasks ?? 0), nil)

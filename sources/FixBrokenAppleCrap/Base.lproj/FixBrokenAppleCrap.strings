@@ -1,0 +1,8 @@
+/* Notification: can't switch to desktop */
+"Can’t switch to desktop %d" = "Can’t switch to desktop %d";
+
+/* Fix: grant accessibility permission */
+"You must grant iTerm2 accessibility permission in System Settings > Security & Privacy." = "You must grant iTerm2 accessibility permission in System Settings > Security & Privacy.";
+
+/* Fix: enable desktop switching shortcuts */
+"You must enable shortcuts to switch desktops in System Settings > Keyboard." = "You must enable shortcuts to switch desktops in System Settings > Keyboard.";

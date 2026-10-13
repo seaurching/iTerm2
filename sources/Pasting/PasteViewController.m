@@ -94,7 +94,7 @@ static NSString *iTermPasteViewControllerNibName(BOOL mini) {
 
 - (void)awakeFromNib {
     if (pasteContext_.isUpload) {
-        _label.stringValue = @"Sending…";
+        _label.stringValue = NSLocalizedStringFromTableInBundle(@"Sending…", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: sending label");
     }
     [self createKeystrokePassthroughButton];
 }
@@ -136,12 +136,11 @@ static NSString *iTermPasteViewControllerNibName(BOOL mini) {
     button.imageScaling = NSImageScaleProportionallyDown;
     [button setButtonType:NSButtonTypePushOnPushOff];
     button.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolKeyboard)
-                             accessibilityDescription:@"Send keystrokes to terminal"];
+                             accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Send keystrokes to terminal", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: send keystrokes accessibility")];
     button.target = self;
     button.action = @selector(toggleKeystrokePassthrough:);
     button.toolTip =
-        @"Type directly to the terminal (for example to answer a password prompt) "
-        @"instead of queueing your keystrokes until the paste finishes.";
+        NSLocalizedStringFromTableInBundle(@"Type directly to the terminal (for example to answer a password prompt) instead of queueing your keystrokes until the paste finishes.", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: keystroke passthrough tooltip");
     button.hidden = YES;
     [self.view addSubview:button];
     _keystrokePassthroughButton = button;
@@ -215,7 +214,7 @@ static NSString *iTermPasteViewControllerNibName(BOOL mini) {
     }
     if (!_queuedHintView) {
         _queuedHintView = [[iTermPasteQueuedHintView alloc] initWithFrame:NSZeroRect];
-        _queuedHintView.message = @"Typing is queued while pasting. Click the keyboard to toggle queueing.";
+        _queuedHintView.message = NSLocalizedStringFromTableInBundle(@"Typing is queued while pasting. Click the keyboard to toggle queueing.", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: queued hint message");
     }
     const NSRect buttonFrame = [_keystrokePassthroughButton convertRect:_keystrokePassthroughButton.bounds
                                                                  toView:content];

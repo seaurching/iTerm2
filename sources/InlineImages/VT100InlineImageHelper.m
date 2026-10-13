@@ -122,7 +122,7 @@
 
 - (instancetype)initWithSixelData:(NSData *)data
                       scaleFactor:(CGFloat)scaleFactor {
-    self = [self initWithName:@"Sixel Image"
+    self = [self initWithName:NSLocalizedStringFromTableInBundle(@"Sixel Image", @"InlineImages", [NSBundle bundleForClass:[self class]], @"Default name for a Sixel image")
                         width:0
                    widthUnits:kVT100TerminalUnitsAuto
                        height:0
@@ -169,7 +169,7 @@
     if (!_preconfirmed) {
         [self.delegate inlineImageConfirmBigDownloadWithBeforeSize:lengthBefore
                                                          afterSize:lengthAfter
-                                                              name:_name ?: @"Unnamed file"];
+                                                              name:_name ?: NSLocalizedStringFromTableInBundle(@"Unnamed file", @"InlineImages", [NSBundle bundleForClass:[self class]], @"Fallback name for an image with no name")];
     }
 }
 

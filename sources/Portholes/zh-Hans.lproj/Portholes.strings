@@ -1,0 +1,20 @@
+/* Portholes: cancel button */
+"Cancel" = "取消";
+
+/* Portholes: close markdown view accessibility */
+"Close markdown view" = "关闭 Markdown 视图";
+
+/* Portholes: confirm heading */
+"Confirm" = "确认";
+
+/* Portholes: OK button */
+"OK" = "好";
+
+/* Portholes: open URL confirmation */
+"Open URL %@?" = "打开 URL %@？";
+
+/* Portholes: open file confirmation */
+"Open file at %@?" = "打开位于 %@ 的文件？";
+
+/* Portholes: wide checkbox title */
+"Wide" = "宽";

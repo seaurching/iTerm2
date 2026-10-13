@@ -47,7 +47,7 @@ class LastPassDataSource: CommandLinePasswordDataSource {
                 return nil
             }
             requestedAuthentication = true
-            guard let password = ModalPasswordAlert("Enter your LastPass master password:").run(window: nil) else {
+            guard let password = ModalPasswordAlert(NSLocalizedString("Enter your LastPass master password:", tableName: "PasswordManager", comment: "PasswordManager: lastpass master password prompt")).run(window: nil) else {
                 throw LPError.canceledByUser
             }
             return (password + "\n").data(using: .utf8)
@@ -174,7 +174,7 @@ class LastPassDataSource: CommandLinePasswordDataSource {
                                sendOTP: false)
             }
         }
-        return wrap("The account list could not be fetched.", AnyRecipe(recipe))
+        return wrap(NSLocalizedString("The account list could not be fetched.", tableName: "PasswordManager", comment: "PasswordManager: lastpass fetch accounts error"), AnyRecipe(recipe))
     }
 
     private var getPasswordRecipe: AnyRecipe<AccountIdentifier, Password> {
@@ -192,7 +192,7 @@ class LastPassDataSource: CommandLinePasswordDataSource {
             }
             return Password(password: string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
         }
-        return wrap("The password could not be fetched.", AnyRecipe(recipe))
+        return wrap(NSLocalizedString("The password could not be fetched.", tableName: "PasswordManager", comment: "PasswordManager: lastpass fetch password error"), AnyRecipe(recipe))
     }
 
     private var setPasswordRecipe: AnyRecipe<SetPasswordRequest, Void> {
@@ -226,7 +226,7 @@ class LastPassDataSource: CommandLinePasswordDataSource {
                 throw LPError.runtime
             }
         }
-        return wrap("The password could not be set.", AnyRecipe(recipe))
+        return wrap(NSLocalizedString("The password could not be set.", tableName: "PasswordManager", comment: "PasswordManager: lastpass set password error"), AnyRecipe(recipe))
     }
 
     private var deleteRecipe: AnyRecipe<AccountIdentifier, Void> {
@@ -241,7 +241,7 @@ class LastPassDataSource: CommandLinePasswordDataSource {
                 throw LPError.runtime
             }
         }
-        return wrap("The account could not be deleted", AnyRecipe(recipe))
+        return wrap(NSLocalizedString("The account could not be deleted", tableName: "PasswordManager", comment: "PasswordManager: lastpass delete account error"), AnyRecipe(recipe))
     }
 
     private var addAccountRecipe: AnyRecipe<AddRequest, AccountIdentifier> {
@@ -302,16 +302,16 @@ class LastPassDataSource: CommandLinePasswordDataSource {
             LastPassDynamicCommandRecipe<AddRequest, Void>,
                 LastPassBasicCommandRecipe<(AddRequest, Void), Void>> = SequenceRecipe(addRecipe, syncRecipe)
         let sequence = SequenceRecipe(addSyncSequence, showRecipe)
-        return wrap("The account could not be added.", AnyRecipe(sequence))
+        return wrap(NSLocalizedString("The account could not be added.", tableName: "PasswordManager", comment: "PasswordManager: lastpass add account error"), AnyRecipe(sequence))
     }
 
     func wrap<Inputs, Outputs>(_ message: String, _ recipe: AnyRecipe<Inputs, Outputs>) -> AnyRecipe<Inputs, Outputs> {
         return AnyRecipe(CatchRecipe(recipe, errorHandler: { (inputs, error) in
             if error as? LPError == LPError.timedOut {
                 let alert = NSAlert()
-                alert.messageText = "Timeout"
-                alert.informativeText = "The LastPass service took too long to respond. \(message)"
-                alert.addButton(withTitle: "OK")
+                alert.messageText = NSLocalizedString("Timeout", tableName: "PasswordManager", comment: "PasswordManager: lastpass timeout title")
+                alert.informativeText = String(format: NSLocalizedString("The LastPass service took too long to respond. %@", tableName: "PasswordManager", comment: "PasswordManager: lastpass timeout informative"), message)
+                alert.addButton(withTitle: NSLocalizedString("OK", tableName: "PasswordManager", comment: "PasswordManager: OK button"))
                 alert.runModal()
                 return
             } else if error as? LPError == LPError.needsLogin {
@@ -502,7 +502,7 @@ class LastPassUtils {
     private static let usernameUserDefaultsKey = "LastPassUserName"
 
     static func showLoginUI() throws {
-        let alert = ModalPasswordAlert("Please log in to LastPass")
+        let alert = ModalPasswordAlert(NSLocalizedString("Please log in to LastPass", tableName: "PasswordManager", comment: "PasswordManager: lastpass login prompt"))
         alert.username = iTermUserDefaults.userDefaults().string(forKey: usernameUserDefaultsKey) ?? ""
         if let password = alert.run(window: nil), let username = alert.username {
             iTermUserDefaults.userDefaults().set(alert.username, forKey: usernameUserDefaultsKey)
@@ -531,12 +531,12 @@ class LastPassUtils {
 
     static func showNotLoggedInMessage() {
         let alert = NSAlert()
-        let email = iTermUserDefaults.userDefaults().string(forKey: usernameUserDefaultsKey) ?? "your@email.address"
-        alert.messageText = "Authentication Failed"
-        alert.informativeText = "You can also try opening a terminal window and running `lpass login \(email)`."
-        alert.addButton(withTitle: "Open Terminal Window")
-        alert.addButton(withTitle: "Copy Command")
-        alert.addButton(withTitle: "Cancel")
+        let email = iTermUserDefaults.userDefaults().string(forKey: usernameUserDefaultsKey) ?? NSLocalizedString("your@email.address", tableName: "PasswordManager", comment: "PasswordManager: lastpass email fallback")
+        alert.messageText = NSLocalizedString("Authentication Failed", tableName: "PasswordManager", comment: "PasswordManager: lastpass auth failed title")
+        alert.informativeText = String(format: NSLocalizedString("You can also try opening a terminal window and running `lpass login %@`.", tableName: "PasswordManager", comment: "PasswordManager: lastpass auth failed informative"), email)
+        alert.addButton(withTitle: NSLocalizedString("Open Terminal Window", tableName: "PasswordManager", comment: "PasswordManager: lastpass open terminal button"))
+        alert.addButton(withTitle: NSLocalizedString("Copy Command", tableName: "PasswordManager", comment: "PasswordManager: lastpass copy command button"))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "PasswordManager", comment: "PasswordManager: cancel button"))
         switch alert.runModal() {
         case .alertFirstButtonReturn:
             let window = iTermController.sharedInstance().openSingleUseLoginWindowAndWrite("lpass login \(email)".data(using: .utf8)!) { session in
@@ -545,9 +545,9 @@ class LastPassUtils {
                                         deadline: nil,
                                         willExpect: nil) { _ in
                     let alert = NSAlert()
-                    alert.messageText = "Login Successful"
-                    alert.informativeText = "Please retry your action in the password manager."
-                    alert.addButton(withTitle: "OK")
+                    alert.messageText = NSLocalizedString("Login Successful", tableName: "PasswordManager", comment: "PasswordManager: lastpass login successful title")
+                    alert.informativeText = NSLocalizedString("Please retry your action in the password manager.", tableName: "PasswordManager", comment: "PasswordManager: lastpass login successful informative")
+                    alert.addButton(withTitle: NSLocalizedString("OK", tableName: "PasswordManager", comment: "PasswordManager: OK button"))
                     alert.runModal()
                     session?.close()
                 }
@@ -566,11 +566,11 @@ class LastPassUtils {
     // Returns true to show an open panel to locate it.
     private static func showCannotFindCLIMessage() -> Bool {
         let alert = NSAlert()
-        alert.messageText = "Can’t Find LastPass CLI"
-        alert.informativeText = "In order to use the LastPass integration, iTerm2 needs to know where to find the CLI app named “lpass”. Select Locate to provide its location."
-        alert.addButton(withTitle: "Locate")
-        alert.addButton(withTitle: "Cancel")
-        alert.addButton(withTitle: "Help")
+        alert.messageText = NSLocalizedString("Can’t Find LastPass CLI", tableName: "PasswordManager", comment: "PasswordManager: lastpass cli not found title")
+        alert.informativeText = NSLocalizedString("In order to use the LastPass integration, iTerm2 needs to know where to find the CLI app named “lpass”. Select Locate to provide its location.", tableName: "PasswordManager", comment: "PasswordManager: lastpass cli not found informative")
+        alert.addButton(withTitle: NSLocalizedString("Locate", tableName: "PasswordManager", comment: "PasswordManager: locate button"))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "PasswordManager", comment: "PasswordManager: cancel button"))
+        alert.addButton(withTitle: NSLocalizedString("Help", tableName: "PasswordManager", comment: "PasswordManager: help button"))
         switch alert.runModal() {
         case .alertFirstButtonReturn:
             return true

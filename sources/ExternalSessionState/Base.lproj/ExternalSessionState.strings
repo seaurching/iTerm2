@@ -1,0 +1,9 @@
+/* ExternalSessionState.strings - External attribute context menu labels */
+
+"underline=%@" = "underline=%@";
+"URL" = "URL";
+"block" = "block";
+"dualFg" = "dualFg";
+"dualBg" = "dualBg";
+"none" = "none";
+"Control Code" = "Control Code";

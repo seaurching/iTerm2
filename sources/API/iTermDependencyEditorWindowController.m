@@ -153,7 +153,7 @@
         return NO;
     }
     if (!ok) {
-        tuple.secondObject = @"[Error]";
+        tuple.secondObject = NSLocalizedStringFromTableInBundle(@"[Error]", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
         RLog(@"Error running pip3 show %@ in %@: %@",
              tuple.firstObject,
              container.path,
@@ -171,7 +171,7 @@
 - (NSString *)versionInPipOutput:(NSData *)output {
     NSString *string = [[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding];
     NSArray<NSString *> *lines = [string componentsSeparatedByString:@"\n"];
-    NSString *const versionPrefix = @"Version: ";
+    NSString *const versionPrefix = NSLocalizedStringFromTableInBundle(@"Version: ", @"APIFiles", [NSBundle bundleForClass:[self class]], @"版本：");
     NSString *versionLine = [lines filteredArrayUsingBlock:^BOOL(NSString *aLine) {
         return [aLine hasPrefix:versionPrefix];
     }].firstObject;
@@ -344,9 +344,9 @@
     [textField setSelectable:YES];
 
     iTermWarning *warning = [[iTermWarning alloc] init];
-    warning.heading = @"Add Dependency";
-    warning.title = @"What dependency would you like to add?";
-    warning.actionLabels = @[ @"OK", @"Cancel" ];
+    warning.heading = NSLocalizedStringFromTableInBundle(@"Add Dependency", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
+    warning.title = NSLocalizedStringFromTableInBundle(@"What dependency would you like to add?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
+    warning.actionLabels = @[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:[self class]], @""), NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @"") ];
     warning.accessory = textField;
     warning.warningType = kiTermWarningTypePersistent;
     warning.window = self.window;
@@ -387,11 +387,11 @@
         return [anObject stringWithBackslashEscapedShellCharactersIncludingNewlines:YES];
     }] componentsJoinedByString:@" "]];
     iTermWarningSelection selection = [iTermWarning showWarningWithTitle:command
-                                                                 actions:@[ @"OK", @"Cancel" ]
+                                                                 actions:@[ @"OK", NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @"取消") ]
                                                                accessory:nil
                                                               identifier:@"DependencyEditorPip3Confirmation"
                                                              silenceable:kiTermWarningTypePersistent
-                                                                 heading:@"Run this Command?"
+                                                                 heading:NSLocalizedStringFromTableInBundle(@"Run this Command?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")
                                                                   window:self.window];
     if (selection == kiTermWarningSelection1) {
         return;
@@ -420,12 +420,12 @@
 }
 
 - (void)uninstallDidFailForPackage:(NSString *)package {
-    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Uninstall of %@ failed. Check the pip output for errors.",package]
-                               actions:@[ @"OK" ]
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Uninstall of %@ failed. Check the pip output for errors.", @"APIFiles", [NSBundle bundleForClass:[self class]], @""),package]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:[self class]], @"好") ]
                              accessory:nil
                             identifier:@"DependencyEditorInstallationFailed"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Removal Failed"
+                               heading:NSLocalizedStringFromTableInBundle(@"Removal Failed", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")
                                 window:self.window];
 }
 
@@ -433,12 +433,12 @@
                   selectedScriptPath:(NSString *)selectedScriptPath
                    newDependencyName:(NSString *)newDependencyName {
     if (!ok) {
-        [iTermWarning showWarningWithTitle:@"Check the pip output for errors."
-                                   actions:@[ @"OK" ]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Check the pip output for errors.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:[self class]], @"好") ]
                                  accessory:nil
                                 identifier:@"DependencyEditorInstallationFailed"
                                silenceable:kiTermWarningTypePersistent
-                                   heading:@"Installation Failed"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Installation Failed", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")
                                     window:self.window];
         return;
     }
@@ -482,9 +482,9 @@
     NSURL *folder = [[[NSURL fileURLWithPath:_selectedScriptItem.path] URLByDeletingLastPathComponent] URLByAppendingPathComponent:name];
     if ([[NSFileManager defaultManager] fileExistsAtPath:folder.path]) {
         iTermWarning *warning = [[iTermWarning alloc] init];
-        warning.title = [NSString stringWithFormat:@"Can’t upgrade because %@ already exists", folder.path];
-        warning.heading = @"Error";
-        warning.actionLabels = @[ @"OK" ];
+        warning.title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Can’t upgrade because %@ already exists", @"APIFiles", [NSBundle bundleForClass:[self class]], @""), folder.path];
+        warning.heading = NSLocalizedStringFromTableInBundle(@"Error", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
+        warning.actionLabels = @[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:[self class]], @"好") ];
         warning.warningType = kiTermWarningTypePersistent;
         warning.window = self.window;
         [warning runModal];
@@ -505,8 +505,8 @@
                 return;
             }
             NSAlert *alert = [[NSAlert alloc] init];
-            alert.messageText = @"Installation Failed";
-            alert.informativeText = [NSString stringWithFormat:@"Please file a bug report at https://iterm2.com/bugs. The following error occurred while upgrading a dependency: %@", errorStatus.localizedDescription];
+            alert.messageText = NSLocalizedStringFromTableInBundle(@"Installation Failed", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
+            alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Please file a bug report at https://iterm2.com/bugs. The following error occurred while upgrading a dependency: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @""), errorStatus.localizedDescription];
             [alert runModal];
             return;
         }
@@ -524,7 +524,7 @@
                                                                         dependencies:@[]
                                                                       createSetupCfg:YES
                                                                 provisioningDidBegin:^{
-            [progress showWithMessage:@"Setting up the Python environment…"];
+            [progress showWithMessage:NSLocalizedStringFromTableInBundle(@"Setting up the Python environment…", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")];
         }
                                                                           completion:upgradeCompletion];
     } else {
@@ -548,8 +548,8 @@
                                  error:&error];
     if (error) {
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Installation Failed";
-        alert.informativeText = [NSString stringWithFormat:@"Error creating %@: %@", innerFolder, error.localizedDescription];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Installation Failed", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error creating %@: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @""), innerFolder, error.localizedDescription];
         [alert runModal];
         return;
     }
@@ -561,8 +561,8 @@
                           error:&error];
     if (error) {
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Installation Failed";
-        alert.informativeText = [NSString stringWithFormat:@"Error moving %@ to %@: %@", item.path, destination, error.localizedDescription];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Installation Failed", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error moving %@ to %@: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @""), item.path, destination, error.localizedDescription];
         [alert runModal];
         return;
     }
@@ -660,9 +660,9 @@
     SUStandardVersionComparator *comparator = [[SUStandardVersionComparator alloc] init];
     if ([comparator compareVersion:selectedVersion toVersion:_pythonVersion] == NSOrderedAscending) {
         iTermWarning *warning = [[iTermWarning alloc] init];
-        warning.title = @"You have asked to downgrade to an older Python version. Dependencies will need to be reinstalled. This may go badly. Are you sure you want to do this?";
-        warning.heading = @"Confirm Python Downgrade";
-        warning.actionLabels = @[ @"OK", @"Cancel" ];
+        warning.title = NSLocalizedStringFromTableInBundle(@"You have asked to downgrade to an older Python version. Dependencies will need to be reinstalled. This may go badly. Are you sure you want to do this?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
+        warning.heading = NSLocalizedStringFromTableInBundle(@"Confirm Python Downgrade", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
+        warning.actionLabels = @[ @"OK", NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @"取消") ];
         warning.identifier = @"DependencyEditorConfirmDowngrade";
         warning.warningType = kiTermWarningTypePersistent;
         warning.window = self.window;
@@ -674,9 +674,9 @@
         }
     } else {
         iTermWarning *warning = [[iTermWarning alloc] init];
-        warning.title = @"You have asked to upgrade to a newer Python version. Dependencies will need to be reinstalled. OK to continue?";
-        warning.heading = @"Confirm Python Upgrade";
-        warning.actionLabels = @[ @"OK", @"Cancel" ];
+        warning.title = NSLocalizedStringFromTableInBundle(@"You have asked to upgrade to a newer Python version. Dependencies will need to be reinstalled. OK to continue?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
+        warning.heading = NSLocalizedStringFromTableInBundle(@"Confirm Python Upgrade", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
+        warning.actionLabels = @[ @"OK", NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @"取消") ];
         warning.identifier = @"DependencyEditorConfirmUpgrade";
         warning.warningType = kiTermWarningTypePersistent;
         warning.window = self.window;
@@ -710,7 +710,7 @@
                                                                         dependencies:dependencies ?: @[]
                                                                       createSetupCfg:YES
                                                                 provisioningDidBegin:^{
-            [progress showWithMessage:@"Rebuilding the Python environment…"];
+            [progress showWithMessage:NSLocalizedStringFromTableInBundle(@"Rebuilding the Python environment…", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")];
         }
                                                                           completion:^(NSError *error) {
             [progress dismiss];
@@ -723,8 +723,8 @@
             [strongSelf setEditingControlsEnabled:YES];
             if (error != nil && ![iTermUvProvisioner isCancelationError:error]) {
                 NSAlert *alert = [[NSAlert alloc] init];
-                alert.messageText = @"Could Not Change Python Version";
-                alert.informativeText = error.localizedDescription ?: @"Unknown error";
+                alert.messageText = NSLocalizedStringFromTableInBundle(@"Could Not Change Python Version", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
+                alert.informativeText = error.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"Unknown error", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
                 [alert runModal];
             }
             // Refresh the editor from the (rebuilt) environment and setup.cfg.

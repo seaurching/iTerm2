@@ -23,14 +23,14 @@ class BufferInputTrigger: Trigger {
     }
     override var description: String {
         if shouldBuffer {
-            return "Buffer Input"
+            return NSLocalizedString("Buffer Input", tableName: "Triggers", comment: "缓冲输入触发器描述：开始")
         } else {
-            return "Stop Buffering Input"
+            return NSLocalizedString("Stop Buffering Input", tableName: "Triggers", comment: "缓冲输入触发器描述：停止")
         }
     }
 
     override static var title: String {
-        return "Buffer Input…"
+        return NSLocalizedString("Buffer Input…", tableName: "Triggers", comment: "缓冲输入触发器标题")
     }
 
     override func takesParameter() -> Bool {
@@ -64,8 +64,8 @@ class BufferInputTrigger: Trigger {
     }
 
     override func menuItemsForPoupupButton() -> [AnyHashable : Any]? {
-        [ NSNumber(value: Tag.start.rawValue): "Start Buffering Input",
-          NSNumber(value: Tag.stop.rawValue): "Stop Buffering Input" ]
+        [ NSNumber(value: Tag.start.rawValue): NSLocalizedString("Start Buffering Input", tableName: "Triggers", comment: "弹出菜单：开始缓冲输入"),
+          NSNumber(value: Tag.stop.rawValue): NSLocalizedString("Stop Buffering Input", tableName: "Triggers", comment: "弹出菜单：停止缓冲输入") ]
     }
 
     override func performAction(withCapturedStrings strings: [String],
@@ -80,7 +80,7 @@ class BufferInputTrigger: Trigger {
     }
 
     override func paramAttributedString() -> NSAttributedString? {
-        NSAttributedString(string: shouldBuffer ? "Start buffering" : "Stop buffering",
+        NSAttributedString(string: shouldBuffer ? NSLocalizedString("Start buffering", tableName: "Triggers", comment: "参数：开始缓冲") : NSLocalizedString("Stop buffering", tableName: "Triggers", comment: "参数：停止缓冲"),
                            attributes: regularAttributes())
     }
 }

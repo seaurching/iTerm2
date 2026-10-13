@@ -180,14 +180,35 @@ static NSDictionary *gIntrospection;
    return sortedAdvancedSettings;
 }
 
++ (void)splitDescriptionIntoCategory:(NSString **)category
+                           remainder:(NSString **)remainder {
+    // Localized descriptions may use a full-width colon (e.g. Chinese), so accept either kind.
+    NSString *description = *category;
+    NSRange colon = [description rangeOfString:@":"];
+    NSRange fullwidthColon = [description rangeOfString:@"："];
+    if (fullwidthColon.location != NSNotFound &&
+        (colon.location == NSNotFound || fullwidthColon.location < colon.location)) {
+        colon = fullwidthColon;
+    }
+    if (colon.location == NSNotFound) {
+        // No category separator; use the entire description as the category.
+        *remainder = description;
+        return;
+    }
+    *remainder = [description substringFromIndex:NSMaxRange(colon)];
+    if ([*remainder hasPrefix:@" "]) {
+        *remainder = [*remainder substringFromIndex:1];
+    }
+    *category = [description substringToIndex:colon.location];
+}
+
 + (NSArray *)groupedSettingsArrayFromSortedArray:(NSArray *)sorted {
     NSString *previousCategory = nil;
     NSMutableArray *result = [NSMutableArray array];
     for (NSDictionary *dict in sorted) {
-        NSString *description = dict[kAdvancedSettingDescription];
-        NSInteger colon = [description rangeOfString:@":"].location;
-        NSString *thisCategory = [description substringToIndex:colon];
-        NSString *remainder = [description substringFromIndex:colon + 2];
+        NSString *thisCategory = dict[kAdvancedSettingDescription];
+        NSString *remainder = nil;
+        [self splitDescriptionIntoCategory:&thisCategory remainder:&remainder];
         if (![thisCategory isEqualToString:previousCategory]) {
             previousCategory = [thisCategory copy];
             [result addObject:thisCategory];
@@ -284,8 +305,8 @@ static NSDictionary *gIntrospection;
     [button setAction:@selector(toggleOnOff:)];
     button.identifier = @"onoff";
     [button.menu removeAllItems];
-    [button.menu addItemWithTitle:@"No" action:nil keyEquivalent:@""];
-    [button.menu addItemWithTitle:@"Yes" action:nil keyEquivalent:@""];
+    [button.menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"No", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") action:nil keyEquivalent:@""];
+    [button.menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Yes", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") action:nil keyEquivalent:@""];
     [button selectItemAtIndex:on ? 1 : 0];
     return button;
 }
@@ -324,9 +345,9 @@ static NSDictionary *gIntrospection;
     [button setAction:@selector(toggleTristate:)];
     button.identifier = @"tristate";
     [button.menu removeAllItems];
-    [button.menu addItemWithTitle:@"Unspecified" action:nil keyEquivalent:@""];
-    [button.menu addItemWithTitle:@"No" action:nil keyEquivalent:@""];
-    [button.menu addItemWithTitle:@"Yes" action:nil keyEquivalent:@""];
+    [button.menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Unspecified", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") action:nil keyEquivalent:@""];
+    [button.menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"No", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") action:nil keyEquivalent:@""];
+    [button.menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Yes", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") action:nil keyEquivalent:@""];
 
     NSNumber *value = [self objectForRow:row];
     if (!value) {
@@ -360,7 +381,7 @@ static NSDictionary *gIntrospection;
     button.identifier = @"enum";
     [button.menu removeAllItems];
     for (NSString *title in options) {
-        [button.menu addItemWithTitle:title action:nil keyEquivalent:@""];
+        [button.menu addItemWithTitle:NSLocalizedStringFromTableInBundle(title, @"Settings", [NSBundle bundleForClass:[self class]], @"int enum option title") action:nil keyEquivalent:@""];
     }
     if (value >= 0 && value < options.count) {
         [button selectItemAtIndex:value];
@@ -765,8 +786,8 @@ static void iTermAdvancedSettingsSaveSecureString(NSDictionary *dict, NSString *
 - (NSArray<iTermPreferencesSearchDocument *> *)searchableViewControllerDocuments {
     if (!_docs) {
         _docs = [[iTermAdvancedSettingsViewController sortedAdvancedSettings] mapWithBlock:^id(NSDictionary *dict) {
-            iTermPreferencesSearchDocument *doc = [iTermPreferencesSearchDocument documentWithDisplayName:@"Advanced Preferences…"  // dict[kAdvancedSettingDescription]
-                                                                                               identifier:@"Advanced Preferences"  // dict[kAdvancedSettingIdentifier]
+            iTermPreferencesSearchDocument *doc = [iTermPreferencesSearchDocument documentWithDisplayName:NSLocalizedStringFromTableInBundle(@"Advanced Preferences…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")  // dict[kAdvancedSettingDescription]
+                                                                                               identifier:NSLocalizedStringFromTableInBundle(@"Advanced Preferences", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")  // dict[kAdvancedSettingIdentifier]
                                                                                            keywordPhrases:@[ dict[kAdvancedSettingDescription] ]
                                                                                              profileTypes:ProfileTypeAll];
             doc.queryIndependentScore = -1;

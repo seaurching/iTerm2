@@ -91,7 +91,7 @@ class iTermOpenPanel: NSObject {
                 if response == .OK, let urls = maybeURLs {
                     continuation.resume(returning: urls)
                 } else {
-                    continuation.resume(throwing: iTermError("Canceled"))
+                    continuation.resume(throwing: iTermError(NSLocalizedString("Canceled", tableName: "OpenSavePanels", comment: "OpenSavePanels: open panel canceled error")))
                 }
             }
         }
@@ -334,7 +334,7 @@ private extension iTermOpenPanel {
         
         // Create SSH panel button
         let sshButton = SSHOpenPanelButton()
-        sshButton.title = "Open SSH Panel..."
+        sshButton.title = NSLocalizedString("Open SSH Panel...", tableName: "OpenSavePanels", comment: "OpenSavePanels: open SSH panel button")
         sshButton.target = self
         sshButton.action = #selector(openSSHPanelButtonClicked(_:))
         sshButton.bezelStyle = .rounded

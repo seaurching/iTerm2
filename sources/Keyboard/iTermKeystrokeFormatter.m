@@ -136,21 +136,21 @@ exit:
             break;
         case NSDeleteFunctionKey:
             aString = NSLocalizedStringFromTableInBundle(@"Del→",
-                                                         @"iTerm",
+                                                         @"Keyboard",
                                                          [NSBundle bundleForClass:[self class]],
-                                                         @"Key Names");
+                                                         @"Key name: Del→");
             break;
         case 0x7f:
             aString = NSLocalizedStringFromTableInBundle(@"←Delete",
-                                                         @"iTerm",
+                                                         @"Keyboard",
                                                          [NSBundle bundleForClass:[self class]],
-                                                         @"Key Names");
+                                                         @"Key name: ←Delete");
             break;
         case NSEndFunctionKey:
             aString = NSLocalizedStringFromTableInBundle(@"End",
-                                                         @"iTerm",
+                                                         @"Keyboard",
                                                          [NSBundle bundleForClass:[self class]],
-                                                         @"Key Names");
+                                                         @"Key name: End");
             break;
         case NSF1FunctionKey:
         case NSF2FunctionKey:
@@ -176,15 +176,15 @@ exit:
             break;
         case NSHelpFunctionKey:
             aString = NSLocalizedStringFromTableInBundle(@"Help",
-                                                         @"iTerm",
+                                                         @"Keyboard",
                                                          [NSBundle bundleForClass:[self class]],
-                                                         @"Key Names");
+                                                         @"Key name: Help");
             break;
         case NSHomeFunctionKey:
             aString = NSLocalizedStringFromTableInBundle(@"Home",
-                                                         @"iTerm",
+                                                         @"Keyboard",
                                                          [NSBundle bundleForClass:[self class]],
-                                                         @"Key Names");
+                                                         @"Key name: Home");
             break;
 
         // These are standard on Apple en_GB keyboards where ~ and ` go on US keyboards (between esc
@@ -227,20 +227,20 @@ exit:
             aString = @".";
             break;
         case NSClearLineFunctionKey:
-            aString = @"Numlock";
+            aString = NSLocalizedStringFromTableInBundle(@"Numlock", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key name: Numlock");
             break;
         case NSPageDownFunctionKey:
-            aString = @"Page Down";
+            aString = NSLocalizedStringFromTableInBundle(@"Page Down", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key name: Page Down");
             break;
         case NSPageUpFunctionKey:
-            aString = @"Page Up";
+            aString = NSLocalizedStringFromTableInBundle(@"Page Up", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key name: Page Up");
             break;
         case 0x3: // 'enter' on numeric key pad
             aString = @"↩";
             break;
         case NSInsertFunctionKey:  // Fall through
         case NSInsertCharFunctionKey:
-            aString = @"Insert";
+            aString = NSLocalizedStringFromTableInBundle(@"Insert", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key name: Insert");
             break;
 
         default:
@@ -251,24 +251,24 @@ exit:
                 DLog(@"Is special");
                 switch (character) {
                     case ' ':
-                        aString = @"Space";
+                        aString = NSLocalizedStringFromTableInBundle(@"Space", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key name: Space");
                         break;
 
                     case '\r':
-                        aString = @"Return ↩";
+                        aString = NSLocalizedStringFromTableInBundle(@"Return ↩", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key name: Return ↩");
                         break;
 
                     case 27:
-                        aString = @"Esc ⎋";
+                        aString = NSLocalizedStringFromTableInBundle(@"Esc ⎋", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key name: Esc ⎋");
                         break;
 
                     case '\t':
-                        aString = @"Tab ↦";
+                        aString = NSLocalizedStringFromTableInBundle(@"Tab ↦", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key name: Tab ↦");
                         break;
 
                     case 0x19:
                         // back-tab
-                        aString = @"Tab ↤";
+                        aString = NSLocalizedStringFromTableInBundle(@"Tab ↤", @"Keyboard", [NSBundle bundleForClass:[self class]], @"Key name: Tab ↤");
                         break;
 
                     default:

@@ -66,16 +66,16 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Job Name";
+    return NSLocalizedStringFromTableInBundle(@"Job Name", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for job name component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Shows the currently running job. If space permits, parent process names are also shown.";
+    return NSLocalizedStringFromTableInBundle(@"Shows the currently running job. If space permits, parent process names are also shown.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for job name component");
 }
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
                                           textColor:(NSColor *)textColor {
-    return @"vim ◂ bash";
+    return NSLocalizedStringFromTableInBundle(@"vim ◂ bash", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for job name component");
 }
 
 - (BOOL)statusBarComponentCanStretch {

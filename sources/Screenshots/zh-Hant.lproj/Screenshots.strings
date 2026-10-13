@@ -1,0 +1,95 @@
+/* Screenshots: panel title */
+"Make Screenshot" = "製作截圖";
+
+/* Screenshots: encoding progress label */
+"Encoding…" = "編碼中…";
+
+/* Screenshots: cancel button */
+"Cancel" = "取消";
+
+/* Screenshots: line range label */
+"Line range:" = "行範圍：";
+
+/* Screenshots: line range to label */
+"to" = "到";
+
+/* Screenshots: annotations section label */
+"Annotations:" = "標註：";
+
+/* Screenshots: annotation instruction */
+"Select text in the terminal, then click a button below." = "在終端機中選取文字，然後點擊下方按鈕。";
+
+/* Screenshots: redact selection button */
+"Redact Selection" = "遮蓋選區";
+
+/* Screenshots: highlight selection button */
+"Highlight Selection" = "高亮選區";
+
+/* Screenshots: clear all annotations button */
+"Clear All" = "全部清除";
+
+/* Screenshots: annotation table column title */
+"Label" = "標籤";
+
+/* Screenshots: empty state label */
+"No annotations. Select text and click a button above." = "沒有標註。選取文字並點擊上方按鈕。";
+
+/* Screenshots: redaction method label */
+"Redaction method:" = "遮蓋方式：";
+
+/* Screenshots: blur method segment */
+"Blur" = "模糊";
+
+/* Screenshots: solid color method segment */
+"Solid Color" = "純色";
+
+/* Screenshots: blur radius label */
+"Blur radius:" = "模糊半徑：";
+
+/* Screenshots: fill color label */
+"Fill color:" = "填充顏色：";
+
+/* Screenshots: copy to clipboard button */
+"Copy to Clipboard" = "複製到剪貼板";
+
+/* Screenshots: save button */
+"Save" = "儲存";
+
+/* Screenshots: save as button */
+"Save As…" = "另存為…";
+
+/* Screenshots: large screenshot warning */
+"⚠️ Large screenshot will be saved as %ld files." = "⚠️ 大截圖將儲存為 %ld 個檔案。";
+
+/* Screenshots: redact annotation type prefix */
+"Redact" = "遮蓋";
+
+/* Screenshots: highlight annotation type prefix */
+"Highlight" = "高亮";
+
+/* Screenshots: copying progress title */
+"Copying…" = "複製中…";
+
+/* Screenshots: copied accessibility description */
+"Copied" = "已複製";
+
+/* Screenshots: copied feedback button title */
+"Copied!" = "已複製！";
+
+/* Screenshots: saving file progress title */
+"Saving file %ld of %ld" = "正在儲存檔案第 %ld 個，共 %ld 個";
+
+/* Screenshots: saving progress title */
+"Saving…" = "儲存中…";
+
+/* Screenshots: single line annotation label */
+"1 line" = "1 行";
+
+/* Screenshots: multi line annotation label */
+"%ld lines" = "%ld 行";
+
+/* Screenshots: annotation label with truncated content */
+"“%@”: “%@”" = "「%@」：「%@」";
+
+/* Screenshots: annotation label with prefix and suffix */
+"“%@”: “%@”...“%@”" = "「%@」：「%@」…「%@」";

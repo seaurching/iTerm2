@@ -7,10 +7,10 @@
 
 class HyperlinkBrowserTrigger: Trigger {
     override var description: String {
-        "Make Hyperlink with URL “\(param as? String ?? "(nil)")”"
+        String(format: NSLocalizedString("Make Hyperlink with URL “%@”", tableName: "Triggers", comment: "创建超链接触发器描述"), param as? String ?? NSLocalizedString("(nil)", tableName: "Triggers", comment: "超链接：无URL值"))
     }
     override static var title: String {
-        "Make Hyperlink…"
+        NSLocalizedString("Make Hyperlink…", tableName: "Triggers", comment: "创建超链接触发器标题")
     }
     override func takesParameter() -> Bool {
         true

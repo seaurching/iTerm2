@@ -30,7 +30,7 @@ class iTermSuppressedAlertsWindowController: NSWindowController {
                             styleMask: [.titled, .closable, .resizable, .utilityWindow],
                             backing: .buffered,
                             defer: true)
-        panel.title = "Suppressed Alerts"
+        panel.title = NSLocalizedString("Suppressed Alerts", tableName: "AppKit", comment: "已抑制的警告")
         panel.hidesOnDeactivate = false
         panel.minSize = NSSize(width: 480, height: 260)
         // This is a reused singleton window; without this, a programmatic NSWindow
@@ -72,9 +72,7 @@ class iTermSuppressedAlertsWindowController: NSWindowController {
         let bounds = content.bounds
 
         // Explanatory text at the top.
-        let explanation = label(withText: "These alerts are being answered automatically because you " +
-                                          "chose to remember your response. Select one and click " +
-                                          "Un-suppress to be asked again.")
+        let explanation = label(withText: NSLocalizedString("These alerts are being answered automatically because you chose to remember your response. Select one and click Un-suppress to be asked again.", tableName: "AppKit", comment: "这些警告正在被自动回答，因为您选择了记住您的响应。选择一个并点击「取消抑制」以再次被询问。"))
         explanation.frame = NSRect(x: margin,
                                    y: bounds.maxY - margin - 40,
                                    width: bounds.width - margin * 2,
@@ -105,17 +103,17 @@ class iTermSuppressedAlertsWindowController: NSWindowController {
         table.columnAutoresizingStyle = .noColumnAutoresizing
 
         let whenColumn = NSTableColumn(identifier: Column.when)
-        whenColumn.title = "Last Suppressed"
+        whenColumn.title = NSLocalizedString("Last Suppressed", tableName: "AppKit", comment: "上次抑制时间")
         whenColumn.width = 130
         whenColumn.minWidth = 100
 
         let responseColumn = NSTableColumn(identifier: Column.response)
-        responseColumn.title = "Automatic Response"
+        responseColumn.title = NSLocalizedString("Automatic Response", tableName: "AppKit", comment: "自动响应")
         responseColumn.width = 150
         responseColumn.minWidth = 100
 
         let alertColumn = NSTableColumn(identifier: Column.alert)
-        alertColumn.title = "Alert"
+        alertColumn.title = NSLocalizedString("Alert", tableName: "AppKit", comment: "警告")
         alertColumn.width = 260
         // Kept small enough that alertMin + the two fixed columns + intercell gaps
         // fit within the panel's minimum content width, so no column is ever clipped.
@@ -138,7 +136,7 @@ class iTermSuppressedAlertsWindowController: NSWindowController {
         tableView = table
 
         // Empty-state label centered over the table area.
-        let empty = label(withText: "No alerts are currently being suppressed.")
+        let empty = label(withText: NSLocalizedString("No alerts are currently being suppressed.", tableName: "AppKit", comment: "目前没有正在被抑制的警告。"))
         empty.alignment = .center
         empty.textColor = .secondaryLabelColor
         empty.frame = NSRect(x: margin,
@@ -151,7 +149,7 @@ class iTermSuppressedAlertsWindowController: NSWindowController {
         emptyLabel = empty
 
         // Bottom buttons.
-        let doneButton = NSButton(title: "Done", target: self, action: #selector(done(_:)))
+        let doneButton = NSButton(title: NSLocalizedString("Done", tableName: "AppKit", comment: "完成"), target: self, action: #selector(done(_:)))
         doneButton.bezelStyle = .rounded
         doneButton.keyEquivalent = "\r"
         doneButton.sizeToFit()
@@ -164,7 +162,7 @@ class iTermSuppressedAlertsWindowController: NSWindowController {
         doneButton.autoresizingMask = [.minXMargin, .maxYMargin]
         content.addSubview(doneButton)
 
-        let unsuppress = NSButton(title: "Un-suppress", target: self, action: #selector(unsuppress(_:)))
+        let unsuppress = NSButton(title: NSLocalizedString("Un-suppress", tableName: "AppKit", comment: "取消抑制"), target: self, action: #selector(unsuppress(_:)))
         unsuppress.bezelStyle = .rounded
         unsuppress.sizeToFit()
         var unsuppressFrame = unsuppress.frame
@@ -177,7 +175,7 @@ class iTermSuppressedAlertsWindowController: NSWindowController {
         content.addSubview(unsuppress)
         unsuppressButton = unsuppress
 
-        let unsuppressAll = NSButton(title: "Un-suppress All", target: self, action: #selector(unsuppressAll(_:)))
+        let unsuppressAll = NSButton(title: NSLocalizedString("Un-suppress All", tableName: "AppKit", comment: "全部取消抑制"), target: self, action: #selector(unsuppressAll(_:)))
         unsuppressAll.bezelStyle = .rounded
         unsuppressAll.sizeToFit()
         var allFrame = unsuppressAll.frame
@@ -194,7 +192,7 @@ class iTermSuppressedAlertsWindowController: NSWindowController {
         // the buttons. This is the transient mode that used to live in the View
         // menu: when on, remembered alerts are shown again so you can change your
         // response.
-        let checkbox = NSButton(checkboxWithTitle: "Always show alerts with remembered selections",
+        let checkbox = NSButton(checkboxWithTitle: NSLocalizedString("Always show alerts with remembered selections", tableName: "AppKit", comment: "始终显示带有已记住选择的警告"),
                                 target: self,
                                 action: #selector(toggleShowRemembered(_:)))
         checkbox.sizeToFit()
@@ -204,10 +202,7 @@ class iTermSuppressedAlertsWindowController: NSWindowController {
         checkFrame.origin.y = margin + buttonHeight + checkboxGap
         checkbox.frame = checkFrame
         checkbox.autoresizingMask = [.maxXMargin, .maxYMargin]
-        checkbox.toolTip = "When you check “Remember my choice” or “Suppress this message " +
-                           "permanently” in an alert, iTerm2 stops showing it and reuses your " +
-                           "saved response. Turn this on to show those alerts again so you can " +
-                           "see them or choose differently. It stays on until you turn it off."
+        checkbox.toolTip = NSLocalizedString("When you check “Remember my choice” or “Suppress this message permanently” in an alert, iTerm2 stops showing it and reuses your saved response. Turn this on to show those alerts again so you can see them or choose differently. It stays on until you turn it off.", tableName: "AppKit", comment: "当您在警告中选中「记住我的选择」或「永久抑制此消息」时，iTerm2 会停止显示它并重复使用您保存的响应。开启此选项可再次显示这些警告，以便您可以查看它们或做出不同的选择。它会一直保持开启，直到您将其关闭。")
         content.addSubview(checkbox)
         showRememberedCheckbox = checkbox
     }

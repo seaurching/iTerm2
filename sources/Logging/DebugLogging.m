@@ -183,8 +183,8 @@ static void FlushDebugLog(void) {
         // writeData:error: populates `error`, but a failed createFileAtPath: or a
         // nil file handle leaves it nil; fall back to a concrete message so the
         // user gets an actionable reason instead of "(null)".
-        NSString *reason = error.localizedDescription ?: [NSString stringWithFormat:@"could not open %@ for writing", kDebugLogFilename];
-        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Failed to save debug log: %@", reason] actions:@[ @"OK" ] accessory:nil identifier:nil silenceable:kiTermWarningTypePersistent heading:@"Problem Saving Debug Log" window:nil];
+        NSString *reason = error.localizedDescription ?: [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"could not open %@ for writing", @"Logging", [NSBundle mainBundle], @"Debug log: could not open file for writing"), kDebugLogFilename];
+        [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Failed to save debug log: %@", @"Logging", [NSBundle mainBundle], @"Debug log: failed to save warning title"), reason] actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Logging", [NSBundle mainBundle], @"Debug log: failed to save OK button") ] accessory:nil identifier:nil silenceable:kiTermWarningTypePersistent heading:NSLocalizedStringFromTableInBundle(@"Problem Saving Debug Log", @"Logging", [NSBundle mainBundle], @"Debug log: failed to save heading") window:nil];
     }
 
     [gDebugLogStr setString:@""];
@@ -531,17 +531,17 @@ BOOL TurnOffDebugLoggingSilently(void) {
 void ToggleDebugLogging(void) {
     if (!gDebugLogging) {
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Debug Logging Enabled";
-        alert.informativeText = @"Please reproduce the bug. Then toggle debug logging again to save the log.";
-        [alert addButtonWithTitle:@"OK"];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Debug Logging Enabled", @"Logging", [NSBundle mainBundle], @"Debug log: logging enabled alert title");
+        alert.informativeText = NSLocalizedStringFromTableInBundle(@"Please reproduce the bug. Then toggle debug logging again to save the log.", @"Logging", [NSBundle mainBundle], @"Debug log: logging enabled alert message");
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Logging", [NSBundle mainBundle], @"Debug log: alert OK button")];
         [alert runModal];
         StartDebugLogging();
     } else {
         StopDebugLogging();
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Debug Logging Stopped";
-        alert.informativeText = @"Please send /tmp/debuglog.txt to the developers.";
-        [alert addButtonWithTitle:@"OK"];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Debug Logging Stopped", @"Logging", [NSBundle mainBundle], @"Debug log: logging stopped alert title");
+        alert.informativeText = NSLocalizedStringFromTableInBundle(@"Please send /tmp/debuglog.txt to the developers.", @"Logging", [NSBundle mainBundle], @"Debug log: logging stopped alert message");
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Logging", [NSBundle mainBundle], @"Debug log: alert OK button")];
         [alert runModal];
     }
 }

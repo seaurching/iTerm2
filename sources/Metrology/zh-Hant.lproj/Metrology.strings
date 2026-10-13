@@ -1,0 +1,35 @@
+/* Metrology: chart duration tooltip */
+"Duration: %.1fµs–%.1fµs" = "持續時間：%.1fµs–%.1fµs";
+
+/* Metrology: chart count tooltip */
+"Count: %lld" = "計數：%lld";
+
+/* Metrology: chart start axis */
+"Start" = "起點";
+
+/* Metrology: chart end axis */
+"End" = "終點";
+
+/* Metrology: chart count axis */
+"Count" = "計數";
+
+/* Metrology: chart mean axis */
+"Mean" = "平均值";
+
+/* Metrology: min time column */
+"Min Time" = "最短時間";
+
+/* Metrology: distribution column */
+"Distribution" = "分佈";
+
+/* Metrology: max time column */
+"Max Time" = "最長時間";
+
+/* Metrology: samples column */
+"# Samples" = "樣本數";
+
+/* Metrology: mean time column */
+"Mean Time" = "平均時間";
+
+/* Metrology: total time column */
+"Total Time" = "總時間";

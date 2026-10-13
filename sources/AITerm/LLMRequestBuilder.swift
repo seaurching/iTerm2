@@ -119,7 +119,7 @@ struct LLMRequestBuilder {
             // Apple Intelligence runs on-device via FoundationModels and never
             // builds an HTTP request. AITermController intercepts this provider
             // before reaching the request builder, so this is unreachable.
-            throw AIError("Apple Intelligence does not use HTTP requests")
+            throw AIError(NSLocalizedString("Apple Intelligence does not use HTTP requests", tableName: "AITermXC", comment: "Apple Intelligence 不使用 HTTP 请求"))
         @unknown default:
             it_fatalError()
         }

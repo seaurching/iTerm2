@@ -182,7 +182,7 @@ NSString *const iTermBulkCopyIdentifierAdvanced = @"Advanced";
 - (void)updateLabel {
     Profile *profile = [[ProfileModel sharedInstance] bookmarkWithGuid:_sourceGuid];
     [_bulkCopyLabel setStringValue:[NSString stringWithFormat:
-                                    @"Copy these settings from profile “%@”:",
+                                    NSLocalizedStringFromTableInBundle(@"Copy these settings from profile “%@”:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
                                     profile[KEY_NAME]]];
 }
 

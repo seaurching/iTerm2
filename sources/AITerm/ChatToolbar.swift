@@ -112,7 +112,7 @@ class ChatToolbar {
     init(dataSource: ChatToolbarDataSource) {
         self.dataSource = dataSource
 
-        let label = NSTextField(labelWithString: "AI Chat")
+        let label = NSTextField(labelWithString: NSLocalizedString("AI Chat", tableName: "AITermXC", comment: "AI 对话"))
         label.font = NSFont.systemFont(ofSize: 20, weight: .semibold)
         label.textColor = NSColor.labelColor
         label.alignment = .center
@@ -128,7 +128,7 @@ class ChatToolbar {
 
         do {
             let webSearchButton = WebSearchButton(image: NSImage.it_image(forSymbolName: SFSymbol.globe.rawValue,
-                                                                          accessibilityDescription: "Web search image",
+                                                                          accessibilityDescription: NSLocalizedString("Web search image", tableName: "AITermXC", comment: "网页搜索图片"),
                                                                           fallbackImageName: "globe",
                                                                           for: Self.self)!,
                                                   target: nil,
@@ -142,7 +142,7 @@ class ChatToolbar {
             webSearchButton.target = self
             webSearchButton.action = #selector(toggleWebSearch(_:))
             webSearchButton.sizeToFit()
-            webSearchButton.toolTip = "Allow AI to perform web search?"
+            webSearchButton.toolTip = NSLocalizedString("Allow AI to perform web search?", tableName: "AITermXC", comment: "允许 AI 进行网页搜索？")
             self.webSearchButton = webSearchButton
             webSearchButton.isEnabled = (dataSource.provider?.supportsHostedWebSearch == true)
         }
@@ -152,7 +152,7 @@ class ChatToolbar {
 
             let image = NSImage(
                 systemSymbolName: SFSymbol.lightbulb.rawValue,
-                accessibilityDescription: "Enable high-effort reasoning?")?.withSymbolConfiguration(smallerConfig)
+                accessibilityDescription: NSLocalizedString("Enable high-effort reasoning?", tableName: "AITermXC", comment: "启用高强度推理？"))?.withSymbolConfiguration(smallerConfig)
             let thinkingButton = ThinkingButton(image: image!,
                                                   target: nil,
                                                 action: nil)
@@ -165,7 +165,7 @@ class ChatToolbar {
             thinkingButton.target = self
             thinkingButton.action = #selector(toggleThinking(_:))
             thinkingButton.sizeToFit()
-            thinkingButton.toolTip = "Enable high-effort reasoning? Slower but may produce better results."
+            thinkingButton.toolTip = NSLocalizedString("Enable high-effort reasoning? Slower but may produce better results.", tableName: "AITermXC", comment: "启用高强度推理？速度较慢但可能产生更好的结果。")
             self.thinkingButton = thinkingButton
             thinkingButton.isEnabled = (dataSource.provider?.model.features.contains(.configurableThinking) == true)
         }
@@ -319,7 +319,7 @@ final class FloatingChatToolbarView: NSView {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) not implemented")
+        it_fatalError(NSLocalizedString("init(coder:) not implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     // Manual-layout helper (don't override intrinsicContentSize — it would
@@ -412,8 +412,8 @@ extension ChatToolbar {
         selector.isHidden = selectableCount <= 1
         selector.isEnabled = !options.isEmpty && (dataSource?.canChangeProvider == true)
         selector.toolTip = selector.isEnabled
-            ? "Select the AI provider for this chat before sending the first message."
-            : "The provider is fixed after the first real message in a chat."
+            ? NSLocalizedString("Select the AI provider for this chat before sending the first message.", tableName: "AITermXC", comment: "在发送第一条消息前为此对话选择 AI 提供商。")
+            : NSLocalizedString("The provider is fixed after the first real message in a chat.", tableName: "AITermXC", comment: "发送第一条真实消息后提供商将固定。")
         if let selectedIdentifier = dataSource?.effectiveProviderIdentifier {
             select(selector, representedObject: selectedIdentifier)
         } else if !options.isEmpty {
@@ -429,7 +429,7 @@ extension ChatToolbar {
         modelSelectorButton = modelSelector
         modelSelector.target = self
         modelSelector.action = #selector(selectModel(_:))
-        modelSelector.toolTip = "Select a model for this chat. The provider is fixed after the chat is created."
+        modelSelector.toolTip = NSLocalizedString("Select a model for this chat. The provider is fixed after the chat is created.", tableName: "AITermXC", comment: "为此对话选择模型。对话创建后提供商将固定。")
 
         modelSelector.isBordered = false
         modelSelector.bezelStyle = .inline
@@ -446,11 +446,11 @@ extension ChatToolbar {
         // popup would just show a fixed, grayed-out title, so hide it entirely.
         modelSelector.isHidden = availableModels.count <= 1
         if !canChangeModel {
-            modelSelector.toolTip = "The model is fixed after the chat starts."
+            modelSelector.toolTip = NSLocalizedString("The model is fixed after the chat starts.", tableName: "AITermXC", comment: "对话开始后模型将固定。")
         } else if availableModels.count > 1 {
-            modelSelector.toolTip = "Select a model for this chat."
+            modelSelector.toolTip = NSLocalizedString("Select a model for this chat.", tableName: "AITermXC", comment: "为此对话选择模型。")
         } else {
-            modelSelector.toolTip = "Only one model is available for this chat."
+            modelSelector.toolTip = NSLocalizedString("Only one model is available for this chat.", tableName: "AITermXC", comment: "此对话只有一个可用模型。")
         }
         if let selectedModel = dataSource?.effectiveModel {
             modelSelector.selectItem(withTitle: selectedModel)
@@ -468,7 +468,7 @@ extension ChatToolbar {
         selector.isBordered = false
         selector.bezelStyle = .inline
         selector.font = NSFont.systemFont(ofSize: 13)
-        selector.toolTip = "Select reasoning effort for models that support it"
+        selector.toolTip = NSLocalizedString("Select reasoning effort for models that support it", tableName: "AITermXC", comment: "为支持推理力度的模型选择推理力度")
 
         let efforts = dataSource?.provider?.model.reasoningEfforts ?? []
         for effort in efforts {
@@ -494,7 +494,7 @@ extension ChatToolbar {
         selector.isBordered = false
         selector.bezelStyle = .inline
         selector.font = NSFont.systemFont(ofSize: 13)
-        selector.toolTip = "Select OpenAI service tier. Priority is faster; Flex is lower-cost and slower."
+        selector.toolTip = NSLocalizedString("Select OpenAI service tier. Priority is faster; Flex is lower-cost and slower.", tableName: "AITermXC", comment: "选择 OpenAI 服务等级。Priority 更快；Flex 更便宜但较慢。")
 
         let tiers = dataSource?.provider?.model.serviceTiers ?? []
         for tier in tiers {
@@ -575,23 +575,23 @@ extension ChatToolbar {
 
     private static func reasoningEffortTitle(_ effort: ResponsesRequestBody.ReasoningOptions.Effort) -> String {
         let value = switch effort {
-        case .none: "None"
-        case .minimal: "Minimal"
-        case .low: "Low"
-        case .medium: "Medium"
-        case .high: "High"
-        case .xhigh: "XHigh"
+        case .none: NSLocalizedString("None", tableName: "AITermXC", comment: "无")
+        case .minimal: NSLocalizedString("Minimal", tableName: "AITermXC", comment: "最小")
+        case .low: NSLocalizedString("Low", tableName: "AITermXC", comment: "低")
+        case .medium: NSLocalizedString("Medium", tableName: "AITermXC", comment: "中")
+        case .high: NSLocalizedString("High", tableName: "AITermXC", comment: "高")
+        case .xhigh: NSLocalizedString("XHigh", tableName: "AITermXC", comment: "极高")
         }
-        return "Effort: \(value)"
+        return String(format: NSLocalizedString("Effort: %@", tableName: "AITermXC", comment: "努力程度：%@"), value)
     }
 
     private static func serviceTierTitle(_ tier: ResponsesRequestBody.ServiceTier) -> String {
         let value = switch tier {
-        case .auto: "Auto"
-        case .default: "Standard"
-        case .priority: "Priority (Fast)"
-        case .flex: "Flex (Slow)"
+        case .auto: NSLocalizedString("Auto", tableName: "AITermXC", comment: "自动")
+        case .default: NSLocalizedString("Standard", tableName: "AITermXC", comment: "标准")
+        case .priority: NSLocalizedString("Priority (Fast)", tableName: "AITermXC", comment: "优先（快）")
+        case .flex: NSLocalizedString("Flex (Slow)", tableName: "AITermXC", comment: "弹性（慢）")
         }
-        return "Tier: \(value)"
+        return String(format: NSLocalizedString("Tier: %@", tableName: "AITermXC", comment: "层级：%@"), value)
     }
 }

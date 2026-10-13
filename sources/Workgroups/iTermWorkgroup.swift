@@ -33,7 +33,7 @@ struct iTermWorkgroup: Codable, Equatable {
             command: "",
             urlString: "",
             toolbarItems: [],
-            displayName: "Main")
+            displayName: NSLocalizedString("Main", tableName: "Workgroups", comment: "主会话默认显示名称"))
         return iTermWorkgroup(uniqueIdentifier: UUID().uuidString,
                               name: name,
                               sessions: [root])

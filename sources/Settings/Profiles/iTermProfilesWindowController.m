@@ -180,7 +180,7 @@ typedef enum {
         [tableView_ setTagsOpen:YES animated:NO];
     }
     // Load the new window icon for split buttons
-    _newWindowIcon = [NSImage imageWithSystemSymbolName:@"rectangle.badge.plus" accessibilityDescription:@"Open in new window"];
+    _newWindowIcon = [NSImage imageWithSystemSymbolName:@"rectangle.badge.plus" accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Open in new window", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: new window icon accessibility")];
     [horizontalPaneButton_ setImagePosition:NSImageLeft];
     [verticalPaneButton_ setImagePosition:NSImageLeft];
 }
@@ -341,7 +341,7 @@ typedef enum {
 }
 
 - (void)profileTableTagsVisibilityDidChange:(ProfileListView *)profileListView {
-    [toggleTagsButton_ setTitle:profileListView.tagsVisible ? @"< Tags" : @"Tags >"];
+    [toggleTagsButton_ setTitle:profileListView.tagsVisible ? NSLocalizedStringFromTableInBundle(@"< Tags", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: hide tags button") : NSLocalizedStringFromTableInBundle(@"Tags >", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: show tags button")];
 }
 
 - (void)profileTableSelectionDidChange:(id)profileTable
@@ -361,7 +361,7 @@ typedef enum {
         // don't want to break that.
         [tabButton_ setEnabled:!anySelectionDisablesTabs];
         [windowButton_ setEnabled:YES];
-        [windowButton_ setTitle:([guids count] > 1 ? @"New Windows" : @"New Window")];
+        [windowButton_ setTitle:([guids count] > 1 ? NSLocalizedStringFromTableInBundle(@"New Windows", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: new windows button plural") : NSLocalizedStringFromTableInBundle(@"New Window", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: new window button singular"))];
         if ([guids count] > 1) {
             [newTabsInNewWindowButton_ setEnabled:!anySelectionDisablesTabs];
             [horizontalPaneButton_ setEnabled:YES];
@@ -431,24 +431,24 @@ typedef enum {
 }
 
 - (NSMenu *)profileTable:(id)profileTable menuForEvent:(NSEvent *)theEvent {
-    NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
+    NSMenu *menu = [[NSMenu alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Contextual Menu", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: context menu title")];;
 
     int count = [[profileTable selectedGuids] count];
     if (count == 1) {
-        [menu addItemWithTitle:@"Edit Profile..."
+        [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Edit Profile...", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: edit profile menu item")
                         action:@selector(editSelectedBookmark:)
                  keyEquivalent:@""];
-        [menu addItemWithTitle:@"Open in New Tab"
+        [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Open in New Tab", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: open in new tab menu item")
                         action:@selector(openBookmarkInTab:)
                  keyEquivalent:@""];
-        [menu addItemWithTitle:@"Open in New Window"
+        [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Open in New Window", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: open in new window menu item")
                         action:@selector(openBookmarkInWindow:)
                  keyEquivalent:@""];
     } else if (count > 1) {
-        [menu addItemWithTitle:@"Open in New Tabs"
+        [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Open in New Tabs", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: open in new tabs menu item plural")
                         action:@selector(openBookmarkInTab:)
                  keyEquivalent:@""];
-        [menu addItemWithTitle:@"Open in New Windows"
+        [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Open in New Windows", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: open in new windows menu item plural")
                         action:@selector(openBookmarkInWindow:)
                  keyEquivalent:@""];
     }

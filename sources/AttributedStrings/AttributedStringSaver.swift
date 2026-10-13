@@ -70,12 +70,12 @@ class AttributedStringSaver: NSObject {
                 try await rtfData.writeTo(saveItem: item)
             }
         } catch {
-            _ = iTermWarning.show(withTitle: "There was a problem saving the file: \(error.localizedDescription)",
-                                  actions: ["OK"],
+            _ = iTermWarning.show(withTitle: String(format: NSLocalizedString("There was a problem saving the file: %@", tableName: "AttributedStrings", comment: "保存文件时出现问题：%@"), error.localizedDescription),
+                                  actions: [NSLocalizedString("OK", tableName: "AttributedStrings", comment: "好")],
                                   accessory: nil,
                                   identifier: nil,
                                   silenceable: .kiTermWarningTypePersistent,
-                                  heading: "Could Not Save File",
+                                  heading: NSLocalizedString("Could Not Save File", tableName: "AttributedStrings", comment: "无法保存文件"),
                                   window: window)
         }
     }

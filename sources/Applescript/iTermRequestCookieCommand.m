@@ -23,7 +23,7 @@ static NSString *const kReusableCookieAnnouncementIdentifier = @"ReusableCookieA
 - (id)performDefaultImplementation {
     if (![iTermAPIHelper isEnabled]) {
         [self setScriptErrorNumber:1];
-        [self setScriptErrorString:@"The Python API is not enabled."];
+        [self setScriptErrorString:NSLocalizedStringFromTableInBundle(@"The Python API is not enabled.", @"Applescript", [NSBundle bundleForClass:[self class]], @"Python API 未启用。")];
         return nil;
     }
 
@@ -47,17 +47,17 @@ static NSString *const kReusableCookieAnnouncementIdentifier = @"ReusableCookieA
         return;
     }
 
-    NSString *appName = self.arguments[@"appName"] ?: @"An app";
-    NSString *message = [NSString stringWithFormat:@"%@ requests a reusable API cookie.", appName];
+    NSString *appName = self.arguments[@"appName"] ?: NSLocalizedStringFromTableInBundle(@"An app", @"Applescript", [NSBundle bundleForClass:[self class]], @"某个应用");
+    NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ requests a reusable API cookie.", @"Applescript", [NSBundle bundleForClass:[self class]], @"%@ 请求一个可重用的 API cookie。"), appName];
 
     __weak __typeof(self) weakSelf = self;
     iTermAnnouncementViewController *announcement =
         [iTermAnnouncementViewController announcementWithTitle:message
                                                          style:kiTermAnnouncementViewStyleQuestion
-                                                   withActions:@[ @"_24 Hours",
-                                                                  @"Forever",
-                                                                  @"Always Allow All Apps",
-                                                                  @"Deny" ]
+                                                   withActions:@[ NSLocalizedStringFromTableInBundle(@"_24 Hours", @"Applescript", [NSBundle bundleForClass:[self class]], @"_24 小时"),
+                                                                  NSLocalizedStringFromTableInBundle(@"Forever", @"Applescript", [NSBundle bundleForClass:[self class]], @"永久"),
+                                                                  NSLocalizedStringFromTableInBundle(@"Always Allow All Apps", @"Applescript", [NSBundle bundleForClass:[self class]], @"始终允许所有应用"),
+                                                                  NSLocalizedStringFromTableInBundle(@"Deny", @"Applescript", [NSBundle bundleForClass:[self class]], @"拒绝") ]
                                                     completion:^(int selection) {
             [weakSelf handleReusableCookieSelection:selection];
         }];
@@ -71,7 +71,7 @@ static NSString *const kReusableCookieAnnouncementIdentifier = @"ReusableCookieA
             // 24 hours.
             NSTimeInterval duration = 24 * 60 * 60;
             cookie = [[iTermWebSocketCookieJar sharedInstance] randomStringForReusableCookieWithDuration:duration];
-            [self logEntry:@"Reusable API cookie granted (24 hours) by Applescript."];
+            [self logEntry:NSLocalizedStringFromTableInBundle(@"Reusable API cookie granted (24 hours) by Applescript.", @"Applescript", [NSBundle bundleForClass:[self class]], @"已通过 AppleScript 授予可重用的 API cookie（24 小时）。")];
             break;
         }
         case 1: {
@@ -82,20 +82,20 @@ static NSString *const kReusableCookieAnnouncementIdentifier = @"ReusableCookieA
             // Simpler: add it as reusable with a very long duration.
             [[iTermWebSocketCookieJar sharedInstance] removeCookie:cookie];
             cookie = [[iTermWebSocketCookieJar sharedInstance] randomStringForReusableCookieWithDuration:100 * 365.25 * 24 * 60 * 60];
-            [self logEntry:@"Permanent reusable API cookie granted by Applescript."];
+            [self logEntry:NSLocalizedStringFromTableInBundle(@"Permanent reusable API cookie granted by Applescript.", @"Applescript", [NSBundle bundleForClass:[self class]], @"已通过 AppleScript 授予永久可重用的 API cookie。")];
             break;
         }
         case 2: {
             // Always allow all apps — disable automation auth.
             [iTermAPIHelper setRequireApplescriptAuth:NO window:nil];
             cookie = [[iTermWebSocketCookieJar sharedInstance] randomStringForCookie];
-            [self logEntry:@"Automation auth disabled. Single-use API cookie granted by Applescript."];
+            [self logEntry:NSLocalizedStringFromTableInBundle(@"Automation auth disabled. Single-use API cookie granted by Applescript.", @"Applescript", [NSBundle bundleForClass:[self class]], @"自动化认证已禁用。已通过 AppleScript 授予单次使用的 API cookie。")];
             break;
         }
         default: {
             // Deny or dismissed.
             [self setScriptErrorNumber:2];
-            [self setScriptErrorString:@"User denied the reusable cookie request."];
+            [self setScriptErrorString:NSLocalizedStringFromTableInBundle(@"User denied the reusable cookie request.", @"Applescript", [NSBundle bundleForClass:[self class]], @"用户拒绝了可重用 cookie 请求。")];
             [self resumeExecutionWithResult:nil];
             return;
         }

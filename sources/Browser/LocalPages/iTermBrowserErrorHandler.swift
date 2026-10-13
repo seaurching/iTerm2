@@ -53,12 +53,12 @@ class iTermBrowserErrorHandler: NSObject, iTermBrowserPageHandler {
     func start(urlSchemeTask: WKURLSchemeTask, url: URL) {
         // Serve our error page HTML
         let htmlToServe = consumePendingErrorHTML() ?? generateErrorPageHTML(
-            for: NSError(domain: NSURLErrorDomain, code: NSURLErrorResourceUnavailable, userInfo: [NSLocalizedDescriptionKey: "Page Not Available"]),
+            for: NSError(domain: NSURLErrorDomain, code: NSURLErrorResourceUnavailable, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Page Not Available", tableName: "Browser", comment: "页面不可用")]),
             failedURL: nil
         )
 
         guard let data = htmlToServe.data(using: .utf8) else {
-            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to encode HTML"]))
+            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserManager", code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Failed to encode HTML", tableName: "Browser", comment: "编码 HTML 失败")]))
             return
         }
 
@@ -92,40 +92,40 @@ class iTermBrowserErrorHandler: NSObject, iTermBrowserPageHandler {
         let tuple: (String, String, String?) = {
             switch nsError.code {
             case NSURLErrorNotConnectedToInternet:
-                return ("No Internet Connection", "Your computer appears to be offline. Check your internet connection and try again.", nil)
+                return (NSLocalizedString("No Internet Connection", tableName: "Browser", comment: "无网络连接"), NSLocalizedString("Your computer appears to be offline. Check your internet connection and try again.", tableName: "Browser", comment: "您的计算机似乎已离线。请检查您的网络连接，然后重试。"), nil)
 
             case NSURLErrorCannotFindHost:
-                return ("Server Not Found", "iTerm2 can’t find the server. Check that the web address is correct and try again.", nil)
+                return (NSLocalizedString("Server Not Found", tableName: "Browser", comment: "找不到服务器"), NSLocalizedString("iTerm2 can’t find the server. Check that the web address is correct and try again.", tableName: "Browser", comment: "iTerm2 无法找到服务器。请检查网址是否正确，然后重试。"), nil)
 
             case NSURLErrorTimedOut:
-                return ("The Connection Timed Out", "The server didn’t respond in time. The site may be temporarily unavailable or overloaded.", nil)
+                return (NSLocalizedString("The Connection Timed Out", tableName: "Browser", comment: "连接超时"), NSLocalizedString("The server didn’t respond in time. The site may be temporarily unavailable or overloaded.", tableName: "Browser", comment: "服务器未及时响应。该站点可能暂时不可用或过载。"), nil)
 
             case NSURLErrorCannotConnectToHost:
-                return ("Can’t Connect to Server", "iTerm2 can’t establish a secure connection to the server. The server may be down or unreachable.", nil)
+                return (NSLocalizedString("Can’t Connect to Server", tableName: "Browser", comment: "无法连接到服务器"), NSLocalizedString("iTerm2 can’t establish a secure connection to the server. The server may be down or unreachable.", tableName: "Browser", comment: "iTerm2 无法与服务器建立安全连接。服务器可能已关闭或无法访问。"), nil)
 
             case NSURLErrorNetworkConnectionLost:
-                return ("Network Connection Lost", "The network connection was lost. Check your internet connection and try again.", nil)
+                return (NSLocalizedString("Network Connection Lost", tableName: "Browser", comment: "网络连接已断开"), NSLocalizedString("The network connection was lost. Check your internet connection and try again.", tableName: "Browser", comment: "网络连接已断开。请检查您的网络连接，然后重试。"), nil)
 
             case NSURLErrorDNSLookupFailed:
-                return ("Server Not Found", "The server’s DNS address could not be found. Check that the web address is correct.", nil)
+                return (NSLocalizedString("Server Not Found", tableName: "Browser", comment: "找不到服务器"), NSLocalizedString("The server’s DNS address could not be found. Check that the web address is correct.", tableName: "Browser", comment: "无法找到服务器的 DNS 地址。请检查网址是否正确。"), nil)
 
             case NSURLErrorHTTPTooManyRedirects:
-                return ("Too Many Redirects", "iTerm2 can’t open the page because the server redirected too many times.", nil)
+                return (NSLocalizedString("Too Many Redirects", tableName: "Browser", comment: "重定向次数过多"), NSLocalizedString("iTerm2 can’t open the page because the server redirected too many times.", tableName: "Browser", comment: "iTerm2 无法打开该页面，因为服务器重定向次数过多。"), nil)
 
             case NSURLErrorResourceUnavailable:
-                return ("Page Unavailable", "The requested page is currently unavailable. Try again later.", nil)
+                return (NSLocalizedString("Page Unavailable", tableName: "Browser", comment: "页面不可用"), NSLocalizedString("The requested page is currently unavailable. Try again later.", tableName: "Browser", comment: "请求的页面目前不可用。请稍后重试。"), nil)
 
             case NSURLErrorNotConnectedToInternet:
-                return ("No Internet Connection", "Your computer is not connected to the internet. Check your connection and try again.", nil)
+                return (NSLocalizedString("No Internet Connection", tableName: "Browser", comment: "无网络连接"), NSLocalizedString("Your computer is not connected to the internet. Check your connection and try again.", tableName: "Browser", comment: "您的计算机未连接到互联网。请检查您的连接，然后重试。"), nil)
 
             case NSURLErrorServerCertificateUntrusted, NSURLErrorSecureConnectionFailed:
-                return ("Secure Connection Failed", "iTerm2 can’t verify the identity of the website. The connection may not be secure.", sslErrorDetails(from: error))
+                return (NSLocalizedString("Secure Connection Failed", tableName: "Browser", comment: "安全连接失败"), NSLocalizedString("iTerm2 can’t verify the identity of the website. The connection may not be secure.", tableName: "Browser", comment: "iTerm2 无法验证网站的身份。连接可能不安全。"), sslErrorDetails(from: error))
 
             case NSURLErrorFileDoesNotExist:
-                return ("File Not Found", "The requested file does not exist.", nil)
+                return (NSLocalizedString("File Not Found", tableName: "Browser", comment: "文件未找到"), NSLocalizedString("The requested file does not exist.", tableName: "Browser", comment: "请求的文件不存在。"), nil)
 
             default:
-                return ("Page Can’t Be Loaded", "An error occurred while loading this page. \(error.localizedDescription)", nil)
+                return (NSLocalizedString("Page Can’t Be Loaded", tableName: "Browser", comment: "无法加载页面"), String(format: NSLocalizedString("An error occurred while loading this page. %@", tableName: "Browser", comment: "加载此页面时发生错误。%@"), error.localizedDescription), nil)
             }
         }()
         return (title: tuple.0,
@@ -164,7 +164,7 @@ func sslErrorDetails(from error: Error) -> String? {
         // Certificate chain subjects
         let subjects = certificateSubjects(from: trust)
         if !subjects.isEmpty {
-            lines.append("Certificate chain:")
+            lines.append(NSLocalizedString("Certificate chain:", tableName: "Browser", comment: "证书链："))
             for (idx, s) in subjects.enumerated() {
                 lines.append("  [\(idx)] \(s.escapedForHTML)")
             }
@@ -191,13 +191,13 @@ private func secTrust(fromUserInfo ui: [String: Any]) -> SecTrust? {
 private func sslErrorDescription(for status: Int) -> String? {
     // Subset of the most useful SSL codes you’ll actually see.
     switch OSStatus(status) {
-    case errSSLXCertChainInvalid:        return "The presented chain is not valid (e.g., self-signed without trust)."
-    case errSSLUnknownRootCert:          return "The root CA is unknown (not in trust store)."
-    case errSSLNoRootCert:               return "No root certificate found to anchor the chain."
-    case errSSLBadCert:                  return "The certificate is malformed or otherwise bad."
-    case errSSLCertExpired:              return "The certificate is expired."
-    case errSSLCertNotYetValid:          return "The certificate is not yet valid."
-    case errSSLHostNameMismatch:         return "The hostname does not match the certificate."
+    case errSSLXCertChainInvalid:        return NSLocalizedString("The presented chain is not valid (e.g., self-signed without trust).", tableName: "Browser", comment: "所提供的证书链无效（例如未经信任的自签名证书）。")
+    case errSSLUnknownRootCert:          return NSLocalizedString("The root CA is unknown (not in trust store).", tableName: "Browser", comment: "根证书颁发机构未知（不在信任存储中）。")
+    case errSSLNoRootCert:               return NSLocalizedString("No root certificate found to anchor the chain.", tableName: "Browser", comment: "未找到可用于锚定证书链的根证书。")
+    case errSSLBadCert:                  return NSLocalizedString("The certificate is malformed or otherwise bad.", tableName: "Browser", comment: "证书格式错误或已损坏。")
+    case errSSLCertExpired:              return NSLocalizedString("The certificate is expired.", tableName: "Browser", comment: "证书已过期。")
+    case errSSLCertNotYetValid:          return NSLocalizedString("The certificate is not yet valid.", tableName: "Browser", comment: "证书尚未生效。")
+    case errSSLHostNameMismatch:         return NSLocalizedString("The hostname does not match the certificate.", tableName: "Browser", comment: "主机名与证书不匹配。")
     default:                             return SecCopyErrorMessageString(OSStatus(status), nil) as? String
     }
 }

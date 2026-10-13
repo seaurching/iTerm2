@@ -7,10 +7,10 @@
 
 class HighlightBrowserTrigger: Trigger, iTermColorSettable {
     override var description: String {
-        "Highlight Text"
+        NSLocalizedString("Highlight Text", tableName: "Triggers", comment: "高亮文本触发器")
     }
     override static var title: String {
-        "Highlight Text"
+        NSLocalizedString("Highlight Text", tableName: "Triggers", comment: "高亮文本触发器")
     }
     override func takesParameter() -> Bool {
         true
@@ -76,7 +76,7 @@ class HighlightBrowserTrigger: Trigger, iTermColorSettable {
     override func paramAttributedString() -> NSAttributedString {
         let result = NSMutableAttributedString()
 
-        result.append(NSAttributedString(string:"Text: "))
+        result.append(NSAttributedString(string:NSLocalizedString("Text: ", tableName: "Triggers", comment: "参数标签：文本")))
 
         let textColorAttachment = NSTextAttachment()
         textColorAttachment.image = image(for: self.textColor)
@@ -88,7 +88,7 @@ class HighlightBrowserTrigger: Trigger, iTermColorSettable {
                                                  range: NSRange(0..<mutableTextAttachmentString.length))
         result.append(mutableTextAttachmentString)
 
-        result.append(NSAttributedString(string: " Background: "))
+        result.append(NSAttributedString(string: NSLocalizedString(" Background: ", tableName: "Triggers", comment: "参数标签：背景")))
 
         let backgroundColorAttachment = NSTextAttachment()
         backgroundColorAttachment.image = image(for: backgroundColor)

@@ -37,12 +37,12 @@
 
 - (void)setInstallUtilities:(BOOL)installUtilities {
     _installUtilities = installUtilities;
-    NSString *prefix = self.busy ? @"Waiting for this command to finish:" : @"Press “Continue” to run this command:";
+    NSString *prefix = self.busy ? NSLocalizedStringFromTableInBundle(@"Waiting for this command to finish:", @"ShellIntegrationInstaller", [NSBundle bundleForClass:[self class]], @"download and run: waiting prefix") : NSLocalizedStringFromTableInBundle(@"Press “Continue” to run this command:", @"ShellIntegrationInstaller", [NSBundle bundleForClass:[self class]], @"download and run: prompt prefix");
     self.textField.stringValue = [NSString stringWithFormat:@"%@\n%@", prefix, self.command];
 }
 
 - (void)showShellUnsupportedError {
-    self.textField.stringValue = @"😞 Your shell is not supported, or perhaps your $SHELL environment variable is not set correctly. Press “Continue” to try again.";
+    self.textField.stringValue = NSLocalizedStringFromTableInBundle(@"😞 Your shell is not supported, or perhaps your $SHELL environment variable is not set correctly. Press “Continue” to try again.", @"ShellIntegrationInstaller", [NSBundle bundleForClass:[self class]], @"download and run: shell unsupported error");
 }
 
 - (IBAction)pipeCurlToBash:(id)sender {

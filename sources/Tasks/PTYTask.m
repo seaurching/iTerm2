@@ -823,11 +823,11 @@ static void HandleSigChld(int n) {
 
         case iTermJobManagerForkAndExecStatusFailedToFork: {
             RLog(@"Unable to fork %@: %s", progpath, strerror(optionalErrorCode.intValue));
-            NSString *error = @"Unable to fork child process: you may have too many processes already running.";
+            NSString *error = NSLocalizedStringFromTableInBundle(@"Unable to fork child process: you may have too many processes already running.", @"Tasks", [NSBundle bundleForClass:[self class]], @"fork: unable to fork error message");
             if (optionalErrorCode) {
-                error = [NSString stringWithFormat:@"%@ The system error was: %s", error, strerror(optionalErrorCode.intValue)];
+                error = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ The system error was: %s", @"Tasks", [NSBundle bundleForClass:[self class]], @"fork: system error suffix"), error, strerror(optionalErrorCode.intValue)];
             }
-            [[iTermNotificationController sharedInstance] notify:@"Unable to fork!"
+            [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Unable to fork!", @"Tasks", [NSBundle bundleForClass:[self class]], @"fork: notification title")
                                                  withDescription:error];
             [self.delegate taskDiedWithError:error];
             break;
@@ -844,9 +844,9 @@ static void HandleSigChld(int n) {
 
 - (void)showFailedToCreateTempSocketError {
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Error";
-    alert.informativeText = [NSString stringWithFormat:@"An error was encountered while creating a temporary file with mkstemps. Verify that %@ exists and is writable.", NSTemporaryDirectory()];
-    [alert addButtonWithTitle:@"OK"];
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Error", @"Tasks", [NSBundle bundleForClass:[self class]], @"temp socket: error alert title");
+    alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"An error was encountered while creating a temporary file with mkstemps. Verify that %@ exists and is writable.", @"Tasks", [NSBundle bundleForClass:[self class]], @"temp socket: informative text"), NSTemporaryDirectory()];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Tasks", [NSBundle bundleForClass:[self class]], @"temp socket: OK button")];
     [alert runModal];
 }
 

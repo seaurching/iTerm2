@@ -1,0 +1,13 @@
+/* iTermPromptOnCloseReason.strings */
+
+"A session with profile “%@” is running %@, and %@ other %@." = "設定檔 “%@” 的工作階段正在執行 %@，以及其他 %@ 個 %@。";
+"A session with profile “%@” is running %@." = "設定檔 “%@” 的工作階段正在執行 %@。";
+"A tmux session is configured to prompt if jobs are running, but tmux doesn’t expose the process tree." = "tmux 工作階段設定為在有任務執行時提示，但 tmux 不公開程序樹。";
+"Tab #%d is pinned." = "標籤頁 #%d 已固定。";
+"The profile “%@” always requires confirmation." = "設定檔 “%@” 始終需要確認。";
+"This pane is locked." = "此窗格已鎖定。";
+"You can change this setting in Settings > Profiles > Session" = "您可以在 設定 > 設定檔 > 工作階段 中變更此設定";
+"jobs" = "個任務";
+"“Settings > General > Closing > Confirm Quit iTerm2” and “Even if there are no windows” is enabled." = "已啟用 “設定 > 一般 > 關閉 > 確認結束 iTerm2” 和 “即使沒有視窗”。";
+"“Settings > General > Closing > Confirm Quit iTerm2” is enabled and there is at least one terminal window." = "已啟用 “設定 > 一般 > 關閉 > 確認結束 iTerm2”，且至少有一個終端視窗。";
+"“Settings > General > Closing > Confirm closing multiple sessions” is enabled." = "已啟用 “設定 > 一般 > 關閉 > 確認關閉多個工作階段”。";

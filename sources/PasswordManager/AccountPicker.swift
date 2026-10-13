@@ -16,8 +16,8 @@ class AccountPicker {
     static func askUserToSelect(from accounts: [Account]) -> String {
         DLog("begin")
         let alert = NSAlert()
-        alert.messageText = "Select an Account"
-        alert.informativeText = "Please choose an account:"
+        alert.messageText = NSLocalizedString("Select an Account", tableName: "PasswordManager", comment: "PasswordManager: select account title")
+        alert.informativeText = NSLocalizedString("Please choose an account:", tableName: "PasswordManager", comment: "PasswordManager: select account informative")
         alert.alertStyle = .informational
 
         var ids = [String]()

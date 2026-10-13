@@ -1,0 +1,156 @@
+/* Open Quickly: tip title */
+"Tip: Start your query with “/%@”" = "提示：以 “/%@” 开始你的查询";
+
+/* Open Quickly: tip detail */
+"Restricts results to %@" = "将结果限制为%@";
+
+/* Open Quickly: in-tabs arrangement restriction */
+"window arrangements that open in tabs" = "在标签页中打开的窗口排列";
+
+/* Open Quickly: arrangement restriction */
+"window arrangements" = "窗口排列";
+
+/* Open Quickly: sessions restriction */
+"existing sessions" = "现有会话";
+
+/* Open Quickly: windows restriction */
+"existing windows" = "现有窗口";
+
+/* Open Quickly: switch profiles restriction */
+"switch profiles" = "切换配置文件";
+
+/* Open Quickly: create tab restriction */
+"create tab" = "创建标签页";
+
+/* Open Quickly: run script restriction */
+"run script" = "运行脚本";
+
+/* Open Quickly: load color preset restriction */
+"load color preset" = "加载配色方案";
+
+/* Open Quickly: perform action restriction */
+"perform action" = "执行操作";
+
+/* Open Quickly: send snippet restriction */
+"send snippet" = "发送代码片段";
+
+/* Open Quickly: open bookmark restriction */
+"open bookmark" = "打开书签";
+
+/* Open Quickly: globe accessibility */
+"globe" = "地球";
+
+/* Open Quickly: directory feature name */
+"Directory" = "目录";
+
+/* Open Quickly: command feature name */
+"Command" = "命令";
+
+/* Open Quickly: host feature name */
+"Host" = "主机";
+
+/* Open Quickly: badge feature name */
+"Badge" = "徽章";
+
+/* Open Quickly: website feature name */
+"Web Site" = "网站";
+
+/* Open Quickly: alternate menu item prefix */
+"Alternate menu item under " = "备用菜单项位于 ";
+
+/* Open Quickly: menu item prefix */
+"Menu item under " = "菜单项位于 ";
+
+/* Open Quickly: named mark detail */
+"Named mark “%@”" = "命名标记 “%@”";
+
+/* Open Quickly: on display feature */
+"On %@" = "在 %@ 上";
+
+/* Open Quickly: offscreen feature */
+"Offscreen" = "屏幕外";
+
+/* Open Quickly: miniaturized feature */
+"Miniaturized" = "已最小化";
+
+/* Open Quickly: full screen feature */
+"Full screen" = "全屏";
+
+/* Open Quickly: on other space feature */
+"On other Space" = "在其他空间";
+
+/* Open Quickly: hotkey feature */
+"Hotkey %@" = "快捷键 %@";
+
+/* Open Quickly: hotkey modifier feature */
+"Hotkey %@%@" = "快捷键 %@%@";
+
+/* Open Quickly: new window with profile detail */
+"Create a new window with this profile" = "用此配置文件创建新窗口";
+
+/* Open Quickly: new tab with profile detail */
+"Create a new tab with this profile" = "用此配置文件创建新标签页";
+
+/* Open Quickly: open bookmark in browser detail */
+"Open Bookmark in Browser" = "在浏览器中打开书签";
+
+/* Open Quickly: open visited site in browser detail */
+"Open Visited Site in Browser" = "在浏览器中打开访问过的网站";
+
+/* Open Quickly: open URL in browser detail */
+"Open URL in Browser" = "在浏览器中打开 URL";
+
+/* Open Quickly: load color preset detail */
+"Load color preset ”%@“" = "加载配色方案 ”%@“";
+
+/* Open Quickly: change profile detail */
+"Change current session’s profile" = "更改当前会话的配置文件";
+
+/* Open Quickly: invoke detail */
+"Invoke" = "调用";
+
+/* Open Quickly: send snippet detail */
+"Send snippet “%@”. Press ⌥ to edit first." = "发送代码片段 “%@”。按 ⌥ 先编辑。";
+
+/* Open Quickly: restore arrangement in tabs detail */
+"Restore window arrangement in tabs" = "在标签页中恢复窗口排列";
+
+/* Open Quickly: restore arrangement detail */
+"Restore window arrangement" = "恢复窗口排列";
+
+/* Open Quickly: run script detail */
+"Run Script" = "运行脚本";
+
+/* Open Quickly: user feature name */
+"User" = "用户";
+
+/* Open Quickly: profile feature name */
+"Profile" = "配置文件";
+
+/* Open Quickly: git branch feature name */
+"Git Branch" = "Git 分支";
+
+/* Open Quickly: search icon accessibility */
+"Search icon" = "搜索图标";
+
+/* Open Quickly: clear search accessibility */
+"Clear search query" = "清除搜索查询";
+
+/* Open Quickly: tab preview */
+"Tab %d" = "标签页 %d";
+
+/* Open Quickly: tab preview with title */
+"Tab %d · %@" = "标签页 %d · %@";
+
+/* Open Quickly: function call result alert title */
+"Function Call Result" = "函数调用结果";
+
+/* Open Quickly: function call result informative text */
+"%@ returned:\n%@" = "%@ 返回了：\n%@";
+
+/* Open Quickly: untitled item */
+"Untitled" = "无标题";
+
+/* Open Quickly: function call result OK button */
+"OK" = "好";
+

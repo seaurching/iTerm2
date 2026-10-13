@@ -1,0 +1,10 @@
+"ERROR: No default profile found\n" = "錯誤：未找到預設配置\n";
+"ERROR: Default profile has no GUID\n" = "錯誤：預設配置沒有 GUID\n";
+"ERROR: Legacy render failed: %@\n" = "錯誤：傳統渲染失敗：%@\n";
+"ERROR: GPU render failed: %@\n" = "錯誤：GPU 渲染失敗：%@\n";
+"Session has no textview" = "工作階段沒有文字視圖";
+"Legacy render returned nil" = "傳統渲染回傳 nil";
+"No Metal device" = "沒有 Metal 裝置";
+"Session has no view" = "工作階段沒有視圖";
+"No screen" = "沒有螢幕";
+"Metal capture returned nil" = "Metal 擷取回傳 nil";

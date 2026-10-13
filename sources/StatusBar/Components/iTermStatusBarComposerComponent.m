@@ -36,13 +36,13 @@
 
 - (NSArray<iTermStatusBarComponentKnob *> *)statusBarComponentKnobs {
     iTermStatusBarComponentKnob *textColorKnob =
-    [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Icon Color:"
+    [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Icon Color:", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for icon color")
                                                       type:iTermStatusBarComponentKnobTypeColor
                                                placeholder:nil
                                               defaultValue:nil
                                                        key:iTermStatusBarSharedTextColorKey];
     iTermStatusBarComponentKnob *backgroundColorKnob =
-    [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Background Color:"
+    [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Background Color:", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for background color")
                                                       type:iTermStatusBarComponentKnobTypeColor
                                                placeholder:nil
                                               defaultValue:nil
@@ -66,16 +66,16 @@
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Composer";
+    return NSLocalizedStringFromTableInBundle(@"Composer", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status bar component short description");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Adds a text field for composing command lines.";
+    return NSLocalizedStringFromTableInBundle(@"Adds a text field for composing command lines.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status bar component detailed description");
 }
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
                                           textColor:(NSColor *)textColor {
-    return @">_ [Command] 💬";
+    return NSLocalizedStringFromTableInBundle(@">_ [Command] 💬", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for composer component");
 }
 
 - (iTermsStatusBarComposerViewController *)viewController {

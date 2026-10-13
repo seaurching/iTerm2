@@ -263,11 +263,11 @@
 
 - (BOOL)appendFragment:(iTermWebSocketFrame *)fragment {
     if (fragment.opcode != iTermWebSocketOpcodeContinuation) {
-        XLog(@"Fragment opcode not continuation");
+        XLog(NSLocalizedStringFromTableInBundle(@"Fragment opcode not continuation", @"APIFiles", [NSBundle bundleForClass:[self class]], @"片段操作码不是延续"));
         return NO;
     }
     if (!self.fin) {
-        XLog(@"Appending fragment to finished frame");
+        XLog(NSLocalizedStringFromTableInBundle(@"Appending fragment to finished frame", @"APIFiles", [NSBundle bundleForClass:[self class]], @"将片段追加到已完成的帧"));
         return NO;
     }
 

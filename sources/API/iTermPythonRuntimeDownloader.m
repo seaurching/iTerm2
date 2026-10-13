@@ -338,14 +338,14 @@ NSString *const iTermPythonRuntimeDownloaderDidInstallRuntimeNotification = @"iT
         if (stillNeedsConfirmation) {
             DLog(@"Request confirmation from user with alert box");
             NSAlert *alert = [[NSAlert alloc] init];
-            alert.messageText = @"Download Python Runtime?";
+            alert.messageText = NSLocalizedStringFromTableInBundle(@"Download Python Runtime?", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"");
             if (requiredToContinue) {
-                alert.informativeText = [NSString stringWithFormat:@"The Python Runtime is used by Python scripts that work with iTerm2. It must be downloaded to complete the requested action. The download is about %@. OK to download it now?", [NSString it_formatBytes:info.size]];
+                alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The Python Runtime is used by Python scripts that work with iTerm2. It must be downloaded to complete the requested action. The download is about %@. OK to download it now?", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@""), [NSString it_formatBytes:info.size]];
             } else {
-                alert.informativeText = [NSString stringWithFormat:@"The Python Runtime is used by Python scripts that work with iTerm2. The download is about %@. OK to download it now?", [NSString it_formatBytes:info.size]];
+                alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The Python Runtime is used by Python scripts that work with iTerm2. The download is about %@. OK to download it now?", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@""), [NSString it_formatBytes:info.size]];
             }
-            [alert addButtonWithTitle:silent ? @"Download" : @"OK"];
-            [alert addButtonWithTitle:@"Cancel"];
+            [alert addButtonWithTitle:silent ? NSLocalizedStringFromTableInBundle(@"Download", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"") : NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"")];
+            [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"")];
             if ([alert runModal] == NSAlertSecondButtonReturn) {
                 RLog(@"Canceled by user");
                 declined = YES;
@@ -376,7 +376,7 @@ NSString *const iTermPythonRuntimeDownloaderDidInstallRuntimeNotification = @"iT
             if (!shouldContinue) {
                 return nil;
             }
-            return [[iTermInstallingPhase alloc] initWithURL:nil title:@"Download Finished" nextPhaseFactory:nil];
+            return [[iTermInstallingPhase alloc] initWithURL:nil title:NSLocalizedStringFromTableInBundle(@"Download Finished", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"") nextPhaseFactory:nil];
         }];
     }];
     _downloadController.completion = ^(iTermOptionalComponentDownloadPhase *lastPhase) {
@@ -417,7 +417,7 @@ NSString *const iTermPythonRuntimeDownloaderDidInstallRuntimeNotification = @"iT
         // for example if the requested version was not available.
         _status = iTermPythonRuntimeDownloaderStatusNotNeeded;
     }
-    [_downloadController showMessage:@"✅ The Python runtime is up to date."];
+    [_downloadController showMessage:NSLocalizedStringFromTableInBundle(@"✅ The Python runtime is up to date.", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"")];
     if (raiseOnCompletion) {
         [_downloadController.window makeKeyAndOrderFront:nil];
     }
@@ -435,19 +435,19 @@ NSString *const iTermPythonRuntimeDownloaderDidInstallRuntimeNotification = @"iT
             return YES;
         }
         _status = iTermPythonRuntimeDownloaderStatusCanceledByUser;
-        alert.messageText = @"Download Canceled";
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Download Canceled", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"");
         reason = @"";
     } else {
         _status = iTermPythonRuntimeDownloaderStatusError;
-        alert.messageText = @"Python Runtime Unavailable";
-        reason = [NSString stringWithFormat:@"\n\nThe download failed: %@", error.localizedDescription];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Python Runtime Unavailable", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"");
+        reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"\n\nThe download failed: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@""), error.localizedDescription];
     }
 
     if (pythonVersion) {
-        alert.informativeText = [NSString stringWithFormat:@"An iTerm2 Python Runtime with Python version %@ must be downloaded to proceed.%@",
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"An iTerm2 Python Runtime with Python version %@ must be downloaded to proceed.%@", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@""),
                                  pythonVersion, reason];
     } else {
-        alert.informativeText = [NSString stringWithFormat:@"An iTerm2 Python Runtime must be downloaded to proceed.%@",
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"An iTerm2 Python Runtime must be downloaded to proceed.%@", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@""),
                                  reason];
     }
     [alert runModal];
@@ -463,7 +463,7 @@ NSString *const iTermPythonRuntimeDownloaderDidInstallRuntimeNotification = @"iT
     if (!payloadPhase || payloadPhase.error) {
         RLog(@"Download failed");
         [_downloadController.window makeKeyAndOrderFront:nil];
-        [[iTermNotificationController sharedInstance] notify:@"Download failed ☹️"];
+        [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Download failed ☹️", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"")];
         _status = iTermPythonRuntimeDownloaderStatusError;
         dispatch_group_leave(group);
         return NO;
@@ -472,7 +472,7 @@ NSString *const iTermPythonRuntimeDownloaderDidInstallRuntimeNotification = @"iT
     const BOOL ok = [self writeInputStream:payloadPhase.stream toFile:tempfile];
     if (!ok) {
         DLog(@"Failed to write to %@", tempfile);
-        [[iTermNotificationController sharedInstance] notify:@"Could not extract archive ☹️"];
+        [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Could not extract archive ☹️", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"")];
         _status = iTermPythonRuntimeDownloaderStatusError;
         dispatch_group_leave(group);
         return NO;
@@ -487,8 +487,8 @@ NSString *const iTermPythonRuntimeDownloaderDidInstallRuntimeNotification = @"iT
         RLog(@"Signature validation failed");
         [[NSFileManager defaultManager] removeItemAtPath:tempfile error:nil];
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Signature Verification Failed";
-        alert.informativeText = [NSString stringWithFormat:@"The Python runtime's signature failed validation: %@", verifyError.localizedDescription];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Signature Verification Failed", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"");
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The Python runtime's signature failed validation: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@""), verifyError.localizedDescription];
         [alert runModal];
         _status = iTermPythonRuntimeDownloaderStatusError;
         [self->_downloadController.window close];
@@ -499,7 +499,7 @@ NSString *const iTermPythonRuntimeDownloaderDidInstallRuntimeNotification = @"iT
         void (^completion)(NSError *) = ^(NSError *error){
             if (!error) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:iTermPythonRuntimeDownloaderDidInstallRuntimeNotification object:nil];
-                [[iTermNotificationController sharedInstance] notify:@"Download finished!"];
+                [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Download finished!", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"")];
                 [self->_downloadController.window close];
                 self->_downloadController = nil;
                 self->_status = iTermPythonRuntimeDownloaderStatusDownloaded;
@@ -509,8 +509,8 @@ NSString *const iTermPythonRuntimeDownloaderDidInstallRuntimeNotification = @"iT
             [self->_downloadController.window close];
             self->_downloadController = nil;
             NSAlert *alert = [[NSAlert alloc] init];
-            alert.messageText = @"Error unzipping python environment";
-            alert.informativeText = error.localizedDescription ?: @"An error occurred while unzipping the downloaded python environment";
+            alert.messageText = NSLocalizedStringFromTableInBundle(@"Error unzipping python environment", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"");
+            alert.informativeText = error.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"An error occurred while unzipping the downloaded python environment", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"");
             [alert runModal];
             self->_status = iTermPythonRuntimeDownloaderStatusError;
             dispatch_group_leave(group);
@@ -671,7 +671,7 @@ NSString *const iTermPythonRuntimeDownloaderDidInstallRuntimeNotification = @"iT
     if (runtimeVersion < 0) {
         completion([NSError errorWithDomain:@"com.googlecode.iterm2"
                                        code:-1
-                                   userInfo:@{ NSLocalizedDescriptionKey: @"Invalid filename. Expected `iterm2env-<version>.zip`."}]);
+                                   userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Invalid filename. Expected `iterm2env-<version>.zip`.", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"")}]);
         return;
     }
     [self installPythonEnvironmentFromZip:zip
@@ -896,7 +896,7 @@ static NSArray<NSString *> *iTermConvertThreePartVersionNumbersToTwoPart(NSArray
             if (!ok) {
                 XLog(@"Failed to link %@ to %@: %@", source, destination, error);
                 completion([iTermPythonRuntimeDownloader errorWithCode:iTermInstallPythonStatusGeneralFailure
-                                                                reason:[NSString stringWithFormat:@"Failed to link from %@ to %@: %@", source, destination, error.localizedDescription]]);
+                                                                reason:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Failed to link from %@ to %@: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@""), source, destination, error.localizedDescription]]);
                 return;
             }
 
@@ -916,9 +916,9 @@ static NSArray<NSString *> *iTermConvertThreePartVersionNumbersToTwoPart(NSArray
                 RLog(@"Dependency installation finished with these failures: %@", failures);
                 if (failures.count) {
                     NSAlert *alert = [[NSAlert alloc] init];
-                    alert.messageText = @"Dependency Installation Failed";
+                    alert.messageText = NSLocalizedStringFromTableInBundle(@"Dependency Installation Failed", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"");
                     NSString *failureList = [[failures sortedArrayUsingSelector:@selector(compare:)] componentsJoinedByString:@", "];
-                    alert.informativeText = [NSString stringWithFormat:@"The following dependencies failed to install: %@", failureList];
+                    alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The following dependencies failed to install: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@""), failureList];
 
                     NSMutableArray<NSString *> *messages = [NSMutableArray array];
                     for (NSInteger i = 0; i < failures.count; i++) {
@@ -931,7 +931,7 @@ static NSArray<NSString *> *iTermConvertThreePartVersionNumbersToTwoPart(NSArray
                     }
                     DLog(@"%@", messages);
                     iTermDisclosableView *accessory = [[iTermDisclosableView alloc] initWithFrame:NSZeroRect
-                                                                                           prompt:@"Output"
+                                                                                           prompt:NSLocalizedStringFromTableInBundle(@"Output", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"")
                                                                                           message:[messages componentsJoinedByString:@"\n\n"]];
                     iTermAccessoryViewUnfucker *unfucker = [[iTermAccessoryViewUnfucker alloc] initWithView:accessory];
                     accessory.frame = NSMakeRect(0, 0, accessory.intrinsicContentSize.width, accessory.intrinsicContentSize.height);
@@ -946,7 +946,7 @@ static NSArray<NSString *> *iTermConvertThreePartVersionNumbersToTwoPart(NSArray
 
                     [alert runModal];
                     completion([iTermPythonRuntimeDownloader errorWithCode:iTermInstallPythonStatusDependencyFailed
-                                                                    reason:@"Dependency installation failed"]);
+                                                                    reason:NSLocalizedStringFromTableInBundle(@"Dependency installation failed", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"")]);
                     return;
                 }
 
@@ -954,7 +954,7 @@ static NSArray<NSString *> *iTermConvertThreePartVersionNumbersToTwoPart(NSArray
                 if (!pythonVersionToUse) {
                     RLog(@"Could not determine Python version");
                     completion([iTermPythonRuntimeDownloader errorWithCode:iTermInstallPythonStatusGeneralFailure
-                                                                    reason:@"Dependency installation failed: could not determine Python version. Please file a bug report at https://iterm2.com/bugs"]);
+                                                                    reason:NSLocalizedStringFromTableInBundle(@"Dependency installation failed: could not determine Python version. Please file a bug report at https://iterm2.com/bugs", @"APIFiles", [NSBundle bundleForClass:[self class]], comment:@"")]);
                     return;
                 }
                 if (createSetupCfg) {

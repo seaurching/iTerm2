@@ -62,7 +62,7 @@ class AIConnectionTester: NSObject {
         // The reviewer placeholder key contacts no service, so a live probe would
         // fail. Report success and explain, matching the runtime short-circuit.
         if apiKey == AITermController.reviewPlaceholderAPIKey {
-            completion(.success, "Placeholder key in use: AI responses are simulated for App Review and no external service is contacted.")
+            completion(.success, NSLocalizedString("Placeholder key in use: AI responses are simulated for App Review and no external service is contacted.", tableName: "AITermXC", comment: "正在使用占位密钥：AI 响应为 App Review 模拟，不联系任何外部服务。"))
             return
         }
         var features = Set<AIMetadata.Model.Feature>()
@@ -81,7 +81,7 @@ class AIConnectionTester: NSObject {
                                      vendor: vendor)
         let provider = LLMProvider(model: model)
         guard provider.urlIsValid else {
-            completion(.failure, "The URL is not valid.")
+            completion(.failure, NSLocalizedString("The URL is not valid.", tableName: "AITermXC", comment: "URL 无效。"))
             return
         }
         let builder = LLMRequestBuilder(provider: provider,
@@ -93,7 +93,7 @@ class AIConnectionTester: NSObject {
         do {
             request = try builder.webRequest()
         } catch {
-            completion(.failure, "Could not build a request: \(error.localizedDescription)")
+            completion(.failure, String(format: NSLocalizedString("Could not build a request: %@", tableName: "AITermXC", comment: "无法构建请求：%@"), error.localizedDescription))
             return
         }
         _ = iTermAIClient.instance.request(webRequest: request, stream: nil) { result in
@@ -124,9 +124,9 @@ class AIConnectionTester: NSObject {
         var parser = provider.responseParser()
         do {
             _ = try parser.parse(data: response.data.lossyData)
-            return (.success, "The connection succeeded. The model responded normally.")
+            return (.success, NSLocalizedString("The connection succeeded. The model responded normally.", tableName: "AITermXC", comment: "连接成功。模型正常响应。"))
         } catch {
-            return (.failure, "The server responded but its reply could not be understood: \(error.localizedDescription)")
+            return (.failure, String(format: NSLocalizedString("The server responded but its reply could not be understood: %@", tableName: "AITermXC", comment: "服务器已响应，但无法理解其回复：%@"), error.localizedDescription))
         }
     }
 }

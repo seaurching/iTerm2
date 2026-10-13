@@ -1,0 +1,7 @@
+/* VT100.strings - zh_CN */
+"A session" = "一个会话";
+"none" = "无";
+"Session status changed" = "会话状态已变更";
+"%@ changed from “%@” to “%@”." = "%@ 从“%@”变为“%@”。";
+"OK" = "确定";
+"Reveal" = "显示";

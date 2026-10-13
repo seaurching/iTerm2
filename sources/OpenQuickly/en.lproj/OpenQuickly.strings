@@ -1,0 +1,156 @@
+/* Open Quickly: tip title */
+"Tip: Start your query with “/%@”" = "Tip: Start your query with “/%@”";
+
+/* Open Quickly: tip detail */
+"Restricts results to %@" = "Restricts results to %@";
+
+/* Open Quickly: in-tabs arrangement restriction */
+"window arrangements that open in tabs" = "window arrangements that open in tabs";
+
+/* Open Quickly: arrangement restriction */
+"window arrangements" = "window arrangements";
+
+/* Open Quickly: sessions restriction */
+"existing sessions" = "existing sessions";
+
+/* Open Quickly: windows restriction */
+"existing windows" = "existing windows";
+
+/* Open Quickly: switch profiles restriction */
+"switch profiles" = "switch profiles";
+
+/* Open Quickly: create tab restriction */
+"create tab" = "create tab";
+
+/* Open Quickly: run script restriction */
+"run script" = "run script";
+
+/* Open Quickly: load color preset restriction */
+"load color preset" = "load color preset";
+
+/* Open Quickly: perform action restriction */
+"perform action" = "perform action";
+
+/* Open Quickly: send snippet restriction */
+"send snippet" = "send snippet";
+
+/* Open Quickly: open bookmark restriction */
+"open bookmark" = "open bookmark";
+
+/* Open Quickly: globe accessibility */
+"globe" = "globe";
+
+/* Open Quickly: directory feature name */
+"Directory" = "Directory";
+
+/* Open Quickly: command feature name */
+"Command" = "Command";
+
+/* Open Quickly: host feature name */
+"Host" = "Host";
+
+/* Open Quickly: badge feature name */
+"Badge" = "Badge";
+
+/* Open Quickly: website feature name */
+"Web Site" = "Web Site";
+
+/* Open Quickly: alternate menu item prefix */
+"Alternate menu item under " = "Alternate menu item under ";
+
+/* Open Quickly: menu item prefix */
+"Menu item under " = "Menu item under ";
+
+/* Open Quickly: named mark detail */
+"Named mark “%@”" = "Named mark “%@”";
+
+/* Open Quickly: on display feature */
+"On %@" = "On %@";
+
+/* Open Quickly: offscreen feature */
+"Offscreen" = "Offscreen";
+
+/* Open Quickly: miniaturized feature */
+"Miniaturized" = "Miniaturized";
+
+/* Open Quickly: full screen feature */
+"Full screen" = "Full screen";
+
+/* Open Quickly: on other space feature */
+"On other Space" = "On other Space";
+
+/* Open Quickly: hotkey feature */
+"Hotkey %@" = "Hotkey %@";
+
+/* Open Quickly: hotkey modifier feature */
+"Hotkey %@%@" = "Hotkey %@%@";
+
+/* Open Quickly: new window with profile detail */
+"Create a new window with this profile" = "Create a new window with this profile";
+
+/* Open Quickly: new tab with profile detail */
+"Create a new tab with this profile" = "Create a new tab with this profile";
+
+/* Open Quickly: open bookmark in browser detail */
+"Open Bookmark in Browser" = "Open Bookmark in Browser";
+
+/* Open Quickly: open visited site in browser detail */
+"Open Visited Site in Browser" = "Open Visited Site in Browser";
+
+/* Open Quickly: open URL in browser detail */
+"Open URL in Browser" = "Open URL in Browser";
+
+/* Open Quickly: load color preset detail */
+"Load color preset ”%@“" = "Load color preset ”%@“";
+
+/* Open Quickly: change profile detail */
+"Change current session’s profile" = "Change current session’s profile";
+
+/* Open Quickly: invoke detail */
+"Invoke" = "Invoke";
+
+/* Open Quickly: send snippet detail */
+"Send snippet “%@”. Press ⌥ to edit first." = "Send snippet “%@”. Press ⌥ to edit first.";
+
+/* Open Quickly: restore arrangement in tabs detail */
+"Restore window arrangement in tabs" = "Restore window arrangement in tabs";
+
+/* Open Quickly: restore arrangement detail */
+"Restore window arrangement" = "Restore window arrangement";
+
+/* Open Quickly: run script detail */
+"Run Script" = "Run Script";
+
+/* Open Quickly: user feature name */
+"User" = "User";
+
+/* Open Quickly: profile feature name */
+"Profile" = "Profile";
+
+/* Open Quickly: git branch feature name */
+"Git Branch" = "Git Branch";
+
+/* Open Quickly: search icon accessibility */
+"Search icon" = "Search icon";
+
+/* Open Quickly: clear search accessibility */
+"Clear search query" = "Clear search query";
+
+/* Open Quickly: tab preview */
+"Tab %d" = "Tab %d";
+
+/* Open Quickly: tab preview with title */
+"Tab %d · %@" = "Tab %d · %@";
+
+/* Open Quickly: function call result alert title */
+"Function Call Result" = "Function Call Result";
+
+/* Open Quickly: function call result informative text */
+"%@ returned:\n%@" = "%@ returned:\n%@";
+
+/* Open Quickly: untitled item */
+"Untitled" = "Untitled";
+
+/* Open Quickly: function call result OK button */
+"OK" = "OK";
+

@@ -1,0 +1,8 @@
+/* Notification: can't switch to desktop */
+"Can’t switch to desktop %d" = "无法切换到桌面 %d";
+
+/* Fix: grant accessibility permission */
+"You must grant iTerm2 accessibility permission in System Settings > Security & Privacy." = "您必须在“系统设置”>“安全性与隐私”中授予 iTerm2 辅助功能权限。";
+
+/* Fix: enable desktop switching shortcuts */
+"You must enable shortcuts to switch desktops in System Settings > Keyboard." = "您必须在“系统设置”>“键盘”中启用切换桌面的快捷键。";

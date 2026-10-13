@@ -1,0 +1,62 @@
+/* OpenSavePanels: save panel item display name */
+"“%@” on %@" = "“%@” on %@";
+
+/* OpenSavePanels: no ssh connection upload warning */
+"No ssh connection to %@ is available to upload %@" = "No ssh connection to %@ is available to upload %@";
+
+/* OpenSavePanels: upload failed OK button */
+"OK" = "OK";
+
+/* OpenSavePanels: upload failed heading */
+"Upload Failed" = "Upload Failed";
+
+/* OpenSavePanels: open SSH panel button */
+"Open SSH Panel..." = "Open SSH Panel...";
+
+/* OpenSavePanels: open panel canceled error */
+"Canceled" = "Canceled";
+
+/* OpenSavePanels: raw data log format menu item */
+"Raw data" = "Raw data";
+
+/* OpenSavePanels: plain text log format menu item */
+"Plain text" = "Plain text";
+
+/* OpenSavePanels: HTML log format menu item */
+"HTML" = "HTML";
+
+/* OpenSavePanels: ASCIInema log format menu item */
+"ASCIInema" = "ASCIInema";
+
+/* OpenSavePanels: home directory location fragment */
+" in your home directory" = " in your home directory";
+
+/* OpenSavePanels: desktop location fragment */
+" on the Desktop" = " on the Desktop";
+
+/* OpenSavePanels: file exists heading */
+"“%@” already exists. Do you want to replace it or append to it?" = "“%@” already exists. Do you want to replace it or append to it?";
+
+/* OpenSavePanels: file exists body */
+"A file or folder with the same name already exists%@. Replacing it will overwrite its current contents." = "A file or folder with the same name already exists%@. Replacing it will overwrite its current contents.";
+
+/* OpenSavePanels: file exists cancel button */
+"Cancel" = "Cancel";
+
+/* OpenSavePanels: file exists replace button */
+"Replace" = "Replace";
+
+/* OpenSavePanels: file exists append button */
+"Append" = "Append";
+
+/* OpenSavePanels: use both extensions title */
+"You can choose to use both, so that your file name ends in “.%@.%@”." = "You can choose to use both, so that your file name ends in “.%@.%@”.";
+
+/* OpenSavePanels: use required extension button */
+"Use .%@" = "Use .%@";
+
+/* OpenSavePanels: use both extensions button */
+"Use both" = "Use both";
+
+/* OpenSavePanels: wrong extension heading */
+"You cannot save this document with extension “.%@” at the end of the name. The required extension is “.%@”." = "You cannot save this document with extension “.%@” at the end of the name. The required extension is “.%@”.";

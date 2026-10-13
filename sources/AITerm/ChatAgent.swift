@@ -278,7 +278,7 @@ class ChatAgent {
         } catch {
             RLog("Failed to publish enable-orchestration request: \(error)")
             pendingOrchestrationRequests.removeValue(forKey: requestID)
-            try? completion(.success("Failed to surface the request: \(error.localizedDescription)"))
+            try? completion(.success(String(format: NSLocalizedString("Failed to surface the request: %@", tableName: "AITermXC", comment: ""), error.localizedDescription)))
         }
     }
 
@@ -307,8 +307,7 @@ class ChatAgent {
                 // references orchestrator tool calls.
                 RLog("Failed to set orchestrationEnabled: \(error)")
                 try? completion(.success(
-                    "Failed to enable orchestration: \(error.localizedDescription). "
-                    + "The chat remains in its current mode."))
+                    String(format: NSLocalizedString("Failed to enable orchestration: %@. The chat remains in its current mode.", tableName: "AITermXC", comment: ""), error.localizedDescription)))
                 return
             }
             transitionToOrchestration()
@@ -319,12 +318,10 @@ class ChatAgent {
             // can use the tools immediately, including for the
             // continuation of this turn if useful.
             try? completion(.success(
-                "Orchestration is now active for the rest of this conversation. The orchestration "
-                + "toolset (send_text, get_state, list_workgroups, register_watch, "
-                + "start_code_review, etc.) is available to you now and you may call those tools "
-                + "in the continuation of this turn or any subsequent turn."))
+                    NSLocalizedString("Orchestration is now active for the rest of this conversation. The orchestration toolset (send_text, get_state, list_workgroups, register_watch, start_code_review, etc.) is available to you now and you may call those tools in the continuation of this turn or any subsequent turn.", tableName: "AITermXC", comment: "")
+            ))
         } else {
-            try? completion(.success("User declined to enable orchestration."))
+            try? completion(.success(NSLocalizedString("User declined to enable orchestration.", tableName: "AITermXC", comment: "")))
         }
     }
 
@@ -904,7 +901,7 @@ class ChatAgent {
                       : kPreferenceKeyAIPromptAIChatReadOnlyTerminal
         }
         parts.append(iTermPreferences.string(forKey: key))
-        parts.append("If a zip file is provided (this is rare), you should extract it and analyze the contents in the context of the accompanying messages.")
+        parts.append(NSLocalizedString("If a zip file is provided (this is rare), you should extract it and analyze the contents in the context of the accompanying messages.", tableName: "AITermXC", comment: "如果提供了 zip 文件（这种情况很少见），你应将其解压并结合随附消息的内容进行分析。"))
 
         // When the chat is linked to a terminal session and the model can call
         // tools, tell it the watch capability exists (the tool descriptions
@@ -1121,12 +1118,13 @@ class ChatAgent {
             // resolved consent while this was queued.
             guard iTermUserDefaults.autoProvideConsent == .unknown else { return }
             let selection = iTermWarning.show(
-                withTitle: "iTerm2 can include this session’s visible screen and terminal state with every message you send in AI chats where you’ve allowed it, so the assistant sees what you see. You can turn this off any time from a chat’s permission settings.",
-                actions: ["Turn On", "Not Now"],
+                withTitle: NSLocalizedString("iTerm2 can include this session’s visible screen and terminal state with every message you send in AI chats where you’ve allowed it, so the assistant sees what you see. You can turn this off any time from a chat’s permission settings.", tableName: "AITermXC", comment: "iTerm2 可以在您允许的 AI 对话中，将此会话的可见屏幕和终端状态随每条消息一起发送，以便助手看到您所看到的内容。您可以随时在对话的权限设置中关闭此功能。"),
+                actions: [NSLocalizedString("Turn On", tableName: "AITermXC", comment: "开启"),
+                          NSLocalizedString("Not Now", tableName: "AITermXC", comment: "暂不")],
                 accessory: nil,
                 identifier: nil,
                 silenceable: .kiTermWarningTypePersistent,
-                heading: "Share Terminal Contents Automatically?",
+                heading: NSLocalizedString("Share Terminal Contents Automatically?", tableName: "AITermXC", comment: "自动分享终端内容？"),
                 window: nil)
             iTermUserDefaults.autoProvideConsent = (selection == .kiTermWarningSelection0) ? .granted : .denied
         }
@@ -1217,7 +1215,7 @@ class ChatAgent {
     }
 
     private func cancelPendingCommands() {
-        drainPendingOrchestrationRequests(reason: "Cancelled.")
+        drainPendingOrchestrationRequests(reason: NSLocalizedString("Cancelled.", tableName: "AITermXC", comment: "已取消。"))
         if !pendingRemoteCommands.isEmpty {
             let saved = pendingRemoteCommands.values
             pendingRemoteCommands.removeAll()
@@ -1242,7 +1240,7 @@ class ChatAgent {
 
     func stop() {
         cancelPendingCommands()   // resolves parked completions and resets parkedTyping
-        drainPendingOrchestrationRequests(reason: "Cancelled.")
+        drainPendingOrchestrationRequests(reason: NSLocalizedString("Cancelled.", tableName: "AITermXC", comment: "已取消。"))
         conversation.cancelOutstandingOperation()
         // Safety-net clear of TurnStatusModel. In the normal case the cancel walks
         // back through fetchCompletion's completion to ChatService.finishTurn (see
@@ -1347,11 +1345,11 @@ class ChatAgent {
                                 completion: completion)
             return
         case .userCommand:
-            it_fatalError("User commands should not reach fetchCompletion")
+            it_fatalError(NSLocalizedString("User commands should not reach fetchCompletion", tableName: "AITermXC", comment: "用户命令不应到达 fetchCompletion"))
         case .vectorStoreCreated:
-            it_fatalError("User should not create vector store")
+            it_fatalError(NSLocalizedString("User should not create vector store", tableName: "AITermXC", comment: "用户不应创建向量存储"))
         case .appendAttachment:
-            it_fatalError("User-sent attachments not supported")
+            it_fatalError(NSLocalizedString("User-sent attachments not supported", tableName: "AITermXC", comment: "不支持用户发送的附件"))
         case .watcherEvent:
             break
         case .unsupported:
@@ -1823,7 +1821,7 @@ class ChatAgent {
     }
 
     private func requestRenaming() {
-        let prompt = "Please assign a short, specific name to this chat, less than 30 characters in length, but descriptive. It will be shown in a chat list UI. Respond with only the name of the chat."
+        let prompt = NSLocalizedString("Please assign a short, specific name to this chat, less than 30 characters in length, but descriptive. It will be shown in a chat list UI. Respond with only the name of the chat.", tableName: "AITermXC", comment: "")
         var history = conversation.messages + [AITermController.Message(role: .user, content: prompt)]
         // Remove response IDs so we don't pollute the conversation's history
         history = history.map { value in
@@ -1922,7 +1920,7 @@ class ChatAgent {
                 nserror.code == iTermAIError.ErrorType.requestTooLarge.rawValue {
                 return Message(chatID: userMessage.chatID,
                                author: .agent,
-                               content: .plainText("🛑 The text to analyze was too long. Select a portion of it and try again.",
+                               content: .plainText(NSLocalizedString("🛑 The text to analyze was too long. Select a portion of it and try again.", tableName: "AITermXC", comment: ""),
                                                    context: nil),
                                sentDate: Date(),
                                uniqueID: UUID())
@@ -1934,7 +1932,7 @@ class ChatAgent {
                 .joined(separator: "\n")
             return Message(chatID: userMessage.chatID,
                            author: .agent,
-                           content: .markdown("**Request failed**\n\n\(details)"),
+                           content: .markdown(String(format: NSLocalizedString("**Request failed**\n\n%@", tableName: "AITermXC", comment: ""), details)),
                            sentDate: Date(),
                            uniqueID: UUID())
         }
@@ -2032,7 +2030,7 @@ extension LLM.Message.Attachment {
         case .statusUpdate(let statusUpdate): statusUpdate.displayString
         case .file(let file):
             file.content.lossyString
-        case .fileID: "[Attached file]"
+        case .fileID: NSLocalizedString("[Attached file]", tableName: "AITermXC", comment: "")
         }
     }
 }

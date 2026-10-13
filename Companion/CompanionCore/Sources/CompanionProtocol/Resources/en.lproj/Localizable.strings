@@ -1,0 +1,6 @@
+"The connection was closed" = "The connection was closed";
+"Received a frame of %d bytes, larger than the limit of %d" = "Received a frame of %d bytes, larger than the limit of %d";
+"Received a malformed frame" = "Received a malformed frame";
+"The relay's daily data limit was reached" = "The relay's daily data limit was reached";
+"This relay no longer serves the pairing; re-resolving to the current host" = "This relay no longer serves the pairing; re-resolving to the current host";
+"Another connection took over this pairing's slot" = "Another connection took over this pairing's slot";

@@ -1,0 +1,105 @@
+/* signed_archive.strings - 简体中文（中国） */
+
+/* extract/main.m */
+"%@ error code %@" = "%@ 错误，代码 %@";
+"Destination filename malformed." = "目标文件名格式错误。";
+"Verification failed for an unknown reason" = "验证失败，原因未知";
+"Usage: extract file.in file.out" = "用法：extract 输入文件 输出文件";
+
+/* resign/main.m */
+"Using identity %@" = "正在使用身份 %@";
+"Failed to load %@: %@" = "加载 %@ 失败：%@";
+"Could not realize input stream from %@: %@" = "无法从 %@ 创建输入流：%@";
+"Could not create temporary file in %@" = "无法在 %@ 中创建临时文件";
+"Could not create output stream to write to %@" = "无法创建输出流写入 %@";
+"Error %@ reading from %@" = "从 %@ 读取时出错：%@";
+"Error %@ while writing to %@" = "写入 %@ 時出错：%@";
+"Could not extract from %@" = "无法从 %@ 中提取";
+"No identity found" = "未找到签名身份";
+"Signing error: %@" = "签名错误：%@";
+"Warning: While deleting temp file %@: %@" = "警告：删除临时文件 %@ 时出错：%@";
+"While moving temp file %@ over input file %@: %@" = "将临时文件 %@ 移动覆盖输入文件 %@ 时出错：%@";
+"Usage: resign filename.in identity filename.out" = "用法：resign 输入文件 身份 输出文件";
+"       resign -m identity file [file...]" = "       resign -m 身份 文件 [文件...]";
+
+/* sign/main.m */
+"Usage: sign filename.in identity filename.out" = "用法：sign 输入文件 身份 输出文件";
+
+/* verify/main.m */
+"    The following certificates were found:" = "    找到以下证书：";
+"Unknown" = "未知";
+"       Certificate \"%@\"" = "       证书 \"%@\"";
+" [signing cert]" = " [签名证书]";
+", issued by \"%@\"" = "，由 \"%@\" 颁发";
+"    Metadata:" = "    元数据：";
+"    Payload length: %@" = "    有效负载长度： %@";
+"Usage: verify [-v] [-2] file [file...]" = "用法：verify [-v] [-2] 文件 [文件...]";
+"ok" = "正常";
+
+/* SIGArchiveBuilder.m */
+"Could not create write stream" = "无法创建写入流";
+"Error checking file size" = "检查文件大小时出错";
+
+/* SIGArchiveChunk.m */
+"Failed to create chunk object" = "创建数据块对象失败";
+"Short read" = "读取不完整";
+"Uncaught read failure" = "未捕获的读取失败";
+"File changed during signing" = "文件在签名过程中被修改";
+"Short write" = "写入不完整";
+"Error reading file" = "读取文件时出错";
+"File changed while reading" = "文件在读取过程中被修改";
+"Error writing to file" = "写入文件时出错";
+
+/* SIGArchiveReader.m */
+"Failed to get size of input file" = "获取输入文件大小失败";
+"Error opening file" = "打开文件时出错";
+
+/* SIGArchiveVerifier.m */
+"Application error: archive not verified" = "应用错误：归档未验证";
+"Algorithm \"%@\" not supported" = "不支持的算法 \"%@\"";
+"Could not create archive reader" = "无法创建归档读取器";
+
+/* SIGCertificate.m */
+"Failed to get root certs: %@" = "获取根证书失败：%@";
+"Failed to get certificate: %@" = "获取证书失败：%@";
+
+/* SIGError.m */
+"Inconsistency discovered" = "发现数据不一致";
+"Error writing destination file" = "写入目标文件时出错";
+"Error reading source file" = "读取源文件时出错";
+"No private key found" = "未找到私钥";
+"No certificate found" = "未找到证书";
+"No metadata found" = "未找到元数据";
+"No signature found" = "未找到签名";
+"No payload found" = "未找到有效负载";
+"No header found" = "未找到文件头";
+"Could not create algorithm" = "无法创建算法";
+"This file is from a newer version of this app and cannot be loaded. Please upgrade and try again" = "此文件来自更高版本的应用，无法加载。请升级后重试";
+"Metadata chunk malformed" = "元数据块格式错误";
+"This file is in an older format that is no longer supported because its authenticity cannot be guaranteed. It cannot be opened by this version of the app" = "此文件使用了已不再支持的旧格式，因为无法保证其真实性，当前版本的应用无法打开";
+"Header chunk malformed" = "文件头块格式错误";
+"Unsupported algorithm" = "不支持的算法";
+"Unknown or unexpected error" = "未知或意外错误";
+"Input file malformed" = "输入文件格式错误";
+"Malformed certificate" = "证书格式错误";
+"Error creating trust object" = "创建信任对象时出错";
+"Trust chain verification failed by user preference" = "信任链验证因用户设置而失败";
+"Trust chain verification internal error" = "信任链验证内部错误";
+"Trust chain verification failed" = "信任链验证失败";
+"Signature does not match payload" = "签名与有效负载不匹配";
+"Unknown error" = "未知错误";
+
+/* SIGIdentity.m */
+"Unable to create keychain search: %d" = "无法创建钥匙串搜索：%d";
+
+/* SIGSHA2SigningAlgorithm.m */
+"Error reading input stream" = "读取输入流时出错";
+"Key does not support requested algorithm" = "密钥不支持请求的算法";
+"Signing failed" = "签名失败";
+
+/* SIGSHA2VerificationAlgorithm.m */
+"Error reading payload stream" = "读取有效负载流时出错";
+"Signature verification failed" = "签名验证失败";
+
+/* SIGTrust.m */
+"Failed to evaluate certificate chain" = "评估证书链失败";

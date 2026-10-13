@@ -104,7 +104,8 @@ extension LayoutSpec {
                                      parser: ([String: Any], String) throws -> T) throws -> [T] {
         guard let raw = value else { return [] }
         guard let array = raw as? [[String: Any]] else {
-            throw LayoutSpecError.wrongType(path: path, expected: "array of objects")
+            throw LayoutSpecError.wrongType(path: path,
+                                            expected: NSLocalizedString("array of objects", tableName: "TerminalView", comment: "layout spec: expected array of objects"))
         }
         var result: [T] = []
         for (i, dict) in array.enumerated() {
@@ -116,7 +117,8 @@ extension LayoutSpec {
     private static func parseStringList(_ value: Any?, path: String) throws -> [String] {
         guard let raw = value else { return [] }
         guard let array = raw as? [String] else {
-            throw LayoutSpecError.wrongType(path: path, expected: "array of strings")
+            throw LayoutSpecError.wrongType(path: path,
+                                            expected: NSLocalizedString("array of strings", tableName: "TerminalView", comment: "layout spec: expected array of strings"))
         }
         return array
     }

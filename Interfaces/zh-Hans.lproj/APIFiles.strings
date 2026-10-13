@@ -1,0 +1,275 @@
+/* API 组 - 本地化字符串 */
+
+/* iTermScriptConsole.m - 按钮提示 */
+"Inspector" = "检查器";
+"Terminate" = "终止";
+"Restart" = "重启";
+"Clear Terminated" = "清除已终止";
+"Unknown" = "未知";
+
+/* iTermPythonRuntimeDownloader.m */
+"Download Python Runtime?" = "下载 Python 运行时？";
+"The Python Runtime is used by Python scripts that work with iTerm2. It must be downloaded to complete the requested action. The download is about %@. OK to download it now?" = "Python 运行时用于与 iTerm2 配合使用的 Python 脚本。必须下载后才能使用脚本功能。下载大小约为 %@。";
+"The Python Runtime is used by Python scripts that work with iTerm2. The download is about %@. OK to download it now?" = "Python 运行时用于与 iTerm2 配合使用的 Python 脚本。下载大小约为 %@。";
+"Download" = "下载";
+"OK" = "好";
+"Cancel" = "取消";
+"Download Finished" = "下载完成";
+"✅ The Python runtime is up to date." = "✅ Python 运行时已是最新版本。";
+"Download Canceled" = "下载已取消";
+"Python Runtime Unavailable" = "Python 运行时不可用";
+"\n\nThe download failed: %@" = "\n\n下载失败：%@";
+"An iTerm2 Python Runtime with Python version %@ must be downloaded to proceed.%@" = "必须下载带有 Python 版本 %@ 的 iTerm2 Python 运行时才能继续。%@";
+"An iTerm2 Python Runtime must be downloaded to proceed.%@" = "必须下载 iTerm2 Python 运行时才能继续。%@";
+"Download failed ☹️" = "下载失败 ☹️";
+"Could not extract archive ☹️" = "无法解压归档 ☹️";
+"Signature Verification Failed" = "签名验证失败";
+"The Python runtime's signature failed validation: %@" = "Python 运行时的签名验证失败：%@";
+"Download finished!" = "下载完成！";
+"Error unzipping python environment" = "解压 Python 环境时出错";
+"An error occurred while unzipping the downloaded python environment" = "解压下载的 Python 环境时发生错误";
+"Invalid filename. Expected `iterm2env-<version>.zip`." = "无效文件名。期望格式为 'iterm2env-<version>.zip'。";
+"Failed to link from %@ to %@: %@" = "无法从 %@ 链接到 %@：%@";
+"Dependency Installation Failed" = "依赖项安装失败";
+"The following dependencies failed to install: %@" = "以下依赖项安装失败：%@";
+"Output" = "输出";
+"Dependency installation failed" = "依赖项安装失败";
+"Dependency installation failed: could not determine Python version. Please file a bug report at https://iterm2.com/bugs" = "依赖项安装失败：无法确定 Python 版本。请检查脚本控制台了解详情。";
+
+/* iTermScriptImporter.m - 错误和确认消息 */
+"Another import is in progress. Please try again after it completes." = "另一个导入正在进行中。请在完成后重试。";
+"Could not unzip archive: %@" = "无法解压归档：%@";
+"This script archive is corrupt and cannot be installed." = "此脚本归档已损坏，无法安装。";
+"This is not a valid iTerm2 script archive." = "这不是有效的 iTerm2 脚本归档。";
+"Unknown error" = "未知错误";
+"Could not find certificate after verficiation (nil data)" = "验证后找不到证书（空数据）";
+"Could not find certificate after verficiation (bad data)" = "验证后找不到证书（错误数据）";
+"Installation canceled by user request." = "用户请求取消安装。";
+"The signature of “%@” has been verified. The author is:\n\n%@\n\nWould you like to install it?" = "已验证"%@"的签名。作者为：\n\n%@\n\n是否要安装？";
+"OK" = "好";
+"Cancel" = "取消";
+"Reveal Contents" = "显示内容";
+"Confirm Installation" = "确认安装";
+"This archive was created by an older version of iTerm2. This kind of archive is no longer supported and cannot be installed." = "此归档由旧版本的 iTerm2 创建。此类归档不再受支持，无法安装。";
+"Archive does not contain a valid iTerm2 script" = "归档不包含有效的 iTerm2 脚本";
+"A script named “%@” is already installed" = "名为"%@"的脚本已安装";
+"Replace Script" = "替换脚本";
+"Script Already Exists" = "脚本已存在";
+"Could not replace “%@”: the existing script could not be moved aside, so it was left unchanged." = "无法替换"%@"：现有脚本无法移开，因此保持不变。";
+"Replacing “%@” was canceled. The existing script was kept." = "替换"%@"已取消。现有脚本已保留。";
+"The script could not be installed." = "脚本无法安装。";
+
+/* iTermOptionalComponentDownloadWindowController.m */
+"Connecting…" = "正在连接…";
+"Server returned status code %@: %@" = "服务器返回状态码 %@：%@";
+"Finding latest version…" = "正在查找最新版本…";
+"☹️ No usable version found." = "☹️ 未找到可用版本。";
+"☹️ Malformed manifest." = "☹️ 清单格式错误。";
+"Downloading Python runtime…" = "正在下载 Python 运行时…";
+"Installing…" = "正在安装…";
+"Initializing…" = "正在初始化…";
+"Cancel" = "取消";
+"OK" = "好";
+"Try Again" = "重试";
+"Canceled" = "已取消";
+"Download Failed" = "下载失败";
+"%@ of %@" = "%@ / %@";
+
+/* iTermScriptsMenuController.m - 升级警告 */
+"Upgrade Now" = "立即升级";
+"Not Now" = "暂时不要";
+"Python Version Changes" = "Python 版本变更";
+"Upgrading "%@"…" = "正在升级"%@"…";
+"%@ could not be upgraded and still use the previous Python runtime. Each will be upgraded automatically the next time it runs.\n\n• %@" = "%@ 无法升级，仍使用之前的 Python 运行时。它可能需要手动更新。\n\n• %@";
+"Upgrade Incomplete" = "升级未完成";
+
+/* iTermScriptsMenuController.m - 性能警告 */
+"It is taking a long time to locate all scripts under %@. Avoid storing many files or using network mounts for the scripts folder.\n\nContinue?" = "在 %@ 下定位所有脚本花费了很长时间。是否继续搜索？";
+"Stop" = "停止";
+"Continue" = "继续";
+"Performance Issue" = "性能问题";
+"Some scripts will not be available until the app has restarted or you change the scripts folder." = "某些脚本在应用重启或更改脚本文件夹之前将不可用。";
+"Scripts Disabled" = "脚本已禁用";
+
+/* iTermScriptsMenuController.m - 脚本归档 */
+"A script archive named "%@" was found in the Scripts directory. Would you like to install it?" = "在脚本目录中发现名为"%@"的脚本归档。是否要安装它？";
+"OK" = "好";
+"Cancel" = "取消";
+"Move to Trash" = "移到废纸篓";
+"Install Script Archive?" = "安装脚本归档？";
+
+/* iTermScriptsMenuController.m - 导出 */
+"Export Failed" = "导出失败";
+"Failed to create archive" = "无法创建归档";
+
+/* iTermScriptsMenuController.m - 导入 */
+"Could Not Install Script" = "无法安装脚本";
+"Try Again" = "重试";
+"Script Imported Successfully" = "脚本导入成功";
+"Launch" = "启动";
+
+/* iTermScriptsMenuController.m - 格式错误的脚本 */
+"The script "%@" is malformed." = "脚本"%@"格式错误。";
+"Reveal" = "显示";
+"Cannot Run Script" = "无法运行脚本";
+
+/* iTermScriptsMenuController.m - Python 环境 */
+"The Python environment for "%@" is missing (the shared runtime may have been deleted). Rebuild it from its saved requirements now?" = "脚本"%@"的 Python 环境缺失。是否要重建它？";
+"Rebuild" = "重建";
+"Rebuild Python Environment?" = "重建 Python 环境？";
+"Rebuilding the Python environment…" = "正在重建 Python 环境…";
+"Could Not Rebuild Environment" = "无法重建环境";
+
+/* iTermScriptsMenuController.m - 安装 */
+"Installation Failed" = "安装失败";
+"An error occurred while creating the Python environment. The error was: %@" = "创建 Python 环境时发生错误。请检查 Scripts 控制台了解详情。";
+"An error ocurred while installing the Python runtime. Remove ~/Library/Application Support/iTerm2/iterm2env and try again. The error was: %@" = "安装 Python 运行时发生错误。请检查 Scripts 控制台了解详情。";
+"Setting up the Python environment…" = "正在设置 Python 环境…";
+
+/* iTermScriptsMenuController.m - 新脚本 */
+"Open new script in %@?" = "在 %@ 中打开新脚本？";
+"Show in Finder" = "在 Finder 中显示";
+
+/* iTermScriptsMenuController.m - 保存面板 */
+"Package names" = "包名称";
+"PyPI Dependencies:" = "PyPI 依赖项：";
+"Python Version:" = "Python 版本：";
+"Spaces Not Allowed" = "不允许空格";
+"Scripts can't have space characters in their filenames." = "脚本文件名中不能包含空格字符。";
+"Use _ Instead of Space" = "使用下划线替代空格";
+"Change Name" = "更改名称";
+
+/* iTermScriptsMenuController.m - 脚本操作 */
+"Reveal %@" = "显示 %@";
+"Problem running script" = "运行脚本时出现问题";
+"The script at "%@" failed:\n\n%@" = "脚本"%@"失败：\n\n%@";
+
+/* iTermScriptsMenuController.m - 文件夹验证 */
+"Full-environment scripts must be located under in your Application Support/iTerm2/Scripts directory:\n%@" = "完整环境脚本必须位于 Application Support/iTerm2/Scripts 目录下：\n%@";
+"Invalid Folder" = "无效文件夹";
+
+/* iTermScriptArchive.m - 自动启动提示 */
+"\U201C%@\U201D would like to launch automatically when iTerm2 starts. Would you like to allow that?" = "\U201C%@\U201D 希望在 iTerm2 启动时自动运行。是否允许？";
+"\U201C%@\U201D can launch automatically when iTerm2 starts. Would you like to allow that?" = "\U201C%@\U201D 可以在 iTerm2 启动时自动运行。是否允许？";
+"Launch Automatically" = "自动启动";
+"Launch Manually" = "手动启动";
+"Allow Auto-Launch?" = "允许自动启动？";
+
+/* iTermScriptArchive.m - 错误消息 */
+"Cannot find setup.cfg" = "找不到 setup.cfg";
+"Could not write to %@" = "无法写入 %@";
+"Python Runtime not downloaded: %@" = "Python 运行时未下载：%@";
+"Requested version not available" = "请求的版本不可用";
+"Canceled by user" = "用户已取消";
+"An unknown problem occurred" = "发生未知问题";
+"Network error" = "网络错误";
+"Failed to install Python package: %@" = "无法安装 Python 包：%@";
+"Failed to install Python Runtime: %@" = "无法安装 Python 运行时：%@";
+
+/* iTermDependencyEditorWindowController.m - 依赖编辑器 */
+"[Error]" = "[错误]";
+"Add Dependency" = "添加依赖项";
+"What dependency would you like to add?" = "您想添加什么依赖项？";
+"OK" = "好";
+"Cancel" = "取消";
+"Run this Command?" = "运行此命令？";
+"Uninstall of %@ failed. Check the pip output for errors." = "卸载 %@ 失败。请检查 pip 输出了解错误信息。";
+"Removal Failed" = "移除失败";
+"Check the pip output for errors." = "请检查 pip 输出了解错误信息。";
+"Installation Failed" = "安装失败";
+"Can't upgrade because %@ already exists" = "无法升级，因为 %@ 已存在";
+"Error" = "错误";
+"Please file a bug report at https://iterm2.com/bugs. The following error occurred while upgrading a dependency: %@" = "请在 https://iterm2.com/bugs 提交错误报告，并附上上面显示的输出。";
+"Setting up the Python environment…" = "正在设置 Python 环境…";
+"Error creating %@: %@" = "创建 %@ 时出错：%@";
+"Error moving %@ to %@: %@" = "将 %@ 移动到 %@ 时出错：%@";
+"You have asked to downgrade to an older Python version. Dependencies will need to be reinstalled. This may go badly. Are you sure you want to do this?" = "您已请求降级到较旧的 Python 版本。这可能会导致依赖于较新版本 Python 功能的脚本无法正常工作。是否继续？";
+"Confirm Python Downgrade" = "确认 Python 降级";
+"You have asked to upgrade to a newer Python version. Dependencies will need to be reinstalled. OK to continue?" = "您已请求升级到较新的 Python 版本。这可能会导致依赖于较旧版本 Python 行为的脚本无法正常工作。是否继续？";
+"Confirm Python Upgrade" = "确认 Python 升级";
+"Rebuilding the Python environment…" = "正在重建 Python 环境…";
+"Could Not Change Python Version" = "无法更改 Python 版本";
+"Unknown error" = "未知错误";
+
+/* iTermScriptExporter.m - 导出错误 */
+"Invalid location (not under Scripts folder)." = "无效位置（不在 Scripts 文件夹下）。";
+"No found script at selected location." = "在选定位置未找到脚本。";
+"Could not parse install_requires in setup.cfg" = "无法解析 setup.cfg 中的 install_requires";
+"Failed to create zip file." = "无法创建 zip 文件。";
+
+/* iTermSessionPicker.m - 帮助消息 */
+"Click the stop icon exit picker mode without making a selection." = "点击停止图标可退出选择器模式而不进行选择。";
+
+/* iTermScriptConsole.m - 日志消息 */
+"(%@)" = "(%@)";
+"Connection accepted: %@\n" = "连接已接受：%@\n";
+"\nConnection closed.\n" = "\n连接已关闭。\n";
+
+/* iTermAPIServer.m - 错误消息 */
+"Invalid request. Upgrade iTerm2 to a newer version." = "无效请求。请将 iTerm2 升级到新版本。";
+"Not ready. This is a bug! Please report it at https://iterm2.com/bugs" = "未就绪。这是一个错误！请在 https://iterm2.com/bugs 报告此问题。";
+
+/* iTermInProcessIt2.m - 错误消息 */
+"The iTerm2 Python API is not enabled (Settings > General > Magic)." = "iTerm2 Python API 未启用（设置 > 通用 > 魔法）。";
+
+/* iTermScriptHistory.m - 条目名称 */
+"iTerm2 App" = "iTerm2 应用";
+"Automatic Profile Switching" = "自动配置切换";
+"Dynamic Profiles" = "动态配置";
+"Web Browser %@" = "网页浏览器 %@";
+"Smart Selection Actions" = "智能选择操作";
+
+/* iTermAPIHelper.m - 警告消息 */
+"The location of your Application Support directory appears to have moved or its contents have changed unexpectedly. As a precaution, the authentication mechanism for Python API scripts for iTerm2 has been reverted to always require Automation permission." = "您的 Application Support 目录位置似乎已移动或其内容发生了意外更改。出于安全考虑，iTerm2 的 Python API 脚本认证机制已恢复为始终需要自动化权限。";
+"Reveal Preference" = "显示偏好设置";
+"Python API Permissions Reset" = "Python API 权限已重置";
+"Do you want to allow all apps running on this machine to use the Python API?\n\nThis will disable the check for Automation permission. If you agree, you'll be prompted for administrator access to make the change." = "是否允许此机器上运行的所有应用使用 Python API？选择"好"将允许任何本地应用通过 Python API 控制 iTerm2，而无需单独授权每个应用。";
+"More Info" = "更多信息";
+"Failed to remove the file "%@": %@\n\nPlease remove this file manually to require Automation permission for the Python API.\n\nThe Python API has been disabled for your security." = "无法删除文件"%@": %@。要更改此设置，必须先删除该文件。是否在 Finder 中显示它？";
+"Reveal In Finder" = "在 Finder 中显示";
+"Error changing API permissions setting" = "更改 API 权限设置时出错";
+"iTerm2 needs to modify a secure setting." = "iTerm2 需要修改安全设置。";
+"The setting could not be changed: %@" = "设置无法更改：%@";
+"Failed to make change" = "更改失败";
+"Error running "%@":\n%@" = "运行"%@"时出错：\n%@";
+"Reveal in Script Console" = "在脚本控制台中显示";
+"%@ Function Call Failed" = "%@ 函数调用失败";
+"Enable Python API?" = "启用 Python API？";
+"The Python API allows scripts you run to control iTerm2 and access all its data." = "Python API 允许您运行的脚本控制 iTerm2 并访问其所有数据。";
+"Could not JSON encode value "%@"" = "无法对值"%@"进行 JSON 编码";
+"No function registered for invocation "%@". Ensure the script is running and the function name and argument names are correct." = "没有注册用于调用"%@"的函数。请确保脚本正在运行，且函数名和参数名正确。";
+" There is a similarly named function available with a different signature: %@" = " 有一个类似名称的函数可用，但签名不同：%@";
+"Unknown reason" = "未知原因";
+"Timeout" = "超时";
+"Script launched by user action" = "用户操作启动的脚本";
+"All apps are allowed to use the API, per "Settings > General > Magic > Allow all apps to connect"." = "所有应用都被允许使用 API，依据"设置 > 通用 > 魔法 > 允许所有应用连接"。";
+"UI authorization disabled and no valid cookie was presented." = "界面授权已禁用且未提供有效 cookie。";
+"Another process is trying to use the iTerm2 API. The API allows a script to control iTerm2 and view and modify its contents. Allow the connection?" = "另一个进程正在尝试使用 iTerm2 API。您是否要允许它？";
+"\n\nAlthough you have chosen to allow connections automatically, this script has not presented a valid cookie." = "\n\n尽管您已选择自动允许连接，但此脚本未提供有效的 cookie。";
+"Always" = "始终";
+"Allow Python API Usage?" = "允许使用 Python API？";
+"Allowed by user" = "用户已允许";
+"Denied by user" = "用户已拒绝";
+"New sessions will contain an environment variable that allows scripts to run without confirmation. Are you sure you want to enable this?" = "新会话将包含一个允许脚本无需确认即可运行的环境变量。确定要启用此功能吗？";
+"Confirm" = "确认";
+"Internal error" = "内部错误";
+"Script terminated during function call" = "脚本在函数调用期间终止";
+"Disable per-app authentication?" = "禁用逐应用认证？";
+
+/* iTermUvProvisioner.swift - UV 配置字符串 */
+"Downloading uv…" = "正在下载 uv…";
+"Python versions are not always compatible across releases, so a bumped script may need small changes." = "Python 版本在不同发布版本之间并不总是兼容的，因此版本提升的脚本可能需要小改动。";
+"A script was written for Python %@, which is no longer available, so it now uses Python %@. " = "脚本是为 Python %@ 编写的，该版本不再可用，因此现在使用 Python %@。";
+"uv is not installed." = "uv 未安装。";
+"uv %@ is up to date." = "uv %@ 已是最新版本。";
+"Upgraded uv %@ to %@. Updated the Python modules in shared environments." = "已将 uv %@ 升级到 %@。已更新共享环境中的 Python 模块。";
+"unknown error" = "未知错误";
+"Could not check for a uv update: %@" = "无法检查 uv 更新：%@";
+"Could not download the uv update." = "无法下载 uv 更新。";
+"The download was canceled." = "下载已取消。";
+"The uv download was larger than expected and was rejected." = "uv 下载大小超过预期，已被拒绝。";
+"Download Python Support?" = "下载 Python 支持？";
+"To run Python scripts, iTerm2 needs to download uv (about %@ MB) and a Python interpreter. Additional Python versions are downloaded automatically later if a script needs them. OK to download it now?" = "要运行 Python 脚本，iTerm2 需要下载 uv（约 %@）。是否立即下载？";
+"OK" = "好";
+"Cancel" = "取消";
+"The uv download produced no data." = "uv 下载未产生任何数据。";

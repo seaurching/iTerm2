@@ -92,7 +92,7 @@ class SettingPopupView: NSView {
         let identifier = selectedIdentifier
         comboView?.removeFromSuperview()
         let newComboView = SearchableComboView(SearchableComboViewGroup.fromSettings(),
-                                               defaultTitle: "Select Setting…")
+                                               defaultTitle: NSLocalizedString("Select Setting…", tableName: "Settings", bundle: Bundle(for: SettingPopupView.self), comment: ""))
         newComboView.frame = self.bounds
         newComboView.delegate = comboView?.delegate
         addSubview(newComboView)

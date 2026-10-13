@@ -6246,14 +6246,14 @@ lengthExcludingInBandSignaling:data.length
 }
 
 - (void)appendArchiveRestoredBanner {
-    [self appendRestoredBanner:@"Archive Restored"];
+    [self appendRestoredBanner:NSLocalizedStringFromTableInBundle(@"Archive Restored", @"VT100Screen", [NSBundle bundleForClass:[self class]], @"横幅：归档已恢复")];
 }
 
 - (void)appendSessionRestoredBanner {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
-    NSString *message = [NSString stringWithFormat:@"Session Contents Restored on %@", [dateFormatter stringFromDate:[NSDate date]]];
+    NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Session Contents Restored on %@", @"VT100Screen", [NSBundle bundleForClass:[self class]], @"横幅：会话内容恢复时间"), [dateFormatter stringFromDate:[NSDate date]]];
     [self appendRestoredBanner:message];
 }
 
@@ -7019,14 +7019,14 @@ lengthExcludingInBandSignaling:data.length
 - (NSString *)sshEndBannerTerminatingCount:(NSInteger)count newLocation:(NSString *)sshLocation {
     NSString *preamble;
     if (count == 1) {
-        preamble = @"ssh exited";
+        preamble = NSLocalizedStringFromTableInBundle(@"ssh exited", @"VT100Screen", [NSBundle bundleForClass:[self class]], @"横幅：ssh 已退出");
     } else if (count > 1) {
-        preamble = [NSString stringWithFormat:@"%@ ssh sessions ended.", @(count)];
+        preamble = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ ssh sessions ended.", @"VT100Screen", [NSBundle bundleForClass:[self class]], @"横幅：ssh 会话结束"), @(count)];
     }
     if (sshLocation) {
-        return [NSString stringWithFormat:@"%@ — now at %@.", preamble, sshLocation];
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ — now at %@.", @"VT100Screen", [NSBundle bundleForClass:[self class]], @"横幅：ssh 现位于新位置"), preamble, sshLocation];
     }
-    return [NSString stringWithFormat:@"%@.", preamble];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@.", @"VT100Screen", [NSBundle bundleForClass:[self class]], @"横幅：前导语句收尾"), preamble];
 }
 
 #pragma mark - DVR
@@ -7224,7 +7224,7 @@ lengthExcludingInBandSignaling:data.length
 launchCoprocessWithCommand:(NSString *)command
             identifier:(NSString * _Nullable)identifier
                 silent:(BOOL)silent {
-    NSString *triggerName = [NSString stringWithFormat:@"%@ trigger", [[trigger.class title] stringByRemovingSuffix:@"…"]];
+    NSString *triggerName = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ trigger", @"VT100Screen", [NSBundle bundleForClass:[self class]], @"横幅：触发器名称"), [[trigger.class title] stringByRemovingSuffix:@"…"]];
     [self addSideEffect:^(id<VT100ScreenDelegate>  _Nonnull delegate) {
         [delegate triggerSideEffectLaunchCoprocessWithCommand:command
                                                    identifier:identifier

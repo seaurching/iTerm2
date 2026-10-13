@@ -135,7 +135,7 @@ enum CompanionPushSender {
     private static func credentials() throws -> (token: String, secret: String) {
         guard let token = CompanionPushRegistry.deviceTokenHex,
               let secret = CompanionPushRegistry.relaySecretHex else {
-            throw SendError(message: "No paired phone is registered for notifications.")
+            throw SendError(message: NSLocalizedString("No paired phone is registered for notifications.", tableName: "Companion", comment: "未注册配对手机错误"))
         }
         return (token, secret)
     }
@@ -144,7 +144,7 @@ enum CompanionPushSender {
         // Route through the consent plugin: it is the companion's only outbound
         // HTTP path, so the push goes the same way as the relay socket.
         guard case .success(let plugin) = CompanionPlugin.instance() else {
-            throw SendError(message: "The companion plugin is not installed.")
+            throw SendError(message: NSLocalizedString("The companion plugin is not installed.", tableName: "Companion", comment: "伴侣插件未安装错误"))
         }
         let bodyJSON = String(decoding: try JSONEncoder().encode(request), as: UTF8.self)
         let response = try await plugin.client.request(method: "POST",
@@ -157,7 +157,7 @@ enum CompanionPushSender {
             let detail = (try? JSONDecoder().decode(RelayReply.self, from: Data(response.data.utf8)))?.error
                 ?? response.data
             RLog("Companion push: relay rejected send (\(response.error)): \(detail)")
-            throw SendError(message: "The push relay refused the notification (\(response.error)): \(detail)")
+            throw SendError(message: String(format: NSLocalizedString("The push relay refused the notification (%@): %@", tableName: "Companion", comment: "推送中继拒绝错误"), response.error, detail))
         }
         RLog("Companion push: delivered \(label) via relay")
     }

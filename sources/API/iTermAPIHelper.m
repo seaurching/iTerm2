@@ -126,13 +126,13 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
     };
     if (self.name.length == 0) {
         if (error) {
-            *error = newErrorWithReason(@"Name has length 0");
+            *error = newErrorWithReason(NSLocalizedStringFromTableInBundle(@"Name has length 0", @"APIFiles", [NSBundle bundleForClass:[self class]], @"名称长度为 0"));
         }
         return NO;
     }
     if ([self.name rangeOfCharacterFromSet:invalidIdentifierCharacterSet].location != NSNotFound) {
         if (error) {
-            *error = newErrorWithReason([NSString stringWithFormat:@"Function name '%@' contains an invalid character. Must match /[A-Za-z0-9_]/", self.name]);
+            *error = newErrorWithReason([NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Function name '%@' contains an invalid character. Must match /[A-Za-z0-9_]/", @"APIFiles", [NSBundle bundleForClass:[self class]], @"函数名 '%@' 包含无效字符。必须匹配 /[A-Za-z0-9_]/"), self.name]);
         }
         return NO;
     }
@@ -141,19 +141,19 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
         NSString *name = arg.name;
         if (name.length == 0) {
             if (error) {
-                *error = newErrorWithReason(@"Argument has 0-length name");
+                *error = newErrorWithReason(NSLocalizedStringFromTableInBundle(@"Argument has 0-length name", @"APIFiles", [NSBundle bundleForClass:[self class]], @"参数名称长度为 0"));
             }
             return NO;
         }
         if ([name rangeOfCharacterFromSet:invalidIdentifierCharacterSet].location != NSNotFound) {
             if (error) {
-                *error = newErrorWithReason([NSString stringWithFormat:@"Argument name '%@' contains an invalid character. Must match /[A-Za-z0-9_]/", name]);
+                *error = newErrorWithReason([NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Argument name '%@' contains an invalid character. Must match /[A-Za-z0-9_]/", @"APIFiles", [NSBundle bundleForClass:[self class]], @"参数名 '%@' 包含无效字符。必须匹配 /[A-Za-z0-9_]/"), name]);
             }
             return NO;
         }
         if ([args containsObject:name]) {
             if (error) {
-                *error = newErrorWithReason([NSString stringWithFormat:@"Two arguments share the name '%@'. Argument names must be unique.", name]);
+                *error = newErrorWithReason([NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Two arguments share the name '%@'. Argument names must be unique.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"两个参数共享名称 '%@'. 参数名称必须唯一。"), name]);
             }
             return NO;
         }
@@ -448,12 +448,12 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
 
     // "Reveal Preference" is a one-time navigation action and shouldn't be remembered.
     iTermWarning *warning = [[iTermWarning alloc] init];
-    warning.title = @"The location of your Application Support directory appears to have moved or its contents have changed unexpectedly. As a precaution, the authentication mechanism for Python API scripts for iTerm2 has been reverted to always require Automation permission.";
-    warning.actionLabels = @[ @"OK", @"Reveal Preference" ];
+    warning.title = NSLocalizedStringFromTableInBundle(@"The location of your Application Support directory appears to have moved or its contents have changed unexpectedly. As a precaution, the authentication mechanism for Python API scripts for iTerm2 has been reverted to always require Automation permission.", @"APIFiles", [NSBundle bundleForClass:self], @"");
+    warning.actionLabels = @[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:self], @""), NSLocalizedStringFromTableInBundle(@"Reveal Preference", @"APIFiles", [NSBundle bundleForClass:self], @"") ];
     warning.identifier = @"NoSyncAppSupportMoved";
     warning.warningType = kiTermWarningTypePermanentlySilenceable;
-    warning.heading = @"Python API Permissions Reset";
-    warning.doNotRememberLabels = @[ @"Reveal Preference" ];
+    warning.heading = NSLocalizedStringFromTableInBundle(@"Python API Permissions Reset", @"APIFiles", [NSBundle bundleForClass:self], @"");
+    warning.doNotRememberLabels = @[ NSLocalizedStringFromTableInBundle(@"Reveal Preference", @"APIFiles", [NSBundle bundleForClass:self], @"") ];
     const iTermWarningSelection selection = [warning runModal];
     if (selection == kiTermWarningSelection1) {
         [[PreferencePanel sharedInstance] openToPreferenceWithKey:kPreferenceKeyAPIAuthentication];
@@ -464,12 +464,12 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
 
 + (BOOL)createNoAuthFile:(NSWindow *)window {
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:@"Do you want to allow all apps running on this machine to use the Python API?\n\nThis will disable the check for Automation permission. If you agree, you’ll be prompted for administrator access to make the change."
-                               actions:@[ @"OK", @"Cancel", @"More Info" ]
+    [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Do you want to allow all apps running on this machine to use the Python API?\n\nThis will disable the check for Automation permission. If you agree, you’ll be prompted for administrator access to make the change.", @"APIFiles", [NSBundle bundleForClass:self], @"")
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:self], @""), NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:self], @""), NSLocalizedStringFromTableInBundle(@"More Info", @"APIFiles", [NSBundle bundleForClass:self], @"") ]
                              accessory:nil
                             identifier:@"NoSyncRequireApplescriptAuth"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Disable per-app authentication?"
+                               heading:NSLocalizedStringFromTableInBundle(@"Disable per-app authentication?", @"APIFiles", [NSBundle bundleForClass:self], @"")
                                 window:window];
     switch (selection) {
         case kiTermWarningSelection0:
@@ -499,12 +499,12 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
 
     [self setEnabled:NO];
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Failed to remove the file “%@”: %@\n\nPlease remove this file manually to require Automation permission for the Python API.\n\nThe Python API has been disabled for your security.", path, error.localizedDescription]
-                               actions:@[ @"OK", @"Reveal In Finder" ]
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Failed to remove the file “%@”: %@\n\nPlease remove this file manually to require Automation permission for the Python API.\n\nThe Python API has been disabled for your security.", @"APIFiles", [NSBundle bundleForClass:self], @""), path, error.localizedDescription]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:self], @""), NSLocalizedStringFromTableInBundle(@"Reveal In Finder", @"APIFiles", [NSBundle bundleForClass:self], @"") ]
                              accessory:nil
                             identifier:@"NoSyncFailedToRemoveNoAuth"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Error changing API permissions setting"
+                               heading:NSLocalizedStringFromTableInBundle(@"Error changing API permissions setting", @"APIFiles", [NSBundle bundleForClass:self], @"")
                                 window:window];
     switch (selection) {
         case kiTermWarningSelection0:
@@ -543,36 +543,37 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
     NSString *path = [self noauthPath];
     path = [path stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
     path = [path stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\\\\\""];
-    NSString *sourceCode = [NSString stringWithFormat:@"do shell script \"umask 077; TF=$(mktemp); printf '%%s' '%@' > \\\"$TF\\\" && chmod a+r \\\"$TF\\\" && mv \\\"$TF\\\" \\\"%@\\\" || rm -f \\\"$TF\\\"\" with prompt \"iTerm2 needs to modify a secure setting.\" with administrator privileges",
+    NSString *sourceCode = [NSString stringWithFormat:@"do shell script \"umask 077; TF=$(mktemp); printf '%%s' '%@' > \\\"$TF\\\" && chmod a+r \\\"$TF\\\" && mv \\\"$TF\\\" \\\"%@\\\" || rm -f \\\"$TF\\\"\" with prompt \"%@\" with administrator privileges",
                             [self noauthMagic],
-                            path];
+                            path,
+                            NSLocalizedStringFromTableInBundle(@"iTerm2 needs to modify a secure setting.", @"APIFiles", [NSBundle bundleForClass:self], @"")];
     NSAppleScript *script = [[NSAppleScript alloc] initWithSource:sourceCode];
     NSDictionary<NSString *, id> *dict = nil;
     [script executeAndReturnError:&dict];
     if (!dict) {
         return YES;
     }
-    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"The setting could not be changed: %@", dict[NSAppleScriptErrorBriefMessage]]
-                               actions:@[ @"OK" ]
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The setting could not be changed: %@", @"APIFiles", [NSBundle bundleForClass:self], @""), dict[NSAppleScriptErrorBriefMessage]]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:self], @"") ]
                              accessory:nil
                             identifier:@"NoSyncFailedToCreateNoAuth"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Failed to make change"
+                               heading:NSLocalizedStringFromTableInBundle(@"Failed to make change", @"APIFiles", [NSBundle bundleForClass:self], @"")
                                 window:window];
     return NO;
 }
 
 + (void)reportFunctionCallError:(NSError *)error forInvocation:(NSString *)invocation origin:(NSString *)origin window:(NSWindow *)window {
-    NSString *message = [NSString stringWithFormat:@"Error running “%@”:\n%@",
+    NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error running “%@”:\n%@", @"APIFiles", [NSBundle bundleForClass:self], @""),
                          invocation, error.localizedDescription];
     NSString *traceback = error.localizedFailureReason;
-    NSArray *actions = @[ @"OK" ];
+    NSArray *actions = @[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:self], @"") ];
     if (traceback) {
-        actions = [actions arrayByAddingObject:@"Reveal in Script Console"];
+        actions = [actions arrayByAddingObject:NSLocalizedStringFromTableInBundle(@"Reveal in Script Console", @"APIFiles", [NSBundle bundleForClass:self], @"")];
     }
     NSString *connectionKey = error.userInfo[iTermAPIHelperFunctionCallErrorUserInfoKeyConnection];
     iTermScriptHistoryEntry *entry = [[iTermScriptHistory sharedInstance] entryWithIdentifier:connectionKey];
-    [entry addOutput:[NSString stringWithFormat:@"An error occurred while running the function invocation “%@”:\n%@\n\nTraceback:\n%@",
+    [entry addOutput:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"An error occurred while running the function invocation “%@”:\n%@\n\nTraceback:\n%@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"运行函数调用时发生错误"),
                       invocation,
                       error.localizedDescription,
                       traceback]
@@ -582,7 +583,7 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
                                                                accessory:nil
                                                               identifier:@"NoSyncFunctionCallError"
                                                              silenceable:kiTermWarningTypeTemporarilySilenceable
-                                                                 heading:[NSString stringWithFormat:@"%@ Function Call Failed", origin]
+                                                                 heading:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ Function Call Failed", @"APIFiles", [NSBundle bundleForClass:self], @""), origin]
                                                                   window:window];
     if (selection == kiTermWarningSelection1) {
         [[iTermScriptConsole sharedInstance] revealTailOfHistoryEntry:entry];
@@ -629,11 +630,11 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
     // It was not enabled in preferences. Ask the user. If they permanently silence this
     // they'll need to go into prefs to enable it.
     iTermWarning *warning = [[iTermWarning alloc] init];
-    warning.heading = @"Enable Python API?";
-    warning.actionLabels = @[ @"OK", @"Cancel" ];
+    warning.heading = NSLocalizedStringFromTableInBundle(@"Enable Python API?", @"APIFiles", [NSBundle bundleForClass:self], @"");
+    warning.actionLabels = @[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:self], @""), NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:self], @"") ];
     warning.identifier = iTermAPIHelperEnablePythonAPIWarningIdentifier;
     warning.warningType = forced ? kiTermWarningTypePersistent : kiTermWarningTypePermanentlySilenceable;
-    warning.title = @"The Python API allows scripts you run to control iTerm2 and access all its data.";
+    warning.title = NSLocalizedStringFromTableInBundle(@"The Python API allows scripts you run to control iTerm2 and access all its data.", @"APIFiles", [NSBundle bundleForClass:self], @"");
     static BOOL showing;
     if (showing) {
         // This can happen because the call to -runModal below starts a runloop and a delayed perform can then call this.
@@ -1190,7 +1191,7 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
         } else {
             jsonValue = [NSJSONSerialization it_jsonStringForObject:argumentValue];
             if (!jsonValue) {
-                NSString *reason = [NSString stringWithFormat:@"Could not JSON encode value “%@”", arguments[argumentName]];
+                NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not JSON encode value “%@”", @"APIFiles", [NSBundle bundleForClass:[self class]], @""), arguments[argumentName]];
                 NSString *signature = iTermFunctionSignatureFromNamespaceAndNameAndArguments(namespace,
                                                                                              relativeName,
                                                                                              arguments.allKeys);
@@ -1266,11 +1267,11 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
 
     id connectionKey = sub.firstObject;
     if (!connectionKey) {
-        NSString *reason = [NSString stringWithFormat:@"No function registered for invocation “%@”. Ensure the script is running and the function name and argument names are correct.", signature];
+        NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"No function registered for invocation “%@”. Ensure the script is running and the function name and argument names are correct.", @"APIFiles", [NSBundle bundleForClass:[self class]], @""), signature];
         NSString *bestMatch = [self signatureOfAnyRegisteredFunctionWithName:rpc.name
                                                                    namespace:namespace];
         if (bestMatch) {
-            reason = [reason stringByAppendingFormat:@" There is a similarly named function available with a different signature: %@", bestMatch];
+            reason = [reason stringByAppendingFormat:NSLocalizedStringFromTableInBundle(@" There is a similarly named function available with a different signature: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @""), bestMatch];
         }
         completion(nil, [self rpcDispatchError:reason detail:nil unregistered:YES connectionKey:nil]);
         return;
@@ -1286,7 +1287,7 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
                  unregistered:(BOOL)unregistered
                 connectionKey:(NSString *)connectionKey {
     if (reason == nil) {
-        reason = @"Unknown reason";
+        reason = NSLocalizedStringFromTableInBundle(@"Unknown reason", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
     }
     NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: reason };
     if (detail) {
@@ -1334,7 +1335,7 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
     }
 
     [_serverOriginatedRPCCompletionBlocks removeObjectForKey:requestID];
-    completion(nil, [self rpcDispatchError:@"Timeout"
+    completion(nil, [self rpcDispatchError:NSLocalizedStringFromTableInBundle(@"Timeout", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")
                                     detail:nil
                               unregistered:NO
                              connectionKey:connectionKey]);
@@ -1560,31 +1561,31 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
                        advisoryName:(NSString *)advisoryName
                              reason:(out NSString *__autoreleasing *)reason
                         displayName:(out NSString *__autoreleasing *)displayName {
-    *displayName = advisoryName ? [@"≈" stringByAppendingString:advisoryName] : @"Unknown";
+    *displayName = advisoryName ? [@"≈" stringByAppendingString:advisoryName] : NSLocalizedStringFromTableInBundle(@"Unknown", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
 
     if (preauthorized) {
-        *reason = @"Script launched by user action";
+        *reason = NSLocalizedStringFromTableInBundle(@"Script launched by user action", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
         return YES;
     }
     if (![iTermAPIHelper requireApplescriptAuth]) {
-        *reason = @"All apps are allowed to use the API, per “Settings > General > Magic > Allow all apps to connect”.";
+        *reason = NSLocalizedStringFromTableInBundle(@"All apps are allowed to use the API, per “Settings > General > Magic > Allow all apps to connect”.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
         return YES;
     }
     if (disableAuthUI) {
-        *reason = @"UI authorization disabled and no valid cookie was presented.";
+        *reason = NSLocalizedStringFromTableInBundle(@"UI authorization disabled and no valid cookie was presented.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
         return NO;
     }
 
     NSString *message =
-        @"Another process is trying to use the iTerm2 API. The API allows a script to control iTerm2 and view and modify its contents. Allow the connection?";
+        NSLocalizedStringFromTableInBundle(@"Another process is trying to use the iTerm2 API. The API allows a script to control iTerm2 and view and modify its contents. Allow the connection?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
 
     if ([iTermAdvancedSettingsModel setCookie]) {
-        message = [NSString stringWithFormat:@"%@\n\nAlthough you have chosen to allow connections automatically, this script has not presented a valid cookie.", message];
+        message = [NSString stringWithFormat:@"%@%@", message, NSLocalizedStringFromTableInBundle(@"\n\nAlthough you have chosen to allow connections automatically, this script has not presented a valid cookie.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")];
     }
 
-    NSArray<NSString *> *actions = @[ @"OK", @"Cancel", @"More Info" ];
+    NSArray<NSString *> *actions = @[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:[self class]], @""), NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @""), NSLocalizedStringFromTableInBundle(@"More Info", @"APIFiles", [NSBundle bundleForClass:[self class]], @"") ];
     if (![iTermAdvancedSettingsModel setCookie]) {
-        actions = [actions arrayByAddingObject:@"Always"];
+        actions = [actions arrayByAddingObject:NSLocalizedStringFromTableInBundle(@"Always", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")];
     }
     const iTermWarningSelection selection =
     [iTermWarning showWarningWithTitle:message
@@ -1592,38 +1593,38 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
                              accessory:nil
                             identifier:@"NoSyncAllowPythonAPI"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Allow Python API Usage?"
+                               heading:NSLocalizedStringFromTableInBundle(@"Allow Python API Usage?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")
                                 window:nil];
     switch (selection) {
         case kiTermWarningSelection0:
-            *reason = @"Allowed by user";
+            *reason = NSLocalizedStringFromTableInBundle(@"Allowed by user", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
             return YES;
         case kiTermWarningSelection1:
-            *reason = @"Denied by user";
+            *reason = NSLocalizedStringFromTableInBundle(@"Denied by user", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
             return NO;
         case kiTermWarningSelection2:
-            *reason = @"Denied by user";
+            *reason = NSLocalizedStringFromTableInBundle(@"Denied by user", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
             [[NSWorkspace sharedWorkspace] it_openURL:[NSURL URLWithString:@"https://iterm2.com/python-api-security-model"]
                                                target:nil
                                                 style:iTermOpenStyleTab
                                                window:nil];
             return NO;
         case kiTermWarningSelection3:
-            if ([iTermWarning showWarningWithTitle:@"New sessions will contain an environment variable that allows scripts to run without confirmation. Are you sure you want to enable this?"
-                                           actions:@[ @"OK", @"Cancel" ]
+            if ([iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"New sessions will contain an environment variable that allows scripts to run without confirmation. Are you sure you want to enable this?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")
+                                           actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:[self class]], @""), NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @"") ]
                                          accessory:nil
                                         identifier:@"NoSyncConfirmAlways"
                                        silenceable:kiTermWarningTypePersistent
-                                           heading:@"Confirm"
+                                           heading:NSLocalizedStringFromTableInBundle(@"Confirm", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")
                                             window:nil] == kiTermWarningSelection0) {
                 [iTermAdvancedSettingsModel setSetCookie:YES];
-                *reason = @"Allowed by user";
+                *reason = NSLocalizedStringFromTableInBundle(@"Allowed by user", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
                 return YES;
             }
-            *reason = @"Denied by user";
+            *reason = NSLocalizedStringFromTableInBundle(@"Denied by user", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
             return NO;
         default:
-            *reason = @"Internal error";
+            *reason = NSLocalizedStringFromTableInBundle(@"Internal error", @"APIFiles", [NSBundle bundleForClass:[self class]], @"");
             return NO;
     }
 }
@@ -2219,7 +2220,7 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
         // completion will be nil if it already timed out
         if (completion) {
             [_serverOriginatedRPCCompletionBlocks removeObjectForKey:requestID];
-            completion(nil, [self rpcDispatchError:@"Script terminated during function call"
+            completion(nil, [self rpcDispatchError:NSLocalizedStringFromTableInBundle(@"Script terminated during function call", @"APIFiles", [NSBundle bundleForClass:[self class]], @"")
                                             detail:nil
                                       unregistered:YES
                                      connectionKey:connectionKey]);
@@ -3460,7 +3461,7 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
                                                       error:&error];
             if (!value || error) {
                 value = nil;
-                exception = @{ @"reason": [NSString stringWithFormat:@"Undecodable value: %@", error.localizedDescription] };
+                exception = @{ @"reason": [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Undecodable value: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无法解码的值：%@"), error.localizedDescription] };
             }
             break;
 
@@ -3469,14 +3470,14 @@ static BOOL iTermAPIHelperLastApplescriptAuthRequiredSetting;
                                                         options:NSJSONReadingAllowFragments
                                                           error:&error];
             if (error) {
-                exception = @{ @"reason": [NSString stringWithFormat:@"Undecodable exception: %@", error.localizedDescription] };
+                exception = @{ @"reason": [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Undecodable exception: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无法解码的异常：%@"), error.localizedDescription] };
             } else {
-                exception = [NSDictionary castFrom:exception] ?: @{ @"reason": @"Malformed exception" };
+                exception = [NSDictionary castFrom:exception] ?: @{ @"reason": NSLocalizedStringFromTableInBundle(@"Malformed exception", @"APIFiles", [NSBundle bundleForClass:[self class]], @"格式错误的异常") };
             }
             break;
 
         case ITMServerOriginatedRPCResultRequest_Result_OneOfCase_GPBUnsetOneOfCase:
-            exception = @{ @"reason": @"Malformed result." };
+            exception = @{ @"reason": NSLocalizedStringFromTableInBundle(@"Malformed result.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"格式错误的结果。") };
             break;
     }
 
@@ -4278,7 +4279,7 @@ static BOOL iTermCheckSplitTreesIsomorphic(ITMSplitTreeNode *node1, ITMSplitTree
             if (!request.method.hasReceiver) {
                 ITMInvokeFunctionResponse *response = [[ITMInvokeFunctionResponse alloc] init];
                 response.error.status = ITMInvokeFunctionResponse_Status_RequestMalformed;
-                response.error.errorReason = @"No receiver";
+                response.error.errorReason = NSLocalizedStringFromTableInBundle(@"No receiver", @"APIFiles", [NSBundle bundleForClass:[self class]], @"没有接收者");
                 completion(response);
                 return;
             }
@@ -4291,7 +4292,7 @@ static BOOL iTermCheckSplitTreesIsomorphic(ITMSplitTreeNode *node1, ITMSplitTree
 
     ITMInvokeFunctionResponse *response = [[ITMInvokeFunctionResponse alloc] init];
     response.error.status = ITMInvokeFunctionResponse_Status_RequestMalformed;
-    response.error.errorReason = @"Invalid context";
+    response.error.errorReason = NSLocalizedStringFromTableInBundle(@"Invalid context", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无效的上下文");
     completion(response);
 }
 
@@ -4311,7 +4312,7 @@ static BOOL iTermCheckSplitTreesIsomorphic(ITMSplitTreeNode *node1, ITMSplitTree
     if (!tab) {
         ITMInvokeFunctionResponse *response = [[ITMInvokeFunctionResponse alloc] init];
         response.error.status = ITMInvokeFunctionResponse_Status_InvalidId;
-        response.error.errorReason = @"No such tab";
+        response.error.errorReason = NSLocalizedStringFromTableInBundle(@"No such tab", @"APIFiles", [NSBundle bundleForClass:[self class]], @"没有此标签页");
         completion(response);
         return;
     }
@@ -4345,7 +4346,7 @@ static BOOL iTermCheckSplitTreesIsomorphic(ITMSplitTreeNode *node1, ITMSplitTree
     if (!term) {
         ITMInvokeFunctionResponse *response = [[ITMInvokeFunctionResponse alloc] init];
         response.error.status = ITMInvokeFunctionResponse_Status_InvalidId;
-        response.error.errorReason = @"No such window";
+        response.error.errorReason = NSLocalizedStringFromTableInBundle(@"No such window", @"APIFiles", [NSBundle bundleForClass:[self class]], @"没有此窗口");
         completion(response);
         return;
     }
@@ -4364,7 +4365,7 @@ static BOOL iTermCheckSplitTreesIsomorphic(ITMSplitTreeNode *node1, ITMSplitTree
     if (!session) {
         ITMInvokeFunctionResponse *response = [[ITMInvokeFunctionResponse alloc] init];
         response.error.status = ITMInvokeFunctionResponse_Status_InvalidId;
-        response.error.errorReason = @"No such session";
+        response.error.errorReason = NSLocalizedStringFromTableInBundle(@"No such session", @"APIFiles", [NSBundle bundleForClass:[self class]], @"没有此会话");
         completion(response);
         return;
     }

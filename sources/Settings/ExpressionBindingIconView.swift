@@ -39,7 +39,7 @@ class ExpressionBindingIconView: NSView {
                                                        weight: .regular)
         let image = NSImage(
             systemSymbolName: "link",
-            accessibilityDescription: "Expression Binding")?.withSymbolConfiguration(symbolConfig)
+            accessibilityDescription: NSLocalizedString("Expression Binding", tableName: "Settings", comment: "Accessibility description for the expression binding icon"))?.withSymbolConfiguration(symbolConfig)
         image?.isTemplate = true
         let imageView = NSImageView(image: image ?? NSImage())
         imageView.frame = NSRect(x: inset,

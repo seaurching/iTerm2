@@ -17,7 +17,7 @@ class ChatSplitViewController: NSSplitViewController {
     private var sidebarToggleRelayoutGeneration = 0
     private let sidebarToggleButton: NSButton = {
         let image = NSImage(systemSymbolName: SFSymbol.sidebarLeft.rawValue,
-                            accessibilityDescription: "Toggle Chat List")!
+                            accessibilityDescription: NSLocalizedString("Toggle Chat List", tableName: "AITermXC", comment: "切换对话列表"))!
         let button = NSButton(image: image, target: nil, action: nil)
         button.isBordered = false
         button.bezelStyle = .badge
@@ -35,7 +35,7 @@ class ChatSplitViewController: NSSplitViewController {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) has not been implemented")
+        it_fatalError(NSLocalizedString("init(coder:) has not been implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     deinit {
@@ -170,7 +170,7 @@ class ChatSplitViewController: NSSplitViewController {
 
     private func updateSidebarToggleButton() {
         let collapsed = sidebarItem?.isCollapsed ?? false
-        sidebarToggleButton.toolTip = collapsed ? "Show chat list" : "Hide chat list"
+        sidebarToggleButton.toolTip = collapsed ? NSLocalizedString("Show chat list", tableName: "AITermXC", comment: "显示对话列表") : NSLocalizedString("Hide chat list", tableName: "AITermXC", comment: "隐藏对话列表")
         sidebarToggleButton.layer?.backgroundColor = (collapsed
                                                       ? NSColor.controlAccentColor.withAlphaComponent(0.28)
                                                       : NSColor.clear).cgColor

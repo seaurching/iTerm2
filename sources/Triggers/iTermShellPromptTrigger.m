@@ -13,7 +13,7 @@
 @implementation iTermShellPromptTrigger
 
 + (NSString *)title {
-    return @"Prompt Detected";
+    return NSLocalizedStringFromTableInBundle(@"Prompt Detected", @"Triggers", [NSBundle bundleForClass:[self class]], @"检测到提示触发器标题");
 }
 
 - (NSString *)description {

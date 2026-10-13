@@ -67,7 +67,7 @@ enum ChatProviderBinding {
             // exactly these).
             return .proceed(modelName: turn, bindChatTo: nil)
         }
-        return .reject(reason: "This chat uses “\(bound)”, and “\(turn)” belongs to a different AI provider. A chat cannot change providers once the conversation has started; start a new chat to use “\(turn)”.")
+        return .reject(reason: String(format: NSLocalizedString("This chat uses \u{201c}%@\u{201d}, and \u{201c}%@\u{201d} belongs to a different AI provider. A chat cannot change providers once the conversation has started; start a new chat to use \u{201c}%@\u{201d}.", tableName: "AITermXC", comment: "此对话使用 \u{201c}%@\u{201d}，而 \u{201c}%@\u{201d} 属于不同的 AI 提供商。对话开始后无法更换提供商；请开始新对话以使用 \u{201c}%@\u{201d}。"), bound, turn, turn))
     }
 
     /// Resolve a model name to its vendor the way request routing does:

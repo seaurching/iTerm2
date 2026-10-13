@@ -171,8 +171,11 @@ extension PTYSession {
         // expected here; temp paths under NSTemporaryDirectory don't
         // contain quotes. Falls back to the bundled file if the write
         // fails so the command still has a usable system prompt.
-        let bundledFallback = NSString.path(withComponents:
-            [Bundle.main.bundlePath, "Contents", "Resources", "code-review-system-prompt.txt"])
+        // Use localized resource lookup so the fallback matches the user's
+        // language; fall back to the raw path if lookup fails.
+        let bundledFallback = Bundle.main.path(forResource: "code-review-system-prompt", ofType: "txt")
+            ?? NSString.path(withComponents:
+                [Bundle.main.bundlePath, "Contents", "Resources", "code-review-system-prompt.txt"])
         let systemPromptPath = writeCodeReviewSystemPromptFile() ?? bundledFallback
         genericScope.setValue(systemPromptPath, forVariableNamed: "codeReviewSystemPromptFile")
 

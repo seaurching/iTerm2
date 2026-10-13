@@ -1,0 +1,5 @@
+"Terms in the search query are used to prefix search snippet titles, content, and tags.\n\nYou can use the following operators to restrict what attributes of snippets a term searches:\n * `tag:` to search only tags.\n * `title:` to search only snippet titles.\n * `text:` to search only the text of a snippet.\nFor example, `tag:linux`.\n\nTo search only for snippets that do *not* match a term, use the `-` operator. For example, `-linux` or `-tag:linux`.\n\nYou can use `|` as logical OR. For example, `linux|bsd` or `tag:linux|tag:bsd`." = "搜索查询中的词用于前缀搜索代码片段的标题、内容和标签。\n\n您可以使用以下运算符来限制词搜索代码片段的哪些属性：\n * `tag:` 仅搜索标签。\n * `title:` 仅搜索代码片段标题。\n * `text:` 仅搜索代码片段的文本。\n例如，`tag:linux`。\n\n要仅搜索*不*匹配某个词的代码片段，请使用 `-` 运算符。例如，`-linux` 或 `-tag:linux`。\n\n您可以使用 `|` 作为逻辑或。例如，`linux|bsd` 或 `tag:linux|tag:bsd`。";
+"There was a problem saving snippets to “%@”.\n\nThe error was:\n%@" = "保存代码片段到“%@”时出现问题。\n\n错误为：\n%@";
+"OK" = "确定";
+"Problem Saving Snippets" = "保存代码片段时出现问题";
+"Press Option to Edit Before Sending" = "按 Option 键在发送前编辑";

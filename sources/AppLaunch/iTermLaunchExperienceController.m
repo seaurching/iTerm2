@@ -220,14 +220,14 @@ typedef NS_ENUM(NSUInteger, iTermLaunchExperienceChoice) {
             command = @"pip3 install --user --upgrade iterm2";
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *message = [NSString stringWithFormat:@"The system Python's iterm2 module is out of date and won't work with this version of iTerm2. Run `%@` to fix it.", command];
+            NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The system Python's iterm2 module is out of date and won't work with this version of iTerm2. Run `%@` to fix it.", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"系统 Python 的 iterm2 模块已过期，无法在此版本的 iTerm2 中使用。运行 `%@` 来修复。"), command];
             const iTermWarningSelection selection =
             [iTermWarning showWarningWithTitle:message
-                                       actions:@[ @"Copy Command", @"Ignore", @"Remind me Later"]
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"Copy Command", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"复制命令"), NSLocalizedStringFromTableInBundle(@"Ignore", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"忽略"), NSLocalizedStringFromTableInBundle(@"Remind me Later", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"稍后提醒")]
                                      accessory:nil
                                     identifier:@"SystemPythonModuleOutdated"
                                    silenceable:kiTermWarningTypePersistent
-                                       heading:@"Upgrade system Python iterm2 module?"
+                                       heading:NSLocalizedStringFromTableInBundle(@"Upgrade system Python iterm2 module?", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"升级系统 Python iterm2 模块？")
                                         window:nil];
             switch (selection) {
                 case kiTermWarningSelection0: {
@@ -274,12 +274,12 @@ typedef NS_ENUM(NSUInteger, iTermLaunchExperienceChoice) {
 }
 
 - (void)warnAboutChangeToDefaultPasteBehavior {
-    [iTermWarning showWarningWithTitle:@"iTerm2 no longer warns before a multi-line paste, unless you are at the shell prompt."
-                               actions:@[ @"OK" ]
+    [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"iTerm2 no longer warns before a multi-line paste, unless you are at the shell prompt.", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"iTerm2 不再在多行粘贴前发出警告，除非您在 Shell 提示符处。")
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"好") ]
                              accessory:nil
                             identifier:nil
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Important Change"
+                               heading:NSLocalizedStringFromTableInBundle(@"Important Change", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"重要更改")
                                 window:nil];
     [[iTermUserDefaults userDefaults] setBool:YES forKey:kHaveWarnedAboutPasteConfirmationChange];
 }

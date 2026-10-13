@@ -28,13 +28,13 @@ enum iTermWorkgroupEntryMechanism: Int {
     func provenanceDescription(sessionGUID: String) -> String {
         switch self {
         case .trigger:
-            return "A trigger in session \(sessionGUID) entered this workgroup."
+            return NSLocalizedString("A trigger in session %@ entered this workgroup.", tableName: "Workgroups", comment: "工作组来源：终端触发器")
         case .browserTrigger:
-            return "A browser trigger in session \(sessionGUID) entered this workgroup."
+            return NSLocalizedString("A browser trigger in session %@ entered this workgroup.", tableName: "Workgroups", comment: "工作组来源：浏览器触发器")
         case .menu:
-            return "The user entered this workgroup from the Workgroups menu in session \(sessionGUID)."
+            return NSLocalizedString("The user entered this workgroup from the Workgroups menu in session %@.", tableName: "Workgroups", comment: "工作组来源：用户经菜单进入")
         case .onboarding:
-            return "The user entered this workgroup by accepting the Claude Code onboarding prompt in session \(sessionGUID)."
+            return NSLocalizedString("The user entered this workgroup by accepting the Claude Code onboarding prompt in session %@.", tableName: "Workgroups", comment: "工作组来源：用户接受 Claude Code 入门提示")
         }
     }
 }
@@ -299,7 +299,7 @@ final class iTermWorkgroupController: NSObject {
             RLog("iTermWorkgroupController.adopt: instance \(instance.instanceUniqueIdentifier) was torn down during adoption; not registering")
             return nil
         }
-        instance.provenance = "Restored from a saved window arrangement at launch."
+        instance.provenance = NSLocalizedString("Restored from a saved window arrangement at launch.", tableName: "Workgroups", comment: "工作组来源：启动时从窗口排列恢复")
         instances[instance.instanceUniqueIdentifier] = instance
         checkConsistency()
         return instance

@@ -1,0 +1,294 @@
+{
+    "sourceLanguage": "en",
+    "strings": {
+        "U4n-GV-8aZ.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"iTerm2\"; ObjectID = \"U4n-GV-8aZ\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "ja": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "ko": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "pt": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "ru": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "ar": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2"
+                    }
+                }
+            }
+        },
+        "XAW-F5-RXa.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"By George Nachman and Contributors\"; ObjectID = \"XAW-F5-RXa\";",
+            "extractionState": "extracted_with_value",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "By George Nachman and Contributors"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "由 George Nachman 和贡献者开发"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "由 George Nachman 和貢獻者開發"
+                    }
+                },
+                "ja": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "George Nachman とコントリビューターによる"
+                    }
+                },
+                "ko": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "George Nachman 및 기여자 제작"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Par George Nachman et les contributeurs"
+                    }
+                },
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Von George Nachman und Mitwirkenden"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Por George Nachman y colaboradores"
+                    }
+                },
+                "pt": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Por George Nachman e colaboradores"
+                    }
+                },
+                "ru": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "От George Nachman и участников"
+                    }
+                },
+                "ar": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "بواسطة George Nachman والمساهمين"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "由 George Nachman 和贡献者开发"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "由 George Nachman 和贡献者开发"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "由 George Nachman 和貢獻者開發"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "由 George Nachman 和貢獻者開發"
+                    }
+                }
+            }
+        },
+        "XqE-kC-hnW.textStorage.attributedString.content": {
+            "comment": "TextView content with Patreon and GitHub Sponsors links",
+            "extractionState": "manual",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 is supported by these backers on <a href=\"https://patreon.com/gnachman\">Patreon</a> and <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a>:"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 由以下支持者在 <a href=\"https://patreon.com/gnachman\">Patreon</a> 和 <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a> 上支持："
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 由以下支持者在 <a href=\"https://patreon.com/gnachman\">Patreon</a> 和 <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a> 上支持："
+                    }
+                },
+                "ja": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 は <a href=\"https://patreon.com/gnachman\">Patreon</a> と <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a> の以下のサポーターに支えられています："
+                    }
+                },
+                "ko": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2는 <a href=\"https://patreon.com/gnachman\">Patreon</a> 및 <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a>의 다음 후원자들의 지원을 받습니다:"
+                    }
+                },
+                "fr": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 est soutenu par ces contributeurs sur <a href=\"https://patreon.com/gnachman\">Patreon</a> et <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a> :"
+                    }
+                },
+                "de": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 wird von diesen Unterstützern auf <a href=\"https://patreon.com/gnachman\">Patreon</a> und <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a> unterstützt:"
+                    }
+                },
+                "es": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 es apoyado por estos patrocinadores en <a href=\"https://patreon.com/gnachman\">Patreon</a> y <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a>:"
+                    }
+                },
+                "pt": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 é apoiado por estes apoiadores no <a href=\"https://patreon.com/gnachman\">Patreon</a> e <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a>:"
+                    }
+                },
+                "ru": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 поддерживается следующими спонсорами на <a href=\"https://patreon.com/gnachman\">Patreon</a> и <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a>:"
+                    }
+                },
+                "ar": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 مدعوم من هؤلاء الداعمين على <a href=\"https://patreon.com/gnachman\">Patreon</a> و <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a>:"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 由以下支持者在 <a href=\"https://patreon.com/gnachman\">Patreon</a> 和 <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a> 上支持："
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 由以下支持者在 <a href=\"https://patreon.com/gnachman\">Patreon</a> 和 <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a> 上支持："
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 由以下支持者在 <a href=\"https://patreon.com/gnachman\">Patreon</a> 和 <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a> 上支持："
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "iTerm2 由以下支持者在 <a href=\"https://patreon.com/gnachman\">Patreon</a> 和 <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a> 上支持："
+                    }
+                }
+            }
+        }
+    },
+    "version": "1.1"
+}

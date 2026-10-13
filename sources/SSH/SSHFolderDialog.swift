@@ -36,15 +36,15 @@ class SSHFolderDialog: NSObject {
 
         // Initialize alert
         self.alert = NSAlert()
-        alert.messageText = "Go to the folder:"
-        alert.informativeText = "Type a pathname or select from the pop-up menu"
-        alert.addButton(withTitle: "Go")
-        alert.addButton(withTitle: "Cancel")
+        alert.messageText = NSLocalizedString("Go to the folder:", tableName: "SSH", comment: "folder dialog: go to folder message")
+        alert.informativeText = NSLocalizedString("Type a pathname or select from the pop-up menu", tableName: "SSH", comment: "folder dialog: informative text")
+        alert.addButton(withTitle: NSLocalizedString("Go", tableName: "SSH", comment: "folder dialog: go button"))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "SSH", comment: "folder dialog: cancel button"))
 
         // Initialize text field
         self.textField = SSHFolderDialogTextField(frame: NSRect(x: 0, y: 0, width: 300, height: 24))
         textField.stringValue = currentPath ?? ""
-        textField.placeholderString = "Enter path (e.g., /usr/local/bin)"
+        textField.placeholderString = NSLocalizedString("Enter path (e.g., /usr/local/bin)", tableName: "SSH", comment: "folder dialog: path placeholder")
 
         super.init()
 
@@ -160,7 +160,7 @@ class SSHFolderDialog: NSObject {
                 parent: alert.window,
                 location: textFieldFrame,
                 mode: .indicator,
-                placeholder: "Loading completions…",
+                placeholder: NSLocalizedString("Loading completions…", tableName: "SSH", comment: "folder dialog: loading completions placeholder"),
                 allowKey: false
             )
             textField.onSpecialKey = { [weak completionsWindow, weak self] key in
@@ -199,7 +199,7 @@ class SSHFolderDialog: NSObject {
                     // Convert to CompletionsWindow items
                     let items = suggestions.map { path in
                         let displayPath = path
-                        let detail = "Folder on " + hostname
+                        let detail = String(format: NSLocalizedString("Folder on %@", tableName: "SSH", comment: "folder dialog: completion detail"), hostname)
 
                         return CompletionsWindow.Item(
                             suggestion: path,

@@ -1,0 +1,38 @@
+/* Fallback title when error has no localized description */
+"Unknown error" = "Unknown error";
+
+/* OK button */
+"OK" = "OK";
+
+/* Heading when recording file envelope is malformed */
+"Could not read the file: its envelope was malformed." = "Could not read the file: its envelope was malformed.";
+
+/* Title when gzip decompression fails */
+"Could not read the file: decompression failed." = "Could not read the file: decompression failed.";
+
+/* Title when unarchiving fails */
+"Could not read the file: unarchiving decompressed data failed." = "Could not read the file: unarchiving decompressed data failed.";
+
+/* Title when recording version is unsupported */
+"This recording is from a newer version of iTerm2 and cannot be replayed in this version." = "This recording is from a newer version of iTerm2 and cannot be replayed in this version.";
+
+/* Heading when recording cannot be loaded */
+"Can’t Load Recording" = "Can’t Load Recording";
+
+/* Title when recording is missing critical fields */
+"This recording could not be loaded because it is missing critical information." = "This recording could not be loaded because it is missing critical information.";
+
+/* Title when DVR dictionary fails to load */
+"The recording could not be loaded. It might be corrupted." = "The recording could not be loaded. It might be corrupted.";
+
+/* Heading when DVR loading fails */
+"Error Loading Recording" = "Error Loading Recording";
+
+/* Default filename for exported recording */
+"Recording" = "Recording";
+
+/* Heading when saving recording fails */
+"The recording could not be saved." = "The recording could not be saved.";
+
+/* Title when recording encoding fails */
+"Error encoding recording." = "Error encoding recording.";

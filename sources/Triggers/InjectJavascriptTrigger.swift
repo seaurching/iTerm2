@@ -8,11 +8,11 @@
 @objc(InjectJavascriptURLTrigger)
 class InjectJavascriptURLTrigger: Trigger {
     override var description: String {
-        return "Inject Javascript (URL Regex)"
+        return NSLocalizedString("Inject Javascript (URL Regex)", tableName: "Triggers", comment: "注入 JavaScript 触发器：URL 正则")
     }
 
     override static var title: String {
-        return "Inject Javascript (URL Regex)"
+        return NSLocalizedString("Inject Javascript (URL Regex)", tableName: "Triggers", comment: "注入 JavaScript 触发器：URL 正则")
     }
 
     override func takesParameter() -> Bool {
@@ -22,7 +22,7 @@ class InjectJavascriptURLTrigger: Trigger {
         false
     }
     override func triggerOptionalParameterPlaceholder(withInterpolation interpolation: Bool) -> String? {
-        return "Javascript"
+        return NSLocalizedString("Javascript", tableName: "Triggers", comment: "占位符：JavaScript")
     }
     override func triggerOptionalDefaultParameterValue(withInterpolation interpolation: Bool) -> String? {
         "console.log('Testing');"
@@ -64,11 +64,11 @@ extension InjectJavascriptURLTrigger: BrowserTrigger {
 @objc(InjectJavascriptContentTrigger)
 class InjectJavascriptContentTrigger: Trigger {
     override var description: String {
-        return "Inject Javascript (Content Regex)"
+        return NSLocalizedString("Inject Javascript (Content Regex)", tableName: "Triggers", comment: "注入 JavaScript 触发器：内容正则")
     }
 
     override static var title: String {
-        return "Inject Javascript (Content Regex)"
+        return NSLocalizedString("Inject Javascript (Content Regex)", tableName: "Triggers", comment: "注入 JavaScript 触发器：内容正则")
     }
 
     override func takesParameter() -> Bool {
@@ -78,7 +78,7 @@ class InjectJavascriptContentTrigger: Trigger {
         false
     }
     override func triggerOptionalParameterPlaceholder(withInterpolation interpolation: Bool) -> String? {
-        return "Javascript"
+        return NSLocalizedString("Javascript", tableName: "Triggers", comment: "占位符：JavaScript")
     }
     override func triggerOptionalDefaultParameterValue(withInterpolation interpolation: Bool) -> String? {
         "console.log('Testing');"

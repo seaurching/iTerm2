@@ -32,11 +32,11 @@
 }
 
 + (NSString *)title {
-    return @"Post Notification…";
+    return NSLocalizedStringFromTableInBundle(@"Post Notification…", @"Triggers", [NSBundle bundleForClass:[self class]], @"发送通知触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Post Notification “%@”", self.param];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Post Notification “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"发送通知触发器描述"), self.param];
 }
 
 - (BOOL)takesParameter {
@@ -44,7 +44,7 @@
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-    return @"Enter Message";
+    return NSLocalizedStringFromTableInBundle(@"Enter Message", @"Triggers", [NSBundle bundleForClass:[self class]], @"占位符：输入消息");
 }
 
 - (NSSet<NSNumber *> *)allowedMatchTypes {

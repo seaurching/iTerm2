@@ -151,7 +151,7 @@ static NSMutableArray<iTermBackgroundCommandRunner *> *activeRunners;
                                        identifier:[[NSUUID UUID] UUIDString]
                                          relaunch:nil];
     [[iTermScriptHistory sharedInstance] addHistoryEntry:entry];
-    [entry addOutput:[NSString stringWithFormat:@"Run command:\n%@\n", self.command]
+    [entry addOutput:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Run command:\n%@\n", @"Categories", [NSBundle mainBundle], @"Script console: command run header"), self.command]
           completion:^{}];
     [activeRunners addObject:self];
     __weak __typeof(self) weakSelf = self;
@@ -175,7 +175,7 @@ static NSMutableArray<iTermBackgroundCommandRunner *> *activeRunners;
     RLog(@"%@", RLogRedact(self, self.redactedDescription));
     [activeRunners removeObject:self];
     if (status) {
-        [entry addOutput:[NSString stringWithFormat:@"\nFinished with status %d", status]
+        [entry addOutput:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"\nFinished with status %d", @"Categories", [NSBundle mainBundle], @"Script console: command finished with status"), status]
               completion:^{}];
     }
     [entry stopRunning];
@@ -184,9 +184,9 @@ static NSMutableArray<iTermBackgroundCommandRunner *> *activeRunners;
         RLog(@"%@ post notification with identifier %@", RLogRedact(self, self.redactedDescription), entry.identifier);
         [iTermBackgroundCommandRunnerNotificationObserver sharedInstance];
         [self.class maybeNotify:^(NSInteger deferCount) {
-            NSString *detail = [NSString stringWithFormat:@"\nFinished with status %d", status];
+            NSString *detail = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"\nFinished with status %d", @"Categories", [NSBundle mainBundle], @"Notification detail: command finished with status"), status];
             if (deferCount > 1) {
-                detail = [detail stringByAppendingFormat:@", plus %@ other error%@ silenced.",
+                detail = [detail stringByAppendingFormat:NSLocalizedStringFromTableInBundle(@", plus %@ other error%@ silenced.", @"Categories", [NSBundle mainBundle], @"Notification detail: additional errors silenced (plural)"),
                           @(deferCount - 1),
                           deferCount > 2 ? @"s" : @""];
             }

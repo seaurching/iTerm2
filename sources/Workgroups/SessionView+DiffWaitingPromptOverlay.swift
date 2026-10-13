@@ -19,13 +19,8 @@ extension SessionView {
         installOverlay(
             DiffWaitingPromptView(
                 frame: scrollview.frame,
-                title: "Diff session is waiting for changes.",
-                body: "This session is set to Diff mode and only starts its "
-                    + "command when git reports staged or unstaged changes. "
-                    + "The working tree is currently clean, or iTerm2 hasn’t "
-                    + "finished its first check yet. Edit a file (or stage one) "
-                    + "and the command will start on its own. To run it now "
-                    + "anyway, click below.",
+                title: NSLocalizedString("Diff session is waiting for changes.", tableName: "Workgroups", comment: "Diff会话等待变更标题"),
+                body: NSLocalizedString("This session is set to Diff mode and only starts its command when git reports staged or unstaged changes. The working tree is currently clean, or iTerm2 hasn’t finished its first check yet. Edit a file (or stage one) and the command will start on its own. To run it now anyway, click below.", tableName: "Workgroups", comment: "此会话已设为 Diff 模式，只有在 git 报告有已暂存或未暂存的更改时才会执行其命令。当前工作树是干净的，或者 iTerm2 尚未完成首次检查。编辑（或暂存）一个文件后，命令将自行启动。若要立即运行，请点击下方按钮。"),
                 showCancel: false),
             onRunAnyway: onRunAnyway,
             onCancel: nil)
@@ -44,12 +39,8 @@ extension SessionView {
         installOverlay(
             DiffWaitingPromptView(
                 frame: scrollview.frame,
-                title: "Reload queued. Waiting for changes.",
-                body: "This session is set to Diff mode, so Reload will "
-                    + "re-run the command only after git reports staged or "
-                    + "unstaged changes. The previous output is still on "
-                    + "screen behind this panel. Cancel to keep that output "
-                    + "and abandon the reload, or run the command now anyway.",
+                title: NSLocalizedString("Reload queued. Waiting for changes.", tableName: "Workgroups", comment: "重载排队等待变更标题"),
+                body: NSLocalizedString("This session is set to Diff mode, so Reload will re-run the command only after git reports staged or unstaged changes. The previous output is still on screen behind this panel. Cancel to keep that output and abandon the reload, or run the command now anyway.", tableName: "Workgroups", comment: "重载排队等待变更正文"),
                 showCancel: true),
             onRunAnyway: onRunAnyway,
             onCancel: onCancel)

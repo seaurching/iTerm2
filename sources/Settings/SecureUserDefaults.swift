@@ -271,15 +271,15 @@ class SecureUserDefault<T: SecureUserDefaultStringTranscodable & Codable & Equat
         var errorDescription: String? {
             switch self {
             case .usrLocalIsFile:
-                "\(FallbackFolder) is a file, not a directory. Please remove it and try again."
+                String(format: NSLocalizedString("%@ is a file, not a directory. Please remove it and try again.", tableName: "Settings", comment: "Fallback folder is a file"), FallbackFolder)
             case .failedToCreateUsrLocal:
-                "Failed to create \(FallbackFolder). Please manually create this folder."
+                String(format: NSLocalizedString("Failed to create %@. Please manually create this folder.", tableName: "Settings", comment: "Could not create fallback folder"), FallbackFolder)
             case .badMagic:
-                "The secure user default is corrupted."
+                NSLocalizedString("The secure user default is corrupted.", tableName: "Settings", comment: "Secure user default magic mismatch")
             case .scriptError(let message):
                 message
             case .directoryDoesNotExist:
-                "The containing directory for secure user defaults does not exist"
+                NSLocalizedString("The containing directory for secure user defaults does not exist", tableName: "Settings", comment: "Directory missing")
             }
         }
     }
@@ -330,11 +330,11 @@ class SecureUserDefault<T: SecureUserDefaultStringTranscodable & Codable & Equat
         } catch {
             RLog("Fail: \(error)")
             iTermWarning.show(withTitle: error.localizedDescription,
-                              actions: ["OK"],
+                              actions: [NSLocalizedString("OK", tableName: "Settings", bundle: Bundle(for: iTermSecureUserDefaults.self), comment: "")],
                               accessory: nil,
                               identifier: "NoSyncSecureUserDefaultsSetFailed",
                               silenceable: .kiTermWarningTypeTemporarilySilenceable,
-                              heading: "Failed to Save Secure Setting",
+                              heading: NSLocalizedString("Failed to Save Secure Setting", tableName: "Settings", bundle: Bundle(for: iTermSecureUserDefaults.self), comment: ""),
                               window: nil)
             throw error
         }
@@ -383,7 +383,7 @@ class SecureUserDefault<T: SecureUserDefaultStringTranscodable & Codable & Equat
         // notifications for keys that were never written.
         try runPrivilegedWrites(statements: statements,
                                 keys: writes.map { $0.key },
-                                prompt: "iTerm2 needs to modify secure settings.")
+                                prompt: NSLocalizedString("iTerm2 needs to modify secure settings.", tableName: "Settings", comment: "Admin prompt for batch secure settings write"))
     }
 
     private static func fallbackBaseDirectory(create: Bool) throws -> String {
@@ -421,7 +421,7 @@ class SecureUserDefault<T: SecureUserDefaultStringTranscodable & Codable & Equat
         do shell script "
             umask 000
             /bin/mkdir -m 777 -p \(path)
-        " with prompt "iTerm2 needs to create \(path) to store secure settings because your home directory is on a network file system." with administrator privileges
+        " with prompt "\(String(format: NSLocalizedString("iTerm2 needs to create %@ to store secure settings because your home directory is on a network file system.", tableName: "Settings", comment: "Admin prompt to create fallback folder"), path))" with administrator privileges
         """
         DLog("Will execute:\n\(code)")
         let script = NSAppleScript(source: code)
@@ -589,7 +589,7 @@ class SecureUserDefault<T: SecureUserDefaultStringTranscodable & Codable & Equat
         let statement = try writeStatement(key: key, encodedValue: SecureUserDefaultValue<U>(value: value).encodedString)
         try runPrivilegedWrites(statements: [statement],
                                 keys: [key],
-                                prompt: "iTerm2 needs to modify a secure setting.")
+                                prompt: NSLocalizedString("iTerm2 needs to modify a secure setting.", tableName: "Settings", comment: "Admin prompt for single secure setting write"))
     }
 
     /// The double-backslash/double-quote escaping for a path embedded in the

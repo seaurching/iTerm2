@@ -128,22 +128,22 @@ static CGFloat SplitHalfDistanceFromEdge(SplitSessionHalf half, NSSize size, NSP
     dirtyRect = NSIntersectionRect(dirtyRect, self.bounds);
     switch (_mode) {
         case SplitSelectionViewModeSourceMove:
-            [self drawSourceWithMessage:@"Select a destination pane" rect:dirtyRect];
+            [self drawSourceWithMessage:NSLocalizedStringFromTableInBundle(@"Select a destination pane", @"TerminalView", [NSBundle bundleForClass:[self class]], @"拆分选择: 选择目标窗格") rect:dirtyRect];
             return;
         case SplitSelectionViewModeSourceSwap:
-            [self drawSourceWithMessage:@"Select pane to swap with" rect:dirtyRect];
+            [self drawSourceWithMessage:NSLocalizedStringFromTableInBundle(@"Select pane to swap with", @"TerminalView", [NSBundle bundleForClass:[self class]], @"拆分选择: 选择要交换的窗格") rect:dirtyRect];
             return;
         case SplitSelectionViewModeTargetMove:
-            [self drawTargetWithMessage:@"Click to move source pane to this split"];
+            [self drawTargetWithMessage:NSLocalizedStringFromTableInBundle(@"Click to move source pane to this split", @"TerminalView", [NSBundle bundleForClass:[self class]], @"拆分选择: 点击移动源窗格")];
             return;
         case SplitSelectionViewModeTargetSwap:
-            [self drawTargetWithMessage:@"Click to swap source pane with this one"];
+            [self drawTargetWithMessage:NSLocalizedStringFromTableInBundle(@"Click to swap source pane with this one", @"TerminalView", [NSBundle bundleForClass:[self class]], @"拆分选择: 点击交换源窗格")];
             return;
         case SplitSelectionViewModeInspect:
-            [self drawInspectWithMessage:@"Click to inspect" rect:dirtyRect];
+            [self drawInspectWithMessage:NSLocalizedStringFromTableInBundle(@"Click to inspect", @"TerminalView", [NSBundle bundleForClass:[self class]], @"拆分选择: 点击检查") rect:dirtyRect];
             return;
         case SplitSelectionViewModeSelect:
-            [self drawInspectWithMessage:@"Click to select" rect:dirtyRect];
+            [self drawInspectWithMessage:NSLocalizedStringFromTableInBundle(@"Click to select", @"TerminalView", [NSBundle bundleForClass:[self class]], @"拆分选择: 点击选择") rect:dirtyRect];
             return;
     }
 }

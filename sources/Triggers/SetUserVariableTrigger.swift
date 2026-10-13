@@ -59,14 +59,14 @@ class SetUserVariableTrigger: Trigger {
 
     override var description: String {
         if let string = param as? String, let (name, value) = variableNameAndValue(string) {
-            return "Set User Variable “\(name)” to “\(value)”"
+            return String(format: NSLocalizedString("Set User Variable “%@” to “%@”", tableName: "Triggers", comment: "设置用户变量触发器描述"), name, value)
         } else {
-            return "Set User Variable “\(param ?? "")”"
+            return String(format: NSLocalizedString("Set User Variable “%@”", tableName: "Triggers", comment: "设置用户变量触发器描述：仅参数"), String(describing: param ?? ""))
         }
     }
 
     override static var title: String {
-        return "Set User Variable…"
+        return NSLocalizedString("Set User Variable…", tableName: "Triggers", comment: "设置用户变量触发器标题")
     }
 
     override func takesParameter() -> Bool {
@@ -80,7 +80,7 @@ class SetUserVariableTrigger: Trigger {
     }
 
     override func triggerOptionalParameterPlaceholder(withInterpolation interpolation: Bool) -> String? {
-        return "Value for variable"
+        return NSLocalizedString("Value for variable", tableName: "Triggers", comment: "占位符：变量值")
     }
 
     override func performAction(withCapturedStrings strings: [String],
@@ -113,7 +113,7 @@ class SetUserVariableTrigger: Trigger {
 
     override func paramAttributedString() -> NSAttributedString? {
         if let string = param as? String, let (name, value) = variableNameAndValue(string) {
-            return NSAttributedString(string: "\(name) = \(value)", attributes: regularAttributes())
+            return NSAttributedString(string: String(format: NSLocalizedString("%@ = %@", tableName: "Triggers", comment: "参数显示：用户变量"), name, value), attributes: regularAttributes())
         } else {
             return NSAttributedString(string: (param as? String) ?? "", attributes: regularAttributes())
         }

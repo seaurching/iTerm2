@@ -12,7 +12,7 @@ import AppKit
 // drift.
 private func keychainInPlaceEditUnsupportedError() -> NSError {
     return NSError(domain: "Keychain", code: -1,
-                   userInfo: [NSLocalizedDescriptionKey: "In-place edit is not supported."])
+                   userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("In-place edit is not supported.", tableName: "PasswordManager", comment: "PasswordManager: in-place edit unsupported error")])
 }
 
 // Used to store account name in label and username in account. That was a mistake.

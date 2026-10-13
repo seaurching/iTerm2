@@ -17,13 +17,13 @@ class iTermAdapterSettingsRevealHelper: NSObject {
             secureField.isHidden = true
             plainField.isHidden = false
             plainField.window?.makeFirstResponder(plainField)
-            sender.image = NSImage(systemSymbolName: "eye.slash", accessibilityDescription: "Hide")
+            sender.image = NSImage(systemSymbolName: "eye.slash", accessibilityDescription: NSLocalizedString("Hide", tableName: "PasswordManager", comment: "PasswordManager: hide accessibility"))
         } else {
             secureField.stringValue = plainField.stringValue
             plainField.isHidden = true
             secureField.isHidden = false
             secureField.window?.makeFirstResponder(secureField)
-            sender.image = NSImage(systemSymbolName: "eye", accessibilityDescription: "Show")
+            sender.image = NSImage(systemSymbolName: "eye", accessibilityDescription: NSLocalizedString("Show", tableName: "PasswordManager", comment: "PasswordManager: show accessibility"))
         }
     }
 }

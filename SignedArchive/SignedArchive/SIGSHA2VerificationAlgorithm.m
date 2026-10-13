@@ -45,7 +45,7 @@
     if (bytesRead < 0) {
         if (error) {
             *error = [SIGError errorWithCode:SIGErrorCodeUnknown
-                                     detail:@"Error reading payload stream"];
+                                     detail:NSLocalizedStringFromTable(@"Error reading payload stream", @"signed_archive", @"读取有效负载流时出错")];
         }
         return NO;
     }
@@ -66,7 +66,7 @@
         CFRelease(digestData);
         if (error) {
             *error = [SIGError errorWithCode:SIGErrorCodeAlgorithmCreationFailed
-                                     detail:@"Key does not support requested algorithm"];
+                                     detail:NSLocalizedStringFromTable(@"Key does not support requested algorithm", @"signed_archive", @"密钥不支持请求的算法")];
         }
         return NO;
     }
@@ -85,7 +85,7 @@
             if (underlying) {
                 *error = [SIGError errorWrapping:underlying
                                           code:SIGErrorCodeSignatureDoesNotMatchPayload
-                                        detail:@"Signature verification failed"];
+                                        detail:NSLocalizedStringFromTable(@"Signature verification failed", @"signed_archive", @"签名验证失败")];
             } else {
                 *error = [SIGError errorWithCode:SIGErrorCodeSignatureDoesNotMatchPayload];
             }

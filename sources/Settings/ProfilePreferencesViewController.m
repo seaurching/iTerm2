@@ -160,16 +160,16 @@ NSString *const kProfileSessionHotkeyDidChange = @"kProfileSessionHotkeyDidChang
     NSString *team = [iTermAppSignatureValidator currentAppTeamID];
     NSString *message;
     if (!team) {
-        message = @"A required user interface component is missing or corrupted and iTerm2\u2019s code signature could not be verified. You should download a fresh copy of the app and reinstall it.";
+        message = NSLocalizedStringFromTableInBundle(@"A required user interface component is missing or corrupted and iTerm2\u2019s code signature could not be verified. You should download a fresh copy of the app and reinstall it.", @"Settings", [NSBundle bundleForClass:[self class]], @"Corrupt nib warning: no team ID");
     } else if (![team isEqualToString:@"H7V7XYVQ7D"]) {
-        message = @"A required user interface component is missing or corrupted and iTerm2\u2019s code signature did not match that of the official distribution. You should download a fresh copy of the app and reinstall it.";
+        message = NSLocalizedStringFromTableInBundle(@"A required user interface component is missing or corrupted and iTerm2\u2019s code signature did not match that of the official distribution. You should download a fresh copy of the app and reinstall it.", @"Settings", [NSBundle bundleForClass:[self class]], @"Corrupt nib warning: team ID mismatch");
     } else {
-        message = @"A required user interface component is missing or corrupted, yet against all odds the code signature for iTerm2 is valid. Please file a bug at https://iterm2.com/bugs";
+        message = NSLocalizedStringFromTableInBundle(@"A required user interface component is missing or corrupted, yet against all odds the code signature for iTerm2 is valid. Please file a bug at https://iterm2.com/bugs", @"Settings", [NSBundle bundleForClass:[self class]], @"Corrupt nib warning: valid signature");
     }
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Application Corrupt"];
+    [alert setMessageText:NSLocalizedStringFromTableInBundle(@"Application Corrupt", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
     [alert setInformativeText:message];
-    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
     [alert setAlertStyle:NSAlertStyleCritical];
     [alert runModal];
     exit(1);
@@ -496,16 +496,16 @@ andEditComponentWithIdentifier:(NSString *)identifier
 }
 
 - (void)profileTableTagsVisibilityDidChange:(ProfileListView *)profileListView {
-    [_toggleTagsButton setTitle:profileListView.tagsVisible ? @"< Tags" : @"Tags >"];
+    [_toggleTagsButton setTitle:profileListView.tagsVisible ? NSLocalizedStringFromTableInBundle(@"< Tags", @"Settings", [NSBundle bundleForClass:[self class]], @"Hide tags button title") : NSLocalizedStringFromTableInBundle(@"Tags >", @"Settings", [NSBundle bundleForClass:[self class]], @"Show tags button title")];
 }
 
 #pragma mark - Private
 
 - (BOOL)confirmProfileDeletion:(Profile *)profile {
-    NSMutableString *question = [NSMutableString stringWithFormat:@"Delete profile %@?",
+    NSMutableString *question = [NSMutableString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Delete profile %@?", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
                                  profile[KEY_NAME]];
     if ([iTermWarning showWarningWithTitle:question
-                                   actions:@[ @"Delete", @"Cancel" ]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"Delete", @"Settings", [NSBundle bundleForClass:[self class]], @"Delete profile action"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"Cancel action") ]
                                 identifier:@"DeleteProfile"
                                silenceable:kiTermWarningTypeTemporarilySilenceable
                                     window:self.view.window] == kiTermWarningSelection0) {
@@ -723,7 +723,7 @@ andEditComponentWithIdentifier:(NSString *)identifier
     } else {
         [newDict setValuesForKeysWithDictionary:[[_delegate profilePreferencesModel] defaultBookmark]];
     }
-    newDict[KEY_NAME] = @"New Profile";
+    newDict[KEY_NAME] = NSLocalizedStringFromTableInBundle(@"New Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     newDict[KEY_SHORTCUT] = @"";
     NSString* guid = [ProfileModel freshGuid];
     newDict[KEY_GUID] = guid;
@@ -770,10 +770,10 @@ andEditComponentWithIdentifier:(NSString *)identifier
     }
 
     NSString *title =
-        [NSString stringWithFormat:@"Replace profile “%@” with the current session's settings?",
+        [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Replace profile “%@” with the current session's settings?", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
             [iTermProfilePreferences stringForKey:KEY_NAME inProfile:destination]];
     if ([iTermWarning showWarningWithTitle:title
-                                   actions:@[ @"Replace", @"Cancel" ]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"Replace", @"Settings", [NSBundle bundleForClass:[self class]], @"Replace profile action"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"Cancel action") ]
                                  identifier:@"NoSyncReplaceProfileWarning"
                                silenceable:kiTermWarningTypePermanentlySilenceable
                                     window:self.view.window] == kiTermWarningSelection1) {
@@ -850,7 +850,7 @@ andEditComponentWithIdentifier:(NSString *)identifier
         return;
     }
     NSMutableDictionary *newProfile = [NSMutableDictionary dictionaryWithDictionary:profile];
-    NSString* newName = [NSString stringWithFormat:@"Copy of %@", newProfile[KEY_NAME]];
+    NSString* newName = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Copy of %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), newProfile[KEY_NAME]];
 
     newProfile[KEY_NAME] = newName;
     newProfile[KEY_GUID] = [ProfileModel freshGuid];
@@ -930,17 +930,17 @@ andEditComponentWithIdentifier:(NSString *)identifier
             for (NSURL *url in urls) {
                 NSError *error = nil;
                 if (![self tryToImportJSONProfileFromURL:url error:&error]) {
-                    NSArray<NSString *> *actions = @[ @"OK" ];
+                    NSArray<NSString *> *actions = @[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ];
                     if (![url isEqual:urls.lastObject]) {
-                        actions = [actions arrayByAddingObject:@"Abort"];
+                        actions = [actions arrayByAddingObject:NSLocalizedStringFromTableInBundle(@"Abort", @"Settings", [NSBundle bundleForClass:[self class]], @"Abort import action")];
                     }
                     iTermWarningSelection selection =
-                    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Import from %@ failed: %@", url.path, error.localizedDescription]
+                    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Import from %@ failed: %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), url.path, error.localizedDescription]
                                                actions:actions
                                              accessory:nil
                                             identifier:@"NoSyncJSONImportFailed"
                                            silenceable:kiTermWarningTypeTemporarilySilenceable
-                                               heading:@"Could not Import Profile"
+                                               heading:NSLocalizedStringFromTableInBundle(@"Could not Import Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                                 window:self.view.window];
                     if (selection == kiTermWarningSelection1) {
                         return;
@@ -968,7 +968,7 @@ andEditComponentWithIdentifier:(NSString *)identifier
     NSDictionary *dict = [NSDictionary castFrom:object];
     if (!dict) {
         if (error) {
-            *error = [[NSError alloc] initWithDomain:@"com.iterm2.json-import-profile" code:0 userInfo:@{ NSLocalizedDescriptionKey: @"Invalid JSON: does not have a top-level dictionary." }];
+            *error = [[NSError alloc] initWithDomain:@"com.iterm2.json-import-profile" code:0 userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Invalid JSON: does not have a top-level dictionary.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") }];
         }
         return NO;
     }
@@ -981,7 +981,7 @@ andEditComponentWithIdentifier:(NSString *)identifier
             return [self tryToImportMultipleProfilesFromJSONObject:profiles error:error];
         }
         if (error) {
-            *error = [[NSError alloc] initWithDomain:@"com.iterm2.json-import-profile" code:0 userInfo:@{ NSLocalizedDescriptionKey: @"Invalid JSON: missing Name or Guid key in top-level dictionary." }];
+            *error = [[NSError alloc] initWithDomain:@"com.iterm2.json-import-profile" code:0 userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Invalid JSON: missing Name or Guid key in top-level dictionary.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") }];
         }
         return NO;
     }
@@ -1001,7 +1001,7 @@ andEditComponentWithIdentifier:(NSString *)identifier
     [profiles enumerateObjectsUsingBlock:^(id  _Nonnull object, NSUInteger idx, BOOL * _Nonnull stop) {
         NSDictionary *dict = [NSDictionary castFrom:object];
         if (!dict) {
-            internalError = [[NSError alloc] initWithDomain:@"com.iterm2.json-import-profile" code:0 userInfo:@{ NSLocalizedDescriptionKey: @"Invalid JSON: not an array of dictionaries." }];
+            internalError = [[NSError alloc] initWithDomain:@"com.iterm2.json-import-profile" code:0 userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Invalid JSON: not an array of dictionaries.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") }];
             ok = NO;
             *stop = YES;
             return;
@@ -1010,7 +1010,7 @@ andEditComponentWithIdentifier:(NSString *)identifier
         NSString *name = dict[KEY_NAME];
         NSString *guid = dict[KEY_GUID];
         if (!name || !guid) {
-            NSString *reason = [NSString stringWithFormat:@"Invalid JSON: missing Name or Guid key in profile number %@.", @(idx + 1)];
+            NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Invalid JSON: missing Name or Guid key in profile number %@.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), @(idx + 1)];
             internalError = [[NSError alloc] initWithDomain:@"com.iterm2.json-import-profile" code:0 userInfo:@{ NSLocalizedDescriptionKey: reason }];
             ok = NO;
             *stop = YES;
@@ -1040,8 +1040,8 @@ andEditComponentWithIdentifier:(NSString *)identifier
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
                 NSAlert *alert = [[NSAlert alloc] init];
-                alert.messageText = @"Error";
-                alert.informativeText = [NSString stringWithFormat:@"Couldn't save to “%@” on %@: %@",
+                alert.messageText = NSLocalizedStringFromTableInBundle(@"Error", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
+                alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Couldn't save to “%@” on %@: %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
                                          item.filename,
                                          item.host.displayName,
                                          [error localizedDescription]];
@@ -1080,8 +1080,8 @@ andEditComponentWithIdentifier:(NSString *)identifier
     NSString *string = [self jsonForProfile:profile error:&error];
     if (!string) {
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Error";
-        alert.informativeText = [NSString stringWithFormat:@"Couldn't convert profile to JSON: %@",
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Error", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Couldn't convert profile to JSON: %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"),
                                  [error localizedDescription]];
         [alert runModal];
         return;
@@ -1115,8 +1115,8 @@ andEditComponentWithIdentifier:(NSString *)identifier
     NSString *string = [self jsonForAllProfilesWithErrorCount:&errors];
     if (errors) {
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Error";
-        alert.informativeText = [NSString stringWithFormat:@"Couldn't convert one or more profiles to JSON. Check Console.app for errors."];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Error", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Couldn't convert one or more profiles to JSON. Check Console.app for errors.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
         [alert runModal];
         return;
     }
@@ -1214,17 +1214,17 @@ andEditComponentWithIdentifier:(NSString *)identifier
     if ([iTermProfilePreferences boolForKey:KEY_DYNAMIC_PROFILE_REWRITABLE inProfile:profile]) {
         return;
     }
-    NSString *profileName = [profile objectForKey:KEY_NAME] ?: @"(unknown name)";
-    NSString *message = [NSString stringWithFormat:@"The selected profile, “%@”, is a dynamic profile. These are generally only edited by hand.\n\niTerm2 is now able to write changes back to dynamic profiles when they are marked as “rewritable“. Rewriting can cause the order of values to change.", profileName];
+    NSString *profileName = [profile objectForKey:KEY_NAME] ?: NSLocalizedStringFromTableInBundle(@"(unknown name)", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
+    NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The selected profile, “%@”, is a dynamic profile. These are generally only edited by hand.\n\niTerm2 is now able to write changes back to dynamic profiles when they are marked as “rewritable“. Rewriting can cause the order of values to change.", @"Settings", [NSBundle bundleForClass:[self class]], @"Dynamic profile warning message"), profileName];
     // "Reveal in Finder" is a one-time navigation action and shouldn't be remembered.
     iTermWarning *warning = [[iTermWarning alloc] init];
     warning.title = message;
-    warning.actionLabels = @[ @"Mark as Rewritable", @"Reveal in Finder", @"Cancel" ];
+    warning.actionLabels = @[ NSLocalizedStringFromTableInBundle(@"Mark as Rewritable", @"Settings", [NSBundle bundleForClass:[self class]], @"Mark dynamic profile as rewritable action"), NSLocalizedStringFromTableInBundle(@"Reveal in Finder", @"Settings", [NSBundle bundleForClass:[self class]], @"Reveal profile in Finder action"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"Cancel action") ];
     warning.identifier = @"NoSyncDynamicProfileChangeWillBeLost";
     warning.warningType = kiTermWarningTypeTemporarilySilenceable;
-    warning.heading = @"Changes Will Be Lost";
+    warning.heading = NSLocalizedStringFromTableInBundle(@"Changes Will Be Lost", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     warning.window = self.view.window;
-    warning.doNotRememberLabels = @[ @"Reveal in Finder" ];
+    warning.doNotRememberLabels = @[ NSLocalizedStringFromTableInBundle(@"Reveal in Finder", @"Settings", [NSBundle bundleForClass:[self class]], @"Reveal profile in Finder action") ];
     const iTermWarningSelection selection = [warning runModal];
     switch (selection) {
         case kiTermWarningSelection0:

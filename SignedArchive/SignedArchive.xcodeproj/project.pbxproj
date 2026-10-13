@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -118,9 +118,23 @@
 		53F5895021C9B527004A372B /* extract */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = extract; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F5895221C9B527004A372B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		53F5895A21C9C1F2004A372B /* SIGVerificationAlgorithm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SIGVerificationAlgorithm.m; sourceTree = "<group>"; };
+		6D49374A3058234300AE0F79 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
+		6D49374C3058235700AE0F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
+		6D49374D3058237100AE0F79 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/Info.plist"; sourceTree = "<group>"; };
+		6D49374E305823AE00AE0F79 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Info.plist"; sourceTree = "<group>"; };
+		6D49374F305823D800AE0F79 /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/Info.plist"; sourceTree = "<group>"; };
+		6D49375830582A6000AE0F79 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = SignedArchive/en.lproj/signed_archive.strings; sourceTree = "<group>"; };
+		6D49375930582A8000AE0F79 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "SignedArchive/zh-Hans.lproj/signed_archive.strings"; sourceTree = "<group>"; };
+		6D49375A30582A8700AE0F79 /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "SignedArchive/zh-Hans-CN.lproj/signed_archive.strings"; sourceTree = "<group>"; };
+		6D49375B30582A8B00AE0F79 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "SignedArchive/zh-Hant-TW.lproj/signed_archive.strings"; sourceTree = "<group>"; };
+		6D49376330582B5F00AE0F79 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "SignedArchive/zh-Hant.lproj/signed_archive.strings"; sourceTree = "<group>"; };
+		6D49376430582B6100AE0F79 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant"; path = "zh-Hant.lproj/Info.plist"; sourceTree = "<group>"; };
+		6D49376530582BD000AE0F79 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = zh_CN; path = zh_CN.lproj/Info.plist; sourceTree = "<group>"; };
+		6D49376630582BE500AE0F79 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = SignedArchive/zh_CN.lproj/signed_archive.strings; sourceTree = "<group>"; };
+		6D49376730582C1400AE0F79 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = zh_TW; path = zh_TW.lproj/Info.plist; sourceTree = "<group>"; };
+		6D49376830582C2900AE0F79 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = SignedArchive/zh_TW.lproj/signed_archive.strings; sourceTree = "<group>"; };
 		A665C1C8243A4D8E00F623F0 /* SIGArchiveCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIGArchiveCommon.h; sourceTree = "<group>"; };
 		A665C1CC243A4DF000F623F0 /* SIGArchiveCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIGArchiveCommon.m; sourceTree = "<group>"; };
-		A6BC8ADF21C789DA00796BF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6BC8AEA21C78A3000796BF3 /* SIGArchiveBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIGArchiveBuilder.h; sourceTree = "<group>"; };
 		A6BC8AEB21C78A3000796BF3 /* SIGArchiveBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SIGArchiveBuilder.m; sourceTree = "<group>"; };
 		A6BC8AEE21C78C1700796BF3 /* SIGIdentity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIGIdentity.h; sourceTree = "<group>"; };
@@ -212,6 +226,7 @@
 		A6BC8AD121C789DA00796BF3 = {
 			isa = PBXGroup;
 			children = (
+				6D49375730582A6000AE0F79 /* signed_archive.strings */,
 				A6BC8ADD21C789DA00796BF3 /* SignedArchive */,
 				A6F5F3B122EE28010093FC81 /* resign */,
 				A6BC8B1721C8D5B500796BF3 /* sign */,
@@ -237,7 +252,7 @@
 		A6BC8ADD21C789DA00796BF3 /* SignedArchive */ = {
 			isa = PBXGroup;
 			children = (
-				A6BC8ADF21C789DA00796BF3 /* Info.plist */,
+				6D49374B3058234300AE0F79 /* Info.plist */,
 				A6BC8AEA21C78A3000796BF3 /* SIGArchiveBuilder.h */,
 				A6BC8AEB21C78A3000796BF3 /* SIGArchiveBuilder.m */,
 				A6BC8B0221C8B65900796BF3 /* SIGArchiveChunk.h */,
@@ -420,6 +435,7 @@
 		A6BC8AD221C789DA00796BF3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "George Nachman";
 				TargetAttributes = {
@@ -443,6 +459,13 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
+				"zh-Hans",
+				"zh-Hant-TW",
+				"zh-Hans-CN",
+				"zh-Hant",
+				zh_CN,
+				zh_TW,
 			);
 			mainGroup = A6BC8AD121C789DA00796BF3;
 			productRefGroup = A6BC8ADC21C789DA00796BF3 /* Products */;
@@ -538,11 +561,44 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		6D49374B3058234300AE0F79 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D49374A3058234300AE0F79 /* en */,
+				6D49374C3058235700AE0F79 /* Base */,
+				6D49374D3058237100AE0F79 /* zh-Hans */,
+				6D49374E305823AE00AE0F79 /* zh-Hant-TW */,
+				6D49374F305823D800AE0F79 /* zh-Hans-CN */,
+				6D49376430582B6100AE0F79 /* zh-Hant */,
+				6D49376530582BD000AE0F79 /* zh_CN */,
+				6D49376730582C1400AE0F79 /* zh_TW */,
+			);
+			name = Info.plist;
+			sourceTree = "<group>";
+		};
+		6D49375730582A6000AE0F79 /* signed_archive.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D49375830582A6000AE0F79 /* en */,
+				6D49375930582A8000AE0F79 /* zh-Hans */,
+				6D49375A30582A8700AE0F79 /* zh-Hans-CN */,
+				6D49375B30582A8B00AE0F79 /* zh-Hant-TW */,
+				6D49376330582B5F00AE0F79 /* zh-Hant */,
+				6D49376630582BE500AE0F79 /* zh_CN */,
+				6D49376830582C2900AE0F79 /* zh_TW */,
+			);
+			name = signed_archive.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		53F5895521C9B527004A372B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -552,6 +608,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -561,6 +618,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -623,6 +681,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -679,7 +738,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H7V7XYVQ7D;
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -690,7 +749,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H7V7XYVQ7D;
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -727,7 +786,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H7V7XYVQ7D;
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -738,7 +797,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H7V7XYVQ7D;
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -749,7 +808,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H7V7XYVQ7D;
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -760,7 +819,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H7V7XYVQ7D;
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

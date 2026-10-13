@@ -132,7 +132,7 @@ NSObject *RLogRedact(id full, id redacted);
     if (!(condition)) { \
       DLog(@"Crashing because %s from:\n%@", #condition, [NSThread callStackSymbols]); \
       if (TurnOffDebugLoggingSilently()) { \
-        NSRunAlertPanel(@"Critical Error", @"A critical error occurred and a debug log was created. Please send /tmp/debuglog.txt to the developers.", @"OK", nil, nil); \
+        NSRunAlertPanel(NSLocalizedStringFromTableInBundle(@"Critical Error", @"Logging", [NSBundle mainBundle], @"Debug log: critical error alert title"), NSLocalizedStringFromTableInBundle(@"A critical error occurred and a debug log was created. Please send /tmp/debuglog.txt to the developers.", @"Logging", [NSBundle mainBundle], @"Debug log: critical error alert message"), NSLocalizedStringFromTableInBundle(@"OK", @"Logging", [NSBundle mainBundle], @"Debug log: critical error alert OK button"), nil, nil); \
       } \
       assert(NO, "ITAssert: " #condition); \
     } \
@@ -160,9 +160,9 @@ NSObject *RLogRedact(id full, id redacted);
       if (TurnOffDebugLoggingSilently()) { \
         dispatch_async(dispatch_get_main_queue(), ^{ \
           NSAlert *alert = ITCriticalErrorCreateAlert; \
-          alert.messageText = @"Critical Error"; \
-          alert.informativeText =  @"A critical error occurred and a debug log was created. Please send /tmp/debuglog.txt to the developers."; \
-          [alert addButtonWithTitle:@"OK"]; \
+          alert.messageText = NSLocalizedStringFromTableInBundle(@"Critical Error", @"Logging", [NSBundle mainBundle], @"Debug log: critical error alert title"); \
+          alert.informativeText =  NSLocalizedStringFromTableInBundle(@"A critical error occurred and a debug log was created. Please send /tmp/debuglog.txt to the developers.", @"Logging", [NSBundle mainBundle], @"Debug log: critical error alert message"); \
+          [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Logging", [NSBundle mainBundle], @"Debug log: critical error alert OK button")]; \
           [alert runModal]; \
         }); \
       } \

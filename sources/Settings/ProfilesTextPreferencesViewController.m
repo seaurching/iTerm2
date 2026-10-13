@@ -113,7 +113,7 @@
     PreferenceInfo *info;
     info = [self defineControl:_cursorType
                     key:KEY_CURSOR_TYPE
-            displayName:@"Cursor style"
+            displayName:NSLocalizedStringFromTableInBundle(@"Cursor style", @"Settings", [NSBundle bundleForClass:[self class]], @"Cursor type display name")
                    type:kPreferenceInfoTypeMatrix
          settingChanged:^(id sender) { [self setInt:[[sender selectedCell] tag] forKey:KEY_CURSOR_TYPE]; }
                  update:^BOOL{
@@ -249,13 +249,8 @@
             // mixed Asian/non-asian environments find it useful but almost nobody should turn it on
             // unless they really know what they're doing.
             iTermWarningSelection selection =
-                [iTermWarning showWarningWithTitle:@"You probably don’t want to turn this on. "
-                                                   @"It will confuse interactive programs. "
-                                                   @"You might want it if you work mostly with "
-                                                   @"East Asian text combined with legacy or "
-                                                   @"mathematical character sets. "
-                                                   @"Are you sure you want this?"
-                                           actions:@[ @"Enable", @"Cancel" ]
+                [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"You probably don’t want to turn this on. It will confuse interactive programs. You might want it if you work mostly with East Asian text combined with legacy or mathematical character sets. Are you sure you want this?", @"Settings", [NSBundle bundleForClass:[self class]], @"Warning when enabling ambiguous double width")
+                                           actions:@[ NSLocalizedStringFromTableInBundle(@"Enable", @"Settings", [NSBundle bundleForClass:[self class]], @"Enable ambiguous double width"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"Cancel ambiguous double width") ]
                                         identifier:kWarnAboutAmbiguousWidth
                                        silenceable:kiTermWarningTypePermanentlySilenceable
                                             window:weakSelf.view.window];
@@ -317,7 +312,7 @@
     [self defineControl:_asciiFontPicker.horizontalSpacing.textField
                     key:KEY_HORIZONTAL_SPACING
             relatedView:nil
-            displayName:@"Horizontal spacing"
+            displayName:NSLocalizedStringFromTableInBundle(@"Horizontal spacing", @"Settings", [NSBundle bundleForClass:[self class]], @"Horizontal spacing display name")
                    type:kPreferenceInfoTypeIntegerTextField
          settingChanged:^(id sender) { assert(false); }
                  update:^BOOL{
@@ -333,7 +328,7 @@
     [self defineControl:_asciiFontPicker.verticalSpacing.textField
                     key:KEY_VERTICAL_SPACING
             relatedView:nil
-            displayName:@"Vertical spacing"
+            displayName:NSLocalizedStringFromTableInBundle(@"Vertical spacing", @"Settings", [NSBundle bundleForClass:[self class]], @"Vertical spacing display name")
                    type:kPreferenceInfoTypeIntegerTextField
          settingChanged:^(id sender) { assert(false); }
                  update:^BOOL{

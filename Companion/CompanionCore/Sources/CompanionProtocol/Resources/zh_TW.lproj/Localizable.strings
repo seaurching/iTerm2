@@ -1,0 +1,6 @@
+"The connection was closed" = "連線已關閉";
+"Received a frame of %d bytes, larger than the limit of %d" = "收到大小為 %d 位元組的資料框，超過上限 %d";
+"Received a malformed frame" = "收到格式錯誤的資料框";
+"The relay's daily data limit was reached" = "已達到中繼的每日資料限額";
+"This relay no longer serves the pairing; re-resolving to the current host" = "該中繼不再服務此配對；正在重新解析到目前主機";
+"Another connection took over this pairing's slot" = "另一個連線接管了此配對的槽位";

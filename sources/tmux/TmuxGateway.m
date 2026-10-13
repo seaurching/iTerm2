@@ -123,7 +123,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 
 - (void)abortWithErrorMessage:(NSString *)message {
     [self abortWithErrorMessage:[NSString stringWithFormat:@"%@", message]
-                          title:@"tmux Reported a Problem"];
+                          title:NSLocalizedStringFromTableInBundle(@"tmux Reported a Problem", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: abort alert title")];
 }
 
 // TODO: be more forgiving of errors.
@@ -133,7 +133,7 @@ static NSString *kCommandTimestamp = @"timestamp";
         NSAlert *alert = [[NSAlert alloc] init];
         alert.messageText = title;
         alert.informativeText = message;
-        [alert addButtonWithTitle:@"OK"];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: abort alert ok button")];
         [alert runModal];
     });
     [self detach];
@@ -256,7 +256,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 }
 
 - (void)parsingFailedForCommand:(const char *)command {
-    [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%num data): \"%s\"", command]];
+    [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%num data): \"%s\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command num data"), command]];
 }
 
 // %output %<pane id> <data...><newline>
@@ -338,7 +338,7 @@ static NSString *kCommandTimestamp = @"timestamp";
     DLog(@"TmuxGateway: received layout change %@", command);
     NSArray *components = [command captureComponentsMatchedByRegex:@"^%layout-change @([0-9]+) (.*)"];
     if (components.count != 3) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%layout-change <window> <layout> [<window_visible_layout> <window_flags>]): \"%@\"",
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%layout-change <window> <layout> [<window_visible_layout> <window_flags>]): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command layout-change"),
                                      command]];
         return;
     }
@@ -361,7 +361,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 {
     NSArray *components = [command captureComponentsMatchedByRegex:@"^%window-add @([0-9]+)$"];
     if (components.count != 2) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%window-add id): \"%@\"", command]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%window-add id): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command window-add"), command]];
         return;
     }
     [delegate_ tmuxWindowAddedWithId:[[components objectAtIndex:1] intValue]];
@@ -371,7 +371,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 {
     NSArray *components = [command captureComponentsMatchedByRegex:@"^%(?:unlinked-)?window-close @([0-9]+)$"];
     if (components.count != 2) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%window-close id): \"%@\"", command]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%window-close id): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command window-close"), command]];
         return;
     }
     [delegate_ tmuxWindowClosedWithId:[[components objectAtIndex:1] intValue]];
@@ -381,7 +381,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 {
     NSArray *components = [command captureComponentsMatchedByRegex:@"^%(?:unlinked-)?window-renamed @([0-9]+) (.*)$"];
     if (components.count != 3) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%window-renamed id new_name): \"%@\"", command]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%window-renamed id new_name): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command window-renamed"), command]];
         return;
     }
     NSString *escaped = components[2];
@@ -394,7 +394,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 {
     NSArray *components = [command captureComponentsMatchedByRegex:@"^%session-renamed \\$([0-9]+) (.+)$"];
     if (components.count != 3) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%session-renamed id name): \"%@\"", command]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%session-renamed id name): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command session-renamed"), command]];
         return;
     }
     [delegate_ tmuxSession:[[components objectAtIndex:1] intValue] renamed:[components objectAtIndex:2]];
@@ -404,7 +404,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 {
     NSArray *components = [command captureComponentsMatchedByRegex:@"^%session-changed \\$([0-9]+) (.+)$"];
     if (components.count != 3) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%session-changed id name): \"%@\"", command]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%session-changed id name): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command session-changed"), command]];
         return;
     }
     _sessionID = [[components objectAtIndex:1] intValue];
@@ -419,7 +419,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 {
     NSArray *components = [command captureComponentsMatchedByRegex:@"^%sessions-changed$"];
     if (components.count != 1) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%sessions-changed): \"%@\"", command]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%sessions-changed): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command sessions-changed"), command]];
         return;
     }
     [delegate_ tmuxSessionsChanged];
@@ -428,7 +428,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 - (void)parseWindowPaneChangedCommand:(NSString *)command {
     NSArray<NSString *> *components = [command captureComponentsMatchedByRegex:@"^%window-pane-changed @([0-9]+) %([0-9]+)$"];
     if (components.count != 3) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%window-pane-changed @window-id %%pane-id): \"%@\"", command]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%window-pane-changed @window-id %%pane-id): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command window-pane-changed"), command]];
         return;
     }
     [delegate_ tmuxActiveWindowPaneDidChangeInWindow:[components[1] intValue] toWindowPane:[components[2] intValue]];
@@ -438,7 +438,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 - (void)parseSessionWindowChangedCommand:(NSString *)command {
     NSArray<NSString *> *components = [command captureComponentsMatchedByRegex:@"^%session-window-changed \\$([0-9]+) @([0-9]+)$"];
     if (components.count != 3) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%session-window-changed $session-id @window-id): \"%@\"", command]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%session-window-changed $session-id @window-id): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command session-window-changed"), command]];
         return;
     }
     const int sid = [components[1] intValue];
@@ -463,7 +463,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 - (void)parsePauseCommand:(NSString *)command {
     NSArray<NSString *> *components = [command captureComponentsMatchedByRegex:@"^%pause %([0-9]+)$"];
     if (components.count != 2) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%pause %%wp): \"%@\"", command]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%pause %%wp): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command pause"), command]];
         return;
     }
     [delegate_ tmuxWindowPaneDidPause:components[1].intValue
@@ -477,7 +477,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 - (void)parseSubscriptionChangedCommand:(NSString *)command {
     NSArray<NSString *> *components = [command captureComponentsMatchedByRegex:@"^%subscription-changed ([^:]+) : (.*)$"];
     if (components.count != 3) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%subscription-changed sid [...] : value): \"%@\"", command]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%subscription-changed sid [...] : value): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command subscription-changed"), command]];
         return;
     }
     NSString *args = components[1];
@@ -563,10 +563,10 @@ static NSString *kCommandTimestamp = @"timestamp";
 
 - (void)abortWithErrorForCurrentCommand {
     if ([self commandIsTmux21Quirk]) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Error: %@.\n\nTmux 2.1 and earlier will refuse to create a new window pane with a nonexistent initial working directory.\n\nInfo:\n%@",
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error: %@.\n\nTmux 2.1 and earlier will refuse to create a new window pane with a nonexistent initial working directory.\n\nInfo:\n%@", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: abort error tmux 2.1 working directory"),
                                      currentCommandResponse_, currentCommand_]];
     } else {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Error: %@.\n\nInfo:\n%@", currentCommandResponse_, currentCommand_]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error: %@.\n\nInfo:\n%@", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: abort error info"), currentCommandResponse_, currentCommand_]];
     }
 }
 
@@ -654,7 +654,7 @@ static NSString *kCommandTimestamp = @"timestamp";
 
 - (void)parseBegin:(NSString *)command {
     if (currentCommand_) {
-        [self abortWithErrorMessage:@"%begin without %end"];
+        [self abortWithErrorMessage:NSLocalizedStringFromTableInBundle(@"%begin without %end", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: begin without end")];
         return;
     }
     int flags = -1;
@@ -663,7 +663,7 @@ static NSString *kCommandTimestamp = @"timestamp";
     // flags & 1: Client-originated command (default)
     NSArray *components = [command captureComponentsMatchedByRegex:@"^%begin ([0-9]+) [0-9]+( [0-9]+)?$"];
     if (components.count < 3) {
-        [self abortWithErrorMessage:[NSString stringWithFormat:@"Malformed command (expected %%begin command_id [flags]): \"%@\"", command]];
+        [self abortWithErrorMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Malformed command (expected %%begin command_id [flags]): \"%@\"", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: malformed command begin"), command]];
         return;
     }
 
@@ -681,7 +681,7 @@ static NSString *kCommandTimestamp = @"timestamp";
         currentCommandData_ = [[NSMutableData alloc] init];
     } else {
         if (!commandQueue_.count) {
-            [self abortWithErrorMessage:@"%begin with empty command queue"];
+            [self abortWithErrorMessage:NSLocalizedStringFromTableInBundle(@"%begin with empty command queue", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux gateway: begin with empty command queue")];
             return;
         }
         [self beginHandlingNextResponseWithID:components[1]];
@@ -872,7 +872,7 @@ static NSString *kCommandTimestamp = @"timestamp";
             return;
         }
         if (![iTermAdvancedSettingsModel tolerateUnrecognizedTmuxCommands]) {
-            [delegate_ tmuxPrintLine:@"Unrecognized command from tmux. Did your ssh session die? The command was:"];
+            [delegate_ tmuxPrintLine:NSLocalizedStringFromTableInBundle(@"Unrecognized command from tmux. Did your ssh session die? The command was:", @"tmux", [NSBundle bundleForClass:[self class]], @"tmux 网关：无法识别的 tmux 命令")];
             [delegate_ tmuxPrintLine:command];
             [self hostDisconnected];
             return;

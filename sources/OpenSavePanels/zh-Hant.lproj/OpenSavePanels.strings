@@ -1,0 +1,62 @@
+/* OpenSavePanels: save panel item display name */
+"“%@” on %@" = "「%@」在 %@ 上";
+
+/* OpenSavePanels: no ssh connection upload warning */
+"No ssh connection to %@ is available to upload %@" = "沒有可用的 SSH 連線到 %@ 來上傳 %@";
+
+/* OpenSavePanels: upload failed OK button */
+"OK" = "好";
+
+/* OpenSavePanels: upload failed heading */
+"Upload Failed" = "上傳失敗";
+
+/* OpenSavePanels: open SSH panel button */
+"Open SSH Panel..." = "開啟 SSH 面板…";
+
+/* OpenSavePanels: open panel canceled error */
+"Canceled" = "已取消";
+
+/* OpenSavePanels: raw data log format menu item */
+"Raw data" = "原始資料";
+
+/* OpenSavePanels: plain text log format menu item */
+"Plain text" = "純文字";
+
+/* OpenSavePanels: HTML log format menu item */
+"HTML" = "HTML";
+
+/* OpenSavePanels: ASCIInema log format menu item */
+"ASCIInema" = "ASCIInema";
+
+/* OpenSavePanels: home directory location fragment */
+" in your home directory" = "（位於主目錄）";
+
+/* OpenSavePanels: desktop location fragment */
+" on the Desktop" = "（位於桌面）";
+
+/* OpenSavePanels: file exists heading */
+"“%@” already exists. Do you want to replace it or append to it?" = "「%@」已存在。您想要取代它還是附加到它？";
+
+/* OpenSavePanels: file exists body */
+"A file or folder with the same name already exists%@. Replacing it will overwrite its current contents." = "同名的檔案或資料夾已存在%@。取代將覆寫其目前內容。";
+
+/* OpenSavePanels: file exists cancel button */
+"Cancel" = "取消";
+
+/* OpenSavePanels: file exists replace button */
+"Replace" = "取代";
+
+/* OpenSavePanels: file exists append button */
+"Append" = "附加";
+
+/* OpenSavePanels: use both extensions title */
+"You can choose to use both, so that your file name ends in “.%@.%@”." = "您可以選擇同時使用兩者，使檔案名稱以 “.%@.%@” 結尾。";
+
+/* OpenSavePanels: use required extension button */
+"Use .%@" = "使用 .%@";
+
+/* OpenSavePanels: use both extensions button */
+"Use both" = "同時使用";
+
+/* OpenSavePanels: wrong extension heading */
+"You cannot save this document with extension “.%@” at the end of the name. The required extension is “.%@”." = "您無法以擴展名 “.%@” 作為名稱結尾來儲存此文件。必需的擴展名是 “.%@”。";

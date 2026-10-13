@@ -116,7 +116,7 @@ class iTermBrowserLocalPageManager: NSObject {
         setupPageContext(for: urlString)
 
         guard let context = activePageContexts[urlString] else {
-            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserLocalPageManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unknown \(iTermBrowserSchemes.about) URL"]))
+            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserLocalPageManager", code: -1, userInfo: [NSLocalizedDescriptionKey: String(format: NSLocalizedString("Unknown %@ URL", tableName: "Browser", comment: "未知的 %@ URL"), iTermBrowserSchemes.about)]))
             return true
         }
 

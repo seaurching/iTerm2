@@ -72,7 +72,7 @@ struct WebResponse: Codable {
 }
 
 struct PluginError: LocalizedError, Equatable, CustomDebugStringConvertible {
-    static let cancelled = PluginError(reason: "cancelled")
+    static let cancelled = PluginError(reason: NSLocalizedString("cancelled", tableName: "AITermXC", comment: "已取消"))
 
     var debugDescription: String {
         return "<PluginError \(reason)>"
@@ -129,21 +129,21 @@ struct Plugin {
     private let code: String
     init() throws {
         guard let bundleURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleID) else {
-            throw PluginError(reason: "Plugin not found")
+            throw PluginError(reason: NSLocalizedString("Plugin not found", tableName: "AITermXC", comment: "未找到插件"))
         }
         let jsURL = bundleURL.appendingPathComponent("Contents/Resources/iTermAIPlugin.js")
         guard let codeData = try? Data(contentsOf: jsURL) else {
-            throw PluginError(reason: "Plugin missing from app bundle or not readable")
+            throw PluginError(reason: NSLocalizedString("Plugin missing from app bundle or not readable", tableName: "AITermXC", comment: "插件缺失或不可读"))
         }
         guard let code = String(data: codeData, encoding: .utf8) else {
-            throw PluginError(reason: "Plugin code not valid UTF-8")
+            throw PluginError(reason: NSLocalizedString("Plugin code not valid UTF-8", tableName: "AITermXC", comment: "插件代码不是有效的 UTF-8"))
         }
         let signatureURL = bundleURL.appendingPathComponent("Contents/Resources/iTermAIPlugin.sig")
         guard let signatureB64 = try? String(contentsOf: signatureURL) else {
-            throw PluginError(reason: "Signature missing from app bundle or not readable")
+            throw PluginError(reason: NSLocalizedString("Signature missing from app bundle or not readable", tableName: "AITermXC", comment: "签名缺失或不可读"))
         }
         guard let signatureData = Data(base64Encoded: signatureB64.trimmingCharacters(in: .whitespacesAndNewlines)) else {
-            throw PluginError(reason: "Signature of AI plugin is malformed")
+            throw PluginError(reason: NSLocalizedString("Signature of AI plugin is malformed", tableName: "AITermXC", comment: "AI 插件签名格式错误"))
         }
         try Plugin.checkSignature(message: codeData, signature: signatureData)
         self.code = code
@@ -152,7 +152,7 @@ struct Plugin {
     private static func checkSignature(message: Data, signature: Data) throws {
         let publicKey = try Curve25519.Signing.PublicKey(rawRepresentation: Data(base64Encoded: publicKeyB64)!)
         guard publicKey.isValidSignature(signature, for: message) else {
-            throw PluginError(reason: "The plugin's signature is invalid. Reinstall the plugin or upgrade iTerm2.")
+            throw PluginError(reason: NSLocalizedString("The plugin's signature is invalid. Reinstall the plugin or upgrade iTerm2.", tableName: "AITermXC", comment: "插件签名无效。请重新安装插件或升级 iTerm2。"))
         }
         DLog("Signature is good")
     }
@@ -164,7 +164,7 @@ struct Plugin {
                                                             async: false,
                                                             stream: nil)
         guard let decimal = Decimal(string: string) else {
-            throw PluginError(reason: "Invalid version string: \(string)")
+            throw PluginError(reason: String(format: NSLocalizedString("Invalid version string: %@", tableName: "AITermXC", comment: "无效的版本字符串：%%@"), string))
         }
         return decimal
     }
@@ -208,16 +208,16 @@ class iTermAIClient {
     func validate() throws {
         DLog("validate")
         if (!iTermAdvancedSettingsModel.generativeAIAllowed()) {
-            throw PluginError(reason: "Plugin not allowed by administator.")
+            throw PluginError(reason: NSLocalizedString("Plugin not allowed by administator.", tableName: "AITermXC", comment: "管理员不允许此插件。"))
         }
         switch Plugin.instance() {
         case .success(let plugin):
             guard let pluginVersion = try? plugin.version() else {
-                throw PluginError(reason: "Unable to determine version of AI plugin. Reinstall it and upgrade iTerm2 if possible.")
+                throw PluginError(reason: NSLocalizedString("Unable to determine version of AI plugin. Reinstall it and upgrade iTerm2 if possible.", tableName: "AITermXC", comment: "无法确定 AI 插件版本。请重新安装并在可能时升级 iTerm2。"))
             }
 
             guard pluginVersion == Decimal(string: requiredVersion) else {
-                throw PluginError(reason: "Plugin has version \(pluginVersion) but iTerm2 expects \(requiredVersion). Upgrade one or both.")
+                throw PluginError(reason: String(format: NSLocalizedString("Plugin has version %@ but iTerm2 expects %@. Upgrade one or both.", tableName: "AITermXC", comment: "插件版本为 %@，但 iTerm2 需要 %@。请升级其中之一或两者都升级。"), "\(pluginVersion)", "\(requiredVersion)"))
             }
             return
         case .failure(let error):
@@ -363,7 +363,7 @@ class iTermAIClient {
             } else if let response = delivery.response {
                 result = .success(response)
             } else {
-                result = .failure(PluginError(reason: "Cassette delivery had neither response nor error"))
+                result = .failure(PluginError(reason: NSLocalizedString("Cassette delivery had neither response nor error", tableName: "AITermXC", comment: "Cassette 既没有响应也没有错误")))
             }
             executionQueue.async {
                 if cancellation.canceled {
@@ -439,7 +439,7 @@ class iTermAIClient {
                 } catch let error as PluginError {
                     emit(.failure(error))
                 } catch {
-                    emit(.failure(PluginError(reason: "Unexpected exception: \(error.localizedDescription)")))
+                    emit(.failure(PluginError(reason: String(format: NSLocalizedString("Unexpected exception: %@", tableName: "AITermXC", comment: "意外异常：%@"), error.localizedDescription))))
                 }
             case .failure(let error):
                 emit(.failure(error))

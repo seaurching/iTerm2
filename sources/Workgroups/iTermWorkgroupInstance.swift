@@ -128,7 +128,7 @@ final class iTermWorkgroupInstance: NSObject {
     // Human-readable workgroup name for user-facing messages, with the
     // same empty-name fallback the Workgroups menu uses.
     @objc var workgroupDisplayName: String {
-        return workgroup.name.isEmpty ? "Untitled" : workgroup.name
+        return workgroup.name.isEmpty ? NSLocalizedString("Untitled", tableName: "Workgroups", comment: "未命名工作组") : workgroup.name
     }
 
     // Every live session teardown would terminate: the main session,
@@ -188,11 +188,11 @@ final class iTermWorkgroupInstance: NSObject {
             names.append(instance.workgroupDisplayName)
         }
         guard extraCount > 0 else { return nil }
-        let sessionWord = extraCount == 1 ? "session" : "sessions"
+        let sessionWord = extraCount == 1 ? NSLocalizedString("session", tableName: "Workgroups", comment: "单个会话") : NSLocalizedString("sessions", tableName: "Workgroups", comment: "多个会话")
         if names.count == 1 {
-            return "This will also exit the workgroup “\(names[0])” and close \(extraCount) other \(sessionWord)."
+            return String(format: NSLocalizedString("This will also exit the workgroup “%@” and close %d other %@.", tableName: "Workgroups", comment: "退出工作组确认消息"), names[0], extraCount, sessionWord)
         }
-        return "This will also exit \(names.count) workgroups and close \(extraCount) other \(sessionWord)."
+        return String(format: NSLocalizedString("This will also exit %d workgroups and close %d other %@.", tableName: "Workgroups", comment: "退出多个工作组确认消息"), names.count, extraCount, sessionWord)
     }
 
     // Workgroup-wide git poller, shared across every gitStatus and

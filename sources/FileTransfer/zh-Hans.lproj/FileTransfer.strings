@@ -1,0 +1,239 @@
+/* Menu item: stop transfer */
+"Stop" = "停止";
+
+/* Menu item: show in Finder */
+"Show in Finder" = "在 Finder 中显示";
+
+/* Menu item: remove from list */
+"Remove from List" = "从列表中移除";
+
+/* Menu item: open file */
+"Open" = "打开";
+
+/* Menu item: get info */
+"Get Info" = "显示简介";
+
+/* Error: file transfer failed with unknown error */
+"File transfer failed with an unknown error" = "文件传输失败，出现未知错误";
+
+/* Status: transfer cancelled */
+"Transfer cancelled" = "传输已取消";
+
+/* Alert title: authenticate user */
+"Authenticate %@" = "验证 %@";
+
+/* Alert: enter credential to begin transfer */
+"Please enter the %@ for %@ to begin %@." = "请输入 %@（供 %@ 使用）以开始 %@。";
+
+/* Button: OK */
+"OK" = "确定";
+
+/* Button: cancel */
+"Cancel" = "取消";
+
+/* Button: password manager */
+"Password Manager…" = "密码管理器…";
+
+/* Display name: secure copy details */
+"Secure copy\nUser name: %@\nHost: %@\nFile: %@" = "安全复制\n用户名：%@\n主机：%@\n文件：%@";
+
+/* Protocol name: secure copy */
+"secure copy" = "安全复制";
+
+/* Error: invalid path */
+"Invalid path: %@" = "无效路径：%@";
+
+/* Error: invalid filename */
+"Invalid filename" = "无效的文件名";
+
+/* Error: could not connect */
+"Could not connect." = "无法连接。";
+
+/* Error: connection failed */
+"Connection failed: %@" = "连接失败：%@";
+
+/* Warning: failed to connect, check hostname */
+"Failed to connect to %@:%d. Double-check that the host name is correct." = "连接 %@:%d 失败。请检查主机名是否正确。";
+
+/* Button: ok */
+"Ok" = "确定";
+
+/* Button: help */
+"Help" = "帮助";
+
+/* Heading: connection failed */
+"Connection Failed" = "连接失败";
+
+/* Prompt: password */
+"password" = "密码";
+
+/* Prompt: passphrase for private key */
+"passphrase for private key “%@”:" = "私钥 “%@” 的密码短语：";
+
+/* Prompt: correct passphrase for key */
+"correct passphrase for “%@”:" = "“%@” 的正确密码短语：";
+
+/* Error: authentication failed */
+"Authentication failed." = "身份验证失败。";
+
+/* Error: authentication error */
+"Authentication error." = "身份验证错误。";
+
+/* Error: downloads folder not writable */
+"Downloads folder not writable. Tried %@" = "下载文件夹不可写。尝试过 %@";
+
+/* Error: downloads folder not writable */
+"Downloads folder not writable" = "下载文件夹不可写";
+
+/* Error: quarantine error */
+"Quarantine Error" = "隔离错误";
+
+/* Error: download failed */
+"Download failed" = "下载失败";
+
+/* Error: upload failed */
+"Upload failed" = "上传失败";
+
+/* Warning: connect to host */
+"Connect to %@?" = "连接到 %@？";
+
+/* Heading: connect to new host */
+"Connect to New Host?" = "连接到新主机？";
+
+/* Error: canceled by user */
+"Canceled by user" = "用户已取消";
+
+/* Error: cannot read file */
+"Cannot read file: %@" = "无法读取文件：%@";
+
+/* Alert title: notice */
+"Notice" = "注意";
+
+/* Alert title: problem connecting to host */
+"Problem connecting to %@" = "连接到 %@ 时出现问题";
+
+/* Alert: could not read known_hosts */
+"Could not read the known_hosts file.\nAs a result, the authenticity of host '%@' can't be established.%@ key fingerprint is %@. Connect anyway?" = "无法读取 known_hosts 文件。\n因此，无法确认主机 '%@' 的真实性。%@ 密钥指纹为 %@。仍然连接吗？";
+
+/* Alert title: warning */
+"Warning!" = "警告！";
+
+/* Alert: remote host identification has changed */
+"REMOTE HOST IDENTIFICATION HAS CHANGED!\n\nThe %@ key fingerprint of host '%@' has changed. It is %@.\n\nSomeone could be eavesdropping on you right now (man-in-the-middle attack)!\nIt is also possible that a host key has just been changed.\nConnect anyway?" = "远程主机标识已更改！\n\n%@ 密钥指纹（主机 '%@'）已更改。它为 %@。\n\n可能有人正在窃听您的通信（中间人攻击）！\n也有可能主机密钥刚刚被更改。\n仍然连接吗？";
+
+/* Alert title: first time connecting to host */
+"First time connecting to %@" = "首次连接到 %@";
+
+/* Alert: authenticity of host cannot be established */
+"The authenticity of host '%@' can't be established.\n\n%@ key fingerprint is %@.\n\nConnect anyway?" = "无法确认主机 '%@' 的真实性。\n\n%@ 密钥指纹为 %@。\n\n仍然连接吗？";
+
+/* Prompt: where to save download */
+"Where would you like to save this download?" = "您想将此下载保存到哪里？";
+
+/* Action: save to Downloads */
+"Save to Downloads" = "保存到下载";
+
+/* Action: choose destination */
+"Choose…" = "选择…";
+
+/* Heading: save terminal-initiated download */
+"Save Terminal-Initiated Download" = "保存终端发起的下载";
+
+/* Name: unnamed file */
+"Unnamed file" = "未命名文件";
+
+/* Subheading: terminal download */
+"Terminal download" = "终端下载";
+
+/* Error: canceled */
+"Canceled." = "已取消。";
+
+/* Error: no data received */
+"No data received." = "未收到数据。";
+
+/* Error: file corrupted not valid base64 */
+"File corrupted (not valid base64)." = "文件已损坏（不是有效的 base64）。";
+
+/* Error: failed to set quarantine */
+"Failed to set quarantine." = "设置隔离失败。";
+
+/* Prompt: file exists, keep both or replace */
+"A file named %@ already exists. Keep both files or replace the existing file?" = "名为 %@ 的文件已存在。保留两者还是替换现有文件？";
+
+/* Action: keep both files */
+"Keep Both" = "两者都保留";
+
+/* Action: replace existing file */
+"Replace" = "替换";
+
+/* Heading: overwrite existing file */
+"Overwrite existing file?" = "覆盖现有文件？";
+
+/* Noun: download */
+"Download" = "下载";
+
+/* Noun: upload */
+"Upload" = "上传";
+
+/* Notification: transfer finished */
+"%@ finished for “%@”." = "%@ 的 “%@” 已完成。";
+
+/* Notification: transfer failed */
+"%@ failed for “%@”." = "%@ 的 “%@” 失败。";
+
+/* Warning: file could not be quarantined or deleted */
+"The file at “%@” could not be quarantined or deleted! It is dangerous and should be removed." = "无法隔离或删除位于 “%@” 的文件！该文件很危险，应当删除。";
+
+/* Heading: danger */
+"Danger!" = "危险！";
+
+/* Progress: bytes transferred of total */
+"%@ of %@" = "%@ / %@";
+
+/* Status: starting */
+"Starting…" = "启动中…";
+
+/* Status: downloading */
+"Downloading…" = "下载中…";
+
+/* Status: uploading */
+"Uploading…" = "上传中…";
+
+/* Status: finished */
+"Finished" = "已完成";
+
+/* Status: failed */
+"Failed" = "失败";
+
+/* Status: cancelling */
+"Cancelling…" = "正在取消…";
+
+/* Status: cancelled */
+"Cancelled" = "已取消";
+
+/* Status: unstarted */
+"Unstarted" = "未开始";
+
+/* Status: starting */
+"Starting" = "启动中";
+
+/* Status: transferring */
+"Transferring" = "传输中";
+
+/* Status: failed with error */
+"Failed with error “%@”" = "失败，错误：“%@”";
+
+/* Status: waiting to cancel */
+"Waiting to cancel" = "等待取消";
+
+/* Get Info: destination */
+"\nDestination: %@" = "\n目的地：%@";
+
+/* Get Info: local path */
+"\nLocal path: %@" = "\n本地路径：%@";
+
+/* Get Info: file transfer summary */
+"%@\n\nStatus: %@%@" = "%@\n\n状态：%@%@";
+
+/* Alert title: file transfer summary */
+"File Transfer Summary" = "文件传输摘要";

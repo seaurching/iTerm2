@@ -56,7 +56,7 @@ class SetTabStatusTrigger: Trigger, iTermColorSettable {
 
     // MARK: - Trigger overrides
 
-    override static var title: String { "Set Tab Status…" }
+    override static var title: String { NSLocalizedString("Set Tab Status…", tableName: "Triggers", comment: "设置标签页状态触发器标题") }
 
     override func takesParameter() -> Bool { true }
 
@@ -67,7 +67,7 @@ class SetTabStatusTrigger: Trigger, iTermColorSettable {
     override func paramIsComboBoxAndTwoColorWells() -> Bool { true }
 
     override func comboBoxItems() -> [String] {
-        ["Working", "Waiting", "Idle"]
+        [NSLocalizedString("Working", tableName: "Triggers", comment: "标签页状态：工作中"), NSLocalizedString("Waiting", tableName: "Triggers", comment: "标签页状态：等待中"), NSLocalizedString("Idle", tableName: "Triggers", comment: "标签页状态：空闲")]
     }
 
     override func comboBoxValue(inParam param: Any?) -> String? {
@@ -101,15 +101,15 @@ class SetTabStatusTrigger: Trigger, iTermColorSettable {
 
     override func paramAttributedString() -> NSAttributedString? {
         let statusText = components.2
-        let text = statusText.isEmpty ? "(no status)" : statusText
+        let text = statusText.isEmpty ? NSLocalizedString("(no status)", tableName: "Triggers", comment: "标签页状态：无状态") : statusText
         let result = NSMutableAttributedString(string: text, attributes: regularAttributes())
 
         if let dotColor = textColor {
-            result.append(NSAttributedString(string: "  Dot: ", attributes: regularAttributes()))
+            result.append(NSAttributedString(string: NSLocalizedString("  Dot: ", tableName: "Triggers", comment: "参数标签：圆点"), attributes: regularAttributes()))
             appendColorSwatch(dotColor, to: result)
         }
         if let statusTextColor = backgroundColor {
-            result.append(NSAttributedString(string: "  Text: ", attributes: regularAttributes()))
+            result.append(NSAttributedString(string: NSLocalizedString("  Text: ", tableName: "Triggers", comment: "参数标签：文本"), attributes: regularAttributes()))
             appendColorSwatch(statusTextColor, to: result)
         }
         return result

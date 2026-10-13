@@ -62,12 +62,12 @@ class iTermTouchIDHelper: NSObject {
     /// for their sudo password in that window.
     @objc static func runInstallInNewWindow() {
         guard let path = scriptPath else {
-            iTermWarning.show(withTitle: "The Touch ID install script is missing from the iTerm2 application bundle.",
-                              actions: ["OK"],
+            iTermWarning.show(withTitle: NSLocalizedString("The Touch ID install script is missing from the iTerm2 application bundle.", tableName: "TryingTooHard", comment: "Touch ID 安装脚本缺失警告标题"),
+                              actions: [NSLocalizedString("OK", tableName: "TryingTooHard", comment: "确定按钮")],
                               accessory: nil,
                               identifier: nil,
                               silenceable: .kiTermWarningTypePersistent,
-                              heading: "Cannot Enable Touch ID for Sudo",
+                              heading: NSLocalizedString("Cannot Enable Touch ID for Sudo", tableName: "TryingTooHard", comment: "无法为 Sudo 启用 Touch ID 警告标题"),
                               window: nil)
             return
         }

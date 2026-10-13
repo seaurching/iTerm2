@@ -1189,21 +1189,21 @@ extension iTermBrowserManager {
 extension iTermBrowserManager {
     func webView(_ webView: WKWebView, start urlSchemeTask: WKURLSchemeTask) {
         guard let url = urlSchemeTask.request.url else {
-            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"]))
+            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserManager", code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Invalid URL", tableName: "Browser", comment: "无效的 URL")]))
             return
         }
 
         switch url.scheme {
         case iTermBrowserSchemes.about, iTermBrowserSchemes.file:
             if !localPageManager.handleURLSchemeTask(urlSchemeTask, url: url) {
-                urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unknown URL scheme"]))
+                urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserManager", code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Unknown URL scheme", tableName: "Browser", comment: "未知的 URL 方案")]))
             }
         case iTermBrowserSchemes.ssh:
             if !sshPageManager.handleURLSchemeTask(urlSchemeTask, url: url) {
-                urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unknown URL scheme"]))
+                urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserManager", code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Unknown URL scheme", tableName: "Browser", comment: "未知的 URL 方案")]))
             }
         default:
-            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unknown URL scheme"]))
+            urlSchemeTask.didFailWithError(NSError(domain: "iTermBrowserManager", code: -1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Unknown URL scheme", tableName: "Browser", comment: "未知的 URL 方案")]))
         }
     }
     
@@ -1248,9 +1248,9 @@ extension iTermBrowserManager: WKNavigationDelegate {
         let realm = protectionSpace.realm
         let promptText: String
         if let realm, !realm.isEmpty {
-            promptText = "The website “\(host)” requires a user name and password for “\(realm)”."
+            promptText = String(format: NSLocalizedString("The website “%@” requires a user name and password for “%@”.", tableName: "Browser", comment: "网站“%@”需要“%@”的用户名和密码。"), host, realm)
         } else {
-            promptText = "The website “\(host)” requires a user name and password."
+            promptText = String(format: NSLocalizedString("The website “%@” requires a user name and password.", tableName: "Browser", comment: "网站“%@”需要用户名和密码。"), host)
         }
 
         let alert = ModalPasswordAlert(promptText)
@@ -1605,9 +1605,9 @@ extension iTermBrowserManager: WKUIDelegate {
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         // Handle JavaScript alerts
         let alert = NSAlert()
-        alert.messageText = "Web Page Alert"
+        alert.messageText = NSLocalizedString("Web Page Alert", tableName: "Browser", comment: "网页警告")
         alert.informativeText = message
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: NSLocalizedString("OK", tableName: "Browser", comment: "好"))
         alert.runModal()
         completionHandler()
     }
@@ -1615,10 +1615,10 @@ extension iTermBrowserManager: WKUIDelegate {
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         // Handle JavaScript confirmations
         let alert = NSAlert()
-        alert.messageText = "Web Page Confirmation"
+        alert.messageText = NSLocalizedString("Web Page Confirmation", tableName: "Browser", comment: "网页确认")
         alert.informativeText = message
-        alert.addButton(withTitle: "OK")
-        alert.addButton(withTitle: "Cancel")
+        alert.addButton(withTitle: NSLocalizedString("OK", tableName: "Browser", comment: "好"))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "Browser", comment: "取消"))
         let response = alert.runModal()
         completionHandler(response == .alertFirstButtonReturn)
     }
@@ -2082,12 +2082,12 @@ extension iTermBrowserManager: iTermBrowserAudioHandlerDelegate {
                     case denyAlways
                 }
                 let announcement = BrowserAnnouncement(
-                    message: "Audio was muted. Allow playback by \(origin)?",
+                    message: String(format: NSLocalizedString("Audio was muted. Allow playback by %@?", tableName: "Browser", comment: "音频已静音。允许 %@ 播放？"), origin),
                     style: .kiTermAnnouncementViewStyleQuestion,
-                    options: [.init(title: "Allow _Once", identifier: Action.allowOnce),
-                              .init(title: "Allow _Always", identifier: Action.allowAlways),
-                              .init(title: "_Deny Once", identifier: Action.denyOnce),
-                              .init(title: "De_ny Always", identifier: Action.denyAlways) ],
+                    options: [.init(title: NSLocalizedString("Allow _Once", tableName: "Browser", comment: "允许一次(_O)"), identifier: Action.allowOnce),
+                              .init(title: NSLocalizedString("Allow _Always", tableName: "Browser", comment: "始终允许(_A)"), identifier: Action.allowAlways),
+                              .init(title: NSLocalizedString("_Deny Once", tableName: "Browser", comment: "拒绝一次(_D)"), identifier: Action.denyOnce),
+                              .init(title: NSLocalizedString("De_ny Always", tableName: "Browser", comment: "始终拒绝(_N)"), identifier: Action.denyAlways) ],
                     identifier: "NoSyncMuteAudio_\(origin)")
                 switch await delegate?.browserManager(self, announce: announcement) {
                 case .allowOnce:

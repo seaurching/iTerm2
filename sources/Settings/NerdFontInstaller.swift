@@ -19,17 +19,17 @@ enum NerdFontInstallerError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .userDeniedPermission:
-            return "User denied permission"
+            return NSLocalizedString("User denied permission", tableName: "Settings", comment: "User denied permission to download fonts")
         case .downloadFailed(let reason):
-            return "Download failed: \(reason)"
+            return String(format: NSLocalizedString("Download failed: %@", tableName: "Settings", comment: "Nerd font download failed"), reason)
         case .saveDownloadFailed(let reason):
-            return "Downloaded file could not be saved: \(reason)"
+            return String(format: NSLocalizedString("Downloaded file could not be saved: %@", tableName: "Settings", comment: "Downloaded font file could not be saved"), reason)
         case .unzipFailed(let reason):
-            return "Unzip failed: \(reason)"
+            return String(format: NSLocalizedString("Unzip failed: %@", tableName: "Settings", comment: "Unzipping font bundle failed"), reason)
         case .missingRequiredFonts:
-            return "The downloaded bundle is missing some required fonts"
+            return NSLocalizedString("The downloaded bundle is missing some required fonts", tableName: "Settings", comment: "Downloaded font bundle is missing required fonts")
         case .fontInstallationFailed(let reason):
-            return "Installation of downloaded fonts failed: \(reason)"
+            return String(format: NSLocalizedString("Installation of downloaded fonts failed: %@", tableName: "Settings", comment: "Font installation failed"), reason)
         }
     }
 }
@@ -122,12 +122,13 @@ class NerdFontInstaller {
 
     private func askUserForPermissionToDownload() -> Bool {
         let selection = iTermWarning.show(
-            withTitle: "To install the Nerd Font Bundle iTerm2 must first download and install these fonts: \(neededFontPostscriptNames.joined(separator: ", ")).",
-            actions: ["Download", "Cancel"],
+            withTitle: String(format: NSLocalizedString("To install the Nerd Font Bundle iTerm2 must first download and install these fonts: %@.", tableName: "Settings", bundle: Bundle(for: NerdFontInstaller.self), comment: ""), neededFontPostscriptNames.joined(separator: ", ")),
+            actions: [NSLocalizedString("Download", tableName: "Settings", bundle: Bundle(for: NerdFontInstaller.self), comment: ""),
+                      NSLocalizedString("Cancel", tableName: "Settings", bundle: Bundle(for: NerdFontInstaller.self), comment: "")],
             accessory: nil,
             identifier: "SpecialExceptionsMissingFontsForNerdBundle",
             silenceable: .kiTermWarningTypePersistent,
-            heading: "Download Needed",
+            heading: NSLocalizedString("Download Needed", tableName: "Settings", bundle: Bundle(for: NerdFontInstaller.self), comment: ""),
             window: window)
         return selection == .kiTermWarningSelection0
     }
@@ -155,7 +156,7 @@ class NerdFontInstaller {
         if let error {
             DispatchQueue.main.async {
                 self.state = .failed(NerdFontInstallerError.downloadFailed(
-                    reason: "The Nerd Font Bundle download failed with an error: \(error.localizedDescription)"))
+                    reason: String(format: NSLocalizedString("The Nerd Font Bundle download failed with an error: %@", tableName: "Settings", comment: "Nerd font bundle download failed with error"), error.localizedDescription)))
             }
             return
         }
@@ -267,7 +268,7 @@ class NerdFontInstaller {
             }
             var reason = fatalErrors.compactMap { CFErrorCopyDescription($0) as String? }.joined(separator: ", ")
             if reason.isEmpty {
-                reason = "Unknown errors occurred"
+                reason = NSLocalizedString("Unknown errors occurred", tableName: "Settings", comment: "Unknown font installation errors occurred")
             }
             RLog("\(reason)")
             DispatchQueue.main.async {

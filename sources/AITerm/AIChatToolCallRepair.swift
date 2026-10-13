@@ -34,9 +34,9 @@ enum AIChatToolCallRepair {
     // user message). Shared with ChatAgent.translate so the live reload path
     // and the repair pass emit identical filler text.
     static let interruptedToolCallOutput =
-        "[iTerm2 was restarted before this tool call completed. "
-        + "The call did not finish; assume no side effects took place "
-        + "and re-issue if needed.]"
+        NSLocalizedString("[iTerm2 was restarted before this tool call completed. The call did not finish; assume no side effects took place and re-issue if needed.]",
+                          tableName: "AITermXC",
+                          comment: "iTerm2 在此函数调用完成前已重启。调用未完成；可假定未产生任何副作用，如有需要请重新发起。")
 
     // Repair both orphan directions a rebuilt prompt can contain: a tool_result
     // with no matching tool_use, and a tool_use with no matching tool_result.

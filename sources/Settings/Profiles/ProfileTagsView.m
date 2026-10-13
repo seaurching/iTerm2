@@ -67,7 +67,7 @@
 
         _headerView = [[NSTableHeaderView alloc] init];
         _tableView.headerView = _headerView;
-        [_tagsColumn.headerCell setStringValue:@"Tag Name"];
+        [_tagsColumn.headerCell setStringValue:NSLocalizedStringFromTableInBundle(@"Tag Name", @"Settings", [NSBundle bundleForClass:[self class]], @"Profiles: tag name column title")];
         _tagsColumn.width = [_tagsColumn.headerCell cellSize].width;
 
         [_tableView sizeLastColumnToFit];

@@ -1,0 +1,32 @@
+/* AppLaunch.strings */
+
+"Cancel" = "取消";
+"Companion device pairing has been disabled. Talk to your enterprise system administrator." = "伴侶裝置配對已被停用。請聯絡您的企業系統管理員。";
+"Erase from Settings" = "從設定中刪除";
+"Feature Unavailable" = "功能無法使用";
+"Generative AI features have been disabled. Talk to your enterprise system administrator." = "生成式 AI 功能已被停用。請聯絡您的企業系統管理員。";
+"I Fixed It" = "我已修復";
+"Important Change" = "重要變更";
+"iTerm2 no longer warns before a multi-line paste, unless you are at the shell prompt." = "iTerm2 不再在多行貼上前發出警告，除非您在 Shell 提示字元處。";
+"iTerm2's Application Support directory has changed." = "iTerm2 的應用程式支援目錄已變更。";
+"Manual Update Needed" = "需要手動更新";
+"Move Key" = "移動金鑰";
+"Move OpenAI API key into the keychain? It is currently stored in User Defaults, which is not as secure." = "將 OpenAI API 金鑰移入鑰匙圈？它目前儲存在使用者預設設定中，安全性較低。";
+"No Terminal Window" = "沒有終端視窗";
+"Not Now" = "暫不";
+"Now, only the iTerm2 version is supported. But you have files in both so please move everything from iTerm to iTerm2." = "現在僅支援 iTerm2 版本。但兩個目錄中都有檔案，請將所有內容從 iTerm 移動到 iTerm2。";
+"OK" = "好";
+"Open in Finder" = "在 Finder 中開啟";
+"Previously, both these directories were supported:\n~/Library/Application Support/iTerm\n~/Library/Application Support/iTerm2." = "之前，以下兩個目錄都受支援：\n~/Library/Application Support/iTerm\n~/Library/Application Support/iTerm2。";
+"Remind me Later" = "稍後提醒";
+"Remove Deprecated Key Mappings?" = "移除已棄用的按鍵對應？";
+"Some profiles have unnecessary key mappings which may interfere with window tiling shortcuts added in macOS Sequoia. These were in the default profile for many years but are no longer needed. Remove the key mappings? It shouldn’t break anything, and it won’t modify the on-disk copy of the dynamic profile." = "一些設定檔有不必要的按鍵對應，可能會干擾 macOS Sequoia 中新增的視窗並排捷徑。這些對應在預設設定檔中存在多年，但已不再需要。是否移除這些按鍵對應？這不會破壞任何功能，也不會修改動態設定檔的磁碟副本。";
+"The system Python's iterm2 module is out of date and won't work with this version of iTerm2. Run `%@` to fix it." = "系統 Python 的 iterm2 模組已過期，無法在此版本的 iTerm2 中使用。執行 `%@` 來修復。";
+"Upgrade system Python iterm2 module?" = "升級系統 Python iterm2 模組？";
+"You need an open terminal window to make a screenshot." = "您需要一個開啟的終端視窗才能擷取螢幕。";
+
+"Copy Command" = "拷貝指令";
+
+"Ignore" = "忽略";
+
+"Learn More" = "瞭解更多";

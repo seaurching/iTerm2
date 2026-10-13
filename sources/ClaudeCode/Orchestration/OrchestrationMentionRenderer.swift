@@ -159,7 +159,7 @@ enum OrchestrationMentionRenderer {
         // Keep the bracketed wording the phone renderers use so the same
         // mention reads consistently across Mac and phone; only the styling
         // (glyph, gray, non-clickable) is Mac-specific.
-        result.append(NSAttributedString(string: "[defunct session]", attributes: attributes))
+        result.append(NSAttributedString(string: NSLocalizedString("[defunct session]", tableName: "ClaudeCodeXC", comment: "[已失效的会话]"), attributes: attributes))
         return result
     }
 
@@ -171,7 +171,7 @@ enum OrchestrationMentionRenderer {
                                    tint: NSColor,
                                    action: ((NSPoint) -> ())?) -> NSAttributedString? {
         guard let symbol = NSImage(systemSymbolName: "terminal",
-                                   accessibilityDescription: "iTerm2 session") else {
+                                   accessibilityDescription: NSLocalizedString("iTerm2 session", tableName: "ClaudeCodeXC", comment: "iTerm2 会话")) else {
             return nil
         }
         let dynamicImage = DynamicImage(image: symbol,
@@ -261,7 +261,7 @@ enum OrchestrationMentionRenderer {
             return nil
         }
         let raw = instance.workgroup.name
-        let name = raw.isEmpty ? "Untitled workgroup" : raw
+        let name = raw.isEmpty ? NSLocalizedString("Untitled workgroup", tableName: "ClaudeCodeXC", comment: "未命名工作组") : raw
         return Resolved(displayName: name,
                         revealGuid: leader.stableID,
                         workgroupID: instanceID)

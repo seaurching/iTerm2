@@ -97,51 +97,51 @@ const CGFloat sideMarginWidth = 40;
 
             case KEY_ACTION_COMPOSE:
                 _parameterHidden = NO;
-                _parameterPlaceholder = @"Text for composer";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"Text for composer", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 break;
 
             case KEY_ACTION_HEX_CODE:
                 _parameterHidden = NO;
-                _parameterPlaceholder = @"ex: 0x7f 0x20";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"ex: 0x7f 0x20", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 _applyHidden = NO;
                 break;
 
             case KEY_ACTION_VIM_TEXT:
             case KEY_ACTION_VIM_TEXT_NO_BROADCAST:
                 _parameterHidden = NO;
-                _helpString = @"Special characters are:\n* \\<1-to-3-digit octal>\n* \\x<1 or 2 digit hex>\n* \\u<4 digit hex>\n* \\b for backspace\n* \\e for esc\n* \\f for formfeed\n* \\n for newline and \\r for return\n* \\t for tab\n* \\\\ and \\\" for literal \\ and \"\n* <C-x> for control key\n* <M-x> for meta key.";
-                _parameterPlaceholder = @"Enter value to send. Click help button for special characters.";
+                _helpString = NSLocalizedStringFromTableInBundle(@"Special characters are:\n* \\<1-to-3-digit octal>\n* \\x<1 or 2 digit hex>\n* \\u<4 digit hex>\n* \\b for backspace\n* \\e for esc\n* \\f for formfeed\n* \\n for newline and \\r for return\n* \\t for tab\n* \\\\ and \\\" for literal \\ and \"\n* <C-x> for control key\n* <M-x> for meta key.", @"Settings", [NSBundle bundleForClass:[self class]], @"settings ui");
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"Enter value to send. Click help button for special characters.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 _applyHidden = NO;
                 break;
 
             case KEY_ACTION_TEXT:
                 _parameterHidden = NO;
-                _parameterPlaceholder = @"Enter value to send";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"Enter value to send", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 _applyHidden = NO;
                 break;
 
             case KEY_ACTION_RUN_COPROCESS:
                 _parameterHidden = NO;
-                _parameterPlaceholder = @"Enter command to run";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"Enter command to run", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 _applyHidden = NO;
                 break;
 
             case KEY_ACTION_SEND_TMUX_COMMAND:
                 _parameterHidden = NO;
-                _parameterPlaceholder = @"Enter tmux command";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"Enter tmux command", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 break;
 
             case KEY_ACTION_SELECT_MENU_ITEM:
-                _parameterPlaceholder = @"Enter name of menu item";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"Enter name of menu item", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 _menuToSelectPopupHidden = NO;
                 _parameterValue = @"";
                 break;
 
             case KEY_ACTION_ESCAPE_SEQUENCE:
                 _parameterHidden = NO;
-                _parameterPlaceholder = @"characters to send";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"characters to send", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 _parameterLabelHidden = NO;
-                _parameterLabel = @"Esc+";
+                _parameterLabel = NSLocalizedStringFromTableInBundle(@"Esc+", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 _applyHidden = NO;
                 break;
 
@@ -171,57 +171,57 @@ const CGFloat sideMarginWidth = 40;
             case KEY_ACTION_DO_NOT_REMAP_MODIFIERS:
                 _shortcutFieldDisableKeyRemapping = YES;
                 _parameterValue = @"";
-                _helpString = @"This action lets you exempt a keystroke from modifier remapping. For example, if you remap ⌘ to ⌥ but you want ⌘-Tab to work as though ⌘ were unmapped just for that keystroke, you would use this action and set the keyboard shortcut to ⌘-Tab";
+                _helpString = NSLocalizedStringFromTableInBundle(@"This action lets you exempt a keystroke from modifier remapping. For example, if you remap ⌘ to ⌥ but you want ⌘-Tab to work as though ⌘ were unmapped just for that keystroke, you would use this action and set the keyboard shortcut to ⌘-Tab", @"Settings", [NSBundle bundleForClass:[self class]], @"settings ui");
                 _parameterValue = @"";
                 break;
 
             case KEY_ACTION_REMAP_LOCALLY:
                 _shortcutFieldDisableKeyRemapping = YES;
                 _parameterValue = @"";
-                _helpString = @"This action applies modifier remapping but prevents other programs from seeing the keystroke. For example, if you've swapped ⌘ and ^ and want physical ^-tab to switch tabs in iTerm2 instead of triggering the app switcher: bind ^-tab to this action. The system won't see the remapped ⌘-tab (so no app switcher), but iTerm2 receives it and can switch tabs.";
+                _helpString = NSLocalizedStringFromTableInBundle(@"This action applies modifier remapping but prevents other programs from seeing the keystroke. For example, if you've swapped ⌘ and ^ and want physical ^-tab to switch tabs in iTerm2 instead of triggering the app switcher: bind ^-tab to this action. The system won't see the remapped ⌘-tab (so no app switcher), but iTerm2 receives it and can switch tabs.", @"Settings", [NSBundle bundleForClass:[self class]], @"settings ui");
                 _parameterValue = @"";
                 break;
 
             case KEY_ACTION_BYPASS:
-                _helpString = @"Prevents the keystroke from being sent to the terminal while allowing macOS to handle it normally. For example, if F1 triggers a  macOS Shortcut, binding F1 to Bypass Terminal stops it from sending a control sequence to the terminal but still lets the system shortcut work.";
+                _helpString = NSLocalizedStringFromTableInBundle(@"Prevents the keystroke from being sent to the terminal while allowing macOS to handle it normally. For example, if F1 triggers a  macOS Shortcut, binding F1 to Bypass Terminal stops it from sending a control sequence to the terminal but still lets the system shortcut work.", @"Settings", [NSBundle bundleForClass:[self class]], @"settings ui");
                 break;
 
             case KEY_ACTION_IGNORE:
-                _helpString = @"Prevents the keystroke from having any effect within iTerm2. Modifier remapping remains unaffected.";
+                _helpString = NSLocalizedStringFromTableInBundle(@"Prevents the keystroke from having any effect within iTerm2. Modifier remapping remains unaffected.", @"Settings", [NSBundle bundleForClass:[self class]], @"settings ui");
                 break;
 
             case KEY_ACTION_NEXT_MRU_TAB:
                 _parameterValue = @"";
-                _helpString = @"Switches tabs in most-recently-used order, like ⌘-Tab in macOS. Hold a modifier and tap repeatedly to walk back through tab history; release the modifier to commit your selection. A single tap with no modifier held jumps to the previously-selected tab, so binding this to a plain key acts as a toggle between the two most recent tabs.";
+                _helpString = NSLocalizedStringFromTableInBundle(@"Switches tabs in most-recently-used order, like ⌘-Tab in macOS. Hold a modifier and tap repeatedly to walk back through tab history; release the modifier to commit your selection. A single tap with no modifier held jumps to the previously-selected tab, so binding this to a plain key acts as a toggle between the two most recent tabs.", @"Settings", [NSBundle bundleForClass:[self class]], @"settings ui");
                 break;
 
             case KEY_ACTION_PREVIOUS_MRU_TAB:
                 _parameterValue = @"";
-                _helpString = @"Switches tabs in reverse most-recently-used order. Hold a modifier and tap repeatedly to walk forward through tab history (oldest first); release the modifier to commit your selection. A single tap with no modifier held jumps to the least-recently-used tab.";
+                _helpString = NSLocalizedStringFromTableInBundle(@"Switches tabs in reverse most-recently-used order. Hold a modifier and tap repeatedly to walk forward through tab history (oldest first); release the modifier to commit your selection. A single tap with no modifier held jumps to the least-recently-used tab.", @"Settings", [NSBundle bundleForClass:[self class]], @"settings ui");
                 break;
 
             case KEY_ACTION_FIND_REGEX:
                 _parameterHidden = NO;
-                _parameterPlaceholder = @"Regular Expression";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"Regular Expression", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 _applyHidden = NO;
                 break;
 
             case KEY_ACTION_COPY_MODE:
                 _parameterHidden = NO;
-                _parameterPlaceholder = @"Copy Mode Commands";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"Copy Mode Commands", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 _applyHidden = NO;
-                _helpString = @"Enter copy mode commands to move cursor, toggle selection, and so on. This key binding enters Copy Mode and then acts as though you had pressed the keys listed here. [See a list of all the commands](https://iterm2.com/documentation-copymode.html). Use vim syntax for control, option, and function keys (e.g., `<C-x>` or `<Up>`.";
+                _helpString = NSLocalizedStringFromTableInBundle(@"Enter copy mode commands to move cursor, toggle selection, and so on. This key binding enters Copy Mode and then acts as though you had pressed the keys listed here. [See a list of all the commands](https://iterm2.com/documentation-copymode.html). Use vim syntax for control, option, and function keys (e.g., `<C-x>` or `<Up>`.", @"Settings", [NSBundle bundleForClass:[self class]], @"settings ui");
                 break;
 
             case KEY_ACTION_TOGGLE_SETTING:
-                _parameterPlaceholder = @"Enter name of menu item";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"Enter name of menu item", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 _settingToTogglePopupHidden = NO;
                 _parameterValue = @"";
                 break;
 
             case KEY_ACTION_INVOKE_SCRIPT_FUNCTION:
                 _parameterHidden = NO;
-                _parameterPlaceholder = @"Function Call";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"Function Call", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 if (functionCallDelegate) {
                     _parameterDelegate = functionCallDelegate;
                 } else {
@@ -256,7 +256,7 @@ const CGFloat sideMarginWidth = 40;
 
             case KEY_ACTION_COPY_INTERPOLATED_STRING:
                 _parameterHidden = NO;
-                _parameterPlaceholder = @"Enter interpolated string (evaluated in session context)";
+                _parameterPlaceholder = NSLocalizedStringFromTableInBundle(@"Enter interpolated string (evaluated in session context)", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
                 if (interpolatedStringDelegate) {
                     _parameterDelegate = interpolatedStringDelegate;
                 } else {
@@ -265,7 +265,7 @@ const CGFloat sideMarginWidth = 40;
                                                                        passthrough:nil
                                                                      functionsOnly:NO];
                 }
-                _helpString = @"You can use this to copy information about the current session to the clipboard. [Learn more about interpolated strings](https://iterm2.com/documentation-scripting-fundamentals.html)";
+                _helpString = NSLocalizedStringFromTableInBundle(@"You can use this to copy information about the current session to the clipboard. [Learn more about interpolated strings](https://iterm2.com/documentation-scripting-fundamentals.html)", @"Settings", [NSBundle bundleForClass:[self class]], @"settings ui");
                 break;
 
             case KEY_ACTION_SCROLL_END:
@@ -358,148 +358,148 @@ const CGFloat sideMarginWidth = 40;
 
 - (NSArray<iTermSearchableComboViewGroup *> *)groupsForPrimary:(BOOL)primary {
     NSArray<iTermSearchableComboViewGroup *> *groups = @[
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"General" items:[@[
-            primary ? [[iTermSearchableComboViewItem alloc] initWithLabel:@"Ignore" tag:KEY_ACTION_IGNORE] : [NSNull null],
-            primary ? [[iTermSearchableComboViewItem alloc] initWithLabel:@"Bypass Terminal" tag:KEY_ACTION_BYPASS] : [NSNull null],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Select Menu Item..." tag:KEY_ACTION_SELECT_MENU_ITEM],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"General", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:[@[
+            primary ? [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Ignore", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_IGNORE] : [NSNull null],
+            primary ? [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Bypass Terminal", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_BYPASS] : [NSNull null],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Select Menu Item...", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SELECT_MENU_ITEM],
         ] arrayByRemovingNulls]]
     ];
     if (self.mode == iTermEditKeyActionWindowControllerModeKeyboardShortcut) {
         groups = [groups arrayByAddingObjectsFromArray:[@[
-            primary ? [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Modifier Remapping" items:@[
-                [[iTermSearchableComboViewItem alloc] initWithLabel:@"Do Not Remap Modifiers" tag:KEY_ACTION_DO_NOT_REMAP_MODIFIERS],
-                [[iTermSearchableComboViewItem alloc] initWithLabel:@"Remap Modifiers in iTerm2 Only" tag:KEY_ACTION_REMAP_LOCALLY],
+            primary ? [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Modifier Remapping", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+                [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Do Not Remap Modifiers", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_DO_NOT_REMAP_MODIFIERS],
+                [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Remap Modifiers in iTerm2 Only", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_REMAP_LOCALLY],
             ]] : [NSNull null],
-            [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Recent Tabs" items:@[
-                [[iTermSearchableComboViewItem alloc] initWithLabel:@"Cycle Tabs Forward" tag:KEY_ACTION_NEXT_MRU_TAB],
-                [[iTermSearchableComboViewItem alloc] initWithLabel:@"Cycle Tabs Backward" tag:KEY_ACTION_PREVIOUS_MRU_TAB],
+            [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Recent Tabs", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+                [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Cycle Tabs Forward", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_NEXT_MRU_TAB],
+                [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Cycle Tabs Backward", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_PREVIOUS_MRU_TAB],
             ]],
         ] arrayByRemovingNulls]];
     }
 
     const BOOL hideTerminalOnlyItems = (_profileType & ProfileTypeTerminal) == 0;
     groups = [groups arrayByAddingObjectsFromArray:[@[
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Miscellaneous" items:[@[
-            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:@"Run Coprocess" tag:KEY_ACTION_RUN_COPROCESS],
-            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:@"Start Instant Replay" tag:KEY_ACTION_IR_BACKWARD],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Undo" tag:KEY_ACTION_UNDO],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Send tmux Command" tag:KEY_ACTION_SEND_TMUX_COMMAND],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Alert on Next Mark" tag:KEY_ACTION_ALERT_ON_NEXT_MARK],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Miscellaneous", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:[@[
+            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Run Coprocess", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_RUN_COPROCESS],
+            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Start Instant Replay", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_IR_BACKWARD],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Undo", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_UNDO],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Send tmux Command", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SEND_TMUX_COMMAND],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Alert on Next Mark", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_ALERT_ON_NEXT_MARK],
         ] arrayByRemovingNulls]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"New Tab or Window" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"New Window with Profile" tag:KEY_ACTION_NEW_WINDOW_WITH_PROFILE],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"New Tab with Profile" tag:KEY_ACTION_NEW_TAB_WITH_PROFILE],
-        [[iTermSearchableComboViewItem alloc] initWithLabel:@"Duplicate Tab" tag:KEY_ACTION_DUPLICATE_TAB],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"New Tab or Window", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"New Window with Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_NEW_WINDOW_WITH_PROFILE],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"New Tab with Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_NEW_TAB_WITH_PROFILE],
+        [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Duplicate Tab", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_DUPLICATE_TAB],
         ]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Split" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Split Horizontally with Profile" tag:KEY_ACTION_SPLIT_HORIZONTALLY_WITH_PROFILE],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Split Vertically with Profile" tag:KEY_ACTION_SPLIT_VERTICALLY_WITH_PROFILE],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Split", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Split Horizontally with Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SPLIT_HORIZONTALLY_WITH_PROFILE],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Split Vertically with Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SPLIT_VERTICALLY_WITH_PROFILE],
         ]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Profile" items:[@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Change Profile" tag:KEY_ACTION_SET_PROFILE],
-            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:@"Load Color Preset" tag:KEY_ACTION_LOAD_COLOR_PRESET],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:[@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Change Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SET_PROFILE],
+            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Load Color Preset", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_LOAD_COLOR_PRESET],
         ] arrayByRemovingNulls]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Navigate Tabs" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Next Tab" tag:KEY_ACTION_NEXT_SESSION],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Previous Tab" tag:KEY_ACTION_PREVIOUS_SESSION],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Navigate Tabs", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Next Tab", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_NEXT_SESSION],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Previous Tab", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_PREVIOUS_SESSION],
         ]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Reorder Tabs" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Move Tab Left" tag:KEY_ACTION_MOVE_TAB_LEFT],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Move Tab Right" tag:KEY_ACTION_MOVE_TAB_RIGHT],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Reorder Tabs", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Move Tab Left", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_MOVE_TAB_LEFT],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Move Tab Right", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_MOVE_TAB_RIGHT],
         ]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Navigate Windows" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Next Window" tag:KEY_ACTION_NEXT_WINDOW],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Previous Window" tag:KEY_ACTION_PREVIOUS_WINDOW],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Navigate Windows", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Next Window", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_NEXT_WINDOW],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Previous Window", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_PREVIOUS_WINDOW],
         ]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Navigate Panes" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Next Pane" tag:KEY_ACTION_NEXT_PANE],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Previous Pane" tag:KEY_ACTION_PREVIOUS_PANE],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Select Split Pane Above" tag:KEY_ACTION_SELECT_PANE_ABOVE],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Select Split Pane Below" tag:KEY_ACTION_SELECT_PANE_BELOW],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Select Split Pane On Left" tag:KEY_ACTION_SELECT_PANE_LEFT],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Select Split Pane On Right" tag:KEY_ACTION_SELECT_PANE_RIGHT],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Navigate Panes", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Next Pane", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_NEXT_PANE],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Previous Pane", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_PREVIOUS_PANE],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Select Split Pane Above", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SELECT_PANE_ABOVE],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Select Split Pane Below", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SELECT_PANE_BELOW],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Select Split Pane On Left", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SELECT_PANE_LEFT],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Select Split Pane On Right", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SELECT_PANE_RIGHT],
         ]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Resize Pane" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Decrease Height" tag:KEY_ACTION_DECREASE_HEIGHT],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Increase Height" tag:KEY_ACTION_INCREASE_HEIGHT],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Decrease Width" tag:KEY_ACTION_DECREASE_WIDTH],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Increase Width" tag:KEY_ACTION_INCREASE_WIDTH],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Resize Pane", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Decrease Height", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_DECREASE_HEIGHT],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Increase Height", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_INCREASE_HEIGHT],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Decrease Width", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_DECREASE_WIDTH],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Increase Width", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_INCREASE_WIDTH],
         ]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Scroll" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Scroll to End" tag:KEY_ACTION_SCROLL_END],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Scroll to Top" tag:KEY_ACTION_SCROLL_HOME],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Scroll One Line Down" tag:KEY_ACTION_SCROLL_LINE_DOWN],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Scroll One Line Up" tag:KEY_ACTION_SCROLL_LINE_UP],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Scroll One Page Down" tag:KEY_ACTION_SCROLL_PAGE_DOWN],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Scroll One Page Up" tag:KEY_ACTION_SCROLL_PAGE_UP],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Scroll", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Scroll to End", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SCROLL_END],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Scroll to Top", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SCROLL_HOME],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Scroll One Line Down", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SCROLL_LINE_DOWN],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Scroll One Line Up", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SCROLL_LINE_UP],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Scroll One Page Down", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SCROLL_PAGE_DOWN],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Scroll One Page Up", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SCROLL_PAGE_UP],
         ]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Split Panes" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Swap With Split Pane Above" tag:KEY_ACTION_SWAP_PANE_ABOVE],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Swap With Split Pane Below" tag:KEY_ACTION_SWAP_PANE_BELOW],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Swap With Split Pane on Left" tag:KEY_ACTION_SWAP_PANE_LEFT],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Swap With Split Pane on Right" tag:KEY_ACTION_SWAP_PANE_RIGHT],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Swap With Next Pane" tag:KEY_ACTION_SWAP_WITH_NEXT_PANE],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Swap With Previous Pane" tag:KEY_ACTION_SWAP_WITH_PREVIOUS_PANE],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Move Session to Split Pane" tag:KEY_ACTION_MOVE_TO_SPLIT_PANE],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Split Panes", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Swap With Split Pane Above", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SWAP_PANE_ABOVE],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Swap With Split Pane Below", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SWAP_PANE_BELOW],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Swap With Split Pane on Left", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SWAP_PANE_LEFT],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Swap With Split Pane on Right", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SWAP_PANE_RIGHT],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Swap With Next Pane", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SWAP_WITH_NEXT_PANE],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Swap With Previous Pane", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SWAP_WITH_PREVIOUS_PANE],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Move Session to Split Pane", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_MOVE_TO_SPLIT_PANE],
         ]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Send Keystrokes" items:[@[
-            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:@"Send ^H Backspace" tag:KEY_ACTION_SEND_C_H_BACKSPACE],
-            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:@"Send ^? Backspace" tag:KEY_ACTION_SEND_C_QM_BACKSPACE],
-            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:@"Send Escape Sequence" tag:KEY_ACTION_ESCAPE_SEQUENCE],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Send Hex Code" tag:KEY_ACTION_HEX_CODE],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Send Text" tag:KEY_ACTION_TEXT],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Send Text with “vim” Special Chars" tag:KEY_ACTION_VIM_TEXT],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Send Text without Broadcasting" tag:KEY_ACTION_VIM_TEXT_NO_BROADCAST],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Send Snippet" tag:KEY_ACTION_SEND_SNIPPET],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Compose…" tag:KEY_ACTION_COMPOSE],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Send Keystrokes", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:[@[
+            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Send ^H Backspace", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SEND_C_H_BACKSPACE],
+            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Send ^? Backspace", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SEND_C_QM_BACKSPACE],
+            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Send Escape Sequence", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_ESCAPE_SEQUENCE],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Send Hex Code", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_HEX_CODE],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Send Text", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_TEXT],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Send Text with “vim” Special Chars", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_VIM_TEXT],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Send Text without Broadcasting", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_VIM_TEXT_NO_BROADCAST],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Send Snippet", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SEND_SNIPPET],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Compose…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_COMPOSE],
         ] arrayByRemovingNulls]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Search" items:[@[
-            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:@"Find Regular Expression…" tag:KEY_ACTION_FIND_REGEX],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Find Again Down" tag:KEY_FIND_AGAIN_DOWN],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Find Again Up" tag:KEY_FIND_AGAIN_UP],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Search", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:[@[
+            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Find Regular Expression…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_FIND_REGEX],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Find Again Down", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_FIND_AGAIN_DOWN],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Find Again Up", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_FIND_AGAIN_UP],
         ] arrayByRemovingNulls]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Pasteboard" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Paste…" tag:KEY_ACTION_PASTE_SPECIAL],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Paste from Selection…" tag:KEY_ACTION_PASTE_SPECIAL_FROM_SELECTION],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Copy or Send ^C" tag:KEY_ACTION_COPY_OR_SEND],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Paste or Send ^V" tag:KEY_ACTION_PASTE_OR_SEND],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Copy Interpolated String" tag:KEY_ACTION_COPY_INTERPOLATED_STRING],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Copy Mode Commands" tag:KEY_ACTION_COPY_MODE],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Pasteboard", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Paste…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_PASTE_SPECIAL],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Paste from Selection…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_PASTE_SPECIAL_FROM_SELECTION],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Copy or Send ^C", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_COPY_OR_SEND],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Paste or Send ^V", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_PASTE_OR_SEND],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Copy Interpolated String", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_COPY_INTERPOLATED_STRING],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Copy Mode Commands", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_COPY_MODE],
         ]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Toggles" items:[@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Toggle Fullscreen" tag:KEY_ACTION_TOGGLE_FULLSCREEN],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Toggle Pin Hotkey Window" tag:KEY_ACTION_TOGGLE_HOTKEY_WINDOW_PINNING],
-            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:@"Toggle Mouse Reporting" tag:KEY_ACTION_TOGGLE_MOUSE_REPORTING],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Toggle Setting" tag:KEY_ACTION_TOGGLE_SETTING],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Toggles", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:[@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Toggle Fullscreen", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_TOGGLE_FULLSCREEN],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Toggle Pin Hotkey Window", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_TOGGLE_HOTKEY_WINDOW_PINNING],
+            hideTerminalOnlyItems ? [NSNull null] : [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Toggle Mouse Reporting", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_TOGGLE_MOUSE_REPORTING],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Toggle Setting", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_TOGGLE_SETTING],
         ] arrayByRemovingNulls]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Selection" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Move Start of Selection Back" tag:KEY_ACTION_MOVE_START_OF_SELECTION_LEFT],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Move Start of Selection Forward" tag:KEY_ACTION_MOVE_START_OF_SELECTION_RIGHT],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Move End of Selection Back" tag:KEY_ACTION_MOVE_END_OF_SELECTION_LEFT],
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Move End of Selection Forward" tag:KEY_ACTION_MOVE_END_OF_SELECTION_RIGHT],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Selection", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Move Start of Selection Back", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_MOVE_START_OF_SELECTION_LEFT],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Move Start of Selection Forward", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_MOVE_START_OF_SELECTION_RIGHT],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Move End of Selection Back", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_MOVE_END_OF_SELECTION_LEFT],
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Move End of Selection Forward", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_MOVE_END_OF_SELECTION_RIGHT],
         ]],
 
-        [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Scripting" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Invoke Script Function…" tag:KEY_ACTION_INVOKE_SCRIPT_FUNCTION],
+        [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Scripting", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Invoke Script Function…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_INVOKE_SCRIPT_FUNCTION],
         ]],
 
-        primary ? [[iTermSearchableComboViewGroup alloc] initWithLabel:@"Composition" items:@[
-            [[iTermSearchableComboViewItem alloc] initWithLabel:@"Sequence…" tag:KEY_ACTION_SEQUENCE],
+        primary ? [[iTermSearchableComboViewGroup alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Composition", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") items:@[
+            [[iTermSearchableComboViewItem alloc] initWithLabel:NSLocalizedStringFromTableInBundle(@"Sequence…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") tag:KEY_ACTION_SEQUENCE],
         ]] : [NSNull null],
     ] arrayByRemovingNulls]];
     return groups;
@@ -517,21 +517,21 @@ const CGFloat sideMarginWidth = 40;
         case iTermEditKeyActionWindowControllerModeKeyboardShortcut:
             break;
         case iTermEditKeyActionWindowControllerModeTouchBarItem:
-            _touchBarLabel.placeholderString = @"Label to show in Touch Bar";
+            _touchBarLabel.placeholderString = NSLocalizedStringFromTableInBundle(@"Label to show in Touch Bar", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
             break;
         case iTermEditKeyActionWindowControllerModeUnbound:
-            _touchBarLabel.placeholderString = self.titleIsInterpolated ? @"Title (Interpolated String)" : @"Title";
+            _touchBarLabel.placeholderString = self.titleIsInterpolated ? @"Title (Interpolated String)" : NSLocalizedStringFromTableInBundle(@"Title", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
             break;
     }
 
     _comboView = [[iTermSearchableComboView alloc] initWithGroups:[self groupsForPrimary:YES]
-                                                     defaultTitle:@"Select Action…"];
+                                                     defaultTitle:NSLocalizedStringFromTableInBundle(@"Select Action…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
     [_comboViewContainer addSubview:_comboView];
     _comboView.frame = _comboViewContainer.bounds;
     _comboView.delegate = self;
 
     _secondaryComboView = [[iTermSearchableComboView alloc] initWithGroups:[self groupsForPrimary:NO]
-                                                              defaultTitle:@"Select Action…"];
+                                                              defaultTitle:NSLocalizedStringFromTableInBundle(@"Select Action…", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
     [_secondaryComboViewContainer addSubview:_secondaryComboView];
     _secondaryComboView.frame = _secondaryComboViewContainer.bounds;
     _secondaryComboView.delegate = self;
@@ -548,17 +548,17 @@ const CGFloat sideMarginWidth = 40;
     (void)[_comboView selectItemWithTag:self.action];
 
     _applyButton = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
-    [_applyButton addItemWithTitle:@"Apply to current session"];
+    [_applyButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Apply to current session", @"Settings", [NSBundle bundleForClass:[self class]], @"应用到当前会话")];
     _applyButton.menu.itemArray.lastObject.tag = iTermActionApplyModeCurrentSession;
-    [_applyButton addItemWithTitle:@"Apply to all sessions"];
+    [_applyButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Apply to all sessions", @"Settings", [NSBundle bundleForClass:[self class]], @"应用到所有会话")];
     _applyButton.menu.itemArray.lastObject.tag = iTermActionApplyModeAllSessions;
-    [_applyButton addItemWithTitle:@"Apply to all sessions except current"];
+    [_applyButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Apply to all sessions except current", @"Settings", [NSBundle bundleForClass:[self class]], @"应用到除当前外所有会话")];
     _applyButton.menu.itemArray.lastObject.tag = iTermActionApplyModeUnfocusedSessions;
-    [_applyButton addItemWithTitle:@"Apply to all sessions in window"];
+    [_applyButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Apply to all sessions in window", @"Settings", [NSBundle bundleForClass:[self class]], @"应用到窗口中所有会话")];
     _applyButton.menu.itemArray.lastObject.tag = iTermActionApplyModeAllInWindow;
-    [_applyButton addItemWithTitle:@"Apply to all sessions in tab"];
+    [_applyButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Apply to all sessions in tab", @"Settings", [NSBundle bundleForClass:[self class]], @"应用到标签页中所有会话")];
     _applyButton.menu.itemArray.lastObject.tag = iTermActionApplyModeAllInTab;
-    [_applyButton addItemWithTitle:@"Apply to broadcasted-to sessions"];
+    [_applyButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Apply to broadcasted-to sessions", @"Settings", [NSBundle bundleForClass:[self class]], @"应用到广播目标会话")];
     _applyButton.menu.itemArray.lastObject.tag = iTermActionApplyModeBroadcasting;
 
     _applyButton.target = self;
@@ -692,7 +692,7 @@ const CGFloat sideMarginWidth = 40;
 - (void)updateViewsAnimated:(BOOL)animated secondary:(BOOL)secondary {
     switch (self.mode) {
         case iTermEditKeyActionWindowControllerModeUnbound:
-            _keyboardShortcutLabel.stringValue = @"Title";
+            _keyboardShortcutLabel.stringValue = NSLocalizedStringFromTableInBundle(@"Title", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
             if (self.titleIsInterpolated) {
                 if (!_labelDelegate) {
                     _labelDelegate = [[iTermFunctionCallTextFieldDelegate alloc] initWithPathSource:[iTermVariableHistory pathSourceForContext:iTermVariablesSuggestionContextSession]
@@ -707,13 +707,13 @@ const CGFloat sideMarginWidth = 40;
             _shortcutField.hidden = YES;
             break;
         case iTermEditKeyActionWindowControllerModeTouchBarItem:
-            _keyboardShortcutLabel.stringValue = @"Touch Bar Label";
+            _keyboardShortcutLabel.stringValue = NSLocalizedStringFromTableInBundle(@"Touch Bar Label", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
             _touchBarLabel.delegate = self;
             _touchBarLabel.hidden = NO;
             _shortcutField.hidden = YES;
             break;
         case iTermEditKeyActionWindowControllerModeKeyboardShortcut:
-            _keyboardShortcutLabel.stringValue = @"Keyboard Shortcut:";
+            _keyboardShortcutLabel.stringValue = NSLocalizedStringFromTableInBundle(@"Keyboard Shortcut:", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
             _touchBarLabel.hidden = YES;
             _shortcutField.hidden = NO;
             break;

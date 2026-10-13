@@ -1,0 +1,15 @@
+/* iTermAboutWindowController.strings - 繁体中文 */
+
+/* iTermAboutWindowController.m */
+"Build %@\n\n" = "版本 %@\n\n";
+"What’s New in 3.7?\n" = "3.7 版本新功能\n";
+"Home Page" = "首頁";
+"Report a bug" = "報告問題";
+"Credits" = "致謝";
+"Loading supporters…" = "正在載入支持者…";
+"Error loading patrons :(" = "載入支持者失敗 :(";
+
+/* AboutWindow.xib */
+"iTerm2" = "iTerm2";
+"By George Nachman and Contributors" = "由 George Nachman 和貢獻者開發";
+"iTerm2 is supported by these backers on <a href=\"https://patreon.com/gnachman\">Patreon</a> and <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a>:" = "iTerm2 由以下支持者在 <a href=\"https://patreon.com/gnachman\">Patreon</a> 和 <a href=\"https://github.com/sponsors/gnachman\">GitHub Sponsors</a> 上支持：";

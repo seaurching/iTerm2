@@ -111,11 +111,11 @@
 }
 
 - (NSString *)message {
-    return [NSString stringWithFormat:@"The profile “%@” always requires confirmation.", _name];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The profile “%@” always requires confirmation.", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"配置文件始终需要确认。"), _name];
 }
 
 + (NSString *)groupFooter {
-    return @"You can change this setting in Settings > Profiles > Session";
+    return NSLocalizedStringFromTableInBundle(@"You can change this setting in Settings > Profiles > Session", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"您可以在 设置 > 配置文件 > 会话 中更改此设置");
 }
 
 - (NSNumber *)priority {
@@ -150,20 +150,20 @@
 - (NSString *)message {
     const NSInteger maxJobsToList = 3;
     if (_jobs.count <= maxJobsToList) {
-        return [NSString stringWithFormat:@"A session with profile “%@” is running %@.",
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"A session with profile “%@” is running %@.", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"配置文件的会话正在运行 %@。"),
                 _name,
                 [_jobs componentsJoinedWithOxfordComma]];
     } else {
-        return [NSString stringWithFormat:@"A session with profile “%@” is running %@, and %@ other %@.",
+        return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"A session with profile “%@” is running %@, and %@ other %@.", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"配置文件的会话正在运行 %@，以及其他 %@ 个 %@。"),
                 _name,
                 [[_jobs subarrayWithRange:NSMakeRange(0, maxJobsToList)] componentsJoinedByString:@", "],
                 @(_jobs.count - maxJobsToList),
-                _jobs.count == (maxJobsToList + 1) ? @"job" : @"jobs"];
+                _jobs.count == (maxJobsToList + 1) ? NSLocalizedStringFromTableInBundle(@"job", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"个任务") : NSLocalizedStringFromTableInBundle(@"jobs", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"个任务")];
     }
 }
 
 + (NSString *)groupFooter {
-    return @"You can change this setting in Settings > Profiles > Session";
+    return NSLocalizedStringFromTableInBundle(@"You can change this setting in Settings > Profiles > Session", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"您可以在 设置 > 配置文件 > 会话 中更改此设置");
 }
 
 - (NSNumber *)priority {
@@ -219,27 +219,27 @@
 }
 
 + (instancetype)alwaysConfirmQuitPreferenceEnabled {
-    return [[[iTermPromptOnCloseMessageReason alloc] initWithMessage:@"“Settings > General > Closing > Confirm Quit iTerm2” is enabled and there is at least one terminal window." priority:100] autorelease];
+    return [[[iTermPromptOnCloseMessageReason alloc] initWithMessage:NSLocalizedStringFromTableInBundle(@"“Settings > General > Closing > Confirm Quit iTerm2” is enabled and there is at least one terminal window.", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"已启用确认退出 iTerm2，且至少有一个终端窗口。") priority:100] autorelease];
 }
 
 + (instancetype)alwaysConfirmQuitPreferenceEvenIfThereAreNoWindowsEnabled {
-    return [[[iTermPromptOnCloseMessageReason alloc] initWithMessage:@"“Settings > General > Closing > Confirm Quit iTerm2” and “Even if there are no windows” is enabled." priority:100] autorelease];
+    return [[[iTermPromptOnCloseMessageReason alloc] initWithMessage:NSLocalizedStringFromTableInBundle(@"“Settings > General > Closing > Confirm Quit iTerm2” and “Even if there are no windows” is enabled.", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"已启用确认退出 iTerm2 和即使没有窗口。") priority:100] autorelease];
 }
 
 + (instancetype)closingMultipleSessionsPreferenceEnabled {
-    return [[[iTermPromptOnCloseMessageReason alloc] initWithMessage:@"“Settings > General > Closing > Confirm closing multiple sessions” is enabled." priority:90] autorelease];
+    return [[[iTermPromptOnCloseMessageReason alloc] initWithMessage:NSLocalizedStringFromTableInBundle(@"“Settings > General > Closing > Confirm closing multiple sessions” is enabled.", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"已启用确认关闭多个会话。") priority:90] autorelease];
 }
 
 + (instancetype)tmuxClientsAlwaysPromptBecauseJobsAreNotExposed {
-    return [[[iTermPromptOnCloseMessageReason alloc] initWithMessage:@"A tmux session is configured to prompt if jobs are running, but tmux doesn’t expose the process tree." priority:80] autorelease];
+    return [[[iTermPromptOnCloseMessageReason alloc] initWithMessage:NSLocalizedStringFromTableInBundle(@"A tmux session is configured to prompt if jobs are running, but tmux doesn’t expose the process tree.", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"tmux 会话配置为在有任务运行时提示，但 tmux 不公开进程树。") priority:80] autorelease];
 }
 
 + (instancetype)sessionIsLocked {
-    return [[[iTermPromptOnCloseMessageReason alloc] initWithMessage:@"This pane is locked." priority:75] autorelease];
+    return [[[iTermPromptOnCloseMessageReason alloc] initWithMessage:NSLocalizedStringFromTableInBundle(@"This pane is locked.", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"此窗格已锁定。") priority:75] autorelease];
 }
 
 + (instancetype)tabIsPinnedWithNumber:(int)tabNumber {
-    NSString *const message = [NSString stringWithFormat:@"Tab #%d is pinned.", tabNumber];
+    NSString *const message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Tab #%d is pinned.", @"iTermPromptOnCloseReason", [NSBundle bundleForClass:[self class]], @"标签页 #%d 已固定。"), tabNumber];
     return [[[iTermPromptOnCloseMessageReason alloc] initWithMessage:message priority:70] autorelease];
 }
 

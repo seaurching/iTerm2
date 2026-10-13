@@ -17,11 +17,11 @@
 @implementation iTermHighlightLineTrigger
 
 + (NSString *)title {
-    return @"Highlight Line…";
+    return NSLocalizedStringFromTableInBundle(@"Highlight Line…", @"Triggers", [NSBundle bundleForClass:[self class]], @"高亮行触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Highlight Line with %@ over %@", self.textColor.humanReadableDescription ?: @"(no color)", self.backgroundColor.humanReadableDescription ?: @"(no color)"];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Highlight Line with %@ over %@", @"Triggers", [NSBundle bundleForClass:[self class]], @"高亮行触发器描述"), self.textColor.humanReadableDescription ?: NSLocalizedStringFromTableInBundle(@"(no color)", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：无颜色"), self.backgroundColor.humanReadableDescription ?: NSLocalizedStringFromTableInBundle(@"(no color)", @"Triggers", [NSBundle bundleForClass:[self class]], @"颜色：无颜色")];
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
@@ -174,7 +174,7 @@
 - (NSAttributedString *)paramAttributedString {
     NSMutableAttributedString *result = [[NSMutableAttributedString alloc] init];
 
-    [result appendAttributedString:[[NSAttributedString alloc] initWithString:@"Text: "]];
+    [result appendAttributedString:[[NSAttributedString alloc] initWithString:NSLocalizedStringFromTableInBundle(@"Text: ", @"Triggers", [NSBundle bundleForClass:[self class]], @"参数标签：文本")]];
 
     NSTextAttachment *textColorAttachment = [[NSTextAttachment alloc] init];
     textColorAttachment.image = [self imageForColor:self.textColor];
@@ -184,7 +184,7 @@
     [mutableTextAttachmentString addAttribute:NSBaselineOffsetAttributeName value:@(-2) range:NSMakeRange(0, mutableTextAttachmentString.length)];
     [result appendAttributedString:mutableTextAttachmentString];
 
-    [result appendAttributedString:[[NSAttributedString alloc] initWithString:@" Background: "]];
+    [result appendAttributedString:[[NSAttributedString alloc] initWithString:NSLocalizedStringFromTableInBundle(@" Background: ", @"Triggers", [NSBundle bundleForClass:[self class]], @"参数标签：背景")]];
 
     NSTextAttachment *backgroundColorAttachment = [[NSTextAttachment alloc] init];
     backgroundColorAttachment.image = [self imageForColor:self.backgroundColor];

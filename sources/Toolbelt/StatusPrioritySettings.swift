@@ -189,10 +189,10 @@ private class PriorityDataProvider: CRUDDataProvider {
             return
         }
         let alert = NSAlert()
-        alert.messageText = "New Priority Pattern"
-        alert.informativeText = "Enter a substring to match against status text (case-insensitive)."
-        alert.addButton(withTitle: "OK")
-        alert.addButton(withTitle: "Cancel")
+        alert.messageText = NSLocalizedString("New Priority Pattern", tableName: "Toolbelt", comment: "status priority: new pattern alert title")
+        alert.informativeText = NSLocalizedString("Enter a substring to match against status text (case-insensitive).", tableName: "Toolbelt", comment: "status priority: new pattern alert info")
+        alert.addButton(withTitle: NSLocalizedString("OK", tableName: "Toolbelt", comment: "status priority: new pattern alert ok button"))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "Toolbelt", comment: "status priority: new pattern alert cancel button"))
 
         let textField = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
         alert.accessoryView = textField
@@ -265,7 +265,7 @@ private final class StatusPriorityViewController: NSViewController, CRUDTableVie
         let container = NSView(frame: NSRect(x: 0, y: 0, width: width, height: height))
 
         // Instructional label at top
-        let label = NSTextField(wrappingLabelWithString: "Statuses are sorted by priority. Items near the top have higher priority. Drag to reorder. Click to edit.")
+        let label = NSTextField(wrappingLabelWithString: NSLocalizedString("Statuses are sorted by priority. Items near the top have higher priority. Drag to reorder. Click to edit.", tableName: "Toolbelt", comment: "status priority: instructional label"))
         label.font = .systemFont(ofSize: NSFont.smallSystemFontSize)
         label.textColor = .secondaryLabelColor
         label.frame = NSRect(x: margin,
@@ -279,7 +279,7 @@ private final class StatusPriorityViewController: NSViewController, CRUDTableVie
         // affecting the colored dot or this priority list’s meaning.
         // Pinned to the bottom with the other per-popover switch.
         let toggleY = margin
-        let toggle = NSButton(checkboxWithTitle: "Show status in tab subtitle",
+        let toggle = NSButton(checkboxWithTitle: NSLocalizedString("Show status in tab subtitle", tableName: "Toolbelt", comment: "status priority: show subtitle checkbox title"),
                               target: self,
                               action: #selector(showSubtitleToggleChanged(_:)))
         toggle.state = iTermUserDefaults.showSessionStatusInTabSubtitle ? .on : .off
@@ -294,11 +294,11 @@ private final class StatusPriorityViewController: NSViewController, CRUDTableVie
         // directly above the subtitle toggle so both per-popover switches are
         // grouped together.
         let mergeToggleY = toggleY + toggleHeight + toggleGap
-        let mergeToggle = NSButton(checkboxWithTitle: "Merge workgroup statuses",
+        let mergeToggle = NSButton(checkboxWithTitle: NSLocalizedString("Merge workgroup statuses", tableName: "Toolbelt", comment: "status priority: merge workgroup checkbox title"),
                                    target: self,
                                    action: #selector(mergeWorkgroupsToggleChanged(_:)))
         mergeToggle.state = StatusPrioritySettings.shared.mergeWorkgroups ? .on : .off
-        mergeToggle.toolTip = "When enabled, only the most recent status from each workgroup is shown."
+        mergeToggle.toolTip = NSLocalizedString("When enabled, only the most recent status from each workgroup is shown.", tableName: "Toolbelt", comment: "status priority: merge workgroup tooltip")
         mergeToggle.frame = NSRect(x: margin,
                                    y: mergeToggleY,
                                    width: width - 2 * margin,
@@ -309,8 +309,8 @@ private final class StatusPriorityViewController: NSViewController, CRUDTableVie
         // +/- segmented control, above the checkboxes and below the table.
         let segmentY = mergeToggleY + toggleHeight + toggleGap
         let addRemove = NSSegmentedControl(images: [
-            NSImage(systemSymbolName: "plus", accessibilityDescription: "Add")!,
-            NSImage(systemSymbolName: "minus", accessibilityDescription: "Remove")!
+            NSImage(systemSymbolName: "plus", accessibilityDescription: NSLocalizedString("Add", tableName: "Toolbelt", comment: "status priority: add button accessibility"))!,
+            NSImage(systemSymbolName: "minus", accessibilityDescription: NSLocalizedString("Remove", tableName: "Toolbelt", comment: "status priority: remove button accessibility"))!
         ], trackingMode: .momentary, target: nil, action: nil)
         addRemove.frame = NSRect(x: margin, y: segmentY, width: 60, height: segmentHeight)
         addRemove.autoresizingMask = [.maxXMargin, .maxYMargin]
@@ -330,12 +330,12 @@ private final class StatusPriorityViewController: NSViewController, CRUDTableVie
         tv.columnAutoresizingStyle = .noColumnAutoresizing
 
         let patternColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier("Pattern"))
-        patternColumn.title = "Pattern"
+        patternColumn.title = NSLocalizedString("Pattern", tableName: "Toolbelt", comment: "status priority: pattern column title")
         patternColumn.isEditable = true
         tv.addTableColumn(patternColumn)
 
         let notifyColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier("Notify"))
-        notifyColumn.title = "Notify"
+        notifyColumn.title = NSLocalizedString("Notify", tableName: "Toolbelt", comment: "status priority: notify column title")
         notifyColumn.width = StatusPriorityViewController.notifyColumnWidth
         notifyColumn.minWidth = StatusPriorityViewController.notifyColumnWidth
         notifyColumn.maxWidth = StatusPriorityViewController.notifyColumnWidth

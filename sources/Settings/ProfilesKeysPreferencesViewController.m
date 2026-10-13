@@ -51,12 +51,14 @@ static NSString *const kDeleteKeyString = @"0x7f-0x0";
     IBOutlet NSButton *_hasHotkey;
     IBOutlet NSButton *_configureHotKey;
     IBOutlet NSButton *_useLibTickit;
+    IBOutlet NSButton *_csiuHelp;
     IBOutlet NSView *_hotKeyContainerView;
     IBOutlet iTermKeyMappingViewController *_keyMappingViewController;
     IBOutlet NSButton *_allowModifyOtherKeys;
     IBOutlet NSButton *_movementKeysScrollOutsideInteractiveApps;
     IBOutlet NSTabView *_tabView;
     IBOutlet NSButton *_treatOptionAsAlt;
+    IBOutlet NSButton *_treatOptionAsAltHelp;
 
     IBOutlet NSButton *_leftControlButton;
     IBOutlet NSButton *_rightControlButton;
@@ -81,6 +83,9 @@ static NSString *const kDeleteKeyString = @"0x7f-0x0";
 }
 
 - (void)awakeFromNib {
+    [_useLibTickit it_fitBeforeHelpButton:_csiuHelp];
+    [_treatOptionAsAlt it_fitBeforeHelpButton:_treatOptionAsAltHelp];
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyBindingDidChange)
                                                  name:kKeyBindingsChangedNotification
@@ -199,12 +204,12 @@ static NSString *const kDeleteKeyString = @"0x7f-0x0";
     [self updateNonDefaultIndicatorVisibleForInfo:info];
 
     [self addViewToSearchIndex:_configureHotKey
-                   displayName:@"Configure hotkey window"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Configure hotkey window", @"Settings", [NSBundle bundleForClass:[self class]], @"search display name for configure hotkey window")
                        phrases:@[]
                            key:nil];
 
     [self addViewToSearchIndex:_keyMappingViewController.view
-                   displayName:@"Profile key bindings"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Profile key bindings", @"Settings", [NSBundle bundleForClass:[self class]], @"search display name for profile key bindings")
                        phrases:@[ @"mapping", @"shortcuts", @"touch bar", @"preset", @"xterm", @"natural", @"terminal.app compatibility", @"numeric keypad" ]
                            key:nil];
 
@@ -320,7 +325,7 @@ static NSString *const kDeleteKeyString = @"0x7f-0x0";
 }
 
 - (IBAction)optionAsMetaHelp:(id)sender {
-    [[NSView castFrom:sender] it_showWarningWithMarkdown:@"In most key reporting modes, when reporting special keys like arrows, the ⌥ key may act as either Meta or Alt. Prior to version 3.5.6, iTerm2 used Meta. The default changed to Alt because some programs like Emacs expect it."];
+    [[NSView castFrom:sender] it_showWarningWithMarkdown:NSLocalizedStringFromTableInBundle(@"In most key reporting modes, when reporting special keys like arrows, the ⌥ key may act as either Meta or Alt. Prior to version 3.5.6, iTerm2 used Meta. The default changed to Alt because some programs like Emacs expect it.", @"Settings", [NSBundle bundleForClass:[self class]], @"help text for option as meta")];
 }
 
 - (void)updateExtendedModifierLabelColors {
@@ -348,11 +353,11 @@ static NSString *const kDeleteKeyString = @"0x7f-0x0";
         NSString *formattedAction = action.displayName;
         return [NSString stringWithFormat:@"%@\t%@", formattedCombo, formattedAction];
     }];
-    warning.title = [NSString stringWithFormat  :@"This profile has some key bindings from a preset that conflict with CSI u. Remove them?"];
+    warning.title = [NSString stringWithFormat  :NSLocalizedStringFromTableInBundle(@"This profile has some key bindings from a preset that conflict with CSI u. Remove them?", @"Settings", [NSBundle bundleForClass:[self class]], @"warning title for incompatible csi u key bindings")];
     NSString *message = [descriptions componentsJoinedByString:@"\n"];
 
     iTermScrollingDisclosableView *accessory = [[iTermScrollingDisclosableView alloc] initWithFrame:NSZeroRect
-                                                                                             prompt:@"Show incompatible key bindings"
+                                                                                             prompt:NSLocalizedStringFromTableInBundle(@"Show incompatible key bindings", @"Settings", [NSBundle bundleForClass:[self class]], @"disclosable prompt to show incompatible key bindings")
                                                                                             message:message
                                                                                       maximumHeight:150];
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
@@ -372,11 +377,11 @@ static NSString *const kDeleteKeyString = @"0x7f-0x0";
                                  0,
                                  accessory.intrinsicContentSize.width,
                                  accessory.intrinsicContentSize.height);
-    warning.heading = @"Remove Incompatible Key Bindings?";
-    NSArray *actions = @[ [iTermWarningAction warningActionWithLabel:@"Remove" block:^(iTermWarningSelection selection) {
+    warning.heading = NSLocalizedStringFromTableInBundle(@"Remove Incompatible Key Bindings?", @"Settings", [NSBundle bundleForClass:[self class]], @"warning heading for removing incompatible key bindings");
+    NSArray *actions = @[ [iTermWarningAction warningActionWithLabel:NSLocalizedStringFromTableInBundle(@"Remove", @"Settings", [NSBundle bundleForClass:[self class]], @"remove action label") block:^(iTermWarningSelection selection) {
         [self removeKeystrokeBindings:incompatibles];
     }],
-                          [iTermWarningAction warningActionWithLabel:@"Cancel" block:^(iTermWarningSelection selection) {}] ];
+                          [iTermWarningAction warningActionWithLabel:NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"cancel action label") block:^(iTermWarningSelection selection) {}] ];
     warning.warningActions = actions;
     warning.warningType = kiTermWarningTypePersistent;
     warning.window = self.view.window;
@@ -598,7 +603,7 @@ static NSString *const kDeleteKeyString = @"0x7f-0x0";
     Profile *profile = [self.delegate profilePreferencesCurrentProfile];
     NSSet<iTermKeystroke *> *keystrokesInProfile = [iTermKeyMappings keystrokesInKeyMappingsInProfile:profile];
     if (![keystrokesInProfile isSubsetOfSet:keystrokesThatWillChange]) {
-        NSNumber *n = [viewController removeBeforeLoading:@"importing mappings"];
+        NSNumber *n = [viewController removeBeforeLoading:NSLocalizedStringFromTableInBundle(@"importing mappings", @"Settings", [NSBundle bundleForClass:[self class]], @"reason for removing before importing mappings")];
         if (!n) {
             return NO;
         }
@@ -689,7 +694,7 @@ static NSString *const kDeleteKeyString = @"0x7f-0x0";
     NSSet<iTermKeystroke *> *keystrokesInProfile = [iTermKeyMappings keystrokesInKeyMappingsInProfile:profile];
     BOOL replaceAll = NO;
     if (![keystrokesInProfile isSubsetOfSet:keystrokesThatWillChange]) {
-        NSNumber *n = [viewController removeBeforeLoading:@"loading preset"];
+        NSNumber *n = [viewController removeBeforeLoading:NSLocalizedStringFromTableInBundle(@"loading preset", @"Settings", [NSBundle bundleForClass:[self class]], @"reason for removing before loading preset")];
         if (!n) {
             return;
         }
@@ -710,10 +715,8 @@ static NSString *const kDeleteKeyString = @"0x7f-0x0";
 #pragma mark - Warnings
 
 - (BOOL)warnAboutOverride {
-    switch ([iTermWarning showWarningWithTitle:@"The keyboard shortcut you have set for this profile "
-                                               @"will take precedence over an existing shortcut for "
-                                               @"the same key combination in a global shortcut."
-                                       actions:@[ @"OK", @"Cancel" ]
+    switch ([iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"The keyboard shortcut you have set for this profile will take precedence over an existing shortcut for the same key combination in a global shortcut.", @"Settings", [NSBundle bundleForClass:[self class]], @"warning about profile shortcut overriding global shortcut")
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"OK action label"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"cancel action label") ]
                                     identifier:@"NeverWarnAboutOverrides"
                                    silenceable:kiTermWarningTypePermanentlySilenceable
                                         window:self.view.window]) {
@@ -725,10 +728,8 @@ static NSString *const kDeleteKeyString = @"0x7f-0x0";
 }
 
 - (void)maybeWarnAboutMeta {
-    [iTermWarning showWarningWithTitle:@"You have chosen to have an option key act as Meta. "
-                                       @"This option is useful for backward compatibility with older "
-                                       @"systems. The \"Esc+\" option is recommended for most users."
-                               actions:@[ @"OK" ]
+    [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"You have chosen to have an option key act as Meta. This option is useful for backward compatibility with older systems. The \"Esc+\" option is recommended for most users.", @"Settings", [NSBundle bundleForClass:[self class]], @"warning about option key acting as meta")
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"OK action label") ]
                             identifier:@"NeverWarnAboutMeta"
                            silenceable:kiTermWarningTypePermanentlySilenceable
                                 window:self.view.window];

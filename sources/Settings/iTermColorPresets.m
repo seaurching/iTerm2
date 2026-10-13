@@ -34,9 +34,9 @@ NSString *const kRebuildColorPresetsMenuNotification = @"kRebuildColorPresetsMen
     if (!aDict) {
         RLog(@"Failed to parse dictionary");
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Import Failed.";
-        alert.informativeText = @"The selected file could not be read or did not contain a valid color scheme.";
-        [alert addButtonWithTitle:@"OK"];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Import Failed.", @"Settings", [NSBundle bundleForClass:[self class]], @"Color presets: import failed title");
+        alert.informativeText = NSLocalizedStringFromTableInBundle(@"The selected file could not be read or did not contain a valid color scheme.", @"Settings", [NSBundle bundleForClass:[self class]], @"Color presets: import failed message");
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"Color presets: OK button")];
         [alert runModal];
         return NO;
     } else {
@@ -45,10 +45,10 @@ NSString *const kRebuildColorPresetsMenuNotification = @"kRebuildColorPresetsMen
         if (dup) {
             DLog(@"Is a duplicate preset");
             NSAlert *alert = [[NSAlert alloc] init];
-            alert.messageText = @"Add duplicate color preset?";
-            alert.informativeText = [NSString stringWithFormat:@"The color preset “%@” is the same as the preset you're trying to add. Really add it?", dup];
-            [alert addButtonWithTitle:@"Cancel"];
-            [alert addButtonWithTitle:@"Add it anyway"];
+            alert.messageText = NSLocalizedStringFromTableInBundle(@"Add duplicate color preset?", @"Settings", [NSBundle bundleForClass:[self class]], @"Color presets: duplicate preset title");
+            alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The color preset “%@” is the same as the preset you're trying to add. Really add it?", @"Settings", [NSBundle bundleForClass:[self class]], @"Color presets: duplicate preset message"), dup];
+            [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"Color presets: cancel button")];
+            [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Add it anyway", @"Settings", [NSBundle bundleForClass:[self class]], @"Color presets: add anyway button")];
             if ([alert runModal] == NSAlertFirstButtonReturn) {
                 DLog(@"User declined to install dup");
                 return NO;

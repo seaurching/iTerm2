@@ -75,10 +75,10 @@
 
 - (void)updateOverlayText {
     if (self.image == nil) {
-        _overlayLabel.stringValue = @"No Image Selected\u2009—\u2009Click to set";
+        _overlayLabel.stringValue = NSLocalizedStringFromTableInBundle(@"No Image Selected\u2009—\u2009Click to set", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Overlay label when no image is selected");
     }
     else {
-        _overlayLabel.stringValue = @"Click to change";
+        _overlayLabel.stringValue = NSLocalizedStringFromTableInBundle(@"Click to change", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Overlay label when image is set, click to change");
     }
     [self setNeedsLayout:YES];
 }

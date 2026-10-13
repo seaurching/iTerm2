@@ -1,0 +1,34 @@
+/* Applescript.strings - 繁體中文 */
+
+/* iTermApplescriptPythonCommands.m - Python 指令碼命令 */
+"No script name was specified" = "未指定指令碼名稱";
+"Script not found" = "未找到指令碼";
+"No string to invoke was specified" = "未指定要叫用的字串";
+
+/* iTermNewWindowCommand.m / iTermWindowScriptingImpl.m - 視窗命令 */
+"No profile exists named '%@'" = "不存在名為 '%@' 的設定檔";
+"No profile name was specified" = "未指定設定檔名稱";
+"The profile '%@' is damaged." = "設定檔 '%@' 已損壞。";
+"The profile '%@' does not have a hotkey defined." = "設定檔 '%@' 未定義熱鍵。";
+"A hotkey window for profile '%@' already exists. Use “reveal hotkey window” instead." = "設定檔 '%@' 的熱鍵視窗已存在。請改用“顯示熱鍵視窗”。";
+
+/* iTermRequestCookieCommand.m - Cookie 請求命令 */
+"The Python API is not enabled." = "Python API 未啟用。";
+"An app" = "某個應用";
+"%@ requests a reusable API cookie." = "%@ 請求一個可重用的 API cookie。";
+"_24 Hours" = "_24 小時";
+"Forever" = "永久";
+"Always Allow All Apps" = "始終允許所有應用";
+"Deny" = "拒絕";
+"User denied the reusable cookie request." = "使用者拒絕了可重用 cookie 請求。";
+
+/* PTYSession+Scripting.m - 工作階段指令碼命令 */
+"Only one of text or contents of file should be specified." = "只能指定文字或檔案內容之一。";
+"Neither text nor contents of file was specified." = "未指定文字或檔案內容。";
+"No name given" = "未給定名稱";
+"No value given" = "未給定值";
+"Only user variables may be set. Name must start with “user.”." = "只能設定使用者變數。名稱必須以“user.”開頭。";
+"No profile named %@" = "沒有名為 %@ 的設定檔";
+"Reusable API cookie granted (24 hours) by Applescript." = "已透過 AppleScript 授予可重複使用的 API cookie（24 小時）。";
+"Permanent reusable API cookie granted by Applescript." = "已透過 AppleScript 授予永久可重複使用的 API cookie。";
+"Automation auth disabled. Single-use API cookie granted by Applescript." = "自動化認證已停用。已透過 AppleScript 授予單次使用的 API cookie。";

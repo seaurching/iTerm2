@@ -42,6 +42,15 @@ static const CGFloat iTermToolWrapperCollapsedHeight = 22.0;
 @implementation iTermToolWrapper {
     NSTextField *_title;
     NSButton *_closeButton;
+    NSString *_displayName;
+}
+
+- (NSString *)displayName {
+    return _displayName ?: _name;
+}
+
+- (void)setDisplayName:(NSString *)displayName {
+    _displayName = [displayName copy];
 }
 
 - (instancetype)initWithFrame:(NSRect)frame {
@@ -53,7 +62,7 @@ static const CGFloat iTermToolWrapperCollapsedHeight = 22.0;
                                                                frame.size.width - kButtonSize - kRightMargin - kCloseButtonLeftMargin,
                                                                kTitleHeight)];
         [_title setEditable:NO];
-        [_title bind:@"value" toObject:self withKeyPath:@"name" options:nil];
+        [_title bind:@"value" toObject:self withKeyPath:@"displayName" options:nil];
         _title.backgroundColor = [NSColor clearColor];
         [_title setAlignment:NSTextAlignmentCenter];
         [_title setBezeled:NO];

@@ -1,0 +1,72 @@
+/* Default alert title when no heading is set */
+"Warning" = "Warning";
+
+/* Alert informative text: explaining why a suppressed alert is shown */
+"%@\n\nThis alert had a saved selection of “%@”. It is being shown because “Always show alerts with remembered selections” is turned on in iTerm2 > Suppressed Alerts." = "%@\n\nThis alert had a saved selection of “%@”. It is being shown because “Always show alerts with remembered selections” is turned on in iTerm2 > Suppressed Alerts.";
+
+/* Alert button: permanently forget saved selection */
+"Permanently Forget Saved Selection" = "Permanently Forget Saved Selection";
+
+/* Suppression button: suppress for 10 minutes (single action) */
+"Suppress this message for ten minutes" = "Suppress this message for ten minutes";
+
+/* Suppression button: remember choice for 10 minutes (multiple actions) */
+"Remember my choice for ten minutes" = "Remember my choice for ten minutes";
+
+/* Suppression button: suppress for 30 days (single action) */
+"Suppress this message for 30 days" = "Suppress this message for 30 days";
+
+/* Suppression button: remember choice for 30 days (multiple actions) */
+"Remember my choice for 30 days" = "Remember my choice for 30 days";
+
+/* Suppression button: suppress permanently (single action) */
+"Suppress this message permanently" = "Suppress this message permanently";
+
+/* Suppression button: remember choice permanently (multiple actions) */
+"Remember my choice" = "Remember my choice";
+
+/* Fallback failure reason when exception reason is nil */
+"Unknown reason" = "Unknown reason";
+
+/* Label in color menu item */
+"Tab Color:" = "Tab Color:";
+
+/* Accessibility description for eyedropper icon */
+"Color Picker" = "Color Picker";
+
+/* Overlay label when no image is selected */
+"No Image Selected — Click to set" = "No Image Selected — Click to set";
+
+/* Overlay label when image is set, click to change */
+"Click to change" = "Click to change";
+
+/* Placeholder text while recording a shortcut */
+"Recording" = "Recording";
+
+/* Placeholder text when shortcut is empty and enabled */
+"Click to Set" = "Click to Set";
+
+/* Alert: confirm using a commonly used keystroke */
+"Are you sure you want to use “%@” %@? This looks like a commonly used keystroke." = "Are you sure you want to use “%@” %@? This looks like a commonly used keystroke.";
+
+/* Alert button: OK */
+"OK" = "OK";
+
+/* Alert heading: confirm shortcut */
+"Confirm Shortcut" = "Confirm Shortcut";
+
+/* Button title: open in browser */
+"Open in %@" = "Open in %@";
+
+/* Fallback browser name */
+"Default Browser" = "Default Browser";
+
+/* JS alert: error sending return value to JavaScript */
+"Caught error while sending return value to javascript: " = "Caught error while sending return value to javascript: ";
+
+/* Fallback error description */
+"Unknown error" = "Unknown error";
+
+/* Error description: JavaScript evaluation failed */
+"Error evaluating '%@' at line %@: %@" = "Error evaluating '%@' at line %@: %@";
+

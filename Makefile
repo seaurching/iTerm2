@@ -408,7 +408,7 @@ x86libsixel: force
 
 armsixel: force
 	mkdir -p submodules/libsixel/build-arm
-	cd submodules/libsixel/build-arm && PKG_CONFIG=$(PKG_CONFIG) CC="/usr/bin/clang -target arm64-apple-macos$(DEPLOYMENT_TARGET)" LDFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET)" CFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET)" LIBTOOLFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET)" ../configure --host=aarch64-apple-darwin --prefix=${PWD}/ThirdParty/libsixel-arm --without-libcurl --without-jpeg --without-png --disable-python --disable-shared && $(MAKE) && $(MAKE) install
+	cd submodules/libsixel/build-arm && PKG_CONFIG=$(PKG_CONFIG) CC="/usr/bin/clang -target arm64-apple-macos$(DEPLOYMENT_TARGET)" LDFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET)" CFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET)" LIBTOOLFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET)" ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes ../configure --host=aarch64-apple-darwin --prefix=${PWD}/ThirdParty/libsixel-arm --without-libcurl --without-jpeg --without-png --disable-python --disable-shared && $(MAKE) && $(MAKE) install
 
 ifdef UNIVERSAL
 # Usage: go to an intel mac and run make x86libsixel and commit it. Go to an arm mac and run make armsixel && make libsixel.
@@ -433,7 +433,7 @@ armopenssl: force
 	cd submodules/openssl && make clean && make distclean || echo make failed
 	cd submodules/openssl && ./Configure darwin64-arm64-cc no-shared -fPIC -mmacosx-version-min=$(DEPLOYMENT_TARGET)
 	echo Begin building armopenssl
-	cd submodules/openssl && $(MAKE)
+	cd submodules/openssl && $(MAKE) build_libs
 	rm -rf submodules/openssl/build-arm
 	mkdir submodules/openssl/build-arm
 	cp submodules/openssl/*.a submodules/openssl/build-arm
@@ -443,7 +443,7 @@ x86openssl: force
 	cd submodules/openssl && make clean && make distclean || echo make failed
 	cd submodules/openssl && ./Configure darwin64-x86_64-cc no-shared -fPIC -mmacosx-version-min=$(DEPLOYMENT_TARGET)
 	echo Begin building x86openssl
-	cd submodules/openssl && $(MAKE)
+	cd submodules/openssl && $(MAKE) build_libs
 	rm -rf submodules/openssl/build-x86
 	mkdir submodules/openssl/build-x86
 	cp submodules/openssl/*.a submodules/openssl/build-x86
@@ -587,11 +587,11 @@ paranoid-SwiftyMarkdown: force
 
 paranoid-deps: force
 	tools/check-submodule-cleanliness
-	/usr/bin/sandbox-exec -f deps.sb $(MAKE) BUILD_DIR="$(BUILD_DIR)" deps
+	env -u LDFLAGS /usr/bin/sandbox-exec -f deps.sb $(MAKE) BUILD_DIR="$(BUILD_DIR)" deps
 	xcodebuild -version > last-xcode-version
 
 paranoid-fatlibssh2: force
-	/usr/bin/sandbox-exec -f deps.sb $(MAKE) BUILD_DIR="$(BUILD_DIR)" fatlibssh2
+	env -u LDFLAGS /usr/bin/sandbox-exec -f deps.sb $(MAKE) BUILD_DIR="$(BUILD_DIR)" fatlibssh2
 
 paranoid-BetterFontPicker: force
 	/usr/bin/sandbox-exec -f deps.sb $(MAKE) BUILD_DIR="$(BUILD_DIR)" BetterFontPicker

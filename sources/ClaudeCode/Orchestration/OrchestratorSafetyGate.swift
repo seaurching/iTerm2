@@ -166,7 +166,7 @@ extension OrchestratorDispatcher {
             return mapDecision(try await classify(), blockIsDeny: blockIsDeny)
         } catch {
             return .requireApproval(
-                reason: "The safety check could not be completed, so this needs manual approval.")
+                reason: NSLocalizedString("The safety check could not be completed, so this needs manual approval.", tableName: "ClaudeCodeXC", comment: "安全检查无法完成，因此需要手动批准。"))
         }
     }
 
@@ -187,7 +187,7 @@ extension OrchestratorDispatcher {
             return blockIsDeny ? .deny(reason: reason) : .requireApproval(reason: reason)
         case .unparseable:
             return .requireApproval(
-                reason: "The safety check result could not be understood, so this needs manual approval.")
+                reason: NSLocalizedString("The safety check result could not be understood, so this needs manual approval.", tableName: "ClaudeCodeXC", comment: "无法理解安全检查结果，因此需要手动批准。"))
         }
     }
 
@@ -616,7 +616,7 @@ extension OrchestratorDispatcher {
         // hide in the dropped region, so fail closed rather than classify it.
         if line.count >= maxPendingInput {
             return TypedGatePlan(
-                route: .failClosed(reason: "the pending command line is too long to safety-check automatically"),
+                route: .failClosed(reason: NSLocalizedString("the pending command line is too long to safety-check automatically", tableName: "ClaudeCodeXC", comment: "待处理的命令行过长，无法自动进行安全检查")),
                 newBuffer: nil)
         }
         return TypedGatePlan(route: .classifyLine(line), newBuffer: nextBuffer)

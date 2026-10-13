@@ -191,7 +191,7 @@ extension iTermBrowserWebView {
                 pasteboard.clearContents()
                 pasteboard.setString(url.absoluteString, forType: .string)
                 PasteboardHistory.sharedInstance().save(url.absoluteString)
-                ToastWindowController.showToast(withMessage: "Copied",
+                ToastWindowController.showToast(withMessage: NSLocalizedString("Copied", tableName: "Browser", comment: "已复制"),
                                                 duration: 1,
                                                 screenCoordinate: NSEvent.mouseLocation,
                                                 pointSize: 12)

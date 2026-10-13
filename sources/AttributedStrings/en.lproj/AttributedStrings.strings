@@ -1,0 +1,6 @@
+/* AttributedStrings.strings - English */
+
+/* AttributedStringSaver.swift - File saving */
+"There was a problem saving the file: %@" = "There was a problem saving the file: %@";
+"OK" = "OK";
+"Could Not Save File" = "Could Not Save File";

@@ -206,7 +206,7 @@ class iTermBrowserGeolocationHandler: NSObject {
                                     messageDict: [String: Any],
                                     webView: iTermBrowserWebView,
                                     frame: WKFrameInfo?) async {
-        let denialMessage = "User denied the request for Geolocation."
+        let denialMessage = NSLocalizedString("User denied the request for Geolocation.", tableName: "Browser", comment: "用户拒绝了地理位置请求。")
         switch type {
         case "getCurrentPosition":
             if let opId = messageDict["operationId"] as? Int {
@@ -252,7 +252,7 @@ extension iTermBrowserGeolocationHandler {
                 try? await Task.sleep(nanoseconds: UInt64(timeout * 1_000_000_000))
                 if pendingLocationRequests[operationId] != nil {
                     pendingLocationRequests.removeValue(forKey: operationId)
-                    await sendPositionError(webView: webView, frame: frame, operationId: operationId, code: 3, message: "Timeout expired")
+                    await sendPositionError(webView: webView, frame: frame, operationId: operationId, code: 3, message: NSLocalizedString("Timeout expired", tableName: "Browser", comment: "超时已过"))
                 }
             }
         }
@@ -470,20 +470,20 @@ extension iTermBrowserGeolocationHandler: CLLocationManagerDelegate {
                 switch clError.code {
                 case .denied:
                     code = 1
-                    message = "User denied the request for Geolocation."
+                    message = NSLocalizedString("User denied the request for Geolocation.", tableName: "Browser", comment: "用户拒绝了地理位置请求。")
                 case .network:
                     code = 2
-                    message = "Network error while retrieving location."
+                    message = NSLocalizedString("Network error while retrieving location.", tableName: "Browser", comment: "获取位置时发生网络错误。")
                 case .locationUnknown:
                     code = 2
-                    message = "Location information is unavailable."
+                    message = NSLocalizedString("Location information is unavailable.", tableName: "Browser", comment: "位置信息不可用。")
                 default:
                     code = 2
-                    message = "An error occurred while retrieving location: \(clError.localizedDescription)"
+                    message = String(format: NSLocalizedString("An error occurred while retrieving location: %@", tableName: "Browser", comment: "获取位置时发生错误：%@"), clError.localizedDescription)
                 }
             } else {
                 code = 2
-                message = "An error occurred while retrieving location: \(error.localizedDescription)"
+                message = String(format: NSLocalizedString("An error occurred while retrieving location: %@", tableName: "Browser", comment: "获取位置时发生错误：%@"), error.localizedDescription)
             }
 
             // Handle pending single requests

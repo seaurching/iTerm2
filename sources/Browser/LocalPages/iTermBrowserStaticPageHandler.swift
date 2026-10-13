@@ -116,7 +116,7 @@ class iTermBrowserStaticPageHandler: NSObject, iTermBrowserPageHandler {
         guard let data = htmlContent.data(using: .utf8) else {
             let error = NSError(domain: "iTermBrowserStaticPageHandler", 
                                code: -1, 
-                               userInfo: [NSLocalizedDescriptionKey: "Failed to encode HTML"])
+                               userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Failed to encode HTML", tableName: "Browser", comment: "编码 HTML 失败")])
             urlSchemeTask.didFailWithError(error)
             return
         }

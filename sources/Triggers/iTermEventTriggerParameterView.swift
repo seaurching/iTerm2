@@ -158,18 +158,18 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
     // MARK: - UI Construction
 
     private func addExitCodeFilterUI() {
-        let row = createRow(label: "Exit Code:")
+        let row = createRow(label: NSLocalizedString("Exit Code:", tableName: "Triggers", comment: "行标签：退出码"))
 
         let popup = NSPopUpButton()
         popup.translatesAutoresizingMaskIntoConstraints = false
-        popup.addItems(withTitles: ["Any", "Zero (Success)", "Non-Zero (Failure)", "Specific Value…"])
+        popup.addItems(withTitles: [NSLocalizedString("Any", tableName: "Triggers", comment: "退出码过滤：任意"), NSLocalizedString("Zero (Success)", tableName: "Triggers", comment: "退出码过滤：零（成功）"), NSLocalizedString("Non-Zero (Failure)", tableName: "Triggers", comment: "退出码过滤：非零（失败）"), NSLocalizedString("Specific Value…", tableName: "Triggers", comment: "退出码过滤：特定值…")])
         popup.target = self
         popup.action = #selector(exitCodeFilterChanged(_:))
         exitCodeFilterPopup = popup
 
         let textField = NSTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholderString = "Exit code"
+        textField.placeholderString = NSLocalizedString("Exit code", tableName: "Triggers", comment: "占位符：退出码")
         textField.isHidden = true
         textField.widthAnchor.constraint(equalToConstant: 60).isActive = true
         textField.delegate = self
@@ -182,7 +182,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
     }
 
     private func addJobNameUI() {
-        let row = createRow(label: "Job:")
+        let row = createRow(label: NSLocalizedString("Job:", tableName: "Triggers", comment: "行标签：作业"))
 
         let textField = NSTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -194,7 +194,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         row.addArrangedSubview(textField)
         stackView.addArrangedSubview(row)
 
-        let helpLabel = NSTextField(labelWithString: "Process name to match in the foreground-job ancestry chain (case-insensitive)")
+        let helpLabel = NSTextField(labelWithString: NSLocalizedString("Process name to match in the foreground-job ancestry chain (case-insensitive)", tableName: "Triggers", comment: "帮助：匹配的前台作业进程名"))
         helpLabel.translatesAutoresizingMaskIntoConstraints = false
         helpLabel.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         helpLabel.textColor = .secondaryLabelColor
@@ -203,7 +203,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
 
     private func addVariableChangedUI() {
         // Variable name row (with completion).
-        let nameRow = createRow(label: "Variable:")
+        let nameRow = createRow(label: NSLocalizedString("Variable:", tableName: "Triggers", comment: "行标签：变量"))
 
         let nameField = NSTextField()
         nameField.translatesAutoresizingMaskIntoConstraints = false
@@ -215,14 +215,14 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         nameRow.addArrangedSubview(nameField)
         stackView.addArrangedSubview(nameRow)
 
-        let nameHelp = NSTextField(labelWithString: "Name of the session variable to watch")
+        let nameHelp = NSTextField(labelWithString: NSLocalizedString("Name of the session variable to watch", tableName: "Triggers", comment: "帮助：要监视的会话变量名"))
         nameHelp.translatesAutoresizingMaskIntoConstraints = false
         nameHelp.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         nameHelp.textColor = .secondaryLabelColor
         stackView.addArrangedSubview(nameHelp)
 
         // Value regex row.
-        let valueRow = createRow(label: "Value:")
+        let valueRow = createRow(label: NSLocalizedString("Value:", tableName: "Triggers", comment: "行标签：值"))
 
         let valueField = NSTextField()
         valueField.translatesAutoresizingMaskIntoConstraints = false
@@ -234,7 +234,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         valueRow.addArrangedSubview(valueField)
         stackView.addArrangedSubview(valueRow)
 
-        let valueHelp = NSTextField(labelWithString: "Regular expression the new value must match (leave blank to match any change)")
+        let valueHelp = NSTextField(labelWithString: NSLocalizedString("Regular expression the new value must match (leave blank to match any change)", tableName: "Triggers", comment: "帮助：新值须匹配的正则"))
         valueHelp.translatesAutoresizingMaskIntoConstraints = false
         valueHelp.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         valueHelp.textColor = .secondaryLabelColor
@@ -242,7 +242,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
     }
 
     private func addDirectoryRegexUI() {
-        let row = createRow(label: "Directory:")
+        let row = createRow(label: NSLocalizedString("Directory:", tableName: "Triggers", comment: "行标签：目录"))
 
         let textField = NSTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -254,7 +254,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         row.addArrangedSubview(textField)
         stackView.addArrangedSubview(row)
 
-        let helpLabel = NSTextField(labelWithString: "Regular expression to match the directory path")
+        let helpLabel = NSTextField(labelWithString: NSLocalizedString("Regular expression to match the directory path", tableName: "Triggers", comment: "帮助：匹配目录路径的正则"))
         helpLabel.translatesAutoresizingMaskIntoConstraints = false
         helpLabel.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         helpLabel.textColor = .secondaryLabelColor
@@ -262,7 +262,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
     }
 
     private func addTimeoutUI() {
-        let row = createRow(label: "Timeout:")
+        let row = createRow(label: NSLocalizedString("Timeout:", tableName: "Triggers", comment: "行标签：超时"))
 
         let textField = NSTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -272,7 +272,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         textField.formatter = iTermSaneNumberFormatter()
         timeoutTextField = textField
 
-        let unitsLabel = NSTextField(labelWithString: "seconds")
+        let unitsLabel = NSTextField(labelWithString: NSLocalizedString("seconds", tableName: "Triggers", comment: "单位：秒"))
         unitsLabel.translatesAutoresizingMaskIntoConstraints = false
 
         row.addArrangedSubview(textField)
@@ -281,7 +281,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
     }
 
     private func addSequenceIdUI() {
-        let row = createRow(label: "Sequence ID:")
+        let row = createRow(label: NSLocalizedString("Sequence ID:", tableName: "Triggers", comment: "行标签：序列 ID"))
 
         let textField = NSTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -293,7 +293,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         row.addArrangedSubview(textField)
         stackView.addArrangedSubview(row)
 
-        let helpLabel = NSTextField(labelWithString: "Regular expression to match the sequence identifier")
+        let helpLabel = NSTextField(labelWithString: NSLocalizedString("Regular expression to match the sequence identifier", tableName: "Triggers", comment: "帮助：匹配序列标识符的正则"))
         helpLabel.translatesAutoresizingMaskIntoConstraints = false
         helpLabel.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         helpLabel.textColor = .secondaryLabelColor
@@ -301,7 +301,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
     }
 
     private func addNotificationMessageRegexUI() {
-        let row = createRow(label: "Message:")
+        let row = createRow(label: NSLocalizedString("Message:", tableName: "Triggers", comment: "行标签：消息"))
 
         let textField = NSTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -313,7 +313,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         row.addArrangedSubview(textField)
         stackView.addArrangedSubview(row)
 
-        let helpLabel = NSTextField(labelWithString: "Regular expression to match the notification message")
+        let helpLabel = NSTextField(labelWithString: NSLocalizedString("Regular expression to match the notification message", tableName: "Triggers", comment: "帮助：匹配通知消息的正则"))
         helpLabel.translatesAutoresizingMaskIntoConstraints = false
         helpLabel.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         helpLabel.textColor = .secondaryLabelColor
@@ -321,7 +321,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
     }
 
     private func addHostRegexUI() {
-        let row = createRow(label: "Host:")
+        let row = createRow(label: NSLocalizedString("Host:", tableName: "Triggers", comment: "行标签：主机"))
 
         let textField = NSTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -333,7 +333,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         row.addArrangedSubview(textField)
         stackView.addArrangedSubview(row)
 
-        let helpLabel = NSTextField(labelWithString: "Regular expression to match the hostname")
+        let helpLabel = NSTextField(labelWithString: NSLocalizedString("Regular expression to match the hostname", tableName: "Triggers", comment: "帮助：匹配主机名的正则"))
         helpLabel.translatesAutoresizingMaskIntoConstraints = false
         helpLabel.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         helpLabel.textColor = .secondaryLabelColor
@@ -341,7 +341,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
     }
 
     private func addUserRegexUI() {
-        let row = createRow(label: "User:")
+        let row = createRow(label: NSLocalizedString("User:", tableName: "Triggers", comment: "行标签：用户"))
 
         let textField = NSTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -353,7 +353,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         row.addArrangedSubview(textField)
         stackView.addArrangedSubview(row)
 
-        let helpLabel = NSTextField(labelWithString: "Regular expression to match the username")
+        let helpLabel = NSTextField(labelWithString: NSLocalizedString("Regular expression to match the username", tableName: "Triggers", comment: "帮助：匹配用户名的正则"))
         helpLabel.translatesAutoresizingMaskIntoConstraints = false
         helpLabel.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         helpLabel.textColor = .secondaryLabelColor
@@ -362,7 +362,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
 
     private func addLongRunningCommandUI() {
         // Threshold row
-        let thresholdRow = createRow(label: "Threshold:")
+        let thresholdRow = createRow(label: NSLocalizedString("Threshold:", tableName: "Triggers", comment: "行标签：阈值"))
 
         let thresholdField = NSTextField()
         thresholdField.translatesAutoresizingMaskIntoConstraints = false
@@ -372,7 +372,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         thresholdField.formatter = iTermSaneNumberFormatter()
         thresholdTextField = thresholdField
 
-        let unitsLabel = NSTextField(labelWithString: "seconds")
+        let unitsLabel = NSTextField(labelWithString: NSLocalizedString("seconds", tableName: "Triggers", comment: "单位：秒"))
         unitsLabel.translatesAutoresizingMaskIntoConstraints = false
 
         thresholdRow.addArrangedSubview(thresholdField)
@@ -380,7 +380,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         stackView.addArrangedSubview(thresholdRow)
 
         // Command regex row
-        let commandRow = createRow(label: "Command:")
+        let commandRow = createRow(label: NSLocalizedString("Command:", tableName: "Triggers", comment: "行标签：命令"))
 
         let commandField = NSTextField()
         commandField.translatesAutoresizingMaskIntoConstraints = false
@@ -392,7 +392,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
         commandRow.addArrangedSubview(commandField)
         stackView.addArrangedSubview(commandRow)
 
-        let helpLabel = NSTextField(labelWithString: "Regular expression to match the command line")
+        let helpLabel = NSTextField(labelWithString: NSLocalizedString("Regular expression to match the command line", tableName: "Triggers", comment: "帮助：匹配命令行的正则"))
         helpLabel.translatesAutoresizingMaskIntoConstraints = false
         helpLabel.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         helpLabel.textColor = .secondaryLabelColor
@@ -400,11 +400,11 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
     }
 
     private func addProgressBarFilterUI() {
-        let row = createRow(label: "Fire When:")
+        let row = createRow(label: NSLocalizedString("Fire When:", tableName: "Triggers", comment: "行标签：触发时机"))
 
         let popup = NSPopUpButton()
         popup.translatesAutoresizingMaskIntoConstraints = false
-        popup.addItems(withTitles: ["Appears or Disappears", "Appears", "Disappears"])
+        popup.addItems(withTitles: [NSLocalizedString("Appears or Disappears", tableName: "Triggers", comment: "进度条过滤：出现或消失"), NSLocalizedString("Appears", tableName: "Triggers", comment: "进度条过滤：出现"), NSLocalizedString("Disappears", tableName: "Triggers", comment: "进度条过滤：消失")])
         popup.target = self
         popup.action = #selector(progressBarFilterChanged(_:))
         progressBarFilterPopup = popup
@@ -414,7 +414,7 @@ class EventTriggerParameterView: NSView, NSTextFieldDelegate {
     }
 
     private func addNoParametersLabel() {
-        let label = NSTextField(labelWithString: "No additional parameters required.")
+        let label = NSTextField(labelWithString: NSLocalizedString("No additional parameters required.", tableName: "Triggers", comment: "无参数提示"))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .secondaryLabelColor
         stackView.addArrangedSubview(label)
@@ -721,39 +721,39 @@ class EventTriggerMatchTypeHelper: NSObject {
     @objc static func displayName(for matchType: iTermTriggerMatchType) -> String {
         switch matchType {
         case .eventPromptDetected:
-            return "Prompt Detected"
+            return NSLocalizedString("Prompt Detected", tableName: "Triggers", comment: "事件名：检测到提示")
         case .eventCommandFinished:
-            return "Command Finished"
+            return NSLocalizedString("Command Finished", tableName: "Triggers", comment: "事件名：命令完成")
         case .eventDirectoryChanged:
-            return "Directory Changed"
+            return NSLocalizedString("Directory Changed", tableName: "Triggers", comment: "事件名：目录已更改")
         case .eventHostChanged:
-            return "Host Changed"
+            return NSLocalizedString("Host Changed", tableName: "Triggers", comment: "事件名：主机已更改")
         case .eventUserChanged:
-            return "User Changed"
+            return NSLocalizedString("User Changed", tableName: "Triggers", comment: "事件名：用户已更改")
         case .eventIdle:
-            return "Idle (Silence)"
+            return NSLocalizedString("Idle (Silence)", tableName: "Triggers", comment: "事件名：空闲（静默）")
         case .eventActivityAfterIdle:
-            return "Activity After Idle"
+            return NSLocalizedString("Activity After Idle", tableName: "Triggers", comment: "事件名：空闲后活动")
         case .eventSessionEnded:
-            return "Session Ended"
+            return NSLocalizedString("Session Ended", tableName: "Triggers", comment: "事件名：会话已结束")
         case .eventBellReceived:
-            return "Bell Received"
+            return NSLocalizedString("Bell Received", tableName: "Triggers", comment: "事件名：收到响铃")
         case .eventLongRunningCommand:
-            return "Long-Running Command"
+            return NSLocalizedString("Long-Running Command", tableName: "Triggers", comment: "事件名：长时间运行的命令")
         case .eventCustomEscapeSequence:
-            return "Custom Escape Sequence"
+            return NSLocalizedString("Custom Escape Sequence", tableName: "Triggers", comment: "事件名：自定义转义序列")
         case .eventNotificationPosted:
-            return "Notification Posted"
+            return NSLocalizedString("Notification Posted", tableName: "Triggers", comment: "事件名：已发送通知")
         case .eventProgressBarChanged:
-            return "Progress Bar Changed"
+            return NSLocalizedString("Progress Bar Changed", tableName: "Triggers", comment: "事件名：进度条已更改")
         case .eventJobStarted:
-            return "Job Started"
+            return NSLocalizedString("Job Started", tableName: "Triggers", comment: "事件名：作业已开始")
         case .eventJobEnded:
-            return "Job Ended"
+            return NSLocalizedString("Job Ended", tableName: "Triggers", comment: "事件名：作业已结束")
         case .eventVariableChanged:
-            return "Variable Changed"
+            return NSLocalizedString("Variable Changed", tableName: "Triggers", comment: "事件名：变量已更改")
         default:
-            return "Unknown Event"
+            return NSLocalizedString("Unknown Event", tableName: "Triggers", comment: "事件名：未知事件")
         }
     }
 
@@ -761,37 +761,37 @@ class EventTriggerMatchTypeHelper: NSObject {
     @objc static func helpText(for matchType: iTermTriggerMatchType) -> String {
         switch matchType {
         case .eventPromptDetected:
-            return "Fires when shell integration detects a new prompt."
+            return NSLocalizedString("Fires when shell integration detects a new prompt.", tableName: "Triggers", comment: "帮助：检测到新提示时触发")
         case .eventCommandFinished:
-            return "Fires when a command exits. Requires shell integration."
+            return NSLocalizedString("Fires when a command exits. Requires shell integration.", tableName: "Triggers", comment: "帮助：命令退出时触发")
         case .eventDirectoryChanged:
-            return "Fires when the working directory changes."
+            return NSLocalizedString("Fires when the working directory changes.", tableName: "Triggers", comment: "帮助：工作目录更改时触发")
         case .eventHostChanged:
-            return "Fires when connecting to a different host via SSH."
+            return NSLocalizedString("Fires when connecting to a different host via SSH.", tableName: "Triggers", comment: "帮助：SSH 连接到不同主机时触发")
         case .eventUserChanged:
-            return "Fires when the current user changes (su/sudo)."
+            return NSLocalizedString("Fires when the current user changes (su/sudo).", tableName: "Triggers", comment: "帮助：当前用户更改时触发")
         case .eventIdle:
-            return "Fires when no output is received for the specified duration."
+            return NSLocalizedString("Fires when no output is received for the specified duration.", tableName: "Triggers", comment: "帮助：指定时长无输出时触发")
         case .eventActivityAfterIdle:
-            return "Fires when output resumes after being idle."
+            return NSLocalizedString("Fires when output resumes after being idle.", tableName: "Triggers", comment: "帮助：空闲后恢复输出时触发")
         case .eventSessionEnded:
-            return "Fires when the session terminates."
+            return NSLocalizedString("Fires when the session terminates.", tableName: "Triggers", comment: "帮助：会话终止时触发")
         case .eventBellReceived:
-            return "Fires when a terminal bell (\\a) is received."
+            return NSLocalizedString("Fires when a terminal bell (\\a) is received.", tableName: "Triggers", comment: "帮助：收到终端响铃时触发")
         case .eventLongRunningCommand:
-            return "Fires when a command runs longer than the threshold."
+            return NSLocalizedString("Fires when a command runs longer than the threshold.", tableName: "Triggers", comment: "帮助：命令运行超阈值时触发")
         case .eventCustomEscapeSequence:
-            return "Fires when a specific OSC escape sequence is received."
+            return NSLocalizedString("Fires when a specific OSC escape sequence is received.", tableName: "Triggers", comment: "帮助：收到特定 OSC 转义序列时触发")
         case .eventNotificationPosted:
-            return "Fires when a notification is posted by a control sequence (OSC 9)."
+            return NSLocalizedString("Fires when a notification is posted by a control sequence (OSC 9).", tableName: "Triggers", comment: "帮助：控制序列发送通知时触发")
         case .eventProgressBarChanged:
-            return "Fires when a progress bar appears or disappears."
+            return NSLocalizedString("Fires when a progress bar appears or disappears.", tableName: "Triggers", comment: "帮助：进度条出现或消失时触发")
         case .eventJobStarted:
-            return "Fires when a process matching the job filter enters the foreground-job ancestry chain."
+            return NSLocalizedString("Fires when a process matching the job filter enters the foreground-job ancestry chain.", tableName: "Triggers", comment: "帮助：进程进入前台作业祖链时触发")
         case .eventJobEnded:
-            return "Fires when a process matching the job filter leaves the foreground-job ancestry chain."
+            return NSLocalizedString("Fires when a process matching the job filter leaves the foreground-job ancestry chain.", tableName: "Triggers", comment: "帮助：进程离开前台作业祖链时触发")
         case .eventVariableChanged:
-            return "Fires when a session variable changes to a value matching the regex."
+            return NSLocalizedString("Fires when a session variable changes to a value matching the regex.", tableName: "Triggers", comment: "帮助：会话变量更改为匹配正则的值时触发")
         default:
             return ""
         }

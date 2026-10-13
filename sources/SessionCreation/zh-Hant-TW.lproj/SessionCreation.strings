@@ -1,0 +1,14 @@
+/* Session launcher: font not found warning */
+"Couldn’t find the specified font “%@” or the fallback standard fixed-pitch font, Menlo. Please ensure at least one of these is installed." = "找不到指定的字體「%@」，也找不到後備的標準等寬字型 Menlo。請確保至少安裝了其中之一。";
+
+/* Session launcher: illegal username heading */
+"Illegal Username" = "非法使用者名稱";
+
+/* Session launcher: invalid profile heading */
+"Invalid Profile" = "無效設定檔";
+
+/* Session launcher: OK button */
+"OK" = "好";
+
+/* Session launcher: illegal SSH username warning */
+"The SSH user name “%@” contained a disallowed character. The set of allowed characters is limited for security reasons. You can modify it in Settings > Advanced > Valid characters in SSH user names." = "SSH 使用者名稱「%@」包含不允許的字元。出於安全原因，允許的字元集是有限的。您可以在「設定 > 進階 > SSH 使用者名稱中的有效字元」中修改。";

@@ -15,15 +15,15 @@
 
 + (NSString *)title
 {
-    return @"Set Title…";
+    return NSLocalizedStringFromTableInBundle(@"Set Title…", @"Triggers", [NSBundle bundleForClass:[self class]], @"设置标题触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Set Title to “%@”", self.param];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Set Title to “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"设置标题触发器描述"), self.param];
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-    return @"Enter new title";
+    return NSLocalizedStringFromTableInBundle(@"Enter new title", @"Triggers", [NSBundle bundleForClass:[self class]], @"占位符：输入新标题");
 }
 
 - (BOOL)isIdempotent {

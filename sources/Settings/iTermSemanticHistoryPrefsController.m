@@ -295,7 +295,7 @@ enum {
                                 kVSCodiumIdentifier2: @"VS Codium",
                            kVSCodeInsidersIdentifier: @"VS Code Insiders",
                                  kEmacsAppIdentifier: @"Emacs.app",
-                           kIntelliJIDEAIdentifierCE: @"IntelliJ IDEA (Community Edition)",
+                           kIntelliJIDEAIdentifierCE: NSLocalizedStringFromTableInBundle(@"IntelliJ IDEA (Community Edition)", @"Settings", [NSBundle bundleForClass:[self class]], @"弹出菜单项标题"),
                            kIntelliJIDEAIdentifierUE: @"IntelliJ IDEA (Ultimate)",
                                  kWebStormIdentifier: @"WebStorm",
                                     kRiderIdentifier: @"Rider",
@@ -397,27 +397,14 @@ enum {
     NSDictionary *attributes = @{ NSFontAttributeName: caveat_.font ?: [NSFont systemFontOfSize:[NSFont smallSystemFontSize]] };
     NSAttributedString *legacy = [NSAttributedString attributedStringWithString:text
                                                                      attributes:attributes];
-    NSAttributedString *learnMore = [NSAttributedString attributedStringWithLinkToURL:@"iterm2-private://semantic-history-learn-more/" string:@"Learn more"];
+    NSAttributedString *learnMore = [NSAttributedString attributedStringWithLinkToURL:@"iterm2-private://semantic-history-learn-more/" string:NSLocalizedStringFromTableInBundle(@"Learn more", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
     NSArray<NSAttributedString *> *parts = @[ legacy, learnMore ];
     return [NSAttributedString attributedStringWithAttributedStrings:parts];
 }
 
 - (NSString *)detailTextForCurrentMode {
     NSString *subs =
-    @"You can provide substitutions as follows:\n"
-    @"  \\1 will be replaced with the filename.\n"
-    @"  \\2 will be replaced with the line number.\n"
-    @"  \\3 will be replaced with the text before the click.\n"
-    @"  \\4 will be replaced with the text after the click.\n"
-    @"  \\5 will be replaced with the working directory.\n"
-    @"\n"
-    @"This is also an interpolated string evaluated in the context of the current session. In addition to the usual variables, the following substitutions are available:\n"
-    @"  \\(semanticHistory.path) will be replaced with the filename.\n"
-    @"  \\(semanticHistory.lineNumber) will be replaced with the line number.\n"
-    @"  \\(semanticHistory.columnNumber) will be replaced with the column number.\n"
-    @"  \\(semanticHistory.prefix) will be replaced with the text before the click.\n"
-    @"  \\(semanticHistory.suffix) will be replaced with the text after the click.\n"
-    @"  \\(semanticHistory.workingDirectory) will be replaced with the working directory.\n";
+    NSLocalizedStringFromTableInBundle(@"You can provide substitutions as follows:\n  \\1 will be replaced with the filename.\n  \\2 will be replaced with the line number.\n  \\3 will be replaced with the text before the click.\n  \\4 will be replaced with the text after the click.\n  \\5 will be replaced with the working directory.\n\nThis is also an interpolated string evaluated in the context of the current session. In addition to the usual variables, the following substitutions are available:\n  \\(semanticHistory.path) will be replaced with the filename.\n  \\(semanticHistory.lineNumber) will be replaced with the line number.\n  \\(semanticHistory.columnNumber) will be replaced with the column number.\n  \\(semanticHistory.prefix) will be replaced with the text before the click.\n  \\(semanticHistory.suffix) will be replaced with the text after the click.\n  \\(semanticHistory.workingDirectory) will be replaced with the working directory.\n", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
 
     switch ([[action_ selectedItem] tag]) {
         case 1:
@@ -425,14 +412,14 @@ enum {
             break;
 
         case 5:
-            return [@"In this mode semantic history will be activated on any click, even if you click on something that is not an existing file.\n"
+            return [NSLocalizedStringFromTableInBundle(@"In this mode semantic history will be activated on any click, even if you click on something that is not an existing file.\n", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                     stringByAppendingString:subs];
 
         case 2:
         case 4:
         case 6:
         case 7:
-            return [@"In this mode semantic history will only be activated when you click on an existing file name.\n"
+            return [NSLocalizedStringFromTableInBundle(@"In this mode semantic history will only be activated when you click on an existing file name.\n", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                     stringByAppendingString:subs];
     }
     return @"";
@@ -445,15 +432,14 @@ enum {
     BOOL hideCaveat = caveat_.isHidden;
     switch ([[action_ selectedItem] tag]) {
         case 1:
-            [caveat_ setStringValue:@"When you activate Semantic History on a filename, the associated app loads the file."];
+            [caveat_ setStringValue:NSLocalizedStringFromTableInBundle(@"When you activate Semantic History on a filename, the associated app loads the file.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             hideCaveat = NO;
             break;
 
         case 2: {
-            [[text_ cell] setPlaceholderString:@"Enter URL."];
+            [[text_ cell] setPlaceholderString:NSLocalizedStringFromTableInBundle(@"Enter URL.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             NSString *text =
-            @"When you activate Semantic History on a filename, the browser opens a URL.\n"
-            @"Use \\1 for the filename you clicked on and \\2 for the line number. ";
+            NSLocalizedStringFromTableInBundle(@"When you activate Semantic History on a filename, the browser opens a URL.\nUse \\1 for the filename you clicked on and \\2 for the line number. ", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
             caveat_.attributedStringValue = [self attributedStringWithLearnMoreLinkAfterText:text];
             hideCaveat = NO;
             hideText = NO;
@@ -462,16 +448,14 @@ enum {
 
         case 3:
             hideEditors = NO;
-            [caveat_ setStringValue:@"When you activate Semantic History on a text file, the specified editor opens it.\nOther kinds of files will be opened with their default apps."];
+            [caveat_ setStringValue:NSLocalizedStringFromTableInBundle(@"When you activate Semantic History on a text file, the specified editor opens it.\nOther kinds of files will be opened with their default apps.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             hideCaveat = NO;
             break;
 
         case 4: {
-            [[text_ cell] setPlaceholderString:@"Enter command"];
+            [[text_ cell] setPlaceholderString:NSLocalizedStringFromTableInBundle(@"Enter command", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             NSString *text =
-            @"Command runs when you activate Semantic History on any filename. "
-            @"Use \\1 for filename, \\2 for line number, \\3 for text before click, \\4 for text after click, \\5 for pwd. "
-            @"You can also use interpolated string syntax. ";
+            NSLocalizedStringFromTableInBundle(@"Command runs when you activate Semantic History on any filename. Use \\1 for filename, \\2 for line number, \\3 for text before click, \\4 for text after click, \\5 for pwd. You can also use interpolated string syntax. ", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
 
             caveat_.attributedStringValue = [self attributedStringWithLearnMoreLinkAfterText:text];
             hideCaveat = NO;
@@ -480,11 +464,10 @@ enum {
         }
 
         case 5: {
-            [[text_ cell] setPlaceholderString:@"Enter command"];
+            [[text_ cell] setPlaceholderString:NSLocalizedStringFromTableInBundle(@"Enter command", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
 
             NSString *text =
-            @"Command runs when you activate Semantic History on any text, even if it’s not a valid filename. "
-            @"Use \\1 for filename, \\2 for line number, \\3 for text before click, \\4 for text after click, \\5 for pwd. ";
+            NSLocalizedStringFromTableInBundle(@"Command runs when you activate Semantic History on any text, even if it’s not a valid filename. Use \\1 for filename, \\2 for line number, \\3 for text before click, \\4 for text after click, \\5 for pwd. ", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
 
             caveat_.attributedStringValue = [self attributedStringWithLearnMoreLinkAfterText:text];
             hideCaveat = NO;
@@ -493,10 +476,9 @@ enum {
         }
 
         case 6: {
-            [[text_ cell] setPlaceholderString:@"Enter command"];
+            [[text_ cell] setPlaceholderString:NSLocalizedStringFromTableInBundle(@"Enter command", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             NSString *text =
-            @"Coprocess runs when you activate Semantic History on any filename. "
-            @"Use \\1 for filename, \\2 for line number, \\3 for text before click, \\4 for text after click, \\5 for pwd. ";
+            NSLocalizedStringFromTableInBundle(@"Coprocess runs when you activate Semantic History on any filename. Use \\1 for filename, \\2 for line number, \\3 for text before click, \\4 for text after click, \\5 for pwd. ", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
             caveat_.attributedStringValue = [self attributedStringWithLearnMoreLinkAfterText:text];
             hideCaveat = NO;
             hideText = NO;
@@ -504,10 +486,9 @@ enum {
         }
 
         case 7: {
-            [[text_ cell] setPlaceholderString:@"Enter text"];
+            [[text_ cell] setPlaceholderString:NSLocalizedStringFromTableInBundle(@"Enter text", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             NSString *text =
-            @"Text is sent when you activate Semantic History on any filename. Use vim-style special characters."
-            @"Use \\1 for filename, \\2 for line number, \\3 for text before click, \\4 for text after click, \\5 for pwd. ";
+            NSLocalizedStringFromTableInBundle(@"Text is sent when you activate Semantic History on any filename. Use vim-style special characters. Use \\1 for filename, \\2 for line number, \\3 for text before click, \\4 for text after click, \\5 for pwd. ", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
             caveat_.attributedStringValue = [self attributedStringWithLearnMoreLinkAfterText:text];
             hideCaveat = NO;
             hideText = NO;

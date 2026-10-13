@@ -1,0 +1,108 @@
+/* Process info: command header */
+"Command" = "Command";
+
+/* Process info: working directory header */
+"Working Directory" = "Working Directory";
+
+/* Process info: loading placeholder */
+"Loading…" = "Loading…";
+
+/* Process info: process id header */
+"Process ID" = "Process ID";
+
+/* Process info: started header */
+"Started" = "Started";
+
+/* Process info: environment header */
+"Environment" = "Environment";
+
+/* Process info: environment variable column */
+"Variable" = "Variable";
+
+/* Process info: environment value column */
+"Value" = "Value";
+
+/* Process info: open files header */
+"Open Files & Sockets" = "Open Files & Sockets";
+
+/* Process info: file descriptor column */
+"FD" = "FD";
+
+/* Process info: type column */
+"Type" = "Type";
+
+/* Process info: detail column */
+"Detail" = "Detail";
+
+/* Process info: copy accessibility */
+"Copy" = "Copy";
+
+/* Process info: unknown value */
+"Unknown" = "Unknown";
+
+/* Process info: copied toast */
+"Copied" = "Copied";
+
+/* Process info: started time with elapsed */
+"%1$@ (%2$@ ago)" = "%1$@ (%2$@ ago)";
+
+/* Process info: unknown process name fallback */
+"unknown name" = "unknown name";
+
+/* Process info: job terminated alert title */
+"Job Terminated" = "Job Terminated";
+
+/* Process info: jobs terminated alert title */
+"Jobs Terminated" = "Jobs Terminated";
+
+/* Process info: job terminated OK button */
+"OK" = "OK";
+
+/* Process info: unknown name fallback */
+"(unknown)" = "(unknown)";
+
+/* Process info: job terminated informative text */
+"The job %1$@ with process ID %2$d has terminated." = "The job %1$@ with process ID %2$d has terminated.";
+
+/* Process info: cannot monitor alert title */
+"Cannot Notify on Termination" = "Cannot Notify on Termination";
+
+/* Process info: cannot monitor informative text */
+"iTerm2 cannot watch the job %1$@ with process ID %2$d because it has already terminated." = "iTerm2 cannot watch the job %1$@ with process ID %2$d because it has already terminated.";
+
+/* Process info: clear accessibility */
+"Clear" = "Clear";
+
+/* Process info: inspect accessibility */
+"Inspect" = "Inspect";
+
+/* Process info: inspect tooltip */
+"Inspect the selected process" = "Inspect the selected process";
+
+/* Process info: one process with children */
+"one process and its children" = "one process and its children";
+
+/* Process info: processes with children */
+"%d processes and their children" = "%d processes and their children";
+
+/* Process info: one process */
+"one process" = "one process";
+
+/* Process info: processes */
+"%d processes" = "%d processes";
+
+/* Process info: kill confirmation title */
+"Are you sure? This may terminate %@." = "Are you sure? This may terminate %@.";
+
+/* Process info: kill confirmation cancel button */
+"Cancel" = "Cancel";
+
+/* Process info: kill confirmation heading */
+"Confirmation Needed" = "Confirmation Needed";
+
+/* Process info: terminated process label */
+"(terminated)" = "(terminated)";
+
+/* Process info: bell accessibility */
+"Will notify when this job terminates" = "Will notify when this job terminates";
+"SIG%@ (%d)" = "SIG%@ (%d)";

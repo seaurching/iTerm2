@@ -197,7 +197,7 @@ class CompletionsWindow: NSWindow, NSTableViewDataSource, NSTableViewDelegate {
     // MARK: - Initializer
 
     // location is in screen coordinates and gives the location of the text field this is attached to.
-    init(parent: NSWindow, location: NSRect, mode: Mode, placeholder: String = "Thinking…", allowKey: Bool = false) {
+    init(parent: NSWindow, location: NSRect, mode: Mode, placeholder: String = NSLocalizedString("Thinking…", tableName: "CompletionsUI", comment: "AI 思考中占位文字"), allowKey: Bool = false) {
         self.allowKeyWindow = allowKey
         self.placeholder = placeholder
         self.mode = mode
@@ -427,7 +427,7 @@ class CompletionsWindow: NSWindow, NSTableViewDataSource, NSTableViewDelegate {
         if searchField == nil {
             let searchField = NSSearchField(frame: .zero)
             searchField.focusRingType = .none
-            searchField.placeholderString = "Search"
+            searchField.placeholderString = NSLocalizedString("Search", tableName: "CompletionsUI", comment: "搜索框占位符")
             searchField.delegate = self
             self.searchField = searchField
             contentView?.addSubview(searchField)
@@ -584,48 +584,48 @@ class CompletionsWindow: NSWindow, NSTableViewDataSource, NSTableViewDelegate {
         case .file:
             if #available(macOS 15, *) {
                 return NSImage.it_image(forSymbolName: SFSymbol.document.rawValue,
-                                        accessibilityDescription: "File",
+                                        accessibilityDescription: NSLocalizedString("File", tableName: "CompletionsUI", comment: "补全项类型：文件"),
                                         fallbackImageName: "document",
                                         for: CompletionsWindow.self)!
             } else {
                 return NSImage.it_image(forSymbolName: SFSymbol.doc.rawValue,
-                                        accessibilityDescription: "File",
+                                        accessibilityDescription: NSLocalizedString("File", tableName: "CompletionsUI", comment: "补全项类型：文件"),
                                         fallbackImageName: "document",
                                         for: CompletionsWindow.self)!
             }
         case .aiSuggestion:
             return NSImage.it_image(forSymbolName: SFSymbol.sparkles.rawValue,
-                                    accessibilityDescription: "AI",
+                                    accessibilityDescription: NSLocalizedString("AI", tableName: "CompletionsUI", comment: "补全项类型：AI 建议"),
                                     fallbackImageName: "sparkles",
                                     for: CompletionsWindow.self)!
         case .history:
             return NSImage.it_image(forSymbolName: SFSymbol.clock.rawValue,
-                                    accessibilityDescription: "History",
+                                    accessibilityDescription: NSLocalizedString("History", tableName: "CompletionsUI", comment: "补全项类型：历史记录"),
                                     fallbackImageName: "clock",
                                     for: CompletionsWindow.self)!
         case .command:
             return NSImage.it_image(forSymbolName: SFSymbol.command.rawValue,
-                                    accessibilityDescription: "Command",
+                                    accessibilityDescription: NSLocalizedString("Command", tableName: "CompletionsUI", comment: "补全项类型：命令"),
                                     fallbackImageName: "command",
                                     for: CompletionsWindow.self)!
         case .folder:
             return NSImage.it_image(forSymbolName: SFSymbol.folder.rawValue,
-                                    accessibilityDescription: "Folder",
+                                    accessibilityDescription: NSLocalizedString("Folder", tableName: "CompletionsUI", comment: "补全项类型：文件夹"),
                                     fallbackImageName: "folder",
                                     for: CompletionsWindow.self)!
         case .webSearch:
             return NSImage.it_image(forSymbolName: SFSymbol.magnifyingglass.rawValue,
-                                    accessibilityDescription: "Web Search",
+                                    accessibilityDescription: NSLocalizedString("Web Search", tableName: "CompletionsUI", comment: "补全项类型：网络搜索"),
                                     fallbackImageName: "magnifyingglass",
                                     for: CompletionsWindow.self)!
         case .navigation:
             return NSImage.it_image(forSymbolName: SFSymbol.safari.rawValue,
-                                    accessibilityDescription: "Navigate",
+                                    accessibilityDescription: NSLocalizedString("Navigate", tableName: "CompletionsUI", comment: "补全项类型：导航"),
                                     fallbackImageName: "safari",
                                     for: CompletionsWindow.self)!
         case .bookmark:
             return NSImage.it_image(forSymbolName: SFSymbol.bookmark.rawValue,
-                                    accessibilityDescription: "Bookmark",
+                                    accessibilityDescription: NSLocalizedString("Bookmark", tableName: "CompletionsUI", comment: "补全项类型：书签"),
                                     fallbackImageName: "bookmark",
                                     for: CompletionsWindow.self)!
         }

@@ -3204,12 +3204,12 @@ ITERM_WEAKLY_REFERENCEABLE
 - (BOOL)checkForSusLocale:(NSString *)lang guid:(NSString *)guid {
     if (lang && self.encoding == NSUTF8StringEncoding && ![lang containsString:@"UTF-8"]) {
         const iTermWarningSelection selection =
-        [iTermWarning showWarningWithTitle:@"Warning! This profile uses a custom locale that doesn't use UTF-8 as its character encoding, but your profile *is* using UTF-8. This can cause error messages and non-ASCII text to appear wrong."
-                                   actions:@[ @"Change Locale", @"Keep This Locale"]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Warning! This profile uses a custom locale that doesn't use UTF-8 as its character encoding, but your profile *is* using UTF-8. This can cause error messages and non-ASCII text to appear wrong.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: UTF-8 locale mismatch warning")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"Change Locale", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: change locale button"), NSLocalizedStringFromTableInBundle(@"Keep This Locale", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: keep locale button")]
                                  accessory:nil
                                 identifier:[@"NoSyncUTF8Mismatch_" stringByAppendingString:guid ?: @""]
                                silenceable:kiTermWarningTypePermanentlySilenceable
-                                   heading:@"Wrong Encoding Detected"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Wrong Encoding Detected", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: wrong encoding heading")
                                     window:self.view.window];
         if (selection == kiTermWarningSelection1) {
             return YES;
@@ -3249,7 +3249,7 @@ ITERM_WEAKLY_REFERENCEABLE
         prompt.allowRemember = NO;
     }
     while (YES) {
-        localeVars = [prompt requestLocaleFromUserForProfile:self.originalProfile[KEY_NAME] ?: @"(Unnamed profile)"
+        localeVars = [prompt requestLocaleFromUserForProfile:self.originalProfile[KEY_NAME] ?: NSLocalizedStringFromTableInBundle(@"(Unnamed profile)", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible")
                                                     inWindow:self.view.window
                                                  cancelUsesC:YES];
         NSString *lang = localeVars[@"LANG"];
@@ -3359,12 +3359,12 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
                 if (count > 0) {
                     return;
                 }
-                const iTermWarningSelection selection = [iTermWarning showWarningWithTitle:@"A browser session failed to start because the iTerm2 Browser Plugin couldn’t be found."
-                                           actions:@[ @"Download", @"Cancel" ]
+                const iTermWarningSelection selection = [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"A browser session failed to start because the iTerm2 Browser Plugin couldn’t be found.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: browser plugin missing warning")
+                                           actions:@[ NSLocalizedStringFromTableInBundle(@"Download", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: download button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button") ]
                                          accessory:nil
                                         identifier:nil
                                        silenceable:kiTermWarningTypePersistent
-                                           heading:@"Browser Plugin Missing"
+                                           heading:NSLocalizedStringFromTableInBundle(@"Browser Plugin Missing", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: browser plugin missing heading")
                                             window:nil];
                 if (selection == kiTermWarningSelection0) {
                     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://iterm2.com/browser-plugin.html"]];
@@ -3615,11 +3615,11 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
                 ![[NSFileManager defaultManager] fileExistsAtPath:shell]) {
                 NSString *theKey = [NSString stringWithFormat:@"ShellDoesNotExist_%@", guid];
                 NSString *theTitle = [NSString stringWithFormat:
-                                      @"The shell for this account, “%@”, does not exist. Change the profile to use /bin/zsh instead?",
+                                      NSLocalizedStringFromTableInBundle(@"The shell for this account, “%@”, does not exist. Change the profile to use /bin/zsh instead?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: shell does not exist warning"),
                                       shell];
                 const iTermWarningSelection selection =
                 [iTermWarning showWarningWithTitle:theTitle
-                                           actions:@[ @"OK", @"Cancel" ]
+                                           actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button") ]
                                         identifier:theKey
                                        silenceable:kiTermWarningTypePermanentlySilenceable
                                             window:self.view.window];
@@ -3639,11 +3639,10 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
         }
         NSString *theKey = [iTermPreferences warningIdentifierForNeverWarnAboutShortLivedSessions:guid];
         NSString *theTitle = [NSString stringWithFormat:
-                              @"A session ended very soon after starting. Check that the command "
-                              @"in profile \"%@\" is correct.",
+                              NSLocalizedStringFromTableInBundle(@"A session ended very soon after starting. Check that the command in profile “%@” is correct.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: session ended soon warning"),
                               theName];
         [iTermWarning showWarningWithTitle:theTitle
-                                   actions:@[ @"OK" ]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button") ]
                                 identifier:theKey
                                silenceable:kiTermWarningTypePermanentlySilenceable
                                     window:self.view.window];
@@ -4120,12 +4119,12 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
         [self tmuxDetach];
     } else if (unicode == 'L') {
         _tmuxGateway.tmuxLogging = !_tmuxGateway.tmuxLogging;
-        [self printTmuxMessage:[NSString stringWithFormat:@"tmux logging %@", (_tmuxGateway.tmuxLogging ? @"on" : @"off")]];
+        [self printTmuxMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"tmux logging %@", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux logging status"), (_tmuxGateway.tmuxLogging ? NSLocalizedStringFromTableInBundle(@"on", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux logging on") : NSLocalizedStringFromTableInBundle(@"off", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux logging off"))]];
     } else if (unicode == 'C') {
         NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-        alert.messageText = @"Enter command to send tmux:";
-        [alert addButtonWithTitle:@"OK"];
-        [alert addButtonWithTitle:@"Cancel"];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Enter command to send tmux:", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux command prompt");
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button")];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button")];
         NSTextField *tmuxCommand = [[[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 200, 24)] autorelease];
         [tmuxCommand setEditable:YES];
         [tmuxCommand setSelectable:YES];
@@ -4133,7 +4132,7 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
         [alert layout];
         [[alert window] makeFirstResponder:tmuxCommand];
         if ([alert runModal] == NSAlertFirstButtonReturn && [[tmuxCommand stringValue] length]) {
-            [self printTmuxMessage:[NSString stringWithFormat:@"Run command \"%@\"", [tmuxCommand stringValue]]];
+            [self printTmuxMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Run command \"%@\"", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux run command echo"), [tmuxCommand stringValue]]];
             [_tmuxGateway sendCommand:[tmuxCommand stringValue]
                        responseTarget:self
                      responseSelector:@selector(printTmuxCommandOutputToScreen:)];
@@ -4146,7 +4145,7 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
 - (void)forceTmuxDetach {
     switch (self.tmuxMode) {
         case TMUX_GATEWAY:
-            [self printTmuxMessage:@"Exiting tmux mode, but tmux client may still be running."];
+            [self printTmuxMessage:NSLocalizedStringFromTableInBundle(@"Exiting tmux mode, but tmux client may still be running.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux exit message")];
             [self tmuxHostDisconnected:[[_tmuxGateway.dcsID copy] autorelease]];
             return;
         case TMUX_NONE:
@@ -4292,7 +4291,7 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
             title = trigger.description;
         }
         if (title.length == 0) {
-            title = @"(Unnamed trigger)";
+            title = NSLocalizedStringFromTableInBundle(@"(Unnamed trigger)", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: unnamed trigger fallback");
         }
         return [iTermTuple tupleWithObject:title
                                  andObject:@(![dict[kTriggerDisabledKey] boolValue])];
@@ -4398,7 +4397,7 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
         DLog(@"No gateway for %@", tmuxFormat);
         *errorPtr = [NSError errorWithDomain:@"com.iterm2.bind-tmux-format"
                                         code:0
-                                    userInfo:@{ NSLocalizedDescriptionKey: @"Session is not a tmux client" }];
+                                    userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Session is not a tmux client", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: not tmux client error") }];
         return nil;
     }
     iTermTmuxOptionMonitor *mon = [_userTmuxOptionMonitors objectPassingTest:^BOOL(iTermTmuxOptionMonitor *candidate, NSUInteger index, BOOL *stop) {
@@ -4553,7 +4552,7 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
         NSString *customText = [iTermAdvancedSettingsModel sessionEndMessageText];
         NSString *notificationText = (customText.length > 0) ? customText : @"Session Ended";
         [[iTermNotificationController sharedInstance] notify:notificationText
-                                             withDescription:[NSString stringWithFormat:@"Session \"%@\" in tab #%d just terminated.",
+                                             withDescription:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Session \"%@\" in tab #%d just terminated.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible"),
                                                               [[self name] removingHTMLFromTabTitleIfNeeded],
                                                               [_delegate tabNumber]]];
     }
@@ -4916,12 +4915,12 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
     }
     showing = YES;
     const iTermWarningSelection selection =
-        [iTermWarning showWarningWithTitle:@"A keyboard shortcut didn’t run because this physical key now produces a different character than it did when the shortcut was created, usually after switching keyboard layout or input method. Matching key bindings by physical key makes shortcuts work regardless of the character a key produces. This affects all key bindings; you can change it later in Settings > Keys."
-                                   actions:@[ @"Use Physical Key", @"Not Now", @"Don’t Ask Again" ]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"A keyboard shortcut didn’t run because this physical key now produces a different character than it did when the shortcut was created, usually after switching keyboard layout or input method. Matching key bindings by physical key makes shortcuts work regardless of the character a key produces. This affects all key bindings; you can change it later in Settings > Keys.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: physical key shortcut warning")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"Use Physical Key", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: use physical key button"), NSLocalizedStringFromTableInBundle(@"Not Now", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: not now button"), NSLocalizedStringFromTableInBundle(@"Don’t Ask Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont ask again button") ]
                                  accessory:nil
                                 identifier:nil
                                silenceable:kiTermWarningTypePersistent
-                                   heading:@"Match key bindings by physical key?"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Match key bindings by physical key?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: physical key heading")
                                     window:nil];
     showing = NO;
     switch (selection) {
@@ -5284,7 +5283,7 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
                 [self shouldPostUserNotification] &&
                 [iTermProfilePreferences boolForKey:KEY_SEND_BELL_ALERT inProfile:self.profile]) {
                 [[iTermNotificationController sharedInstance] notify:@"Bell"
-                                                     withDescription:[NSString stringWithFormat:@"Session %@ #%d just rang a bell!",
+                                                     withDescription:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Session %@ #%d just rang a bell!", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible"),
                                                                       [[self name] removingHTMLFromTabTitleIfNeeded],
                                                                       [_delegate tabNumber]]
                                                          windowIndex:[self screenWindowIndex]
@@ -9603,7 +9602,7 @@ extendResultsAcrossSoftBoundaries:(BOOL)extendResultsAcrossSoftBoundaries {
     assert(!_tmuxClientWritePipe);
     int fds[2];
     if (pipe(fds) < 0) {
-        NSString *message = [NSString stringWithFormat:@"Failed to create pipe: %s", strerror(errno)];
+        NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Failed to create pipe: %s", @"PTYSession", [NSBundle bundleForClass:[self class]], @"创建管道失败：%s"), strerror(errno)];
         DLog(@"%@", message);
         [_screen mutateAsynchronously:^(VT100Terminal *terminal, VT100ScreenMutableState *mutableState, id<VT100ScreenDelegate> delegate) {
             [mutableState appendStringAtCursor:message];
@@ -9893,14 +9892,14 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     // One of tmuxInitialCommandDidCompleteSuccessfully: or
     // tmuxInitialCommandDidFailWithError: will be called on the first %end or
     // %error, respectively.
-    [self printTmuxMessage:@"** tmux mode started **"];
+    [self printTmuxMessage:NSLocalizedStringFromTableInBundle(@"** tmux mode started **", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux mode started")];
     [self printTmuxMessage:@""];
-    [self printTmuxMessage:@"Command Menu"];
+    [self printTmuxMessage:NSLocalizedStringFromTableInBundle(@"Command Menu", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux command menu")];
     [self printTmuxMessage:@"----------------------------"];
-    [self printTmuxMessage:@"esc    Detach cleanly."];
-    [self printTmuxMessage:@"  X    Force-quit tmux mode."];
-    [self printTmuxMessage:@"  L    Toggle logging."];
-    [self printTmuxMessage:@"  C    Run tmux command."];
+    [self printTmuxMessage:NSLocalizedStringFromTableInBundle(@"esc    Detach cleanly.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux menu detach")];
+    [self printTmuxMessage:NSLocalizedStringFromTableInBundle(@"  X    Force-quit tmux mode.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux menu force quit")];
+    [self printTmuxMessage:NSLocalizedStringFromTableInBundle(@"  L    Toggle logging.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux menu toggle logging")];
+    [self printTmuxMessage:NSLocalizedStringFromTableInBundle(@"  C    Run tmux command.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux menu run command")];
 
     if ([iTermPreferences boolForKey:kPreferenceKeyAutoHideTmuxClientSession]) {
         _tmuxController.initialWindowHint = self.view.window.frame;
@@ -9920,7 +9919,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     if (self.tmuxMode != TMUX_GATEWAY) {
         return;
     }
-    [self printTmuxMessage:@"Detaching..."];
+    [self printTmuxMessage:NSLocalizedStringFromTableInBundle(@"Detaching...", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux detaching")];
     [_tmuxGateway detach];
 }
 
@@ -10098,13 +10097,13 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
 
 - (void)textViewDisconnectSSH {
     if (!_conductor.framing) {
-        NSString *title = [NSString stringWithFormat:@"Advanced SSH features are unavailable because Python %@ or later was not found on %@", [iTermConductor minimumPythonVersionForFramer], _conductor.sshIdentity.hostname ?: @"remote host"];
+        NSString *title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Advanced SSH features are unavailable because Python %@ or later was not found on %@", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: ssh python missing warning"), [iTermConductor minimumPythonVersionForFramer], _conductor.sshIdentity.hostname ?: @"remote host"];
         [iTermWarning showWarningWithTitle:title
-                                   actions:@[ @"OK" ]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button") ]
                                  accessory:nil
                                 identifier:nil
                                silenceable:kiTermWarningTypePersistent
-                                   heading:@"Can’t Disconnect"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Can’t Disconnect", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cant disconnect heading")
                                     window:self.view.window];
         return;
     }
@@ -10364,8 +10363,8 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
 
         static NSString *const kAutoBurialKey = @"NoSyncAutoBurialReveal";
         if (![[iTermUserDefaults userDefaults] boolForKey:kAutoBurialKey]) {
-            [[iTermNotificationController sharedInstance] notify:@"Session Buried"
-                                                 withDescription:@"It can be restored by detaching from tmux, or from the Sessions > Buried Sessions menu."];
+            [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Session Buried", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible")
+                                                 withDescription:NSLocalizedStringFromTableInBundle(@"It can be restored by detaching from tmux, or from the Sessions > Buried Sessions menu.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible")];
             [[iTermUserDefaults userDefaults] setBool:YES forKey:kAutoBurialKey];
         }
     }
@@ -10444,7 +10443,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
 }
 
 - (void)tmuxInitialCommandDidFailWithError:(NSString *)error {
-    [self printTmuxMessage:[NSString stringWithFormat:@"tmux failed with error: “%@”", error]];
+    [self printTmuxMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"tmux failed with error: “%@”", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux failed error"), error]];
 }
 
 - (void)tmuxPrintLine:(NSString *)line {
@@ -10459,12 +10458,12 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     if (duringInitialization) {
         // "Reveal Setting" is a one-time navigation action and shouldn't be remembered.
         iTermWarning *warning = [[iTermWarning alloc] init];
-        warning.title = @"It's taking a long time for tmux to respond. If this is a old or funky system it might expect newline rather than carriage return to end commands. You can adjust the line terminator used by tmux integration in Settings.";
-        warning.actionLabels = @[ @"OK", @"Reveal Setting" ];
+        warning.title = NSLocalizedStringFromTableInBundle(@"It's taking a long time for tmux to respond. If this is a old or funky system it might expect newline rather than carriage return to end commands. You can adjust the line terminator used by tmux integration in Settings.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: slow tmux warning");
+        warning.actionLabels = @[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button"), NSLocalizedStringFromTableInBundle(@"Reveal Setting", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: reveal setting action") ];
         warning.identifier = @"NoSyncTmuxHung";
         warning.warningType = kiTermWarningTypePermanentlySilenceable;
-        warning.heading = @"Slow tmux Response";
-        warning.doNotRememberLabels = @[ @"Reveal Setting" ];
+        warning.heading = NSLocalizedStringFromTableInBundle(@"Slow tmux Response", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: slow tmux heading");
+        warning.doNotRememberLabels = @[ NSLocalizedStringFromTableInBundle(@"Reveal Setting", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible") ];
         const iTermWarningSelection selection = [warning runModal];
         if (selection == 1) {
             [self revealProfileSettingWithKey:KEY_TMUX_NEWLINE];
@@ -10472,10 +10471,10 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
         return;
     }
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-    alert.messageText = @"Force Detach?";
-    alert.informativeText = @"Tmux is not responding. Would you like to force detach?";
-    [alert addButtonWithTitle:@"Detach"];
-    [alert addButtonWithTitle:@"Cancel"];
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Force Detach?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: force detach title");
+    alert.informativeText = NSLocalizedStringFromTableInBundle(@"Tmux is not responding. Would you like to force detach?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: force detach informative");
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Detach", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: detach button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button")];
     NSWindow *window = self.view.window;
     NSInteger button;
     if (window) {
@@ -10498,10 +10497,10 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
 
 - (BOOL)tmuxGatewayShouldForceDetach {
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-    alert.messageText = @"Force Detach?";
-    alert.informativeText = @"A previous detach request has not yet been honored. Force detach?";
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Cancel"];
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Force Detach?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: force detach title");
+    alert.informativeText = NSLocalizedStringFromTableInBundle(@"A previous detach request has not yet been honored. Force detach?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: pending detach informative");
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button")];
     NSWindow *window = self.view.window;
     NSInteger button;
     if (window) {
@@ -10676,7 +10675,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     if (notification) {
         title = @"tmux paused this session because too much output was buffered.";
     } else {
-        title = @"Session paused.";
+        title = NSLocalizedStringFromTableInBundle(@"Session paused.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible");
     }
 
     [self dismissAnnouncementWithIdentifier:PTYSessionAnnouncementIdentifierTmuxPaused];
@@ -10684,7 +10683,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     iTermAnnouncementViewController *announcement =
     [iTermAnnouncementViewController announcementWithTitle:title
                                                      style:kiTermAnnouncementViewStyleWarning
-                                               withActions:@[ @"_Unpause", @"_Settings" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"_Unpause", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: unpause button"), NSLocalizedStringFromTableInBundle(@"_Settings", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: settings button") ]
                                                 completion:^(int selection) {
         switch (selection) {
             case 0:
@@ -10801,18 +10800,18 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
 }
 
 - (void)tmuxDoubleAttachForSessionGUID:(NSString *)sessionGUID {
-    NSArray<NSString *> *actions = @[ @"OK", @"Reveal", @"Force Detach Other" ];
+    NSArray<NSString *> *actions = @[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button"), NSLocalizedStringFromTableInBundle(@"Reveal", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: reveal button"), NSLocalizedStringFromTableInBundle(@"Force Detach Other", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: force detach other button") ];
     TmuxController *controller = [[TmuxControllerRegistry sharedInstance] tmuxControllerWithSessionGUID:sessionGUID];
     if (!controller) {
         actions = @[ @"OK" ];
     }
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:@"This instance of iTerm2 is already attached to this session"
+    [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"This instance of iTerm2 is already attached to this session", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: already attached warning")
                                actions:actions
                              accessory:nil
                             identifier:@"AlreadyAttachedToTmuxSession"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Cannot Attach"
+                               heading:NSLocalizedStringFromTableInBundle(@"Cannot Attach", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cannot attach heading")
                                 window:self.view.window];
     switch (selection) {
         case kiTermWarningSelection0:
@@ -11891,13 +11890,13 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
                         sideEffectsAllowed:YES
                                 completion:^(iTermExpressionEvaluator *evaluator) {
                 if (evaluator.error) {
-                    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"The key-binding action Copy Interpolated String “%@” failed:\n\n%@",
+                    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The key-binding action Copy Interpolated String “%@” failed:\n\n%@", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: copy interpolated string failed warning"),
                                                         parameter, evaluator.error.localizedDescription]
-                                               actions:@[ @"OK" ]
+                                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button") ]
                                              accessory:nil
                                             identifier:nil
                                            silenceable:kiTermWarningTypePersistent
-                                               heading:@"Error Evaluating Interpolated String"
+                                               heading:NSLocalizedStringFromTableInBundle(@"Error Evaluating Interpolated String", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: eval interpolated string heading")
                                                 window:weakSelf.view.window];
 
                     iTermScriptHistoryEntry *entry =
@@ -11906,7 +11905,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
                                                         identifier:[[NSUUID UUID] UUIDString]
                                                           relaunch:nil] autorelease];
                     [[iTermScriptHistory sharedInstance] addHistoryEntry:entry];
-                    [entry addOutput:[NSString stringWithFormat:@"Error evaluating interpolated string “%@”:\n%@", parameter, evaluator.error]
+                    [entry addOutput:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Error evaluating interpolated string “%@”:\n%@", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible"), parameter, evaluator.error]
                           completion:^{}];
 
                     return;
@@ -11970,7 +11969,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     iTermAnnouncementViewController *announcement =
     [iTermAnnouncementViewController announcementWithTitle:message
                                                      style:kiTermAnnouncementViewStyleWarning
-                                               withActions:@[ @"_OK" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"_OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: ok button with mnemonic") ]
                                                 completion:completion];
     iTermAnnouncementViewController *existing = _announcements[identifier];
     if (existing) {
@@ -12445,9 +12444,9 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     // land in the overflow. All three are reachable; the coordinator's once-per-launch
     // guard is what prevents nagging.
     iTermAnnouncementViewController *announcement =
-        [iTermAnnouncementViewController announcementWithTitle:@"This key now types a different character. Match key bindings by physical key?"
+        [iTermAnnouncementViewController announcementWithTitle:NSLocalizedStringFromTableInBundle(@"This key now types a different character. Match key bindings by physical key?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: key types different char announcement")
                                                          style:kiTermAnnouncementViewStyleQuestion
-                                                   withActions:@[ @"Use Physical Key", @"Learn More", @"Don’t Ask Again" ]
+                                                   withActions:@[ NSLocalizedStringFromTableInBundle(@"Use Physical Key", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: use physical key button"), NSLocalizedStringFromTableInBundle(@"Learn More", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: learn more button"), NSLocalizedStringFromTableInBundle(@"Don’t Ask Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont ask again button") ]
                                                     completion:^(int selection) {
         switch (selection) {
             case 0:
@@ -14291,9 +14290,9 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     }
     if (announce) {
         if (showAlternateScreen) {
-            [_view showUnobtrusiveMessage:@"Switching to alternate screen"];
+            [_view showUnobtrusiveMessage:NSLocalizedStringFromTableInBundle(@"Switching to alternate screen", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: switching to alternate screen")];
         } else {
-            [_view showUnobtrusiveMessage:@"Switching to main screen"];
+            [_view showUnobtrusiveMessage:NSLocalizedStringFromTableInBundle(@"Switching to main screen", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: switching to main screen")];
         }
     }
     [_screen performBlockWithJoinedThreads:^(VT100Terminal *terminal,
@@ -14458,10 +14457,10 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     }
     [menu addItem:[NSMenuItem separatorItem]];
     if (_tmuxPaused) {
-        NSMenuItem *item = [menu addItemWithTitle:@"Unpause tmux Pane" action:@selector(toggleTmuxPaused) keyEquivalent:@""];
+        NSMenuItem *item = [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Unpause tmux Pane", @"PTYSession", [NSBundle bundleForClass:[self class]], @"恢复tmux面板菜单项") action:@selector(toggleTmuxPaused) keyEquivalent:@""];
         item.target = self;
     } else {
-        NSMenuItem *item = [menu addItemWithTitle:@"Pause tmux Pane" action:@selector(toggleTmuxPaused) keyEquivalent:@""];
+        NSMenuItem *item = [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Pause tmux Pane", @"PTYSession", [NSBundle bundleForClass:[self class]], @"暂停tmux面板菜单项") action:@selector(toggleTmuxPaused) keyEquivalent:@""];
         item.target = self;
     }
 }
@@ -15470,9 +15469,9 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
         }
     };
     iTermAnnouncementViewController *announcement =
-    [iTermAnnouncementViewController announcementWithTitle:@"A program has tried to resize the window. Allow it?"
+    [iTermAnnouncementViewController announcementWithTitle:NSLocalizedStringFromTableInBundle(@"A program has tried to resize the window. Allow it?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: resize window announcement")
                                                      style:kiTermAnnouncementViewStyleWarning
-                                               withActions:@[ @"_Allow Once", @"_Open Settings", @"Don’t Show This Again" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"_Allow Once", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: allow once button"), NSLocalizedStringFromTableInBundle(@"_Open Settings", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: open settings button"), NSLocalizedStringFromTableInBundle(@"Don’t Show This Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont show again button") ]
                                                 completion:completion];
     iTermAnnouncementViewController *existing = _announcements[identifier];
     if (existing) {
@@ -15508,9 +15507,9 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
         }
     };
     iTermAnnouncementViewController *announcement =
-    [iTermAnnouncementViewController announcementWithTitle:@"A program has tried to resize the window while this session was not active. Allow it?"
+    [iTermAnnouncementViewController announcementWithTitle:NSLocalizedStringFromTableInBundle(@"A program has tried to resize the window while this session was not active. Allow it?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: resize window inactive announcement")
                                                      style:kiTermAnnouncementViewStyleWarning
-                                               withActions:@[ @"_Allow Once", @"_Open Settings", @"Don’t Show This Again" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"_Allow Once", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: allow once button"), NSLocalizedStringFromTableInBundle(@"_Open Settings", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: open settings button"), NSLocalizedStringFromTableInBundle(@"Don’t Show This Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont show again button") ]
                                                 completion:completion];
     iTermAnnouncementViewController *existing = _announcements[identifier];
     if (existing) {
@@ -16163,7 +16162,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
         NSString *markDescription = [NSString stringWithFormat:@"Session %@ #%d had a mark set.",
                                      [[self name] removingHTMLFromTabTitleIfNeeded],
                                      [_delegate tabNumber]];
-        [[iTermNotificationController sharedInstance] notify:@"Mark Set"
+        [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Mark Set", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible")
                                              withDescription:markDescription
                                                  windowIndex:[self screenWindowIndex]
                                                     tabIndex:[self screenTabIndex]
@@ -16201,10 +16200,10 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
 
 - (void)showMarkSetAlert {
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-    alert.messageText = @"Alert";
-    alert.informativeText = [NSString stringWithFormat:@"Mark set in session “%@.”", [self name]];
-    [alert addButtonWithTitle:@"Reveal"];
-    [alert addButtonWithTitle:@"OK"];
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Alert", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: mark set alert title");
+    alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Mark set in session “%@.”", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: mark set informative"), [self name]];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Reveal", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: reveal button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button")];
     if ([alert runModal] == NSAlertFirstButtonReturn) {
         [self reveal];
     }
@@ -16388,12 +16387,12 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
 - (void)maybeStealFocus {
     NSString *const identifier = @"NoSyncAllowDenyStealFocus";
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:@"A control sequence attempted to activate a session. Allow it?"
-                               actions:@[ @"Allow", @"Deny" ]
+    [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"A control sequence attempted to activate a session. Allow it?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: activate session warning")
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"Allow", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: allow button"), NSLocalizedStringFromTableInBundle(@"Deny", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: deny button") ]
                              accessory:nil
                             identifier:identifier
                            silenceable:kiTermWarningTypePermanentlySilenceable
-                               heading:@"Permission Required"
+                               heading:NSLocalizedStringFromTableInBundle(@"Permission Required", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: permission required heading")
                                 window:nil];
     if (selection == kiTermWarningSelection0) {
         [self reveal];
@@ -16533,7 +16532,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     const NSInteger lengthBefore = self.download.length;
     if (self.download && ![self.download appendData:data]) {
         iTermAnnouncementViewController *announcement =
-        [iTermAnnouncementViewController announcementWithTitle:@"A file transfer was aborted for exceeding its declared size."
+        [iTermAnnouncementViewController announcementWithTitle:NSLocalizedStringFromTableInBundle(@"A file transfer was aborted for exceeding its declared size.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: file transfer oversize announcement")
                                                          style:kiTermAnnouncementViewStyleWarning
                                                    withActions:@[ ]
                                                     completion:^(int selection) {}];
@@ -16573,7 +16572,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
         NSString *identifier = @"UploadInUnsupportedFormatRequested";
         if (![self announcementWithIdentifier:identifier]) {
             iTermAnnouncementViewController *announcement =
-            [iTermAnnouncementViewController announcementWithTitle:@"An upload with an unsupported archive format was requested. You may need a newer version of iTerm2."
+            [iTermAnnouncementViewController announcementWithTitle:NSLocalizedStringFromTableInBundle(@"An upload with an unsupported archive format was requested. You may need a newer version of iTerm2.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: unsupported archive format announcement")
                                                              style:kiTermAnnouncementViewStyleWarning
                                                        withActions:@[]
                                                         completion:^(int selection) {}];
@@ -16638,8 +16637,8 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
                 NSString *message = error.userInfo[@"errorMessage"];
                 if (message) {
                     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-                    alert.messageText = @"Error Preparing Upload";
-                    alert.informativeText = [NSString stringWithFormat:@"tar failed with this message: %@", message];
+                    alert.messageText = NSLocalizedStringFromTableInBundle(@"Error Preparing Upload", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: upload error title");
+                    alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"tar failed with this message: %@", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tar failed informative"), message];
                     [alert runModal];
                     return;
                 }
@@ -16651,7 +16650,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
             if (relativePaths.count == 1) {
                 label = relativePaths.firstObject.lastPathComponent;
             } else {
-                label = [NSString stringWithFormat:@"%@ plus %ld more", relativePaths.firstObject.lastPathComponent, relativePaths.count - 1];
+                label = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ plus %ld more", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible"), relativePaths.firstObject.lastPathComponent, relativePaths.count - 1];
             }
             const NSUInteger size = base64String.length;
             self.upload = [[[TerminalFileUpload alloc] initWithName:label size:size] autorelease];
@@ -16718,9 +16717,9 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     }
 
     iTermAnnouncementViewController *announcement =
-    [iTermAnnouncementViewController announcementWithTitle:@"An app tried to read screen contents with DECRQCRA. Enable this feature?"
+    [iTermAnnouncementViewController announcementWithTitle:NSLocalizedStringFromTableInBundle(@"An app tried to read screen contents with DECRQCRA. Enable this feature?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: decrqcra announcement")
                                                      style:kiTermAnnouncementViewStyleQuestion
-                                               withActions:@[ @"Yes", @"No" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: yes button"), NSLocalizedStringFromTableInBundle(@"No", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: no button") ]
                                                 completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programmatically
@@ -16775,7 +16774,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     iTermParsedExpression *parsedExpression = [iTermExpressionParser parsedExpressionWithInterpolatedString:theFormat scope:self.variablesScope];
     if ([parsedExpression containsAnyFunctionCall]) {
         XLog(@"Rejected control-sequence provided badge format containing function calls: %@", theFormat);
-        [self showSimpleWarningAnnouncment:@"The application attempted to set the badge to a value that would invoke a function call. For security reasons, this is not allowed and the badge was not updated."
+        [self showSimpleWarningAnnouncment:NSLocalizedStringFromTableInBundle(@"The application attempted to set the badge to a value that would invoke a function call. For security reasons, this is not allowed and the badge was not updated.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible")
                                 identifier:@"UnsaveBadgeFormatRejected"];
         return;
     }
@@ -17438,12 +17437,12 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     switch (turdType) {
         case PTYSessionTurdTypeDEC2048:
             identifier = kTurnOffDEC2048OnAutodetectAnnouncementIdentifier;
-            title = @"Looks like resize reporting was left on when an ssh session ended unexpectedly or an app misbehaved. Turn it off?";
+            title = NSLocalizedStringFromTableInBundle(@"Looks like resize reporting was left on when an ssh session ended unexpectedly or an app misbehaved. Turn it off?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible");
             userDefaultsKey = kTurnOffDEC2048OnHostChangeUserDefaultsKey;
             break;
         case PTYSessionTurdTypeMouseReporting:
             identifier = kTurnOffMouseReportingOnAutodetectAnnouncementIdentifier;
-            title = @"Looks like mouse reporting was left on when an ssh session ended unexpectedly or an app misbehaved. Turn it off?";
+            title = NSLocalizedStringFromTableInBundle(@"Looks like mouse reporting was left on when an ssh session ended unexpectedly or an app misbehaved. Turn it off?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible");
             userDefaultsKey = kTurnOffMouseReportingOnHostChangeUserDefaultsKey;
             break;
     }
@@ -17509,7 +17508,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
 
 - (void)offerToTurnOffFocusReporting {
     NSString *title =
-    @"Looks like focus reporting was left on when an ssh session ended unexpectedly or an app misbehaved. Turn it off?";
+    NSLocalizedStringFromTableInBundle(@"Looks like focus reporting was left on when an ssh session ended unexpectedly or an app misbehaved. Turn it off?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible");
     iTermAnnouncementViewController *announcement =
     [iTermAnnouncementViewController announcementWithTitle:title
                                                      style:kiTermAnnouncementViewStyleQuestion
@@ -18529,12 +18528,12 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
         if (audible) {
             DLog(@"Want to show a bell announcement. The bell is audible.");
             announcement =
-            [iTermAnnouncementViewController announcementWithTitle:@"The bell is ringing a lot. Silence it?"
+            [iTermAnnouncementViewController announcementWithTitle:NSLocalizedStringFromTableInBundle(@"The bell is ringing a lot. Silence it?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: bell silence announcement")
                                                              style:kiTermAnnouncementViewStyleQuestion
-                                                       withActions:@[ @"_Silence Bell Temporarily",
-                                                                      @"Suppress _All Output",
-                                                                      @"Don't Offer Again",
-                                                                      @"Silence Automatically" ]
+                                                       withActions:@[ NSLocalizedStringFromTableInBundle(@"_Silence Bell Temporarily", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: silence bell button"),
+                                                                      NSLocalizedStringFromTableInBundle(@"Suppress _All Output", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: suppress all output button"),
+                                                                      NSLocalizedStringFromTableInBundle(@"Don't Offer Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont offer again button"),
+                                                                      NSLocalizedStringFromTableInBundle(@"Silence Automatically", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: silence automatically button") ]
                                                         completion:^(int selection) {
                 // Release the moving average so the count will restart after the announcement goes away.
                 [_bellRate release];
@@ -18576,10 +18575,10 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
             DLog(@"Want to show a bell announcement. The bell is visible but inaudible.");
             // Neither audible nor visible.
             announcement =
-            [iTermAnnouncementViewController announcementWithTitle:@"The bell is ringing a lot. Want to suppress all output until things calm down?"
+            [iTermAnnouncementViewController announcementWithTitle:NSLocalizedStringFromTableInBundle(@"The bell is ringing a lot. Want to suppress all output until things calm down?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: bell suppress announcement")
                                                              style:kiTermAnnouncementViewStyleQuestion
-                                                       withActions:@[ @"Suppress _All Output",
-                                                                      @"Don't Offer Again" ]
+                                                       withActions:@[ NSLocalizedStringFromTableInBundle(@"Suppress _All Output", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: suppress all output button"),
+                                                                      NSLocalizedStringFromTableInBundle(@"Don't Offer Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont offer again button") ]
                                                         completion:^(int selection) {
                 // Release the moving average so the count will restart after the announcement goes away.
                 [_bellRate release];
@@ -18742,8 +18741,8 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
         [_textview installShellIntegration:nil];
     } else {
         iTermWarningSelection selection =
-        [iTermWarning showWarningWithTitle:@"It looks like you're not at a command prompt."
-                                   actions:@[ @"Run Installer Anyway", @"Cancel" ]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"It looks like you're not at a command prompt.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: not at command prompt warning")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"Run Installer Anyway", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: run installer anyway button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button") ]
                                 identifier:nil
                                silenceable:kiTermWarningTypePersistent
                                     window:self.view.window];
@@ -18801,9 +18800,9 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
         return;
     }
     iTermAnnouncementViewController *announcement =
-    [iTermAnnouncementViewController announcementWithTitle:@"This account’s Shell Integration scripts are out of date."
+    [iTermAnnouncementViewController announcementWithTitle:NSLocalizedStringFromTableInBundle(@"This account’s Shell Integration scripts are out of date.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: shell integration outdated announcement")
                                                      style:kiTermAnnouncementViewStyleWarning
-                                               withActions:@[ @"Upgrade", @"Silence Warning" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"Upgrade", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: upgrade button"), NSLocalizedStringFromTableInBundle(@"Silence Warning", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: silence warning button") ]
                                                 completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programmatically
@@ -18974,7 +18973,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     iTermAnnouncementViewController *announcement =
     [iTermAnnouncementViewController announcementWithTitle:notice
                                                      style:kiTermAnnouncementViewStyleWarning
-                                               withActions:@[ @"_Open Settings", @"Don't Show This Again" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"_Open Settings", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: open settings button"), NSLocalizedStringFromTableInBundle(@"Don't Show This Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont show again button") ]
                                                 completion:^(int selection) {
         if (selection == 0) {
             [[PreferencePanel sharedInstance] openToPreferenceWithKey:kPreferenceKeyAllowClipboardAccessFromTerminal];
@@ -19125,12 +19124,12 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
 - (BOOL)screenConfirmDownloadNamed:(NSString *)name canExceedSize:(NSInteger)limit {
     NSString *identifier = @"NoSyncAllowBigDownload";
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"The download “%@” is larger than %@. Continue?", name, [NSString it_formatBytes:limit]]
-                               actions:@[ @"Allow", @"Deny" ]
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The download “%@” is larger than %@. Continue?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: large download warning"), name, [NSString it_formatBytes:limit]]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"Allow", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: allow button"), NSLocalizedStringFromTableInBundle(@"Deny", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: deny button") ]
                              accessory:nil
                             identifier:identifier
                            silenceable:kiTermWarningTypePermanentlySilenceable
-                               heading:@"Allow Large File Download?"
+                               heading:NSLocalizedStringFromTableInBundle(@"Allow Large File Download?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: large download heading")
                                 window:_view.window];
     return selection == kiTermWarningSelection0;
 }
@@ -19145,17 +19144,17 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     NSString *title;
     NSString *heading;
     if (displayInline) {
-        title = [NSString stringWithFormat:@"The terminal has initiated display of a file named “%@” of size %@. Allow it?",
+        title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The terminal has initiated display of a file named “%@” of size %@. Allow it?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: terminal display file warning"),
                  name, [NSString it_formatBytes:size]];
-        heading = @"Allow Terminal-Initiated Display?";
+        heading = NSLocalizedStringFromTableInBundle(@"Allow Terminal-Initiated Display?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: terminal display heading");
     } else {
-        title = [NSString stringWithFormat:@"The terminal has initiated transfer of a file named “%@” of size %@. Download it?",
+        title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The terminal has initiated transfer of a file named “%@” of size %@. Download it?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: terminal download file warning"),
                  name, [NSString it_formatBytes:size]];
-        heading = @"Allow Terminal-Initiated Download?";
+        heading = NSLocalizedStringFromTableInBundle(@"Allow Terminal-Initiated Download?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: terminal download heading");
     }
     const iTermWarningSelection selection =
     [iTermWarning showWarningWithTitle:title
-                               actions:@[ @"Yes", @"No" ]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: yes button"), NSLocalizedStringFromTableInBundle(@"No", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: no button") ]
                              accessory:nil
                             identifier:identifier
                            silenceable:kiTermWarningTypePermanentlySilenceable
@@ -19409,7 +19408,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
         if ([iTermAdvancedSettingsModel simpleNotifications]) {
             description = message;
         } else {
-            description = [NSString stringWithFormat:@"Session %@ #%d: %@",
+            description = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Session %@ #%d: %@", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible"),
                                      [[self name] removingHTMLFromTabTitleIfNeeded],
                                      [_delegate tabNumber],
                                      message];
@@ -19982,10 +19981,10 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     if (_uploadAndPasteTransfer) {
         DLog(@"Upload already in progress, blocking new upload");
         NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-        alert.messageText = @"Upload in Progress";
-        alert.informativeText = @"Please wait for the current upload to complete or cancel it before starting another.";
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Upload in Progress", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: upload in progress title");
+        alert.informativeText = NSLocalizedStringFromTableInBundle(@"Please wait for the current upload to complete or cancel it before starting another.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: upload in progress informative");
         alert.alertStyle = NSAlertStyleWarning;
-        [alert addButtonWithTitle:@"OK"];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button")];
         if (self.view.window) {
             [alert beginSheetModalForWindow:self.view.window completionHandler:nil];
         } else {
@@ -20107,7 +20106,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
 
     if (![self setProfile:replacementProfile preservingName:NO adjustWindow:NO]) {
         DLog(@"APS setProfile failed");
-        [_view showUnobtrusiveMessage:[NSString stringWithFormat:@"Can’t switch to profile “%@”—wrong profile type.", underlyingProfile[KEY_NAME]]];
+        [_view showUnobtrusiveMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Can’t switch to profile “%@”—wrong profile type.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cant switch profile message"), underlyingProfile[KEY_NAME]]];
         return;
     }
     if (savedProfile.isDivorced) {
@@ -20153,7 +20152,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     }
 
     if ([iTermAdvancedSettingsModel showAutomaticProfileSwitchingBanner]) {
-        [_view showUnobtrusiveMessage:[NSString stringWithFormat:@"Switched to profile “%@”.", underlyingProfile[KEY_NAME]]];
+        [_view showUnobtrusiveMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Switched to profile “%@”.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: switched to profile message"), underlyingProfile[KEY_NAME]]];
     }
 }
 
@@ -20366,7 +20365,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     NSInteger maxLength = [iTermPreferences integerForKey:kPreferenceKeyAIResponseTokenLimit] / 8;
     if (query.length >= maxLength) {
         [self requestNaturalLanguageQuery:[query substringFromIndex:query.length - maxLength]
-                                   reason:@"⚠️ The selected text was rather long."
+                                   reason:NSLocalizedStringFromTableInBundle(@"⚠️ The selected text was rather long.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible")
                                bypassable:NO
                                completion:completion];
         return;
@@ -20388,9 +20387,9 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
         return;
     }
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-    [alert setMessageText:@"Describe the command you want to run in plain English. Press ⇧⏎ to send."];
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:NSLocalizedStringFromTableInBundle(@"Describe the command you want to run in plain English. Press ⇧⏎ to send.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: ai prompt message")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button")];
 
     ShiftEnterTextView *input = [[[ShiftEnterTextView alloc] initWithFrame:NSMakeRect(0, 0, 400, 200)] autorelease];
     input.richText = NO;
@@ -20418,7 +20417,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
         if (bypassable) {
             disableButton = [[[NSButton alloc] init] autorelease];
             disableButton.buttonType = NSButtonTypeSwitch;
-            disableButton.title = @"Skip this dialog in the future and send the prompt immediately.";
+            disableButton.title = NSLocalizedStringFromTableInBundle(@"Skip this dialog in the future and send the prompt immediately.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: bypass ai prompt checkbox");
             [disableButton sizeToFit];
 
             [views addObject:disableButton];
@@ -20525,7 +20524,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
         if (self.selectedCommandMark.firstLineOfCommand.length) {
             return self.selectedCommandMark.firstLineOfCommand;
         }
-        return @"Command output";
+        return NSLocalizedStringFromTableInBundle(@"Command output", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible");
     }
     if (_screen.lastCommandMark) {
         if (_screen.lastCommandMark.firstLineOfCommand.length) {
@@ -20649,11 +20648,11 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
         [self makeComposerFirstResponderIfAllowed];
     } second:^(NSError *error) {
         [iTermWarning showWarningWithTitle:error.localizedDescription
-                                   actions:@[ @"OK" ]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button") ]
                                  accessory:nil
                                 identifier:nil
                                silenceable:kiTermWarningTypePersistent
-                                   heading:@"AI Error"
+                                   heading:NSLocalizedStringFromTableInBundle(@"AI Error", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: ai error heading")
                                     window:self.view.window];
     }];
 }
@@ -20938,7 +20937,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
 - (void)showCommandSelectionInfo {
     const NSPoint point = [_view convertPoint:NSApp.currentEvent.locationInWindow
                                      fromView:nil];
-    NSString *html = @"You’ve selected a command by clicking on it. This restricts Find, Filter, and Select All to the content of the command. You can turn this feature off in Settings > General > Selection. <a href=\"iterm2:disable-command-selection\">Click here to disable this feature.</a>";
+    NSString *html = NSLocalizedStringFromTableInBundle(@"You’ve selected a command by clicking on it. This restricts Find, Filter, and Select All to the content of the command. You can turn this feature off in Settings > General > Selection. <a href=\"iterm2:disable-command-selection\">Click here to disable this feature.</a>", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: command selection html");
     NSAttributedString *attributedString = [NSAttributedString attributedStringWithHTML:html
                                                                                    font:[NSFont systemFontOfSize:[NSFont systemFontSize]]
                                                                          paragraphStyle:[NSParagraphStyle defaultParagraphStyle]];
@@ -20963,9 +20962,9 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
         return;
     }
     iTermAnnouncementViewController *announcement =
-    [iTermAnnouncementViewController announcementWithTitle:@"When mouse reporting is on, horizontal scrolling does not switch tabs.\nHold option while swiping or disable horizontal scroll reporting to switch tabs."
+    [iTermAnnouncementViewController announcementWithTitle:NSLocalizedStringFromTableInBundle(@"When mouse reporting is on, horizontal scrolling does not switch tabs.\nHold option while swiping or disable horizontal scroll reporting to switch tabs.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: mouse reporting scroll announcement")
                                                      style:kiTermAnnouncementViewStyleWarning
-                                               withActions:@[ @"Settings…" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"Settings…", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: settings button with ellipsis") ]
                                                 completion:^(int selection) {
         switch (selection) {
             case -2: // Dismiss programmatically
@@ -21346,9 +21345,9 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     }
     NSString *command = [[coprocess.command copy] autorelease];
     iTermAnnouncementViewController *announcement =
-    [iTermAnnouncementViewController announcementWithTitle:[NSString stringWithFormat:@"Coprocess “%@” terminated with output on stderr.", coprocess.command]
+    [iTermAnnouncementViewController announcementWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Coprocess “%@” terminated with output on stderr.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: coprocess stderr announcement"), coprocess.command]
                                                      style:kiTermAnnouncementViewStyleWarning
-                                               withActions:@[ @"_View Errors", @"Ignore Errors from This Command" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"_View Errors", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: view errors button"), NSLocalizedStringFromTableInBundle(@"Ignore Errors from This Command", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: ignore errors button") ]
                                                 completion:^(int selection) {
                                                     if (selection == 0) {
                                                         NSString *filename = [[NSWorkspace sharedWorkspace] temporaryFileNameWithPrefix:@"coprocess-stderr." suffix:@".txt"];
@@ -22094,10 +22093,10 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     }
     [self writeTaskNoBroadcast:string];
     if ([iTermUserDefaults shouldSendReturnAfterPassword]) {
-        [_view showUnobtrusiveMessage:@"Password sent."
+        [_view showUnobtrusiveMessage:NSLocalizedStringFromTableInBundle(@"Password sent.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: password sent message")
                              duration:3];
     } else {
-        [_view showUnobtrusiveMessage:@"Password sent (press Return)."
+        [_view showUnobtrusiveMessage:NSLocalizedStringFromTableInBundle(@"Password sent (press Return).", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: password sent return message")
                              duration:3];
     }
 }
@@ -22117,9 +22116,8 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
 }
 
 - (void)sendPasswordAfterGettingPermission {
-    BOOL ok = ([iTermWarning showWarningWithTitle:@"Are you really at a password prompt? It looks "
-                @"like what you're typing is echoed to the screen."
-                                          actions:@[ @"Cancel", @"Enter Password" ]
+    BOOL ok = ([iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Are you really at a password prompt? It looks like what you're typing is echoed to the screen.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: password prompt warning")
+                                          actions:@[ NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button"), NSLocalizedStringFromTableInBundle(@"Enter Password", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: enter password button") ]
                                        identifier:nil
                                       silenceable:kiTermWarningTypePersistent
                                            window:self.view.window] == kiTermWarningSelection1);
@@ -22475,9 +22473,9 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     NSInteger thisProfile = 0;
     NSInteger allProfiles = -1;
     if ([[[ProfileModel sharedInstance] bookmarks] count] == 1) {
-        actions = @[ @"Yes", @"Stop Asking" ];
+        actions = @[ NSLocalizedStringFromTableInBundle(@"Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: yes button"), NSLocalizedStringFromTableInBundle(@"Stop Asking", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: stop asking button") ];
     } else {
-        actions = @[ @"Change This Profile", @"Change All Profiles", @"Stop Asking" ];
+        actions = @[ NSLocalizedStringFromTableInBundle(@"Change This Profile", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: change this profile button"), NSLocalizedStringFromTableInBundle(@"Change All Profiles", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: change all profiles button"), NSLocalizedStringFromTableInBundle(@"Stop Asking", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: stop asking button") ];
         allProfiles = 1;
     }
 
@@ -22487,7 +22485,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     }
 
     iTermAnnouncementViewController *announcement =
-    [iTermAnnouncementViewController announcementWithTitle:[NSString stringWithFormat:@"You seem frustrated. Would you like the %@ option key to send esc+keystroke?", leftOrRight]
+    [iTermAnnouncementViewController announcementWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"You seem frustrated. Would you like the %@ option key to send esc+keystroke?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: frustrated esc announcement"), leftOrRight]
                                                      style:kiTermAnnouncementViewStyleWarning
                                                withActions:actions
                                                 completion:^(int selection) {
@@ -22800,7 +22798,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     if (self.isBrowserSession) {
         NSError *error = [NSError errorWithDomain:@"com.iterm2.run-coprocess-command"
                                              code:0
-                                         userInfo:@{ NSLocalizedDescriptionKey: @"Not supported in browser sessions" }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Not supported in browser sessions", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: not supported browser error") }];
         completion(nil, error);
         return;
     }
@@ -22822,7 +22820,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     if (self.isBrowserSession) {
         NSError *error = [NSError errorWithDomain:@"com.iterm2.add-annotation-command"
                                              code:0
-                                         userInfo:@{ NSLocalizedDescriptionKey: @"Not supported for browser sessions" }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Not supported for browser sessions", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: not supported for browser error") }];
         completion(nil, error);
         return;
     }
@@ -22839,7 +22837,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
         (startYNumber.integerValue == endYNumber.integerValue && startXNumber.integerValue > endXNumber.integerValue)) {
         NSError *error = [NSError errorWithDomain:@"com.iterm2.add-annotation-command"
                                              code:0
-                                         userInfo:@{ NSLocalizedDescriptionKey: @"Invalid range" }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Invalid range", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: invalid range error") }];
         completion(nil, error);
         return;
     }
@@ -22884,37 +22882,37 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     // 1. Validate browser session
     if (!self.isBrowserSession) {
         completion(nil, [self loadURLErrorWithCode:1
-                                           message:@"load_url is only supported in browser sessions"]);
+                                           message:NSLocalizedStringFromTableInBundle(@"load_url is only supported in browser sessions", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: load url browser only error")]);
         return;
     }
 
     // 2. Parse and validate URL
     NSURL *url = [NSURL URLWithString:urlString];
     if (!url || !url.host.length) {
-        completion(nil, [self loadURLErrorWithCode:2 message:@"Invalid URL"]);
+        completion(nil, [self loadURLErrorWithCode:2 message:NSLocalizedStringFromTableInBundle(@"Invalid URL", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: invalid url error")]);
         return;
     }
 
     // 3. Validate connection context
     if (!connectionKey) {
         completion(nil, [self loadURLErrorWithCode:3
-                                           message:@"load_url must be called from a Python script"]);
+                                           message:NSLocalizedStringFromTableInBundle(@"load_url must be called from a Python script", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: load url python only error")]);
         return;
     }
 
     NSString *domain = url.host;
     iTermAPIHelper *apiHelper = [iTermAPIHelper sharedInstanceIfEnabled];
     iTermScriptHistoryEntry *entry = [apiHelper scriptHistoryEntryForConnectionKey:connectionKey];
-    NSString *scriptName = entry.name ?: @"A script";
+    NSString *scriptName = entry.name ?: NSLocalizedStringFromTableInBundle(@"A script", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: script name fallback");
 
     NSString *heading = [NSString stringWithFormat:
-        @"%@ wants to load a URL in this browser session.", scriptName];
+        NSLocalizedStringFromTableInBundle(@"%@ wants to load a URL in this browser session.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: load url heading"), scriptName];
     NSString *title = [NSString stringWithFormat:
-        @"Allow loading URLs from %@?", domain];
+        NSLocalizedStringFromTableInBundle(@"Allow loading URLs from %@?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: load url title"), domain];
     NSString *identifier = [@"NoSyncLoadURLAllowed_" stringByAppendingString:domain];
 
     [iTermWarning asyncShowWarningWithTitle:title
-                                    actions:@[ @"OK", @"Cancel" ]
+                                    actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button") ]
                               actionMapping:nil
                                   accessory:nil
                                  identifier:identifier
@@ -22928,7 +22926,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
             [self performLoadURL:url completion:completion];
         } else {
             completion(nil, [self loadURLErrorWithCode:4
-                                               message:@"User denied permission to load URL"]);
+                                               message:NSLocalizedStringFromTableInBundle(@"User denied permission to load URL", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: load url denied error")]);
         }
     }];
 }
@@ -22952,7 +22950,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     if (self.tmuxMode == TMUX_NONE || _tmuxController == nil) {
         NSError *error = [NSError errorWithDomain:@"com.iterm2.tmux-command"
                                              code:0
-                                         userInfo:@{ NSLocalizedDescriptionKey: @"Not a tmux integration session" }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Not a tmux integration session", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: not tmux integration error") }];
         completion(nil, error);
     }
 
@@ -22973,7 +22971,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     // Tmux responded with an error.
     NSError *error = [NSError errorWithDomain:@"com.iterm2.tmux-command"
                                          code:1
-                                     userInfo:@{ NSLocalizedDescriptionKey: @"tmux error" }];
+                                     userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"tmux error", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux error") }];
     completion(nil, error);
 }
 
@@ -23174,16 +23172,16 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     }];
     if (replacement) {
         [self.textview replaceSelectionWith:replacement];
-        [iTermWarning showWarningWithTitle:@"You can find this feature under Edit > Replace Selection > Replace with Pretty-Printed JSON if you want to use it again."
-                                   actions:@[ @"OK" ]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"You can find this feature under Edit > Replace Selection > Replace with Pretty-Printed JSON if you want to use it again.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: json pretty print success warning")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button") ]
                                  accessory:nil
                                 identifier:nil
                                silenceable:kiTermWarningTypePersistent
-                                   heading:@"Done!"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Done!", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: done heading")
                                     window:self.view.window];
     } else {
-        [iTermWarning showWarningWithTitle:@"Looks like the selection changed and is no longer a valid JSON object.\nYou can find this feature under Edit > Replace Selection > Replace with Pretty-Printed JSON if you want to try again."
-                                   actions:@[ @"OK" ]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Looks like the selection changed and is no longer a valid JSON object.\nYou can find this feature under Edit > Replace Selection > Replace with Pretty-Printed JSON if you want to try again.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: json pretty print failed warning")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button") ]
                                 identifier:nil
                                silenceable:kiTermWarningTypePersistent
                                     window:self.view.window];
@@ -23296,14 +23294,14 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     NSDictionary *update = @{ KEY_ENABLE_TRIGGERS_IN_INTERACTIVE_APPS: @NO };
     if (self.isDivorced) {
         [self setSessionSpecificProfileValues:update];
-        [[iTermNotificationController sharedInstance] notify:@"Session Updated"
-                                             withDescription:@"Triggers disabled in interactive apps. You can change this in Edit Session > Advanced."];
+        [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Session Updated", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: session updated notification")
+                                             withDescription:NSLocalizedStringFromTableInBundle(@"Triggers disabled in interactive apps. You can change this in Edit Session > Advanced.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: triggers disabled session notification")];
         return;
     }
 
     [iTermProfilePreferences setObjectsFromDictionary:update inProfile:self.profile model:[ProfileModel sharedInstance]];
-    [[iTermNotificationController sharedInstance] notify:@"Profile Updated"
-                                         withDescription:@"Triggers disabled in interactive apps. You can change this in Settings > Profiles > Advanced."];
+    [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Profile Updated", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: profile updated notification")
+                                         withDescription:NSLocalizedStringFromTableInBundle(@"Triggers disabled in interactive apps. You can change this in Settings > Profiles > Advanced.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: triggers disabled profile notification")];
 }
 
 - (void)naggingControllerAssignProfileToSession:(NSString *)arrangementName guid:(NSString *)guid {
@@ -23314,9 +23312,9 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
                                    guid:(NSString *)guid
                              completion:(void (^)(Profile *))completion {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Select a profile to use for this session. Your selection will be saved back to the arrangement."];
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:NSLocalizedStringFromTableInBundle(@"Select a profile to use for this session. Your selection will be saved back to the arrangement.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: profile selection message")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: OK button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: cancel button")];
 
     ProfileListView *profiles = [[[ProfileListView alloc] initWithFrame:NSMakeRect(0, 0, 300, 300)
                                                                   model:[ProfileModel sharedInstance]
@@ -24126,7 +24124,7 @@ preferredOffsetFromTopDidChange:(CGFloat)offset {
         [self dismissAnnouncementWithIdentifier:PTYSessionAnnouncementIdentifierTmuxPaused];
         return;
     }
-    NSString *title = [NSString stringWithFormat:@"This session will pause in about %@ second%@ because it is buffering too much data.", @(safeTTL), safeTTL == 1 ? @"" : @"s"];
+    NSString *title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"This session will pause in about %@ second%@ because it is buffering too much data.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: tmux pause announcement"), @(safeTTL), safeTTL == 1 ? @"" : @"s"];
     iTermAnnouncementViewController *announcement = [self announcementWithIdentifier:PTYSessionAnnouncementIdentifierTmuxPaused];
     if (announcement) {
         announcement.title = title;
@@ -24137,7 +24135,7 @@ preferredOffsetFromTopDidChange:(CGFloat)offset {
     announcement =
     [iTermAnnouncementViewController announcementWithTitle:title
                                                      style:kiTermAnnouncementViewStyleWarning
-                                               withActions:@[ @"_Pause Settings" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"_Pause Settings", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: pause settings action") ]
                                                 completion:^(int selection) {
         switch (selection) {
             case 0:
@@ -24339,7 +24337,7 @@ getOptionKeyBehaviorLeft:(iTermOptionKeyBehavior *)left
     [self launchCoprocessWithCommand:command
                           identifier:nil
                               silent:NO
-                        triggerTitle:@"Captured Output trigger"];
+                        triggerTitle:NSLocalizedStringFromTableInBundle(@"Captured Output trigger", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible")];
     [self takeFocus];
 }
 
@@ -24377,12 +24375,13 @@ getOptionKeyBehaviorLeft:(iTermOptionKeyBehavior *)left
                                 rateLimit:(iTermRateLimitedUpdate *)rateLimit
                                   disable:(void (^)(void))disable {
     __weak __typeof(self) weakSelf = self;
+    NSBundle *sessionBundle = [NSBundle bundleForClass:[self class]];
     [rateLimit performRateLimitedBlock:^{
         NSAlert *alert = [[[NSAlert alloc] init] autorelease];
         alert.messageText = message ?: @"";
-        [alert addButtonWithTitle:@"OK"];
-        [alert addButtonWithTitle:@"Show Session"];
-        [alert addButtonWithTitle:@"Disable This Alert"];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PTYSession", sessionBundle, @"PTYSession: OK button")];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Show Session", @"PTYSession", sessionBundle, @"PTYSession: show session button")];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Disable This Alert", @"PTYSession", sessionBundle, @"PTYSession: disable alert button")];
         switch ([alert runModal]) {
             case NSAlertFirstButtonReturn:
                 break;
@@ -24420,7 +24419,7 @@ getOptionKeyBehaviorLeft:(iTermOptionKeyBehavior *)left
     if ([self hasAnnouncementWithIdentifier:kSuppressCaptureOutputToolNotVisibleWarning]) {
         return;
     }
-    NSString *theTitle = @"A Capture Output trigger fired, but the Captured Output tool is not visible.";
+    NSString *theTitle = NSLocalizedStringFromTableInBundle(@"A Capture Output trigger fired, but the Captured Output tool is not visible.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: capture output not visible announcement");
     void (^completion)(int selection) = ^(int selection) {
         switch (selection) {
             case -2:
@@ -24439,7 +24438,7 @@ getOptionKeyBehaviorLeft:(iTermOptionKeyBehavior *)left
     iTermAnnouncementViewController *announcement =
         [iTermAnnouncementViewController announcementWithTitle:theTitle
                                                          style:kiTermAnnouncementViewStyleWarning
-                                                   withActions:@[ @"Show It", @"Silence Warning" ]
+                                                   withActions:@[ NSLocalizedStringFromTableInBundle(@"Show It", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: show it button"), NSLocalizedStringFromTableInBundle(@"Silence Warning", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: silence warning button") ]
                                                     completion:completion];
     announcement.dismissOnKeyDown = YES;
     [self queueAnnouncement:announcement
@@ -24451,7 +24450,7 @@ getOptionKeyBehaviorLeft:(iTermOptionKeyBehavior *)left
     if ([[iTermUserDefaults userDefaults] boolForKey:kSuppressCaptureOutputRequiresShellIntegrationWarning]) {
         return;
     }
-    NSString *theTitle = @"A Capture Output trigger fired, but Shell Integration is not installed.";
+    NSString *theTitle = NSLocalizedStringFromTableInBundle(@"A Capture Output trigger fired, but Shell Integration is not installed.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: capture output no shell integration announcement");
     void (^completion)(int selection) = ^(int selection) {
         switch (selection) {
             case -2:
@@ -24470,7 +24469,7 @@ getOptionKeyBehaviorLeft:(iTermOptionKeyBehavior *)left
     iTermAnnouncementViewController *announcement =
         [iTermAnnouncementViewController announcementWithTitle:theTitle
                                                          style:kiTermAnnouncementViewStyleWarning
-                                                   withActions:@[ @"Install", @"Silence Warning" ]
+                                                   withActions:@[ NSLocalizedStringFromTableInBundle(@"Install", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: install button"), NSLocalizedStringFromTableInBundle(@"Silence Warning", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: silence warning button") ]
                                                     completion:completion];
     [self queueAnnouncement:announcement
                  identifier:kTwoCoprocessesCanNotRunAtOnceAnnouncementIdentifier];
@@ -24499,8 +24498,8 @@ getOptionKeyBehaviorLeft:(iTermOptionKeyBehavior *)left
         if (identifier && [[iTermUserDefaults userDefaults] boolForKey:identifier]) {
             return;
         }
-        NSString *message = [NSString stringWithFormat:@"%@: Can't run two coprocesses at once.", triggerName];
-        NSArray<NSString *> *actions = identifier ? @[ @"Silence Warning" ] : @[];
+        NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@: Can't run two coprocesses at once.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: two coprocesses announcement"), triggerName];
+        NSArray<NSString *> *actions = identifier ? @[ NSLocalizedStringFromTableInBundle(@"Silence Warning", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: silence warning button") ] : @[];
         iTermAnnouncementViewController *announcement =
         [iTermAnnouncementViewController announcementWithTitle:message
                                                          style:kiTermAnnouncementViewStyleWarning
@@ -24530,7 +24529,7 @@ getOptionKeyBehaviorLeft:(iTermOptionKeyBehavior *)left
 - (void)triggerSideEffectPostUserNotificationWithMessage:(NSString * _Nonnull)message {
     [iTermGCD assertMainQueueSafe];
     iTermNotificationController *notificationController = [iTermNotificationController sharedInstance];
-    NSString *triggerDescription = [NSString stringWithFormat:@"A trigger fired in session “%@” in tab #%d.",
+    NSString *triggerDescription = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"A trigger fired in session “%@” in tab #%d.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: trigger fired notification"),
                                     [[self name] removingHTMLFromTabTitleIfNeeded],
                                     self.delegate.tabNumber];
     [notificationController notify:message
@@ -24577,8 +24576,8 @@ getOptionKeyBehaviorLeft:(iTermOptionKeyBehavior *)left
     [iTermGCD assertMainQueueSafe];
     iTermBackgroundCommandRunner *runner = [pool requestBackgroundCommandRunnerWithTerminationBlock:nil];
     runner.command = command;
-    runner.title = @"Run Command Trigger";
-    runner.notificationTitle = @"Run Command Trigger Failed";
+    runner.title = NSLocalizedStringFromTableInBundle(@"Run Command Trigger", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: run command trigger title");
+    runner.notificationTitle = NSLocalizedStringFromTableInBundle(@"Run Command Trigger Failed", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: run command trigger failed");
     runner.shell = self.userShell;
     [runner run];
 }
@@ -24715,16 +24714,16 @@ getOptionKeyBehaviorLeft:(iTermOptionKeyBehavior *)left
         DLog(@"Ignore");
         return;
     }
-    [_view showUnobtrusiveMessage:[NSString stringWithFormat:@"Clipboard contents reported"]
+    [_view showUnobtrusiveMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Clipboard contents reported", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: clipboard reported message")]
                          duration:3];
 }
 
 - (void)pasteboardReporterRequestPermission:(iTermPasteboardReporter *)sender
                                  completion:(void (^)(BOOL, BOOL))completion {
     iTermAnnouncementViewController *announcement =
-    [iTermAnnouncementViewController announcementWithTitle:@"Share clipboard contents with app in terminal?"
+    [iTermAnnouncementViewController announcementWithTitle:NSLocalizedStringFromTableInBundle(@"Share clipboard contents with app in terminal?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: share clipboard announcement")
                                                      style:kiTermAnnouncementViewStyleWarning
-                                               withActions:@[ @"Just Once", @"Always", @"Never" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"Just Once", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: just once button"), NSLocalizedStringFromTableInBundle(@"Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always button"), NSLocalizedStringFromTableInBundle(@"Never", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: never button") ]
                                                 completion:^(int selection) {
         switch (selection) {
             case 0:
@@ -24771,11 +24770,11 @@ static NSString *IT2AuthorizationAnnouncementIdentifier(NSString *guid) {
 - (void)conductorRequestIT2AuthorizationWithGUID:(NSString *)guid
                                      displayName:(NSString *)displayName
                                       completion:(void (^)(BOOL granted, BOOL remember))completion {
-    NSString *who = displayName.length ? displayName : @"A remote session";
+    NSString *who = displayName.length ? displayName : NSLocalizedStringFromTableInBundle(@"A remote session", @"PTYSession", [NSBundle bundleForClass:[self class]], @"一个远程会话");
     NSString *title =
         [NSString stringWithFormat:
-         @"%@ wants to control iTerm2 using the API over SSH integration. The API can "
-         @"view and modify iTerm2’s contents. Allow it for this session?", who];
+         NSLocalizedStringFromTableInBundle(@"%@ wants to control iTerm2 using the API over SSH integration. The API can " @"view and modify iTerm2’s contents. Allow it for this session?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible")
+        , who];
     iTermAnnouncementViewController *announcement =
         [iTermAnnouncementViewController announcementWithTitle:title
                                                          style:kiTermAnnouncementViewStyleWarning
@@ -24826,7 +24825,7 @@ static NSString *IT2AuthorizationAnnouncementIdentifier(NSString *guid) {
 
     NSString *location = _conductor.parent.sshIdentity.compactDescription;
     [_screen mutateAsynchronously:^(VT100Terminal *terminal, VT100ScreenMutableState *mutableState, id<VT100ScreenDelegate> delegate) {
-        [mutableState appendStringAtCursor:@"An error occurred while setting up the SSH environment:"];
+        [mutableState appendStringAtCursor:NSLocalizedStringFromTableInBundle(@"An error occurred while setting up the SSH environment:", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible")];
         [mutableState appendCarriageReturnLineFeed];
         [mutableState appendStringAtCursor:reason];
         [mutableState appendCarriageReturnLineFeed];
@@ -24841,7 +24840,7 @@ static NSString *IT2AuthorizationAnnouncementIdentifier(NSString *guid) {
     [self conductorWillDie];
     NSString *identity = _conductor.sshIdentity.description;
     [_screen mutateAsynchronously:^(VT100Terminal *terminal, VT100ScreenMutableState *mutableState, id<VT100ScreenDelegate> delegate) {
-        [mutableState appendBannerMessage:[NSString stringWithFormat:@"Disconnected from %@", identity]];
+        [mutableState appendBannerMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Disconnected from %@", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible"), identity]];
     }];
     [self unhookSSHConductor];
     [_sshWriteQueue setLength:0];
@@ -24925,8 +24924,8 @@ static NSString *IT2AuthorizationAnnouncementIdentifier(NSString *guid) {
         return;
     }
     [[iTermNotificationController sharedInstance]
-        notify:[NSString stringWithFormat:@"Session \u201c%@\u201d", [[self name] removingHTMLFromTabTitleIfNeeded]]
-        withDescription:[NSString stringWithFormat:@"Status changed to \u201c%@\u201d", newStatusText]
+        notify:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Session \u201c%@\u201d", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible"), [[self name] removingHTMLFromTabTitleIfNeeded]]
+        withDescription:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Status changed to \u201c%@\u201d", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible"), newStatusText]
         windowIndex:[self screenWindowIndex]
         tabIndex:[self screenTabIndex]
         viewIndex:[self screenViewIndex]];

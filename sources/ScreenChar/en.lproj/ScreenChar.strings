@@ -1,0 +1,89 @@
+/* Screen char: default foreground color */
+"Default fg" = "Default fg";
+
+/* Screen char: default background color */
+"Default bg" = "Default bg";
+
+/* Screen char: selected color */
+"Selected" = "Selected";
+
+/* Screen char: cursor color */
+"Cursor" = "Cursor";
+
+/* Screen char: system message color */
+"System" = "System";
+
+/* Screen char: invalid color */
+"Invalid" = "Invalid";
+
+/* Screen char: ANSI black color */
+"Black" = "Black";
+
+/* Screen char: ANSI red color */
+"Red" = "Red";
+
+/* Screen char: ANSI green color */
+"Green" = "Green";
+
+/* Screen char: ANSI yellow color */
+"Yellow" = "Yellow";
+
+/* Screen char: ANSI blue color */
+"Blue" = "Blue";
+
+/* Screen char: ANSI magenta color */
+"Magenta" = "Magenta";
+
+/* Screen char: ANSI cyan color */
+"Cyan" = "Cyan";
+
+/* Screen char: ANSI white color */
+"White" = "White";
+
+/* Screen char: ANSI bright color prefix */
+"ANSI Bright " = "ANSI Bright ";
+
+/* Screen char: bold attribute */
+"Bold" = "Bold";
+
+/* Screen char: faint attribute */
+"Faint" = "Faint";
+
+/* Screen char: italic attribute */
+"Italic" = "Italic";
+
+/* Screen char: blink attribute */
+"Blink" = "Blink";
+
+/* Screen char: invisible attribute */
+"Invisible" = "Invisible";
+
+/* Screen char: guarded attribute */
+"Guarded" = "Guarded";
+
+/* Screen char: underline attribute */
+"Underline" = "Underline";
+
+/* Screen char: curly underline attribute */
+"Curly-Underline" = "Curly-Underline";
+
+/* Screen char: double underline attribute */
+"Double-Underline" = "Double-Underline";
+
+/* Screen char: dotted underline attribute */
+"Dotted-Underline" = "Dotted-Underline";
+
+/* Screen char: dashed underline attribute */
+"Dashed-Underline" = "Dashed-Underline";
+
+/* Screen char: strikethrough attribute */
+"Strike" = "Strike";
+
+/* Screen char: inverse attribute */
+"Inverse" = "Inverse";
+
+/* Screen char: unknown direction attribute */
+"Dir-Unk" = "Dir-Unk";
+
+/* Screen char: foreground/background color description format */
+"fg=%@ bg=%@%@" = "fg=%@ bg=%@%@";

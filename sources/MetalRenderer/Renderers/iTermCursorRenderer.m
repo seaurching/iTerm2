@@ -658,9 +658,10 @@ static id<MTLBuffer> iTermNewVertexBufferWithBlockCursorQuad(iTermCursorRenderer
                                             colorSpace:tState.configuration.colorSpace];
         if (!_lightTexture || !_darkTexture) {
             static dispatch_once_t onceToken;
+            NSBundle *metalBundle = [NSBundle bundleForClass:[self class]];
             dispatch_once(&onceToken, ^{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [iTermAppSignatureValidator warnWithReason:@"While loading the key cursor image"];
+                    [iTermAppSignatureValidator warnWithReason:NSLocalizedStringFromTableInBundle(@"While loading the key cursor image", @"MetalRenderer", metalBundle, @"Metal: cursor image loading warning reason")];
                 });
             });
             return;

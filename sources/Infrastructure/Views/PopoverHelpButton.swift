@@ -40,8 +40,14 @@ class PopoverHelpButton: NSButton {
     }
 
     override func sendAction(_ action: Selector?, to target: Any?) -> Bool {
-        // Call the existing help method
-        it_showWarning(withMarkdown: helpText)
+        // The NIB injects helpText as the English source string (userDefinedRuntimeAttributes
+        // are not extracted into String Catalogs). Look it up in the Settings table so help
+        // popovers localize; falls back to the input when no translation exists.
+        let localized = NSLocalizedString(helpText,
+                                          tableName: "Settings",
+                                          bundle: Bundle(for: PopoverHelpButton.self),
+                                          comment: "help popover text")
+        it_showWarning(withMarkdown: localized)
         return super.sendAction(action, to: target)
     }
 }

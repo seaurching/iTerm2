@@ -14,22 +14,22 @@
 
 static NSString *Details(SIGArchiveVerifier *verifier) {
     NSMutableArray<NSString *> *detailLines = [NSMutableArray array];
-    [detailLines addObject:@"    The following certificates were found:"];
+    [detailLines addObject:NSLocalizedStringFromTable(@"    The following certificates were found:", @"signed_archive", @"    找到以下证书：")];
     BOOL first = YES;
     for (NSData *data in [verifier.reader signingCertificates:nil]) {
         SIGCertificate *cert = [[SIGCertificate alloc] initWithData:data];
         if (!cert) {
             continue;
         }
-        NSString *name = ((cert.name ?: cert.longDescription) ?: @"Unknown");
-        NSString *line = [NSString stringWithFormat:@"       Certificate “%@”", name];
+        NSString *name = ((cert.name ?: cert.longDescription) ?: NSLocalizedStringFromTable(@”Unknown”, @”signed_archive”, @”未知”));
+        NSString *line = [NSString stringWithFormat:NSLocalizedStringFromTable(@”       Certificate \”%@\””, @”signed_archive”, @”       证书 \”%@\””), name];
         if (first) {
-            line = [line stringByAppendingFormat:@" [signing cert]"];
+            line = [line stringByAppendingFormat:NSLocalizedStringFromTable(@” [signing cert]”, @”signed_archive”, @” [签名证书]”)];
         }
 
         if (cert.issuer) {
-            NSString *name = ((cert.issuer.name ?: cert.issuer.longDescription) ?: @"Unknown");
-            line = [line stringByAppendingFormat:@", issued by “%@”", name];
+            NSString *name = ((cert.issuer.name ?: cert.issuer.longDescription) ?: NSLocalizedStringFromTable(@”Unknown”, @”signed_archive”, @”未知”));
+            line = [line stringByAppendingFormat:NSLocalizedStringFromTable(@”, issued by \”%@\””, @”signed_archive”, @”，由 \”%@\” 颁发”), name];
         }
         first = NO;
         [detailLines addObject:line];
@@ -38,13 +38,13 @@ static NSString *Details(SIGArchiveVerifier *verifier) {
     NSError *error;
     NSString *metadata = [verifier.reader metadata:&error];
     if (metadata.length > 0) {
-        [detailLines addObject:@"    Metadata:"];
+        [detailLines addObject:NSLocalizedStringFromTable(@"    Metadata:", @"signed_archive", @"    元数据：")];
         for (NSString *line in [metadata componentsSeparatedByString:@"\n"]) {
             [detailLines addObject:[@"        " stringByAppendingString:line]];
         }
     }
 
-    [detailLines addObject:[NSString stringWithFormat:@"    Payload length: %@", @(verifier.reader.payloadLength)]];
+    [detailLines addObject:[NSString stringWithFormat:NSLocalizedStringFromTable(@"    Payload length: %@", @"signed_archive", @"    有效负载长度： %@"), @(verifier.reader.payloadLength)]];
     return [detailLines componentsJoinedByString:@"\n"];
 }
 
@@ -72,13 +72,13 @@ static NSError *Verify(NSString *path, BOOL requireV2, NSString **detailsPtr) {
     if (errorResult) {
         return errorResult;
     }
-    return [SIGError errorWithCode:SIGErrorCodeUnknown detail:@"Verification failed for an unknown reason"];
+    return [SIGError errorWithCode:SIGErrorCodeUnknown detail:NSLocalizedStringFromTable(@"Verification failed for an unknown reason", @"signed_archive", @"验证失败，原因未知")];
 }
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         if (argc < 2) {
-            fprintf(stderr, "Usage: verify [-v] [-2] file [file...]\n");
+            fprintf(stderr, "%s\n", [NSLocalizedStringFromTable(@"Usage: verify [-v] [-2] file [file...]", @"signed_archive", @"用法：verify [-v] [-2] 文件 [文件...]") UTF8String]);
             return 1;
         }
         int errors = 0;
@@ -102,7 +102,7 @@ int main(int argc, const char * argv[]) {
                 errors++;
                 printf("%s: %s\n", argv[i], error.localizedDescription.UTF8String);
             } else {
-                printf("%s: %s\n", argv[i], "ok");
+                printf("%s: %s\n", argv[i], [NSLocalizedStringFromTable(@"ok", @"signed_archive", @"正常") UTF8String]);
                 if (verbose) {
                     printf("%s\n", details.UTF8String);
                 }

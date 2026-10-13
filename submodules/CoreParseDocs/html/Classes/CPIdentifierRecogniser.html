@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>CPIdentifierRecogniser Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">CoreParse </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Beelsebob</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/identifierCharacters">identifierCharacters</option>
+		
+		<option value="//api/name/initialCharacters">initialCharacters</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/identifierRecogniser">+ identifierRecogniser</option>
+		
+		<option value="//api/name/identifierRecogniserWithInitialCharacters:identifierCharacters:">+ identifierRecogniserWithInitialCharacters:identifierCharacters:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/initWithInitialCharacters:identifierCharacters:">- initWithInitialCharacters:identifierCharacters:</option>
+		
+		<option value="//api/name/recogniseTokenInString:currentTokenPosition:">- recogniseTokenInString:currentTokenPosition:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">CPIdentifierRecogniser Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Conforms to</th>
+	<td><a href="../Protocols/CPTokenRecogniser.html">CPTokenRecogniser</a></td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>CPIdentifierRecogniser.h<br />CPIdentifierRecogniser.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>The CPIdentifierRecogniser class attempts to recognise identifiers on the input string.</p>
+
+<p>Identifiers are sequences of characters which begin with a character in one set, and then may contain many characters in a further set subsequently.</p>
+
+<p>This recogniser produces CPIdentifierTokens.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Creating and Initialising an Identifier Recogniser" name="task_Creating and Initialising an Identifier Recogniser"></a>
+						<h2 class="task-title">Creating and Initialising an Identifier Recogniser</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/identifierRecogniser" title="identifierRecogniser"></a>
+	<h3 class="method-title"><code><a href="#//api/name/identifierRecogniser">+&nbsp;identifierRecogniser</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates an identifier recogniser that recognises identifiers starting with any english alphabetic character or underscore, and then containing any number of those characters, hyphens, or numeric characters.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (id)identifierRecogniser</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a CPIdentifierRecogniser that recognises C like identifiers.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates an identifier recogniser that recognises identifiers starting with any english alphabetic character or underscore, and then containing any number of those characters, hyphens, or numeric characters.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/identifierRecogniserWithInitialCharacters:identifierCharacters:">+ identifierRecogniserWithInitialCharacters:identifierCharacters:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPIdentifierRecogniser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/identifierRecogniserWithInitialCharacters:identifierCharacters:" title="identifierRecogniserWithInitialCharacters:identifierCharacters:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/identifierRecogniserWithInitialCharacters:identifierCharacters:">+&nbsp;identifierRecogniserWithInitialCharacters:identifierCharacters:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Creates an identifier recogniser that recognises identifiers starting with any character in <a href="#//api/name/initialCharacters">initialCharacters</a>, and then containing any number of characters in <a href="#//api/name/identifierCharacters">identifierCharacters</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (id)identifierRecogniserWithInitialCharacters:(NSCharacterSet *)<em>initialCharacters</em> identifierCharacters:(NSCharacterSet *)<em>identifierCharacters</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>initialCharacters</code></th>
+						<td><p>The set of characters that the identifier may begin with.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>identifierCharacters</code></th>
+						<td><p>The set of characters that the identifier may contain, after its first character.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns a CPIdentifierRecogniser that recognises identifiers based on the input character sets.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Creates an identifier recogniser that recognises identifiers starting with any character in <a href="#//api/name/initialCharacters">initialCharacters</a>, and then containing any number of characters in <a href="#//api/name/identifierCharacters">identifierCharacters</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/initWithInitialCharacters:identifierCharacters:">- initWithInitialCharacters:identifierCharacters:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPIdentifierRecogniser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithInitialCharacters:identifierCharacters:" title="initWithInitialCharacters:identifierCharacters:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithInitialCharacters:identifierCharacters:">&ndash;&nbsp;initWithInitialCharacters:identifierCharacters:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Initialises an identifier recogniser that recognises identifiers starting with any character in <a href="#//api/name/initialCharacters">initialCharacters</a>, and then containing any number of characters in <a href="#//api/name/identifierCharacters">identifierCharacters</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (id)initWithInitialCharacters:(NSCharacterSet *)<em>initialCharacters</em> identifierCharacters:(NSCharacterSet *)<em>identifierCharacters</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>initialCharacters</code></th>
+						<td><p>The set of characters that the identifier may begin with.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>identifierCharacters</code></th>
+						<td><p>The set of characters that the identifier may contain, after its first character.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns the CPIdentifierRecogniser that recognises identifiers based on the input character sets.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Initialises an identifier recogniser that recognises identifiers starting with any character in <a href="#//api/name/initialCharacters">initialCharacters</a>, and then containing any number of characters in <a href="#//api/name/identifierCharacters">identifierCharacters</a>.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/identifierRecogniserWithInitialCharacters:identifierCharacters:">+ identifierRecogniserWithInitialCharacters:identifierCharacters:</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPIdentifierRecogniser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Configuring an Identifier Recogniser" name="task_Configuring an Identifier Recogniser"></a>
+						<h2 class="task-title">Configuring an Identifier Recogniser</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/initialCharacters" title="initialCharacters"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initialCharacters">&nbsp;&nbsp;initialCharacters</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Specifies the set of characters the recognised identifiers may begin with.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readwrite, retain) NSCharacterSet *initialCharacters</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Specifies the set of characters the recognised identifiers may begin with.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/identifierCharacters">@property identifierCharacters</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPIdentifierRecogniser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/identifierCharacters" title="identifierCharacters"></a>
+	<h3 class="method-title"><code><a href="#//api/name/identifierCharacters">&nbsp;&nbsp;identifierCharacters</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Specifies the set of characters the recognised identifiers may contain, other than their first character.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readwrite, retain) NSCharacterSet *identifierCharacters</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Specifies the set of characters the recognised identifiers may contain, other than their first character.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection see-also-section">
+				<h4 class="method-subtitle">See Also</h4>
+				<ul>
+					
+					<li><code><p><a href="#//api/name/initialCharacters">@property initialCharacters</a></p></code></li>
+					
+				</ul>
+			</div>
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPIdentifierRecogniser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						
+						<h2 class="task-title">Other Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/recogniseTokenInString:currentTokenPosition:" title="recogniseTokenInString:currentTokenPosition:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/recogniseTokenInString:currentTokenPosition:">&ndash;&nbsp;recogniseTokenInString:currentTokenPosition:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Attempts to recognise a token at tokenPosition in tokenString.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (CPToken *)recogniseTokenInString:(NSString *)<em>tokenString</em> currentTokenPosition:(NSUInteger *)<em>tokenPosition</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>tokenString</code></th>
+						<td><p>The string in which to recognise tokens.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>tokenPosition</code></th>
+						<td><p>The position at which to try to find the token.  On output, the position after the recognised token.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Returns the token recognised.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Attempts to recognise a token at tokenPosition in tokenString.</p>
+
+<p>If a token is successfully recognised, it should be returned, and tokenPosition advanced to after the consumed characters.
+If no valid token is found <code>nil</code> must be returned instead, and tokenPosition left unchanged.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">CPTokenRecogniser.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2026 Beelsebob. All rights reserved. Updated: 2026-09-19</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

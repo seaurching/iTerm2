@@ -1,0 +1,15 @@
+/* Toolbelt.strings - zh-Hant */
+"Toggle Checkmark" = "切換複選標記";
+"Actions" = "動作";
+"Captured Output" = "捕獲的輸出";
+"Command History" = "命令歷史";
+"Recent Directories" = "最近目錄";
+"Jobs" = "作業";
+"Notes" = "備忘錄";
+"Paste History" = "貼上歷史";
+"Profiles" = "設定檔";
+"Snippets" = "程式碼片段";
+"Named Marks" = "命名標記";
+"Session Status" = "工作階段狀態";
+"Clear" = "清除";
+"The session no longer exists" = "該工作階段已不存在。";

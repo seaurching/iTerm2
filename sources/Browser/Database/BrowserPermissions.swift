@@ -18,17 +18,17 @@ enum BrowserPermissionType: String, CaseIterable, Hashable {
     var displayName: String {
         switch self {
         case .notification:
-            return "Notifications"
+            return NSLocalizedString("Notifications", tableName: "Browser", comment: "通知")
         case .camera:
-            return "Camera"
+            return NSLocalizedString("Camera", tableName: "Browser", comment: "相机")
         case .microphone:
-            return "Microphone"
+            return NSLocalizedString("Microphone", tableName: "Browser", comment: "麦克风")
         case .cameraAndMicrophone:
-            return "Camera and Microphone"
+            return NSLocalizedString("Camera and Microphone", tableName: "Browser", comment: "相机和麦克风")
         case .geolocation:
-            return "Location"
+            return NSLocalizedString("Location", tableName: "Browser", comment: "位置")
         case .audioPlayback:
-            return "Audio Playback"
+            return NSLocalizedString("Audio Playback", tableName: "Browser", comment: "音频播放")
         }
     }
 }
@@ -40,9 +40,9 @@ enum BrowserPermissionDecision: String, CaseIterable {
     var displayName: String {
         switch self {
         case .granted:
-            return "Allowed"
+            return NSLocalizedString("Allowed", tableName: "Browser", comment: "已允许")
         case .denied:
-            return "Blocked"
+            return NSLocalizedString("Blocked", tableName: "Browser", comment: "已阻止")
         }
     }
 }

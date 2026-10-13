@@ -1,0 +1,89 @@
+/* Screen char: default foreground color */
+"Default fg" = "預設前景";
+
+/* Screen char: default background color */
+"Default bg" = "預設背景";
+
+/* Screen char: selected color */
+"Selected" = "選取";
+
+/* Screen char: cursor color */
+"Cursor" = "游標";
+
+/* Screen char: system message color */
+"System" = "系統";
+
+/* Screen char: invalid color */
+"Invalid" = "無效";
+
+/* Screen char: ANSI black color */
+"Black" = "黑色";
+
+/* Screen char: ANSI red color */
+"Red" = "紅色";
+
+/* Screen char: ANSI green color */
+"Green" = "綠色";
+
+/* Screen char: ANSI yellow color */
+"Yellow" = "黃色";
+
+/* Screen char: ANSI blue color */
+"Blue" = "藍色";
+
+/* Screen char: ANSI magenta color */
+"Magenta" = "洋紅";
+
+/* Screen char: ANSI cyan color */
+"Cyan" = "青色";
+
+/* Screen char: ANSI white color */
+"White" = "白色";
+
+/* Screen char: ANSI bright color prefix */
+"ANSI Bright " = "ANSI 亮 ";
+
+/* Screen char: bold attribute */
+"Bold" = "粗體";
+
+/* Screen char: faint attribute */
+"Faint" = "淡化";
+
+/* Screen char: italic attribute */
+"Italic" = "斜體";
+
+/* Screen char: blink attribute */
+"Blink" = "閃爍";
+
+/* Screen char: invisible attribute */
+"Invisible" = "不可見";
+
+/* Screen char: guarded attribute */
+"Guarded" = "受保護";
+
+/* Screen char: underline attribute */
+"Underline" = "底線";
+
+/* Screen char: curly underline attribute */
+"Curly-Underline" = "波浪底線";
+
+/* Screen char: double underline attribute */
+"Double-Underline" = "雙底線";
+
+/* Screen char: dotted underline attribute */
+"Dotted-Underline" = "點狀底線";
+
+/* Screen char: dashed underline attribute */
+"Dashed-Underline" = "虛線底線";
+
+/* Screen char: strikethrough attribute */
+"Strike" = "刪除線";
+
+/* Screen char: inverse attribute */
+"Inverse" = "反色";
+
+/* Screen char: unknown direction attribute */
+"Dir-Unk" = "方向未知";
+
+/* Screen char: foreground/background color description format */
+"fg=%@ bg=%@%@" = "前景=%@ 背景=%@%@";

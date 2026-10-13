@@ -51,16 +51,16 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"CPU Utilization";
+    return NSLocalizedStringFromTableInBundle(@"CPU Utilization", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for CPU utilization component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Shows current CPU utilization.";
+    return NSLocalizedStringFromTableInBundle(@"Shows current CPU utilization.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for CPU utilization component");
 }
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
                                           textColor:(NSColor *)textColor {
-    return @"12% ▃▃▅▂ CPU";
+    return NSLocalizedStringFromTableInBundle(@"12% ▃▃▅▂ CPU", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for CPU utilization component");
 }
 
 - (BOOL)statusBarComponentCanStretch {

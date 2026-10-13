@@ -130,13 +130,13 @@ class ICURegexToRailroadConverter {
             return parseEscape()
         case ".":
             advance()
-            return applyQuantifier("\"[any character]\"")
+            return applyQuantifier("\"\(NSLocalizedString("[any character]", tableName: "RegexVisualization", comment: "Regex visualization: any character label"))\"")
         case "^":
             advance()
-            return "`start of line`"
+            return "`\(NSLocalizedString("start of line", tableName: "RegexVisualization", comment: "Regex visualization: start of line anchor"))`"
         case "$":
             advance()
-            return "`end of line`"
+            return "`\(NSLocalizedString("end of line", tableName: "RegexVisualization", comment: "Regex visualization: end of line anchor"))`"
         case "*", "+", "?", "{":
             // Quantifier without preceding element - invalid regex
             advance()
@@ -194,7 +194,7 @@ class ICURegexToRailroadConverter {
                         advance()
                     }
                     if hasMore() { advance() } // consume )
-                    return "`comment`"
+                    return "`\(NSLocalizedString("comment", tableName: "RegexVisualization", comment: "Regex visualization: comment group label"))`"
                 case "<":
                     advance()
                     if hasMore() {
@@ -232,7 +232,7 @@ class ICURegexToRailroadConverter {
                         } else {
                             // Flag change without group
                             if hasMore() { advance() } // consume )
-                            return "`flags: \(flags)`"
+                            return "`\(String(format: NSLocalizedString("flags: %@", tableName: "RegexVisualization", comment: "Regex visualization: flags label"), flags))`"
                         }
                     }
                 }
@@ -261,17 +261,17 @@ class ICURegexToRailroadConverter {
             // Named capture group - add the name as annotation
             result = "\(content)#`\(groupName)`"
         case "atomic":
-            result = "\(content)#`atomic`"
+            result = "\(content)#`\(NSLocalizedString("atomic", tableName: "RegexVisualization", comment: "Regex visualization: atomic group label"))`"
         case "lookahead":
-            result = "\(content)#`lookahead`"
+            result = "\(content)#`\(NSLocalizedString("lookahead", tableName: "RegexVisualization", comment: "Regex visualization: lookahead label"))`"
         case "negative-lookahead":
-            result = "\(content)#`negative lookahead`"
+            result = "\(content)#`\(NSLocalizedString("negative lookahead", tableName: "RegexVisualization", comment: "Regex visualization: negative lookahead label"))`"
         case "lookbehind":
-            result = "\(content)#`lookbehind`"
+            result = "\(content)#`\(NSLocalizedString("lookbehind", tableName: "RegexVisualization", comment: "Regex visualization: lookbehind label"))`"
         case "negative-lookbehind":
-            result = "\(content)#`negative lookbehind`"
+            result = "\(content)#`\(NSLocalizedString("negative lookbehind", tableName: "RegexVisualization", comment: "Regex visualization: negative lookbehind label"))`"
         case "flags":
-            result = "\(content)#`flags: \(groupName)`"
+            result = "\(content)#`\(String(format: NSLocalizedString("flags: %@", tableName: "RegexVisualization", comment: "Regex visualization: flags label"), groupName))`"
         default:
             break
         }
@@ -334,7 +334,7 @@ class ICURegexToRailroadConverter {
 
         // Character classes are choices, so use <...> with commas
         let classContent = elements.isEmpty ? "!" : "<\(elements.joined(separator: ", "))>"
-        let result = isNegated ? "{`not`, \(classContent)}" : classContent
+        let result = isNegated ? "{`\(NSLocalizedString("not", tableName: "RegexVisualization", comment: "Regex visualization: negated character class label"))`, \(classContent)}" : classContent
         return applyQuantifier(result)
     }
 
@@ -348,30 +348,30 @@ class ICURegexToRailroadConverter {
 
         switch escaped {
             // Special sequences
-        case "a": return applyQuantifier("\"[bell]\"")
-        case "A": return "`start of input`"
-        case "b": return "`word boundary`"
-        case "B": return "`non-word boundary`"
-        case "d": return applyQuantifier("\"[digit]\"")
-        case "D": return applyQuantifier("\"[non-digit]\"")
-        case "e": return applyQuantifier("\"[escape]\"")
-        case "f": return applyQuantifier("\"[form feed]\"")
-        case "G": return "`end of previous match`"
-        case "h": return applyQuantifier("\"[horizontal whitespace]\"")
-        case "H": return applyQuantifier("\"[non-horizontal whitespace]\"")
-        case "n": return applyQuantifier("\"[line feed]\"")
-        case "r": return applyQuantifier("\"[carriage return]\"")
-        case "R": return applyQuantifier("\"[newline]\"")
-        case "s": return applyQuantifier("\"[whitespace]\"")
-        case "S": return applyQuantifier("\"[non-whitespace]\"")
-        case "t": return applyQuantifier("\"[tab]\"")
-        case "v": return applyQuantifier("\"[vertical whitespace]\"")
-        case "V": return applyQuantifier("\"[non-vertical whitespace]\"")
-        case "w": return applyQuantifier("\"[word character]\"")
-        case "W": return applyQuantifier("\"[non-word character]\"")
-        case "X": return applyQuantifier("\"[grapheme cluster]\"")
-        case "Z": return "`end of input (before final newline)`"
-        case "z": return "`end of input`"
+        case "a": return applyQuantifier("\"\(NSLocalizedString("[bell]", tableName: "RegexVisualization", comment: "Regex visualization: bell character label"))\"")
+        case "A": return "`\(NSLocalizedString("start of input", tableName: "RegexVisualization", comment: "Regex visualization: start of input anchor"))`"
+        case "b": return "`\(NSLocalizedString("word boundary", tableName: "RegexVisualization", comment: "Regex visualization: word boundary anchor"))`"
+        case "B": return "`\(NSLocalizedString("non-word boundary", tableName: "RegexVisualization", comment: "Regex visualization: non-word boundary anchor"))`"
+        case "d": return applyQuantifier("\"\(NSLocalizedString("[digit]", tableName: "RegexVisualization", comment: "Regex visualization: digit character class label"))\"")
+        case "D": return applyQuantifier("\"\(NSLocalizedString("[non-digit]", tableName: "RegexVisualization", comment: "Regex visualization: non-digit character class label"))\"")
+        case "e": return applyQuantifier("\"\(NSLocalizedString("[escape]", tableName: "RegexVisualization", comment: "Regex visualization: escape character label"))\"")
+        case "f": return applyQuantifier("\"\(NSLocalizedString("[form feed]", tableName: "RegexVisualization", comment: "Regex visualization: form feed character label"))\"")
+        case "G": return "`\(NSLocalizedString("end of previous match", tableName: "RegexVisualization", comment: "Regex visualization: end of previous match anchor"))`"
+        case "h": return applyQuantifier("\"\(NSLocalizedString("[horizontal whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: horizontal whitespace label"))\"")
+        case "H": return applyQuantifier("\"\(NSLocalizedString("[non-horizontal whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: non-horizontal whitespace label"))\"")
+        case "n": return applyQuantifier("\"\(NSLocalizedString("[line feed]", tableName: "RegexVisualization", comment: "Regex visualization: line feed character label"))\"")
+        case "r": return applyQuantifier("\"\(NSLocalizedString("[carriage return]", tableName: "RegexVisualization", comment: "Regex visualization: carriage return character label"))\"")
+        case "R": return applyQuantifier("\"\(NSLocalizedString("[newline]", tableName: "RegexVisualization", comment: "Regex visualization: newline character label"))\"")
+        case "s": return applyQuantifier("\"\(NSLocalizedString("[whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: whitespace character class label"))\"")
+        case "S": return applyQuantifier("\"\(NSLocalizedString("[non-whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: non-whitespace character class label"))\"")
+        case "t": return applyQuantifier("\"\(NSLocalizedString("[tab]", tableName: "RegexVisualization", comment: "Regex visualization: tab character label"))\"")
+        case "v": return applyQuantifier("\"\(NSLocalizedString("[vertical whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: vertical whitespace label"))\"")
+        case "V": return applyQuantifier("\"\(NSLocalizedString("[non-vertical whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: non-vertical whitespace label"))\"")
+        case "w": return applyQuantifier("\"\(NSLocalizedString("[word character]", tableName: "RegexVisualization", comment: "Regex visualization: word character class label"))\"")
+        case "W": return applyQuantifier("\"\(NSLocalizedString("[non-word character]", tableName: "RegexVisualization", comment: "Regex visualization: non-word character class label"))\"")
+        case "X": return applyQuantifier("\"\(NSLocalizedString("[grapheme cluster]", tableName: "RegexVisualization", comment: "Regex visualization: grapheme cluster label"))\"")
+        case "Z": return "`\(NSLocalizedString("end of input (before final newline)", tableName: "RegexVisualization", comment: "Regex visualization: end of input before final newline anchor"))`"
+        case "z": return "`\(NSLocalizedString("end of input", tableName: "RegexVisualization", comment: "Regex visualization: end of input anchor"))`"
 
             // Unicode escapes
         case "u":
@@ -440,7 +440,7 @@ class ICURegexToRailroadConverter {
                     advance()
                 }
                 if hasMore() { advance() } // consume }
-                let propDesc = isNegated ? "not \(property)" : property
+                let propDesc = isNegated ? String(format: NSLocalizedString("not %@", tableName: "RegexVisualization", comment: "Regex visualization: negated property label"), property) : property
                 return applyQuantifier("\"[\(propDesc)]\"")
             }
             return applyQuantifier("\"\(escaped)\"")
@@ -461,7 +461,7 @@ class ICURegexToRailroadConverter {
 
             // Numeric back reference
         case "1"..."9":
-            return applyQuantifier("'group \(escaped)'")
+            return applyQuantifier("'\(String(format: NSLocalizedString("group %@", tableName: "RegexVisualization", comment: "Regex visualization: numeric backreference label"), String(escaped)))'")
 
             // Octal
         case "0":
@@ -479,7 +479,7 @@ class ICURegexToRailroadConverter {
             if hasMore() {
                 let control = peek()
                 advance()
-                return applyQuantifier("\"[control-\(control)]\"")
+                return applyQuantifier("\"[\(String(format: NSLocalizedString("control-%@", tableName: "RegexVisualization", comment: "Regex visualization: control character label"), String(control)))]\"")
             }
             return applyQuantifier("\"c\"")
 
@@ -517,11 +517,11 @@ class ICURegexToRailroadConverter {
             if hasMore() && peek() == "?" {
                 advance()
                 // Lazy zero-or-more: choice between empty and one-or-more
-                return "<!, {\(base)*!, `*? (lazy)`}>"
+                return "<!, {\(base)*!, `\(NSLocalizedString("*? (lazy)", tableName: "RegexVisualization", comment: "Regex visualization: lazy zero-or-more quantifier"))`}>"
             } else if hasMore() && peek() == "+" {
                 advance()
                 // Possessive zero-or-more: choice between empty and one-or-more
-                return "<!, {\(base)*!, `*+ (possessive)`}>"
+                return "<!, {\(base)*!, `\(NSLocalizedString("*+ (possessive)", tableName: "RegexVisualization", comment: "Regex visualization: possessive zero-or-more quantifier"))`}>"
             }
             // Zero or more: choice between empty and one-or-more
             return "<!, {\(base)*!}>"
@@ -531,11 +531,11 @@ class ICURegexToRailroadConverter {
             if hasMore() && peek() == "?" {
                 advance()
                 // Lazy one-or-more
-                return "{\(base)*!, `+? (lazy)`}"
+                return "{\(base)*!, `\(NSLocalizedString("+? (lazy)", tableName: "RegexVisualization", comment: "Regex visualization: lazy one-or-more quantifier"))`}"
             } else if hasMore() && peek() == "+" {
                 advance()
                 // Possessive one-or-more
-                return "{\(base)*!, `++ (possessive)`}"
+                return "{\(base)*!, `\(NSLocalizedString("++ (possessive)", tableName: "RegexVisualization", comment: "Regex visualization: possessive one-or-more quantifier"))`}"
             }
             // One or more
             return "{\(base)*!}"
@@ -545,11 +545,11 @@ class ICURegexToRailroadConverter {
             if hasMore() && peek() == "?" {
                 advance()
                 // Lazy optional: prefer empty
-                return "<!, \(base), `?? (lazy)`>"
+                return "<!, \(base), `\(NSLocalizedString("?? (lazy)", tableName: "RegexVisualization", comment: "Regex visualization: lazy optional quantifier"))`>"
             } else if hasMore() && peek() == "+" {
                 advance()
                 // Possessive optional
-                return "<!, \(base), `?+ (possessive)`>"
+                return "<!, \(base), `\(NSLocalizedString("?+ (possessive)", tableName: "RegexVisualization", comment: "Regex visualization: possessive optional quantifier"))`>"
             }
             // Optional: choice between empty and the element
             return "<!, \(base)>"
@@ -567,10 +567,10 @@ class ICURegexToRailroadConverter {
             if hasMore() {
                 if peek() == "?" {
                     advance()
-                    suffix = " (lazy)"
+                    suffix = NSLocalizedString(" (lazy)", tableName: "RegexVisualization", comment: "Regex visualization: lazy quantifier suffix")
                 } else if peek() == "+" {
                     advance()
-                    suffix = " (possessive)"
+                    suffix = NSLocalizedString(" (possessive)", tableName: "RegexVisualization", comment: "Regex visualization: possessive quantifier suffix")
                 }
             }
 
@@ -702,22 +702,22 @@ class ICURegexToRailroadConverter {
 
     private func handleEscapeInClass(_ char: Character) -> String {
         switch char {
-        case "d": return "\"[digit]\""
-        case "D": return "\"[non-digit]\""
-        case "s": return "\"[whitespace]\""
-        case "S": return "\"[non-whitespace]\""
-        case "w": return "\"[word character]\""
-        case "W": return "\"[non-word character]\""
-        case "h": return "\"[horizontal whitespace]\""
-        case "H": return "\"[non-horizontal whitespace]\""
-        case "v": return "\"[vertical whitespace]\""
-        case "V": return "\"[non-vertical whitespace]\""
-        case "n": return "\"[line feed]\""
-        case "r": return "\"[carriage return]\""
-        case "t": return "\"[tab]\""
-        case "f": return "\"[form feed]\""
-        case "a": return "\"[bell]\""
-        case "e": return "\"[escape]\""
+        case "d": return "\"\(NSLocalizedString("[digit]", tableName: "RegexVisualization", comment: "Regex visualization: digit character class label"))\""
+        case "D": return "\"\(NSLocalizedString("[non-digit]", tableName: "RegexVisualization", comment: "Regex visualization: non-digit character class label"))\""
+        case "s": return "\"\(NSLocalizedString("[whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: whitespace character class label"))\""
+        case "S": return "\"\(NSLocalizedString("[non-whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: non-whitespace character class label"))\""
+        case "w": return "\"\(NSLocalizedString("[word character]", tableName: "RegexVisualization", comment: "Regex visualization: word character class label"))\""
+        case "W": return "\"\(NSLocalizedString("[non-word character]", tableName: "RegexVisualization", comment: "Regex visualization: non-word character class label"))\""
+        case "h": return "\"\(NSLocalizedString("[horizontal whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: horizontal whitespace label"))\""
+        case "H": return "\"\(NSLocalizedString("[non-horizontal whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: non-horizontal whitespace label"))\""
+        case "v": return "\"\(NSLocalizedString("[vertical whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: vertical whitespace label"))\""
+        case "V": return "\"\(NSLocalizedString("[non-vertical whitespace]", tableName: "RegexVisualization", comment: "Regex visualization: non-vertical whitespace label"))\""
+        case "n": return "\"\(NSLocalizedString("[line feed]", tableName: "RegexVisualization", comment: "Regex visualization: line feed character label"))\""
+        case "r": return "\"\(NSLocalizedString("[carriage return]", tableName: "RegexVisualization", comment: "Regex visualization: carriage return character label"))\""
+        case "t": return "\"\(NSLocalizedString("[tab]", tableName: "RegexVisualization", comment: "Regex visualization: tab character label"))\""
+        case "f": return "\"\(NSLocalizedString("[form feed]", tableName: "RegexVisualization", comment: "Regex visualization: form feed character label"))\""
+        case "a": return "\"\(NSLocalizedString("[bell]", tableName: "RegexVisualization", comment: "Regex visualization: bell character label"))\""
+        case "e": return "\"\(NSLocalizedString("[escape]", tableName: "RegexVisualization", comment: "Regex visualization: escape character label"))\""
         default: return "\"\(escapeForTerminal(String(char)))\""
         }
     }

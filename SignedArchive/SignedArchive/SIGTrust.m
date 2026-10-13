@@ -71,7 +71,7 @@
     if (secError && error) {
         *error = [SIGError errorWrapping:(__bridge NSError *)secError
                                     code:SIGErrorCodeTrust
-                                  detail:@"Failed to evaluate certificate chain"];
+                                  detail:NSLocalizedStringFromTable(@"Failed to evaluate certificate chain", @"signed_archive", @"评估证书链失败")];
     }
     return trusted;
 }

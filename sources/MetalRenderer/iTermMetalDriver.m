@@ -1804,7 +1804,7 @@ panelReservationPoints:(CGFloat)panelReservationPoints {
     if (period < 0.001) {
         fps = 0;
     }
-    return [NSString stringWithFormat:@" [Frame %d: %d fps] ", frameNumber, (int)round(fps)];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@" [Frame %d: %d fps] ", @"MetalRenderer", [NSBundle bundleForClass:[self class]], @"Metal: FPS meter display"), frameNumber, (int)round(fps)];
 }
 
 - (void)populateMarkRendererTransientStateWithFrameData:(iTermMetalFrameData *)frameData {

@@ -50,7 +50,9 @@ class ObjCChatDatabase: NSObject {
                         try chats.set(at: i, temp)
                         try? ChatBroker.instance?.publishNotice(
                             chatID: temp.id,
-                            notice: "This chat is no longer linked to a \(wasTerminal ? "terminal" : "web browser") session.")
+                            notice: wasTerminal
+                                ? NSLocalizedString("This chat is no longer linked to a terminal session.", tableName: "AITermXC", comment: "此对话不再链接到终端会话。")
+                                : NSLocalizedString("This chat is no longer linked to a web browser session.", tableName: "AITermXC", comment: "此对话不再链接到 Web 浏览器会话。"))
                     } catch {
                         DLog("\(error)")
                     }

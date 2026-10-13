@@ -83,7 +83,7 @@
             if (name) {
                 name = [NSString stringWithFormat:@"“%@”", name];
             } else {
-                name = @"Unnamed Profile";
+                name = NSLocalizedStringFromTableInBundle(@"Unnamed Profile", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Fallback name for a profile with no name");
             }
             [childrensNames addObject:name];
         }
@@ -91,10 +91,10 @@
     if (childrensNames.count) {
         RLog(@"Warning about children of hotkey profile");
         NSString *concatenatedNames = [childrensNames componentsJoinedWithOxfordComma];
-        NSString *title = [NSString stringWithFormat:@"You have dynamic profiles whose “Dynamic Profile Parent Name” is set to your hotkey window's profile, “%@.” Because multiple hotkey windows are now supported, the hotkey will now toggle a separate window for each of these profiles. Please update your dynamic profiles appropriately. The affected profiles are:\n%@",
+        NSString *title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"You have dynamic profiles whose “Dynamic Profile Parent Name” is set to your hotkey window's profile, “%@.” Because multiple hotkey windows are now supported, the hotkey will now toggle a separate window for each of these profiles. Please update your dynamic profiles appropriately. The affected profiles are:\n%@", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert message: dynamic profiles are children of hotkey profile"),
                            profile[KEY_NAME], concatenatedNames];
         [iTermWarning showWarningWithTitle:title
-                                   actions:@[ @"OK" ]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert button: OK") ]
                                 identifier:nil
                                silenceable:kiTermWarningTypePersistent
                                     window:nil];
@@ -104,7 +104,7 @@
 
 - (void)migrateDynamicProfileHotKeySettings:(Profile *)profile {
     RLog(@"Have a dynamic profile to migrate");
-    NSString *title = [NSString stringWithFormat:@"Your hotkey window‘s profile is a dynamic profile named “%@.” It needs to be updated for this version of iTerm2 because hotkey settings are now stored in the profile.", profile[KEY_NAME]];
+    NSString *title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Your hotkey window‘s profile is a dynamic profile named “%@.” It needs to be updated for this version of iTerm2 because hotkey settings are now stored in the profile.", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert message: hotkey profile is a dynamic profile needing update"), profile[KEY_NAME]];
 
     NSArray *actions;
     NSData *replacementFile = [self modifiedDynamicProfileFileWithNewHotKeySettingsFromProfile:profile];
@@ -115,10 +115,10 @@
     if (replacementFile) {
         update = kiTermWarningSelection0;
         show = kiTermWarningSelection1;
-        actions = @[ @"Update File", @"Show Me What to Add", @"Remove Hotkey" ];
+        actions = @[ NSLocalizedStringFromTableInBundle(@"Update File", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert button: update the dynamic profile file"), NSLocalizedStringFromTableInBundle(@"Show Me What to Add", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert button: show what to add to the profile"), NSLocalizedStringFromTableInBundle(@"Remove Hotkey", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert button: remove hotkey from profile") ];
     } else {
         show = kiTermWarningSelection0;
-        actions = @[ @"Show Me What to Add", @"Remove Hotkey" ];
+        actions = @[ NSLocalizedStringFromTableInBundle(@"Show Me What to Add", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert button: show what to add to the profile"), NSLocalizedStringFromTableInBundle(@"Remove Hotkey", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert button: remove hotkey from profile") ];
     }
 
     iTermWarningSelection selection = [iTermWarning showWarningWithTitle:title
@@ -126,7 +126,7 @@
                                                                accessory:nil
                                                               identifier:nil
                                                              silenceable:kiTermWarningTypePersistent
-                                                                 heading:@"Problem Updating Hotkey Window"
+                                                                 heading:NSLocalizedStringFromTableInBundle(@"Problem Updating Hotkey Window", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert heading: problem updating hotkey window")
                                                                   window:nil];
     if (selection == update) {
         NSString *filename = profile[KEY_DYNAMIC_PROFILE_FILENAME];
@@ -202,13 +202,13 @@
 
     }
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-    alert.messageText = @"Changes to Make";
-    alert.informativeText = [NSString stringWithFormat:@"Add these settings to the profile named “%@” in “%@”:\n%@",
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Changes to Make", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert title: changes to make for hotkey migration");
+    alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Add these settings to the profile named “%@” in “%@”:\n%@", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert informative text: settings to add to a dynamic profile"),
                              profile[KEY_NAME],
                              filename,
                              lines];
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Copy to Pasteboard"];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert button: OK")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Copy to Pasteboard", @"Hotkey", [NSBundle bundleForClass:[self class]], @"Alert button: copy migration instructions to pasteboard")];
     if ([alert runModal] == NSAlertSecondButtonReturn) {
         NSPasteboard *pasteBoard = [NSPasteboard generalPasteboard];
         [pasteBoard declareTypes:@[ NSPasteboardTypeString ] owner:self];

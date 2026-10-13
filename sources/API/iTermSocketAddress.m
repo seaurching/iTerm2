@@ -29,7 +29,7 @@
         }
 
         default:
-            XLog(@"Unrecognized address family %@", @(sockaddr.sa_family));
+            XLog(NSLocalizedStringFromTableInBundle(@"Unrecognized address family %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无法识别的地址族 %@"), @(sockaddr.sa_family));
             return nil;
     }
 }

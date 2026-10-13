@@ -1,0 +1,8 @@
+"iTerm is not the default handler for %@. Would you like to set iTerm as the default handler?" = "iTerm is not the default handler for %@. Would you like to set iTerm as the default handler?";
+"There is currently no handler." = "There is currently no handler.";
+"OK" = "OK";
+"Cancel" = "Cancel";
+"The current handler is: %@" = "The current handler is: %@";
+"There is no application set to open the document “%@”" = "There is no application set to open the document “%@”";
+"Choose an application on your computer to open this file." = "Choose an application on your computer to open this file.";
+"Choose Application…" = "Choose Application…";

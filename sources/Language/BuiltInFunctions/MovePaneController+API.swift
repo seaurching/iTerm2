@@ -18,12 +18,12 @@ extension MovePaneController {
 
         var errorDescription: String? {
             switch self {
-            case .locked: return "Session is locked"
-            case .noSourceTab: return "Session has no tab"
-            case .noSourceWindow: return "Session has no window"
-            case .onlyOneSession: return "Tab has only one session"
-            case .tmuxAsync: return "tmux sessions are moved asynchronously"
-            case .insertFailed: return "Failed to insert session"
+            case .locked: return NSLocalizedString("Session is locked", tableName: "Language", comment: "Move pane error: session locked")
+            case .noSourceTab: return NSLocalizedString("Session has no tab", tableName: "Language", comment: "Move pane error: session has no tab")
+            case .noSourceWindow: return NSLocalizedString("Session has no window", tableName: "Language", comment: "Move pane error: session has no window")
+            case .onlyOneSession: return NSLocalizedString("Tab has only one session", tableName: "Language", comment: "Move pane error: tab has only one session")
+            case .tmuxAsync: return NSLocalizedString("tmux sessions are moved asynchronously", tableName: "Language", comment: "Move pane error: tmux async")
+            case .insertFailed: return NSLocalizedString("Failed to insert session", tableName: "Language", comment: "Move pane error: insert failed")
             }
         }
     }

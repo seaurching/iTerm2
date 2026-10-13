@@ -1,0 +1,14 @@
+/* Session launcher: font not found warning */
+"Couldn’t find the specified font “%@” or the fallback standard fixed-pitch font, Menlo. Please ensure at least one of these is installed." = "Couldn’t find the specified font “%@” or the fallback standard fixed-pitch font, Menlo. Please ensure at least one of these is installed.";
+
+/* Session launcher: illegal username heading */
+"Illegal Username" = "Illegal Username";
+
+/* Session launcher: invalid profile heading */
+"Invalid Profile" = "Invalid Profile";
+
+/* Session launcher: OK button */
+"OK" = "OK";
+
+/* Session launcher: illegal SSH username warning */
+"The SSH user name “%@” contained a disallowed character. The set of allowed characters is limited for security reasons. You can modify it in Settings > Advanced > Valid characters in SSH user names." = "The SSH user name “%@” contained a disallowed character. The set of allowed characters is limited for security reasons. You can modify it in Settings > Advanced > Valid characters in SSH user names.";

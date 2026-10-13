@@ -147,7 +147,7 @@ extension PTYSession {
             if let currentCommand, !currentCommand.isEmpty {
                 items.append("This command is currently executing: \(currentCommand)")
             } else {
-                items.append("The terminal is currently at the command prompt")
+                items.append(NSLocalizedString("The terminal is currently at the command prompt", tableName: "PTYSession", comment: "终端当前位于命令提示符"))
             }
 
             if let mark = screen.lastCommandMark(),
@@ -299,7 +299,7 @@ extension PTYSession {
                                             sessionID: guid,
                                             baseOffset: screen.totalScrollbackOverflow()))
         guard let client = ChatClient.instance else {
-            iTermWarning.show(withTitle: "AI Chat could not be opened. Verify you only have one instance of iTerm2 running.",
+            iTermWarning.show(withTitle: NSLocalizedString("AI Chat could not be opened. Verify you only have one instance of iTerm2 running.", tableName: "PTYSession", bundle: Bundle(for: PTYSession.self), comment: ""),
                               actions: ["OK"],
                               accessory: nil,
                               identifier: nil,
@@ -314,10 +314,10 @@ extension PTYSession {
     }
 
     struct NotABrowserError: LocalizedError {
-        var errorDescription: String? { "The associated session is a terminal emulator, not a web browser" }
+        var errorDescription: String? { NSLocalizedString("The associated session is a terminal emulator, not a web browser", tableName: "PTYSession", comment: "PTYSession: not a browser error") }
     }
     struct NotATerminalError: LocalizedError {
-        var errorDescription: String? { "The associated session is a web browser, not a terminal emulator" }
+        var errorDescription: String? { NSLocalizedString("The associated session is a web browser, not a terminal emulator", tableName: "PTYSession", comment: "PTYSession: not a terminal error") }
     }
 
     func ensureIsTerminal() throws {
@@ -476,12 +476,12 @@ extension PTYSession {
         switch previousState {
         case .expectation(let expectation, let completion):
             expect.cancelExpectation(expectation)
-            completion("The function call was canceled by user request.")
+            completion(NSLocalizedString("The function call was canceled by user request.", tableName: "PTYSession", comment: "已应请求取消函数调用。"))
         case .futureString(let otsc):
-            otsc.call("The function call was canceled by user request.")
+            otsc.call(NSLocalizedString("The function call was canceled by user request.", tableName: "PTYSession", comment: "已应请求取消函数调用。"))
         case .waitingForMark(_, let otsc):
             screen.pause(atNextPrompt: nil)
-            otsc.call("The function call was canceled by user request.")
+            otsc.call(NSLocalizedString("The function call was canceled by user request.", tableName: "PTYSession", comment: "已应请求取消函数调用。"))
         case .none:
             break
         }
@@ -499,7 +499,7 @@ extension PTYSession {
     func isAtPromptRemoteCommand(isAtPrompt: RemoteCommand.IsAtPrompt,
                                  completion: @escaping (String, String) throws -> ()) rethrows {
         guard iTermShellHistoryController.sharedInstance().commandHistoryHasEverBeenUsed() else {
-            try completion("Tell the user they need to install Shell Integration to access this information.", "Failed to check if you’re at the prompt because Shell Integration is not installed.")
+            try completion(NSLocalizedString("Tell the user they need to install Shell Integration to access this information.", tableName: "PTYSession", comment: "请告知用户需要安装 Shell 集成才能访问此信息。"), NSLocalizedString("Failed to check if you’re at the prompt because Shell Integration is not installed.", tableName: "PTYSession", comment: "未能检查您是否处于提示符，因为未安装 Shell 集成。"))
             return
         }
         try completion(currentCommand != nil ? "true" : "false", "Notified AI that you are \(currentCommand != nil ? "at" : "not at") the a prompt.")
@@ -563,7 +563,7 @@ extension PTYSession {
                         "Ran \(executeCommand.command) but its output could not be located. Did you run out of scrollback history lines?")
                 }
             } else {
-                try? completion("The executeCommand function call failed because the output of the command is not available. The buffer may have been cleared or some other technical issue occurred.",
+                try? completion(NSLocalizedString("The executeCommand function call failed because the output of the command is not available. The buffer may have been cleared or some other technical issue occurred.", tableName: "PTYSession", comment: "executeCommand 函数调用失败，因为命令输出不可用。缓冲区可能已被清空，或发生了其他技术问题。"),
                                 "Ran \(executeCommand.command) but its output was unavailable. Did you run out of scrollback history lines?")
             }
         }
@@ -594,23 +594,23 @@ extension PTYSession {
     func getLastExitStatusRemoteCommand(getLastExitStatus: RemoteCommand.GetLastExitStatus,
                                         completion: @escaping (String, String) throws -> ()) rethrows {
         guard iTermShellHistoryController.sharedInstance().commandHistoryHasEverBeenUsed() else {
-            try completion("Tell the user they need to install Shell Integration to access this information.",
-                       "Failed to get the last command’s exit status because shell integration is not installed.")
+            try completion(NSLocalizedString("Tell the user they need to install Shell Integration to access this information.", tableName: "PTYSession", comment: "请告知用户需要安装 Shell 集成才能访问此信息。"),
+                       NSLocalizedString("Failed to get the last command’s exit status because shell integration is not installed.", tableName: "PTYSession", comment: "未能获取上一条命令的退出状态，因为未安装 shell 集成。"))
             return
         }
         guard let promise = screen.lastCommandMark()?.returnCodePromise, let value = promise.maybeValue  else {
-            try completion("The last command is still running and has not exited yet.",
-                       "The last command seems to still be running so its exit status cannot be retrieved.")
+            try completion(NSLocalizedString("The last command is still running and has not exited yet.", tableName: "PTYSession", comment: "上一条命令仍在运行，尚未退出。"),
+                       NSLocalizedString("The last command seems to still be running so its exit status cannot be retrieved.", tableName: "PTYSession", comment: "上一条命令似乎仍在运行，因此无法获取其退出状态。"))
             return
         }
-        try completion(value.stringValue, "The exit status of the last command provided to AI.")
+        try completion(value.stringValue, NSLocalizedString("The exit status of the last command provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供上一条命令的退出状态。"))
     }
 
     func getCommandHistoryRemoteCommand(getCommandHistory: RemoteCommand.GetCommandHistory,
                                         completion: @escaping (String, String) throws -> ()) rethrows {
         guard iTermShellHistoryController.sharedInstance().commandHistoryHasEverBeenUsed() else {
-            try completion("Tell the user they need to install Shell Integration to access this information.",
-                       "Command history isn’t available because Shell Integration isn’t installed.")
+            try completion(NSLocalizedString("Tell the user they need to install Shell Integration to access this information.", tableName: "PTYSession", comment: "请告知用户需要安装 Shell 集成才能访问此信息。"),
+                       NSLocalizedString("Command history isn’t available because Shell Integration isn’t installed.", tableName: "PTYSession", comment: "命令历史不可用，因为未安装 Shell 集成。"))
             return
         }
         var entries = [[String: String]]()
@@ -630,47 +630,47 @@ extension PTYSession {
         }
         if let data = try? JSONSerialization.data(withJSONObject: entries),
            let json = String(data: data, encoding: .utf8) {
-            try completion(json, "Command history provided to AI.")
+            try completion(json, NSLocalizedString("Command history provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供命令历史。"))
         } else {
-            try completion("[]", "Command history provided to AI.")
+            try completion("[]", NSLocalizedString("Command history provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供命令历史。"))
         }
     }
 
     func getLastCommandRemoteCommand(getLastCommand: RemoteCommand.GetLastCommand,
                                      completion: @escaping (String, String) throws -> ()) rethrows {
         guard iTermShellHistoryController.sharedInstance().commandHistoryHasEverBeenUsed() else {
-            try completion("Tell the user they need to install Shell Integration to access this information.",
-                       "The last command execute can’t be provided because Shell Integration isn’t installed.")
+            try completion(NSLocalizedString("Tell the user they need to install Shell Integration to access this information.", tableName: "PTYSession", comment: "请告知用户需要安装 Shell 集成才能访问此信息。"),
+                       NSLocalizedString("The last command execute can’t be provided because Shell Integration isn’t installed.", tableName: "PTYSession", comment: "未能提供上一条命令的执行结果，因为未安装 Shell 集成。"))
             return
         }
         guard let command = screen.lastCommandMark()?.fullCommand else {
-            try completion("There are no previous command in history", "No previous command is available in this session}s history.")
+            try completion(NSLocalizedString("There are no previous command in history", tableName: "PTYSession", comment: "历史记录中没有先前的命令"), "No previous command is available in this session}s history.")
             return
         }
-        try completion(command, "Last command provided to AI.")
+        try completion(command, NSLocalizedString("Last command provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供上一条命令。"))
     }
 
     func getCommandBeforeCursorRemoteCommand(getCommandBeforeCursor: RemoteCommand.GetCommandBeforeCursor,
                                              completion: @escaping (String, String) throws -> ()) rethrows {
         guard iTermShellHistoryController.sharedInstance().commandHistoryHasEverBeenUsed() else {
-            try completion("Tell the user they need to install Shell Integration to access this information.",
-            "The contents of the shell prompt could not be determined because Shell Integration isn’t installed.")
+            try completion(NSLocalizedString("Tell the user they need to install Shell Integration to access this information.", tableName: "PTYSession", comment: "请告知用户需要安装 Shell 集成才能访问此信息。"),
+            NSLocalizedString("The contents of the shell prompt could not be determined because Shell Integration isn’t installed.", tableName: "PTYSession", comment: "无法确定 shell 提示符的内容，因为未安装 Shell 集成。"))
             return
         }
         guard let currentCommandUpToCursor else {
-            try completion("The user is not at the prompt.",
-            "The contents of the shell prompt could not be provided because it appears the session is not currently at a prompt.")
+            try completion(NSLocalizedString("The user is not at the prompt.", tableName: "PTYSession", comment: "用户不在提示符处。"),
+            NSLocalizedString("The contents of the shell prompt could not be provided because it appears the session is not currently at a prompt.", tableName: "PTYSession", comment: "未能提供 shell 提示符的内容，因为会话当前似乎不在提示符处。"))
             return
         }
-        try completion(currentCommandUpToCursor, "Current command provided to AI.")
+        try completion(currentCommandUpToCursor, NSLocalizedString("Current command provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供当前命令。"))
 
     }
 
     func searchCommandHistoryRemoteCommand(searchCommandHistory: RemoteCommand.SearchCommandHistory,
                                            completion: @escaping (String, String) throws -> ()) rethrows {
         guard iTermShellHistoryController.sharedInstance().commandHistoryHasEverBeenUsed() else {
-            try completion("Tell the user they need to install Shell Integration to access this information.",
-                       "Command history is not available because Shell Integration isn’t installed.")
+            try completion(NSLocalizedString("Tell the user they need to install Shell Integration to access this information.", tableName: "PTYSession", comment: "请告知用户需要安装 Shell 集成才能访问此信息。"),
+                       NSLocalizedString("Command history is not available because Shell Integration isn’t installed.", tableName: "PTYSession", comment: "命令历史不可用，因为未安装 Shell 集成。"))
             return
         }
         var entries = [[String: String]]()
@@ -686,9 +686,9 @@ extension PTYSession {
         }
         if let data = try? JSONSerialization.data(withJSONObject: entries),
            let json = String(data: data, encoding: .utf8) {
-            try completion(json, "Command history provided to AI.")
+            try completion(json, NSLocalizedString("Command history provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供命令历史。"))
         } else {
-            try completion("[]", "Command history provided to AI.")
+            try completion("[]", NSLocalizedString("Command history provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供命令历史。"))
         }
     }
 
@@ -703,8 +703,8 @@ extension PTYSession {
             range = VT100GridCoordRangeFromAbsCoordRange(absRange, screen.totalScrollbackOverflow())
         }
         if range.start.x < 0 {
-            try completion("The output is no longer available.",
-                           "The command output wasn’t provided because it is no longer available.")
+            try completion(NSLocalizedString("The output is no longer available.", tableName: "PTYSession", comment: "输出已不再可用。"),
+                           NSLocalizedString("The command output wasn’t provided because it is no longer available.", tableName: "PTYSession", comment: "未能提供命令输出，因为它已不再可用。"))
             return
         }
         let extractor = iTermTextExtractor(dataSource: screen)
@@ -720,17 +720,17 @@ extension PTYSession {
                           coords: nil,
                           deduplicateDECDHL: true)
         if let string = content as? String {
-            try completion(string, "Command output provided to AI.")
+            try completion(string, NSLocalizedString("Command output provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供命令输出。"))
         } else {
-            try completion("The content could not be retrieved because of an unexpected error",
-                           "The command output wasn’t provided because of an unexpected error.")
+            try completion(NSLocalizedString("The content could not be retrieved because of an unexpected error", tableName: "PTYSession", comment: "因意外错误未能获取内容"),
+                           NSLocalizedString("The command output wasn’t provided because of an unexpected error.", tableName: "PTYSession", comment: "因意外错误未能提供命令输出。"))
         }
     }
 
     func getTerminalSizeRemoteCommand(getTerminalSize: RemoteCommand.GetTerminalSize,
                                       completion: @escaping (String, String) throws -> ()) rethrows {
         try completion("\(screen.width()) columns wide by \(screen.height()) rows tall",
-                   "Session size provided to AI.")
+                   NSLocalizedString("Session size provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供会话大小。"))
     }
 
     // Session-bound counterpart of the orchestrator's get_screen_contents.
@@ -746,44 +746,44 @@ extension PTYSession {
                                                              requestedLines: requestedLines)
         let data = try JSONEncoder().encode(OrchestratorResult.screenContents(contents))
         let json = String(data: data, encoding: .utf8) ?? "{}"
-        try completion(json, "Screen contents provided to AI.")
+        try completion(json, NSLocalizedString("Screen contents provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供屏幕内容。"))
     }
 
     func getShellTypeRemoteCommand(getShellType: RemoteCommand.GetShellType,
                                    completion: @escaping (String, String) throws -> ()) rethrows {
         try completion(genericScope.stringValue(forVariableName: iTermVariableKeyShell),
-                   "Shell type provided to AI")
+                   NSLocalizedString("Shell type provided to AI", tableName: "PTYSession", comment: "已向 AI 提供 shell 类型"))
     }
 
     func detectSSHSessionRemoteCommand(detectSSHSession: RemoteCommand.DetectSSHSession,
                                        completion: @escaping (String, String) throws -> ()) rethrows {
         let value = screen.lastRemoteHost()?.isLocalhost ?? false
-        try completion("\(value)", "SSH status provided to AI.")
+        try completion("\(value)", NSLocalizedString("SSH status provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供 SSH 状态。"))
     }
 
     func getRemoteHostnameRemoteCommand(getRemoteHostname: RemoteCommand.GetRemoteHostname,
                                         completion: @escaping (String, String) throws -> ()) rethrows {
         try completion(screen.lastRemoteHost()?.hostname ?? "Unknown",
-                   "Hostname provided to AI")
+                   NSLocalizedString("Hostname provided to AI", tableName: "PTYSession", comment: "已向 AI 提供主机名"))
     }
 
     func getUserIdentityRemoteCommand(getUserIdentity: RemoteCommand.GetUserIdentity,
                                       completion: @escaping (String, String) throws -> ()) rethrows {
         try completion(screen.lastRemoteHost()?.username ?? NSUserName(),
-                   "User name provided to AI.")
+                   NSLocalizedString("User name provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供用户名。"))
     }
 
     func getCurrentDirectoryRemoteCommand(getCurrentDirectory: RemoteCommand.GetCurrentDirectory,
                                           completion: @escaping (String, String) throws -> ()) rethrows {
         try completion(genericScope.stringValue(forVariableName: iTermVariableKeySessionPath),
-                   "Current directory provided to AI.")
+                   NSLocalizedString("Current directory provided to AI.", tableName: "PTYSession", comment: "已向 AI 提供当前目录。"))
     }
 
     func setClipboardRemoteCommand(setClipboard: RemoteCommand.SetClipboard,
                                    completion: @escaping (String, String) throws -> ()) rethrows {
         NSPasteboard.general.declareTypes([.string], owner: NSApp)
         NSPasteboard.general.setString(setClipboard.text, forType: .string)
-        try completion("Copied", "Clipboard contents changed by AI.")
+        try completion("Copied", NSLocalizedString("Clipboard contents changed by AI.", tableName: "PTYSession", comment: "剪贴板内容已被 AI 更改。"))
     }
 
     func insertTextAtCursorRemoteCommand(insertTextAtCursor: RemoteCommand.InsertTextAtCursor,
@@ -793,7 +793,7 @@ extension PTYSession {
             decoded = try decodeAIBackslashEscapes(insertTextAtCursor.text)
         } catch {
             try completion("Error: \(error). Try again with a corrected text argument.",
-                       "AI tried to insert text but the escape sequence was malformed.")
+                       NSLocalizedString("AI tried to insert text but the escape sequence was malformed.", tableName: "PTYSession", comment: "AI 尝试插入文本，但转义序列格式有误。"))
             return
         }
         // A terminal Return key sends CR (0x0D), not LF (0x0A). Many
@@ -812,13 +812,13 @@ extension PTYSession {
         // unmistakably a success.
         let count = normalized.count
         let noun = count == 1 ? "character" : "characters"
-        try completion("Inserted \(count) \(noun).", "Text inserted by AI.")
+        try completion("Inserted \(count) \(noun).", NSLocalizedString("Text inserted by AI.", tableName: "PTYSession", comment: "已由 AI 插入文本。"))
     }
 
     func deleteCurrentLineRemoteCommand(deleteCurrentLine: RemoteCommand.DeleteCurrentLine,
                                         completion: @escaping (String, String) throws -> ()) rethrows {
         writeTaskNoBroadcast("\u{15}")
-        try completion("Done", "Current line deleted by AI.")
+        try completion("Done", NSLocalizedString("Current line deleted by AI.", tableName: "PTYSession", comment: "当前行已被 AI 删除。"))
     }
 
     func restartSessionRemoteCommand(restartSession: RemoteCommand.RestartSession,
@@ -827,8 +827,8 @@ extension PTYSession {
         // session with no restartable program (e.g. a live tmux or SSH session)
         // has nothing to relaunch, so report that back rather than aborting.
         guard isRestartable() else {
-            try completion("This session cannot be restarted.",
-                           "AI tried to restart the session but it is not restartable.")
+            try completion(NSLocalizedString("This session cannot be restarted.", tableName: "PTYSession", comment: "此会话无法重启。"),
+                           NSLocalizedString("AI tried to restart the session but it is not restartable.", tableName: "PTYSession", comment: "AI 尝试重启会话，但该会话不可重启。"))
             return
         }
         // restart() is the Swift-refined name for ObjC -restartSession. This
@@ -836,8 +836,8 @@ extension PTYSession {
         // like the Session > Restart Session menu (but without its confirmation
         // warning, since the AI permission prompt already gated this).
         restart()
-        try completion("The session is being restarted.",
-                       "Session restarted by AI.")
+        try completion(NSLocalizedString("The session is being restarted.", tableName: "PTYSession", comment: "会话正在重启。"),
+                       NSLocalizedString("Session restarted by AI.", tableName: "PTYSession", comment: "会话已由 AI 重启。"))
     }
 
     func getManPageRemoteCommand(getManPage: RemoteCommand.GetManPage,
@@ -958,11 +958,11 @@ extension PTYSession {
             switch result {
             case .success(let results):
                 let json = try! JSONEncoder().encode(results).lossyString
-                try? completion(json, "Find on page complete")
+                try? completion(json, NSLocalizedString("Find on page complete", tableName: "PTYSession", comment: "页面查找完成"))
             case .failure(let error as LocalizedError):
-                try? completion(error.errorDescription ?? "An unknown error occurred", "Find on page failed")
+                try? completion(error.errorDescription ?? NSLocalizedString("An unknown error occurred", tableName: "PTYSession", comment: "发生未知错误"), NSLocalizedString("Find on page failed", tableName: "PTYSession", comment: "页面查找失败"))
             case .failure:
-                try? completion("An unknown error occurred", "Find on page failed")
+                try? completion(NSLocalizedString("An unknown error occurred", tableName: "PTYSession", comment: "发生未知错误"), NSLocalizedString("Find on page failed", tableName: "PTYSession", comment: "页面查找失败"))
             }
         }
     }
@@ -974,9 +974,9 @@ extension PTYSession {
         }
         view?.browserViewController?.loadURL(url) { error in
             if let error {
-                try? completion("The web page could not be loaded: " + error.localizedDescription, "Navigation failed")
+                try? completion(NSLocalizedString("The web page could not be loaded: ", tableName: "PTYSession", comment: "无法加载网页：") + error.localizedDescription, "Navigation failed")
             } else {
-                try? completion("The web page was loaded successfully.", "Navigation complete")
+                try? completion(NSLocalizedString("The web page was loaded successfully.", tableName: "PTYSession", comment: "网页加载成功。"), "Navigation complete")
             }
         }
     }
@@ -985,14 +985,14 @@ extension PTYSession {
         view?.browserViewController?.doWebSearch(for: args.query) { [weak self] error in
             if let error {
                 RLog("\(error)")
-                try? completion("Web search is not currently available", "Web search failed")
+                try? completion(NSLocalizedString("Web search is not currently available", tableName: "PTYSession", comment: "当前无法进行网络搜索"), "Web search failed")
                 return
             }
             self?.view?.browserViewController?.convertToMarkdown(skipChrome: true) { (result: Result<String, Error>) in
                 if let markdown = result.successValue {
                     try? completion(markdown, "Web search complete")
                 } else {
-                    try? completion("Web search is not currently availble", "Web search failed")
+                    try? completion(NSLocalizedString("Web search is not currently availble", tableName: "PTYSession", comment: "当前无法进行网络搜索"), "Web search failed")
                 }
             }
         }
@@ -1013,15 +1013,15 @@ extension PTYSession {
                 let lines = text.components(separatedBy: "\n")
                 guard args.startingLineNumber < lines.count else {
                     try? completion("The page contains \(lines.count) lines. Your request was out of bounds.",
-                                   "AI attempted to read past the end of the page")
+                                   NSLocalizedString("AI attempted to read past the end of the page", tableName: "PTYSession", comment: "AI 试图读取页面末尾之后的内容"))
                     return
                 }
                 let sub = lines[args.startingLineNumber..<min(lines.count, args.startingLineNumber + args.numberOfLines)]
                 let combined = sub.joined(separator: "\n") + "\n\n[There are a total of \(lines.count) lines of text in this web page.]"
                 try? completion(combined, "Contents provided")
             case .failure(let error):
-                try? completion("The page could not be converted to markdown for reading: " + error.localizedDescription,
-                               "Page content could not be read")
+                try? completion(NSLocalizedString("The page could not be converted to markdown for reading: ", tableName: "PTYSession", comment: "无法将页面转换为 markdown 以供阅读：") + error.localizedDescription,
+                               NSLocalizedString("Page content could not be read", tableName: "PTYSession", comment: "无法读取页面内容"))
             }
         }
     }
@@ -1042,7 +1042,7 @@ struct SubSelectionSerializationInfo {
 
     static func from(queryValue: String) -> SubSelectionSerializationInfo? {
         let components = queryValue.split(separator: ";", omittingEmptySubsequences: false).map(String.init)
-        precondition(components.count == 4, "Invalid queryValue format")
+        precondition(components.count == 4, NSLocalizedString("Invalid queryValue format", tableName: "PTYSession", comment: "PTYSession: invalid queryValue precondition"))
 
         guard let mode = Int(components[0]) else {
             RLog("Invalid mode in queryValue \(queryValue)")
@@ -1056,7 +1056,7 @@ struct SubSelectionSerializationInfo {
         let windowedRange: Range<Int32>? = {
             if components[3] == "nil" { return nil }
             let parts = components[3].split(separator: ":", omittingEmptySubsequences: false).map(String.init)
-            precondition(parts.count == 2, "Invalid range format")
+            precondition(parts.count == 2, NSLocalizedString("Invalid range format", tableName: "PTYSession", comment: "PTYSession: invalid range precondition"))
             guard let lower = Int32(parts[0]), let upper = Int32(parts[1]) else {
                 RLog("Invalid range bounds in queryValue \(queryValue)")
                 return nil
@@ -2068,21 +2068,21 @@ extension PTYSession {
         return iTermPromise<PTYSession> { seal in
             withDelegate { [weak self] delegate in
                 guard let self else {
-                    seal.reject(iTermError("Session terminated"))
+                    seal.reject(iTermError(NSLocalizedString("Session terminated", tableName: "PTYSession", comment: "PTYSession: session terminated error")))
                     return
                 }
                 asyncInitialDirectoryForNewSessionBased { [weak self] oldCWD in
                     guard let self else {
-                        seal.reject(iTermError("Session terminated"))
+                        seal.reject(iTermError(NSLocalizedString("Session terminated", tableName: "PTYSession", comment: "PTYSession: session terminated error")))
                         return
                     }
                     let factory = iTermSessionFactory()
                     guard var profile = self.profile else {
-                        seal.reject(iTermError("Session has no profile"))
+                        seal.reject(iTermError(NSLocalizedString("Session has no profile", tableName: "PTYSession", comment: "PTYSession: no profile error")))
                         return
                     }
                     guard let myView = self.view else {
-                        seal.reject(iTermError("Session has no view"))
+                        seal.reject(iTermError(NSLocalizedString("Session has no view", tableName: "PTYSession", comment: "PTYSession: no view error")))
                         return
                     }
                     if let guid = config.profileGUID,
@@ -2268,7 +2268,7 @@ extension PTYSession {
                                 session.bury()
                                 seal.fulfill(session)
                             } else {
-                                seal.reject(iTermError("Failed to create session"))
+                                seal.reject(iTermError(NSLocalizedString("Failed to create session", tableName: "PTYSession", comment: "PTYSession: failed to create error")))
                             }
                         }
                     factory.attachOrLaunch(with: launchRequest)

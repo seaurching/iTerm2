@@ -109,17 +109,30 @@ final class CompanionPairingController: NSObject {
         alert.alertStyle = .warning
         switch verdict {
         case .peerMustUpgrade:
-            alert.messageText = "Companion Device Needs an Update"
-            alert.informativeText = "The iTerm2 Buddy app on your phone is too old to connect to "
-                + "this version of iTerm2. Update the iPhone app to continue."
+            alert.messageText = NSLocalizedString(
+                "Companion Device Needs an Update",
+                tableName: "Companion",
+                comment: "伴侣设备需要更新警告标题"
+            )
+            alert.informativeText = NSLocalizedString(
+                "The iTerm2 Buddy app on your phone is too old to connect to this version of iTerm2. Update the iPhone app to continue.",
+                tableName: "Companion",
+                comment: "伴侣设备需要更新警告内容"
+            )
         case .selfMustUpgrade:
-            alert.messageText = "iTerm2 Needs an Update"
-            alert.informativeText = "This version of iTerm2 is too old to connect to the iTerm2 "
-                + "Buddy app on your phone. Update iTerm2 to continue."
+            alert.messageText = NSLocalizedString(
+                "iTerm2 Needs an Update",
+                tableName: "Companion",
+                comment: "iTerm2需要更新警告标题")
+            alert.informativeText = NSLocalizedString(
+                "This version of iTerm2 is too old to connect to the iTerm2 Buddy app on your phone. Update iTerm2 to continue.",
+                tableName: "Companion",
+                comment: "iTerm2需要更新警告内容"
+            )
         case .compatible:
             return
         }
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: NSLocalizedString("OK", tableName: "Companion", comment: "确定按钮标题"))
         alert.runModal()
     }
 
@@ -146,8 +159,24 @@ final class CompanionPairingController: NSObject {
         // a code-signature mismatch after a rebuild) must not, or the pairing would
         // look permanently incomplete: resume would skip parking forever and the
         // re-pair modal would spam on every launch. See CompanionMacIdentity.KeychainRead.
-        if CompanionMacIdentity.isGenuinelyAbsent(.identityKey) { missing.append("the Mac identity key") }
-        if CompanionMacIdentity.isGenuinelyAbsent(.pairedPhoneKey) { missing.append("the paired phone key") }
+        if CompanionMacIdentity.isGenuinelyAbsent(.identityKey) {
+            missing.append(
+                NSLocalizedString(
+                    "the Mac identity key",
+                    tableName: "Companion",
+                    comment: "Missing identity key phrase"
+                )
+            )
+        }
+        if CompanionMacIdentity.isGenuinelyAbsent(.pairedPhoneKey) {
+            missing.append(
+                NSLocalizedString(
+                    "the paired phone key",
+                    tableName: "Companion",
+                    comment: "Missing paired phone key phrase"
+                )
+            )
+        }
         // The relay room secret is intentionally NOT part of this decision: the phone
         // re-couriers it over the Noise channel on every connect, so a missing or
         // unreadable one self-heals. Blocking resume on it (or prompting re-pair)
@@ -175,14 +204,16 @@ final class CompanionPairingController: NSObject {
             }
             RLog("Companion pairing incomplete at launch (missing: \(missing.joined(separator: ", "))); prompting to re-pair")
             let alert = NSAlert()
-            alert.messageText = "Re-pair Your Companion Device"
-            alert.informativeText =
-                "Your paired iPhone can’t connect because some pairing information "
-                + "stored on this Mac is missing (\(missing.joined(separator: ", "))). "
-                + "This can happen after reinstalling or rebuilding iTerm2, or after a "
-                + "keychain reset. Re-pair to fix it."
-            alert.addButton(withTitle: "Re-pair…")
-            alert.addButton(withTitle: "Later")
+            alert.messageText = NSLocalizedString("Re-pair Your Companion Device", tableName: "Companion", comment: "重新配对警告标题")
+            alert.informativeText = String(
+                format: NSLocalizedString(
+                    "Your paired iPhone can’t connect because some pairing information stored on this Mac is missing (%@). This can happen after reinstalling or rebuilding iTerm2, or after a keychain reset. Re-pair to fix it.",
+                    tableName: "Companion",
+                    comment: "重新配对警告内容；%@ 为缺失的密钥名列表"
+                ),
+                missing.joined(separator: NSLocalizedString("missing items separator", tableName: "Companion", comment: "分隔缺失项列表的分隔符；中文用顿号")))
+            alert.addButton(withTitle: NSLocalizedString("Re-pair…", tableName: "Companion", comment: "重新配对按钮标题"))
+            alert.addButton(withTitle: NSLocalizedString("Later", tableName: "Companion", comment: "稍后按钮标题"))
             if alert.runModal() == .alertFirstButtonReturn {
                 CompanionOnboardingRouter.openSettingsOrWizard()
             }
@@ -472,7 +503,8 @@ final class CompanionPairingController: NSObject {
             CompanionMacIdentity.primeCacheAtLaunch()
             CompanionPushRegistry.loadSecretAtLaunch()
             CompanionPushNonceRegistry.shared.primeAtLaunch()
-        } else {
+        }
+        else {
             relayLog("resume: skipping keychain prime (no pairing and no material hint)")
         }
         // Watch the broker so a completed agent turn (or a permission request)
@@ -609,7 +641,7 @@ final class CompanionPairingController: NSObject {
         }
         return await withCheckedContinuation { continuation in
             context.evaluatePolicy(.deviceOwnerAuthentication,
-                                   localizedReason: "pair a companion device with this Mac") { success, authError in
+                                   localizedReason: NSLocalizedString("pair a companion device with this Mac", tableName: "Companion", comment: "Local authentication reason")) { success, authError in
                 if let authError {
                     RLog("Companion: pairing authentication failed: \(authError.localizedDescription)")
                 }
@@ -901,7 +933,7 @@ final class CompanionPairingController: NSObject {
     /// attacker never sees the victim's mac, so the victim has no code to type.
     private func runSASConfirmation(expected: String) async -> Bool {
         relayLog("SAS: awaiting code entry")
-        onStatus?("Enter the code shown on your iPhone.")
+        onStatus?(NSLocalizedString("Enter the code shown on your iPhone.", tableName: "Companion", comment: "Enter code status"))
         onSASEntryNeeded?()
         for attempt in 1...3 {
             let typed = await withCheckedContinuation { (continuation: CheckedContinuation<String?, Never>) in
@@ -916,7 +948,7 @@ final class CompanionPairingController: NSObject {
                 return true
             }
             relayLog("SAS: mismatch (attempt \(attempt))")
-            onStatus?("That code doesn’t match. Check your iPhone and try again.")
+            onStatus?(NSLocalizedString("That code doesn’t match. Check your iPhone and try again.", tableName: "Companion", comment: "Code mismatch status"))
         }
         return false
     }
@@ -952,7 +984,7 @@ final class CompanionPairingController: NSObject {
         // to a raw URLSession that would carry traffic around the consent gate.
         guard case .success(let plugin) = CompanionPlugin.instance() else {
             relayLog("startListening: consent plugin unavailable; not parking (fail closed)")
-            throw TransportError.connectionFailed("companion consent plugin unavailable")
+            throw TransportError.connectionFailed(NSLocalizedString("companion consent plugin unavailable", tableName: "Companion", comment: "Consent plugin unavailable error"))
         }
         let webSocketFactory = plugin.webSocketFactory()
         let shardFetcher = plugin.shardMapFetcher()
@@ -1065,7 +1097,7 @@ final class CompanionPairingController: NSObject {
                         // The park succeeded, so any prior quota teardown is behind us:
                         // clear the backoff marker so the UI leaves the quota state.
                         self.relayQuotaBackoffUntil = nil
-                        self.onStatus?("Waiting for your iPhone…")
+                        self.onStatus?(NSLocalizedString("Waiting for your iPhone…", tableName: "Companion", comment: "Waiting for iPhone status"))
                         guard self.relayConnectedSince == nil else { return }
                         self.relayConnectedSince = Date()
                         self.notifyPresenceChanged()
@@ -1237,7 +1269,7 @@ final class CompanionPairingController: NSObject {
                         // The displayed QR is dead until the regeneration
                         // fires; say so instead of leaving the stale
                         // "Waiting for your iPhone…" up.
-                        onStatus?("Reconnecting to the relay…")
+                        onStatus?(NSLocalizedString("Reconnecting to the relay…", tableName: "Companion", comment: "Reconnecting status"))
                     } else {
                         onFailed?(Self.userFacingDescription(of: error))
                     }
@@ -1302,7 +1334,7 @@ final class CompanionPairingController: NSObject {
                 defer { confirmationInProgress = false }
                 RLog("Companion pairing: connection accepted; starting Noise handshake")
                 relayLog("acceptLoop: connection ACCEPTED (peer joined); starting Noise handshake")
-                onStatus?("Phone connected. Securing the connection…")
+                onStatus?(NSLocalizedString("Phone connected. Securing the connection…", tableName: "Companion", comment: "Phone connected status"))
                 let channel = try await NoiseHandshake.perform(
                     role: .responder,
                     transport: transport,
@@ -1340,7 +1372,7 @@ final class CompanionPairingController: NSObject {
                         // photographed QR is invalidated and they must start over.
                         RLog("Companion pairing: SAS not confirmed; regenerating pid")
                         relayLog("acceptLoop: SAS REJECTED; closing and regenerating pid")
-                        onStatus?("Pairing declined.")
+                        onStatus?(NSLocalizedString("Pairing declined.", tableName: "Companion", comment: "Pairing declined status"))
                         await channel.close()
                         regenerateFreshPairing(reason: "sas-rejected")
                         return
@@ -1451,7 +1483,7 @@ final class CompanionPairingController: NSObject {
             } catch {
                 RLog("Companion pairing: handshake failed: \(error); still listening")
                 relayLog("acceptLoop: handshake FAILED (\(error)); closing socket and re-accepting")
-                onStatus?("Waiting for your iPhone…")
+                onStatus?(NSLocalizedString("Waiting for your iPhone…", tableName: "Companion", comment: "Waiting for iPhone status"))
                 // The parked socket was consumed by the failed handshake; close
                 // it so the next accept() can park a fresh one (and the relay
                 // listener's wait-for-close serialization is released).
@@ -1473,9 +1505,22 @@ final class CompanionPairingController: NSObject {
                     return String(cString: cString)
                 }
             case .dns(let code):
-                return "Bonjour/DNS error \(code)"
+                return String(
+                    format: NSLocalizedString(
+                        "Bonjour/DNS error %d",
+                        tableName: "Companion",
+                        comment: "DNS error description"),
+                    code
+                )
             case .tls(let status):
-                return "TLS error \(status)"
+                return String(
+                    format: NSLocalizedString(
+                        "TLS error %d",
+                        tableName: "Companion",
+                        comment: "TLS error description"
+                    ),
+                    status
+                )
             default:
                 // A plain default (not @unknown): NWError has availability-gated
                 // cases (e.g. .wifiAware on macOS 26+) that cannot be named on

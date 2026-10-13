@@ -16,11 +16,11 @@ static NSString *const kSuppressCoprocessTriggerWarning = @"NoSyncSuppressCoproc
 @implementation CoprocessTrigger
 
 + (NSString *)title {
-    return @"Run Coprocess…";
+    return NSLocalizedStringFromTableInBundle(@"Run Coprocess…", @"Triggers", [NSBundle bundleForClass:[self class]], @"运行协进程触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Run Coprocess “%@”", self.param];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Run Coprocess “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"运行协进程触发器描述"), self.param];
 }
 
 - (BOOL)takesParameter {
@@ -28,7 +28,7 @@ static NSString *const kSuppressCoprocessTriggerWarning = @"NoSyncSuppressCoproc
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-    return @"Enter coprocess command to run";
+    return NSLocalizedStringFromTableInBundle(@"Enter coprocess command to run", @"Triggers", [NSBundle bundleForClass:[self class]], @"占位符：输入协进程命令");
 }
 
 // Requires a live session to launch a coprocess
@@ -71,7 +71,7 @@ static NSString *const kSuppressCoprocessTriggerWarning = @"NoSyncSuppressCoproc
 @implementation MuteCoprocessTrigger
 
 + (NSString *)title {
-    return @"Run Silent Coprocess…";
+    return NSLocalizedStringFromTableInBundle(@"Run Silent Coprocess…", @"Triggers", [NSBundle bundleForClass:[self class]], @"运行静默协进程触发器标题");
 }
 
 - (BOOL)takesParameter {
@@ -79,7 +79,7 @@ static NSString *const kSuppressCoprocessTriggerWarning = @"NoSyncSuppressCoproc
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-    return @"Enter coprocess command to run";
+    return NSLocalizedStringFromTableInBundle(@"Enter coprocess command to run", @"Triggers", [NSBundle bundleForClass:[self class]], @"占位符：输入协进程命令");
 }
 
 - (BOOL)isSilent {

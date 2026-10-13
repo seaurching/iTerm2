@@ -128,7 +128,7 @@ NSString *iTermNamespaceFromSignature(NSString *signature) {
 #pragma mark - Private
 
 - (NSError *)typeMismatchError:(NSString *)argument wanted:(Class)wanted got:(nullable id)object {
-    NSString *reason = [NSString stringWithFormat:@"Type mismatch for argument %@. Expected %@ but got %@.",
+    NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Type mismatch for argument %@. Expected %@ but got %@.", @"Language", [NSBundle bundleForClass:[self class]], @"Built-in function error: type mismatch"),
                         argument,
                         NSStringFromClass(wanted),
                         object ? NSStringFromClass([object class]) : @"(null)" ];
@@ -138,7 +138,7 @@ NSString *iTermNamespaceFromSignature(NSString *signature) {
 }
 
 - (NSError *)invalidArgumentError:(NSString *)argument {
-    NSString *reason = [NSString stringWithFormat:@"Invalid argument %@ to %@",
+    NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Invalid argument %@ to %@", @"Language", [NSBundle bundleForClass:[self class]], @"Built-in function error: invalid argument"),
                         argument, _name];
     return [NSError errorWithDomain:@"com.iterm2.bif"
                                code:4
@@ -273,7 +273,7 @@ NSString *iTermNamespaceFromSignature(NSString *signature) {
 }
 
 - (NSError *)undeclaredIdentifierError:(NSString *)identifier {
-    NSString *reason = [NSString stringWithFormat:@"Undeclared identifier %@",
+    NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Undeclared identifier %@", @"Language", [NSBundle bundleForClass:[self class]], @"Built-in function error: undeclared identifier"),
                         identifier];
     return [NSError errorWithDomain:@"com.iterm2.bif"
                                code:1
@@ -281,7 +281,7 @@ NSString *iTermNamespaceFromSignature(NSString *signature) {
 }
 
 - (NSError *)invalidReferenceError:(NSString *)reference name:(NSString *)name {
-    NSString *reason = [NSString stringWithFormat:@"Invalid reference “%@” to %@",
+    NSString *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Invalid reference “%@” to %@", @"Language", [NSBundle bundleForClass:[self class]], @"Built-in function error: invalid reference"),
                         reference, name];
     return [NSError errorWithDomain:@"com.iterm2.bif"
                                code:3
@@ -332,7 +332,7 @@ NSString *iTermNamespaceFromSignature(NSString *signature) {
     if (!value) {
         NSError *error = [NSError errorWithDomain:@"com.iterm2.array-count"
                                              code:1
-                                         userInfo:@{ NSLocalizedDescriptionKey: @"Array argument must be non-null" }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Array argument must be non-null", @"Language", [NSBundle bundleForClass:[self class]], @"Array count error: array argument null") }];
         completion(nil, error);
         return;
     }
@@ -341,7 +341,7 @@ NSString *iTermNamespaceFromSignature(NSString *signature) {
     if (!array) {
         NSError *error = [NSError errorWithDomain:@"com.iterm2.array-count"
                                              code:2
-                                         userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Argument must be an array (was %@)", [value class]] }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Argument must be an array (was %@)", @"Language", [NSBundle bundleForClass:[self class]], @"Array count error: argument not array"), [value class]] }];
         completion(nil, error);
         return;
     }
@@ -377,7 +377,7 @@ NSString *iTermNamespaceFromSignature(NSString *signature) {
     if (!value) {
         NSError *error = [NSError errorWithDomain:@"com.iterm2.url-encode"
                                              code:1
-                                         userInfo:@{ NSLocalizedDescriptionKey: @"string argument must be non-null" }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"string argument must be non-null", @"Language", [NSBundle bundleForClass:[self class]], @"URL encode error: string argument null") }];
         completion(nil, error);
         return;
     }
@@ -386,7 +386,7 @@ NSString *iTermNamespaceFromSignature(NSString *signature) {
     if (!string) {
         NSError *error = [NSError errorWithDomain:@"com.iterm2.url-encode"
                                              code:2
-                                         userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Argument must be a string (was %@)", [value class]] }];
+                                         userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Argument must be a string (was %@)", @"Language", [NSBundle bundleForClass:[self class]], @"URL encode error: argument not string"), [value class]] }];
         completion(nil, error);
         return;
     }

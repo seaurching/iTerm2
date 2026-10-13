@@ -141,10 +141,10 @@ static NSString *const iTermStatusBarHostnameComponentAbbreviateLocalhost = @"ab
 
 - (NSArray<iTermStatusBarComponentKnob *> *)statusBarComponentKnobs {
     iTermStatusBarComponentKnob *abbreviateLocalhostKnob =
-    [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"localhost replacement"
+    [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"localhost replacement", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for localhost replacement")
                                                       type:iTermStatusBarComponentKnobTypeText
-                                               placeholder:@"Enter replacement text for localhost"
-                                              defaultValue:@""
+                                               placeholder:NSLocalizedStringFromTableInBundle(@"Enter replacement text for localhost", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Placeholder for localhost replacement field")
+                                                  defaultValue:@""
                                                        key:iTermStatusBarHostnameComponentAbbreviateLocalhost];
     return [@[ abbreviateLocalhostKnob ] arrayByAddingObjectsFromArray:[super statusBarComponentKnobs]];
 }
@@ -154,16 +154,16 @@ static NSString *const iTermStatusBarHostnameComponentAbbreviateLocalhost = @"ab
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Host Name";
+    return NSLocalizedStringFromTableInBundle(@"Host Name", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for host name component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Current host name. Requires shell integration.";
+    return NSLocalizedStringFromTableInBundle(@"Current host name. Requires shell integration.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for host name component");
 }
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
                                           textColor:(NSColor *)textColor {
-    return @"example.com";
+    return NSLocalizedStringFromTableInBundle(@"example.com", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for host name component");
 }
 
 - (nullable NSArray<NSString *> *)stringVariants {
@@ -219,11 +219,11 @@ static NSString *const iTermStatusBarHostnameComponentAbbreviateLocalhost = @"ab
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"User Name";
+    return NSLocalizedStringFromTableInBundle(@"User Name", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for user name component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Current user name. Requires shell integration.";
+    return NSLocalizedStringFromTableInBundle(@"Current user name. Requires shell integration.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for user name component");
 }
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
@@ -285,11 +285,11 @@ static NSString *const iTermStatusBarHostnameComponentAbbreviateLocalhost = @"ab
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Current Directory";
+    return NSLocalizedStringFromTableInBundle(@"Current Directory", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for current directory component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Current directory. Best with shell integration.";
+    return NSLocalizedStringFromTableInBundle(@"Current directory. Best with shell integration.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for current directory component");
 }
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
@@ -359,19 +359,19 @@ static NSString *const iTermStatusBarHostnameComponentAbbreviateLocalhost = @"ab
     if (currentPath.length) {
         [menu addItem:[NSMenuItem separatorItem]];
 
-        NSMenuItem *copyPath = [[NSMenuItem alloc] initWithTitle:@"Copy Path"
+        NSMenuItem *copyPath = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Copy Path", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to copy path")
                                                           action:@selector(copyCurrentPath:)
                                                    keyEquivalent:@""];
         copyPath.target = self;
         [menu addItem:copyPath];
 
-        NSMenuItem *copyBasename = [[NSMenuItem alloc] initWithTitle:@"Copy Folder Name"
+        NSMenuItem *copyBasename = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Copy Folder Name", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to copy folder name")
                                                               action:@selector(copyCurrentBasename:)
                                                        keyEquivalent:@""];
         copyBasename.target = self;
         [menu addItem:copyBasename];
 
-        NSMenuItem *openInFinder = [[NSMenuItem alloc] initWithTitle:@"Reveal in Finder"
+        NSMenuItem *openInFinder = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Reveal in Finder", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to reveal in Finder")
                                                               action:@selector(openCurrentPathInFinder:)
                                                        keyEquivalent:@""];
         openInFinder.target = self;
@@ -379,13 +379,13 @@ static NSString *const iTermStatusBarHostnameComponentAbbreviateLocalhost = @"ab
 
         [menu addItem:[NSMenuItem separatorItem]];
 
-        NSMenuItem *openInNewWindow = [[NSMenuItem alloc] initWithTitle:@"New Session Here in New Window"
+        NSMenuItem *openInNewWindow = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"New Session Here in New Window", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to open new session in new window")
                                                                  action:@selector(openCurrentPathInNewWindow:)
                                                           keyEquivalent:@""];
         openInNewWindow.target = self;
         [menu addItem:openInNewWindow];
 
-        NSMenuItem *openInNewTab = [[NSMenuItem alloc] initWithTitle:@"New Session Here in New Tab"
+        NSMenuItem *openInNewTab = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"New Session Here in New Tab", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to open new session in new tab")
                                                               action:@selector(openCurrentPathInNewTab:)
                                                        keyEquivalent:@""];
         openInNewTab.target = self;

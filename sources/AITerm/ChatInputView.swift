@@ -96,8 +96,8 @@ class ChatInputView: NSView, NSTextFieldDelegate {
         } else {
             sendConfig = nil
         }
-        let rawSendImage = NSImage(systemSymbolName: SFSymbol.paperplaneFill.rawValue, accessibilityDescription: "Send")!
-        let rawStopImage = NSImage(systemSymbolName: SFSymbol.stopCircleFill.rawValue, accessibilityDescription: "Stop")!
+        let rawSendImage = NSImage(systemSymbolName: SFSymbol.paperplaneFill.rawValue, accessibilityDescription: NSLocalizedString("Send", tableName: "AITermXC", comment: "发送"))!
+        let rawStopImage = NSImage(systemSymbolName: SFSymbol.stopCircleFill.rawValue, accessibilityDescription: NSLocalizedString("Stop", tableName: "AITermXC", comment: "停止"))!
         if #available(macOS 11.0, *), let sendConfig {
             sendImage = rawSendImage.withSymbolConfiguration(sendConfig) ?? rawSendImage
             stopImage = rawStopImage.withSymbolConfiguration(sendConfig) ?? rawStopImage
@@ -108,7 +108,7 @@ class ChatInputView: NSView, NSTextFieldDelegate {
         vev = NSVisualEffectView()
         super.init(frame: .zero)
 
-        inputTextFieldContainer.placeholder = "Type a message…"
+        inputTextFieldContainer.placeholder = NSLocalizedString("Type a message…", tableName: "AITermXC", comment: "输入消息…")
         inputTextFieldContainer.isEnabled = false
         inputTextFieldContainer.textView.delegate = self
         inputTextFieldContainer.textView.onDropFileURLs = { [weak self] urls in
@@ -126,7 +126,7 @@ class ChatInputView: NSView, NSTextFieldDelegate {
         sendButton.setButtonType(.momentaryPushIn)
 
         var addImage = NSImage.it_image(forSymbolName: SFSymbol.plus.rawValue,
-                                        accessibilityDescription: "Attach files",
+                                        accessibilityDescription: NSLocalizedString("Attach files", tableName: "AITermXC", comment: "附加文件"),
                                         fallbackImageName: "plus",
                                         for: ChatInputView.self)!
         if #available(macOS 11.0, *) {
@@ -141,7 +141,7 @@ class ChatInputView: NSView, NSTextFieldDelegate {
         addAttachmentButton.bezelStyle = .regularSquare
         addAttachmentButton.isBordered = false
         addAttachmentButton.setButtonType(.momentaryPushIn)
-        addAttachmentButton.toolTip = "Attach files"
+        addAttachmentButton.toolTip = NSLocalizedString("Attach files", tableName: "AITermXC", comment: "附加文件")
 
         attachmentsView.onItemsWillBeDeleted = { _ in true }
         attachmentsView.onDidDeleteItems = { [weak self] in
@@ -149,7 +149,7 @@ class ChatInputView: NSView, NSTextFieldDelegate {
             self?.updateSendButtonEnabled()
         }
 
-        hintLabel = NSTextField(labelWithString: "↩ to submit")
+        hintLabel = NSTextField(labelWithString: NSLocalizedString("↩ to submit", tableName: "AITermXC", comment: "按回车发送"))
         hintLabel.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize - 1)
         hintLabel.textColor = .tertiaryLabelColor
         hintLabel.alignment = .right
@@ -203,7 +203,7 @@ class ChatInputView: NSView, NSTextFieldDelegate {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) has not been implemented")
+        it_fatalError(NSLocalizedString("init(coder:) has not been implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     // intentionally no `intrinsicContentSize` override — that property is
@@ -512,11 +512,14 @@ class ChatInputView: NSView, NSTextFieldDelegate {
             }
             let selection = iTermWarning.show(
                 withTitle: dropPromptTitle(for: supported),
-                actions: ["Attach", "Insert Path"],
+                actions: [NSLocalizedString("Attach", tableName: "AITermXC", comment: "附加"),
+                          NSLocalizedString("Insert Path", tableName: "AITermXC", comment: "插入路径")],
                 accessory: nil,
                 identifier: "NoSyncAIChatAttachDroppedFile",
                 silenceable: .kiTermWarningTypePermanentlySilenceable,
-                heading: supported.count == 1 ? "Attach File?" : "Attach Files?",
+                heading: supported.count == 1
+                    ? NSLocalizedString("Attach File?", tableName: "AITermXC", comment: "附加文件？")
+                    : NSLocalizedString("Attach Files?", tableName: "AITermXC", comment: "附加文件？"),
                 window: window)
             if selection == .kiTermWarningSelection0 {
                 addFiles(from: supported)
@@ -534,9 +537,9 @@ class ChatInputView: NSView, NSTextFieldDelegate {
 
     private func dropPromptTitle(for urls: [URL]) -> String {
         if urls.count == 1 {
-            return "Add “\(urls[0].lastPathComponent)” to your message as an attachment, or insert its path as text?"
+            return String(format: NSLocalizedString("Add \u{201c}%@\u{201d} to your message as an attachment, or insert its path as text?", tableName: "AITermXC", comment: "将文件添加到消息中作为附件，还是将其路径作为文本插入？"), urls[0].lastPathComponent)
         }
-        return "Add the \(urls.count) dropped files to your message as attachments, or insert their paths as text?"
+        return String(format: NSLocalizedString("Add the %@ dropped files to your message as attachments, or insert their paths as text?", tableName: "AITermXC", comment: "将拖放文件添加到消息中作为附件，还是将其路径作为文本插入？"), "\(urls.count)")
     }
 
     private func insertFilePathsAsText(_ urls: [URL]) {
@@ -582,14 +585,14 @@ class ChatInputView: NSView, NSTextFieldDelegate {
     private func presentRejectedAttachments(_ urls: [URL]) {
         guard let window else { return }
         let names = urls.map { $0.lastPathComponent }.joined(separator: ", ")
-        let providerName = AITermController.provider?.displayName ?? "the current AI provider"
+        let providerName = AITermController.provider?.displayName ?? NSLocalizedString("the current AI provider", tableName: "AITermXC", comment: "当前 AI 提供商")
         let alert = NSAlert()
         alert.messageText = urls.count == 1
-            ? "Attachment not supported"
-            : "Attachments not supported"
-        alert.informativeText = "\(providerName) doesn’t accept this file type as a chat attachment: \(names)."
+            ? NSLocalizedString("Attachment not supported", tableName: "AITermXC", comment: "不支持的附件")
+            : NSLocalizedString("Attachments not supported", tableName: "AITermXC", comment: "不支持的附件")
+        alert.informativeText = String(format: NSLocalizedString("%@ doesn’t accept this file type as a chat attachment: %@.", tableName: "AITermXC", comment: "%@ 不接受此文件类型作为对话附件：%@"), providerName, names)
         alert.alertStyle = .informational
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: NSLocalizedString("OK", tableName: "AITermXC", comment: "好"))
         alert.beginSheetModal(for: window)
     }
 
@@ -644,8 +647,8 @@ class ChatInputView: NSView, NSTextFieldDelegate {
     func refreshPlaceholder() {
         let orchestration = orchestrationEnabledProvider?() ?? false
         inputTextFieldContainer.placeholder = orchestration
-            ? "Type a message, or @ to mention a session…"
-            : "Type a message…"
+            ? NSLocalizedString("Type a message, or @ to mention a session…", tableName: "AITermXC", comment: "输入消息，或使用 @ 提及会话…")
+            : NSLocalizedString("Type a message…", tableName: "AITermXC", comment: "输入消息…")
     }
 
     private func revealSelectedRange() {

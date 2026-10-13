@@ -103,15 +103,15 @@ class iTermUvMigration: NSObject {
         guard !remaps.isEmpty else {
             return ""
         }
-        let caveat = "Python versions are not always compatible across releases, so a bumped script may need small changes."
+        let caveat = NSLocalizedString("Python versions are not always compatible across releases, so a bumped script may need small changes.", tableName: "APIFiles", comment: "Python 版本在不同版本之间并不总是兼容，因此升级的脚本可能需要小改动。")
         if remaps.count == 1, let only = remaps.first {
-            return "The script “\(only.scriptName)” was written for Python \(only.fromVersion), "
-                + "which is no longer available, so it now uses Python \(only.toVersion). "
-                + caveat
+            return String(format: NSLocalizedString("The script “%@” was written for Python %@, which is no longer available, so it now uses Python %@.", tableName: "APIFiles", comment: ""), only.scriptName, only.fromVersion, only.toVersion)
+
+
         }
         let lines = remaps.map { "• “\($0.scriptName)”: \($0.fromVersion) → \($0.toVersion)" }
-        return "Some scripts were written for Python versions that are no longer available "
-            + "and now use newer ones. " + caveat + "\n\n"
+        return NSLocalizedString("Some scripts were written for Python versions that are no longer available and now use newer ones.", tableName: "APIFiles", comment: "")
+            + caveat + "\n\n"
             + lines.joined(separator: "\n")
     }
 

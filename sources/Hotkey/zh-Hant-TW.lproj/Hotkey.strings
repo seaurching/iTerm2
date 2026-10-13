@@ -1,0 +1,45 @@
+/* Notification title: cannot switch apps due to secure keyboard entry */
+"Can’t Switch Apps" = "無法切換應用";
+
+/* Notification description: cannot switch back to app due to secure keyboard entry */
+"Can’t switch back to %@ because another app has enabled secure keyboard entry." = "無法切換回 %@，因為另一個應用已啟用安全鍵盤輸入。";
+
+/* Notification title: hotkeys unavailable */
+"Hotkeys Unavailable" = "快捷鍵不可用";
+
+/* Notification description: hotkeys unavailable due to secure keyboard input */
+"Another app has enabled secure keyboard input. That prevents hotkey windows from being shown." = "另一個應用已啟用安全鍵盤輸入。這會阻止顯示快捷鍵視窗。";
+
+/* Fallback name for a profile with no name */
+"Unnamed Profile" = "未命名設定檔";
+
+/* Alert message: dynamic profiles are children of hotkey profile */
+"You have dynamic profiles whose “Dynamic Profile Parent Name” is set to your hotkey window's profile, “%@.” Because multiple hotkey windows are now supported, the hotkey will now toggle a separate window for each of these profiles. Please update your dynamic profiles appropriately. The affected profiles are:\\n%@" = "您有動態設定檔，其「動態設定檔父項名稱」設定為您的快捷鍵視窗的設定檔「%@」。由於現在支援多個快捷鍵視窗，快捷鍵現在將為每個設定檔切換單獨的視窗。請適當更新您的動態設定檔。受影響的設定檔為：\\n%@";
+
+/* Alert button: OK */
+"OK" = "確定";
+
+/* Alert message: hotkey profile is a dynamic profile needing update */
+"Your hotkey window‘s profile is a dynamic profile named “%@.” It needs to be updated for this version of iTerm2 because hotkey settings are now stored in the profile." = "您的快捷鍵視窗的設定檔是名為「%@」的動態設定檔。它需要為此版本的 iTerm2 進行更新，因為快捷鍵設定現在儲存在設定檔中。";
+
+/* Alert button: update the dynamic profile file */
+"Update File" = "更新檔案";
+
+/* Alert button: show what to add to the profile */
+"Show Me What to Add" = "顯示需要新增的內容";
+
+/* Alert button: remove hotkey from profile */
+"Remove Hotkey" = "移除快捷鍵";
+
+/* Alert heading: problem updating hotkey window */
+"Problem Updating Hotkey Window" = "更新快捷鍵視窗時發生問題";
+
+/* Alert title: changes to make for hotkey migration */
+"Changes to Make" = "需要進行的更改";
+
+/* Alert informative text: settings to add to a dynamic profile */
+"Add these settings to the profile named “%@” in “%@”:\\n%@" = "將這些設定新增到名為「%@」的設定檔（在「%@」中）：\\n%@";
+
+/* Alert button: copy migration instructions to pasteboard */
+"Copy to Pasteboard" = "複製到剪貼板";
+

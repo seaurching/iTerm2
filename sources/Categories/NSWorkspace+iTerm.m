@@ -415,20 +415,20 @@ withApplicationAtURL:appURL
         case iTermOpenStyleWindow:
         case iTermOpenStyleTab:
             if (isFileURL) {
-                selection = [iTermWarning showWarningWithTitle:@"iTerm2 can display files like this in its built-in web browser! Would you like to open this link in iTerm2?"
-                                                      actions:@[ @"Use Default App", @"Open in iTerm2", @"Cancel"]
+                selection = [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"iTerm2 can display files like this in its built-in web browser! Would you like to open this link in iTerm2?", @"Categories", [NSBundle mainBundle], @"Warning: open file URL in iTerm2")
+                                                      actions:@[ NSLocalizedStringFromTableInBundle(@"Use Default App", @"Categories", [NSBundle mainBundle], @"Button: use default app"), NSLocalizedStringFromTableInBundle(@"Open in iTerm2", @"Categories", [NSBundle mainBundle], @"Button: open in iTerm2"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Categories", [NSBundle mainBundle], @"Button: cancel") ]
                                                     accessory:nil
                                                    identifier:identifier
                                                   silenceable:kiTermWarningTypePermanentlySilenceable
-                                                      heading:@"Open in iTerm2?"
+                                                      heading:NSLocalizedStringFromTableInBundle(@"Open in iTerm2?", @"Categories", [NSBundle mainBundle], @"Warning heading: open in iTerm2")
                                                        window:window];
             } else {
-                selection = [iTermWarning showWarningWithTitle:@"iTerm2 can display web pages! Would you like to open this link in iTerm2?"
-                                                      actions:@[ @"Use Default Browser", @"Open in iTerm2", @"Cancel"]
+                selection = [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"iTerm2 can display web pages! Would you like to open this link in iTerm2?", @"Categories", [NSBundle mainBundle], @"Warning: open web URL in iTerm2")
+                                                      actions:@[ NSLocalizedStringFromTableInBundle(@"Use Default Browser", @"Categories", [NSBundle mainBundle], @"Button: use default browser"), NSLocalizedStringFromTableInBundle(@"Open in iTerm2", @"Categories", [NSBundle mainBundle], @"Button: open in iTerm2"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Categories", [NSBundle mainBundle], @"Button: cancel") ]
                                                     accessory:nil
                                                    identifier:identifier
                                                   silenceable:kiTermWarningTypePermanentlySilenceable
-                                                      heading:@"Open in iTerm2?"
+                                                      heading:NSLocalizedStringFromTableInBundle(@"Open in iTerm2?", @"Categories", [NSBundle mainBundle], @"Warning heading: open in iTerm2")
                                                        window:window];
             }
             break;

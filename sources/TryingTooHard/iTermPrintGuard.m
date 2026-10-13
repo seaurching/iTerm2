@@ -36,12 +36,12 @@
     }
     if (willPrint && [self haveTriedToPrintRecently]) {
         iTermWarningSelection selection =
-        [iTermWarning showWarningWithTitle:@"There's a lot of printing going on. Want to keep allowing it?"
-                                   actions:@[ @"Allow", @"Disable Temporarily", @"Disable Permanently" ]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"There's a lot of printing going on. Want to keep allowing it?", @"TryingTooHard", [NSBundle bundleForClass:[self class]], @"大量打印警告标题")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"Allow", @"TryingTooHard", [NSBundle bundleForClass:[self class]], @"允许打印按钮"), NSLocalizedStringFromTableInBundle(@"Disable Temporarily", @"TryingTooHard", [NSBundle bundleForClass:[self class]], @"暂时禁用打印按钮"), NSLocalizedStringFromTableInBundle(@"Disable Permanently", @"TryingTooHard", [NSBundle bundleForClass:[self class]], @"永久禁用打印按钮") ]
                                  accessory:nil
                                 identifier:@"NoSyncAllowPrinting"
                                silenceable:kiTermWarningTypePersistent
-                                   heading:@"Allow Printing?"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Allow Printing?", @"TryingTooHard", [NSBundle bundleForClass:[self class]], @"允许打印警告标题")
                                     window:window];
         switch (selection) {
             case kiTermWarningSelection0:

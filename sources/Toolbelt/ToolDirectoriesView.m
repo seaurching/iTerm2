@@ -79,12 +79,12 @@ static const CGFloat kHelpMargin = 5;
         if (@available(macOS 10.16, *)) {
             clear_.bezelStyle = NSBezelStyleRegularSquare;
             clear_.bordered = NO;
-            clear_.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolTrash) accessibilityDescription:@"Clear"];
+            clear_.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolTrash) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Clear", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool directories: clear button accessibility")];
             clear_.imagePosition = NSImageOnly;
             clear_.frame = NSMakeRect(0, 0, 22, 22);
         } else {
             [clear_ setButtonType:NSButtonTypeMomentaryPushIn];
-            [clear_ setTitle:@"Clear All"];
+            [clear_ setTitle:NSLocalizedStringFromTableInBundle(@"Clear All", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool directories: clear all button title fallback")];
             [clear_ setBezelStyle:NSBezelStyleSmallSquare];
             [clear_ sizeToFit];
         }
@@ -106,7 +106,7 @@ static const CGFloat kHelpMargin = 5;
         _tableView.menu = [[NSMenu alloc] init];
         _tableView.menu.delegate = self;
         NSMenuItem *item;
-        item = [[NSMenuItem alloc] initWithTitle:@"Toggle Star"
+        item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Toggle Star", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool directories: toggle star menu item")
                                           action:@selector(toggleStar:)
                                    keyEquivalent:@""];
         [_tableView.menu addItem:item];
@@ -324,9 +324,9 @@ static const CGFloat kHelpMargin = 5;
 
 - (void)clear:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Erase Saved Directories?";
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Cancel"];
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Erase Saved Directories?", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool directories: erase saved directories alert title");
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool directories: erase alert ok button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool directories: erase alert cancel button")];
     if ([alert runModal] == NSAlertFirstButtonReturn) {
         [[iTermShellHistoryController sharedInstance] eraseCommandHistory:NO directories:YES];
     }

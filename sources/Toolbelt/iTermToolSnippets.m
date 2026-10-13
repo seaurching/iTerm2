@@ -127,18 +127,18 @@ static NSButton *iTermToolSnippetsNewButton(NSString *imageName, NSString *title
     self = [super initWithFrame:frame];
     if (self) {
         if (@available(macOS 11.0, *)) {
-            _icon = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolTextBubbleFill) accessibilityDescription:@"Snippet icon"];
-            _folderIcon = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolFolderFill) accessibilityDescription:@"Folder icon"];
+            _icon = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolTextBubbleFill) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Snippet icon", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool snippets: snippet icon accessibility")];
+            _folderIcon = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolFolderFill) accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Folder icon", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool snippets: folder icon accessibility")];
         }
         if (@available(macOS 10.16, *)) {
-            _applyButton = iTermToolSnippetsNewButton(@"play", @"Send", self, @selector(apply:), frame);
-            _addButton = iTermToolSnippetsNewButton(@"plus", @"Add", self, @selector(add:), frame);
-            _removeButton = iTermToolSnippetsNewButton(@"minus", @"Remove", self, @selector(remove:), frame);
-            _editButton = iTermToolSnippetsNewButton(@"square.and.pencil", @"Edit", self, @selector(edit:), frame);
-            _advancedPasteButton = iTermToolSnippetsNewButton(@"rectangle.and.pencil.and.ellipsis", @"Open in Advanced Paste", self, @selector(openInAdvancedPaste:), frame);
+            _applyButton = iTermToolSnippetsNewButton(@"play", NSLocalizedStringFromTableInBundle(@"Send", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool snippets: send button accessibility"), self, @selector(apply:), frame);
+            _addButton = iTermToolSnippetsNewButton(@"plus", NSLocalizedStringFromTableInBundle(@"Add", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool snippets: add button accessibility"), self, @selector(add:), frame);
+            _removeButton = iTermToolSnippetsNewButton(@"minus", NSLocalizedStringFromTableInBundle(@"Remove", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool snippets: remove button accessibility"), self, @selector(remove:), frame);
+            _editButton = iTermToolSnippetsNewButton(@"square.and.pencil", NSLocalizedStringFromTableInBundle(@"Edit", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool snippets: edit button accessibility"), self, @selector(edit:), frame);
+            _advancedPasteButton = iTermToolSnippetsNewButton(@"rectangle.and.pencil.and.ellipsis", NSLocalizedStringFromTableInBundle(@"Open in Advanced Paste", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool snippets: open in advanced paste button accessibility"), self, @selector(openInAdvancedPaste:), frame);
             [self addSubview:_advancedPasteButton];
         } else {
-            _applyButton = iTermToolSnippetsNewButton(nil, @"Send", self, @selector(apply:), frame);
+            _applyButton = iTermToolSnippetsNewButton(nil, NSLocalizedStringFromTableInBundle(@"Send", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool snippets: send button title fallback"), self, @selector(apply:), frame);
             _addButton = iTermToolSnippetsNewButton(NSImageNameAddTemplate, nil, self, @selector(add:), frame);
             _removeButton = iTermToolSnippetsNewButton(NSImageNameRemoveTemplate, nil, self, @selector(remove:), frame);
             _editButton = iTermToolSnippetsNewButton(nil, @"✐", self, @selector(edit:), frame);
@@ -594,7 +594,7 @@ static NSButton *iTermToolSnippetsNewButton(NSString *imageName, NSString *title
     iTermToolWrapper *wrapper = self.toolWrapper;
     switch (action) {
         case iTermToolSnippetsActionSend: {
-            iTermAction *action = [[iTermAction alloc] initWithTitle:@"Send Snippet"
+            iTermAction *action = [[iTermAction alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Send Snippet", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool snippets: send snippet action title")
                                                               action:KEY_ACTION_SEND_SNIPPET
                                                            parameter:snippet.actionKey
                                                             escaping:snippet.escaping
@@ -974,7 +974,7 @@ static NSButton *iTermToolSnippetsNewButton(NSString *imageName, NSString *title
     NSArray<NSString *> *parts = [string componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     return [parts objectPassingTest:^BOOL(NSString *element, NSUInteger index, BOOL *stop) {
         return [[element stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] > 0;
-    }] ?: @"Untitled";
+    }] ?: NSLocalizedStringFromTableInBundle(@"Untitled", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool snippets: untitled snippet name");
 }
 
 - (BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {

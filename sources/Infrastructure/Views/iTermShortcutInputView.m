@@ -153,11 +153,11 @@
     }
     NSString *string;
     if (isFirstResponder && self.hotkeyBeingRecorded.length == 0) {
-        string = @"Recording";
+        string = NSLocalizedStringFromTableInBundle(@"Recording", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Placeholder text while recording a shortcut");
     } else if (isFirstResponder) {
         string = self.hotkeyBeingRecorded;
     } else if (self.stringValue.length == 0) {
-        string = self.isEnabled ? @"Click to Set" : @"";
+        string = self.isEnabled ? NSLocalizedStringFromTableInBundle(@"Click to Set", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Placeholder text when shortcut is empty and enabled") : @"";
     } else {
         string = self.stringValue;
     }
@@ -233,12 +233,12 @@
                                                      leaderAllowed:_leaderAllowed];
         if (self.purpose && shortcut.smellsAccidental) {
             const iTermWarningSelection selection =
-            [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Are you sure you want to use “%@” %@? This looks like a commonly used keystroke.", shortcut.stringValue, self.purpose]
-                                       actions:@[ @"OK", @"Cancel" ]
+            [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Are you sure you want to use “%@” %@? This looks like a commonly used keystroke.", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Alert: confirm using a commonly used keystroke"), shortcut.stringValue, self.purpose]
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Alert button: OK"), @"Cancel" ]
                                      accessory:nil
                                     identifier:nil
                                    silenceable:kiTermWarningTypePersistent
-                                       heading:@"Confirm Shortcut"
+                                       heading:NSLocalizedStringFromTableInBundle(@"Confirm Shortcut", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"Alert heading: confirm shortcut")
                                         window:self.window];
             if (selection == kiTermWarningSelection1) {
                 [self revert];

@@ -36,7 +36,7 @@ static NSString *const iTermShellIntegrationInstallUtilitiesUserDefaultsKey = @"
 
 - (void)appendLearnMoreToAttributedString:(NSMutableAttributedString *)attributedString
                                       url:(NSURL *)url {
-    [attributedString appendAttributedString:[self attributedStringWithLinkToURL:url title:@"Learn more."]];
+    [attributedString appendAttributedString:[self attributedStringWithLinkToURL:url title:NSLocalizedStringFromTableInBundle(@"Learn more.", @"ShellIntegrationInstaller", [NSBundle bundleForClass:[self class]], @"first page: learn more link")]];
 }
 
 - (void)viewDidLoad {

@@ -1647,13 +1647,13 @@ extension Conductor {
             // Only "View" should be remembered. Remembering "Download" could cause
             // repeated download prompts if the download fails or isn't handled.
             let warning = iTermWarning()
-            warning.title = "Download \(path.path.lastPathComponent) or view in browser?"
-            warning.actionLabels = ["Download", "View", "Cancel"]
+            warning.title = String(format: NSLocalizedString("Download %@ or view in browser?", tableName: "SSH", comment: "conductor: download or view warning title"), path.path.lastPathComponent)
+            warning.actionLabels = [NSLocalizedString("Download", tableName: "SSH", comment: "conductor: download action label"), NSLocalizedString("View", tableName: "SSH", comment: "conductor: view action label"), NSLocalizedString("Cancel", tableName: "SSH", comment: "conductor: cancel action label")]
             warning.identifier = "DownloadOrViewInBrowser_" + mimeType + " " + path.usernameHostnameString
             warning.warningType = .kiTermWarningTypePermanentlySilenceable
-            warning.heading = "Download or View File?"
+            warning.heading = NSLocalizedString("Download or View File?", tableName: "SSH", comment: "conductor: download or view heading")
             warning.window = window
-            warning.doNotRememberLabels = ["Download", "Cancel"]
+            warning.doNotRememberLabels = [NSLocalizedString("Download", tableName: "SSH", comment: "conductor: download do not remember label"), NSLocalizedString("Cancel", tableName: "SSH", comment: "conductor: cancel do not remember label")]
             switch warning.runModal() {
             case .kiTermWarningSelection0:  // Download
                 download(path: path)
@@ -2108,7 +2108,7 @@ extension Conductor {
                 if status == 0 {
                     sendInitialText()
                 } else {
-                    fail("\(executionContext.command.stringValue): Unepected status \(status)")
+                    fail(String(format: NSLocalizedString("%@: Unepected status %@", tableName: "SSH", comment: "conductor: unexpected status error"), executionContext.command.stringValue, status))
                 }
             case .abort, .line(_), .sideChannelLine(line: _, channel: _, pid: _), .canceled:
                 break
@@ -2117,7 +2117,7 @@ extension Conductor {
             switch result {
             case .end(let status):
                 if status != 0 {
-                    fail("\(executionContext.command.stringValue): Unepected status \(status)")
+                    fail(String(format: NSLocalizedString("%@: Unepected status %@", tableName: "SSH", comment: "conductor: unexpected status error"), executionContext.command.stringValue, status))
                 }
             case .abort, .line(_), .sideChannelLine(line: _, channel: _, pid: _), .canceled:
                 break
@@ -2248,7 +2248,7 @@ extension Conductor {
                 if status == 0 {
                     write(code + "\nEOF\n")
                 } else {
-                    fail("Status \(status) when running python code")
+                    fail(String(format: NSLocalizedString("Status %@ when running python code", tableName: "SSH", comment: "conductor: python status error"), status))
                 }
                 return
             }
@@ -2367,7 +2367,7 @@ extension Conductor {
         case .handleBackgroundJob(let output, let completion):
             switch result {
             case .line(_):
-                fail("Unexpected output from \(executionContext.command.stringValue)")
+                fail(String(format: NSLocalizedString("Unexpected output from %@", tableName: "SSH", comment: "conductor: unexpected output error"), executionContext.command.stringValue))
             case .sideChannelLine(line: let line, channel: 1, pid: _):
                 output.strings.append(line)
             case .abort, .sideChannelLine(_, _, _), .canceled:
@@ -2397,7 +2397,7 @@ extension Conductor {
             return
         }
         guard let pid = Int32(lines.string) else {
-            fail("Invalid process ID from remote: \(lines.string)")
+            fail(String(format: NSLocalizedString("Invalid process ID from remote: %@", tableName: "SSH", comment: "conductor: invalid pid error"), lines.string))
             return
         }
         framedPID = pid

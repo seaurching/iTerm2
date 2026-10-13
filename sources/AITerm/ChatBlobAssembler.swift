@@ -225,7 +225,7 @@ enum ChatBlobAssembler {
         guard let frozen, !frozen.isEmpty else { return body }
         guard let spliced = JSONArraySplice.insert(frozen, intoArrayKey: arrayKey,
                                                    of: body, afterCount: afterCount) else {
-            throw AIError("Failed to splice frozen chat history into the \(arrayKey) request body")
+            throw AIError(NSLocalizedString("Failed to splice frozen chat history into the request body", tableName: "AITermXC", comment: "将冻结的对话历史拼接到请求体中失败"))
         }
         return spliced
     }

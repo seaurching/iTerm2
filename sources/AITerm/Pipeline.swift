@@ -167,7 +167,7 @@ class Pipeline<T>: CustomDebugStringConvertible {
             deps.formUnion(action.dependencies)
         }
         if !allDeps.subtracting(Set(blockedActions.map(\.id))).isEmpty {
-            it_fatalError("Pipeline has unsatisfiable dependencies")
+            it_fatalError(NSLocalizedString("Pipeline has unsatisfiable dependencies", tableName: "AITermXC", comment: "管道有无法满足的依赖关系"))
         }
         begun = true
         schedule()

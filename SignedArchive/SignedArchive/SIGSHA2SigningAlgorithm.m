@@ -52,7 +52,7 @@
     if (bytesRead < 0) {
         if (error) {
             *error = [SIGError errorWithCode:SIGErrorCodeAlgorithmCreationFailed
-                                     detail:@"Error reading input stream"];
+                                     detail:NSLocalizedStringFromTable(@"Error reading input stream", @"signed_archive", @"读取输入流时出错")];
         }
         return nil;
     }
@@ -73,7 +73,7 @@
         CFRelease(digestData);
         if (error) {
             *error = [SIGError errorWithCode:SIGErrorCodeAlgorithmCreationFailed
-                                     detail:@"Key does not support requested algorithm"];
+                                     detail:NSLocalizedStringFromTable(@"Key does not support requested algorithm", @"signed_archive", @"密钥不支持请求的算法")];
         }
         return nil;
     }
@@ -90,7 +90,7 @@
         if (error) {
             *error = [SIGError errorWrapping:underlying
                                       code:SIGErrorCodeAlgorithmCreationFailed
-                                    detail:@"Signing failed"];
+                                    detail:NSLocalizedStringFromTable(@"Signing failed", @"signed_archive", @"签名失败")];
         }
         return nil;
     }

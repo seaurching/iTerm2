@@ -142,22 +142,18 @@ final class ClaudeIntegrationHealthMonitor: NSObject {
         }
         RLog("Health: integration completed but hook is missing on disk — prompting")
         let warning = iTermWarning()
-        warning.heading = "Claude Code Integration Looks Broken"
-        warning.title = "iTerm2\u{2019}s cc-status hook is no longer in "
-            + "~/.claude/settings.json. This usually means Claude Code "
-            + "rewrote that file. Reinstall the hook so per-tab status "
-            + "indicators (\u{201C}Working\u{2026},\u{201D} "
-            + "\u{201C}Waiting\u{2026}\u{201D}) work again?"
+        warning.heading = NSLocalizedString("Claude Code Integration Looks Broken", tableName: "ClaudeCodeXC", comment: "Claude Code 集成似乎已损坏")
+        warning.title = NSLocalizedString("iTerm2\u{2019}s cc-status hook is no longer in ~/.claude/settings.json. This usually means Claude Code rewrote that file. Reinstall the hook so per-tab status indicators (\u{201C}Working\u{2026},\u{201D} \u{201C}Waiting\u{2026}\u{201D}) work again?", tableName: "ClaudeCodeXC", comment: "iTerm2 的 cc-status 钩子已不在 ~/.claude/settings.json 中。这通常意味着 Claude Code 重写了该文件。重新安装钩子以让每标签页状态指示器（\u{201C}工作中\u{2026}\u{201D} \u{201C}等待中\u{2026}\u{201D}）重新工作？")
         warning.warningType = .kiTermWarningTypePermanentlySilenceable
         warning.identifier = Self.warningIdentifier
-        warning.actionLabels = ["Reinstall", "Not Now"]
+        warning.actionLabels = [NSLocalizedString("Reinstall", tableName: "ClaudeCodeXC", comment: "重新安装"), NSLocalizedString("Not Now", tableName: "ClaudeCodeXC", comment: "暂时不")]
         // Without this, "Reinstall + Remember My Choice" would
         // preempt the dialog on every future broken-state launch
         // and silently open the onboarding window — almost
         // certainly not what a user means by "remember." Only the
         // dismiss path is rememberable; "Reinstall" always
         // requires a fresh click.
-        warning.doNotRememberLabels = ["Reinstall"]
+        warning.doNotRememberLabels = [NSLocalizedString("Reinstall", tableName: "ClaudeCodeXC", comment: "重新安装")]
         warning.runModalAsync { [weak self] selection, _ in
             self?.alertInFlight = false
             if selection == .kiTermWarningSelection0 {

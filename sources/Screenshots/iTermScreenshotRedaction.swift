@@ -200,7 +200,7 @@ class iTermScreenshotRedactionManager: NSObject {
         let lineCount = lines.count
 
         // Build the label
-        let label = lineCount == 1 ? "1 line" : "\(lineCount) lines"
+        let label = lineCount == 1 ? NSLocalizedString("1 line", tableName: "Screenshots", comment: "Screenshots: single line annotation label") : String(format: NSLocalizedString("%ld lines", tableName: "Screenshots", comment: "Screenshots: multi line annotation label"), lineCount)
 
         if nonEmptyLines.isEmpty {
             // No non-empty lines, just show line count
@@ -209,7 +209,7 @@ class iTermScreenshotRedactionManager: NSObject {
             // Only one non-empty line
             let content = nonEmptyLines[0]
             let truncated = content.count > 20 ? String(content.prefix(17)) + "..." : content
-            return "\(label): \u{201C}\(truncated)\u{201D}"
+            return String(format: NSLocalizedString("“%@”: “%@”", tableName: "Screenshots", comment: "Screenshots: annotation label with truncated content"), label, truncated)
         } else {
             // Multiple non-empty lines - show prefix of first and suffix of last
             let first = nonEmptyLines[0]
@@ -221,7 +221,7 @@ class iTermScreenshotRedactionManager: NSObject {
             let prefix = first.count > prefixLen ? String(first.prefix(prefixLen)) : first
             let suffix = last.count > suffixLen ? String(last.suffix(suffixLen)) : last
 
-            return "\(label): \u{201C}\(prefix)\u{201D}...\u{201C}\(suffix)\u{201D}"
+            return String(format: NSLocalizedString("“%@”: “%@”...“%@”", tableName: "Screenshots", comment: "Screenshots: annotation label with prefix and suffix"), label, prefix, suffix)
         }
     }
 

@@ -61,7 +61,7 @@ const int iTermMinimumPythonEnvironmentVersion = 72;
 }
 
 - (NSString *)progressString {
-    return @"Connecting…";
+    return NSLocalizedStringFromTableInBundle(@"Connecting…", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Progress label when starting a download connection");
 }
 
 - (BOOL)buttonEnabled {
@@ -157,7 +157,7 @@ didCompleteWithError:(nullable NSError *)error {
         int statusCode = [[NSHTTPURLResponse castFrom:task.response] statusCode];
         DLog(@"No error. statusCode=%@", @(statusCode));
         if (statusCode != 200 && statusCode != 206) {
-            error = [NSError errorWithDomain:@"com.iterm2" code:1 userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Server returned status code %@: %@", @(statusCode), [NSHTTPURLResponse localizedStringForStatusCode:statusCode] ] }];
+            error = [NSError errorWithDomain:@"com.iterm2" code:1 userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Server returned status code %@: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Error message when server returns a non-200/206 HTTP status code"), @(statusCode), [NSHTTPURLResponse localizedStringForStatusCode:statusCode] ] }];
         }
     }
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -203,7 +203,7 @@ didCompleteWithError:(nullable NSError *)error {
 - (instancetype)initWithURL:(NSURL *)url
      requestedPythonVersion:(NSString *)requestedPythonVersion
            nextPhaseFactory:(iTermOptionalComponentDownloadPhase *(^)(iTermOptionalComponentDownloadPhase *))nextPhaseFactory {
-    self = [super initWithURL:url title:@"Finding latest version…" nextPhaseFactory:nextPhaseFactory];
+    self = [super initWithURL:url title:NSLocalizedStringFromTableInBundle(@"Finding latest version…", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Title shown while looking up the latest Python runtime version") nextPhaseFactory:nextPhaseFactory];
     if (self) {
         _requestedPythonVersion = [requestedPythonVersion copy];
     }
@@ -314,7 +314,7 @@ didCompleteWithError:(nullable NSError *)error {
             const int version = [dict[@"version"] intValue];
             if (version < iTermMinimumPythonEnvironmentVersion) {
                 RLog(@"%@ < %@: %@", @(version), @(iTermMinimumPythonEnvironmentVersion), self);
-                innerError = [NSError errorWithDomain:@"com.iterm2" code:3 userInfo:@{ NSLocalizedDescriptionKey: @"☹️ No usable version found." }];
+                innerError = [NSError errorWithDomain:@"com.iterm2" code:3 userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"☹️ No usable version found.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Error when no suitable Python runtime version is available") }];
             } else if (dict) {
                 self->_fullComponent =
                 [[iTermDownloadableComponentInfo alloc] initWithURL:[NSURL URLWithString:dict[@"url"]]
@@ -340,7 +340,7 @@ didCompleteWithError:(nullable NSError *)error {
                      @(self->_version), self->_pythonVersionsInArchive, NSStringFromRange(self->_sitePackagesDependencies), self);
             } else {
                 RLog(@"malformed manifest");
-                innerError = [NSError errorWithDomain:@"com.iterm2" code:2 userInfo:@{ NSLocalizedDescriptionKey: @"☹️ Malformed manifest." }];
+                innerError = [NSError errorWithDomain:@"com.iterm2" code:2 userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"☹️ Malformed manifest.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Error when the manifest JSON is malformed") }];
             }
             [super URLSession:session task:task didCompleteWithError:innerError];
         });
@@ -360,7 +360,7 @@ didCompleteWithError:(nullable NSError *)error {
      requestedPythonVersion:(NSString *)requestedPythonVersion
            expectedVersions:(NSArray<NSString *> *)expectedVersions
            nextPhaseFactory:(iTermOptionalComponentDownloadPhase *(^)(iTermOptionalComponentDownloadPhase *))nextPhaseFactory {
-    self = [super initWithURL:url title:@"Downloading Python runtime…" nextPhaseFactory:nextPhaseFactory];
+    self = [super initWithURL:url title:NSLocalizedStringFromTableInBundle(@"Downloading Python runtime…", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Title shown while downloading the Python runtime") nextPhaseFactory:nextPhaseFactory];
     if (self) {
         _version = version;
         _expectedSignature = [expectedSignature copy];
@@ -382,7 +382,7 @@ didCompleteWithError:(nullable NSError *)error {
 }
 
 - (NSString *)progressString {
-    return @"Installing…";
+    return NSLocalizedStringFromTableInBundle(@"Installing…", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Progress label shown while installing the downloaded component");
 }
 
 - (BOOL)buttonEnabled {
@@ -414,7 +414,7 @@ didCompleteWithError:(nullable NSError *)error {
     // and it routes through the phase-cancel/completion logic correctly.
     self.window.styleMask &= ~NSWindowStyleMaskClosable;
 
-    _titleLabel.stringValue = @"Initializing…";
+    _titleLabel.stringValue = NSLocalizedStringFromTableInBundle(@"Initializing…", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Title label shown when the download window first appears");
     _progressLabel.stringValue = [NSString stringWithFormat:@""];
 }
 
@@ -443,7 +443,7 @@ didCompleteWithError:(nullable NSError *)error {
     [phase download];
     _progressLabel.stringValue = phase.progressString;
     _button.enabled = phase.buttonEnabled;
-    _button.title = @"Cancel";
+    _button.title = NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Cancel button title in download window");
 }
 
 - (void)showMessage:(NSString *)message {
@@ -452,7 +452,7 @@ didCompleteWithError:(nullable NSError *)error {
     _titleLabel.stringValue = message;
     _progressLabel.stringValue = @"";
     _button.enabled = YES;
-    _button.title = @"OK";
+    _button.title = NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:[self class]], @"OK button title in download window");
 }
 
 - (IBAction)button:(id)sender {
@@ -471,13 +471,13 @@ didCompleteWithError:(nullable NSError *)error {
 - (void)downloadDidFailWithError:(NSError *)error {
     RLog(@"error=%@ %@", error, self);
     _button.enabled = YES;
-    _button.title = @"Try Again";
+    _button.title = NSLocalizedStringFromTableInBundle(@"Try Again", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Try Again button title after a download failure");
     if (error.code == -999 && [error.domain isEqualToString:@"com.iterm2"]) {
-        _progressLabel.stringValue = @"Canceled";
+        _progressLabel.stringValue = NSLocalizedStringFromTableInBundle(@"Canceled", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Label shown when a download was canceled");
         _titleLabel.stringValue = @"";
     } else {
         _progressLabel.stringValue = error.localizedDescription;
-        _titleLabel.stringValue = @"Download Failed";
+        _titleLabel.stringValue = NSLocalizedStringFromTableInBundle(@"Download Failed", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Title shown when a download has failed");
     }
     _progressIndicator.doubleValue = 0;
     iTermOptionalComponentDownloadPhase *phase = _currentPhase;
@@ -511,7 +511,7 @@ didCompleteWithError:(nullable NSError *)error {
                                ofTotal:(double)totalBytes {
     DLog(@"downloaded %@/%@ %@", @(bytesWritten), @(totalBytes), self);
     self->_progressIndicator.doubleValue = bytesWritten / totalBytes;
-    self->_progressLabel.stringValue = [NSString stringWithFormat:@"%@ of %@",
+    self->_progressLabel.stringValue = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ of %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Download progress format: current bytes of total bytes"),
                                         [NSString it_formatBytes:bytesWritten],
                                         [NSString it_formatBytes:totalBytes]];
 }

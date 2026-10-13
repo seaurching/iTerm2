@@ -137,7 +137,7 @@
                     if (title.length > kMaxLength) {
                         title = [[title substringToIndex:kMaxLength] stringByAppendingString:@"…"];
                     }
-                    [labels addObject:[NSString stringWithFormat:@"Text: “%@”", title]];
+                    [labels addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Text: “%@”", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: text label"), title]];
                     [values addObject:entry.mainValue];
                 }
                 [labels addObject:[NSNull null]];
@@ -231,8 +231,8 @@
                     break;
                 }
             }
-            NSString *label = [NSString stringWithFormat:@"%@: “%@”",
-                               [(description ?: @"Unknown Type") stringByCapitalizingFirstLetter],
+            NSString *label = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@: “%@”", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: type label"),
+                               [(description ?: NSLocalizedStringFromTableInBundle(@"Unknown Type", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: unknown type fallback")) stringByCapitalizingFirstLetter],
                                [string ellipsizedDescriptionNoLongerThan:100]];
             [labels addObject:label];
         }
@@ -274,9 +274,9 @@
 
     [values addObject:[modifiedFilenames componentsJoinedByString:@" "]];
     if (filenames.count > 1) {
-        [labels addObject:@"Multiple file names"];
+        [labels addObject:NSLocalizedStringFromTableInBundle(@"Multiple file names", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: multiple file names label")];
     } else if (filenames.count == 1) {
-        [labels addObject:@"File name"];
+        [labels addObject:NSLocalizedStringFromTableInBundle(@"File name", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: file name label")];
     }
 
     // Add an item for each existing non-directory file.
@@ -286,7 +286,7 @@
         if ([fileManager fileExistsAtPath:filename isDirectory:&isDirectory] &&
             !isDirectory) {
             [values addObject:[[iTermFileReference alloc] initWithName:filename]];
-            [labels addObject:[NSString stringWithFormat:@"Contents of %@", filename]];
+            [labels addObject:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Contents of %@", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: contents of label"), filename]];
         }
     }
 }
@@ -408,7 +408,7 @@
         linesFormatter.numberStyle = NSNumberFormatterDecimalStyle;
     }
 
-    _statsLabel.stringValue = [NSString stringWithFormat:@"%@ byte%@ in %@ line%@.",
+    _statsLabel.stringValue = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ byte%@ in %@ line%@.", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: stats label"),
                                [[bytesFormatter stringFromNumber:@(numBytes)] stringWithFirstLetterCapitalized],
                                numBytes == 1 ? @"" : @"s",
                                [linesFormatter stringFromNumber:@(numberOfLines)],
@@ -427,7 +427,7 @@
         duration = ceil(duration);
     }
     if (duration < 0.01) {
-        _estimatedDuration.stringValue = @"Instant";
+        _estimatedDuration.stringValue = NSLocalizedStringFromTableInBundle(@"Instant", @"Pasting", [NSBundle bundleForClass:[self class]], @"Pasting: instant duration");
     } else {
         _estimatedDuration.stringValue = [_pasteSpecialViewController descriptionForDuration:duration];
     }

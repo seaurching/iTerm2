@@ -3756,11 +3756,11 @@ typedef struct {
     NSString *v = params[@"v"];
     if (!v || [v integerValue] < 3) {
         _sshIntegrationFlags = nil;
-        [self appendBannerMessage:@"Out-of-date version of it2ssh detected. Please upgrade it2ssh."];
+        [self appendBannerMessage:NSLocalizedStringFromTableInBundle(@"Out-of-date version of it2ssh detected. Please upgrade it2ssh.", @"VT100Screen", [NSBundle bundleForClass:[self class]], @"横幅：it2ssh 版本过旧")];
         return;
     } else if (v.integerValue > 3) {
         _sshIntegrationFlags = nil;
-        [self appendBannerMessage:@"Future version of it2ssh detected. Please upgrade iTerm2."];
+        [self appendBannerMessage:NSLocalizedStringFromTableInBundle(@"Future version of it2ssh detected. Please upgrade iTerm2.", @"VT100Screen", [NSBundle bundleForClass:[self class]], @"横幅：it2ssh 版本超前")];
         return;
     }
 
@@ -3829,7 +3829,7 @@ typedef struct {
 }
 
 - (void)terminalBeginFramerRecoveryForChildOfConductorAtDepth:(int)parentDepth {
-    [self appendBannerMessage:@"Recovering ssh connection…"];
+    [self appendBannerMessage:NSLocalizedStringFromTableInBundle(@"Recovering ssh connection…", @"VT100Screen", [NSBundle bundleForClass:[self class]], @"横幅：正在恢复 ssh 连接")];
     self.terminal.framerRecoveryMode = VT100TerminalFramerRecoveryModeRecovering;
     [self addPausedSideEffect:^(id<VT100ScreenDelegate> delegate, iTermTokenExecutorUnpauser *unpauser) {
         [delegate screenBeginFramerRecovery:parentDepth];
@@ -3849,7 +3849,7 @@ typedef struct {
                                                                                                            tree:recovery.tree];
             [delegate screenFramerRecoveryDidFinish];
             dispatch_async(queue, ^{
-                [weakSelf appendBanner:@"ssh connection recovered!" andUnpause:unpauser];
+                [weakSelf appendBanner:NSLocalizedStringFromTableInBundle(@"ssh connection recovered!", @"VT100Screen", [NSBundle bundleForClass:[weakSelf class]], @"横幅：ssh 连接已恢复") andUnpause:unpauser];
             });
         } else {
             [unpauser unpause];
@@ -4021,7 +4021,7 @@ willExecuteToken:(VT100Token *)token
         iTermButtonMark *mark = obj;
         mark.channelUID = uid;
     }];
-    [self appendBannerMessage:[NSString stringWithFormat:@"   Started %@", command]];
+    [self appendBannerMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"   Started %@", @"VT100Screen", [NSBundle bundleForClass:[self class]], @"横幅：命令已启动"), command]];
     [self addPausedSideEffect:^(id<VT100ScreenDelegate> delegate, iTermTokenExecutorUnpauser *unpauser) {
         [delegate screenStartWrappedCommand:command channel:uid];
         [unpauser unpause];

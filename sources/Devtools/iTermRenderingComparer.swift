@@ -112,12 +112,12 @@ class iTermRenderingComparer: NSObject {
         }
 
         guard let profile = ProfileModel.sharedInstance()?.defaultProfile() else {
-            fputs("ERROR: No default profile found\n", stderr)
+            fputs(NSLocalizedString("ERROR: No default profile found\n", tableName: "devtool", comment: "Rendering comparer: no default profile found"), stderr)
             NSApp.terminate(nil)
             return
         }
         guard let guid = profile[KEY_GUID] as? String else {
-            fputs("ERROR: Default profile has no GUID\n", stderr)
+            fputs(NSLocalizedString("ERROR: Default profile has no GUID\n", tableName: "devtool", comment: "Rendering comparer: default profile has no GUID"), stderr)
             NSApp.terminate(nil)
             return
         }
@@ -133,7 +133,7 @@ class iTermRenderingComparer: NSObject {
             legacyImage = try renderLegacy(rows: rows, columns: columns, guid: guid, profile: profile, data: data)
             legacyImage.saveAsPNG(to: legacyPath)
         } catch {
-            fputs("ERROR: Legacy render failed: \(error)\n", stderr)
+            fputs(String(format: NSLocalizedString("ERROR: Legacy render failed: %@\n", tableName: "devtool", comment: "Rendering comparer: legacy render failed"), String(describing: error)), stderr)
             NSApp.terminate(nil)
             return
         }
@@ -143,7 +143,7 @@ class iTermRenderingComparer: NSObject {
         do {
             gpuImage = try renderGPU(rows: rows, columns: columns, guid: guid, profile: profile, data: data)
         } catch {
-            fputs("ERROR: GPU render failed: \(error)\n", stderr)
+            fputs(String(format: NSLocalizedString("ERROR: GPU render failed: %@\n", tableName: "devtool", comment: "Rendering comparer: GPU render failed"), String(describing: error)), stderr)
             NSApp.terminate(nil)
             return
         }
@@ -206,7 +206,7 @@ class iTermRenderingComparer: NSObject {
     private static func renderLegacy(rows: Int, columns: Int, guid: String, profile: [AnyHashable: Any], data: Data) throws -> NSImage {
         let session = createSession(rows: rows, columns: columns, guid: guid, profile: profile, data: data)
         guard let textview = session.textview else {
-            throw NSError(domain: "iTermRenderingComparer", code: 5, userInfo: [NSLocalizedDescriptionKey: "Session has no textview"])
+            throw NSError(domain: "iTermRenderingComparer", code: 5, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Session has no textview", tableName: "devtool", comment: "Rendering comparer error: session has no textview")])
         }
         let scrollback = Int(session.screen.numberOfScrollbackLines())
         textview.setDrawingHelperIsRetina((NSScreen.main?.backingScaleFactor ?? 2.0) > 1)
@@ -218,22 +218,22 @@ class iTermRenderingComparer: NSObject {
                                                includeMargins: true,
                                                backgroundColor: bgColor,
                                                showCursor: true) else {
-            throw NSError(domain: "iTermRenderingComparer", code: 1, userInfo: [NSLocalizedDescriptionKey: "Legacy render returned nil"])
+            throw NSError(domain: "iTermRenderingComparer", code: 1, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Legacy render returned nil", tableName: "devtool", comment: "Rendering comparer error: legacy render returned nil")])
         }
         return image
     }
 
     private static func renderGPU(rows: Int, columns: Int, guid: String, profile: [AnyHashable: Any], data: Data) throws -> NSImage {
         guard MTLCreateSystemDefaultDevice() != nil else {
-            throw NSError(domain: "iTermRenderingComparer", code: 2, userInfo: [NSLocalizedDescriptionKey: "No Metal device"])
+            throw NSError(domain: "iTermRenderingComparer", code: 2, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("No Metal device", tableName: "devtool", comment: "Rendering comparer error: no Metal device")])
         }
         let session = createSession(rows: rows, columns: columns, guid: guid, profile: profile, data: data)
         guard let sessionView = session.view else {
-            throw NSError(domain: "iTermRenderingComparer", code: 6, userInfo: [NSLocalizedDescriptionKey: "Session has no view"])
+            throw NSError(domain: "iTermRenderingComparer", code: 6, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Session has no view", tableName: "devtool", comment: "Rendering comparer error: session has no view")])
         }
 
         guard let screen = NSScreen.main else {
-            throw NSError(domain: "iTermRenderingComparer", code: 3, userInfo: [NSLocalizedDescriptionKey: "No screen"])
+            throw NSError(domain: "iTermRenderingComparer", code: 3, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("No screen", tableName: "devtool", comment: "Rendering comparer error: no screen")])
         }
         let window = NSWindow(
             contentRect: NSRect(origin: screen.frame.origin, size: sessionView.frame.size),
@@ -251,7 +251,7 @@ class iTermRenderingComparer: NSObject {
 
         guard let image = sessionView.drawMetalFrameToImage() else {
             window.orderOut(nil)
-            throw NSError(domain: "iTermRenderingComparer", code: 4, userInfo: [NSLocalizedDescriptionKey: "Metal capture returned nil"])
+            throw NSError(domain: "iTermRenderingComparer", code: 4, userInfo: [NSLocalizedDescriptionKey: NSLocalizedString("Metal capture returned nil", tableName: "devtool", comment: "Rendering comparer error: Metal capture returned nil")])
         }
         window.orderOut(nil)
         return image

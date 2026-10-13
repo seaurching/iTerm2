@@ -376,7 +376,7 @@ static NSModalResponse iTermCompareRenderingRunModal(id self, SEL _cmd) {
     NSSize tabColorViewSize = [ColorsMenuItemView preferredSize];
     ColorsMenuItemView *labelTrackView = [[[ColorsMenuItemView alloc]
                                            initWithFrame:NSMakeRect(0, 0, tabColorViewSize.width, tabColorViewSize.height)] autorelease];
-    [self addMenuItemView:labelTrackView toMenu:viewMenu title:@"Current Tab Color"];
+    [self addMenuItemView:labelTrackView toMenu:viewMenu title:NSLocalizedStringFromTableInBundle(@"Current Tab Color", @"AppKit", [NSBundle bundleForClass:[self class]], @"当前标签页颜色")];
 
     if (![iTermTipController sharedInstance]) {
         [_showTipOfTheDay.menu removeItem:_showTipOfTheDay];
@@ -454,7 +454,7 @@ static NSModalResponse iTermCompareRenderingRunModal(id self, SEL _cmd) {
         if (undoResponder) {
             return YES;
         } else {
-            menuItem.title = @"Undo Close Session";
+            menuItem.title = NSLocalizedStringFromTableInBundle(@"Undo Close Session", @"AppKit", [NSBundle bundleForClass:[self class]], @"撤销关闭会话菜单项");
             return [[iTermController sharedInstance] hasRestorableSession];
         }
     } else if ([menuItem action] == @selector(enableMarkAlertShowsModalAlert:)) {
@@ -539,16 +539,16 @@ static NSModalResponse iTermCompareRenderingRunModal(id self, SEL _cmd) {
         NSArray<iTermSuppressedAlert *> *suppressed = [[iTermSuppressedAlerts sharedInstance] currentlySuppressedAlerts];
         const NSInteger n = suppressed.count;
         if (n == 0) {
-            menuItem.title = @"Suppressed Alerts…";
+            menuItem.title = NSLocalizedStringFromTableInBundle(@"Suppressed Alerts…", @"AppKit", [NSBundle bundleForClass:[self class]], @"已抑制警告菜单项");
             return YES;
         }
-        NSString *countPart = (n == 1) ? @"1 Alert Suppressed" : [NSString stringWithFormat:@"%@ Alerts Suppressed", @(n)];
+        NSString *countPart = (n == 1) ? NSLocalizedStringFromTableInBundle(@"1 Alert Suppressed", @"AppKit", [NSBundle bundleForClass:[self class]], @"已抑制1个警告") : [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ Alerts Suppressed", @"AppKit", [NSBundle bundleForClass:[self class]], @"已抑制多个警告"), @(n)];
         NSDate *recent = suppressed.firstObject.lastSuppressed;
         if (recent) {
             NSString *rel = [NSDateFormatter compactDateDifferenceStringFromDate:recent];
-            menuItem.title = [NSString stringWithFormat:@"%@ (%@ ago)…", countPart, rel];
+            menuItem.title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ (%@ ago)…", @"AppKit", [NSBundle bundleForClass:[self class]], @"已抑制警告菜单标题格式"), countPart, rel];
         } else {
-            menuItem.title = [NSString stringWithFormat:@"%@…", countPart];
+            menuItem.title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@…", @"AppKit", [NSBundle bundleForClass:[self class]], @"已抑制警告菜单标题"), countPart];
         }
         return YES;
     } else if (menuItem.action == @selector(arrangeSplitPanesEvenly:)) {
@@ -597,7 +597,7 @@ static NSModalResponse iTermCompareRenderingRunModal(id self, SEL _cmd) {
         }
         return !!(menuItem.tag & profileType);
     } else if (menuItem.action == @selector(newSessionAlternate:)) {
-        menuItem.title = [self alternateNewSessionShouldOpenAtEnd] ? @"New Tab At End" : @"New Tab Next to Current Tab";
+        menuItem.title = [self alternateNewSessionShouldOpenAtEnd] ? NSLocalizedStringFromTableInBundle(@"New Tab At End", @"AppKit", [NSBundle bundleForClass:[self class]], @"在末尾新建标签页") : NSLocalizedStringFromTableInBundle(@"New Tab Next to Current Tab", @"AppKit", [NSBundle bundleForClass:[self class]], @"在当前标签页旁新建标签页");
         return YES;
     } else {
         return YES;
@@ -713,13 +713,13 @@ static NSModalResponse iTermCompareRenderingRunModal(id self, SEL _cmd) {
 - (NSMenu *)downloadsMenu {
     if (!downloadsMenu_) {
         downloadsMenu_ = [[[NSMenuItem alloc] init] autorelease];
-        downloadsMenu_.title = @"Downloads";
+        downloadsMenu_.title = NSLocalizedStringFromTableInBundle(@"Downloads", @"AppKit", [NSBundle bundleForClass:[self class]], @"下载菜单标题");
         NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
         [mainMenu insertItem:downloadsMenu_
                      atIndex:mainMenu.itemArray.count - 1];
-        [downloadsMenu_ setSubmenu:[[[NSMenu alloc] initWithTitle:@"Downloads"] autorelease]];
+        [downloadsMenu_ setSubmenu:[[[NSMenu alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Downloads", @"AppKit", [NSBundle bundleForClass:[self class]], @"下载菜单标题")] autorelease]];
 
-        NSMenuItem *clearAll = [[[NSMenuItem alloc] initWithTitle:@"Clear All" action:@selector(clearAllDownloads:) keyEquivalent:@""] autorelease];
+        NSMenuItem *clearAll = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Clear All", @"AppKit", [NSBundle bundleForClass:[self class]], @"清除所有菜单项") action:@selector(clearAllDownloads:) keyEquivalent:@""] autorelease];
         [downloadsMenu_.submenu addItem:clearAll];
         [downloadsMenu_.submenu addItem:[NSMenuItem separatorItem]];
     }
@@ -729,13 +729,13 @@ static NSModalResponse iTermCompareRenderingRunModal(id self, SEL _cmd) {
 - (NSMenu *)uploadsMenu {
     if (!uploadsMenu_) {
         uploadsMenu_ = [[[NSMenuItem alloc] init] autorelease];
-        uploadsMenu_.title = @"Uploads";
+        uploadsMenu_.title = NSLocalizedStringFromTableInBundle(@"Uploads", @"AppKit", [NSBundle bundleForClass:[self class]], @"上传菜单标题");
         NSMenu *mainMenu = [[NSApplication sharedApplication] mainMenu];
         [mainMenu insertItem:uploadsMenu_
                      atIndex:mainMenu.itemArray.count - 1];
-        [uploadsMenu_ setSubmenu:[[[NSMenu alloc] initWithTitle:@"Uploads"] autorelease]];
+        [uploadsMenu_ setSubmenu:[[[NSMenu alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Uploads", @"AppKit", [NSBundle bundleForClass:[self class]], @"上传菜单标题")] autorelease]];
 
-        NSMenuItem *clearAll = [[[NSMenuItem alloc] initWithTitle:@"Clear All" action:@selector(clearAllUploads:) keyEquivalent:@""] autorelease];
+        NSMenuItem *clearAll = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Clear All", @"AppKit", [NSBundle bundleForClass:[self class]], @"清除所有菜单项") action:@selector(clearAllUploads:) keyEquivalent:@""] autorelease];
         [uploadsMenu_.submenu addItem:clearAll];
         [uploadsMenu_.submenu addItem:[NSMenuItem separatorItem]];
     }
@@ -789,8 +789,8 @@ static NSModalResponse iTermCompareRenderingRunModal(id self, SEL _cmd) {
         RLog(@"Importing color presets from %@", filename);
         if ([iTermColorPresets importColorPresetFromFile:filename]) {
             NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-            alert.messageText = @"Colors Scheme Imported";
-            alert.informativeText = @"The color scheme was imported and added to presets. You can find it under Settings > Profiles > Colors > Load Presets….";
+            alert.messageText = NSLocalizedStringFromTableInBundle(@"Colors Scheme Imported", @"AppKit", [NSBundle bundleForClass:[self class]], @"配色方案已导入警告标题");
+            alert.informativeText = NSLocalizedStringFromTableInBundle(@"The color scheme was imported and added to presets. You can find it under Settings > Profiles > Colors > Load Presets….", @"AppKit", [NSBundle bundleForClass:[self class]], @"配色方案已导入警告内容");
             [alert runModal];
         }
         return YES;
@@ -834,8 +834,8 @@ static NSModalResponse iTermCompareRenderingRunModal(id self, SEL _cmd) {
                 }
 
                 const iTermWarningSelection selection =
-                    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"OK to run “%@”?", filename]
-                                               actions:@[ @"OK", @"Cancel" ]
+                    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"OK to run “%@”?", @"AppKit", [NSBundle bundleForClass:[self class]], @"确认运行文件警告标题"), filename]
+                                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"AppKit", [NSBundle bundleForClass:[self class]], @"确定按钮标题"), NSLocalizedStringFromTableInBundle(@"Cancel", @"AppKit", [NSBundle bundleForClass:[self class]], @"取消按钮标题") ]
                                             identifier:@"NoSyncConfirmRunOpenFile"
                                            silenceable:kiTermWarningTypePermanentlySilenceable
                                                 window:nil];
@@ -1027,20 +1027,25 @@ static NSModalResponse iTermCompareRenderingRunModal(id self, SEL _cmd) {
         RLog(@"Showing quit alert");
         NSString *message;
         if ([[iTermController sharedInstance] shouldLeaveSessionsRunningOnQuit]) {
-            message = @"Sessions will be restored automatically when iTerm2 is relaunched.";
+            message = NSLocalizedStringFromTableInBundle(@"Sessions will be restored automatically when iTerm2 is relaunched.", @"AppKit", [NSBundle bundleForClass:[self class]], @"重新启动 iTerm2 时将自动恢复会话。");
         } else {
-            message = @"All sessions will be closed.";
+            message = NSLocalizedStringFromTableInBundle(@"All sessions will be closed.", @"AppKit", [NSBundle bundleForClass:[self class]], @"所有会话都将被关闭。");
         }
         [NSApp activateIgnoringOtherApps:YES];
         NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-        alert.messageText = @"Quit iTerm2?";
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Quit iTerm2?", @"AppKit", [NSBundle bundleForClass:[self class]], @"退出确认警告标题");
         alert.informativeText = message;
-        [alert addButtonWithTitle:@"OK"];
-        [alert addButtonWithTitle:@"Cancel"];
-        iTermDisclosableView *accessory = [[iTermDisclosableView alloc] initWithFrame:NSZeroRect
-                                                                               prompt:@"Why am I being prompted?"
-                                                                              message:[NSString stringWithFormat:@"You are being prompted because:\n\n%@",
-                                                                                       reason.message]];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"AppKit", [NSBundle bundleForClass:[self class]], @"确定按钮标题")];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"AppKit", [NSBundle bundleForClass:[self class]], @"取消按钮标题")];
+        iTermDisclosableView *accessory = [
+            [iTermDisclosableView alloc]
+            initWithFrame:NSZeroRect
+                prompt:NSLocalizedStringFromTableInBundle(@"Why am I being prompted?", @"AppKit", [NSBundle bundleForClass:[self class]], @"为什么会出现此提示？")
+                message:[
+                    NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"You are being prompted because:\n\n%@", @"AppKit", [NSBundle bundleForClass:[self class]], @"出现此提示的原因：\n\n%@"),
+        			reason.message
+                ]
+        ];
         iTermAccessoryViewUnfucker *unfucker = [[iTermAccessoryViewUnfucker alloc] initWithView:accessory];
         accessory.frame = NSMakeRect(0, 0, accessory.intrinsicContentSize.width, accessory.intrinsicContentSize.height);
         accessory.requestLayout = ^{
@@ -1148,16 +1153,16 @@ static NSModalResponse iTermCompareRenderingRunModal(id self, SEL _cmd) {
 - (NSMenu *)applicationDockMenu:(NSApplication *)sender {
     NSMenu* aMenu = [[NSMenu alloc] initWithTitle: @"Dock Menu"];
 
-    [aMenu addItemWithTitle:@"New Window (Default Profile)"
+    [aMenu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"New Window (Default Profile)", @"AppKit", [NSBundle bundleForClass:[self class]], @"新建窗口菜单项")
                      action:@selector(newWindow:)
               keyEquivalent:@""];
     [aMenu addItem:[NSMenuItem separatorItem]];
     [self newSessionMenu:aMenu
-                   title:@"New Window…"
+                   title:NSLocalizedStringFromTableInBundle(@"New Window…", @"AppKit", [NSBundle bundleForClass:[self class]], @"新建窗口菜单项")
                 selector:@selector(newSessionInWindowAtIndex:)
          openAllSelector:@selector(newSessionsInNewWindow:)];
     [self newSessionMenu:aMenu
-                   title:@"New Tab…"
+                   title:NSLocalizedStringFromTableInBundle(@"New Tab…", @"AppKit", [NSBundle bundleForClass:[self class]], @"新建标签页菜单项")
                 selector:@selector(newSessionInTabAtIndex:)
          openAllSelector:@selector(newSessionsInWindow:)];
     [self addArrangementsToDockMenu:aMenu];
@@ -1300,11 +1305,11 @@ void TurnOnDebugLoggingAutomatically(void) {
             TurnOffDebugLoggingSilently();
             [[iTermUserDefaults userDefaults] setBool:NO forKey:@"StartDebugLoggingAutomatically"];
         }];
-      [[iTermNotificationController sharedInstance] postNotificationWithTitle:@"Debug logging turned on"
-                                                                       detail:@"You may notice worse performance while debug logging is on."
+      [[iTermNotificationController sharedInstance] postNotificationWithTitle:NSLocalizedStringFromTableInBundle(@"Debug logging turned on", @"AppKit", [NSBundle mainBundle], @"已开启调试日志")
+                                                                       detail:NSLocalizedStringFromTableInBundle(@"You may notice worse performance while debug logging is on.", @"AppKit", [NSBundle mainBundle], @"调试日志开启期间，性能可能会有所下降。")
                                                      callbackNotificationName:iTermDisableDebugLoggingNotificationName
                                                  callbackNotificationUserInfo:@{}
-                                                            actionButtonTitle:@"Disable"];
+                                                            actionButtonTitle:NSLocalizedStringFromTableInBundle(@"Disable", @"AppKit", [NSBundle mainBundle], @"禁用按钮")];
       TurnOnDebugLoggingSilently();
   });
 }
@@ -1508,12 +1513,12 @@ void TurnOnDebugLoggingAutomatically(void) {
     if (@available(macOS 12, *)) {
         // ok
     } else {
-        [iTermWarning showWarningWithTitle:@"This is the last nightly build that will support macOS 11 and older. Sorry for the inconvenience!"
-                                   actions:@[ @"OK" ]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"This is the last nightly build that will support macOS 11 and older. Sorry for the inconvenience!", @"AppKit", [NSBundle bundleForClass:[self class]], @"最后一个支持 macOS 11 的 Nightly 版本警告")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"AppKit", [NSBundle bundleForClass:[self class]], @"确定按钮标题") ]
                                  accessory:nil
                                 identifier:@"NoSyncMacOS11Deprecation"
                                silenceable:kiTermWarningTypePermanentlySilenceable
-                                   heading:@"Deprecation Notice"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Deprecation Notice", @"AppKit", [NSBundle bundleForClass:[self class]], @"弃用通知")
                                     window:nil];
     }
     [iTermMacOS13RequirementNotice maybeShow];
@@ -1747,10 +1752,10 @@ void TurnOnDebugLoggingAutomatically(void) {
     NSMenu *appMenu = [[[[NSApp mainMenu] itemArray] firstObject] submenu];
     [appMenu addItem:[NSMenuItem separatorItem]];
 
-    NSMenuItem *item = [[[NSMenuItem alloc] initWithTitle:@"Toggle Key Recording" action:@selector(toggleKeyRecording:) keyEquivalent:@""] autorelease];
+    NSMenuItem *item = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Toggle Key Recording", @"AppKit", [NSBundle bundleForClass:[self class]], @"切换按键录制菜单项") action:@selector(toggleKeyRecording:) keyEquivalent:@""] autorelease];
     [appMenu addItem:item];
 
-    item = [[[NSMenuItem alloc] initWithTitle:@"Replay Recorded Keys" action:@selector(replayRecordedKeys:) keyEquivalent:@""] autorelease];
+    item = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Replay Recorded Keys", @"AppKit", [NSBundle bundleForClass:[self class]], @"回放录制的按键菜单项") action:@selector(replayRecordedKeys:) keyEquivalent:@""] autorelease];
     [appMenu addItem:item];
 #endif
 }
@@ -1764,7 +1769,7 @@ static iTermKeyEventReplayer *gReplayer;
 
 - (IBAction)replayRecordedKeys:(id)sender {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    panel.title = @"Choose a JSON File";
+    panel.title = NSLocalizedStringFromTableInBundle(@"Choose a JSON File", @"AppKit", [NSBundle bundleForClass:[self class]], @"选择JSON文件面板标题");
     panel.allowedContentTypes = @[ UTTypeJSON ];
     panel.canChooseFiles = YES;
     panel.canChooseDirectories = NO;
@@ -1796,12 +1801,12 @@ static iTermKeyEventReplayer *gReplayer;
     NSMenu *menu = [[[NSMenu alloc] init] autorelease];
     NSMenuItem *item;
 
-    item = [[[NSMenuItem alloc] initWithTitle:@"Settings"
+    item = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Settings", @"AppKit", [NSBundle bundleForClass:[self class]], @"设置菜单项")
                                        action:@selector(showAndOrderFrontRegardlessPrefWindow:)
                                 keyEquivalent:@""] autorelease];
     [menu addItem:item];
 
-    item = [[[NSMenuItem alloc] initWithTitle:@"Bring All Windows to Front"
+    item = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Bring All Windows to Front", @"AppKit", [NSBundle bundleForClass:[self class]], @"置前所有窗口菜单项")
                                        action:@selector(arrangeInFront:)
                                 keyEquivalent:@""] autorelease];
     [menu addItem:item];
@@ -1809,21 +1814,21 @@ static iTermKeyEventReplayer *gReplayer;
     item = [[[NSMenuItem alloc] init] autorelease];
     _statusIconBuriedSessions = [[[NSMenu alloc] init] autorelease];
     item.submenu = _statusIconBuriedSessions;
-    item.title = @"Buried Sessions";
+    item.title = NSLocalizedStringFromTableInBundle(@"Buried Sessions", @"AppKit", [NSBundle bundleForClass:[self class]], @"埋藏会话菜单项");
     [menu addItem:item];
 
     [[iTermBuriedSessions sharedInstance] setMenus:[NSArray arrayWithObjects:_buriedSessions, _statusIconBuriedSessions, nil]];
 
-    item = [[[NSMenuItem alloc] initWithTitle:@"Check For Updates"
+    item = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Check For Updates", @"AppKit", [NSBundle bundleForClass:[self class]], @"检查更新菜单项")
                                        action:@selector(checkForUpdatesFromMenu:)
                                 keyEquivalent:@""] autorelease];
     [menu addItem:item];
 
-    NSMenuItem *mainMenuItem = [[[NSMenuItem alloc] initWithTitle:@"Main Menu" action:nil keyEquivalent:@""] autorelease];
+    NSMenuItem *mainMenuItem = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Main Menu", @"AppKit", [NSBundle bundleForClass:[self class]], @"主菜单菜单项") action:nil keyEquivalent:@""] autorelease];
     mainMenuItem.submenu = [[NSApp mainMenu] it_deepCopy];
     [menu addItem:mainMenuItem];
     
-    item = [[[NSMenuItem alloc] initWithTitle:@"Quit iTerm2"
+    item = [[[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Quit iTerm2", @"AppKit", [NSBundle bundleForClass:[self class]], @"退出菜单项")
                                        action:@selector(terminate:)
                                 keyEquivalent:@""] autorelease];
     [menu addItem:item];
@@ -2344,8 +2349,8 @@ static iTermKeyEventReplayer *gReplayer;
     NSTimeInterval age = -[[NSBundle it_buildDate] timeIntervalSinceNow];
     if (age > 30 * 24 * 60 * 60) {
         iTermWarningSelection selection =
-        [iTermWarning showWarningWithTitle:@"This nightly build is over 30 days old. Consider updating soon: you may be suffering from awful bugs in blissful ignorance."
-                                   actions:@[ @"I’ll Take My Chances", @"Update Now" ]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"This nightly build is over 30 days old. Consider updating soon: you may be suffering from awful bugs in blissful ignorance.", @"AppKit", [NSBundle bundleForClass:[self class]], @"Nightly 版本超过 30 天警告")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"I’ll Take My Chances", @"AppKit", [NSBundle bundleForClass:[self class]], @"不更新按钮"), NSLocalizedStringFromTableInBundle(@"Update Now", @"AppKit", [NSBundle bundleForClass:[self class]], @"立即更新按钮") ]
                                 identifier:@"NoSyncVeryOldNightlyBuildWarning"
                                silenceable:kiTermWarningTypeSilenceableForOneMonth
                                     window:nil];
@@ -2524,7 +2529,7 @@ static iTermKeyEventReplayer *gReplayer;
     NSMenuItem *companionItem = [self menuItemWithAction:@selector(pairCompanionDevice:)
                                                  inMenu:[NSApp mainMenu]];
     companionItem.image = [NSImage imageWithSystemSymbolName:SFSymbolGetString(SFSymbolLaptopcomputerAndIphone)
-                                  accessibilityDescription:@"Companion Device Settings"];
+                                  accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Companion Device Settings", @"AppKit", [NSBundle bundleForClass:[self class]], @"配套设备设置")];
     companionItem.hidden = ![iTermAdvancedSettingsModel companionPairingAllowed];
 }
 
@@ -2572,7 +2577,15 @@ static iTermKeyEventReplayer *gReplayer;
 
 - (NSMenu *)topLevelViewNamed:(NSString *)menuName {
     NSMenu *appMenu = [NSApp mainMenu];
-    NSMenuItem *topLevelMenuItem = [appMenu itemWithTitle:menuName];
+    // Prefer identifier lookup so localized menu titles don't break the search.
+    NSMenuItem *topLevelMenuItem = [appMenu itemAtIndex:0];
+    for (NSMenuItem *item in [appMenu itemArray]) {
+        if ((item.identifier && [item.identifier isEqualToString:menuName]) ||
+            [item.title isEqualToString:menuName]) {
+            topLevelMenuItem = item;
+            break;
+        }
+    }
     NSMenu *menu = [topLevelMenuItem submenu];
     return menu;
 }
@@ -2616,7 +2629,7 @@ static iTermKeyEventReplayer *gReplayer;
 }
 
 - (void)addArrangementsToDockMenu:(NSMenu *)theMenu {
-    NSMenuItem *container = [theMenu addItemWithTitle:@"Restore Arrangement"
+    NSMenuItem *container = [theMenu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Restore Arrangement", @"AppKit", [NSBundle bundleForClass:[self class]], @"恢复窗口排列菜单项")
                                                action:nil
                                         keyEquivalent:@""];
     NSMenu *subMenu = [[[NSMenu alloc] init] autorelease];
@@ -2845,7 +2858,7 @@ static iTermKeyEventReplayer *gReplayer;
     BOOL cancel;
     BOOL tmux = [self possiblyTmuxValueForWindow:NO cancel:&cancel];
     if (cancel) {
-        DLog(@"Cancel");
+        DLog(NSLocalizedStringFromTableInBundle(@"Cancel", @"AppKit", [NSBundle bundleForClass:[self class]], @"取消按钮标题"));
         return;
     }
     [[iTermController sharedInstance] newSession:nil
@@ -3170,9 +3183,9 @@ static iTermKeyEventReplayer *gReplayer;
     NSString *ring = iTermRetrospectiveLogString();
     if (ring.length == 0) {
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"No Retrospective Logs";
-        alert.informativeText = @"No retrospective debug logs have been recorded yet.";
-        [alert addButtonWithTitle:@"OK"];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"No Retrospective Logs", @"AppKit", [NSBundle bundleForClass:[self class]], @"无调试日志警告标题");
+        alert.informativeText = NSLocalizedStringFromTableInBundle(@"No retrospective debug logs have been recorded yet.", @"AppKit", [NSBundle bundleForClass:[self class]], @"无调试日志警告内容");
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"AppKit", [NSBundle bundleForClass:[self class]], @"确定按钮标题")];
         [alert runModal];
         return;
     }
@@ -3181,16 +3194,16 @@ static iTermKeyEventReplayer *gReplayer;
     NSString *log = [iTermDebugLogHeaderString() stringByAppendingString:ring];
     NSSavePanel *panel = [NSSavePanel savePanel];
     panel.nameFieldStringValue = @"retrospective-debuglog.txt";
-    panel.title = @"Save Retrospective Debug Logs";
+    panel.title = NSLocalizedStringFromTableInBundle(@"Save Retrospective Debug Logs", @"AppKit", [NSBundle bundleForClass:[self class]], @"保存调试日志面板标题");
     if ([panel runModal] != NSModalResponseOK || panel.URL == nil) {
         return;
     }
     NSError *error = nil;
     if (![log writeToURL:panel.URL atomically:YES encoding:NSUTF8StringEncoding error:&error]) {
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Could Not Save";
-        alert.informativeText = [NSString stringWithFormat:@"Failed to save retrospective debug logs: %@", error.localizedDescription];
-        [alert addButtonWithTitle:@"OK"];
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Could Not Save", @"AppKit", [NSBundle bundleForClass:[self class]], @"保存失败警告标题");
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Failed to save retrospective debug logs: %@", @"AppKit", [NSBundle bundleForClass:[self class]], @"保存调试日志失败警告内容"), error.localizedDescription];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"AppKit", [NSBundle bundleForClass:[self class]], @"确定按钮标题")];
         [alert runModal];
     }
 }
@@ -3247,12 +3260,12 @@ static iTermKeyEventReplayer *gReplayer;
                                                                                        withCompletion:
      ^(iTermPythonRuntimeDownloaderStatus status) {
          if (status == iTermPythonRuntimeDownloaderStatusNotNeeded) {
-             [iTermWarning showWarningWithTitle:@"You’re up to date!"
-                                        actions:@[ @"OK" ]
+             [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"You’re up to date!", @"AppKit", [NSBundle bundleForClass:[self class]], @"您已是最新版本！")
+                                        actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"AppKit", [NSBundle bundleForClass:[self class]], @"确定按钮标题") ]
                                       accessory:nil
                                      identifier:nil
                                     silenceable:kiTermWarningTypePersistent
-                                        heading:@"Python Runtime"
+                                        heading:NSLocalizedStringFromTableInBundle(@"Python Runtime", @"AppKit", [NSBundle bundleForClass:[self class]], @"Python 运行时")
                                          window:nil];
          }
      }];
@@ -3268,7 +3281,7 @@ static iTermKeyEventReplayer *gReplayer;
         [[iTermUvProvisioner shared] userRequestedUpgradeCheckWithCompletion:^(BOOL ok, NSString *message) {
             [[iTermScriptHistoryEntry globalEntry] addOutput:[message stringByAppendingString:@"\n"] completion:^{}];
             NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-            alert.messageText = ok ? @"Python Runtime" : @"Update Failed";
+            alert.messageText = ok ? NSLocalizedStringFromTableInBundle(@"Python Runtime", @"AppKit", [NSBundle bundleForClass:[self class]], @"Python 运行时") : NSLocalizedStringFromTableInBundle(@"Update Failed", @"AppKit", [NSBundle bundleForClass:[self class]], @"更新失败");
             alert.informativeText = message;
             [alert runModal];
         }];
@@ -3282,9 +3295,9 @@ static iTermKeyEventReplayer *gReplayer;
         }
         if (error != nil || python == nil) {
             NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-            alert.messageText = @"Installation Failed";
-            alert.informativeText = [NSString stringWithFormat:@"Could not install the Python runtime: %@",
-                                     error.localizedDescription ?: @"unknown error"];
+            alert.messageText = NSLocalizedStringFromTableInBundle(@"Installation Failed", @"AppKit", [NSBundle bundleForClass:[self class]], @"安装失败警告标题");
+            alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not install the Python runtime: %@", @"AppKit", [NSBundle bundleForClass:[self class]], @"安装Python运行时失败警告内容"),
+                                     error.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"unknown error", @"AppKit", [NSBundle bundleForClass:[self class]], @"未知错误")];
             [alert runModal];
             return;
         }
@@ -3303,20 +3316,20 @@ static iTermKeyEventReplayer *gReplayer;
             [[iTermPythonRuntimeDownloader sharedInstance] installPythonEnvironmentFromZip:panel.URL.path
                                                                                 completion:^(NSError *error) {
                 if (!error) {
-                    [iTermWarning showWarningWithTitle:@"Installed successfully!"
-                                               actions:@[ @"OK" ]
+                    [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Installed successfully!", @"AppKit", [NSBundle bundleForClass:[self class]], @"安装成功警告")
+                                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"AppKit", [NSBundle bundleForClass:[self class]], @"确定按钮标题") ]
                                              accessory:nil
                                             identifier:nil
                                            silenceable:kiTermWarningTypePersistent
-                                               heading:@"Python Runtime"
+                                               heading:NSLocalizedStringFromTableInBundle(@"Python Runtime", @"AppKit", [NSBundle bundleForClass:[self class]], @"Python 运行时")
                                                 window:nil];
                 } else {
-                    [iTermWarning showWarningWithTitle:error.localizedDescription ?: @"Unknown error"
-                                               actions:@[ @"OK" ]
+                    [iTermWarning showWarningWithTitle:error.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"Unknown error", @"AppKit", [NSBundle bundleForClass:[self class]], @"未知错误")
+                                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"AppKit", [NSBundle bundleForClass:[self class]], @"确定按钮标题") ]
                                              accessory:nil
                                             identifier:nil
                                            silenceable:kiTermWarningTypePersistent
-                                               heading:@"Error Installing Python Runtime"
+                                               heading:NSLocalizedStringFromTableInBundle(@"Error Installing Python Runtime", @"AppKit", [NSBundle bundleForClass:[self class]], @"安装 Python 运行时出错")
                                                 window:nil];
                 }
             }];
@@ -3375,9 +3388,9 @@ static iTermKeyEventReplayer *gReplayer;
             }
             if (interpreter == nil) {
                 NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-                alert.messageText = @"Python Environment Unavailable";
-                alert.informativeText = [NSString stringWithFormat:@"Could not prepare the Python environment for the REPL: %@",
-                                         uvError.localizedDescription ?: @"unknown error"];
+                alert.messageText = NSLocalizedStringFromTableInBundle(@"Python Environment Unavailable", @"AppKit", [NSBundle bundleForClass:[self class]], @"Python环境不可用警告标题");
+                alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not prepare the Python environment for the REPL: %@", @"AppKit", [NSBundle bundleForClass:[self class]], @"准备REPL Python环境失败警告内容"),
+                                         uvError.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"unknown error", @"AppKit", [NSBundle bundleForClass:[self class]], @"未知错误")];
                 [alert runModal];
                 return;
             }
@@ -3522,15 +3535,15 @@ static iTermKeyEventReplayer *gReplayer;
 
 - (IBAction)gpuRendererAvailability:(id)sender {
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-    alert.messageText = @"GPU Renderer Availability";
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"GPU Renderer Availability", @"AppKit", [NSBundle bundleForClass:[self class]], @"GPU渲染器可用性警告标题");
     PseudoTerminal *term = [[iTermController sharedInstance] currentTerminal];
     PTYSession *session = [term currentSession];
     PTYTab *tab = [term tabForSession:session];
     NSString *reason = [self gpuUnavailableStringForReason:tab.metalUnavailableReason];
     if (reason) {
-        alert.informativeText = [NSString stringWithFormat:@"GPU rendering is off in the current session because %@", reason];
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"GPU rendering is off in the current session because %@", @"AppKit", [NSBundle bundleForClass:[self class]], @"GPU渲染关闭警告内容"), reason];
     } else {
-        alert.informativeText = @"GPU rendering is enabled for the current session.";
+        alert.informativeText = NSLocalizedStringFromTableInBundle(@"GPU rendering is enabled for the current session.", @"AppKit", [NSBundle bundleForClass:[self class]], @"GPU渲染启用警告内容");
     }
     [alert runModal];
 }
@@ -3602,15 +3615,14 @@ static iTermKeyEventReplayer *gReplayer;
 
     if ([[[[iTermController sharedInstance] currentTerminal] currentSession] isTmuxClient]) {
         NSString *heading =
-            [NSString stringWithFormat:@"What kind of %@ do you want to open?",
-                isWindow ? @"window" : @"tab"];
+            [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"What kind of %@ do you want to open?", @"AppKit", [NSBundle bundleForClass:[self class]], @"要打开哪种%@？"),
+                isWindow ? NSLocalizedStringFromTableInBundle(@"window", @"AppKit", [NSBundle bundleForClass:[self class]], @"窗口") : NSLocalizedStringFromTableInBundle(@"tab", @"AppKit", [NSBundle bundleForClass:[self class]], @"标签页")];
         NSString *title =
-            [NSString stringWithFormat:@"The current session is a tmux session. "
-                                       @"Would you like to create a new tmux %@ or use the default profile?",
-                                       isWindow ? @"window" : @"tab"];
-        NSString *tmuxAction = isWindow ? @"New tmux Window" : @"New tmux Tab";
+            [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The current session is a tmux session. Would you like to create a new tmux %@ or use the default profile?", @"AppKit", [NSBundle bundleForClass:[self class]], @"当前会话是 tmux 会话。要新建 tmux %@，还是使用默认配置文件？"),
+                                       isWindow ? NSLocalizedStringFromTableInBundle(@"window", @"AppKit", [NSBundle bundleForClass:[self class]], @"窗口") : NSLocalizedStringFromTableInBundle(@"tab", @"AppKit", [NSBundle bundleForClass:[self class]], @"标签页")];
+        NSString *tmuxAction = isWindow ? NSLocalizedStringFromTableInBundle(@"New tmux Window", @"AppKit", [NSBundle bundleForClass:[self class]], @"新建 tmux 窗口") : NSLocalizedStringFromTableInBundle(@"New tmux Tab", @"AppKit", [NSBundle bundleForClass:[self class]], @"新建 tmux 标签页");
         iTermWarningSelection selection = [iTermWarning showWarningWithTitle:title
-                                                                     actions:@[ tmuxAction, @"Use Default Profile", @"Cancel" ]
+                                                                     actions:@[ tmuxAction, NSLocalizedStringFromTableInBundle(@"Use Default Profile", @"AppKit", [NSBundle bundleForClass:[self class]], @"使用默认配置文件"), NSLocalizedStringFromTableInBundle(@"Cancel", @"AppKit", [NSBundle bundleForClass:[self class]], @"取消按钮标题") ]
                                                                    accessory:nil
                                                                   identifier:key
                                                                  silenceable:kiTermWarningTypePermanentlySilenceable
@@ -3653,7 +3665,7 @@ static iTermKeyEventReplayer *gReplayer;
     double rate = bytes;
     rate /= delay;
 
-    [ToastWindowController showToastWithMessage:[NSString stringWithFormat:@"Pasting at up to %@/sec", [NSString it_formatBytes:rate]]];
+    [ToastWindowController showToastWithMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Pasting at up to %@/sec", @"AppKit", [NSBundle bundleForClass:[self class]], @"粘贴速度最高为%@/秒"), [NSString it_formatBytes:rate]]];
 }
 
 - (void)hideStuckToolTips {
@@ -4128,7 +4140,7 @@ static iTermKeyEventReplayer *gReplayer;
             }];
         }
         for (id<iTermGenericNamedMarkReading> mark in namedMarks) {
-            NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:mark.name ?: @"Unnamed Mark"
+            NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:mark.name ?: NSLocalizedStringFromTableInBundle(@"Unnamed Mark", @"AppKit", [NSBundle bundleForClass:[self class]], @"未命名标记")
                                                               action:@selector(navigateToNamedMark:)
                                                        keyEquivalent:@""];
             menuItem.representedObject = mark.guid;

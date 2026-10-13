@@ -1,0 +1,15 @@
+"Failed to launch coprocess." = "Failed to launch coprocess.";
+"OK" = "OK";
+"Unable to fork child process: you may have too many processes already running." = "Unable to fork child process: you may have too many processes already running.";
+"%@ The system error was: %s" = "%@ The system error was: %s";
+"Unable to fork!" = "Unable to fork!";
+"Error" = "Error";
+"An error was encountered while creating a temporary file with mkstemps. Verify that %@ exists and is writable." = "An error was encountered while creating a temporary file with mkstemps. Verify that %@ exists and is writable.";
+"Problem Starting iTerm2 Daemon" = "Problem Starting iTerm2 Daemon";
+"Neither ~/Library/Application Support/iTerm2 nor ~/.iterm2 are writable directories. This prevents the session restoration server from running. Please correct the problem and restart iTerm2." = "Neither ~/Library/Application Support/iTerm2 nor ~/.iterm2 are writable directories. This prevents the session restoration server from running. Please correct the problem and restart iTerm2.";
+"Required File Missing" = "Required File Missing";
+"The iTermServer executable is missing from the application bundle. This indicates iTerm2 is corrupted or incomplete. Please reinstall iTerm2 from the official website." = "The iTermServer executable is missing from the application bundle. This indicates iTerm2 is corrupted or incomplete. Please reinstall iTerm2 from the official website.";
+"Quit" = "Quit";
+"Could not copy %@ to %@: %@" = "Could not copy %@ to %@: %@";
+"Could not check permissions on %@" = "Could not check permissions on %@";
+"Could not set 0700 permissions on %@" = "Could not set 0700 permissions on %@";

@@ -1,0 +1,9 @@
+/* Composer.strings
+ * Localized strings for Composer components.
+ */
+
+"This will open %@ in %@." = "这将打开 %@（在 %@ 中）。";
+"OK" = "好的";
+"Cancel" = "取消";
+"Open ExplainShell?" = "打开 ExplainShell？";
+"Syntax Highlighting Rate Limit" = "语法高亮速率限制";

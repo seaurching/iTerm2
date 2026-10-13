@@ -1,0 +1,23 @@
+/* Locale prompt: cancel button */
+"Cancel" = "取消";
+
+/* Locale prompt: menu item for locales with wrong encoding */
+"Locales with wrong encoding" = "编码错误的区域设置";
+
+/* Locale prompt: alert message */
+"No valid UNIX locale exists for your computer’s current language and country. This may cause command-line apps to misbehave. Please select one from the list below." = "您的计算机当前语言和地区没有有效的 UNIX 区域设置。这可能导致命令行应用运行异常。请从下方列表中选择一个。";
+
+/* Locale prompt: OK button */
+"OK" = "好";
+
+/* Locale prompt: save selection to arrangement checkbox */
+"Save selection to arrangement %@" = "将选择保存到布局“%@”";
+
+/* Locale prompt: save selection to profile checkbox */
+"Save selection to profile %@" = "将选择保存到配置文件“%@”";
+
+/* Locale prompt: use minimal POSIX locale button */
+"Use Minimal POSIX Locale" = "使用最小 POSIX 区域设置";
+
+/* Locale guesser: warning while loading encodings */
+"While loading the list of known encodings" = "加载已知编码列表时";

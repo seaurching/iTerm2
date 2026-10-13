@@ -97,6 +97,10 @@
 
 @property(nonatomic) BOOL collapsed;
 @property(nonatomic, copy) NSString *name;
+// Localized title shown in the wrapper's title bar. Differs from `name`, which
+// is the stable identity used for registration, persisted proportions, and the
+// API's built-in-name guard.
+@property(nonatomic, copy) NSString *displayName;
 @property(nonatomic, readonly) NSView *container;
 @property(nonatomic, weak) id<ToolWrapperDelegate> delegate;
 @property(nonatomic, readonly) id<ToolbeltTool> tool;

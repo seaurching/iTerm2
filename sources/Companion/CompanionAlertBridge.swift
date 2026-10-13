@@ -31,20 +31,30 @@ final class CompanionAlertBridge: NSObject {
     /// enabled state alone no longer conveys the notification-permission step.
     @objc static var sendToPhoneStatusMessage: String {
         if !CompanionPushRegistry.devicePaired {
-            return "Pair an iPhone running iTerm2 Buddy to use this."
+            return NSLocalizedString("Pair an iPhone running iTerm2 Buddy to use this.",
+                                     tableName: "Settings",
+                                     comment: "Status shown under the Send to Phone checkbox when no phone is paired")
         }
         if !CompanionPushRegistry.supportsContentlessWakeup {
             // Either the phone hasn't connected since pairing (so its revision isn't
             // known yet) or it is too old for terminal alerts.
-            return "Open iTerm2 Buddy on your paired iPhone (update it if needed)."
+            return NSLocalizedString("Open iTerm2 Buddy on your paired iPhone (update it if needed).",
+                                     tableName: "Settings",
+                                     comment: "Status shown when the paired phone's revision is unknown or too old")
         }
         switch CompanionPushRegistry.authorization {
         case .authorized:
-            return "Alerts will be delivered to your paired iPhone."
+            return NSLocalizedString("Alerts will be delivered to your paired iPhone.",
+                                     tableName: "Settings",
+                                     comment: "Status shown when alerts to the phone are ready")
         case .denied:
-            return "Turn on notifications for iTerm2 Buddy in iOS Settings."
+            return NSLocalizedString("Turn on notifications for iTerm2 Buddy in iOS Settings.",
+                                     tableName: "Settings",
+                                     comment: "Status shown when notifications are denied on the phone")
         case .notDetermined:
-            return "Turn this on to allow notifications on your iPhone."
+            return NSLocalizedString("Turn this on to allow notifications on your iPhone.",
+                                     tableName: "Settings",
+                                     comment: "Status shown before notification permission has been requested")
         }
     }
 

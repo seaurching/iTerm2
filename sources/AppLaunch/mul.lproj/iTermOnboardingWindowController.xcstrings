@@ -1,0 +1,859 @@
+{
+    "sourceLanguage": "en",
+    "strings": {
+        "0Bk-78-p2L.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Use iTerm2 while you are apart from your Mac. You can control it via AI chat, view session content, and receive push notifications. End-to-end encryption keeps your data safe. <a href=\\\"iterm2whatsnew:companion\\\">Try it now!</a>\"; ObjectID = \"0Bk-78-p2L\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Use iTerm2 while you are apart from your Mac. You can control it via AI chat, view session content, and receive push notifications. End-to-end encryption keeps your data safe. <a href=\"iterm2whatsnew:companion\">Try it now!</a>"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "离开 Mac 时也能使用 iTerm2。您可以通过 AI 对话控制它、查看会话内容并接收推送通知。端到端加密保护您的数据安全。<a href=\"iterm2whatsnew:companion\">立即体验！</a>"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "離開 Mac 時也能使用 iTerm2。您可以透過 AI 對話控制它、檢視工作階段內容並接收推播通知。端對端加密保護您的資料安全。<a href=\"iterm2whatsnew:companion\">立即體驗！</a>"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "离开 Mac 时也能使用 iTerm2。您可以通过 AI 对话控制它、查看会话内容并接收推送通知。端到端加密保护您的数据安全。<a href=\"iterm2whatsnew:companion\">立即体验！</a>"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "离开 Mac 时也能使用 iTerm2。您可以通过 AI 对话控制它、查看会话内容并接收推送通知。端到端加密保护您的数据安全。<a href=\"iterm2whatsnew:companion\">立即体验！</a>"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "離開 Mac 時也能使用 iTerm2。您可以透過 AI 對話控制它、檢視工作階段內容並接收推播通知。端對端加密保護您的資料安全。<a href=\"iterm2whatsnew:companion\">立即體驗！</a>"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "離開 Mac 時也能使用 iTerm2。您可以透過 AI 對話控制它、檢視工作階段內容並接收推播通知。端對端加密保護您的資料安全。<a href=\"iterm2whatsnew:companion\">立即體驗！</a>"
+                    }
+                }
+            }
+        },
+        "7s1-aT-qfO.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"●\"; ObjectID = \"7s1-aT-qfO\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "a2B-NS-5LJ.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"A new AI chat mode, Orchestration, lets AI run the show for you. It can create windows, wait for tasks to complete (even in interactive apps), and the new automatic safety checker relieves you of having to respond to almost all permission prompts. <a href=\\\"iterm2whatsnew:orchestration\\\">Try it now!</a>\"; ObjectID = \"a2B-NS-5LJ\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "A new AI chat mode, Orchestration, lets AI run the show for you. It can create windows, wait for tasks to complete (even in interactive apps), and the new automatic safety checker relieves you of having to respond to almost all permission prompts. <a href=\"iterm2whatsnew:orchestration\">Try it now!</a>"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的 AI 对话模式——编排模式，让 AI 为您统筹一切。它可以创建窗口、等待任务完成（即使在交互式应用中），全新的自动安全检查器让您几乎无需响应任何权限提示。<a href=\"iterm2whatsnew:orchestration\">立即体验！</a>"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的 AI 對話模式——編排模式，讓 AI 為您統籌一切。它可以建立視窗、等待任務完成（即使在互動式應用程式中），全新的自動安全檢查器讓您幾乎無需回應任何權限提示。<a href=\"iterm2whatsnew:orchestration\">立即體驗！</a>"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的 AI 对话模式——编排模式，让 AI 为您统筹一切。它可以创建窗口、等待任务完成（即使在交互式应用中），全新的自动安全检查器让您几乎无需响应任何权限提示。<a href=\"iterm2whatsnew:orchestration\">立即体验！</a>"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的 AI 对话模式——编排模式，让 AI 为您统筹一切。它可以创建窗口、等待任务完成（即使在交互式应用中），全新的自动安全检查器让您几乎无需响应任何权限提示。<a href=\"iterm2whatsnew:orchestration\">立即体验！</a>"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的 AI 對話模式——編排模式，讓 AI 為您統籌一切。它可以建立視窗、等待任務完成（即使在互動式應用程式中），全新的自動安全檢查器讓您幾乎無需回應任何權限提示。<a href=\"iterm2whatsnew:orchestration\">立即體驗！</a>"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的 AI 對話模式——編排模式，讓 AI 為您統籌一切。它可以建立視窗、等待任務完成（即使在互動式應用程式中），全新的自動安全檢查器讓您幾乎無需回應任何權限提示。<a href=\"iterm2whatsnew:orchestration\">立即體驗！</a>"
+                    }
+                }
+            }
+        },
+        "a3u-gh-khi.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"●\"; ObjectID = \"a3u-gh-khi\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "d4H-cG-h3K.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"The new Screenshots feature simplifies creating a PNG of your terminal content. It supports redactions and highlights. Use <a href=\\\"iterm2whatsnew:screenshot\\\">Session > Make Screenshot</a> to activate it.\"; ObjectID = \"d4H-cG-h3K\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "The new Screenshots feature simplifies creating a PNG of your terminal content. It supports redactions and highlights. Use <a href=\"iterm2whatsnew:screenshot\">Session > Make Screenshot</a> to activate it."
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的截图功能简化了终端内容的 PNG 创建过程。支持遮盖和高亮标注。使用 <a href=\"iterm2whatsnew:screenshot\">会话 > 截图</a> 来启用。"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的截圖功能簡化了終端內容的 PNG 建立過程。支援遮蓋和高亮標注。使用 <a href=\"iterm2whatsnew:screenshot\">工作階段 > 截圖</a> 來啟用。"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的截图功能简化了终端内容的 PNG 创建过程。支持遮盖和高亮标注。使用 <a href=\"iterm2whatsnew:screenshot\">会话 > 截图</a> 来启用。"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的截图功能简化了终端内容的 PNG 创建过程。支持遮盖和高亮标注。使用 <a href=\"iterm2whatsnew:screenshot\">会话 > 截图</a> 来启用。"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的截圖功能簡化了終端內容的 PNG 建立過程。支援遮蓋和高亮標注。使用 <a href=\"iterm2whatsnew:screenshot\">工作階段 > 截圖</a> 來啟用。"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "全新的截圖功能簡化了終端內容的 PNG 建立過程。支援遮蓋和高亮標注。使用 <a href=\"iterm2whatsnew:screenshot\">工作階段 > 截圖</a> 來啟用。"
+                    }
+                }
+            }
+        },
+        "Dih-Go-912.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"What’s New in Version 3.7\"; ObjectID = \"Dih-Go-912\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "What's New in Version 3.7"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "3.7 版本新功能"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "3.7 版本新功能"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "3.7 版本新功能"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "3.7 版本新功能"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "3.7 版本新功能"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "3.7 版本新功能"
+                    }
+                }
+            }
+        },
+        "f8J-e6-gm5.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \">\"; ObjectID = \"f8J-e6-gm5\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": ">"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": ">"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": ">"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": ">"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": ">"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": ">"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": ">"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "fum-rI-3gd.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"●\"; ObjectID = \"fum-rI-3gd\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "hKz-h7-CcP.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Claude Code Integration\"; ObjectID = \"hKz-h7-CcP\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code Integration"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 集成"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 整合"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 集成"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 集成"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 整合"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 整合"
+                    }
+                }
+            }
+        },
+        "HuW-TG-xrj.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"To help manage a large number of tabs, you can now combine tabs into collapsible groups. The tab bar now scrolls instead of showing an overflow menu, too.\"; ObjectID = \"HuW-TG-xrj\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "To help manage a large number of tabs, you can now combine tabs into collapsible groups. The tab bar now scrolls instead of showing an overflow menu, too."
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "为了帮助管理大量标签页，您现在可以将标签页组合成可折叠的分组。标签栏现在也改为滚动显示，而不是显示溢出菜单。"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "為了幫助管理大量標籤頁，您現在可以將標籤頁組合成可摺疊的分組。標籤列現在也改為捲動顯示，而不是顯示溢位選單。"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "为了帮助管理大量标签页，您现在可以将标签页组合成可折叠的分组。标签栏现在也改为滚动显示，而不是显示溢出菜单。"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "为了帮助管理大量标签页，您现在可以将标签页组合成可折叠的分组。标签栏现在也改为滚动显示，而不是显示溢出菜单。"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "為了幫助管理大量標籤頁，您現在可以將標籤頁組合成可摺疊的分組。標籤列現在也改為捲動顯示，而不是顯示溢位選單。"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "為了幫助管理大量標籤頁，您現在可以將標籤頁組合成可摺疊的分組。標籤列現在也改為捲動顯示，而不是顯示溢位選單。"
+                    }
+                }
+            }
+        },
+        "IHu-13-I9y.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"●\"; ObjectID = \"IHu-13-I9y\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "Lvg-vI-G64.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"The Claude Code integration organizes multiple related sessions—such as code review and reading diffs—into a customizable UI. It also exposes Claude’s status so you can easily find instances that are blocked on your attention. <a href=\\\"iterm2whatsnew:claudecode\\\">Try it now!</a>\"; ObjectID = \"Lvg-vI-G64\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "The Claude Code integration organizes multiple related sessions—such as code review and reading diffs—into a customizable UI. It also exposes Claude’s status so you can easily find instances that are blocked on your attention. <a href=\"iterm2whatsnew:claudecode\">Try it now!</a>"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 集成将多个相关会话（如代码审查和阅读差异）组织到一个可自定义的界面中。它还展示 Claude 的状态，让您可以轻松找到等待您关注的实例。<a href=\"iterm2whatsnew:claudecode\">立即体验！</a>"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 整合將多個相關工作階段（如程式碼審查和閱讀差異）組織到一個可自訂的介面中。它還展示 Claude 的狀態，讓您可以輕鬆找到等待您關注的實例。<a href=\"iterm2whatsnew:claudecode\">立即體驗！</a>"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 集成将多个相关会话（如代码审查和阅读差异）组织到一个可自定义的界面中。它还展示 Claude 的状态，让您可以轻松找到等待您关注的实例。<a href=\"iterm2whatsnew:claudecode\">立即体验！</a>"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 集成将多个相关会话（如代码审查和阅读差异）组织到一个可自定义的界面中。它还展示 Claude 的状态，让您可以轻松找到等待您关注的实例。<a href=\"iterm2whatsnew:claudecode\">立即体验！</a>"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 整合將多個相關工作階段（如程式碼審查和閱讀差異）組織到一個可自訂的介面中。它還展示 Claude 的狀態，讓您可以輕鬆找到等待您關注的實例。<a href=\"iterm2whatsnew:claudecode\">立即體驗！</a>"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Claude Code 整合將多個相關工作階段（如程式碼審查和閱讀差異）組織到一個可自訂的介面中。它還展示 Claude 的狀態，讓您可以輕鬆找到等待您關注的實例。<a href=\"iterm2whatsnew:claudecode\">立即體驗！</a>"
+                    }
+                }
+            }
+        },
+        "LXN-RX-ZgC.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Companion iPhone App\"; ObjectID = \"LXN-RX-ZgC\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Companion iPhone App"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "伴侣 iPhone 应用"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "伴侶 iPhone 應用程式"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "伴侣 iPhone 应用"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "伴侣 iPhone 应用"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "伴侶 iPhone 應用程式"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "伴侶 iPhone 應用程式"
+                    }
+                }
+            }
+        },
+        "N2h-T9-zrt.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"●\"; ObjectID = \"N2h-T9-zrt\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "●"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        },
+        "OAI-gn-AQ7.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Orchestration\"; ObjectID = \"OAI-gn-AQ7\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Orchestration"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "编排模式"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "編排模式"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "编排模式"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "编排模式"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "編排模式"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "編排模式"
+                    }
+                }
+            }
+        },
+        "Qva-A1-Vbd.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Tab Groups\"; ObjectID = \"Qva-A1-Vbd\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Tab Groups"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "标签页分组"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "標籤頁分組"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "标签页分组"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "标签页分组"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "標籤頁分組"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "標籤頁分組"
+                    }
+                }
+            }
+        },
+        "VcV-iJ-Nlq.title": {
+            "comment": "Class = \"NSTextFieldCell\"; title = \"Screenshots\"; ObjectID = \"VcV-iJ-Nlq\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "Screenshots"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "截图"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "截圖"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "截图"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "截图"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "截圖"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "截圖"
+                    }
+                }
+            }
+        },
+        "VdW-Ng-Wlh.title": {
+            "comment": "Class = \"NSButtonCell\"; title = \"<\"; ObjectID = \"VdW-Ng-Wlh\";",
+            "localizations": {
+                "en": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "<"
+                    }
+                },
+                "zh_CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "<"
+                    }
+                },
+                "zh-Hans": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "<"
+                    }
+                },
+                "zh-Hans-CN": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "<"
+                    }
+                },
+                "zh_TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "<"
+                    }
+                },
+                "zh-Hant": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "<"
+                    }
+                },
+                "zh-Hant-TW": {
+                    "stringUnit": {
+                        "state": "translated",
+                        "value": "<"
+                    }
+                }
+            },
+            "shouldTranslate": false
+        }
+    },
+    "version": "1.1"
+}

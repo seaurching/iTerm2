@@ -28,22 +28,22 @@ static NSString *const iTermOnboardingWindowControllerHasBeenShown = @"NoSyncOnb
 static void iTermOpenWhatsNewURL(NSString *path, NSWindow *window) {
     if ([path isEqualToString:@"companion"]) {
         if (![iTermAdvancedSettingsModel generativeAIAllowed]) {
-            [iTermWarning showWarningWithTitle:@"Generative AI features have been disabled. Talk to your enterprise system administrator."
-                                       actions:@[ @"OK" ]
+            [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Generative AI features have been disabled. Talk to your enterprise system administrator.", @"AppLaunch", [NSBundle bundleForClass:[iTermOnboardingWindowController class]], @"生成式 AI 功能已被禁用。请联系您的企业系统管理员。")
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"AppLaunch", [NSBundle bundleForClass:[iTermOnboardingWindowController class]], @"好") ]
                                      accessory:nil
                                     identifier:nil
                                    silenceable:kiTermWarningTypePersistent
-                                       heading:@"Feature Unavailable"
+                                       heading:NSLocalizedStringFromTableInBundle(@"Feature Unavailable", @"AppLaunch", [NSBundle bundleForClass:[iTermOnboardingWindowController class]], @"功能不可用")
                                         window:window];
             return;
         }
         if (![iTermAdvancedSettingsModel companionPairingAllowed]) {
-            [iTermWarning showWarningWithTitle:@"Companion device pairing has been disabled. Talk to your enterprise system administrator."
-                                       actions:@[ @"OK" ]
+            [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Companion device pairing has been disabled. Talk to your enterprise system administrator.", @"AppLaunch", [NSBundle bundleForClass:[iTermOnboardingWindowController class]], @"伴侣设备配对已被禁用。请联系您的企业系统管理员。")
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"AppLaunch", [NSBundle bundleForClass:[iTermOnboardingWindowController class]], @"好") ]
                                      accessory:nil
                                     identifier:nil
                                    silenceable:kiTermWarningTypePersistent
-                                       heading:@"Feature Unavailable"
+                                       heading:NSLocalizedStringFromTableInBundle(@"Feature Unavailable", @"AppLaunch", [NSBundle bundleForClass:[iTermOnboardingWindowController class]], @"功能不可用")
                                         window:window];
             return;
         }
@@ -60,12 +60,12 @@ static void iTermOpenWhatsNewURL(NSString *path, NSWindow *window) {
     }
     if ([path isEqualToString:@"screenshot"]) {
         if (![iTermController sharedInstance].currentTerminal) {
-            [iTermWarning showWarningWithTitle:@"You need an open terminal window to make a screenshot."
-                                       actions:@[ @"OK" ]
+            [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"You need an open terminal window to make a screenshot.", @"AppLaunch", [NSBundle bundleForClass:[iTermOnboardingWindowController class]], @"您需要一个打开的终端窗口才能截图。")
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"AppLaunch", [NSBundle bundleForClass:[iTermOnboardingWindowController class]], @"好") ]
                                      accessory:nil
                                     identifier:nil
                                    silenceable:kiTermWarningTypePersistent
-                                       heading:@"No Terminal Window"
+                                       heading:NSLocalizedStringFromTableInBundle(@"No Terminal Window", @"AppLaunch", [NSBundle bundleForClass:[iTermOnboardingWindowController class]], @"没有终端窗口")
                                         window:window];
             return;
         }

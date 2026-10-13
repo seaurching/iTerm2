@@ -1,0 +1,140 @@
+/* Regex visualization: regex parse error message */
+"The regular expression could not be parsed." = "無法解析該正規表示式。";
+/* Regex visualization: comment group label */
+"comment" = "註解";
+
+/* Regex visualization: atomic group label */
+"atomic" = "原子群組";
+
+/* Regex visualization: lookahead label */
+"lookahead" = "先行斷言";
+
+/* Regex visualization: negative lookahead label */
+"negative lookahead" = "否定先行斷言";
+
+/* Regex visualization: lookbehind label */
+"lookbehind" = "後行斷言";
+
+/* Regex visualization: negative lookbehind label */
+"negative lookbehind" = "否定後行斷言";
+
+/* Regex visualization: negated character class label */
+"not" = "非";
+
+/* Regex visualization: start of line anchor */
+"start of line" = "行首";
+
+/* Regex visualization: end of line anchor */
+"end of line" = "行尾";
+
+/* Regex visualization: start of input anchor */
+"start of input" = "輸入起始";
+
+/* Regex visualization: word boundary anchor */
+"word boundary" = "詞邊界";
+
+/* Regex visualization: non-word boundary anchor */
+"non-word boundary" = "非詞邊界";
+
+/* Regex visualization: end of previous match anchor */
+"end of previous match" = "上次比對結束位置";
+
+/* Regex visualization: end of input before final newline anchor */
+"end of input (before final newline)" = "輸入結束（最終換行符之前）";
+
+/* Regex visualization: end of input anchor */
+"end of input" = "輸入結束";
+
+/* Regex visualization: lazy zero-or-more quantifier */
+"*? (lazy)" = "*? (惰性)";
+
+/* Regex visualization: possessive zero-or-more quantifier */
+"*+ (possessive)" = "*+ (佔有)";
+
+/* Regex visualization: lazy one-or-more quantifier */
+"+? (lazy)" = "+? (惰性)";
+
+/* Regex visualization: possessive one-or-more quantifier */
+"++ (possessive)" = "++ (佔有)";
+
+/* Regex visualization: lazy optional quantifier */
+"?? (lazy)" = "?? (惰性)";
+
+/* Regex visualization: possessive optional quantifier */
+"?+ (possessive)" = "?+ (佔有)";
+
+/* Regex visualization: lazy quantifier suffix */
+" (lazy)" = " (惰性)";
+
+/* Regex visualization: possessive quantifier suffix */
+" (possessive)" = " (佔有)";
+
+/* Regex visualization: flags label */
+"flags: %@" = "旗標：%@";
+
+/* Regex visualization: numeric backreference label */
+"group %@" = "分組 %@";
+
+/* Regex visualization: negated property label */
+"not %@" = "非%@";
+
+/* Regex visualization: control character label */
+"control-%@" = "控制-%@";
+
+/* Regex visualization: any character label */
+"[any character]" = "[任意字元]";
+
+/* Regex visualization: bell character label */
+"[bell]" = "[響鈴]";
+
+/* Regex visualization: digit character class label */
+"[digit]" = "[數字]";
+
+/* Regex visualization: non-digit character class label */
+"[non-digit]" = "[非數字]";
+
+/* Regex visualization: escape character label */
+"[escape]" = "[跳脫]";
+
+/* Regex visualization: form feed character label */
+"[form feed]" = "[換頁]";
+
+/* Regex visualization: horizontal whitespace label */
+"[horizontal whitespace]" = "[水平空白]";
+
+/* Regex visualization: non-horizontal whitespace label */
+"[non-horizontal whitespace]" = "[非水平空白]";
+
+/* Regex visualization: line feed character label */
+"[line feed]" = "[換行]";
+
+/* Regex visualization: carriage return character label */
+"[carriage return]" = "[歸位]";
+
+/* Regex visualization: newline character label */
+"[newline]" = "[新行]";
+
+/* Regex visualization: whitespace character class label */
+"[whitespace]" = "[空白字元]";
+
+/* Regex visualization: non-whitespace character class label */
+"[non-whitespace]" = "[非空白字元]";
+
+/* Regex visualization: tab character label */
+"[tab]" = "[定位字元]";
+
+/* Regex visualization: vertical whitespace label */
+"[vertical whitespace]" = "[垂直空白]";
+
+/* Regex visualization: non-vertical whitespace label */
+"[non-vertical whitespace]" = "[非垂直空白]";
+
+/* Regex visualization: word character class label */
+"[word character]" = "[字詞字元]";
+
+/* Regex visualization: non-word character class label */
+"[non-word character]" = "[非字詞字元]";
+
+/* Regex visualization: grapheme cluster label */
+"[grapheme cluster]" = "[字形叢集]";
+

@@ -28,26 +28,26 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
             case .runtime(let message):
                 return message
             case .loginFailed(let message):
-                return "Could not log in: \(message)"
+                return String(format: NSLocalizedString("Could not log in: %@", tableName: "PasswordManager", comment: "PasswordManager: login failed error"), message)
             case .needsAuthentication:
-                return "Not authenticated."
+                return NSLocalizedString("Not authenticated.", tableName: "PasswordManager", comment: "PasswordManager: not authenticated error")
             case .badOutput:
-                return "Invalid output."
+                return NSLocalizedString("Invalid output.", tableName: "PasswordManager", comment: "PasswordManager: invalid output error")
             case .canceledByUser:
                 return nil
             case .handshakeFailed:
-                return "Handshake failed."
+                return NSLocalizedString("Handshake failed.", tableName: "PasswordManager", comment: "PasswordManager: handshake failed error")
             case .incompatibleProtocol:
-                return "Incompatible protocol. Please update iTerm2."
+                return NSLocalizedString("Incompatible protocol. Please update iTerm2.", tableName: "PasswordManager", comment: "PasswordManager: incompatible protocol error")
             case .adapterNotFound:
-                return "Adapter not found."
+                return NSLocalizedString("Adapter not found.", tableName: "PasswordManager", comment: "PasswordManager: adapter not found error")
             case .invalidToken:
-                return "Authentication failed. Log in again."
+                return NSLocalizedString("Authentication failed. Log in again.", tableName: "PasswordManager", comment: "PasswordManager: auth failed error")
             }
         }
 
         var errorDescription: String? {
-            reason ?? "Unknown error"
+            reason ?? NSLocalizedString("Unknown error", tableName: "PasswordManager", comment: "PasswordManager: unknown error fallback")
         }
 
         // Classifies an adapter error response. A response flagged needsAuthentication becomes
@@ -146,7 +146,7 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
                 }
 
                 guard let output = output else {
-                    completion(.failure(AdapterError.runtime("No output from adapter")))
+                    completion(.failure(AdapterError.runtime(NSLocalizedString("No output from adapter", tableName: "PasswordManager", comment: "PasswordManager: no adapter output error"))))
                     return
                 }
 
@@ -158,7 +158,7 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
                 }
 
                 if output.returnCode != 0 {
-                    completion(.failure(AdapterError.runtime("Adapter returned code \(output.returnCode)")))
+                    completion(.failure(AdapterError.runtime(String(format: NSLocalizedString("Adapter returned code %d", tableName: "PasswordManager", comment: "PasswordManager: adapter return code error"), output.returnCode))))
                     return
                 }
 
@@ -224,7 +224,7 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
         openPanel.canChooseDirectories = false
         openPanel.canChooseFiles = true
         openPanel.allowsMultipleSelection = false
-        openPanel.message = handshakeInfo?.pathToDatabasePrompt ?? "Select a database file for \(identifier)"
+        openPanel.message = handshakeInfo?.pathToDatabasePrompt ?? String(format: NSLocalizedString("Select a database file for %@", tableName: "PasswordManager", comment: "PasswordManager: select database file message"), identifier)
 
         if let ext = handshake.databaseExtension {
             openPanel.allowedContentTypes = [UTType(filenameExtension: ext) ?? .data]
@@ -242,12 +242,12 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
 
     private func requestPathToDatabaseViaTextField(handshake: HandshakeResponse) -> Bool {
         let alert = NSAlert()
-        alert.messageText = handshake.pathToDatabasePrompt ?? "Enter database URL for \(identifier)"
-        alert.addButton(withTitle: "OK")
-        alert.addButton(withTitle: "Cancel")
+        alert.messageText = handshake.pathToDatabasePrompt ?? String(format: NSLocalizedString("Enter database URL for %@", tableName: "PasswordManager", comment: "PasswordManager: enter database url message"), identifier)
+        alert.addButton(withTitle: NSLocalizedString("OK", tableName: "PasswordManager", comment: "PasswordManager: OK button"))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "PasswordManager", comment: "PasswordManager: cancel button"))
 
         let textField = NSTextField(frame: NSRect(x: 0, y: 0, width: 300, height: 24))
-        textField.placeholderString = handshake.pathToDatabasePlaceholder ?? "https://\u{2026}"
+        textField.placeholderString = handshake.pathToDatabasePlaceholder ?? NSLocalizedString("https://…", tableName: "PasswordManager", comment: "PasswordManager: database url placeholder")
         alert.accessoryView = textField
         alert.layout()
         alert.window.makeFirstResponder(textField)
@@ -295,7 +295,7 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
         openPanel.canChooseDirectories = false
         openPanel.canChooseFiles = true
         openPanel.allowsMultipleSelection = false
-        openPanel.message = "Locate the CLI for \(identifier) named \(name)"
+        openPanel.message = String(format: NSLocalizedString("Locate the CLI for %1$@ named %2$@", tableName: "PasswordManager", comment: "PasswordManager: locate cli message"), identifier, name)
 
         let delegate = AdapterCLIFinderOpenPanelDelegate(name: name)
         return withExtendedLifetime(delegate) {
@@ -532,10 +532,10 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
     }
 
     private func requestPassword(_ loginInputs: LoginInputs) {
-        let label = handshakeInfo?.masterPasswordLabel ?? "master password"
+        let label = handshakeInfo?.masterPasswordLabel ?? NSLocalizedString("master password", tableName: "PasswordManager", comment: "PasswordManager: master password label")
         // Use runAsync because macOS 26 is buggy garbage and doesn’t draw an insertion point
         // in an alert’s accessory in a sheet modal.
-        ModalPasswordAlert("Enter \(label) for \(loginInputs.name):")
+        ModalPasswordAlert(String(format: NSLocalizedString("Enter %1$@ for %2$@:", tableName: "PasswordManager", comment: "PasswordManager: enter master password prompt"), label, loginInputs.name))
             .runAsync(window: loginInputs.window) { [weak self] masterPassword in
                 if let masterPassword {
                     self?.completeEnsureAuthentication(masterPassword: masterPassword,
@@ -595,11 +595,11 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
                 if case let .runtime(description) = error as? AdapterError {
                     let loginFailed = AdapterError.loginFailed(description)
                     let selection = iTermWarning.show(withTitle: loginFailed.reason ?? description,
-                                                      actions: ["Try Again", "Cancel"],
+                                                      actions: [NSLocalizedString("Try Again", tableName: "PasswordManager", comment: "PasswordManager: try again button"), NSLocalizedString("Cancel", tableName: "PasswordManager", comment: "PasswordManager: cancel button")],
                                                       accessory: nil,
                                                       identifier: nil,
                                                       silenceable: .kiTermWarningTypePersistent,
-                                                      heading: "Authentication Problem",
+                                                      heading: NSLocalizedString("Authentication Problem", tableName: "PasswordManager", comment: "PasswordManager: auth problem heading"),
                                                       window: loginInputs.window)
                     if selection == .kiTermWarningSelection0 {
                         DispatchQueue.main.async {
@@ -623,7 +623,7 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
         return AnyRecipe(AsyncCommandRecipe<Void, [CommandLinePasswordDataSource.Account]>(
             inputTransformer: { [weak self] context, _, completion in
                 guard let self = self else {
-                    completion(.failure(AdapterError.runtime("Data source deallocated")))
+                    completion(.failure(AdapterError.runtime(NSLocalizedString("Data source deallocated", tableName: "PasswordManager", comment: "PasswordManager: data source deallocated error"))))
                     return
                 }
 
@@ -690,11 +690,11 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
                 if let warning = response.warning?.trimmingCharacters(in: .whitespacesAndNewlines), !warning.isEmpty {
                     DispatchQueue.main.async {
                         iTermWarning.show(withTitle: warning,
-                                            actions: ["OK"],
+                                            actions: [NSLocalizedString("OK", tableName: "PasswordManager", comment: "PasswordManager: OK button")],
                                             accessory: nil,
                                             identifier: listWarningIdentifier,
                                             silenceable: .kiTermWarningTypePermanentlySilenceable,
-                                            heading: "Password Manager",
+                                            heading: NSLocalizedString("Password Manager", tableName: "PasswordManager", comment: "PasswordManager: password manager heading"),
                                             window: nil)
                     }
                 }
@@ -707,7 +707,7 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
         return AnyRecipe(AsyncCommandRecipe<CommandLinePasswordDataSource.AccountIdentifier, CommandLinePasswordDataSource.Password>(
             inputTransformer: { [weak self] context, accountIdentifier, completion in
                 guard let self = self else {
-                    completion(.failure(AdapterError.runtime("Data source deallocated")))
+                    completion(.failure(AdapterError.runtime(NSLocalizedString("Data source deallocated", tableName: "PasswordManager", comment: "PasswordManager: data source deallocated error"))))
                     return
                 }
 
@@ -767,7 +767,7 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
         return AnyRecipe(AsyncCommandRecipe<CommandLinePasswordDataSource.SetPasswordRequest, Void>(
             inputTransformer: { [weak self] context, setPasswordRequest, completion in
                 guard let self = self else {
-                    completion(.failure(AdapterError.runtime("Data source deallocated")))
+                    completion(.failure(AdapterError.runtime(NSLocalizedString("Data source deallocated", tableName: "PasswordManager", comment: "PasswordManager: data source deallocated error"))))
                     return
                 }
 
@@ -783,7 +783,7 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
                     }
 
                     if !handshake.canSetPasswords {
-                        completion(.failure(CommandLineRecipeError.unsupported(reason: "Adapter does not support setting passwords")))
+                        completion(.failure(CommandLineRecipeError.unsupported(reason: NSLocalizedString("Adapter does not support setting passwords", tableName: "PasswordManager", comment: "PasswordManager: adapter no set passwords error"))))
                         return
                     }
 
@@ -842,7 +842,7 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
         return AnyRecipe(AsyncCommandRecipe<CommandLinePasswordDataSource.AccountIdentifier, Void>(
             inputTransformer: { [weak self] context, accountIdentifier, completion in
                 guard let self = self else {
-                    completion(.failure(AdapterError.runtime("Data source deallocated")))
+                    completion(.failure(AdapterError.runtime(NSLocalizedString("Data source deallocated", tableName: "PasswordManager", comment: "PasswordManager: data source deallocated error"))))
                     return
                 }
 
@@ -905,7 +905,7 @@ class AdapterPasswordDataSource: CommandLinePasswordDataSource {
         return AnyRecipe(AsyncCommandRecipe<CommandLinePasswordDataSource.AddRequest, CommandLinePasswordDataSource.AccountIdentifier>(
             inputTransformer: { [weak self] context, addRequest, completion in
                 guard let self = self else {
-                    completion(.failure(AdapterError.runtime("Data source deallocated")))
+                    completion(.failure(AdapterError.runtime(NSLocalizedString("Data source deallocated", tableName: "PasswordManager", comment: "PasswordManager: data source deallocated error"))))
                     return
                 }
 
@@ -992,11 +992,11 @@ extension AdapterPasswordDataSource {
         }
         DispatchQueue.main.async {
             iTermWarning.show(withTitle: reason,
-                              actions: ["OK"],
+                              actions: [NSLocalizedString("OK", tableName: "PasswordManager", comment: "PasswordManager: OK button")],
                               accessory: nil,
                               identifier: nil,
                               silenceable: .kiTermWarningTypePersistent,
-                              heading: "Password Manager Error",
+                              heading: NSLocalizedString("Password Manager Error", tableName: "PasswordManager", comment: "PasswordManager: password manager error heading"),
                               window: window)
         }
     }
@@ -1157,7 +1157,7 @@ extension AdapterPasswordDataSource: AdapterCapabilities {
 
     @objc func runCustomCommand(_ name: String, window: NSWindow?, completion: @escaping (String?, Error?) -> Void) {
         if Self.builtInSubcommands.contains(name) {
-            completion(nil, AdapterError.runtime("Cannot run built-in subcommand \u{201c}\(name)\u{201d} as a custom command"))
+            completion(nil, AdapterError.runtime(String(format: NSLocalizedString("Cannot run built-in subcommand “%@” as a custom command", tableName: "PasswordManager", comment: "PasswordManager: cannot run builtin subcommand error"), name)))
             return
         }
         ensureAuthentication(window: window) { [weak self] error in

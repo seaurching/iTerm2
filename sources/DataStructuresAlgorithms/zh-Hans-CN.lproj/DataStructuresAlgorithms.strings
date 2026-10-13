@@ -1,0 +1,10 @@
+"Initialize an AATree with the 'initWithKeyComparator:' method." = "请使用 'initWithKeyComparator:' 方法初始化 AATree。";
+"No root" = "无根节点";
+"Unrealized" = "未实现";
+"add object" = "添加对象";
+"remove object" = "移除对象";
+"remove all objects" = "移除所有对象";
+"mutate object" = "修改对象";
+"bulk mutate objects" = "批量修改对象";
+"bulk remove objects" = "批量移除对象";
+"bulk move objects" = "批量移动对象";

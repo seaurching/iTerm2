@@ -268,9 +268,9 @@ static CGFloat iTermAreaOfIntersection(NSRect r1, NSRect r2) {
         return [[obj it_uniqueKey] isEqualToString:[self it_uniqueKey]];
     }];
     if (index == NSNotFound) {
-        return @"Display";
+        return NSLocalizedStringFromTableInBundle(@"Display", @"Categories", [NSBundle mainBundle], @"Fallback display name");
     }
-    return [NSString stringWithFormat:@"Display %@", @(index + 1)];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Display %@", @"Categories", [NSBundle mainBundle], @"Fallback display name with index"), @(index + 1)];
 }
 
 - (NSArray<NSScreen *> *)it_sortedScreens {

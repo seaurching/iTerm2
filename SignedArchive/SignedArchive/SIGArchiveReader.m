@@ -185,7 +185,7 @@
         if (errorOut) {
             *errorOut = [SIGError errorWrapping:error
                                            code:SIGErrorCodeIORead
-                                         detail:@"Failed get get size of input file"];
+                                         detail:NSLocalizedStringFromTable(@"Failed to get size of input file", @"signed_archive", @"获取输入文件大小失败")];
         }
         return NO;
     }
@@ -196,7 +196,7 @@
         if (errorOut) {
             *errorOut = [SIGError errorWrapping:error
                                            code:SIGErrorCodeIORead
-                                         detail:@"Error opening file"];
+                                         detail:NSLocalizedStringFromTable(@"Error opening file", @"signed_archive", @"打开文件时出错")];
         }
         return NO;
     }

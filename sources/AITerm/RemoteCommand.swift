@@ -232,6 +232,30 @@ struct RemoteCommand: Codable {
                 self = value
             }
 
+            // Localized name for display only. The rawValue doubles as the
+            // persisted (Codable) representation, so it must never change;
+            // UI code should show displayName instead of rawValue.
+            var displayName: String {
+                switch self {
+                case .checkTerminalState:
+                    NSLocalizedString("Check Terminal State", tableName: "AITermXC", comment: "检查终端状态")
+                case .runCommands:
+                    NSLocalizedString("Run Commands", tableName: "AITermXC", comment: "运行命令")
+                case .viewContents:
+                    NSLocalizedString("View Contents", tableName: "AITermXC", comment: "查看内容")
+                case .writeToClipboard:
+                    NSLocalizedString("Write to the Clipboard", tableName: "AITermXC", comment: "写入剪贴板")
+                case .controlTerminal:
+                    NSLocalizedString("Control Terminal", tableName: "AITermXC", comment: "控制终端")
+                case .viewManpages:
+                    NSLocalizedString("View Manpages", tableName: "AITermXC", comment: "查看 manpage")
+                case .writeToFilesystem:
+                    NSLocalizedString("Write to the File System", tableName: "AITermXC", comment: "写入文件系统")
+                case .actInWebBrowser:
+                    NSLocalizedString("Act in Web Browser", tableName: "AITermXC", comment: "在 Web 浏览器中操作")
+                }
+            }
+
             var isBrowserSpecific: Bool {
                 switch self {
                 case .checkTerminalState, .runCommands, .viewContents, .writeToClipboard,
@@ -245,9 +269,9 @@ struct RemoteCommand: Codable {
             var autopopulationTitle: String? {
                 switch self {
                 case .checkTerminalState:
-                    "Provide Terminal State Automatically"
+                    NSLocalizedString("Provide Terminal State Automatically", tableName: "AITermXC", comment: "自动提供终端状态")
                 case .viewContents:
-                    "Provide Screen Contents Automatically"
+                    NSLocalizedString("Provide Screen Contents Automatically", tableName: "AITermXC", comment: "自动提供屏幕内容")
                 case .runCommands, .writeToClipboard, .controlTerminal, .viewManpages,
                         .writeToFilesystem, .actInWebBrowser:
                     nil
@@ -257,9 +281,9 @@ struct RemoteCommand: Codable {
             var autopopulationWarningText: String? {
                 switch self {
                 case .checkTerminalState:
-                    "By setting this permission to “Always Allow”, terminal state will be sent automatically on every message you send in this chat.\nThis includes:\n • The current or last command and its exit status\n •The window size\n • Your shell\n • The current working directory, username, and hostname."
+                    NSLocalizedString("By setting this permission to “Always Allow”, terminal state will be sent automatically on every message you send in this chat.\nThis includes:\n • The current or last command and its exit status\n •The window size\n • Your shell\n • The current working directory, username, and hostname.", tableName: "AITermXC", comment: "将此权限设为「始终允许」后，在此对话中你发送的每条消息都会自动发送终端状态\n这包括：\n • 当前或最后一条命令及其退出状态\n •窗口大小\n • 你的 shell\n • 当前工作目录、用户名和主机名")
                 case .viewContents:
-                    "By setting this permission to “Always Allow”, the current visible screen of your terminal session will be sent automatically on every message you send in this chat."
+                    NSLocalizedString("By setting this permission to “Always Allow”, the current visible screen of your terminal session will be sent automatically on every message you send in this chat.", tableName: "AITermXC", comment: "将此权限设为「始终允许」后，在此对话中你发送的每条消息都会自动发送终端会话当前可见的屏幕内容")
                 case .runCommands, .writeToClipboard, .controlTerminal, .viewManpages,
                         .writeToFilesystem, .actInWebBrowser:
                     nil
@@ -267,7 +291,7 @@ struct RemoteCommand: Codable {
             }
 
             var regularTitle: String {
-                "AI can \(rawValue)"
+                String(format: NSLocalizedString("AI can %@", tableName: "AITermXC", comment: "AI 可以 %@"), displayName)
             }
 
             var autopopulatedWhenAlways: Bool {
@@ -381,114 +405,114 @@ struct RemoteCommand: Codable {
     var markdownDescription: String {
         switch content {
         case .isAtPrompt:
-            "Checking if you're at a shell prompt"
+            NSLocalizedString("Checking if you're at a shell prompt", tableName: "AITermXC", comment: "正在检查是否处于 shell 提示符")
         case let .executeCommand(args):
-            "Executing `\(args.command.escapedForMarkdownCode.truncatedWithTrailingEllipsis(to: 32))`"
+            String(format: NSLocalizedString("Executing `%@`", tableName: "AITermXC", comment: "正在执行 `%@`"), args.command.escapedForMarkdownCode.truncatedWithTrailingEllipsis(to: 32))
         case .getLastExitStatus:
-            "Checking the exit status of the last command"
+            NSLocalizedString("Checking the exit status of the last command", tableName: "AITermXC", comment: "正在检查上一条命令的退出状态")
         case .getCommandHistory:
-            "Reviewing the history of commands you have run in this session"
+            NSLocalizedString("Reviewing the history of commands you have run in this session", tableName: "AITermXC", comment: "正在查看本会话中你运行过的命令历史")
         case .getLastCommand:
-            "Viewing the last command you ran in this session"
+            NSLocalizedString("Viewing the last command you ran in this session", tableName: "AITermXC", comment: "正在查看本会话中你运行的最后一条命令")
         case .getCommandBeforeCursor:
-            "Reading your current command prompt"
+            NSLocalizedString("Reading your current command prompt", tableName: "AITermXC", comment: "正在读取当前命令提示符")
         case .searchCommandHistory:
-            "Searching the history of commands you have run in this session"
+            NSLocalizedString("Searching the history of commands you have run in this session", tableName: "AITermXC", comment: "正在搜索本会话中你运行过的命令历史")
         case .getCommandOutput:
-            "Fetching the output of a previously run command"
+            NSLocalizedString("Fetching the output of a previously run command", tableName: "AITermXC", comment: "正在获取之前运行的命令输出")
         case .getScreenContents:
-            "Reading the visible screen"
+            NSLocalizedString("Reading the visible screen", tableName: "AITermXC", comment: "正在读取可见屏幕")
         case .getTerminalSize:
-            "Querying the size of your terminal window"
+            NSLocalizedString("Querying the size of your terminal window", tableName: "AITermXC", comment: "正在查询终端窗口大小")
         case .getShellType:
-            "Determining which shell you use"
+            NSLocalizedString("Determining which shell you use", tableName: "AITermXC", comment: "正在确定你使用的 shell")
         case .detectSSHSession:
-            "Checking if you are using SSH"
+            NSLocalizedString("Checking if you are using SSH", tableName: "AITermXC", comment: "正在检查是否在使用 SSH")
         case .getRemoteHostname:
-            "Getting the current host name of this terminal session"
+            NSLocalizedString("Getting the current host name of this terminal session", tableName: "AITermXC", comment: "正在获取本终端会话的当前主机名")
         case .getUserIdentity:
-            "Checking your username"
+            NSLocalizedString("Checking your username", tableName: "AITermXC", comment: "正在检查你的用户名")
         case .getCurrentDirectory:
-            "Discovering your current directory"
+            NSLocalizedString("Discovering your current directory", tableName: "AITermXC", comment: "正在发现你的当前目录")
         case .setClipboard:
-            "Pasting to the clipboard"
+            NSLocalizedString("Pasting to the clipboard", tableName: "AITermXC", comment: "正在粘贴到剪贴板")
         case let .insertTextAtCursor(args):
-            "Typing `\(args.text.escapedForMarkdownCode.truncatedWithTrailingEllipsis(to: 32))` into the current session"
+            String(format: NSLocalizedString("Typing `%@` into the current session", tableName: "AITermXC", comment: "正在向当前会话输入 `%@`"), args.text.escapedForMarkdownCode.truncatedWithTrailingEllipsis(to: 32))
         case .deleteCurrentLine:
-            "Erasing the current command line"
+            NSLocalizedString("Erasing the current command line", tableName: "AITermXC", comment: "正在清除当前命令行")
         case let .getManPage(args):
-            "Checking the manpage for `\(args.cmd.escapedForMarkdownCode.truncatedWithTrailingEllipsis(to: 32))`"
+            String(format: NSLocalizedString("Checking the manpage for `%@`", tableName: "AITermXC", comment: "正在查看 `%@` 的 manpage"), args.cmd.escapedForMarkdownCode.truncatedWithTrailingEllipsis(to: 32))
         case let .createFile(args):
-            "Creating \(args.filename)"
+            String(format: NSLocalizedString("Creating %@", tableName: "AITermXC", comment: "正在创建 %@"), args.filename)
         case let .searchBrowser(args):
-            "Search in browser for \(args.query)"
+            String(format: NSLocalizedString("Search in browser for %@", tableName: "AITermXC", comment: "在浏览器中搜索 %@"), args.query)
         case let .loadURL(args):
-            "Navigate to \(args.url)"
+            String(format: NSLocalizedString("Navigate to %@", tableName: "AITermXC", comment: "导航到 %@"), args.url)
         case let .webSearch(args):
-            "Search the web for “\(args.query)”"
+            String(format: NSLocalizedString("Search the web for “%@”", tableName: "AITermXC", comment: "在网上搜索“%@”"), args.query)
         case .getURL:
-            "Get the current URL"
+            NSLocalizedString("Get the current URL", tableName: "AITermXC", comment: "获取当前 URL")
         case .readWebPage:
-            "View the current web page"
+            NSLocalizedString("View the current web page", tableName: "AITermXC", comment: "查看当前网页")
         case .restartSession:
-            "Restarting this session"
+            NSLocalizedString("Restarting this session", tableName: "AITermXC", comment: "正在重启本会话")
         }
     }
 
     var permissionDescription: String {
         switch content {
         case .isAtPrompt:
-            "The AI Agent would like to check if you're at a shell prompt"
+            NSLocalizedString("The AI Agent would like to check if you're at a shell prompt", tableName: "AITermXC", comment: "AI 代理想检查你是否处于 shell 提示符")
         case let .executeCommand(args):
-            "The AI Agent would like to execute `\(args.command.escapedForMarkdownCode)`"
+            String(format: NSLocalizedString("The AI Agent would like to execute `%@`", tableName: "AITermXC", comment: "AI 代理想执行 `%@`"), args.command.escapedForMarkdownCode)
         case .getLastExitStatus:
-            "The AI Agent would like to check the exit status of the last command"
+            NSLocalizedString("The AI Agent would like to check the exit status of the last command", tableName: "AITermXC", comment: "AI 代理想检查上一条命令的退出状态")
         case .getCommandHistory:
-            "The AI Agent would like to review the history of commands you have run in this session"
+            NSLocalizedString("The AI Agent would like to review the history of commands you have run in this session", tableName: "AITermXC", comment: "AI 代理想查看你在本会话中运行过的命令历史")
         case .getLastCommand:
-            "The AI Agent would like to view the last command you ran in this session"
+            NSLocalizedString("The AI Agent would like to view the last command you ran in this session", tableName: "AITermXC", comment: "AI 代理想查看你在本会话中运行的最后一条命令")
         case .getCommandBeforeCursor:
-            "The AI Agent would like to read your current command prompt"
+            NSLocalizedString("The AI Agent would like to read your current command prompt", tableName: "AITermXC", comment: "AI 代理想读取你当前的命令提示符")
         case .searchCommandHistory:
-            "The AI Agent would like to search the history of commands you have run in this session"
+            NSLocalizedString("The AI Agent would like to search the history of commands you have run in this session", tableName: "AITermXC", comment: "AI 代理想搜索你在本会话中运行过的命令历史")
         case .getCommandOutput:
-            "The AI Agent would like to fetch the output of a previously run command"
+            NSLocalizedString("The AI Agent would like to fetch the output of a previously run command", tableName: "AITermXC", comment: "AI 代理想获取之前运行的命令的输出")
         case .getScreenContents:
-            "The AI Agent would like to read the visible screen of your terminal session"
+            NSLocalizedString("The AI Agent would like to read the visible screen of your terminal session", tableName: "AITermXC", comment: "AI 代理想读取你终端会话的可见屏幕内容")
         case .getTerminalSize:
-            "The AI Agent would like to query the size of your terminal window"
+            NSLocalizedString("The AI Agent would like to query the size of your terminal window", tableName: "AITermXC", comment: "AI 代理想查询你终端窗口的大小")
         case .getShellType:
-            "The AI Agent would like to determine which shell you use"
+            NSLocalizedString("The AI Agent would like to determine which shell you use", tableName: "AITermXC", comment: "AI 代理想确定你使用的是哪种 shell")
         case .detectSSHSession:
-            "The AI Agent would like to check if you are using SSH"
+            NSLocalizedString("The AI Agent would like to check if you are using SSH", tableName: "AITermXC", comment: "AI 代理想检查你是否正在使用 SSH")
         case .getRemoteHostname:
-            "The AI Agent would like to get the current host name of this terminal session"
+            NSLocalizedString("The AI Agent would like to get the current host name of this terminal session", tableName: "AITermXC", comment: "AI 代理想获取本终端会话的当前主机名")
         case .getUserIdentity:
-            "The AI Agent would like to check your username"
+            NSLocalizedString("The AI Agent would like to check your username", tableName: "AITermXC", comment: "AI 代理想检查你的用户名")
         case .getCurrentDirectory:
-            "The AI Agent would like to know your current directory"
+            NSLocalizedString("The AI Agent would like to know your current directory", tableName: "AITermXC", comment: "AI 代理想知道你当前所在的目录")
         case .setClipboard:
-            "The AI Agent would like to paste to the clipboard"
+            NSLocalizedString("The AI Agent would like to paste to the clipboard", tableName: "AITermXC", comment: "AI 代理想粘贴到剪贴板")
         case let .insertTextAtCursor(args):
-            "The AI Agent would like to type `\(args.text.escapedForMarkdownCode.truncatedWithTrailingEllipsis(to: 32))` into the current session"
+            String(format: NSLocalizedString("The AI Agent would like to type `%@` into the current session", tableName: "AITermXC", comment: "AI 代理想在当前会话中输入 `%@`"), args.text.escapedForMarkdownCode.truncatedWithTrailingEllipsis(to: 32))
         case .deleteCurrentLine:
-            "The AI Agent would like to erase the current command line"
+            NSLocalizedString("The AI Agent would like to erase the current command line", tableName: "AITermXC", comment: "AI 代理想清除当前命令行")
         case let .getManPage(args):
-            "The AI Agent would like to check the manpage for `\(args.cmd.escapedForMarkdownCode)`"
+            String(format: NSLocalizedString("The AI Agent would like to check the manpage for `%@`", tableName: "AITermXC", comment: "AI 代理想查看 `%@` 的 manpage"), args.cmd.escapedForMarkdownCode)
         case let .createFile(args):
-            "The AI Agent would like to create a file named `\(args.filename)`"
+            String(format: NSLocalizedString("The AI Agent would like to create a file named `%@`", tableName: "AITermXC", comment: "AI 代理想创建名为 `%@` 的文件"), args.filename)
         case let .searchBrowser(args):
-            "The AI agent would like to search the current web page for “\(args.query)”"
+            String(format: NSLocalizedString("The AI agent would like to search the current web page for “%@”", tableName: "AITermXC", comment: "AI 代理想在当前网页中搜索 “%@”"), args.query)
         case let .loadURL(args):
-            "The AI agent would like to navigate to \(args.url)"
+            String(format: NSLocalizedString("The AI agent would like to navigate to %@", tableName: "AITermXC", comment: "AI 代理想导航到 %@"), args.url)
         case let .webSearch(args):
-            "The AI agent would like to write to search the web for “\(args.query)”"
+            String(format: NSLocalizedString("The AI agent would like to search the web for “%@”", tableName: "AITermXC", comment: "AI 代理想在网上搜索 “%@”"), args.query)
         case .getURL:
-            "The AI agent would like to write to get the current URL"
+            NSLocalizedString("The AI agent would like to get the current URL", tableName: "AITermXC", comment: "AI 代理想获取当前 URL")
         case .readWebPage:
-            "The AI agent would like to write to view the current web page"
+            NSLocalizedString("The AI agent would like to view the current web page", tableName: "AITermXC", comment: "AI 代理想查看当前网页")
         case .restartSession:
-            "The AI Agent would like to restart this session, which kills any running jobs"
+            NSLocalizedString("The AI Agent would like to restart this session, which kills any running jobs", tableName: "AITermXC", comment: "AI 代理想重启本会话，这会终止所有正在运行的作业")
         }
     }
 

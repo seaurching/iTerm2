@@ -1,0 +1,570 @@
+NMSSH/LICENSE
+Copyright (c) 2013 Nine Muses AB
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+PSMTabBarControl/LICENSE
+Copyright © 2005, Positive Spin Media. 保留所有权利。
+
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+
+	* 以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+	* 以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+	* 未经事先书面许可，不得使用 Positive Spin Media 的名称或其贡献者的名称来认可或推广基于本软件的衍生产品。
+本软件由版权持有人及贡献者“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，版权持有人或贡献者均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+ProtobufRuntime/LICENSE
+本许可证适用于 Protocol Buffers 的所有部分，以下情况除外：
+
+  - 通用 gcc 的 Atomicops 支持，位于
+    src/google/protobuf/stubs/atomicops_internals_generic_gcc.h。
+    该文件版权归 Red Hat Inc. 所有。
+
+  - AIX/POWER 的 Atomicops 支持，位于
+    src/google/protobuf/stubs/atomicops_internals_power.h。
+    该文件版权归 Bloomberg Finance LP 所有。
+
+Copyright 2014, Google Inc.  保留所有权利。
+
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+
+    * 以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+    * 以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+    * 未经事先书面许可，不得使用 Google Inc. 的名称或其贡献者的名称来认可或推广基于本软件的衍生产品。
+
+本软件由版权持有人及贡献者“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，版权持有人或贡献者均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+由 Protocol Buffer 编译器生成的代码归生成时所用的输入文件的所有者所有。这些代码不是独立程序，需要与一个支持库链接。该支持库本身也受上述许可证约束。
+
+RegexKitLite/LICENSE
+Copyright © 2008-2010, John Engelhart
+保留所有权利。
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+	•	以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+	•	以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+	•	* 未经事先书面许可，不得使用 the Zang Industries 的名称或其贡献者的名称来认可或推广基于本软件的衍生产品。
+本软件由版权持有人及贡献者“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，版权持有人或贡献者均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+SCEvents/LICENSE
+Copyright (c) 2008-2014 Stuart Connolly.
+
+保留所有权利。
+
+https://github.com/stuconnolly/scevents
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+SSKeychain/LICENSE
+Copyright (c) 2010-2012 Sam Soffes.
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+Sparkle/LICENSE
+Copyright (c) 2006-2013 Andy Matuschak.
+Copyright (c) 2009-2013 Elgato Systems GmbH.
+Copyright (c) 2011-2014 Kornel Lesiński.
+Copyright (c) 2015-2017 Mayur Pawashe.
+Copyright (c) 2014 C.W. Betts.
+Copyright (c) 2014 Petroules Corporation.
+Copyright (c) 2014 Big Nerd Ranch.
+保留所有权利。
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+=================
+外部许可证（EXTERNAL LICENSES）
+=================
+
+bspatch.c 与 bsdiff.c，来自 bsdiff 4.3 <http://www.daemonology.net/bsdiff/>：
+    Copyright (c) 2003-2005 Colin Percival.
+
+sais.c 与 sais.c，来自 sais-lite（2010/08/07）<https://sites.google.com/site/yuta256/sais>：
+    Copyright (c) 2008-2010 Yuta Mori.
+
+SUDSAVerifier.m:
+    Copyright (c) 2011 Mark Hamlin.
+
+保留所有权利。
+
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+1. 以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+2. 以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+
+本软件由版权持有人及贡献者“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，版权持有人或贡献者均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+UKCrashReporter/LICENSE
+//  Created by Uli Kusterer on Sat Feb 04 2006.
+//  Copyright (c) 2006 Uli Kusterer.
+//
+//	This software is provided 'as-is', without any express or implied
+//	warranty. In no event will the authors be held liable for any damages
+//	arising from the use of this software.
+//
+//	Permission is granted to anyone to use this software for any purpose,
+//	including commercial applications, and to alter it and redistribute it
+//	freely, subject to the following restrictions:
+//
+//	   1. The origin of this software must not be misrepresented; you must not
+//	   claim that you wrote the original software. If you use this software
+//	   in a product, an acknowledgment in the product documentation would be
+//	   appreciated but is not required.
+//
+//	   2. Altered source versions must be plainly marked as such, and must not be
+//	   misrepresented as being the original software.
+//
+//	   3. This notice may not be removed or altered from any source
+//	   distribution.
+
+PSMTabBarControl/LICENSE
+Copyright © 2005, Positive Spin Media. 保留所有权利。
+
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+
+	* 以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+	* 以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+	* 未经事先书面许可，不得使用 Positive Spin Media 的名称或其贡献者的名称来认可或推广基于本软件的衍生产品。
+本软件由版权持有人及贡献者“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，版权持有人或贡献者均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+
+
+ProtobufRuntime/LICENSE
+本许可证适用于 Protocol Buffers 的所有部分，以下情况除外：
+
+  - 通用 gcc 的 Atomicops 支持，位于
+    src/google/protobuf/stubs/atomicops_internals_generic_gcc.h。
+    该文件版权归 Red Hat Inc. 所有。
+
+  - AIX/POWER 的 Atomicops 支持，位于
+    src/google/protobuf/stubs/atomicops_internals_power.h。
+    该文件版权归 Bloomberg Finance LP 所有。
+
+Copyright 2014, Google Inc.  保留所有权利。
+
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+
+    * 以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+    * 以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+    * 未经事先书面许可，不得使用 Google Inc. 的名称或其贡献者的名称来认可或推广基于本软件的衍生产品。
+
+本软件由版权持有人及贡献者“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，版权持有人或贡献者均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+由 Protocol Buffer 编译器生成的代码归生成时所用的输入文件的所有者所有。这些代码不是独立程序，需要与一个支持库链接。该支持库本身也受上述许可证约束。
+
+
+
+RegexKitLite/LICENSE
+RegexKitLite License
+Copyright © 2008-2010, John Engelhart
+保留所有权利。
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+	•	以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+	•	以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+	•	* 未经事先书面许可，不得使用 the Zang Industries 的名称或其贡献者的名称来认可或推广基于本软件的衍生产品。
+本软件由版权持有人及贡献者“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，版权持有人或贡献者均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+
+
+SCEvents/LICENSE
+Copyright (c) 2008-2014 Stuart Connolly.
+
+保留所有权利。
+
+https://github.com/stuconnolly/scevents
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+
+
+SSKeychain/LICENSE
+Copyright (c) 2010-2012 Sam Soffes.
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+
+
+Sparkle/LICENSE
+Copyright (c) 2006-2013 Andy Matuschak.
+Copyright (c) 2009-2013 Elgato Systems GmbH.
+Copyright (c) 2011-2014 Kornel Lesiński.
+Copyright (c) 2015-2017 Mayur Pawashe.
+Copyright (c) 2014 C.W. Betts.
+Copyright (c) 2014 Petroules Corporation.
+Copyright (c) 2014 Big Nerd Ranch.
+保留所有权利。
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+=================
+外部许可证（EXTERNAL LICENSES）
+=================
+
+bspatch.c 与 bsdiff.c，来自 bsdiff 4.3 <http://www.daemonology.net/bsdiff/>：
+    Copyright (c) 2003-2005 Colin Percival.
+
+sais.c 与 sais.c，来自 sais-lite（2010/08/07）<https://sites.google.com/site/yuta256/sais>：
+    Copyright (c) 2008-2010 Yuta Mori.
+
+SUDSAVerifier.m:
+    Copyright (c) 2011 Mark Hamlin.
+
+保留所有权利。
+
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+1. 以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+2. 以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+
+本软件由版权持有人及贡献者“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，版权持有人或贡献者均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+
+
+UKCrashReporter/LICENSE
+//  Created by Uli Kusterer on Sat Feb 04 2006.
+//  Copyright (c) 2006 Uli Kusterer.
+//
+//	This software is provided 'as-is', without any express or implied
+//	warranty. In no event will the authors be held liable for any damages
+//	arising from the use of this software.
+//
+//	Permission is granted to anyone to use this software for any purpose,
+//	including commercial applications, and to alter it and redistribute it
+//	freely, subject to the following restrictions:
+//
+//	   1. The origin of this software must not be misrepresented; you must not
+//	   claim that you wrote the original software. If you use this software
+//	   in a product, an acknowledgment in the product documentation would be
+//	   appreciated but is not required.
+//
+//	   2. Altered source versions must be plainly marked as such, and must not be
+//	   misrepresented as being the original software.
+//
+//	   3. This notice may not be removed or altered from any source
+//	   distribution.
+
+
+cpp-lru-cache/LICENSE
+Copyright (c) 2014, lamerman
+保留所有权利。
+
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+
+* 以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+
+* 以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+
+* 未经事先书面许可，不得使用 lamerman 的名称或其贡献者的名称来认可或推广基于本软件的衍生产品。
+
+本软件由版权持有人及贡献者“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，版权持有人或贡献者均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+CoreParse/LICENSE
+Copyright (c) 2011, Thomas Davie
+保留所有权利。
+
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+
+* 以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+* 以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+* 未经事先书面许可，不得使用 In The Beginning... 的名称或其贡献者的名称来认可或推广基于本软件的衍生产品。
+本软件由版权持有人及贡献者“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，版权持有人或贡献者均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+tmux-MacOSX-pasteboard/LICENSE
+Copyright (c) 2011-2013, Chris Johnsen <chris_johnsen@pobox.com>
+保留所有权利。
+
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+
+    1. 以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+
+    2. 以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+
+本软件由版权持有人及贡献者“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，版权持有人或贡献者均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+https://github.com/Hyperline/hyperline/blob/master/license.md
+[用于 git 状态栏组件]
+MIT 许可证（MIT）
+
+Copyright (c) 2016 Nick Tikhonov, Tim Neutkens
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+---
+GZIP
+
+Copyright (C) 2012 Charcoal Design
+
+本软件按“现状”提供，不附带任何明示或默示的保证。对于因使用本软件而产生的任何损害，作者概不负责。
+
+特此许可任何人出于任何目的使用本软件，包括商业应用，并可随意修改和重新分发，但须遵守以下限制：
+
+1. 不得谎称本软件的来源；不得声称你编写了原始软件。如果你在本产品中使用本软件，希望（但不要求）在产品文档中予以致谢。
+   
+2. 经修改的源代码版本必须明确标注，且不得冒充为原始软件。
+   
+3. 不得从任何源代码分发中删除或修改本声明。
+
+---
+hyper-tab-icons-plus
+
+派生自 https://github.com/sangdth/hyper-tab-icons-plus
+
+按 MIT 许可证授权，依据：
+https://github.com/sangdth/hyper-tab-icons-plus/blob/b4464605c3cc730e95405d741323eba9e4c19786/package.json
+
+MIT 许可证文本（来自 https://opensource.org/licenses/MIT）如下：
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+---
+libsixel/LICENSE
+
+Copyright (c) 2014-2016 Hayaki Saito
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+---
+libsixel/LICENSE.sixel
+
+“sixel”许可证（原始许可证）
+==================================
+
+src/tosixel.c 与 src/fromsixel.c 派生自 “sixel” 原始版本（2014-3-2）
+
+  Package: http://nanno.dip.jp/softlib/man/rlogin/sixel.tar.gz
+
+  非官方仓库：https://github.com/saitoha/sixel
+
+本作品由 kmiya@ culti 编写，他以非常宽松的许可证分发。
+
+原始许可证文本（日文）如下：
+
+```
+このプログラム及びソースコードの使用について個人・商用を問わず
+
+ご自由に使用していただいで結構です。
+
+また、配布・転載・紹介もご連絡の必要もありません。
+
+ソースの改変による配布も自由ですが、どのバージョンの改変かを
+
+明記されることを希望します。
+
+バージョン情報が無い場合は、配布物の年月日を明記されることを
+
+希望します。
+
+                  2014/10/05  kmiya
+```
+
+非官方英文翻译如下：
+
+```
+Anyone is free to use this program for any purpose,
+commercial or non-commercial, without any restriction.
+
+Anyone is free to distribute, copy, publish, or 
+advertise this software, without any contact.
+
+Anyone is free to distribute with modification of the
+source code, but I "hope" that its based version or
+date will be written clearly.
+
+                                    2014/10/05 kmiya
+```
+
+kmiya 还表示本软件与 MIT/BSD/GPL 兼容。
+
+---
+libsixel/LICENSE.xterm
+
+src/fromsixel.c 中的辅助函数 hls2rgb 导入自 Xterm pl#310 的 graphics.c，原作者为 Ross Combs。
+
+http://invisible-island.net/xterm/
+
+
+Copyright 2013,2014 by Ross Combs
+
+                        All Rights Reserved
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。在任何情况下，上述列出的版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的合同、侵权或其它行为。
+
+除本声明所载内容外，未经事先书面授权，不得在广告或其它推广本软件销售、使用或其它交易的场合使用上述版权持有人的名称。
+
+---
+inih
+
+“inih”库以新 BSD 许可证分发：
+
+Copyright (c) 2009, Ben Hoyt
+保留所有权利。
+
+在满足以下条件的前提下，允许以源代码和二进制形式重新分发和使用本软件（无论是否修改）：
+    * 以源代码形式重新分发时，必须保留上述版权声明、本条件列表及以下免责声明。
+    * 以二进制形式重新分发时，必须在随分发提供的文档和/或其它材料中重现上述版权声明、本条件列表及以下免责声明。
+    * 未经事先书面许可，不得使用 Ben Hoyt 的名称或其贡献者的名称来认可或推广基于本软件的衍生产品。
+
+本软件由 BEN HOYT“按现状”提供，不附带任何明示或默示的保证，包括但不限于对适销性和特定用途适用性的默示保证。在任何情况下，BEN HOYT 均不对任何直接、间接、附带、特殊、惩戒性或后果性损害（包括但不限于采购替代商品或服务；使用、数据或利润的损失；或业务中断）承担任何责任，无论该损害因何引起，也无论基于何种责任理论（合同、严格责任、侵权（包括过失）或其它），凡因使用本软件而以任何方式产生的责任均属如此，即使已被告知发生此类损害的可能性。
+
+---
+HapticKey
+
+Copyright (c) 2017-2018 Yoshimasa Niwa
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+
+---
+FMDB
+
+如果你在项目中使用了 FMDB，我很乐意听到你的消息。可以发邮件到 gus@flyingmeat.com 告诉 Gus。
+
+如果你碰巧在酒吧遇到 Gus Mueller 或 Rob Ryan，而 FMDB 对你有所帮助，不妨请他们喝一杯他们喜欢的饮品。
+
+最后，简而言之：以上就是 MIT 许可证。
+
+Copyright (c) 2008-2014 Flying Meat Inc.
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+---
+NSURL-IDN
+https://github.com/wordpress-mobile/NSURL-IDN/blob/master/LICENSE
+
+Copyright (c) 2009-2013 Automattic, http://automattic.com
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+---
+DebugLogging.png
+来自 https://thenounproject.com/term/debug/509535/
+“Bug”图标由 Michael Martinho 制作，来自 Noun Project
+
+---
+SwiftyMarkdown
+来自 https://github.com/SimonFairbairn/SwiftyMarkdown
+
+MIT 许可证（MIT）
+
+Copyright (c) 2016 Simon Fairbairn
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+
+---
+Powerline Extra Symbols
+来自 https://github.com/ryanoasis/powerline-extra-symbols
+
+MIT License
+
+Copyright (c) 2016 Ryan L McIntyre
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+---
+WezTerm
+来自 https://github.com/wez/wezterm
+
+MIT License
+
+Copyright (c) 2018-Present Wez Furlong
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+
+WezTerm 内置了 `JetBrains Mono`、`Noto Color Emoji` 和 `Roboto` 字体。
+它们按 OFL 1.1 的条款分发，其文本可在 assets/fonts 目录中找到。
+
+WezTerm 内置了 `Symbols Nerd Font Mono`，它仅由 https://github.com/ryanoasis/nerd-fonts 上明确按 OFL 1.1 条款分发的图标集构建。
+注意 WezTerm 的此集合不包含 Pomicons 图标集。
+
+--
+st-sixel
+https://github.com/galatolofederico/st-sixel?tab=MIT-1-ov-file#readme
+MIT/X Consortium License
+
+© 2014-2018 Hiltjo Posthuma <hiltjo at codemadness dot org>
+© 2018 Devin J. Pohly <djpohly at gmail dot com>
+© 2014-2017 Quentin Rameau <quinq at fifth dot space>
+© 2009-2012 Aurélien APTEL <aurelien dot aptel at gmail dot com>
+© 2008-2017 Anselm R Garbe <garbeam at gmail dot com>
+© 2012-2017 Roberto E. Vargas Caballero <k0ga at shike2 dot com>
+© 2012-2016 Christoph Lohmann <20h at r-36 dot net>
+© 2013 Eon S. Jeon <esjeon at hyunmu dot am>
+© 2013 Alexander Sedov <alex0player at gmail dot com>
+© 2013 Mark Edgar <medgar123 at gmail dot com>
+© 2013-2014 Eric Pruitt <eric.pruitt at gmail dot com>
+© 2013 Michael Forney <mforney at mforney dot org>
+© 2013-2014 Markus Teich <markus dot teich at stusta dot mhn dot de>
+© 2014-2015 Laslo Hunhold <dev at frign dot de>
+
+特此免费向任何获得本软件及相关文档文件（下称“软件”）副本者授予许可，可不受限制地处理本软件，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售本软件副本的权利，并允许向其提供本软件者这样做，但须满足以下条件：
+
+上述版权声明及本许可声明应包含在本软件的所有副本或主要部分中。
+
+本软件按“现状”提供，不附带任何形式的明示或默示保证，包括但不限于对适销性和特定用途适用性的保证。无论是因合同、侵权或其它原因，作者或版权持有人均不对任何索赔、损害或其它责任负责，无论其源于与本软件或本软件的使用或其它交易有关的行为。
+

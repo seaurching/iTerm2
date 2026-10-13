@@ -64,7 +64,7 @@ final class ChatManualStackView: NSView {
     }
 
     required init?(coder: NSCoder) {
-        it_fatalError("init(coder:) not implemented")
+        it_fatalError(NSLocalizedString("init(coder:) not implemented", tableName: "AITermXC", comment: "init(coder:) 未实现"))
     }
 
     func addArrangedSubview(_ view: NSView) {

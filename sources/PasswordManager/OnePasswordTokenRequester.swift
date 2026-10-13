@@ -123,23 +123,23 @@ class OnePasswordUtils {
 
     static func showUnavailableMessage(_ path: String? = nil) {
         let alert = NSAlert()
-        alert.messageText = "OnePassword Unavailable"
+        alert.messageText = NSLocalizedString("OnePassword Unavailable", tableName: "PasswordManager", comment: "PasswordManager: onepassword unavailable title")
         if let path = path {
-            alert.informativeText = "The 1Password CLI at \(path) is too old. The iTerm2 integration requires version \(minimumSupportedVersionString) or later."
+            alert.informativeText = String(format: NSLocalizedString("The 1Password CLI at %1$@ is too old. The iTerm2 integration requires version %2$@ or later.", tableName: "PasswordManager", comment: "PasswordManager: onepassword too old informative"), path, minimumSupportedVersionString)
         } else {
-            alert.informativeText = "The 1Password CLI could not be found, or is older than the required version \(minimumSupportedVersionString). Check that a current op is installed."
+            alert.informativeText = String(format: NSLocalizedString("The 1Password CLI could not be found, or is older than the required version %@. Check that a current op is installed.", tableName: "PasswordManager", comment: "PasswordManager: onepassword not found informative"), minimumSupportedVersionString)
         }
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: NSLocalizedString("OK", tableName: "PasswordManager", comment: "PasswordManager: OK button"))
         alert.runModal()
     }
 
     // Returns true to show an open panel to locate it.
     private static func showCannotFindCLIMessage() -> Bool {
         let alert = NSAlert()
-        alert.messageText = "Can’t Find 1Password CLI"
-        alert.informativeText = "In order to use the 1Password integration, iTerm2 needs to know where to find the CLI app named “op”. It’s normally in /usr/local/bin. If you have installed it elsewhere, please select Locate to provide its location."
-        alert.addButton(withTitle: "Locate")
-        alert.addButton(withTitle: "Cancel")
+        alert.messageText = NSLocalizedString("Can’t Find 1Password CLI", tableName: "PasswordManager", comment: "PasswordManager: onepassword cli not found title")
+        alert.informativeText = NSLocalizedString("In order to use the 1Password integration, iTerm2 needs to know where to find the CLI app named “op”. It’s normally in /usr/local/bin. If you have installed it elsewhere, please select Locate to provide its location.", tableName: "PasswordManager", comment: "PasswordManager: onepassword cli not found informative")
+        alert.addButton(withTitle: NSLocalizedString("Locate", tableName: "PasswordManager", comment: "PasswordManager: locate button"))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", tableName: "PasswordManager", comment: "PasswordManager: cancel button"))
         return alert.runModal() == .alertFirstButtonReturn
     }
 
@@ -320,9 +320,9 @@ class OnePasswordTokenRequester {
     private var passwordPrompt: String {
         let account = iTermAdvancedSettingsModel.onePasswordAccount()!
         if account.isEmpty {
-            return "Enter your 1Password master password:"
+            return NSLocalizedString("Enter your 1Password master password:", tableName: "PasswordManager", comment: "PasswordManager: onepassword master password prompt")
         }
-        return "Enter the 1Password master password for account “\(account)”:"
+        return String(format: NSLocalizedString("Enter the 1Password master password for account “%@”:", tableName: "PasswordManager", comment: "PasswordManager: onepassword master password for account prompt"), account)
     }
 
     func asyncGet(_ completion: @escaping (Result<Auth, Error>) -> ()) {
@@ -386,7 +386,7 @@ class OnePasswordTokenRequester {
             guard output.returnCode == 0 else {
                 DLog("But the return code is nonzero")
                 DLog("signin failed")
-                let reason = String(data: output.stderr, encoding: .utf8) ?? "An unknown error occurred."
+                let reason = String(data: output.stderr, encoding: .utf8) ?? NSLocalizedString("An unknown error occurred.", tableName: "PasswordManager", comment: "PasswordManager: onepassword unknown error fallback")
                 RLog("Failure reason is: \(reason)")
                 if reason.contains("connecting to desktop app timed out") {
                     completion(.failure(OnePasswordDataSource.OPError.unusableCLI))
@@ -398,7 +398,7 @@ class OnePasswordTokenRequester {
             }
             guard let token = String(data: output.stdout, encoding: .utf8) else {
                 DLog("got garbage output")
-                self.showErrorMessage("The 1Password CLI app produced garbled output instead of an auth token.")
+                self.showErrorMessage(NSLocalizedString("The 1Password CLI app produced garbled output instead of an auth token.", tableName: "PasswordManager", comment: "PasswordManager: onepassword garbled output error"))
                 completion(.failure(OnePasswordDataSource.OPError.badOutput))
                 return
             }
@@ -409,9 +409,9 @@ class OnePasswordTokenRequester {
 
     private func showErrorMessage(_ reason: String) {
         let alert = NSAlert()
-        alert.messageText = "Authentication Error"
+        alert.messageText = NSLocalizedString("Authentication Error", tableName: "PasswordManager", comment: "PasswordManager: onepassword auth error title")
         alert.informativeText = reason
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: NSLocalizedString("OK", tableName: "PasswordManager", comment: "PasswordManager: OK button"))
         alert.runModal()
     }
 

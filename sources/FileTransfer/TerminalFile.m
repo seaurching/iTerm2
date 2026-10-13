@@ -81,12 +81,12 @@ NSString *const kTerminalFileShouldStopNotification = @"kTerminalFileShouldStopN
 // attached to `window` so it matches the terminal-initiated download confirmation.
 - (BOOL)shouldPromptForDownloadLocationInWindow:(NSWindow *)window {
     const iTermWarningSelection selection =
-        [iTermWarning showWarningWithTitle:@"Where would you like to save this download?"
-                                   actions:@[ @"Save to Downloads", @"Choose…" ]
+        [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"Where would you like to save this download?", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Prompt: where to save download")
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"Save to Downloads", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Action: save to Downloads"), NSLocalizedStringFromTableInBundle(@"Choose…", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Action: choose destination") ]
                                  accessory:nil
                                 identifier:@"NoSyncPromptForDownloadLocation"
                                silenceable:kiTermWarningTypePermanentlySilenceable
-                                   heading:@"Save Terminal-Initiated Download"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Save Terminal-Initiated Download", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Heading: save terminal-initiated download")
                                     window:window];
     return selection == kiTermWarningSelection1;
 }
@@ -129,15 +129,15 @@ NSString *const kTerminalFileShouldStopNotification = @"kTerminalFileShouldStopN
 }
 
 - (NSString *)displayName {
-    return self.localPath ? [self.localPath lastPathComponent] : @"Unnamed file";
+    return self.localPath ? [self.localPath lastPathComponent] : NSLocalizedStringFromTableInBundle(@"Unnamed file", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Name: unnamed file");
 }
 
 - (NSString *)shortName {
-    return self.localPath ? [self.localPath lastPathComponent] : @"Unnamed file";
+    return self.localPath ? [self.localPath lastPathComponent] : NSLocalizedStringFromTableInBundle(@"Unnamed file", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Name: unnamed file");
 }
 
 - (NSString *)subheading {
-    return self.filename ?: @"Terminal download";
+    return self.filename ?: NSLocalizedStringFromTableInBundle(@"Terminal download", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Subheading: terminal download");
 }
 
 - (void)download {
@@ -149,7 +149,7 @@ NSString *const kTerminalFileShouldStopNotification = @"kTerminalFileShouldStopN
         // cancellation and leave self.data nil so appendData: no-ops on any further chunks and
         // handleEndOfData treats the transfer as canceled instead of trying to write to nil.
         NSError *error;
-        error = [self errorWithDescription:@"Canceled."];
+        error = [self errorWithDescription:NSLocalizedStringFromTableInBundle(@"Canceled.", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: canceled")];
         self.error = [error localizedDescription];
         [[FileTransferManager sharedInstance] transferrableFile:self
                                  didFinishTransmissionWithError:error];
@@ -226,7 +226,7 @@ NSString *const kTerminalFileShouldStopNotification = @"kTerminalFileShouldStopN
     int destLength = apr_base64_decode_len(buffer);
     if (destLength < 1) {
         [[FileTransferManager sharedInstance] transferrableFile:self
-                                 didFinishTransmissionWithError:[self errorWithDescription:@"No data received."]];
+                                 didFinishTransmissionWithError:[self errorWithDescription:NSLocalizedStringFromTableInBundle(@"No data received.", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: no data received")]];
         return;
     }
     NSMutableData *data = [NSMutableData dataWithLength:destLength];
@@ -234,7 +234,7 @@ NSString *const kTerminalFileShouldStopNotification = @"kTerminalFileShouldStopN
     int resultLength = apr_base64_decode(decodedBuffer, buffer);
     if (resultLength < 0) {
         [[FileTransferManager sharedInstance] transferrableFile:self
-                                 didFinishTransmissionWithError:[self errorWithDescription:@"File corrupted (not valid base64)."]];
+                                 didFinishTransmissionWithError:[self errorWithDescription:NSLocalizedStringFromTableInBundle(@"File corrupted (not valid base64).", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: file corrupted not valid base64")]];
         return;
     }
     [data setLength:resultLength];
@@ -246,7 +246,7 @@ NSString *const kTerminalFileShouldStopNotification = @"kTerminalFileShouldStopN
     }
     if (![self quarantine:self.localPath sourceURL:nil]) {
         [[FileTransferManager sharedInstance] transferrableFile:self
-                                 didFinishTransmissionWithError:[self errorWithDescription:@"Failed to set quarantine."]];
+                                 didFinishTransmissionWithError:[self errorWithDescription:NSLocalizedStringFromTableInBundle(@"Failed to set quarantine.", @"FileTransfer", [NSBundle bundleForClass:[self class]], @"Error: failed to set quarantine")]];
         NSError *error = nil;
         const BOOL ok = [[NSFileManager defaultManager] removeItemAtPath:self.localPath error:&error];
         if (!ok || error) {

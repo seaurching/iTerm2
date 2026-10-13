@@ -198,7 +198,7 @@ NSString *const iTermSessionNameControllerSystemTitleUniqueIdentifier = @"com.it
     }
     [entry addOutput:message completion:^{}];
     if ([self errorIsUnregisteredFunctionCall:error]) {
-        [self logMessage:[NSString stringWithFormat:@"Could not make a function call into a script. Either its unique identifier changed (in which case you should update your settings in Settings > Profiles > General > Title) or the script is not running. The failed invocation was:\n%@", invocation]
+        [self logMessage:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not make a function call into a script. Either its unique identifier changed (in which case you should update your settings in Settings > Profiles > General > Title) or the script is not running. The failed invocation was:\n%@", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: function call failed log"), invocation]
               invocation:invocation];
     } else {
         [self logMessage:error.localizedDescription
@@ -229,7 +229,7 @@ NSString *const iTermSessionNameControllerSystemTitleUniqueIdentifier = @"com.it
                                                                               string:message];
     } else {
         [[iTermAPIHelper sharedInstance] logToConnectionHostingFunctionWithSignature:nil
-                                                                              format:@"Malformed invocation in session name controller. The invocation is:\n%@\nIt doesn't look like a function call! The parser said:\n%@",
+                                                                              format:NSLocalizedStringFromTableInBundle(@"Malformed invocation in session name controller. The invocation is:\n%@\nIt doesn't look like a function call! The parser said:\n%@", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: malformed invocation log"),
          invocation,
          invocationError.localizedDescription];
     }
@@ -258,7 +258,7 @@ NSString *const iTermSessionNameControllerSystemTitleUniqueIdentifier = @"com.it
         // should not happen), or there's a custom title provider not overridden by OSC 0/OSC 2.
         // Finally, if lots of impossible things happen return Unnamed so we
         // can correlate bug reports with this comment. Hi, future me.
-        return [self formattedName:_cachedEvaluation ?: @"Unnamed"];
+        return [self formattedName:_cachedEvaluation ?: NSLocalizedStringFromTableInBundle(@"Unnamed", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: unnamed fallback")];
     }
 }
 
@@ -398,7 +398,7 @@ NSString *const iTermSessionNameControllerSystemTitleUniqueIdentifier = @"com.it
                 return;
             }
             strongSelf->_appliedCount = count;
-            NSString *safeName = presentationName ?: @"Untitled";
+            NSString *safeName = presentationName ?: NSLocalizedStringFromTableInBundle(@"Untitled", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: untitled fallback");
             if ([NSObject object:strongSelf->_cachedEvaluation isEqualToObject:safeName]) {
                 DLog(@"result is unchanged %@", strongSelf.delegate);
                 return;

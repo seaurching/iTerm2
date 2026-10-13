@@ -35,7 +35,7 @@
     if (!tabID) {
         completion(nil, [NSError errorWithDomain:@"com.iterm2.move-tab-to-window"
                                             code:1
-                                        userInfo:@{ NSLocalizedDescriptionKey: @"No such tab" }]);
+                                        userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"No such tab", @"Language", [NSBundle bundleForClass:[self class]], @"Move tab to window error: no such tab") }]);
         return;
     }
 
@@ -43,20 +43,20 @@
     if (!term) {
         completion(nil, [NSError errorWithDomain:@"com.iterm2.move-tab-to-window"
                                             code:2
-                                        userInfo:@{ NSLocalizedDescriptionKey: @"Tab has no window" }]);
+                                        userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Tab has no window", @"Language", [NSBundle bundleForClass:[self class]], @"Move tab to window error: tab has no window") }]);
         return;
     }
 
     if (term.tabs.count < 2) {
         completion(nil, [NSError errorWithDomain:@"com.iterm2.move-tab-to-window"
                                             code:3
-                                        userInfo:@{ NSLocalizedDescriptionKey: @"Window has only one tab" }]);
+                                        userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Window has only one tab", @"Language", [NSBundle bundleForClass:[self class]], @"Move tab to window error: window has only one tab") }]);
     }
     PseudoTerminal *newWindowController = [term it_moveTabToNewWindow:tab];
     if (!newWindowController) {
         completion(nil, [NSError errorWithDomain:@"com.iterm2.move-tab-to-window"
                                             code:4
-                                        userInfo:@{ NSLocalizedDescriptionKey: @"Failed to create new window" }]);
+                                        userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Failed to create new window", @"Language", [NSBundle bundleForClass:[self class]], @"Move tab to window error: failed to create new window") }]);
         return;
     }
 

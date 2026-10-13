@@ -79,12 +79,12 @@
 
     if (text && contentsOfFile) {
         [command setScriptErrorNumber:1];
-        [command setScriptErrorString:@"Only one of text or contents of file should be specified."];
+        [command setScriptErrorString:NSLocalizedStringFromTableInBundle(@"Only one of text or contents of file should be specified.", @"Applescript", [NSBundle bundleForClass:[self class]], @"只能指定文本或文件内容之一。")];
         return;
     }
     if (!text && !contentsOfFile) {
         [command setScriptErrorNumber:2];
-        [command setScriptErrorString:@"Neither text nor contents of file was specified."];
+        [command setScriptErrorString:NSLocalizedStringFromTableInBundle(@"Neither text nor contents of file was specified.", @"Applescript", [NSBundle bundleForClass:[self class]], @"未指定文本或文件内容。")];
         return;
     }
 
@@ -124,7 +124,7 @@
     NSString *name = args[@"name"];
     if (!name) {
         [command setScriptErrorNumber:1];
-        [command setScriptErrorString:@"No name given"];
+        [command setScriptErrorString:NSLocalizedStringFromTableInBundle(@"No name given", @"Applescript", [NSBundle bundleForClass:[self class]], @"未给定名称")];
         return nil;
     }
 
@@ -144,17 +144,17 @@
     NSString *value = args[@"value"];
     if (!name) {
         [command setScriptErrorNumber:1];
-        [command setScriptErrorString:@"No name given"];
+        [command setScriptErrorString:NSLocalizedStringFromTableInBundle(@"No name given", @"Applescript", [NSBundle bundleForClass:[self class]], @"未给定名称")];
         return nil;
     }
     if (!value) {
         [command setScriptErrorNumber:2];
-        [command setScriptErrorString:@"No value given"];
+        [command setScriptErrorString:NSLocalizedStringFromTableInBundle(@"No value given", @"Applescript", [NSBundle bundleForClass:[self class]], @"未给定值")];
         return nil;
     }
     if (![name hasPrefix:@"user."]) {
         [command setScriptErrorNumber:3];
-        [command setScriptErrorString:@"Only user variables may be set. Name must start with “user.”."];
+        [command setScriptErrorString:NSLocalizedStringFromTableInBundle(@"Only user variables may be set. Name must start with “user.”.", @"Applescript", [NSBundle bundleForClass:[self class]], @"只能设置用户变量。名称必须以“user.”开头。")];
         return nil;
     }
     [self.variablesScope setValue:value forVariableNamed:name];
@@ -212,7 +212,7 @@
         return nil;
     } else {
         [scriptCommand setScriptErrorNumber:1];
-        [scriptCommand setScriptErrorString:[NSString stringWithFormat:@"No profile named %@",
+        [scriptCommand setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"No profile named %@", @"Applescript", [NSBundle bundleForClass:[self class]], @"没有名为 %@ 的配置文件"),
                                              profileName]];
         return nil;
     }
@@ -269,7 +269,7 @@
         return nil;
     } else {
         [scriptCommand setScriptErrorNumber:1];
-        [scriptCommand setScriptErrorString:[NSString stringWithFormat:@"No profile named %@",
+        [scriptCommand setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"No profile named %@", @"Applescript", [NSBundle bundleForClass:[self class]], @"没有名为 %@ 的配置文件"),
                                              profileName]];
     }
     return nil;

@@ -119,16 +119,16 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
     __weak __typeof(self) weakSelf = self;
 
     _leader.leaderAllowed = NO;
-    _leader.purpose = @"as the leader";
+    _leader.purpose = NSLocalizedStringFromTableInBundle(@"as the leader", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     iTermKeystroke *leaderKeystroke = [iTermKeyMappings leader];
     _leader.stringValue = leaderKeystroke ? [iTermKeystrokeFormatter stringForKeystroke:leaderKeystroke] : @"";
     [self updatePrivateNonDefaultInicators];
 
     _hotkeyField.leaderAllowed = NO;
-    _hotkeyField.purpose = @"as a hotkey";
+    _hotkeyField.purpose = NSLocalizedStringFromTableInBundle(@"as a hotkey", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
 
     _openQuicklyHotkeyField.leaderAllowed = NO;
-    _openQuicklyHotkeyField.purpose = @"as the Open Quickly hotkey";
+    _openQuicklyHotkeyField.purpose = NSLocalizedStringFromTableInBundle(@"as the Open Quickly hotkey", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
     [self updateOpenQuicklyHotkeyField];
 
     [_keyMappingViewController addViewsToSearchIndex:self];
@@ -265,7 +265,7 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
 
     info = [self defineControl:_keyboardLocale
                            key:kPreferenceKeyKeyboardLocale
-                   displayName:@"Keyboard locale"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Keyboard locale", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                           type:kPreferenceInfoTypeStringPopup];
 
     [self defineControl:_remapModifiersGlobally
@@ -284,7 +284,7 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
                    type:kPreferenceInfoTypeCheckbox];
 
     [self addViewToSearchIndex:_keyMappingView
-                   displayName:@"Global key bindings"
+                   displayName:NSLocalizedStringFromTableInBundle(@"Global key bindings", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                        phrases:@[ @"mapping", @"shortcuts", @"touch bar", @"preset", @"xterm", @"natural", @"terminal.app compatibility", @"numeric keypad" ]
                            key:nil];
 
@@ -300,6 +300,7 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
     // Convert system input sources into (display name, identifier) tuples.
     NSMutableArray<iTermTuple<NSString *, NSString *>  *> *items = [NSMutableArray array];
     CFArrayRef inputSources = TISCreateInputSourceList(NULL, NO);
+    NSString *savedIdentifier = [self stringForKey:key];
     for (NSInteger i = 0; i < CFArrayGetCount(inputSources); i++) {
         TISInputSourceRef inputSource = (TISInputSourceRef)CFArrayGetValueAtIndex(inputSources, i);
         CFStringRef category = (CFStringRef)TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceCategory);
@@ -312,7 +313,27 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
         CFStringRef inputSourceID = (CFStringRef)TISGetInputSourceProperty(inputSource, kTISPropertyInputSourceID);
         CFStringRef localizedName = (CFStringRef)TISGetInputSourceProperty(inputSource, kTISPropertyLocalizedName);
         NSString *displayName = (__bridge NSString *)localizedName;
-        [items addObject:[iTermTuple tupleWithObject:displayName andObject:(__bridge NSString *)inputSourceID]];
+        // Some third-party input methods (e.g. Rime) register multiple input
+        // sources whose localized names are identical. They are
+        // interchangeable for the purpose of forcing a keyboard, so show only
+        // one of each name — but if the saved preference refers to a hidden
+        // duplicate, keep its identifier so the popup still selects it.
+        iTermTuple<NSString *, NSString *> *existing = nil;
+        for (iTermTuple<NSString *, NSString *> *item in items) {
+            if ([item.firstObject isEqualToString:displayName]) {
+                existing = item;
+                break;
+            }
+        }
+        NSString *identifier = (__bridge NSString *)inputSourceID;
+        if (existing) {
+            if (savedIdentifier && ![existing.secondObject isEqualToString:savedIdentifier] &&
+                [identifier isEqualToString:savedIdentifier]) {
+                existing.secondObject = identifier;
+            }
+            continue;
+        }
+        [items addObject:[iTermTuple tupleWithObject:displayName andObject:identifier]];
     }
     CFRelease(inputSources);
 
@@ -389,18 +410,18 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
         }];
         NSString *joinedNames = [names componentsJoinedWithOxfordComma];
         NSString *namesSentence = nil;
-        NSArray *actions = @[ @"OK", @"Cancel"];
+        NSArray *actions = @[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
 
         iTermWarningSelection cancel = kiTermWarningSelection1;
         iTermWarningSelection edit = kItermWarningSelectionError;
 
         if (profileHotKeys.count == 1) {
-            namesSentence = [NSString stringWithFormat:@"You already have a Profile with a Hotkey Window named %@", joinedNames];
-            actions = @[ @"OK", @"Configure Existing Profile", @"Cancel"];
+            namesSentence = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"You already have a Profile with a Hotkey Window named %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), joinedNames];
+            actions = @[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), NSLocalizedStringFromTableInBundle(@"Configure Existing Profile", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             edit = kiTermWarningSelection1;
             cancel = kiTermWarningSelection2;
         } else {
-            namesSentence = [NSString stringWithFormat:@"You already have Profiles with Hotkey Windows named %@", joinedNames];
+            namesSentence = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"You already have Profiles with Hotkey Windows named %@", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), joinedNames];
         }
         namesSentence = [namesSentence stringByInsertingTerminalPunctuation:@"."];
 
@@ -409,7 +430,7 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
                                                                    accessory:nil
                                                                   identifier:@"NoSyncSuppressAddAnotherHotkeyProfileWarning"
                                                                  silenceable:kiTermWarningTypePersistent
-                                                                     heading:@"Add Another Hotkey Window Profile?"
+                                                                     heading:NSLocalizedStringFromTableInBundle(@"Add Another Hotkey Window Profile?", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                                                       window:self.view.window];
         if (selection == cancel) {
             return;
@@ -419,7 +440,7 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
     }
     iTermHotkeyPreferencesModel *model = [[iTermHotkeyPreferencesModel alloc] init];
     _hotkeyPanel = [[iTermHotkeyPreferencesWindowController alloc] init];
-    [_hotkeyPanel setExplanation:@"This panel helps you configure a new profile that will be bound to a keystroke you assign. Pressing the hotkey (even when iTerm2 is not active) will toggle a special window."];
+    [_hotkeyPanel setExplanation:NSLocalizedStringFromTableInBundle(@"This panel helps you configure a new profile that will be bound to a keystroke you assign. Pressing the hotkey (even when iTerm2 is not active) will toggle a special window.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
     _hotkeyPanel.descriptorsInUseByOtherProfiles = [[iTermHotKeyController sharedInstance] descriptorsForProfileHotKeysExcept:nil];
     _hotkeyPanel.model = model;
 
@@ -475,11 +496,10 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
                                                                 object:nil
                                                               userInfo:nil];
             NSAlert *alert = [[NSAlert alloc] init];
-            alert.messageText = @"Hotkey Window Successfully Configured";
-            alert.informativeText = [NSString stringWithFormat:@"A new profile called “%@” was created for you. It is tuned to work well "
-                                     @"for the Hotkey Window feature and it can be customized in the Profiles tab.",
+            alert.messageText = NSLocalizedStringFromTableInBundle(@"Hotkey Window Successfully Configured", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
+            alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"A new profile called “%@” was created for you. It is tuned to work well for the Hotkey Window feature and it can be customized in the Profiles tab.", @"Settings", [NSBundle bundleForClass:[self class]], @"Keys: hotkey window profile created info"),
                                      newProfileName];
-            [alert addButtonWithTitle:@"OK"];
+            [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
             [alert runModal];
         }
     }];
@@ -626,8 +646,8 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
 
 - (IBAction)emulateUsKeyboardHelp:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Emulate US Keyboard";
-    alert.informativeText = @"Some keyboard layouts (such as AZERTY) require a modifier to press a number key. This causes problems for switching to a window, tab, or split pane by pressing modifier+number: you might need other modifiers or conflicting modifiers. When “Emulate US Keyboard” is enabled, you can press the configured modifier plus the key on the top row that corresponds to a number key on a US keyboard. For example, on AZERTY, the & key would act as the 1 key.";
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Emulate US Keyboard", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string");
+    alert.informativeText = NSLocalizedStringFromTableInBundle(@"Some keyboard layouts (such as AZERTY) require a modifier to press a number key. This causes problems for switching to a window, tab, or split pane by pressing modifier+number: you might need other modifiers or conflicting modifiers. When “Emulate US Keyboard” is enabled, you can press the configured modifier plus the key on the top row that corresponds to a number key on a US keyboard. For example, on AZERTY, the & key would act as the 1 key.", @"Settings", [NSBundle bundleForClass:[self class]], @"Keys: AZERTY layout help");
     [alert runModal];
 }
 
@@ -639,7 +659,7 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
     [_popoverVC view];
     _popoverVC.textView.font = [NSFont systemFontOfSize:[NSFont systemFontSize]];
     _popoverVC.textView.drawsBackground = NO;
-    [_popoverVC appendString:@"The leader behaves like a modifier key, such as Command or Option, but is a separate keystroke. It can be used in key bindings. For example, if you set the leader to ⌘b then you could bind an action to the two-keystroke sequence “⌘b x”. ⌘b is the recommended leader and that keystroke will not be used for other purposes in the future."];
+    [_popoverVC appendString:NSLocalizedStringFromTableInBundle(@"The leader behaves like a modifier key, such as Command or Option, but is a separate keystroke. It can be used in key bindings. For example, if you set the leader to ⌘b then you could bind an action to the two-keystroke sequence “⌘b x”. ⌘b is the recommended leader and that keystroke will not be used for other purposes in the future.", @"Settings", [NSBundle bundleForClass:[self class]], @"Keys: leader key help")];
     NSRect frame = _popoverVC.view.frame;
     frame.size.width = 300;
     frame.size.height = 108;
@@ -701,9 +721,8 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
 }
 
 - (BOOL)warnAboutPossibleOverride {
-    switch ([iTermWarning showWarningWithTitle:@"The global keyboard shortcut you have set is overridden by at least one profile. "
-                                               @"Check your profiles’ keyboard settings if it doesn't work as expected."
-                                       actions:@[ @"OK", @"Cancel" ]
+    switch ([iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"The global keyboard shortcut you have set is overridden by at least one profile. Check your profiles’ keyboard settings if it doesn't work as expected.", @"Settings", [NSBundle bundleForClass:[self class]], @"Keys: global shortcut overridden warning")
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                                     identifier:@"NeverWarnAboutPossibleOverrides"
                                    silenceable:kiTermWarningTypePermanentlySilenceable
                                         window:self.view.window]) {
@@ -796,8 +815,8 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
     if ([[iTermTouchbarMappings globalTouchBarMap] count] != 1) {
         return;
     }
-    [[iTermNotificationController sharedInstance] notify:@"Touch Bar Item Added"
-                                         withDescription:@"Select View > Customize Touch Bar to enable your new touch bar item."];
+    [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Touch Bar Item Added", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
+                                         withDescription:NSLocalizedStringFromTableInBundle(@"Select View > Customize Touch Bar to enable your new touch bar item.", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")];
     [iTermUserDefaults setHaveExplainedHowToAddTouchbarControls:YES];
 }
 
@@ -850,12 +869,12 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
 
 - (NSNumber *)removeBeforeLoading:(NSString *)thing {
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Remove all key mappings before loading %@?", thing]
-                               actions:@[ @"Keep", @"Remove", @"Cancel" ]
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Remove all key mappings before loading %@?", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), thing]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"Keep", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), NSLocalizedStringFromTableInBundle(@"Remove", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string"), NSLocalizedStringFromTableInBundle(@"Cancel", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string") ]
                              accessory:nil
                             identifier:@"RemoveExistingGlobalKeyMappingsBeforeLoading"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Load Preset"
+                               heading:NSLocalizedStringFromTableInBundle(@"Load Preset", @"Settings", [NSBundle bundleForClass:[self class]], @"user-visible string")
                                 window:self.view.window];
     switch (selection) {
         case kiTermWarningSelection0:

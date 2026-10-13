@@ -305,7 +305,7 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
         NSMenu *menu = _settingsButton.menu;
         NSInteger index = [menu indexOfItemWithTarget:self andAction:@selector(useBitwarden:)];
         if (index != -1) {
-            NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"Test Adapter (Dev)"
+            NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Test Adapter (Dev)", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"测试适配器菜单项")
                                                           action:@selector(useTestAdapter:)
                                                    keyEquivalent:@""];
             item.tag = 1;
@@ -359,13 +359,13 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
 
     if (_sendUserByDefault && _didSendUserName == nil) {
         _secondaryButton.hidden = YES;
-        _defaultButton.title = @"Enter User Name";
+        _defaultButton.title = NSLocalizedStringFromTableInBundle(@"Enter User Name", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: enter user name button");
     } else {
         _secondaryButton.hidden = NO;
         if (_didSendUserName) {
-            _defaultButton.title = @"Enter Username & Password";
+            _defaultButton.title = NSLocalizedStringFromTableInBundle(@"Enter Username & Password", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: enter username and password button");
         } else {
-            _defaultButton.title = @"Enter Password";
+            _defaultButton.title = NSLocalizedStringFromTableInBundle(@"Enter Password", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: enter password button");
         }
     }
 
@@ -623,12 +623,12 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
 }
 
 - (IBAction)resetIntegrationConfiguration:(id)sender {
-    const iTermWarningSelection selection = [iTermWarning showWarningWithTitle:@"This will erase iTerm2’s configuration settings for this password manager. The actual passwords will remain unaffected. You’ll have to go through some setup steps to use it again. This action cannot be undone."
-                                                                       actions:@[ @"OK", @"Cancel" ]
+    const iTermWarningSelection selection = [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"This will erase iTerm2’s configuration settings for this password manager. The actual passwords will remain unaffected. You’ll have to go through some setup steps to use it again. This action cannot be undone.", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: reset integration warning")
+                                                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: OK button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: cancel button") ]
                                                                      accessory:nil
                                                                     identifier:nil
                                                                    silenceable:kiTermWarningTypePersistent
-                                                                       heading:@"Are you sure?"
+                                                                       heading:NSLocalizedStringFromTableInBundle(@"Are you sure?", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: reset integration heading")
                                                                         window:self.window];
     if (selection == kiTermWarningSelection0) {
         [self.currentDataSource resetConfiguration];
@@ -716,24 +716,24 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
                                                   backing:NSBackingStoreBuffered
                                                     defer:YES];
     panel.releasedWhenClosed = NO;
-    panel.title = @"New Account";
+    panel.title = NSLocalizedStringFromTableInBundle(@"New Account", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: new account panel title");
     NSView *content = panel.contentView;
 
-    _newAccountLabel = iTermPWMakeRightLabel(@"Account:", NSMakeRect(34, 165, 58, 16));
+    _newAccountLabel = iTermPWMakeRightLabel(NSLocalizedStringFromTableInBundle(@"Account:", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: account label"), NSMakeRect(34, 165, 58, 16));
     [content addSubview:_newAccountLabel];
 
     _newAccount = iTermPWConfigureField([[NSTextField alloc] init], NSMakeRect(98, 162, 216, 21));
-    _newAccount.placeholderString = @"Required";
+    _newAccount.placeholderString = NSLocalizedStringFromTableInBundle(@"Required", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: required placeholder");
     _newAccount.delegate = self;
     [content addSubview:_newAccount];
 
-    _newUserNameLabel = iTermPWMakeRightLabel(@"User name:", NSMakeRect(18, 138, 74, 16));
+    _newUserNameLabel = iTermPWMakeRightLabel(NSLocalizedStringFromTableInBundle(@"User name:", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: user name label"), NSMakeRect(18, 138, 74, 16));
     [content addSubview:_newUserNameLabel];
 
     _newUserName = iTermPWConfigureField([[NSTextField alloc] init], NSMakeRect(98, 135, 216, 21));
     [content addSubview:_newUserName];
 
-    _newPasswordLabel = iTermPWMakeRightLabel(@"Password:", NSMakeRect(18, 111, 74, 16));
+    _newPasswordLabel = iTermPWMakeRightLabel(NSLocalizedStringFromTableInBundle(@"Password:", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: password label"), NSMakeRect(18, 111, 74, 16));
     [content addSubview:_newPasswordLabel];
 
     _newAccountPassword = (NSSecureTextField *)iTermPWConfigureField([[NSSecureTextField alloc] init], NSMakeRect(98, 108, 183, 21));
@@ -755,10 +755,10 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
     _generatePasswordButton.bezelStyle = NSBezelStyleRounded;
     [_generatePasswordButton setButtonType:NSButtonTypeMomentaryPushIn];
     _generatePasswordButton.image = [NSImage it_imageForSymbolName:SFSymbolGetString(SFSymbolDice)
-                                             accessibilityDescription:@"Generate password"];
+                                             accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Generate password", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: generate password accessibility")];
     _generatePasswordButton.imagePosition = NSImageOnly;
     _generatePasswordButton.imageScaling = NSImageScaleProportionallyDown;
-    _generatePasswordButton.toolTip = @"Generate a random password. Hold Option to use only alphanumerics.";
+    _generatePasswordButton.toolTip = NSLocalizedStringFromTableInBundle(@"Generate a random password. Hold Option to use only alphanumerics.", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: generate password tooltip");
     _generatePasswordButton.target = self;
     _generatePasswordButton.action = @selector(generatePassword:);
     _generatePasswordButton.autoresizingMask = NSViewNotSizable;
@@ -766,7 +766,7 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
 
     _addAccountToggleCheckbox = [[NSButton alloc] initWithFrame:NSMakeRect(96, 78, 220, 18)];
     [_addAccountToggleCheckbox setButtonType:NSButtonTypeSwitch];
-    _addAccountToggleCheckbox.title = @"Toggle";
+    _addAccountToggleCheckbox.title = NSLocalizedStringFromTableInBundle(@"Toggle", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: toggle checkbox");
     _addAccountToggleCheckbox.autoresizingMask = NSViewNotSizable;
     [content addSubview:_addAccountToggleCheckbox];
 
@@ -779,10 +779,10 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
     _addAccountToggleLabel.autoresizingMask = NSViewNotSizable;
     [content addSubview:_addAccountToggleLabel];
 
-    _newAccountOkButton = iTermPWMakePushButton(@"OK", NSMakeRect(257, 13, 53, 32), @"\r", self, @selector(reallyAdd:));
+    _newAccountOkButton = iTermPWMakePushButton(NSLocalizedStringFromTableInBundle(@"OK", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: OK button"), NSMakeRect(257, 13, 53, 32), @"\r", self, @selector(reallyAdd:));
     [content addSubview:_newAccountOkButton];
 
-    NSButton *cancelButton = iTermPWMakePushButton(@"Cancel", NSMakeRect(169, 13, 76, 32), @"\033", self, @selector(cancelNewAccount:));
+    NSButton *cancelButton = iTermPWMakePushButton(NSLocalizedStringFromTableInBundle(@"Cancel", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: cancel button"), NSMakeRect(169, 13, 76, 32), @"\033", self, @selector(cancelNewAccount:));
     [content addSubview:cancelButton];
 
     panel.initialFirstResponder = _newAccount;
@@ -797,7 +797,7 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
     [self ensureNewAccountPanel];
     _editingAccount = nil;
     _editingPasswordAtOpen = nil;
-    _newAccountPanel.title = @"New Account";
+    _newAccountPanel.title = NSLocalizedStringFromTableInBundle(@"New Account", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: new account panel title");
     _newAccount.stringValue = self.defaultAccountName ?: @"";
     // Add never prefetches a password; make sure the field is visible and the spinner is off in
     // case the panel was last used for an Edit.
@@ -809,7 +809,7 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
     if (self.currentDataSource.autogeneratedPasswordsOnly) {
         _newAccountPassword.enabled = NO;
         _newAccountPassword.stringValue = @"";
-        _newAccountPassword.placeholderString = @"Autogenerated";
+        _newAccountPassword.placeholderString = NSLocalizedStringFromTableInBundle(@"Autogenerated", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: autogenerated placeholder");
         // The source generates the password itself; disable Generate so a user-chosen random
         // value is not injected into the disabled field (mirrors the Edit path's guard).
         _generatePasswordButton.enabled = NO;
@@ -970,7 +970,7 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
         DLog(@"New account password is required but empty");
         // Point the user at the empty password field (this source no longer auto-generates), so
         // the shake is not unexplained; the dice button is right there to generate one.
-        _newAccountPassword.placeholderString = @"Enter or generate a password";
+        _newAccountPassword.placeholderString = NSLocalizedStringFromTableInBundle(@"Enter or generate a password", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: enter or generate password placeholder");
         [_newAccountPanel makeFirstResponder:_newAccountPassword];
         [_newAccountPanel it_shakeNo];
         return;
@@ -1016,10 +1016,10 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
         return;
     }
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Could Not Save Changes";
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Could Not Save Changes", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: could not save title");
     alert.informativeText = error.localizedDescription.length > 0 ? error.localizedDescription
-                                                                  : @"The password manager reported an error.";
-    [alert addButtonWithTitle:@"OK"];
+                                                                  : NSLocalizedStringFromTableInBundle(@"The password manager reported an error.", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: password manager error informative");
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: OK button")];
     [alert runSheetModalForWindow:self.window];
 }
 
@@ -1080,9 +1080,9 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
 
 - (BOOL)shouldRemoveSelection {
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Are you sure you want to delete this password?";
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Cancel"];
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Are you sure you want to delete this password?", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: delete password title");
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: OK button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: cancel button")];
     return [alert runSheetModalForWindow:self.window] == NSAlertFirstButtonReturn;
 }
 
@@ -1111,7 +1111,7 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
     _passwordSpinner.hidden = YES;
     if (!self.currentDataSource.canEditPassword) {
         _newAccountPassword.enabled = NO;
-        _newAccountPassword.placeholderString = @"Cannot change password here";
+        _newAccountPassword.placeholderString = NSLocalizedStringFromTableInBundle(@"Cannot change password here", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: cannot change password placeholder");
         // Generate writes into the same secure field; disable it too, otherwise the user
         // could inject a password into a data source that just declared it cannot set one.
         _generatePasswordButton.enabled = NO;
@@ -1123,7 +1123,7 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
         [self prefillPasswordForEntry:entry];
     }
     [self updateNewAccountOkButtonEnabled];
-    _newAccountPanel.title = @"Edit Account";
+    _newAccountPanel.title = NSLocalizedStringFromTableInBundle(@"Edit Account", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: edit account panel title");
     [self configureFirstAddAccountToggle];
     NSWindow *panel = _newAccountPanel;
     [self.window beginSheet:panel completionHandler:^(NSModalResponse response) {
@@ -1356,9 +1356,9 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
     }
 
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = [NSString stringWithFormat:@"%@ Settings", [self currentDataSource].name];
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Cancel"];
+    alert.messageText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ Settings", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: settings alert title"), [self currentDataSource].name];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: OK button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Cancel", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: cancel button")];
 
     const CGFloat width = 560;
     const CGFloat rowHeight = 22;
@@ -1444,7 +1444,7 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
             NSButton *reveal = [[NSButton alloc] initWithFrame:NSMakeRect(labelWidth + 8 + fieldWidth + 4, y, eyeButtonWidth, rowHeight)];
             reveal.bezelStyle = NSBezelStyleRegularSquare;
             reveal.bordered = YES;
-            reveal.image = [NSImage imageWithSystemSymbolName:@"eye" accessibilityDescription:@"Show"];
+            reveal.image = [NSImage imageWithSystemSymbolName:@"eye" accessibilityDescription:NSLocalizedStringFromTableInBundle(@"Show", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: show accessibility")];
             reveal.imagePosition = NSImageOnly;
             reveal.buttonType = NSButtonTypeMomentaryPushIn;
             reveal.target = helper;
@@ -1505,14 +1505,14 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
             [weakSelf ifCancelCountUnchanged:cancelCount perform:^{
                 [weakSelf decrBusy];
                 if (error) {
-                    NSMutableString *info = [NSMutableString stringWithString:error.localizedDescription ?: @"An error occurred."];
+                    NSMutableString *info = [NSMutableString stringWithString:error.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"An error occurred.", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: error occurred fallback")];
                     if (message.length > 0) {
                         [info appendFormat:@"\n\n%@", message];
                     }
                     NSAlert *alert = [[NSAlert alloc] init];
-                    alert.messageText = @"Command Failed";
+                    alert.messageText = NSLocalizedStringFromTableInBundle(@"Command Failed", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: command failed title");
                     alert.informativeText = info;
-                    [alert addButtonWithTitle:@"OK"];
+                    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: OK button")];
                     [alert runModal];
                 } else {
                     [weakSelf reloadItems:nil];
@@ -1520,7 +1520,7 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
                         NSAlert *alert = [[NSAlert alloc] init];
                         alert.messageText = commandName;
                         alert.informativeText = message;
-                        [alert addButtonWithTitle:@"OK"];
+                        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: OK button")];
                         [alert runModal];
                     }
                 }
@@ -1606,10 +1606,10 @@ static NSArray<NSString *> *gTerminalCachedCombinedAccountNames;
         return;
     }
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = [NSString stringWithFormat:@"Password for %@", accountName];
+    alert.messageText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Password for %@", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: password for account title"), accountName];
     alert.informativeText = password;
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Copy"];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: OK button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Copy", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: copy button")];
 
     __weak __typeof(self) weakSelf = self;
     [self runModal:alert completion:^(NSModalResponse response) {
@@ -1689,7 +1689,7 @@ static NSInteger const kDynamicMenuItemTag = 9999;
     BOOL addedAny = NO;
 
     if (adapter.hasSettingsFields) {
-        NSMenuItem *settingsItem = [[NSMenuItem alloc] initWithTitle:@"Settings\u2026"
+        NSMenuItem *settingsItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Settings…", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: settings menu item")
                                                               action:@selector(adapterSettings:)
                                                        keyEquivalent:@""];
         settingsItem.target = self;
@@ -1771,9 +1771,9 @@ static NSInteger const kDynamicMenuItemTag = 9999;
     else if (menuItem.action == @selector(resetIntegrationConfiguration:)) {
         const BOOL allowed = [[self currentDataSource] canResetConfiguration];
         if (allowed) {
-            menuItem.title = [NSString stringWithFormat:@"Reset %@ Configuration", [[self currentDataSource] name]];
+            menuItem.title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Reset %@ Configuration", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: reset config menu item"), [[self currentDataSource] name]];
         } else {
-            menuItem.title = @"Reset Integration Configuration";
+            menuItem.title = NSLocalizedStringFromTableInBundle(@"Reset Integration Configuration", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: reset integration config menu item");
         }
         return allowed;
     } else if (menuItem.action == @selector(copyPassword:) ||
@@ -1931,9 +1931,9 @@ static NSInteger const kDynamicMenuItemTag = 9999;
                 RLog(@"passwordForRow: return nil, keychain gave error %@", error);
 
                 NSAlert *alert = [[NSAlert alloc] init];
-                alert.messageText = [NSString stringWithFormat:@"Could not get password. Keychain query failed: %@",
+                alert.messageText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not get password. Keychain query failed: %@", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: keychain error title"),
                                      error.localizedDescription];
-                [alert addButtonWithTitle:@"OK"];
+                [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: OK button")];
                 [self runModal:alert completion:^(NSModalResponse response) { }];
                 completion(nil, nil);
             } else {
@@ -2202,7 +2202,7 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
                 [weakSelf decrBusy]; // (1)
                 [weakSelf presentEditError:[NSError errorWithDomain:@"PasswordManager"
                                                                code:-1
-                                                           userInfo:@{NSLocalizedDescriptionKey: @"Could not read the current password, so the account was not renamed. Renaming this account recreates it, which would lose the password."}]];
+                                                           userInfo:@{NSLocalizedDescriptionKey: NSLocalizedStringFromTableInBundle(@"Could not read the current password, so the account was not renamed. Renaming this account recreates it, which would lose the password.", @"PasswordManager", [NSBundle bundleForClass:[self class]], @"PasswordManager: rename error description")}]];
                 return;
             }
             // Use the typed password when the Edit panel provided one; otherwise keep the

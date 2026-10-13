@@ -1,0 +1,13 @@
+/* VT100Screen.strings - zh-Hant-TW */
+"Archive Restored" = "封存已恢復";
+"Session Contents Restored on %@" = "工作階段內容已於 %@ 恢復";
+"ssh exited" = "ssh 已退出";
+"%@ ssh sessions ended." = "%@ 個 ssh 工作階段已結束。";
+"%@ — now at %@." = "%@ — 現位於 %@。";
+"%@." = "%@。";
+"%@ trigger" = "%@ 觸發器";
+"Out-of-date version of it2ssh detected. Please upgrade it2ssh." = "偵測到過時版本的 it2ssh。請升級 it2ssh。";
+"Future version of it2ssh detected. Please upgrade iTerm2." = "偵測到未來版本的 it2ssh。請升級 iTerm2。";
+"Recovering ssh connection…" = "正在恢復 ssh 連線…";
+"ssh connection recovered!" = "ssh 連線已恢復！";
+"   Started %@" = "   已啟動 %@";

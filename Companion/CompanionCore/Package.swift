@@ -18,6 +18,7 @@ import PackageDescription
 //                       MessageTransport), built on CNoise + CompanionProtocol.
 let package = Package(
     name: "CompanionCore",
+    defaultLocalization: "en",
     platforms: [
         .macOS(.v13),
         .iOS(.v16)
@@ -73,7 +74,10 @@ let package = Package(
         ),
         .target(
             name: "CompanionProtocol",
-            path: "Sources/CompanionProtocol"
+            path: "Sources/CompanionProtocol",
+            resources: [
+                .process("Resources")
+            ]
         ),
         .target(
             name: "CompanionNoise",

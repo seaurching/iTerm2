@@ -475,22 +475,22 @@ extension TextViewPorthole: NSTextViewDelegate {
             return false
         }
         if url.scheme == "file" {
-            if iTermWarning.show(withTitle: "Open file at \(url.path)?",
-                                 actions: ["OK", "Cancel"],
+            if iTermWarning.show(withTitle: String(format: NSLocalizedString("Open file at %@?", tableName: "Portholes", comment: "Portholes: open file confirmation"), url.path),
+                                 actions: [NSLocalizedString("OK", tableName: "Portholes", comment: "Portholes: open file OK button"), NSLocalizedString("Cancel", tableName: "Portholes", comment: "Portholes: open file cancel button")],
                                  accessory: nil,
                                  identifier: "NoSyncOpenFileFromMarkdownLink",
                                  silenceable: .kiTermWarningTypePermanentlySilenceable,
-                                 heading: "Confirm",
+                                 heading: NSLocalizedString("Confirm", tableName: "Portholes", comment: "Portholes: open file confirm heading"),
                                  window: textView.window) == .kiTermWarningSelection0 {
                 NSWorkspace.shared.open(url)
             }
         } else {
-            if iTermWarning.show(withTitle: "Open URL \(url.absoluteString)?",
-                                 actions: ["OK", "Cancel"],
+            if iTermWarning.show(withTitle: String(format: NSLocalizedString("Open URL %@?", tableName: "Portholes", comment: "Portholes: open URL confirmation"), url.absoluteString),
+                                 actions: [NSLocalizedString("OK", tableName: "Portholes", comment: "Portholes: open URL OK button"), NSLocalizedString("Cancel", tableName: "Portholes", comment: "Portholes: open URL cancel button")],
                                  accessory: nil,
                                  identifier: "NoSyncOpenURLFromMarkdownLink",
                                  silenceable: .kiTermWarningTypePermanentlySilenceable,
-                                 heading: "Confirm",
+                                 heading: NSLocalizedString("Confirm", tableName: "Portholes", comment: "Portholes: open file confirm heading"),
                                  window: textView.window) == .kiTermWarningSelection0 {
                 NSWorkspace.shared.open(url)
             }

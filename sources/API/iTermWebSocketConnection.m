@@ -74,11 +74,11 @@ typedef NS_ENUM(NSUInteger, iTermWebSocketConnectionState) {
                                       connection:(iTermHTTPConnection *)connection
                                           reason:(out NSString *__autoreleasing *)reason {
     if (![request.HTTPMethod isEqualToString:@"GET"]) {
-        *reason = [NSString stringWithFormat:@"HTTP method %@ not accepted (must be GET)", request.HTTPMethod];
+        *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"HTTP method %@ not accepted (must be GET)", @"APIFiles", [NSBundle bundleForClass:[self class]], @"HTTP 方法 %@ 不被接受（必须为 GET）"), request.HTTPMethod];
         return nil;
     }
     if (request.URL.path.length == 0) {
-        *reason = @"Request had an empty path in the HTTP request";
+        *reason = NSLocalizedStringFromTableInBundle(@"Request had an empty path in the HTTP request", @"APIFiles", [NSBundle bundleForClass:[self class]], "请求中的 HTTP 请求路径为空");
         return nil;
     }
     NSDictionary<NSString *, NSString *> *headers = request.allHTTPHeaderFields;
@@ -89,7 +89,7 @@ typedef NS_ENUM(NSUInteger, iTermWebSocketConnectionState) {
          };
     for (NSString *key in requiredValues) {
         if ([headers[key] caseInsensitiveCompare:requiredValues[key]] != NSOrderedSame) {
-            *reason = [NSString stringWithFormat:@"Header %@ has value <%@> but I require <%@>", key, headers[key], requiredValues[key]];
+            *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Header %@ has value <%@> but I require <%@>", @"APIFiles", [NSBundle bundleForClass:[self class]], @"头部 %@ 的值为 <%@>，但需要 <%@>"), key, headers[key], requiredValues[key]];
             return nil;
         }
     }
@@ -101,14 +101,14 @@ typedef NS_ENUM(NSUInteger, iTermWebSocketConnectionState) {
            @"origin" ];
     for (NSString *key in requiredKeys) {
         if ([headers[key] length] == 0) {
-            *reason = [NSString stringWithFormat:@"Empty or missing value for required header %@", key];
+            *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Empty or missing value for required header %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"必需头部 %@ 的值为空或缺失"), key];
             return nil;
         }
     }
 
     NSURL *originURL = [NSURL URLWithString:headers[@"origin"]];
     if (![originURL.host isEqualToString:@"localhost"]) {
-        *reason = [NSString stringWithFormat:@"Origin's host is not localhost: is %@ (string value is %@)", originURL.host, headers[@"origin"]];
+        *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Origin's host is not localhost: is %@ (string value is %@)", @"APIFiles", [NSBundle bundleForClass:[self class]], @"来源主机不是 localhost"), originURL.host, headers[@"origin"]];
         return nil;
     }
 
@@ -119,7 +119,7 @@ typedef NS_ENUM(NSUInteger, iTermWebSocketConnectionState) {
     }
     NSArray<NSString *> *loopbackNames = @[ @"localhost", @"127.0.0.1", @"[::1]" ];
     if (![loopbackNames containsObject:host]) {
-        *reason = [NSString stringWithFormat:@"Host header is %@, but must be localhost, 127.0.01, or [::1].", host];
+        *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Host header is %@, but must be localhost, 127.0.01, or [::1].", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Host 头部必须为 localhost、127.0.0.1 或 [::1]"), host];
         return nil;
     }
 
@@ -158,8 +158,13 @@ typedef NS_ENUM(NSUInteger, iTermWebSocketConnectionState) {
         NSDecimalNumber *version = [NSDecimalNumber decimalNumberWithString:parts[1]];
         NSComparisonResult result = [min compare:version];
         if (result == NSOrderedDescending) {
-            *reason = [NSString stringWithFormat:@"%@. %@ library version reported as %@. Minimum supported by this version of iTerm2 is %@",
-                       iTermWebSocketConnectionLibraryVersionTooOldString, name, version, min];
+            *reason = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@. %@ library version reported as %@. Minimum supported by this version of iTerm2 is %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"库版本太旧。库名报告版本，此版本 iTerm2 支持的最低版本"),
+                       NSLocalizedStringFromTableInBundle(
+                                                          iTermWebSocketConnectionLibraryVersionTooOldString,
+                                                          @"APIFiles",
+                                                          [NSBundle bundleForClass:[self class]],
+                                                          @"库版本太旧"),
+                       name, version, min];
             return nil;
         }
     }
@@ -543,7 +548,7 @@ typedef NS_ENUM(NSUInteger, iTermWebSocketConnectionState) {
         DLog(@"Send headers %@", headers);
         dispatch_async(_connection.queue, ^{
             BOOL result = [self->_connection sendResponseWithCode:101
-                                                           reason:@"Switching Protocols"
+                                                           reason:NSLocalizedStringFromTableInBundle(@"Switching Protocols", @"APIFiles", [NSBundle bundleForClass:[self class]], "切换协议")
                                                           headers:headers];
             dispatch_async(self->_queue, ^{
                 completion(result);

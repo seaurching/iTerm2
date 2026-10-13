@@ -1,0 +1,45 @@
+/* Notification title: cannot switch apps due to secure keyboard entry */
+"Can’t Switch Apps" = "Can’t Switch Apps";
+
+/* Notification description: cannot switch back to app due to secure keyboard entry */
+"Can’t switch back to %@ because another app has enabled secure keyboard entry." = "Can’t switch back to %@ because another app has enabled secure keyboard entry.";
+
+/* Notification title: hotkeys unavailable */
+"Hotkeys Unavailable" = "Hotkeys Unavailable";
+
+/* Notification description: hotkeys unavailable due to secure keyboard input */
+"Another app has enabled secure keyboard input. That prevents hotkey windows from being shown." = "Another app has enabled secure keyboard input. That prevents hotkey windows from being shown.";
+
+/* Fallback name for a profile with no name */
+"Unnamed Profile" = "Unnamed Profile";
+
+/* Alert message: dynamic profiles are children of hotkey profile */
+"You have dynamic profiles whose “Dynamic Profile Parent Name” is set to your hotkey window's profile, “%@.” Because multiple hotkey windows are now supported, the hotkey will now toggle a separate window for each of these profiles. Please update your dynamic profiles appropriately. The affected profiles are:\\n%@" = "You have dynamic profiles whose “Dynamic Profile Parent Name” is set to your hotkey window's profile, “%@.” Because multiple hotkey windows are now supported, the hotkey will now toggle a separate window for each of these profiles. Please update your dynamic profiles appropriately. The affected profiles are:\\n%@";
+
+/* Alert button: OK */
+"OK" = "OK";
+
+/* Alert message: hotkey profile is a dynamic profile needing update */
+"Your hotkey window‘s profile is a dynamic profile named “%@.” It needs to be updated for this version of iTerm2 because hotkey settings are now stored in the profile." = "Your hotkey window‘s profile is a dynamic profile named “%@.” It needs to be updated for this version of iTerm2 because hotkey settings are now stored in the profile.";
+
+/* Alert button: update the dynamic profile file */
+"Update File" = "Update File";
+
+/* Alert button: show what to add to the profile */
+"Show Me What to Add" = "Show Me What to Add";
+
+/* Alert button: remove hotkey from profile */
+"Remove Hotkey" = "Remove Hotkey";
+
+/* Alert heading: problem updating hotkey window */
+"Problem Updating Hotkey Window" = "Problem Updating Hotkey Window";
+
+/* Alert title: changes to make for hotkey migration */
+"Changes to Make" = "Changes to Make";
+
+/* Alert informative text: settings to add to a dynamic profile */
+"Add these settings to the profile named “%@” in “%@”:\\n%@" = "Add these settings to the profile named “%@” in “%@”:\\n%@";
+
+/* Alert button: copy migration instructions to pasteboard */
+"Copy to Pasteboard" = "Copy to Pasteboard";
+

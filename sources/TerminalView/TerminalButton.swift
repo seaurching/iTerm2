@@ -465,7 +465,7 @@ class TerminalRevealChannelButton: TerminalButton {
                    backgroundImage: bg,
                    foregroundImage: fg,
                    mark: place.mark,
-                   tooltip: "Reveal embedded command")
+                   tooltip: NSLocalizedString("Reveal embedded command", tableName: "TerminalView", comment: "terminal button: reveal embedded command tooltip"))
     }
 
     required init?(_ original: TerminalButton) {
@@ -502,7 +502,7 @@ class TerminalFoldBlockButton: GenericBlockButton {
                    absY: absY,
                    fgName: symbolName,
                    bgName: symbolName,
-                   tooltip: currentlyFolded ? "Unfold block" : "Fold block")
+                   tooltip: currentlyFolded ? NSLocalizedString("Unfold block", tableName: "TerminalView", comment: "terminal button: unfold block tooltip") : NSLocalizedString("Fold block", tableName: "TerminalView", comment: "terminal button: fold block tooltip"))
     }
 
     required init?(_ original: TerminalButton) {
@@ -555,7 +555,7 @@ class TerminalCopyCommandButton: TerminalMarkButton {
 
     @objc(initWithMark:dx:)
     init?(mark: VT100ScreenMarkReading, dx: Int32) {
-        super.init(identifier: -2, mark: mark, fgName: SFSymbol.docOnDoc.rawValue, bgName: SFSymbol.docOnDocFill.rawValue, dx: dx, tooltip: "Copy command to clipboard")
+        super.init(identifier: -2, mark: mark, fgName: SFSymbol.docOnDoc.rawValue, bgName: SFSymbol.docOnDocFill.rawValue, dx: dx, tooltip: NSLocalizedString("Copy command to clipboard", tableName: "TerminalView", comment: "terminal button: copy command tooltip"))
     }
 
     required init?(_ original: TerminalButton) {
@@ -571,7 +571,7 @@ class TerminalBookmarkButton: TerminalMarkButton {
     }
     @objc(initWithMark:dx:)
     init?(mark: VT100ScreenMarkReading, dx: Int32) {
-        super.init(identifier: -3, mark: mark, fgName: SFSymbol.bookmark.rawValue, bgName: SFSymbol.bookmarkFill.rawValue, dx: dx, tooltip: "Toggle named mark")
+        super.init(identifier: -3, mark: mark, fgName: SFSymbol.bookmark.rawValue, bgName: SFSymbol.bookmarkFill.rawValue, dx: dx, tooltip: NSLocalizedString("Toggle named mark", tableName: "TerminalView", comment: "terminal button: toggle named mark tooltip"))
     }
     required init?(_ original: TerminalButton) {
         super.init(original)
@@ -582,7 +582,7 @@ class TerminalBookmarkButton: TerminalMarkButton {
 class TerminalShareButton: TerminalMarkButton {
     @objc(initWithMark:dx:)
     init?(mark: VT100ScreenMarkReading, dx: Int32) {
-        super.init(identifier: -4, mark: mark, fgName: SFSymbol.squareAndArrowUp.rawValue, bgName: SFSymbol.squareAndArrowUpFill.rawValue, dx: dx, tooltip: "Share command…")
+        super.init(identifier: -4, mark: mark, fgName: SFSymbol.squareAndArrowUp.rawValue, bgName: SFSymbol.squareAndArrowUpFill.rawValue, dx: dx, tooltip: NSLocalizedString("Share command…", tableName: "TerminalView", comment: "terminal button: share command tooltip"))
     }
     required init?(_ original: TerminalButton) {
         super.init(original)
@@ -593,7 +593,7 @@ class TerminalShareButton: TerminalMarkButton {
 class TerminalCommandInfoButton: TerminalMarkButton {
     @objc(initWithMark:dx:)
     init?(mark: VT100ScreenMarkReading, dx: Int32) {
-        super.init(identifier: -5, mark: mark, fgName: SFSymbol.infoCircle.rawValue, bgName: SFSymbol.infoCircleFill.rawValue, dx: dx, tooltip: "Open Command Info…")
+        super.init(identifier: -5, mark: mark, fgName: SFSymbol.infoCircle.rawValue, bgName: SFSymbol.infoCircleFill.rawValue, dx: dx, tooltip: NSLocalizedString("Open Command Info…", tableName: "TerminalView", comment: "terminal button: open command info tooltip"))
     }
     required init?(_ original: TerminalButton) {
         super.init(original)
@@ -604,7 +604,7 @@ class TerminalCommandInfoButton: TerminalMarkButton {
 class TerminalFoldButton: TerminalMarkButton {
     @objc(initWithMark:dx:)
     init?(mark: VT100ScreenMarkReading, dx: Int32) {
-        super.init(identifier: -6, mark: mark, fgName: SFSymbol.rectangleCompressVertical.rawValue, bgName: SFSymbol.rectangleCompressVertical.rawValue, dx: dx, tooltip: "Fold command")
+        super.init(identifier: -6, mark: mark, fgName: SFSymbol.rectangleCompressVertical.rawValue, bgName: SFSymbol.rectangleCompressVertical.rawValue, dx: dx, tooltip: NSLocalizedString("Fold command", tableName: "TerminalView", comment: "terminal button: fold command tooltip"))
     }
     required init?(_ original: TerminalButton) {
         super.init(original)
@@ -615,7 +615,7 @@ class TerminalFoldButton: TerminalMarkButton {
 class TerminalUnfoldButton: TerminalMarkButton {
     @objc(initWithMark:dx:)
     init?(mark: VT100ScreenMarkReading, dx: Int32) {
-        super.init(identifier: -7, mark: mark, fgName: SFSymbol.rectangleExpandVertical.rawValue, bgName: SFSymbol.rectangleExpandVertical.rawValue, dx: dx, tooltip: "Unfold command")
+        super.init(identifier: -7, mark: mark, fgName: SFSymbol.rectangleExpandVertical.rawValue, bgName: SFSymbol.rectangleExpandVertical.rawValue, dx: dx, tooltip: NSLocalizedString("Unfold command", tableName: "TerminalView", comment: "terminal button: unfold command tooltip"))
     }
     required init?(_ original: TerminalButton) {
         super.init(original)
@@ -626,7 +626,7 @@ class TerminalUnfoldButton: TerminalMarkButton {
 class TerminalSettingsButton: TerminalMarkButton {
     @objc(initWithMark:dx:)
     init?(mark: VT100ScreenMarkReading, dx: Int32) {
-        super.init(identifier: -2, mark: mark, fgName: SFSymbol.switch2.rawValue, bgName: SFSymbol.switch2.rawValue, dx: dx, tooltip: "Command Settings…")
+        super.init(identifier: -2, mark: mark, fgName: SFSymbol.switch2.rawValue, bgName: SFSymbol.switch2.rawValue, dx: dx, tooltip: NSLocalizedString("Command Settings…", tableName: "TerminalView", comment: "terminal button: command settings tooltip"))
     }
 
     required init?(_ original: TerminalButton) {

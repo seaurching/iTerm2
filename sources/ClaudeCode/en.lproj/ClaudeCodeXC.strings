@@ -1,0 +1,395 @@
+/* ClaudeCodeXC.strings — iTerm2 Claude Code integration */
+/* Language: en — auto-generated from NSLocalizedString(tableName:"ClaudeCodeXC") */
+
+/* %@ Continue removing the workgroup and triggers anyway? cc-status will keep r... */
+"%@ Continue removing the workgroup and triggers anyway? cc-status will keep running until you fix the underlying issue and try again." = "%@ Continue removing the workgroup and triggers anyway? cc-status will keep running until you fix the underlying issue and try again.";
+
+/* %@ in %@ */
+"%@ in %@" = "%@ in %@";
+
+/* %@ · %d */
+"%@ · %d" = "%@ · %d";
+
+/* %@: %@ */
+"%@: %@" = "%@: %@";
+
+/* (untitled) */
+"(untitled)" = "(untitled)";
+
+/* Also update %d sessions whose profiles are missing */
+"Also update %d sessions whose profiles are missing" = "Also update %d sessions whose profiles are missing";
+
+/* Also update 1 session whose profile is missing */
+"Also update 1 session whose profile is missing" = "Also update 1 session whose profile is missing";
+
+/* Auto-Enter Workgroup */
+"Auto-Enter Workgroup" = "Auto-Enter Workgroup";
+
+/* Back */
+"Back" = "Back";
+
+/* Before You Start */
+"Before You Start" = "Before You Start";
+
+/* Buried Sessions */
+"Buried Sessions" = "Buried Sessions";
+
+/* Cancel */
+"Cancel" = "Cancel";
+
+/* Cancelling a watch */
+"Cancelling a watch" = "Cancelling a watch";
+
+/* Checking state of %@ */
+"Checking state of %@" = "Checking state of %@";
+
+/* Claude Code Integration Looks Broken */
+"Claude Code Integration Looks Broken" = "Claude Code Integration Looks Broken";
+
+/* Claude Code Integration Setup */
+"Claude Code Integration Setup" = "Claude Code Integration Setup";
+
+/* Close */
+"Close" = "Close";
+
+/* Command to run in this pane. Changes take effect the next time the pane is re... */
+"Command to run in this pane. Changes take effect the next time the pane is restarted." = "Command to run in this pane. Changes take effect the next time the pane is restarted.";
+
+/* Command: */
+"Command:" = "Command:";
+
+/* Continue */
+"Continue" = "Continue";
+
+/* Could not read ~/.claude/settings.json — check the file’s permissions. */
+"Could not read ~/.claude/settings.json — check the file’s permissions." = "Could not read ~/.claude/settings.json — check the file’s permissions.";
+
+/* Could not write to %@: %@ */
+"Could not write to %@: %@" = "Could not write to %@: %@";
+
+/* Could not write to ~/.claude/settings.json — check the file’s permissions. */
+"Could not write to ~/.claude/settings.json — check the file’s permissions." = "Could not write to ~/.claude/settings.json — check the file’s permissions.";
+
+/* Couldn’t Remove Hooks */
+"Couldn’t Remove Hooks" = "Couldn’t Remove Hooks";
+
+/* Disable */
+"Disable" = "Disable";
+
+/* Disable the Python API? */
+"Disable the Python API?" = "Disable the Python API?";
+
+/* Do It */
+"Do It" = "Do It";
+
+/* Don’t panic! All of this can be undone later via iTerm2 > Uninstall Claude Co... */
+"Don’t panic! All of this can be undone later via iTerm2 > Uninstall Claude Code Integration." = "Don’t panic! All of this can be undone later via iTerm2 > Uninstall Claude Code Integration.";
+
+/* Dynamic Profiles Selected */
+"Dynamic Profiles Selected" = "Dynamic Profiles Selected";
+
+/* Enable */
+"Enable" = "Enable";
+
+/* Enable Python API */
+"Enable Python API" = "Enable Python API";
+
+/* Executing `%@` */
+"Executing `%@`" = "Executing `%@`";
+
+/* Failed to install hook */
+"Failed to install hook" = "Failed to install hook";
+
+/* Group sessions by status (Waiting / Working / Idle), within each window. */
+"Group sessions by status (Waiting / Working / Idle), within each window." = "Group sessions by status (Waiting / Working / Idle), within each window.";
+
+/* Group sessions by window, then by tab and split pane. */
+"Group sessions by window, then by tab and split pane." = "Group sessions by window, then by tab and split pane.";
+
+/* Idle */
+"Idle" = "Idle";
+
+/* Includes running sessions that were created from a profile that has since bee... */
+"Includes running sessions that were created from a profile that has since been deleted." = "Includes running sessions that were created from a profile that has since been deleted.";
+
+/* Install */
+"Install" = "Install";
+
+/* Install Auto-Enter Triggers */
+"Install Auto-Enter Triggers" = "Install Auto-Enter Triggers";
+
+/* Install Hook */
+"Install Hook" = "Install Hook";
+
+/* Install Workgroup */
+"Install Workgroup" = "Install Workgroup";
+
+/* Install a Claude Code hook that lets iTerm2 detect Claude’s state (working, w... */
+"Install a Claude Code hook that lets iTerm2 detect Claude’s state (working, waiting, idle) and display it in the Session Status tool.\n\nThis adds a hook to your Claude Code settings that runs automatically as Claude works." = "Install a Claude Code hook that lets iTerm2 detect Claude’s state (working, waiting, idle) and display it in the Session Status tool.\n\nThis adds a hook to your Claude Code settings that runs automatically as Claude works.";
+
+/* Install the Claude Code workgroup, which groups your main Claude session with... */
+"Install the Claude Code workgroup, which groups your main Claude session with two peer sessions: a diff viewer and a code-review session. You can switch between them with one click.\n\nYou can customize this layout later in Settings > Shortcuts > Workgroups." = "Install the Claude Code workgroup, which groups your main Claude session with two peer sessions: a diff viewer and a code-review session. You can switch between them with one click.\n\nYou can customize this layout later in Settings > Shortcuts > Workgroups.";
+
+/* Interrupting %@ */
+"Interrupting %@" = "Interrupting %@";
+
+/* Kicking off Code Review on %@ %@ */
+"Kicking off Code Review on %@ %@" = "Kicking off Code Review on %@ %@";
+
+/* Learn more about the Claude Code integration */
+"Learn more about the Claude Code integration" = "Learn more about the Claude Code integration";
+
+/* Leave Enabled */
+"Leave Enabled" = "Leave Enabled";
+
+/* Listing active watches */
+"Listing active watches" = "Listing active watches";
+
+/* Listing clippings in %@ */
+"Listing clippings in %@" = "Listing clippings in %@";
+
+/* Looking up workgroups */
+"Looking up workgroups" = "Looking up workgroups";
+
+/* Mark Rewritable & Install */
+"Mark Rewritable & Install" = "Mark Rewritable & Install";
+
+/* New session */
+"New session" = "New session";
+
+/* Next */
+"Next" = "Next";
+
+/* Not Now */
+"Not Now" = "Not Now";
+
+/* Notify on status change */
+"Notify on status change" = "Notify on status change";
+
+/* Notify on status change armed */
+"Notify on status change armed" = "Notify on status change armed";
+
+/* Notify with an alert when the selected window or session’s status changes. */
+"Notify with an alert when the selected window or session’s status changes." = "Notify with an alert when the selected window or session’s status changes.";
+
+/* Pick the profiles you’ll run claude in. We’ll add Enter/Exit Workgroup trigge... */
+"Pick the profiles you’ll run claude in. We’ll add Enter/Exit Workgroup triggers to each one so the Claude Code workgroup is entered automatically." = "Pick the profiles you’ll run claude in. We’ll add Enter/Exit Workgroup triggers to each one so the Claude Code workgroup is entered automatically.";
+
+/* Pick the terminal profiles where you run claude. iTerm2 will add triggers so ... */
+"Pick the terminal profiles where you run claude. iTerm2 will add triggers so the Claude Code workgroup is entered automatically when claude starts and exited when it stops.\n\nWithout this, you can still enter the workgroup manually via Shell > Workgroups > Claude Code." = "Pick the terminal profiles where you run claude. iTerm2 will add triggers so the Claude Code workgroup is entered automatically when claude starts and exited when it stops.\n\nWithout this, you can still enter the workgroup manually via Shell > Workgroups > Claude Code.";
+
+/* Posting clipping “%@” to %@ */
+"Posting clipping “%@” to %@" = "Posting clipping “%@” to %@";
+
+/* Reading screen of %@ */
+"Reading screen of %@" = "Reading screen of %@";
+
+/* Reinstall */
+"Reinstall" = "Reinstall";
+
+/* Revoked this chat’s permission to control “%@”. The agent will ask before its... */
+"Revoked this chat’s permission to control “%@”. The agent will ask before its next action there." = "Revoked this chat’s permission to control “%@”. The agent will ask before its next action there.";
+
+/* Run command */
+"Run command" = "Run command";
+
+/* Scrolling %@ to show %@ content */
+"Scrolling %@ to show %@ content" = "Scrolling %@ to show %@ content";
+
+/* Show */
+"Show" = "Show";
+
+/* Show Toolbelt */
+"Show Toolbelt" = "Show Toolbelt";
+
+/* Show only sessions in a workgroup, grouped by workgroup. */
+"Show only sessions in a workgroup, grouped by workgroup." = "Show only sessions in a workgroup, grouped by workgroup.";
+
+/* Show the toolbelt and enable the Session Status tool. The toolbelt appears on... */
+"Show the toolbelt and enable the Session Status tool. The toolbelt appears on the right side of your terminal window.\n\nYou can toggle the toolbelt from View > Toolbelt > Show Toolbelt, or with the shortcut ⌘⇧B." = "Show the toolbelt and enable the Session Status tool. The toolbelt appears on the right side of your terminal window.\n\nYou can toggle the toolbelt from View > Toolbelt > Show Toolbelt, or with the shortcut ⌘⇧B.";
+
+/* Skip Dynamic Profiles */
+"Skip Dynamic Profiles" = "Skip Dynamic Profiles";
+
+/* Starting new session */
+"Starting new session" = "Starting new session";
+
+/* Starting new session: `%@` */
+"Starting new session: `%@`" = "Starting new session: `%@`";
+
+/* Status */
+"Status" = "Status";
+
+/* Tab %d */
+"Tab %d" = "Tab %d";
+
+/* The Claude Code integration relies on iTerm2’s Python API to find sessions ru... */
+"The Claude Code integration relies on iTerm2’s Python API to find sessions running Claude and track their status.\n\nThe Python API is currently disabled. Setup can’t continue until it is enabled. Click Enable to turn it on." = "The Claude Code integration relies on iTerm2’s Python API to find sessions running Claude and track their status.\n\nThe Python API is currently disabled. Setup can’t continue until it is enabled. Click Enable to turn it on.";
+
+/* The agent is asking to open %@ and run “%@”. */
+"The agent is asking to open %@ and run “%@”." = "The agent is asking to open %@ and run “%@”.";
+
+/* The agent is asking to open %@. */
+"The agent is asking to open %@." = "The agent is asking to open %@.";
+
+/* The agent is asking to send keystrokes and interrupt running commands in sess... */
+"The agent is asking to send keystrokes and interrupt running commands in session “%@”. Approval is sticky for the rest of this chat. Deny to refuse this and future control of this session until you explicitly approve." = "The agent is asking to send keystrokes and interrupt running commands in session “%@”. Approval is sticky for the rest of this chat. Deny to refuse this and future control of this session until you explicitly approve.";
+
+/* The agent is asking to send keystrokes, interrupt running commands, and post ... */
+"The agent is asking to send keystrokes, interrupt running commands, and post clippings to this workgroup. Approval is sticky for the rest of this chat. Deny to refuse this and future control of this workgroup until you explicitly approve." = "The agent is asking to send keystrokes, interrupt running commands, and post clippings to this workgroup. Approval is sticky for the rest of this chat. Deny to refuse this and future control of this workgroup until you explicitly approve.";
+
+/* The agent wants to create the file `%@`. */
+"The agent wants to create the file `%@`." = "The agent wants to create the file `%@`.";
+
+/* The agent wants to run a command in the session. */
+"The agent wants to run a command in the session." = "The agent wants to run a command in the session.";
+
+/* The agent wants to run:
+
+`%@` */
+"The agent wants to run:\n\n`%@`" = "The agent wants to run:\n\n`%@`";
+
+/* The agent wants to send this to the session's foreground program:
+
+`%@` */
+"The agent wants to send this to the session's foreground program:\n\n`%@`" = "The agent wants to send this to the session's foreground program:\n\n`%@`";
+
+/* The installer enabled iTerm2’s Python API. Other scripts or integrations may ... */
+"The installer enabled iTerm2’s Python API. Other scripts or integrations may be using it now. Leave it enabled, or turn it off?" = "The installer enabled iTerm2’s Python API. Other scripts or integrations may be using it now. Leave it enabled, or turn it off?";
+
+/* The safety check could not be completed, so this needs manual approval. */
+"The safety check could not be completed, so this needs manual approval." = "The safety check could not be completed, so this needs manual approval.";
+
+/* The safety check flagged this as potentially dangerous.
+
+ */
+"The safety check flagged this as potentially dangerous.\n\n" = "The safety check flagged this as potentially dangerous.\n\n";
+
+/* The safety check result could not be understood, so this needs manual approval. */
+"The safety check result could not be understood, so this needs manual approval." = "The safety check result could not be understood, so this needs manual approval.";
+
+/* These profiles are dynamic and not marked “rewritable,” so iTerm2 normally re... */
+"These profiles are dynamic and not marked “rewritable,” so iTerm2 normally regenerates them from disk and any change here would be lost:\n\n%@\n\niTerm2 can write the triggers back to dynamic profiles when they’re marked rewritable. Rewriting can change the order of values in the underlying file." = "These profiles are dynamic and not marked “rewritable,” so iTerm2 normally regenerates them from disk and any change here would be lost:\n\n%@\n\niTerm2 can write the triggers back to dynamic profiles when they’re marked rewritable. Rewriting can change the order of values in the underlying file.";
+
+/* This removes the cc-status hook from ~/.claude/settings.json, the Claude Code... */
+"This removes the cc-status hook from ~/.claude/settings.json, the Claude Code workgroup from your settings, and the Enter/Exit Workgroup triggers from every profile. You can reinstall any time using iTerm2 > Install Claude Code Integration." = "This removes the cc-status hook from ~/.claude/settings.json, the Claude Code workgroup from your settings, and the Enter/Exit Workgroup triggers from every profile. You can reinstall any time using iTerm2 > Install Claude Code Integration.";
+
+/* This watch reads %@'s screen repeatedly while it waits. View Contents is set ... */
+"This watch reads %@'s screen repeatedly while it waits. View Contents is set to Ask for this session, so allow this background reading until the watch finishes?" = "This watch reads %@'s screen repeatedly while it waits. View Contents is set to Ask for this session, so allow this background reading until the watch finishes?";
+
+/* Typing into %@: %@ */
+"Typing into %@: %@" = "Typing into %@: %@";
+
+/* Uninstall */
+"Uninstall" = "Uninstall";
+
+/* Uninstall Claude Code Integration? */
+"Uninstall Claude Code Integration?" = "Uninstall Claude Code Integration?";
+
+/* Untitled workgroup */
+"Untitled workgroup" = "Untitled workgroup";
+
+/* Waiting */
+"Waiting" = "Waiting";
+
+/* Watching for a status change on the selected item. An alert will appear on th... */
+"Watching for a status change on the selected item. An alert will appear on the next change, then turn this off." = "Watching for a status change on the selected item. An alert will appear on the next change, then turn this off.";
+
+/* What gets changed */
+"What gets changed" = "What gets changed";
+
+/* Will notify when %@ becomes **%@** */
+"Will notify when %@ becomes **%@**" = "Will notify when %@ becomes **%@**";
+
+/* Will notify when %@ satisfies: %@ */
+"Will notify when %@ satisfies: %@" = "Will notify when %@ satisfies: %@";
+
+/* Window */
+"Window" = "Window";
+
+/* Window %d */
+"Window %d" = "Window %d";
+
+/* Workgroup */
+"Workgroup" = "Workgroup";
+
+/* Working */
+"Working" = "Working";
+
+/* [defunct session] */
+"[defunct session]" = "[defunct session]";
+
+/* _(unknown session)_ */
+"_(unknown session)_" = "_(unknown session)_";
+
+/* _unknown workgroup_ */
+"_unknown workgroup_" = "_unknown workgroup_";
+
+/* a new session */
+"a new session" = "a new session";
+
+/* a new tab in the current window */
+"a new tab in the current window" = "a new tab in the current window";
+
+/* a new window */
+"a new window" = "a new window";
+
+/* a vertical split of the current pane */
+"a vertical split of the current pane" = "a vertical split of the current pane";
+
+/* iTerm2 session */
+"iTerm2 session" = "iTerm2 session";
+
+/* iTerm2’s cc-status hook is no longer in ~/.claude/settings.json. This usually... */
+"iTerm2’s cc-status hook is no longer in ~/.claude/settings.json. This usually means Claude Code rewrote that file. Reinstall the hook so per-tab status indicators (“Working…,” “Waiting…”) work again?" = "iTerm2’s cc-status hook is no longer in ~/.claude/settings.json. This usually means Claude Code rewrote that file. Reinstall the hook so per-tab status indicators (“Working…,” “Waiting…”) work again?";
+
+/* newer */
+"newer" = "newer";
+
+/* older */
+"older" = "older";
+
+/* the linked session */
+"the linked session" = "the linked session";
+
+/* the pending command line is too long to safety-check automatically */
+"the pending command line is too long to safety-check automatically" = "the pending command line is too long to safety-check automatically";
+
+/* with %@ */
+"with %@" = "with %@";
+
+/* with saved prompt “%@” */
+"with saved prompt “%@”" = "with saved prompt “%@”";
+
+/* with the default prompt */
+"with the default prompt" = "with the default prompt";
+
+/* ~/.claude/settings.json couldn’t be parsed as JSON. Open it in a text editor ... */
+"~/.claude/settings.json couldn’t be parsed as JSON. Open it in a text editor and check it for syntax errors." = "~/.claude/settings.json couldn’t be parsed as JSON. Open it in a text editor and check it for syntax errors.";
+
+/* • iTerm2’s Python API is enabled
+• A cc-status hook is added to ~/.claude/set... */
+"• iTerm2’s Python API is enabled\n• A cc-status hook is added to ~/.claude/settings.json\n• The toolbelt is shown\n• A Claude Code workgroup is added to iTerm2’s settings\n• Enter/Exit Workgroup triggers are added to the profiles you pick" = "• iTerm2’s Python API is enabled\n• A cc-status hook is added to ~/.claude/settings.json\n• The toolbelt is shown\n• A Claude Code workgroup is added to iTerm2’s settings\n• Enter/Exit Workgroup triggers are added to the profiles you pick";
+
+"Claude Code is running. Want to try the Claude Code integration?" = "Claude Code is running. Want to try the Claude Code integration?";
+"Try It Now" = "Try It Now";
+"Don't Show Again" = "Don't Show Again";
+"No session to watch: this chat is not linked to a terminal session." = "No session to watch: this chat is not linked to a terminal session.";
+"This chat is no longer in orchestration mode." = "This chat is no longer in orchestration mode.";
+"Error: arguments not a JSON object" = "Error: arguments not a JSON object";
+"Not run automatically: this action needs manual approval first. Ask the user to run it themselves or to approve it." = "Not run automatically: this action needs manual approval first. Ask the user to run it themselves or to approve it.";
+"Error: session command timed out after 30s." = "Error: session command timed out after 30s.";
+"The user has notifications turned off for iTerm2 Buddy. Do not push them about it; they can enable it in iOS Settings if they want alerts." = "The user has notifications turned off for iTerm2 Buddy. Do not push them about it; they can enable it in iOS Settings if they want alerts.";
+"No paired companion phone is registered for notifications." = "No paired companion phone is registered for notifications.";
+"The user has muted this chat's notifications on their phone, so the notification was not sent. Do not try to work around it." = "The user has muted this chat's notifications on their phone, so the notification was not sent. Do not try to work around it.";
+"No companion phone is connected right now, so permission cannot be requested." = "No companion phone is connected right now, so permission cannot be requested.";
+"The user declined notification permission. Do not ask again; iOS only shows the prompt once. If they change their mind they can enable notifications for iTerm2 Buddy in iOS Settings." = "The user declined notification permission. Do not ask again; iOS only shows the prompt once. If they change their mind they can enable notifications for iTerm2 Buddy in iOS Settings.";
+"The phone could not show the permission prompt." = "The phone could not show the permission prompt.";
+"The chat was unlinked from this session before the watch could be registered." = "The chat was unlinked from this session before the watch could be registered.";
+"No screen backstop: View Contents isn't granted for this session, so this watch fires only on the program's own status updates and has no timeout. If that status source stops (the program crashes or detaches) the watch will not fire. Grant View Contents (Always) for a screen-based fallback, or plan to check the session yourself if it goes quiet." = "No screen backstop: View Contents isn't granted for this session, so this watch fires only on the program's own status updates and has no timeout. If that status source stops (the program crashes or detaches) the watch will not fire. Grant View Contents (Always) for a screen-based fallback, or plan to check the session yourself if it goes quiet.";
+"The user declined to let this watch read the screen. Ask them to enable View Contents (Always) for this session if they want it." = "The user declined to let this watch read the screen. Ask them to enable View Contents (Always) for this session if they want it.";
+"No default profile is configured." = "No default profile is configured.";
+"User denied permission for this action." = "User denied permission for this action.";
+"The operation timed out." = "The operation timed out.";
+
+"The new session was created but is no longer reachable. The command likely exited immediately (e.g. binary not on PATH or a non-zero startup script) and the window auto-closed." = "The new session was created but is no longer reachable. The command likely exited immediately (e.g. binary not on PATH or a non-zero startup script) and the window auto-closed.";

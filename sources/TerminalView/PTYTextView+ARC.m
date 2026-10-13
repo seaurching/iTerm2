@@ -155,10 +155,10 @@ iTermCommandInfoViewControllerDelegate>
     if (item.action == @selector(sshDisconnect:)) {
         NSString *name = [self.delegate textViewCurrentSSHSessionName];
         if (name) {
-            item.title = [NSString stringWithFormat:@"Disconnect from %@", name];
+            item.title = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Disconnect from %@", @"TerminalView", [NSBundle bundleForClass:[self class]], @"ssh: disconnect from menu item"), name];
             return YES;
         } else {
-            item.title = @"Disconnect";
+            item.title = NSLocalizedStringFromTableInBundle(@"Disconnect", @"TerminalView", [NSBundle bundleForClass:[self class]], @"ssh: disconnect menu item");
         }
     }
     if (item.action == @selector(toggleRemoteHostCanControlIterm2:)) {
@@ -177,13 +177,13 @@ iTermCommandInfoViewControllerDelegate>
             return NO;
         }
         if (!self.selection.hasSelection && !self.selection.live) {
-            item.title = @"Fold/Unfold";
+            item.title = NSLocalizedStringFromTableInBundle(@"Fold/Unfold", @"TerminalView", [NSBundle bundleForClass:[self class]], @"fold: toggle menu item");
             return NO;
         }
         if ([self selectionContainsFold]) {
-            item.title = @"Unfold in Selection";
+            item.title = NSLocalizedStringFromTableInBundle(@"Unfold in Selection", @"TerminalView", [NSBundle bundleForClass:[self class]], @"fold: unfold in selection menu item");
         } else {
-            item.title = @"Fold Selected Lines";
+            item.title = NSLocalizedStringFromTableInBundle(@"Fold Selected Lines", @"TerminalView", [NSBundle bundleForClass:[self class]], @"fold: fold selected lines menu item");
         }
         return YES;
     }
@@ -829,10 +829,10 @@ iTermCommandInfoViewControllerDelegate>
                         mouseLocation:(NSPoint)mouseLocation {
     iTermSimpleContextMenu *menu = [[iTermSimpleContextMenu alloc] init];
     __weak __typeof(self) weakSelf = self;
-    [menu addItemWithTitle:@"Look Up in Dictionary" action:^{
+    [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Look Up in Dictionary", @"TerminalView", [NSBundle bundleForClass:[self class]], @"context menu: look up dictionary") action:^{
         [weakSelf showDefinitionForWordAt:clickPoint];
     }];
-    [menu addItemWithTitle:@"Quick Look" action:^{
+    [menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Quick Look", @"TerminalView", [NSBundle bundleForClass:[self class]], @"context menu: quick look") action:^{
         [weakSelf openQuickLookForURL:url
                             urlAction:urlAction
                             withEvent:event];
@@ -1981,7 +1981,7 @@ copyRangeAccordingToUserPreferences:(VT100GridWindowedRange)range {
         }
     }
     if (copied) {
-        [ToastWindowController showToastWithMessage:@"Copied"
+        [ToastWindowController showToastWithMessage:NSLocalizedStringFromTableInBundle(@"Copied", @"TerminalView", [NSBundle bundleForClass:[self class]], @"toast: 已拷贝提示")
                                            duration:1.5
                                    screenCoordinate:[NSEvent mouseLocation]
                                           pointSize:12];
@@ -2070,8 +2070,8 @@ runCommandInBackground:(NSString *)command {
     iTermBackgroundCommandRunner *runner =
         [[iTermBackgroundCommandRunner alloc] initWithCommand:command
                                                         shell:self.delegate.textViewShell
-                                                        title:@"Smart Selection Action"];
-    runner.notificationTitle = @"Smart Selection Action Failed";
+                                                        title:NSLocalizedStringFromTableInBundle(@"Smart Selection Action", @"TerminalView", [NSBundle bundleForClass:[self class]], @"智能选择: 运行标题")];
+    runner.notificationTitle = NSLocalizedStringFromTableInBundle(@"Smart Selection Action Failed", @"TerminalView", [NSBundle bundleForClass:[self class]], @"智能选择: 失败通知标题");
     [runner run];
 }
 
@@ -2149,15 +2149,14 @@ toggleTerminalStateForMenuItem:(nonnull NSMenuItem *)item {
        inspectImage:(id<iTermImageInfoReading>)imageInfo {
     if (imageInfo) {
         NSString *text = [NSString stringWithFormat:
-                          @"Filename: %@\n"
-                          @"Dimensions: %d x %d",
+                          NSLocalizedStringFromTableInBundle(@"Filename: %@\\nDimensions: %d x %d", @"TerminalView", [NSBundle bundleForClass:[self class]], @"image: info alert text"),
                           imageInfo.filename,
                           (int)imageInfo.image.size.width,
                           (int)imageInfo.image.size.height];
 
         NSAlert *alert = [[NSAlert alloc] init];
         alert.messageText = text;
-        [alert addButtonWithTitle:@"OK"];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"TerminalView", [NSBundle bundleForClass:[self class]], @"image info: OK button")];
         [alert layout];
         [alert runModal];
     }
@@ -3043,7 +3042,7 @@ toggleAnimationOfImage:(id<iTermImageInfoReading>)imageInfo {
     [self copyString:content];
     const NSPoint p = view.centerScreenCoordinate;
     if (p.x == p.x) {
-        [ToastWindowController showToastWithMessage:@"Copied"
+        [ToastWindowController showToastWithMessage:NSLocalizedStringFromTableInBundle(@"Copied", @"TerminalView", [NSBundle bundleForClass:[self class]], @"toast: 已拷贝提示")
                                            duration:1
                                    screenCoordinate:p
                                           pointSize:12];

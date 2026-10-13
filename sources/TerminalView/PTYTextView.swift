@@ -680,7 +680,10 @@ extension PTYTextView: ExternalSearchResultsController {
         let firstMaxLength = first.length - first.number(ofTrailingEmptyCellsWhereSpaceIsEmpty: true)
         let lastMaxLength = last.length - last.number(ofTrailingEmptyCellsWhereSpaceIsEmpty: true)
 
-        var mid = " …\(count) line\(count > 1 ? "s" : "")… "
+        let collapsedMarker = count == 1
+            ? NSLocalizedString("…1 line…", tableName: "TerminalView", comment: "collapsed lines: singular marker")
+            : String(format: NSLocalizedString("…%d lines…", tableName: "TerminalView", comment: "collapsed lines: plural marker"), count)
+        var mid = " \(collapsedMarker) "
         if mid.utf16.count + 10 > length {
             mid = "…"
         }
@@ -1005,7 +1008,7 @@ extension PTYTextView {
     func saveArchive(_ sender: Any) {
         if let window = self.window {
             let savePanel = iTermModernSavePanel()
-            savePanel.defaultFilename = ((delegate?.textViewVariablesScope().value(forVariableName: iTermVariableKeySessionName) as? String) ?? "iTerm2 Session") + ".itermarchive"
+            savePanel.defaultFilename = ((delegate?.textViewVariablesScope().value(forVariableName: iTermVariableKeySessionName) as? String) ?? NSLocalizedString("iTerm2 Session", tableName: "TerminalView", comment: "save archive: default filename")) + ".itermarchive"
             savePanel.preferredSSHIdentity = .localhost
             savePanel.allowedContentTypes = [ UTType(filenameExtension: "itermarchive")! ]
             Task {
@@ -1214,7 +1217,9 @@ extension PTYTextView {
 
         // Line count
         let lineCount = Int(range.upperBound - range.lowerBound)
-        parts.append("…\(lineCount) line\(lineCount > 1 ? "s" : "")…")
+        parts.append(lineCount == 1
+            ? NSLocalizedString("…1 line…", tableName: "TerminalView", comment: "collapsed lines: singular marker")
+            : String(format: NSLocalizedString("…%d lines…", tableName: "TerminalView", comment: "collapsed lines: plural marker"), lineCount))
 
         // Last command if different
         if let lastCmd = lastMark?.firstLineOfCommand,

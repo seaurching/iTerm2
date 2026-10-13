@@ -103,18 +103,18 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"git state";
+    return NSLocalizedStringFromTableInBundle(@"git state", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for git state component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Shows a summary of the git state of the current directory.";
+    return NSLocalizedStringFromTableInBundle(@"Shows a summary of the git state of the current directory.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for git state component");
 }
 
 - (NSArray<iTermStatusBarComponentKnob *> *)statusBarComponentKnobs {
     NSArray<iTermStatusBarComponentKnob *> *knobs;
 
     iTermStatusBarComponentKnob *formatKnob =
-    [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Polling Interval (seconds):"
+    [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Polling Interval (seconds):", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for polling interval in seconds")
                                                       type:iTermStatusBarComponentKnobTypeDouble
                                                placeholder:nil
                                               defaultValue:@(iTermStatusBarGitComponentDefaultCadence)
@@ -139,7 +139,7 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
 
 - (id)statusBarComponentExemplarWithBackgroundColor:(NSColor *)backgroundColor
                                           textColor:(NSColor *)textColor {
-    return @"⎇ main";
+    return NSLocalizedStringFromTableInBundle(@"⎇ main", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Exemplar text for git state component");
 }
 
 - (BOOL)statusBarComponentCanStretch {
@@ -152,8 +152,8 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
 
 - (NSArray<NSAttributedString *> *)attributedStringVariants {
     if ([self shouldShowTimeoutError]) {
-        return @[ [self timeoutWarningAttributedStringWithString:@"⚠️ timed out"],
-                  [self timeoutWarningAttributedStringWithString:@"⚠️"] ];
+        return @[ [self timeoutWarningAttributedStringWithString:NSLocalizedStringFromTableInBundle(@"⚠️ timed out", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Timeout warning text with label")],
+                  [self timeoutWarningAttributedStringWithString:NSLocalizedStringFromTableInBundle(@"⚠️", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Timeout warning symbol")]];
     }
     return [_maker attributedStringVariants];
 }
@@ -188,22 +188,18 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
     const double currentTimeout = [iTermAdvancedSettingsModel gitTimeout];
     const double proposedTimeout = MAX(currentTimeout * 2, currentTimeout + 2);
     NSString *title = [NSString stringWithFormat:
-                       @"Running git in %@ didn’t finish within %@ seconds, so the status bar "
-                       @"component can’t show the branch. This often happens in very large "
-                       @"repositories or when the working tree is on a slow filesystem.\n\n"
-                       @"Would you like to increase the timeout to %@ seconds?",
-                       _maker.gitPoller.currentDirectory ?: @"the current directory",
+                       NSLocalizedStringFromTableInBundle(@"Running git in %@ didn’t finish within %@ seconds, so the status bar component can’t show the branch. This often happens in very large repositories or when the working tree is on a slow filesystem.\n\nWould you like to increase the timeout to %@ seconds?", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Timeout warning: git didn't finish in time"),
+                       _maker.gitPoller.currentDirectory ?: NSLocalizedStringFromTableInBundle(@"the current directory", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Fallback for current directory in timeout warning"),
                        [self formatTimeoutSeconds:currentTimeout],
                        [self formatTimeoutSeconds:proposedTimeout]];
-    NSString *increaseAction = [NSString stringWithFormat:@"Increase to %@s",
-                                [self formatTimeoutSeconds:proposedTimeout]];
+    NSString *increaseAction = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Increase to %@s", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Button to increase timeout"), [self formatTimeoutSeconds:proposedTimeout]];
     const iTermWarningSelection selection =
     [iTermWarning showWarningWithTitle:title
-                               actions:@[ increaseAction, @"Cancel" ]
+                               actions:@[ increaseAction, NSLocalizedStringFromTableInBundle(@"Cancel", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Cancel button") ]
                              accessory:nil
                             identifier:nil
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"git timed out"
+                               heading:NSLocalizedStringFromTableInBundle(@"git timed out", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Timeout warning heading")
                                 window:window];
     if (selection == kiTermWarningSelection0) {
         [iTermAdvancedSettingsModel setGitTimeout:proposedTimeout];
@@ -319,11 +315,11 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
     if (_session) {
         NSMenu *menu = [[NSMenu alloc] init];
         NSString *actionName = [_maker.status stringByReplacingOccurrencesOfString:@"…" withString:@""];
-        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"Cancel %@", actionName] action:@selector(killSession:) keyEquivalent:@""];
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Cancel %@", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to cancel a running git action"), actionName] action:@selector(killSession:) keyEquivalent:@""];
         item.target = self;
         [menu addItem:item];
 
-        item = [[NSMenuItem alloc] initWithTitle:@"Reveal" action:@selector(revealSession:) keyEquivalent:@""];
+        item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Reveal", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to reveal session") action:@selector(revealSession:) keyEquivalent:@""];
         item.target = self;
         [menu addItem:item];
         [menu popUpMenuPositioningItem:menu.itemArray.firstObject atLocation:NSMakePoint(0, 0) inView:containingView];
@@ -332,11 +328,11 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
 
     if (_maker.xcode.length > 0) {
         [iTermWarning showWarningWithTitle:[_maker.xcode stringByReplacingOccurrencesOfString:@"\t" withString:@"\n"]
-                                   actions:@[ @"OK" ]
+                                   actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"StatusBar", [NSBundle bundleForClass:[self class]], @"OK button") ]
                                  accessory:nil
                                 identifier:@"GitPollerXcodeWarning"
                                silenceable:kiTermWarningTypePersistent
-                                   heading:@"Problem Running git"
+                                   heading:NSLocalizedStringFromTableInBundle(@"Problem Running git", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Heading for problem running git alert")
                                     window:containingView.window];
         return;
     }
@@ -348,7 +344,7 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
 
     if (_maker.branch.length == 0) {
         NSMenu *menu = [[NSMenu alloc] init];
-        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:@"Show Debug Info" action:@selector(debug) keyEquivalent:@""];
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Show Debug Info", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to show debug info") action:@selector(debug) keyEquivalent:@""];
         item.target = self;
         [menu addItem:item];
         [menu popUpMenuPositioningItem:menu.itemArray.firstObject atLocation:NSMakePoint(0, 0) inView:containingView];
@@ -377,14 +373,14 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
             return;
         }
         strongSelf->_view = view;
-        addItem(@"Commit", @selector(commit:), state.dirty);
-        addItem(@"Add & Commit", @selector(addAndCommit:), state.dirty);
-        addItem(@"Stash", @selector(stash:), state.dirty);
-        addItem(@"Log", @selector(log:), YES);
-        addItem([NSString stringWithFormat:@"Push origin %@", state.branch],
+        addItem(NSLocalizedStringFromTableInBundle(@"Commit", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to commit"), @selector(commit:), state.dirty);
+        addItem(NSLocalizedStringFromTableInBundle(@"Add & Commit", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to add and commit"), @selector(addAndCommit:), state.dirty);
+        addItem(NSLocalizedStringFromTableInBundle(@"Stash", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to stash"), @selector(stash:), state.dirty);
+        addItem(NSLocalizedStringFromTableInBundle(@"Log", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to show log"), @selector(log:), YES);
+        addItem([NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Push origin %@", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to push origin"), state.branch],
                 @selector(push:),
                 state.ahead.intValue > 0 || [state.ahead isEqualToString:@"error"]);
-        addItem([NSString stringWithFormat:@"Pull origin %@", state.branch],
+        addItem([NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Pull origin %@", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to pull origin"), state.branch],
                 @selector(pull:),
                 !state.dirty);
         [menu addItem:[NSMenuItem separatorItem]];
@@ -395,10 +391,10 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
             if ([branch isEqualToString:state.branch]) {
                 continue;
             }
-            addItem([NSString stringWithFormat:@"Check out %@", branch], @selector(checkout:), YES).userData = branch;
+            addItem([NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Check out %@", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to check out branch"), branch], @selector(checkout:), YES).userData = branch;
         }
         [menu addItem:[NSMenuItem separatorItem]];
-        addItem(@"Show Debug Info", @selector(debug), YES);
+        addItem(NSLocalizedStringFromTableInBundle(@"Show Debug Info", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Menu item to show debug info"), @selector(debug), YES);
         [menu popUpMenuPositioningItem:menu.itemArray.firstObject atLocation:NSMakePoint(0, 0) inView:containingView];
     }];
 }
@@ -486,6 +482,7 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
                                                         path:context.directory];
     iTermTextPopoverViewController *popoverVC = _popoverVC;
     __weak __typeof(_logRunner) weakLogRunner = _logRunner;
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     __block BOOL stopped = NO;
     _logRunner.outputHandler = ^(NSData *data, void (^completion)(void)) {
         if (stopped) {
@@ -495,7 +492,7 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
         [popoverVC appendString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
         if (popoverVC.textView.textStorage.length > 100000) {
             stopped = YES;
-            [popoverVC appendString:@"\n[Truncated]\n"];
+            [popoverVC appendString:NSLocalizedStringFromTableInBundle(@"\n[Truncated]\n", @"StatusBar", bundle, @"Truncation notice in git log popover")];
             [weakLogRunner terminate];
         }
         completion();
@@ -506,27 +503,27 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
 - (void)commit:(id)sender {
     NSMenuItem *menuItem = sender;
     iTermGitMenuItemContext *context = menuItem.representedObject;
-    [self runGitInWindowWithArguments:@[ @"commit" ] pwd:context.directory status:@"Committing…" bury:NO];
+    [self runGitInWindowWithArguments:@[ @"commit" ] pwd:context.directory status:NSLocalizedStringFromTableInBundle(@"Committing…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status while committing") bury:NO];
 }
 
 - (void)debug {
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Debug Info";
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Debug Info", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Debug info alert title");
     alert.informativeText = [NSString stringWithFormat:
-                             @"Directory: %@\n"
+                             NSLocalizedStringFromTableInBundle(@"Directory: %@\n"
                              @"Polling cadence: %@ sec\n"
                              @"Polling enabled: %@\n"
                              @"Last polled %@ seconds ago\n"
                              @"Repo state: %@\n"
-                             @"%@",
+                             @"%@", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Debug info alert informative text"),
                              _maker.gitPoller.currentDirectory,
                              @(_maker.gitPoller.cadence),
-                             _maker.gitPoller.enabled ? @"Yes" : @"No",
+                             _maker.gitPoller.enabled ? NSLocalizedStringFromTableInBundle(@"Yes", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Yes value in debug info") : NSLocalizedStringFromTableInBundle(@"No", @"StatusBar", [NSBundle bundleForClass:[self class]], @"No value in debug info"),
                              @(-[_maker.gitPoller lastPollTime].timeIntervalSinceNow),
                              [_maker.gitPoller.state prettyDescription],
                              [[iTermGitPollWorker sharedInstance] debugInfoForDirectory:_maker.gitPoller.currentDirectory]];
-    [alert addButtonWithTitle:@"OK"];
-    [alert addButtonWithTitle:@"Copy"];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"StatusBar", [NSBundle bundleForClass:[self class]], @"OK button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Copy", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Copy button")];
     if ([alert runModal] == NSAlertSecondButtonReturn) {
         NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
         [pasteboard clearContents];
@@ -537,13 +534,13 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
 - (void)addAndCommit:(id)sender {
     NSMenuItem *menuItem = sender;
     iTermGitMenuItemContext *context = menuItem.representedObject;
-    [self runGitInWindowWithArguments:@[ @"commit", @"-a" ] pwd:context.directory status:@"Committing…" bury:NO];
+    [self runGitInWindowWithArguments:@[ @"commit", @"-a" ] pwd:context.directory status:NSLocalizedStringFromTableInBundle(@"Committing…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status while committing") bury:NO];
 }
 
 - (void)stash:(id)sender {
     NSMenuItem *menuItem = sender;
     iTermGitMenuItemContext *context = menuItem.representedObject;
-    [self runGitInWindowWithArguments:@[ @"stash" ] pwd:context.directory status:@"Stashing…" bury:YES];
+    [self runGitInWindowWithArguments:@[ @"stash" ] pwd:context.directory status:NSLocalizedStringFromTableInBundle(@"Stashing…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status while stashing") bury:YES];
 }
 
 - (void)push:(id)sender {
@@ -551,7 +548,7 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
     iTermGitMenuItemContext *context = menuItem.representedObject;
     [self runGitInWindowWithArguments:@[ @"push", @"origin", context.state.branch ]
                                   pwd:context.directory
-                               status:@"Pushing…"
+                               status:NSLocalizedStringFromTableInBundle(@"Pushing…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status while pushing")
                                  bury:YES];
 }
 
@@ -560,7 +557,7 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
     iTermGitMenuItemContext *context = menuItem.representedObject;
     [self runGitInWindowWithArguments:@[ @"pull", @"origin", context.state.branch ]
                                   pwd:context.directory
-                               status:@"Pulling…"
+                               status:NSLocalizedStringFromTableInBundle(@"Pulling…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status while pulling")
                                  bury:YES];
 }
 
@@ -569,7 +566,7 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
     iTermGitMenuItemContext *context = menuItem.representedObject;
     [self runGitInWindowWithArguments:@[ @"checkout", context.userData ]
                                   pwd:context.directory
-                               status:@"Checking out…"
+                               status:NSLocalizedStringFromTableInBundle(@"Checking out…", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Status while checking out")
                                  bury:YES];
 }
 
@@ -579,12 +576,12 @@ static const NSTimeInterval iTermStatusBarGitComponentDefaultCadence = 2;
     }];
     NSString *command = [NSString stringWithFormat:@"git %@", [quotedArgs componentsJoinedByString:@" "]];
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:@"Looks like you're sshed somewhere. OK to send the command “%@”?", command]
-                               actions:@[ @"OK", @"Cancel" ]
+    [iTermWarning showWarningWithTitle:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Looks like you're sshed somewhere. OK to send the command “%@”?", @"StatusBar", [NSBundle bundleForClass:[self class]], @"SSH command confirmation warning"), command]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"StatusBar", [NSBundle bundleForClass:[self class]], @"OK button"), NSLocalizedStringFromTableInBundle(@"Cancel", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Cancel button") ]
                              accessory:nil
                             identifier:@"GitPollerSshWarning"
                            silenceable:kiTermWarningTypePermanentlySilenceable
-                               heading:@"Send Command?"
+                               heading:NSLocalizedStringFromTableInBundle(@"Send Command?", @"StatusBar", [NSBundle bundleForClass:[self class]], @"SSH command confirmation heading")
                                 window:self.statusBarComponentView.window];
     if (selection == kiTermWarningSelection0) {
         [self.delegate statusBarComponent:self writeString:[command stringByAppendingString:@"\n"]];

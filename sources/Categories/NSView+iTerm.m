@@ -334,4 +334,228 @@ NSRect iTermRectCenteredVerticallyWithinRect(NSRect frameToCenter, NSRect contai
     return [self it_nonDefaultIndicator] != nil;
 }
 
+#pragma mark - Localization layout adaptation
+
+- (void)it_adaptInlineRowsForLocalization {
+    NSString *language = [NSBundle mainBundle].preferredLocalizations.firstObject;
+    if ([language isEqualToString:@"en"]) {
+        return;
+    }
+    [self it_adaptInlineRowsOneLevel];
+    // Rows can be nested in intermediate container views (e.g. group boxes inside a settings
+    // tab), so recurse into non-leaf subviews to tighten every level.
+    for (NSView *subview in self.subviews) {
+        if ([subview isKindOfClass:[NSTextField class]] ||
+            [subview isKindOfClass:[NSButton class]] ||
+            [subview isKindOfClass:[NSPopUpButton class]] ||
+            [subview isKindOfClass:[NSStepper class]]) {
+            continue;
+        }
+        [subview it_adaptInlineRowsForLocalization];
+    }
+}
+
+- (void)it_adaptInlineRowsOneLevel {
+    const CGFloat kDesiredGap = 8;
+    const CGFloat kMinimumExcessGap = 20;
+    const CGFloat kRowCenterTolerance = 12;
+    const CGFloat kFollowerMaxDistance = 24;
+
+    NSMutableArray<NSView *> *views = [NSMutableArray array];
+    for (NSView *view in self.subviews) {
+        if (view.isHidden || view.frame.size.width >= 0.9 * self.frame.size.width) {
+            // Skip hidden views and full-width background/enclosure views.
+            continue;
+        }
+        [views addObject:view];
+    }
+    if (views.count < 2) {
+        return;
+    }
+
+    // Controls sharing an x origin form a deliberate column; never move them.
+    NSMutableDictionary<NSNumber *, NSMutableSet<NSView *> *> *viewsByX =
+        [NSMutableDictionary dictionary];
+    for (NSView *view in views) {
+        if (![self it_isMovableControl:view]) {
+            continue;
+        }
+        NSNumber *key = @(round(view.frame.origin.x));
+        NSMutableSet<NSView *> *set = viewsByX[key];
+        if (!set) {
+            set = [NSMutableSet set];
+            viewsByX[key] = set;
+        }
+        [set addObject:view];
+    }
+    NSMutableSet<NSView *> *columnControls = [NSMutableSet set];
+    for (NSSet<NSView *> *set in viewsByX.allValues) {
+        if (set.count >= 2) {
+            [columnControls unionSet:set];
+        }
+    }
+
+    // Group views into rows by vertical center.
+    NSMutableArray<NSMutableArray<NSView *> *> *rows = [NSMutableArray array];
+    for (NSView *view in [views sortedArrayUsingComparator:^NSComparisonResult(NSView *a, NSView *b) {
+        CGFloat centerYA = NSMidY(a.frame);
+        CGFloat centerYB = NSMidY(b.frame);
+        return centerYA < centerYB ? NSOrderedAscending : (centerYA > centerYB ? NSOrderedDescending : NSOrderedSame);
+    }]) {
+        CGFloat centerY = NSMidY(view.frame);
+        NSMutableArray<NSView *> *lastRow = rows.lastObject;
+        if (lastRow && fabs(NSMidY(lastRow.firstObject.frame) - centerY) <= kRowCenterTolerance) {
+            [lastRow addObject:view];
+        } else {
+            [rows addObject:[NSMutableArray arrayWithObject:view]];
+        }
+    }
+
+    for (NSMutableArray<NSView *> *row in rows) {
+        [row sortUsingComparator:^NSComparisonResult(NSView *a, NSView *b) {
+            CGFloat xA = a.frame.origin.x;
+            CGFloat xB = b.frame.origin.x;
+            return xA < xB ? NSOrderedAscending : (xA > xB ? NSOrderedDescending : NSOrderedSame);
+        }];
+        // cursor is the right edge of the inline text run so far, or -1 when the previous view
+        // anchors the layout (right-aligned label, custom view, ...). previousWasStaticText
+        // records whether the cursor came from a static label, so caption labels don't pull
+        // other labels toward themselves (controls are always allowed to move).
+        CGFloat cursor = -1;
+        BOOL previousWasStaticText = NO;
+        CGFloat lastDelta = 0;
+        CGFloat previousOriginalRightEdge = 0;
+        for (NSView *view in row) {
+            NSRect frame = view.frame;
+            BOOL wasRightAfterPrevious = previousOriginalRightEdge > 0 &&
+                frame.origin.x - previousOriginalRightEdge < kFollowerMaxDistance;
+            previousOriginalRightEdge = NSMaxX(frame);
+
+            if (lastDelta != 0 && wasRightAfterPrevious && [self it_isFollowerControl:view]) {
+                frame.origin.x += lastDelta;
+                view.frame = frame;
+                continue;
+            }
+            lastDelta = 0;
+
+            NSTextField *textField = [view isKindOfClass:[NSTextField class]] ? (NSTextField *)view : nil;
+            BOOL isRightAlignedLabel = textField && !textField.isEditable &&
+                textField.alignment == NSTextAlignmentRight;
+            BOOL isCheckbox = [view isKindOfClass:[NSButton class]] &&
+                [self it_isCheckboxOrRadioButton:(NSButton *)view];
+            BOOL isSmallButton = [view isKindOfClass:[NSButton class]] && !isCheckbox &&
+                frame.size.width < 40;
+            if (isRightAlignedLabel || (isSmallButton && cursor < 0)) {
+                // Right-aligned labels and leading small buttons (e.g. help buttons) anchor the
+                // layout.
+                cursor = -1;
+                continue;
+            }
+            if (!textField && ![view isKindOfClass:[NSPopUpButton class]] &&
+                ![view isKindOfClass:[NSButton class]]) {
+                // Custom views (sliders, color wells, ...) anchor the layout.
+                cursor = -1;
+                continue;
+            }
+
+            BOOL isStaticText = textField && !textField.isEditable;
+            CGFloat newX = frame.origin.x;
+            if (cursor >= 0 && !(isStaticText && previousWasStaticText) &&
+                ![columnControls containsObject:view]) {
+                CGFloat desiredX = cursor + kDesiredGap;
+                if (frame.origin.x - desiredX >= kMinimumExcessGap) {
+                    newX = desiredX;
+                }
+            }
+            lastDelta = newX - frame.origin.x;
+            if (lastDelta != 0) {
+                frame.origin.x = newX;
+                view.frame = frame;
+            }
+            CGFloat advance = frame.size.width;
+            if (isStaticText) {
+                advance = [self it_renderedTextWidth:textField];
+            } else if (isCheckbox) {
+                advance = [self it_renderedTextWidthOfButton:(NSButton *)view];
+            }
+            cursor = newX + advance;
+            previousWasStaticText = isStaticText;
+        }
+
+        // A small help button to the left of a right-aligned label was positioned next to the
+        // English text. Shift it right to hug the localized text's leading edge. Only adjacent
+        // pairs qualify; unrelated buttons further left stay where they are.
+        for (NSUInteger i = 0; i + 1 < row.count; i++) {
+            NSView *button = row[i];
+            NSView *label = row[i + 1];
+            if (![button isKindOfClass:[NSButton class]] ||
+                [self it_isCheckboxOrRadioButton:(NSButton *)button] ||
+                [columnControls containsObject:button]) {
+                continue;
+            }
+            if (![label isKindOfClass:[NSTextField class]] ||
+                ((NSTextField *)label).alignment != NSTextAlignmentRight) {
+                continue;
+            }
+            if (label.frame.origin.x - NSMaxX(button.frame) >= kFollowerMaxDistance) {
+                continue;
+            }
+            NSTextField *labelField = (NSTextField *)label;
+            CGFloat textStart = NSMaxX(labelField.frame) - [self it_renderedTextWidth:labelField];
+            NSRect frame = button.frame;
+            CGFloat desiredX = textStart - frame.size.width - kDesiredGap;
+            if (desiredX - frame.origin.x >= kMinimumExcessGap) {
+                frame.origin.x = desiredX;
+                button.frame = frame;
+            }
+        }
+    }
+}
+
+// Kinds of views that participate in column detection. These are the views whose x position may
+// be adjusted.
+- (BOOL)it_isMovableControl:(NSView *)view {
+    if ([view isKindOfClass:[NSPopUpButton class]] || [view isKindOfClass:[NSButton class]]) {
+        return YES;
+    }
+    if (![view isKindOfClass:[NSTextField class]]) {
+        return NO;
+    }
+    NSTextField *textField = (NSTextField *)view;
+    return textField.isEditable || textField.alignment != NSTextAlignmentRight;
+}
+
+- (BOOL)it_isCheckboxOrRadioButton:(NSButton *)button {
+    // NSButtonCell.type is declared as NSCellType but the switch/radio values come from
+    // NSButtonType.
+    NSInteger type = [(NSButtonCell *)button.cell type];
+    return type == NSButtonTypeSwitch || type == NSButtonTypeRadio;
+}
+
+// Small controls that sit immediately to the right of another control and belong to it, e.g. the
+// stepper paired with an input field. They move by the same delta as the control they follow.
+- (BOOL)it_isFollowerControl:(NSView *)view {
+    if ([view isKindOfClass:[NSStepper class]]) {
+        return YES;
+    }
+    return ![view isKindOfClass:[NSControl class]] && view.frame.size.width < 40;
+}
+
+- (CGFloat)it_renderedTextWidth:(NSTextField *)textField {
+    if (textField.stringValue.length == 0) {
+        return 0;
+    }
+    CGFloat width = [textField.cell cellSize].width;
+    return width > 0 ? width : textField.frame.size.width;
+}
+
+- (CGFloat)it_renderedTextWidthOfButton:(NSButton *)button {
+    if (button.title.length == 0) {
+        return 0;
+    }
+    CGFloat width = [button.cell cellSize].width;
+    return width > 0 ? width : button.frame.size.width;
+}
+
 @end
+

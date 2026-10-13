@@ -236,7 +236,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSView *)fontPanelAccessory {
     NSButton *button = [[NSButton alloc] init];
-    button.title = @"Reset to System Font";
+    button.title = NSLocalizedStringFromTableInBundle(@"Reset to System Font", @"StatusBar", [NSBundle bundleForClass:[self class]], @"setup: reset to system font button");
     button.buttonType = NSButtonTypeMomentaryPushIn;
     button.bezelStyle = NSBezelStyleRounded;
     button.target = self;
@@ -281,7 +281,7 @@ NS_ASSUME_NONNULL_BEGIN
     _layout.advancedConfiguration.font = font;
 
     if ([font isEqual:[iTermStatusBarAdvancedConfiguration defaultFont]]) {
-        _fontLabel.stringValue = @"System Font";
+        _fontLabel.stringValue = NSLocalizedStringFromTableInBundle(@"System Font", @"StatusBar", [NSBundle bundleForClass:[self class]], @"setup: system font label");
         return;
     }
     _fontLabel.stringValue = [NSString stringWithFormat:@"%@pt %@", @(font.pointSize), font.fontName];

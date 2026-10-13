@@ -363,18 +363,13 @@ static NSString *iTermShellIntegrationRemoteHostKey(id<VT100RemoteHostReading> s
         firstResponder = nil;
     }
     NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-    alert.messageText = @"About Shell Integration";
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"About Shell Integration", @"ShellIntegration", [NSBundle bundleForClass:[self class]], @"Shell integration info alert title");
     alert.informativeText =
-        @"To use shell integration features such as "
-        @"Command History, "
-        @"Recent Directories, "
-        @"Select Output of Last Command, "
-        @"and Automatic Profile Switching, "
-        @"your shell must be properly configured.";
-    [alert addButtonWithTitle:@"Learn More…"];
-    [alert addButtonWithTitle:@"OK"];
+        NSLocalizedStringFromTableInBundle(@"To use shell integration features such as Command History, Recent Directories, Select Output of Last Command, and Automatic Profile Switching, your shell must be properly configured.", @"ShellIntegration", [NSBundle bundleForClass:[self class]], @"Shell integration info alert body");
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Learn More…", @"ShellIntegration", [NSBundle bundleForClass:[self class]], @"Shell integration info alert: learn more button")];
+    [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"OK", @"ShellIntegration", [NSBundle bundleForClass:[self class]], @"Shell integration info alert: OK button")];
     if (firstResponder) {
-        [alert addButtonWithTitle:@"Install Now"];
+        [alert addButtonWithTitle:NSLocalizedStringFromTableInBundle(@"Install Now", @"ShellIntegration", [NSBundle bundleForClass:[self class]], @"Shell integration info alert: install now button")];
     }
     [alert beginSheetModalForWindow:window completionHandler:^(NSModalResponse returnCode) {
         switch (returnCode) {

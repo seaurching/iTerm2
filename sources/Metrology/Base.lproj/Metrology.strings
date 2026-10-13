@@ -1,0 +1,35 @@
+/* Metrology: chart duration tooltip */
+"Duration: %.1fµs–%.1fµs" = "Duration: %.1fµs–%.1fµs";
+
+/* Metrology: chart count tooltip */
+"Count: %lld" = "Count: %lld";
+
+/* Metrology: chart start axis */
+"Start" = "Start";
+
+/* Metrology: chart end axis */
+"End" = "End";
+
+/* Metrology: chart count axis */
+"Count" = "Count";
+
+/* Metrology: chart mean axis */
+"Mean" = "Mean";
+
+/* Metrology: min time column */
+"Min Time" = "Min Time";
+
+/* Metrology: distribution column */
+"Distribution" = "Distribution";
+
+/* Metrology: max time column */
+"Max Time" = "Max Time";
+
+/* Metrology: samples column */
+"# Samples" = "# Samples";
+
+/* Metrology: mean time column */
+"Mean Time" = "Mean Time";
+
+/* Metrology: total time column */
+"Total Time" = "Total Time";

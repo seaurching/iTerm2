@@ -25,7 +25,7 @@
     DLog(@"%@", scriptName);
     if (!scriptName) {
         [self setScriptErrorNumber:1];
-        [self setScriptErrorString:@"No script name was specified"];
+        [self setScriptErrorString:NSLocalizedStringFromTableInBundle(@"No script name was specified", @"Applescript", [NSBundle bundleForClass:[self class]], @"未指定脚本名称")];
         return nil;
     }
     NSArray<NSString *> *args = self.evaluatedArguments[@"arguments"];
@@ -62,7 +62,7 @@
     }
 
     [self setScriptErrorNumber:2];
-    [self setScriptErrorString:@"Script not found"];
+    [self setScriptErrorString:NSLocalizedStringFromTableInBundle(@"Script not found", @"Applescript", [NSBundle bundleForClass:[self class]], @"未找到脚本")];
     return nil;
 }
 
@@ -86,7 +86,7 @@
     NSString *invocation = self.directParameter;
     if (!invocation) {
         [self setScriptErrorNumber:1];
-        [self setScriptErrorString:@"No string to invoke was specified"];
+        [self setScriptErrorString:NSLocalizedStringFromTableInBundle(@"No string to invoke was specified", @"Applescript", [NSBundle bundleForClass:[self class]], @"未指定要调用的字符串")];
         return nil;
     }
     iTermParsedExpression *parsedExpression =

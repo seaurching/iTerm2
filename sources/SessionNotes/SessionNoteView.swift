@@ -118,7 +118,7 @@ class SessionNoteView: NSView, NSTextViewDelegate {
         titleBar.wantsLayer = true
         titleBar.autoresizingMask = []
 
-        titleLabel = NSTextField(labelWithString: "Session Note")
+        titleLabel = NSTextField(labelWithString: NSLocalizedString("Session Note", tableName: "SessionNotes", comment: "Session notes: title label"))
         titleLabel.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         titleLabel.textColor = .secondaryLabelColor
         titleLabel.lineBreakMode = .byTruncatingTail
@@ -130,7 +130,7 @@ class SessionNoteView: NSView, NSTextViewDelegate {
         collapseButton.bezelStyle = .inline
         collapseButton.isBordered = false
         collapseButton.image = NSImage(systemSymbolName: "chevron.down",
-                                       accessibilityDescription: "Collapse")
+                                       accessibilityDescription: NSLocalizedString("Collapse", tableName: "SessionNotes", comment: "Session notes: collapse button accessibility description"))
         collapseButton.imagePosition = .imageOnly
         collapseButton.setButtonType(.momentaryPushIn)
 
@@ -319,7 +319,7 @@ class SessionNoteView: NSView, NSTextViewDelegate {
         if model.isCollapsed, let firstLine = model.text.components(separatedBy: .newlines).first, !firstLine.isEmpty {
             titleLabel.stringValue = firstLine
         } else {
-            titleLabel.stringValue = "Session Note"
+            titleLabel.stringValue = NSLocalizedString("Session Note", tableName: "SessionNotes", comment: "Session notes: title label")
         }
     }
 
@@ -399,7 +399,7 @@ class SessionNoteView: NSView, NSTextViewDelegate {
     private func updateCollapseButtonImage() {
         let name = model.isCollapsed ? "chevron.right" : "chevron.down"
         collapseButton.image = NSImage(systemSymbolName: name,
-                                       accessibilityDescription: model.isCollapsed ? "Expand" : "Collapse")
+                                       accessibilityDescription: model.isCollapsed ? NSLocalizedString("Expand", tableName: "SessionNotes", comment: "Session notes: expand button accessibility description") : NSLocalizedString("Collapse", tableName: "SessionNotes", comment: "Session notes: collapse button accessibility description"))
     }
 
     // MARK: - Drag (Title Bar) and Resize

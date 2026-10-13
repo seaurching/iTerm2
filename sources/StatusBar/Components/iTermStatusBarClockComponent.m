@@ -102,35 +102,35 @@ static NSString *const iTermStatusBarClockComponentSSHSyncTimeZoneKey = @"ssh_tz
 }
 
 - (NSString *)statusBarComponentShortDescription {
-    return @"Clock";
+    return NSLocalizedStringFromTableInBundle(@"Clock", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Short description for clock component");
 }
 
 - (NSString *)statusBarComponentDetailedDescription {
-    return @"Shows current date and time with a configurable format.";
+    return NSLocalizedStringFromTableInBundle(@"Shows current date and time with a configurable format.", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Detailed description for clock component");
 }
 
 - (NSArray<iTermStatusBarComponentKnob *> *)statusBarComponentKnobs {
     iTermStatusBarComponentKnob *formatKnob =
-        [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Date Format:"
+        [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Date Format:", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for date format")
                                                           type:iTermStatusBarComponentKnobTypeText
-                                                   placeholder:@"Date Format (Unicode TR 35)"
+                                                   placeholder:NSLocalizedStringFromTableInBundle(@"Date Format (Unicode TR 35)", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Placeholder for date format field")
                                                   defaultValue:self.class.statusBarComponentDefaultKnobs[iTermStatusBarClockComponentFormatKey]
                                                            key:iTermStatusBarClockComponentFormatKey];
     formatKnob.helpURL = [NSURL URLWithString:@"https://iterm2.com/clock-status-bar-component-help"];
     iTermStatusBarComponentKnob *dateFormatIsTemplate =
-        [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Localize Date Format"
+        [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Localize Date Format", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for localizing date format")
                                                           type:iTermStatusBarComponentKnobTypeCheckbox
                                                    placeholder:nil
                                                   defaultValue:@YES
                                                            key:iTermStatusBarClockComponentLocalizeKey];
     iTermStatusBarComponentKnob *syncKnob =
-    [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Show server time in SSH integration?"
+    [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Show server time in SSH integration?", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for showing server time in SSH integration")
                                                       type:iTermStatusBarComponentKnobTypeCheckbox
                                                placeholder:nil
                                               defaultValue:@YES
                                                        key:iTermStatusBarClockComponentSSHSyncKey];
     iTermStatusBarComponentKnob *syncTimeZoneKnob =
-    [[iTermStatusBarComponentKnob alloc] initWithLabelText:@"Use server time zone in SSH integration?"
+    [[iTermStatusBarComponentKnob alloc] initWithLabelText:NSLocalizedStringFromTableInBundle(@"Use server time zone in SSH integration?", @"StatusBar", [NSBundle bundleForClass:[self class]], @"Knob label for using server time zone in SSH integration")
                                                       type:iTermStatusBarComponentKnobTypeCheckbox
                                                placeholder:nil
                                               defaultValue:@YES

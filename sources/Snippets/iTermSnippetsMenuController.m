@@ -56,7 +56,7 @@
 
 - (void)reload {
     [self.menu removeAllItems];
-    [self.menu addItemWithTitle:@"Press Option to Edit Before Sending" action:@selector(bogus) keyEquivalent:@""];
+    [self.menu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Press Option to Edit Before Sending", @"Snippets", [NSBundle bundleForClass:[self class]], @"snippets menu: edit hint") action:@selector(bogus) keyEquivalent:@""];
     [self.menu addItem:[NSMenuItem separatorItem]];
 
     NSMutableArray *tagTree = [NSMutableArray array];

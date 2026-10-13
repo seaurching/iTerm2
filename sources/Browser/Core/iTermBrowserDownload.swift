@@ -147,7 +147,7 @@ extension iTermBrowserDownload: WKDownloadDelegate {
         
         // Use iTerm2's downloads directory
         guard let downloadsDir = FileManager.default.downloadsDirectory() else {
-            _error = "Unable to find Downloads folder"
+            _error = NSLocalizedString("Unable to find Downloads folder", tableName: "Browser", comment: "无法找到“下载”文件夹")
             completionHandler(nil)
             return
         }

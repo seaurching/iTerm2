@@ -260,7 +260,7 @@ NSString*    gCrashLogString = nil;
     if( gCrashLogString )
         explanation = [[[explanationField stringValue] mutableCopy] autorelease];
     else
-        explanation = [[NSLocalizedStringFromTable(@"FEEDBACK_EXPLANATION_TEXT",@"UKCrashReporter",@"") mutableCopy] autorelease];
+        explanation = [[NSLocalizedStringFromTable(@"FEEDBACK_EXPLANATION_TEXT",@"UKCrashReporterIB",@"") mutableCopy] autorelease];
     [explanation replaceOccurrencesOfString: @"%%APPNAME" withString: appName
                                     options: 0 range: NSMakeRange(0, [explanation length])];
     [explanationField setStringValue: explanation];
@@ -270,12 +270,12 @@ NSString*    gCrashLogString = nil;
     if( gCrashLogString )
         userMessage = [[[informationField string] mutableCopy] autorelease];
     else
-        userMessage = [[NSLocalizedStringFromTable(@"FEEDBACK_MESSAGE_TEXT",@"UKCrashReporter",@"") mutableCopy] autorelease];
+        userMessage = [[NSLocalizedStringFromTable(@"FEEDBACK_MESSAGE_TEXT",@"UKCrashReporterIB",@"") mutableCopy] autorelease];
 
-    NSString *emailAddr = NSLocalizedStringFromTable(@"MISSING_EMAIL_ADDRESS",@"UKCrashReporter",@"");
+    NSString *emailAddr = NSLocalizedStringFromTable(@"MISSING_EMAIL_ADDRESS",@"UKCrashReporterIB",@"");
 
     if ([self europeanLocale]) {
-        emailAddr = NSLocalizedStringFromTable(@"MISSING_EMAIL_ADDRESS",@"UKCrashReporter",@"");
+        emailAddr = NSLocalizedStringFromTable(@"MISSING_EMAIL_ADDRESS",@"UKCrashReporterIB",@"");
     }
 
     [userMessage replaceOccurrencesOfString: @"%%LONGUSERNAME" withString: NSFullUserName()
@@ -299,7 +299,7 @@ NSString*    gCrashLogString = nil;
         NSTabViewItem*    crashLogItem = [switchTabView tabViewItemAtIndex: itemIndex];
         unsigned        numCores = UKCountCores();
         NSString*        numCPUsString = (numCores == 1) ? @"" : [NSString stringWithFormat: @"%dx ",numCores];
-        [crashLogItem setLabel: NSLocalizedStringFromTable(@"SYSTEM_INFO_TAB_NAME",@"UKCrashReporter",@"")];
+        [crashLogItem setLabel: NSLocalizedStringFromTable(@"SYSTEM_INFO_TAB_NAME",@"UKCrashReporterIB",@"")];
         
         NSString*    systemInfo = [NSString stringWithFormat: @"Application: %@ %@\nModel: %@\nCPU Speed: %@%.2f GHz\nSystem Version: %@\n\nPreferences:\n%@",
                                     appName, [[[NSBundle mainBundle] infoDictionary] objectForKey: @"CFBundleVersion"],
@@ -325,10 +325,10 @@ NSString*    gCrashLogString = nil;
     NSData*                crashReport = [crashReportString dataUsingEncoding: NSUTF8StringEncoding];
     
     // Prepare a request:
-    NSURL *url = [NSURL URLWithString: NSLocalizedStringFromTable( @"CRASH_REPORT_CGI_URL", @"UKCrashReporter", @"" )];
+    NSURL *url = [NSURL URLWithString: NSLocalizedStringFromTable( @"CRASH_REPORT_CGI_URL", @"UKCrashReporterIB", @"" )];
     NSMutableURLRequest *postRequest = [NSMutableURLRequest requestWithURL: url];
     NSString            *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
-    NSString            *agent = @"UKCrashReporter";
+    NSString            *agent = @"UKCrashReporterIB";
 
     // Add form trappings to crashReport:
     NSData*            header = [[NSString stringWithFormat:@"--%@\r\nContent-Disposition: form-data; name=\"crashlog\"\r\n\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding];
@@ -394,14 +394,14 @@ NSString*    gCrashLogString = nil;
     {
         NSString*        errTitle = nil;
         if( feedbackMode )
-            errTitle = NSLocalizedStringFromTable( @"COULDNT_SEND_FEEDBACK_ERROR",@"UKCrashReporter",@"");
+            errTitle = NSLocalizedStringFromTable( @"COULDNT_SEND_FEEDBACK_ERROR",@"UKCrashReporterIB",@"");
         else
-            errTitle = NSLocalizedStringFromTable( @"COULDNT_SEND_CRASH_REPORT_ERROR",@"UKCrashReporter",@"");
+            errTitle = NSLocalizedStringFromTable( @"COULDNT_SEND_CRASH_REPORT_ERROR",@"UKCrashReporterIB",@"");
 
         NSAlert *alert = [[[NSAlert alloc] init] autorelease];
         alert.messageText = errTitle;
         alert.informativeText = [errMsg localizedDescription];
-        [alert addButtonWithTitle:NSLocalizedStringFromTable( @"COULDNT_SEND_CRASH_REPORT_ERROR_OK",@"UKCrashReporter",@"")];
+        [alert addButtonWithTitle:NSLocalizedStringFromTable( @"COULDNT_SEND_CRASH_REPORT_ERROR_OK",@"UKCrashReporterIB",@"")];
         [alert runModal];
     }
     

@@ -1,0 +1,23 @@
+/* Locale prompt: cancel button */
+"Cancel" = "Cancel";
+
+/* Locale prompt: menu item for locales with wrong encoding */
+"Locales with wrong encoding" = "Locales with wrong encoding";
+
+/* Locale prompt: alert message */
+"No valid UNIX locale exists for your computer’s current language and country. This may cause command-line apps to misbehave. Please select one from the list below." = "No valid UNIX locale exists for your computer’s current language and country. This may cause command-line apps to misbehave. Please select one from the list below.";
+
+/* Locale prompt: OK button */
+"OK" = "OK";
+
+/* Locale prompt: save selection to arrangement checkbox */
+"Save selection to arrangement %@" = "Save selection to arrangement %@";
+
+/* Locale prompt: save selection to profile checkbox */
+"Save selection to profile %@" = "Save selection to profile %@";
+
+/* Locale prompt: use minimal POSIX locale button */
+"Use Minimal POSIX Locale" = "Use Minimal POSIX Locale";
+
+/* Locale guesser: warning while loading encodings */
+"While loading the list of known encodings" = "While loading the list of known encodings";

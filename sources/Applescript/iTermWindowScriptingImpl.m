@@ -66,7 +66,7 @@
     Profile *profile = [[ProfileModel sharedInstance] bookmarkWithName:profileName];
     if (!profile) {
         [scriptCommand setScriptErrorNumber:1];
-        [scriptCommand setScriptErrorString:[NSString stringWithFormat:@"No profile exists named '%@'",
+        [scriptCommand setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"No profile exists named '%@'", @"Applescript", [NSBundle bundleForClass:[self class]], @"不存在名为 '%@' 的配置文件"),
                                              profileName]];
         return nil;
     }

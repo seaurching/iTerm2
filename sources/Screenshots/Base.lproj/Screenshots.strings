@@ -1,0 +1,95 @@
+/* Screenshots: panel title */
+"Make Screenshot" = "Make Screenshot";
+
+/* Screenshots: encoding progress label */
+"Encoding…" = "Encoding…";
+
+/* Screenshots: cancel button */
+"Cancel" = "Cancel";
+
+/* Screenshots: line range label */
+"Line range:" = "Line range:";
+
+/* Screenshots: line range to label */
+"to" = "to";
+
+/* Screenshots: annotations section label */
+"Annotations:" = "Annotations:";
+
+/* Screenshots: annotation instruction */
+"Select text in the terminal, then click a button below." = "Select text in the terminal, then click a button below.";
+
+/* Screenshots: redact selection button */
+"Redact Selection" = "Redact Selection";
+
+/* Screenshots: highlight selection button */
+"Highlight Selection" = "Highlight Selection";
+
+/* Screenshots: clear all annotations button */
+"Clear All" = "Clear All";
+
+/* Screenshots: annotation table column title */
+"Label" = "Label";
+
+/* Screenshots: empty state label */
+"No annotations. Select text and click a button above." = "No annotations. Select text and click a button above.";
+
+/* Screenshots: redaction method label */
+"Redaction method:" = "Redaction method:";
+
+/* Screenshots: blur method segment */
+"Blur" = "Blur";
+
+/* Screenshots: solid color method segment */
+"Solid Color" = "Solid Color";
+
+/* Screenshots: blur radius label */
+"Blur radius:" = "Blur radius:";
+
+/* Screenshots: fill color label */
+"Fill color:" = "Fill color:";
+
+/* Screenshots: copy to clipboard button */
+"Copy to Clipboard" = "Copy to Clipboard";
+
+/* Screenshots: save button */
+"Save" = "Save";
+
+/* Screenshots: save as button */
+"Save As…" = "Save As…";
+
+/* Screenshots: large screenshot warning */
+"⚠️ Large screenshot will be saved as %ld files." = "⚠️ Large screenshot will be saved as %ld files.";
+
+/* Screenshots: redact annotation type prefix */
+"Redact" = "Redact";
+
+/* Screenshots: highlight annotation type prefix */
+"Highlight" = "Highlight";
+
+/* Screenshots: copying progress title */
+"Copying…" = "Copying…";
+
+/* Screenshots: copied accessibility description */
+"Copied" = "Copied";
+
+/* Screenshots: copied feedback button title */
+"Copied!" = "Copied!";
+
+/* Screenshots: saving file progress title */
+"Saving file %ld of %ld" = "Saving file %ld of %ld";
+
+/* Screenshots: saving progress title */
+"Saving…" = "Saving…";
+
+/* Screenshots: single line annotation label */
+"1 line" = "1 line";
+
+/* Screenshots: multi line annotation label */
+"%ld lines" = "%ld lines";
+
+/* Screenshots: annotation label with truncated content */
+"“%@”: “%@”" = "“%@”: “%@”";
+
+/* Screenshots: annotation label with prefix and suffix */
+"“%@”: “%@”...“%@”" = "“%@”: “%@”...“%@”";

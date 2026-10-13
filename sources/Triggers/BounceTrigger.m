@@ -18,11 +18,11 @@ typedef NS_ENUM(int, BounceTriggerParamTag) {
 
 + (NSString *)title
 {
-    return @"Bounce Dock Icon";
+    return NSLocalizedStringFromTableInBundle(@"Bounce Dock Icon", @"Triggers", [NSBundle bundleForClass:[self class]], @"跳动 Dock 触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Bounce dock icon %@", self.bounceType == NSCriticalRequest ? @"until focused" : @"once"];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Bounce dock icon %@", @"Triggers", [NSBundle bundleForClass:[self class]], @"跳动触发器描述"), self.bounceType == NSCriticalRequest ? NSLocalizedStringFromTableInBundle(@"until focused", @"Triggers", [NSBundle bundleForClass:[self class]], @"跳动：直到获焦") : NSLocalizedStringFromTableInBundle(@"once", @"Triggers", [NSBundle bundleForClass:[self class]], @"跳动：一次")];
 }
 
 - (NSString *)paramPlaceholder
@@ -76,11 +76,11 @@ typedef NS_ENUM(int, BounceTriggerParamTag) {
 + (NSString *)stringForParameter:(BounceTriggerParamTag)parameter {
     switch (parameter) {
         case kBounceTriggerParamTagBounceUntilFocus:
-            return @"Bounce Until Activated";
+            return NSLocalizedStringFromTableInBundle(@"Bounce Until Activated", @"Triggers", [NSBundle bundleForClass:[self class]], @"跳动：直到激活");
         case kBounceTriggerParamTagBounceOnce:
-            return @"Bounce Once";
+            return NSLocalizedStringFromTableInBundle(@"Bounce Once", @"Triggers", [NSBundle bundleForClass:[self class]], @"跳动：一次");
     }
-    return @"Bounce Until Activated";
+    return NSLocalizedStringFromTableInBundle(@"Bounce Until Activated", @"Triggers", [NSBundle bundleForClass:[self class]], @"跳动：直到激活");
 }
 
 - (NSDictionary *)menuItemsForPoupupButton

@@ -45,11 +45,11 @@ final class WorkgroupNavigationToolbarItem: SessionToolbarGenericView {
         forwardButton = Self.makeButton(symbol: .chevronRight)
         reloadButton = Self.makeButton(symbol: .arrowClockwise)
         progressLabel = Self.makeProgressLabel()
-        backButton.toolTip = Self.tooltip(action: "Previous file",
+        backButton.toolTip = Self.tooltip(action: NSLocalizedString("Previous file", tableName: "Workgroups", comment: "上一个文件工具提示"),
                                           shortcut: shortcuts.back)
-        forwardButton.toolTip = Self.tooltip(action: "Next file",
+        forwardButton.toolTip = Self.tooltip(action: NSLocalizedString("Next file", tableName: "Workgroups", comment: "下一个文件工具提示"),
                                              shortcut: shortcuts.forward)
-        reloadButton.toolTip = Self.tooltip(action: "Reload",
+        reloadButton.toolTip = Self.tooltip(action: NSLocalizedString("Reload", tableName: "Workgroups", comment: "重载工具提示"),
                                             shortcut: shortcuts.reload)
 
         // Plain NSView container, no auto layout — terminal-window
@@ -201,7 +201,7 @@ final class WorkgroupNavigationToolbarItem: SessionToolbarGenericView {
         guard let keystroke = shortcut?.keystroke else { return action }
         let keys = iTermKeystrokeFormatter.string(for: keystroke)
         guard !keys.isEmpty else { return action }
-        return "\(action) (\(keys))"
+        return String(format: NSLocalizedString("%@ (%@)", tableName: "Workgroups", comment: "工具提示格式"), action, keys)
     }
 }
 

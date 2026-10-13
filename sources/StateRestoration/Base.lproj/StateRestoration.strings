@@ -1,0 +1,16 @@
+"Wrong number of items in row: %@" = "Wrong number of items in row: %@";
+"Bad row: %@" = "Bad row: %@";
+"Two roots found" = "Two roots found";
+"Dangling parent pointer %@ from %@" = "Dangling parent pointer %@ from %@";
+"No such record or wrong type" = "No such record or wrong type";
+"Some windows had trouble restoring last time iTerm2 launched. Try again?" = "Some windows had trouble restoring last time iTerm2 launched. Try again?";
+"OK" = "OK";
+"Cancel" = "Cancel";
+"Restore Windows?" = "Restore Windows?";
+"Still restoring your windows…" = "Still restoring your windows…";
+"iTerm2 is taking longer than usual to verify your saved windows and tabs. This usually means the system is busy and it’s safe to keep waiting, but a damaged state restoration database could also cause it. You can discard the saved windows instead if you’d rather not wait." = "iTerm2 is taking longer than usual to verify your saved windows and tabs. This usually means the system is busy and it’s safe to keep waiting, but a damaged state restoration database could also cause it. You can discard the saved windows instead if you’d rather not wait.";
+"Keep Waiting" = "Keep Waiting";
+"Discard Saved Windows" = "Discard Saved Windows";
+"Failed to migrate session database (adding generation column): %@" = "Failed to migrate session database (adding generation column): %@";
+"Failed to migrate session database (adding large_data column): %@" = "Failed to migrate session database (adding large_data column): %@";
+"Unknown error" = "Unknown error";

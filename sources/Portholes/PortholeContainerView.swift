@@ -57,7 +57,7 @@ class PortholeContainerView: NSView {
     static func closeButtonImage(_ color: NSColor) -> NSImage {
         if #available(macOS 11.0, *) {
             if let image = NSImage(systemSymbolName: SFSymbol.xmarkCircle.rawValue,
-                                   accessibilityDescription: "Close markdown view") {
+                                   accessibilityDescription: NSLocalizedString("Close markdown view", tableName: "Portholes", comment: "Portholes: close markdown view accessibility")) {
                 return image.it_image(withTintColor: color)
             }
         }
@@ -65,7 +65,7 @@ class PortholeContainerView: NSView {
     }
 
     init() {
-        wideButton = SaneButton(checkboxWithTitle: "Wide", target: nil, action: #selector(toggleWide(_:)))
+        wideButton = SaneButton(checkboxWithTitle: NSLocalizedString("Wide", tableName: "Portholes", comment: "Portholes: wide checkbox title"), target: nil, action: #selector(toggleWide(_:)))
 
         super.init(frame: NSRect(x: 0, y: 0, width: 100, height: 100))
 

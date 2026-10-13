@@ -1,0 +1,10 @@
+"Initialize an AATree with the 'initWithKeyComparator:' method." = "Initialize an AATree with the 'initWithKeyComparator:' method.";
+"No root" = "No root";
+"Unrealized" = "Unrealized";
+"add object" = "add object";
+"remove object" = "remove object";
+"remove all objects" = "remove all objects";
+"mutate object" = "mutate object";
+"bulk mutate objects" = "bulk mutate objects";
+"bulk remove objects" = "bulk remove objects";
+"bulk move objects" = "bulk move objects";

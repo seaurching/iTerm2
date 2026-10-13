@@ -69,14 +69,14 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
                           configParser:(iTermSetupCfgParser *)configParser
                             completion:(void (^)(NSString *))completion {
     DLog(@"%@", fullPath);
-    NSString *message = [NSString stringWithFormat:@"The Python API script “%@” needs a newer version of the runtime environment for security reasons. You must upgrade it before this version of iTerm2 can launch the script.", fullPath.lastPathComponent];
+    NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The Python API script “%@” needs a newer version of the runtime environment for security reasons. You must upgrade it before this version of iTerm2 can launch the script.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Python API 脚本需要更新版本的运行时环境"), fullPath.lastPathComponent];
     const iTermWarningSelection selection =
     [iTermWarning showWarningWithTitle:message
-                               actions:@[ @"Upgrade", @"Cancel" ]
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"Upgrade", @"APIFiles", [NSBundle bundleForClass:[self class]], @"升级"), NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @"取消") ]
                              accessory:nil
                             identifier:@"UpgradeFullEnvironmentScript"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Upgrade Python Runtime?"
+                               heading:NSLocalizedStringFromTableInBundle(@"Upgrade Python Runtime?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"升级 Python 运行时？")
                                 window:nil];
     switch (selection) {
         case kiTermWarningSelection0:
@@ -144,7 +144,7 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
         // so shouldAlert is NO and we stay silent to avoid stacking a second.
         if (shouldAlert) {
             [self showIntelOnlyUnrunnableErrorForScript:fullPath
-                                               recovery:@"The Apple Silicon runtime could not be downloaded. Check your network connection and try again."];
+                                               recovery:NSLocalizedStringFromTableInBundle(@"The Apple Silicon runtime could not be downloaded. Check your network connection and try again.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无法下载 Apple Silicon 运行时。请检查网络连接并重试。")];
         }
     }];
 }
@@ -189,11 +189,11 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
 
         dispatch_async(dispatch_get_main_queue(), ^{
             [iTermWarning showWarningWithTitle:errorStatus.localizedDescription
-                                       actions:@[ @"OK" ]
+                                       actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:[self class]], @"好") ]
                                      accessory:nil
                                     identifier:nil
                                    silenceable:kiTermWarningTypePersistent
-                                       heading:@"Error Upgrading Script"
+                                       heading:NSLocalizedStringFromTableInBundle(@"Error Upgrading Script", @"APIFiles", [NSBundle bundleForClass:[self class]], @"升级脚本出错")
                                         window:nil];
         });
     }];
@@ -225,7 +225,7 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
             // Migrating with an empty dependency list would silently produce a broken
             // uv environment (missing packages), so leave the script on its working
             // legacy environment and log loudly instead.
-            NSString *reason = configParser == nil ? @"setup.cfg is missing" : configParser.dependenciesError.localizedDescription ?: @"setup.cfg could not be parsed";
+            NSString *reason = configParser == nil ? NSLocalizedStringFromTableInBundle(@"setup.cfg is missing", @"APIFiles", [NSBundle bundleForClass:[self class]], @"setup.cfg 缺失") : configParser.dependenciesError.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"setup.cfg could not be parsed", @"APIFiles", [NSBundle bundleForClass:[self class]], @"setup.cfg 无法解析");
             RLog(@"Not migrating %@ to uv: %@. Launching on the legacy environment.", fullPath, reason);
             // Without a parseable setup.cfg we can neither migrate nor rebuild the env, so
             // nothing downstream guards this early exit. On a Rosetta-less macOS an
@@ -233,7 +233,7 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
             // exec-fail with a cryptic bad-CPU-type error.
             if ([self handleIntelOnlyUnrunnableLegacyInterpreter:originalVirtualenv
                                                        forScript:fullPath
-                                                        recovery:@"Its setup.cfg could not be read, so it cannot be rebuilt automatically."]) {
+                                                        recovery:NSLocalizedStringFromTableInBundle(@"Its setup.cfg could not be read, so it cannot be rebuilt automatically.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无法读取其 setup.cfg，因此无法自动重建。")]) {
                 return;
             }
             completion(originalVirtualenv);
@@ -253,7 +253,7 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
                                                     provisioningDidBegin:^{
             // Show progress only once the download phase is done and the venv build
             // starts, so a launch-time migration is not a silent multi-second stall.
-            [progress showWithMessage:@"Migrating this script to the new Python runtime…"];
+            [progress showWithMessage:NSLocalizedStringFromTableInBundle(@"Migrating this script to the new Python runtime…", @"APIFiles", [NSBundle bundleForClass:[self class]], @"正在将此脚本迁移到新的 Python 运行时…")];
         }
                                                               completion:^(NSError *migrationError) {
             [progress dismiss];
@@ -265,7 +265,7 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
                     // silently ran on its old runtime, so leave a Script Console record so
                     // an opted-in user can discover why nothing changed. No modal.
                     NSString *name = [[fullPath pathComponents] lastObject] ?: fullPath;
-                    NSString *line = [NSString stringWithFormat:@"Could not migrate “%@” to the uv Python runtime (%@). It launched on the existing runtime instead.\n",
+                    NSString *line = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not migrate “%@” to the uv Python runtime (%@). It launched on the existing runtime instead.\n", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无法迁移到 uv Python 运行时"),
                                       name, migrationError.localizedDescription];
                     [[iTermScriptHistoryEntry globalEntry] addOutput:line completion:^{}];
                 }
@@ -279,7 +279,7 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
                 // macOS. Show a clear error rather than exec-failing cryptically.
                 if ([self handleIntelOnlyUnrunnableLegacyInterpreter:restored
                                                            forScript:fullPath
-                                                            recovery:@"Its environment is intact; turn off the uv advanced setting to rebuild it for Apple Silicon."]) {
+                                                            recovery:NSLocalizedStringFromTableInBundle(@"Its environment is intact; turn off the uv advanced setting to rebuild it for Apple Silicon.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"其环境完好；关闭 uv 高级设置以重新构建 Apple Silicon 版本。")]) {
                     return;
                 }
                 // Enforce the same minimum-environment-version security gate the gate-off
@@ -399,9 +399,9 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
                 }
                 if (uvError != nil || sharedPython == nil) {
                     NSAlert *alert = [[NSAlert alloc] init];
-                    alert.messageText = @"Python Environment Unavailable";
-                    alert.informativeText = [NSString stringWithFormat:@"Could not prepare the Python environment for this script: %@",
-                                             uvError.localizedDescription ?: @"unknown error"];
+                    alert.messageText = NSLocalizedStringFromTableInBundle(@"Python Environment Unavailable", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Python 环境不可用");
+                    alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Could not prepare the Python environment for this script: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无法为此脚本准备 Python 环境：%@"),
+                                             uvError.localizedDescription ?: NSLocalizedStringFromTableInBundle(@"unknown error", @"APIFiles", [NSBundle bundleForClass:[self class]], @"未知错误")];
                     [alert runModal];
                     return;
                 }
@@ -481,12 +481,12 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
 
 + (BOOL)userConsentsToInstallingRosetta {
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:@"You must install Rosetta 2 in order to use the Python API. Install it now?"
-                               actions:@[ @"OK", @"Cancel" ]
+    [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"You must install Rosetta 2 in order to use the Python API. Install it now?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"您必须安装 Rosetta 2 才能使用 Python API。现在安装吗？")
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"OK", @"APIFiles", [NSBundle bundleForClass:[self class]], @"好"), NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @"取消") ]
                              accessory:nil
                             identifier:@"NoSyncInstallRosetta"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Install Rosetta?"
+                               heading:NSLocalizedStringFromTableInBundle(@"Install Rosetta?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"安装 Rosetta？")
                                 window:nil];
     return selection == kiTermWarningSelection0;
 }
@@ -519,11 +519,11 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
 // caller-specific hint for what the user can do about it.
 + (void)showIntelOnlyUnrunnableErrorForScript:(NSString *)fullPath recovery:(NSString *)recovery {
     NSString *name = [[fullPath pathComponents] lastObject] ?: fullPath;
-    NSString *base = [NSString stringWithFormat:@"“%@” uses an Intel-only Python environment, which cannot run on this version of macOS because Rosetta is not available.", name];
+    NSString *base = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"“%@” uses an Intel-only Python environment, which cannot run on this version of macOS because Rosetta is not available.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"Intel专用Python环境警告"), name];
     [[iTermScriptHistoryEntry globalEntry] addOutput:[NSString stringWithFormat:@"%@ %@\n", base, recovery] completion:^{}];
     dispatch_async(dispatch_get_main_queue(), ^{
         NSAlert *alert = [[NSAlert alloc] init];
-        alert.messageText = @"Script Cannot Run";
+        alert.messageText = NSLocalizedStringFromTableInBundle(@"Script Cannot Run", @"APIFiles", [NSBundle bundleForClass:[self class]], @"脚本无法运行");
         alert.informativeText = [NSString stringWithFormat:@"%@ %@", base, recovery];
         [alert runModal];
     });
@@ -559,12 +559,12 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
 + (void)refetchArm64StandardRuntimeForPythonVersion:(NSString *)pythonVersion
                                          completion:(void (^)(iTermPythonRuntimeDownloaderStatus status))completion {
     const iTermWarningSelection selection =
-    [iTermWarning showWarningWithTitle:@"The shared Python runtime is Intel-only and cannot run on this version of macOS. Download the Apple Silicon version now?"
-                               actions:@[ @"Download", @"Cancel" ]
+    [iTermWarning showWarningWithTitle:NSLocalizedStringFromTableInBundle(@"The shared Python runtime is Intel-only and cannot run on this version of macOS. Download the Apple Silicon version now?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"共享的 Python 运行时仅支持 Intel，无法在此版本的 macOS 上运行。现在下载 Apple Silicon 版本吗？")
+                               actions:@[ NSLocalizedStringFromTableInBundle(@"Download", @"APIFiles", [NSBundle bundleForClass:[self class]], @"下载"), NSLocalizedStringFromTableInBundle(@"Cancel", @"APIFiles", [NSBundle bundleForClass:[self class]], @"取消") ]
                              accessory:nil
                             identifier:@"NoSyncRefetchArm64Runtime"
                            silenceable:kiTermWarningTypePersistent
-                               heading:@"Download Apple Silicon Runtime?"
+                               heading:NSLocalizedStringFromTableInBundle(@"Download Apple Silicon Runtime?", @"APIFiles", [NSBundle bundleForClass:[self class]], @"下载 Apple Silicon 运行时？")
                                 window:nil];
     if (selection != kiTermWarningSelection0) {
         completion(iTermPythonRuntimeDownloaderStatusCanceledByUser);
@@ -577,7 +577,7 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
         [[NSFileManager defaultManager] removeItemAtPath:pyenvDir error:&error];
         RLog(@"Removed Intel-only standard runtime at %@: %@", pyenvDir, error);
     }
-    [[iTermScriptHistoryEntry globalEntry] addOutput:@"Downloading the Apple Silicon Python runtime…\n"
+    [[iTermScriptHistoryEntry globalEntry] addOutput:NSLocalizedStringFromTableInBundle(@"Downloading the Apple Silicon Python runtime…\n",@"APIFiles",[NSBundle bundleForClass:[self class]],@"下载 Apple Sillicon运行时…\n")
                                           completion:^{}];
     // confirmation:NO: we already obtained consent above; the delete makes it "needed".
     [downloader downloadOptionalComponentsIfNeededWithConfirmation:NO
@@ -652,7 +652,7 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
         // download failure or user cancel the downloader already showed its own modal.
         if ([self runtimeDownloadSucceeded:status]) {
             [self showIntelOnlyUnrunnableErrorForScript:fullPath
-                                               recovery:@"The Apple Silicon runtime could not be downloaded. Check your network connection and try again."];
+                                               recovery:NSLocalizedStringFromTableInBundle(@"The Apple Silicon runtime could not be downloaded. Check your network connection and try again.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"无法下载 Apple Silicon 运行时。请检查网络连接并重试。")];
         }
     }];
 }
@@ -788,7 +788,7 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
         @catch (NSException *e) {
             RLog(@"%@", e);
             [[iTermScriptHistory sharedInstance] addHistoryEntry:entry];
-            [entry addOutput:[NSString stringWithFormat:@"ERROR: Failed to launch: %@", e.reason]
+            [entry addOutput:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"ERROR: Failed to launch: %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"错误：启动失败：%@"), e.reason]
                   completion:^{}];
             [self didFailToLaunchScript:filename withException:e];
         }
@@ -984,12 +984,12 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
                     [entry addOutput:@"\n** Script was killed by a signal **"
                           completion:^{}];
                 } else {
-                    [entry addOutput:[NSString stringWithFormat:@"\n** Script exited with status %@ **", @(task.terminationStatus)]
+                    [entry addOutput:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"\n** Script exited with status %@ **", @"APIFiles", [NSBundle bundleForClass:[self class]], @"脚本退出状态"), @(task.terminationStatus)]
                           completion:^{}];
                 }
                 if (!entry.terminatedByUser) {
-                    NSString *message = [NSString stringWithFormat:@"“%@” ended unexpectedly.", entry.name];
-                    [[iTermNotificationController sharedInstance] postNotificationWithTitle:@"Script Failed"
+                    NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"“%@” ended unexpectedly.", @"APIFiles", [NSBundle bundleForClass:[self class]], @"脚本意外终止"), entry.name];
+                    [[iTermNotificationController sharedInstance] postNotificationWithTitle:NSLocalizedStringFromTableInBundle(@"Script Failed", @"APIFiles", [NSBundle bundleForClass:[self class]], @"脚本失败")
                                                                                      detail:message
                                                                    callbackNotificationName:iTermAPIScriptLauncherScriptDidFailUserNotificationCallbackNotification
                                                                callbackNotificationUserInfo:@{ @"entry": entry.identifier ?: @"" }];
@@ -1019,10 +1019,10 @@ static NSString *const iTermAPIScriptLauncherScriptDidFailUserNotificationCallba
 }
 
 + (void)didFailToLaunchScript:(NSString *)filename withException:(NSException *)e {
-    ELog(@"Exception occurred %@", e);
+    ELog(NSLocalizedStringFromTableInBundle(@"Exception occurred %@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"发生异常 %@"), e);
     NSAlert *alert = [[NSAlert alloc] init];
-    alert.messageText = @"Error running script";
-    alert.informativeText = [NSString stringWithFormat:@"Script at \"%@\" failed.\n\n%@",
+    alert.messageText = NSLocalizedStringFromTableInBundle(@"Error running script", @"APIFiles", [NSBundle bundleForClass:[self class]], @"运行脚本出错");
+    alert.informativeText = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Script at \"%@\" failed.\n\n%@", @"APIFiles", [NSBundle bundleForClass:[self class]], @"脚本执行失败"), 
                              filename, e.reason];
     [alert runModal];
 }

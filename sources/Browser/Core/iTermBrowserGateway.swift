@@ -64,13 +64,13 @@ class iTermBrowserGateway: NSObject {
     @objc(didLocateBundleManually:)
     static func didLocateBundleManually(_ url: URL) -> String? {
         guard let bundle = Bundle(url: url) else {
-            return "The file at \(url.path) is not a valid app bundle."
+            return String(format: NSLocalizedString("The file at %@ is not a valid app bundle.", tableName: "Browser", comment: "位于 %@ 的文件不是有效的应用包。"), url.path)
         }
         if bundle.bundleIdentifier != Self.bundleID {
-            return "This is not the browser plugin. This file’s bundle ID is “\(bundle.bundleIdentifier ?? "not set")”.\n The expected ID is “\(Self.bundleID)”."
+            return String(format: NSLocalizedString("This is not the browser plugin. This file’s bundle ID is “%@”.\n The expected ID is “%@”.", tableName: "Browser", comment: "这不是浏览器插件。此文件的 bundle ID 为“%@”。\n 预期的 ID 为“%@”。"), bundle.bundleIdentifier ?? "not set", Self.bundleID)
         }
         if !verifyCodeSignature(at: url, teamID: teamID) {
-            return "The code signature of the plugin at \(url.path) is invalid. Download it again, and ensure your anti-virus does not quarantine it."
+            return String(format: NSLocalizedString("The code signature of the plugin at %@ is invalid. Download it again, and ensure your anti-virus does not quarantine it.", tableName: "Browser", comment: "位于 %@ 的插件代码签名无效。请重新下载，并确保您的防病毒软件没有隔离它。"), url.path)
         }
         iTermAdvancedSettingsModel.setBrowserPluginPathHint(url.path)
         cached.expire()
@@ -107,12 +107,12 @@ class iTermBrowserGateway: NSObject {
 
     @objc
     static func offerPlugin() {
-        let selection = iTermWarning.show(withTitle: "You must install the Browser Plugin first. Download it now?",
-                                          actions: ["OK", "Cancel"],
+        let selection = iTermWarning.show(withTitle: NSLocalizedString("You must install the Browser Plugin first. Download it now?", tableName: "Browser", comment: "您必须先安装浏览器插件。现在下载吗？"),
+                                          actions: [NSLocalizedString("OK", tableName: "Browser", comment: "好"), NSLocalizedString("Cancel", tableName: "Browser", comment: "取消")],
                                           accessory: nil,
                                           identifier: nil,
                                           silenceable: .kiTermWarningTypePersistent,
-                                          heading: "Plugin Required",
+                                          heading: NSLocalizedString("Plugin Required", tableName: "Browser", comment: "需要插件"),
                                           window: nil)
         if selection == .kiTermWarningSelection0 {
             NSWorkspace.shared.open(URL(string: "https://iterm2.com/browser-plugin.html")!)
@@ -138,12 +138,12 @@ class iTermBrowserGateway: NSObject {
         // would cause an infinite loop since the plugin would still not be installed.
         // Remembering "Cancel" is also not useful.
         let warning = iTermWarning()
-        warning.title = "iTerm2 can display web pages! But first you must download the Browser Plugin."
-        warning.actionLabels = ["Download", "Use System Browser", "Cancel"]
+        warning.title = NSLocalizedString("iTerm2 can display web pages! But first you must download the Browser Plugin.", tableName: "Browser", comment: "iTerm2 可以显示网页！但您必须先下载浏览器插件。")
+        warning.actionLabels = [NSLocalizedString("Download", tableName: "Browser", comment: "下载"), NSLocalizedString("Use System Browser", tableName: "Browser", comment: "使用系统浏览器"), NSLocalizedString("Cancel", tableName: "Browser", comment: "取消")]
         warning.identifier = upsellWarningIdentifier
         warning.warningType = .kiTermWarningTypePermanentlySilenceable
-        warning.heading = "Plugin Required"
-        warning.doNotRememberLabels = ["Download", "Cancel"]
+        warning.heading = NSLocalizedString("Plugin Required", tableName: "Browser", comment: "需要插件")
+        warning.doNotRememberLabels = [NSLocalizedString("Download", tableName: "Browser", comment: "下载"), NSLocalizedString("Cancel", tableName: "Browser", comment: "取消")]
         let selection = warning.runModal()
         switch selection {
         case .kiTermWarningSelection0:

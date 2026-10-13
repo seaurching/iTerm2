@@ -13,11 +13,11 @@
 @implementation SetDirectoryTrigger
 
 + (NSString *)title {
-  return @"Report Directory";
+  return NSLocalizedStringFromTableInBundle(@"Report Directory", @"Triggers", [NSBundle bundleForClass:[self class]], @"报告目录触发器标题");
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Report Directory as “%@”", self.param];
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Report Directory as “%@”", @"Triggers", [NSBundle bundleForClass:[self class]], @"报告目录触发器描述"), self.param];
 }
 
 - (BOOL)takesParameter{
@@ -25,7 +25,7 @@
 }
 
 - (NSString *)triggerOptionalParameterPlaceholderWithInterpolation:(BOOL)interpolation {
-  return @"Directory";
+  return NSLocalizedStringFromTableInBundle(@"Directory", @"Triggers", [NSBundle bundleForClass:[self class]], @"占位符：目录");
 }
 
 - (BOOL)isIdempotent {

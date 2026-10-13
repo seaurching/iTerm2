@@ -173,7 +173,7 @@ final class WorkgroupVisualView: NSView {
             .foregroundColor: NSColor.secondaryLabelColor,
             .font: NSFont.systemFont(ofSize: NSFont.systemFontSize),
         ]
-        let text = "No workgroup" as NSString
+        let text = NSLocalizedString("No workgroup", tableName: "Workgroups", comment: "无工作组标签") as NSString
         let size = text.size(withAttributes: attrs)
         text.draw(at: NSPoint(x: bounds.midX - size.width / 2,
                               y: bounds.midY - size.height / 2),
@@ -207,9 +207,9 @@ final class WorkgroupVisualView: NSView {
     private func tabLabel(for s: iTermWorkgroupSessionConfig) -> String {
         if !s.displayName.isEmpty { return s.displayName }
         switch s.kind {
-        case .root: return "Main"
-        case .tab: return "Tab"
-        default: return "?"
+        case .root: return NSLocalizedString("Main", tableName: "Workgroups", comment: "主标签页标签")
+        case .tab: return NSLocalizedString("Tab", tableName: "Workgroups", comment: "标签页标签")
+        default: return NSLocalizedString("?", tableName: "Workgroups", comment: "未知标签")
         }
     }
 
@@ -294,10 +294,10 @@ final class WorkgroupVisualView: NSView {
     private func peerLabel(for s: iTermWorkgroupSessionConfig) -> String {
         if !s.displayName.isEmpty { return s.displayName }
         switch s.kind {
-        case .root: return "Main"
-        case .peer: return "Peer"
-        case .tab: return "Tab"
-        case .split: return "Split"
+        case .root: return NSLocalizedString("Main", tableName: "Workgroups", comment: "主标签页标签")
+        case .peer: return NSLocalizedString("Peer", tableName: "Workgroups", comment: "对等体标签")
+        case .tab: return NSLocalizedString("Tab", tableName: "Workgroups", comment: "标签页标签")
+        case .split: return NSLocalizedString("Split", tableName: "Workgroups", comment: "分屏标签")
         }
     }
 
@@ -410,10 +410,10 @@ final class WorkgroupVisualView: NSView {
     private func paneLabel(for s: iTermWorkgroupSessionConfig) -> String {
         if !s.displayName.isEmpty { return s.displayName }
         switch s.kind {
-        case .root: return "Main"
-        case .peer: return "Peer"
-        case .split: return "Split"
-        case .tab: return "Tab"
+        case .root: return NSLocalizedString("Main", tableName: "Workgroups", comment: "主标签页标签")
+        case .peer: return NSLocalizedString("Peer", tableName: "Workgroups", comment: "对等体标签")
+        case .split: return NSLocalizedString("Split", tableName: "Workgroups", comment: "分屏标签")
+        case .tab: return NSLocalizedString("Tab", tableName: "Workgroups", comment: "标签页标签")
         }
     }
 
