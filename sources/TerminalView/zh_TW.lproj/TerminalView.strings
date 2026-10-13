@@ -210,3 +210,5 @@
 "Uploading “%@”…" = "正在上傳「%@」…";
 "array of objects" = "物件陣列";
 "array of strings" = "字串陣列";
+"(Untitled Tab)" = "(未命名分頁)";
+"More tabs" = "更多分頁";

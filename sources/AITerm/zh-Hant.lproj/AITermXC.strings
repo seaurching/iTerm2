@@ -500,17 +500,17 @@
 
 /* ChatInputView.swift */
 "\nYou can click on a link in this message or on a yellow underline in the terminal to reveal an annotation." = "\n你可以點按訊息中的連結或終端機中的黃色底線來檢視批註。";
-"**Allow agent to control %@ \\u{201c}%@\\u{201d}?**" = "**允許代理程式控制 %1$@「%2$@」嗎?**";
+"**Allow agent to control %@ “%@”?**" = "**允許代理程式控制 %1$@「%2$@」嗎?**";
 "**Enable orchestration for this chat?**\n\n" = "**為此對話啟用編排?**\n\n";
-"**Granted this chat permission to control \\u{201c}%@\\u{201d}.**" = "**已授予此對話控制「%@」的權限。**";
-"**Link this chat to %@ session \\u{201C}%@\\u{201D}, or enable orchestration?**" = "**將此對話連結到 %1$@工作階段「%2$@」,還是啟用編排?**";
+"**Granted this chat permission to control “%@”.**" = "**已授予此對話控制「%@」的權限。**";
+"**Link this chat to %@ session “%@”, or enable orchestration?**" = "**將此對話連結到 %1$@工作階段「%2$@」,還是啟用編排?**";
 "**Request failed**\n\n%@" = "**請求失敗**\n\n%@";
 "*If you grant or deny permission, it affects only this chat conversation while linked to this particular terminal session. You can change permissions in the chat Info menu.*" = "*如果你授予或拒絕權限,僅影響此對話在連結到該終端機工作階段期間的行為。你可以在對話的「資訊」選單中更改權限。*";
 "A vector store was created" = "已建立向量儲存庫。";
 "AI Model" = "AI 模型";
 "AI Provider" = "AI 供應商";
 "AI Speed" = "AI 速度";
-"Add \\u{201c}%@\\u{201d} to your message as an attachment, or insert its path as text?" = "將「%@」作為附件加入你的訊息,還是將其路徑作為文字插入?";
+"Add “%@” to your message as an attachment, or insert its path as text?" = "將「%@」作為附件加入你的訊息,還是將其路徑作為文字插入?";
 "Cancelled." = "已取消。";
 "Cassette delivery had neither response nor error" = "Cassette 傳遞既無回應也無錯誤";
 "Chat about %@" = "就此主題:%@";
@@ -543,9 +543,9 @@
 "The messages for this chat could not be loaded." = "無法載入此對話的訊息。";
 "There was a problem adding files to the vector store: %@" = "向向量儲存庫加入檔案時出現問題:%@";
 "There was a problem creating a vector store database: %@" = "建立向量儲存庫資料庫時出現問題:%@";
-"This chat has been linked to terminal session \\u{201c}%@\\u{201d}" = "此對話已連結到終端機工作階段「%@」";
-"This chat has been linked to web browser session \\u{201c}%@\\u{201d}" = "此對話已連結到網頁瀏覽器工作階段「%@」";
-"This chat uses \\u{201c}%@\\u{201d}, and \\u{201c}%@\\u{201d} belongs to a different AI provider. A chat cannot change providers once the conversation has started; start a new chat to use \\u{201c}%@\\u{201d}." = "此對話使用「%1$@」,而「%2$@」屬於另一個 AI 供應商。對話開始後無法更換供應商;請新增對話以使用「%3$@」。";
+"This chat has been linked to terminal session “%@”" = "此對話已連結到終端機工作階段「%@」";
+"This chat has been linked to web browser session “%@”" = "此對話已連結到網頁瀏覽器工作階段「%@」";
+"This chat uses “%@”, and “%@” belongs to a different AI provider. A chat cannot change providers once the conversation has started; start a new chat to use “%@”." = "此對話使用「%1$@」,而「%2$@」屬於另一個 AI 供應商。對話開始後無法更換供應商;請新增對話以使用「%3$@」。";
 "Unexpected exception: %@" = "意外例外:%@";
 "Unexpected output from plugin" = "外掛模組意外回傳空輸出";
 "Unexpected output from plugin: %@" = "外掛模組意外輸出:%@";
@@ -572,7 +572,7 @@
 "Streaming not supported in the objective C interface" = "Objective-C 介面不支援串流傳輸";
 "The current hostname is %@" = "目前主機名稱是 %@";
 "The exit status of the command was %@" = "命令的退出狀態是 %@";
-"The user has asked this question about it: \\u{201c}%@\\u{201d}" = "使用者就此提出了這個問題:「%@」";
+"The user has asked this question about it: “%@”" = "使用者就此提出了這個問題:「%@」";
 "iTerm2 is sending you this message automatically because the user enabled sending terminal commands to AI for assistance. If you can provide useful non-obvious insights, respond with those. Do not restate information that is obvious from the output. If there is nothing important to say, just respond with \"Got it.\"" = "iTerm2 自動向你傳送這則訊息,是因為使用者開啟了將終端機命令傳送給 AI 尋求協助的功能。如果你能提供有用的非顯而易見的見解,請回覆這些見解。不要複述從輸出中顯而易見的資訊。如果沒有重要的內容要說,只需回覆 \"Got it.\"。";
 "Unknown backslash escape “%@”. Recognized: \\\\, \\n, \\r, \\t, \\uXXXX." = "未知反斜線跳脫「%@」。支援的跳脫:\\\\、\\n、\\r、\\t、\\uXXXX。";
 "Truncated \\\\uXXXX escape (needs exactly four hex digits)." = "\\uXXXX 跳脫被截斷(需要恰好四位十六進位數字)。";

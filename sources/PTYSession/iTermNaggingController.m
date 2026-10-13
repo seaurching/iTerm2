@@ -312,14 +312,39 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
 }
 
 - (void)sessionEndedWithExecFailure:(BOOL)execDidFail {
-    [self.delegate naggingControllerShowMessage:execDidFail ? NSLocalizedStringFromTableInBundle(@"Session failed to start.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: session failed notice") : NSLocalizedStringFromTableInBundle(@"Session ended (command exited). Restart it?", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: session ended notice")
-                                     isQuestion:!execDidFail
-                                      important:YES
-                                     identifier:iTermNaggingControllerReopenSessionAfterBrokenPipeIdentifier
-                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Restart", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: restart button"), NSLocalizedStringFromTableInBundle(@"Don’t Ask Again", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: dont ask again button") ]
-                                     completion:^(int selection) {
-        [self handleCompletionForBrokenPipe:selection];
-    }];
+    [
+        self.delegate naggingControllerShowMessage:execDidFail ?
+        NSLocalizedStringFromTableInBundle(
+            @"Session failed to start.",
+			@"PTYSession",
+			[NSBundle bundleForClass:[self class]],
+			@"PTYSession: session failed notice") :
+        NSLocalizedStringFromTableInBundle(
+			@"Session ended (command exited). Restart it?",
+			@"PTYSession",
+			[NSBundle bundleForClass:[self class]],
+			@"PTYSession: session ended notice"
+		)
+        isQuestion:!execDidFail
+        important:YES
+        identifier:iTermNaggingControllerReopenSessionAfterBrokenPipeIdentifier
+        options:@[
+        	NSLocalizedStringFromTableInBundle(
+            	@"_Restart",
+            	@"PTYSession",
+            	[NSBundle bundleForClass:[self class]],
+            	@"PTYSession: restart button"
+            ),
+            NSLocalizedStringFromTableInBundle(
+            	@"Don’t Ask Again",
+            	@"PTYSession",
+            	[NSBundle bundleForClass:[self class]],
+            	@"PTYSession: dont ask again button")
+    	]
+        completion:^(int selection) {
+        	[self handleCompletionForBrokenPipe:selection];
+    	}
+    ];
 }
 
 - (void)askAboutAbortingDownload {

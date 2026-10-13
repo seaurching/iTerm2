@@ -34,9 +34,8 @@ def unesc(s):
                     out.append(chr(int(s[i+2:i+6], 16))); i += 6; continue
                 except ValueError:
                     pass
-            if c == '{':  # Swift \u{XXXX}
-                m = re.match(r'\{([0-9a-fA-F]+)\}', s[i+1:])
-                if m:
+                m = re.match(r'\{([0-9a-fA-F]+)\}', s[i+2:])
+                if m:  # Swift \u{XXXX}
                     out.append(chr(int(m.group(1), 16))); i += 2 + m.end(); continue
         out.append(s[i]); i += 1
     return ''.join(out)

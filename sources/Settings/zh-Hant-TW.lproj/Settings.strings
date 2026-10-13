@@ -380,7 +380,7 @@
 "Find Again Up" = "向上再次尋找";
 "Find Regular Expression…" = "尋找正規表示式…";
 "Focused window" = "目前焦點視窗";
-"Force Touch Single Click" = "Force Touch 單擊";
+"Force Touch Single Click" = "用力單擊";
 "Function Call" = "函式呼叫";
 "Function calling" = "函式呼叫";
 "Function key behavior: Regular, Hyper, Meta, or Super" = "功能鍵行為：Regular、Hyper、Meta 或 Super";
@@ -674,7 +674,7 @@
 "Profile type for UI display" = "用於 UI 顯示的設定檔類型";
 "Profile:" = "設定檔：";
 "Profiles" = "設定檔";
-"QuickLook" = "QuickLook";
+"QuickLook" = "快速檢視";
 "Radius of background blur effect" = "背景模糊效果的半徑";
 "Recent Tabs" = "最近的分頁";
 "Regular Expression" = "正規表示式";

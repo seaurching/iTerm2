@@ -33422,37 +33422,37 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Force Touch"
+            "value" : "用力点按"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Force Touch"
+            "value" : "用力點按"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Force Touch"
+            "value" : "用力点按"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Force Touch"
+            "value" : "用力点按"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Force Touch"
+            "value" : "用力點按"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Force Touch"
+            "value" : "用力點按"
           }
         }
       }

@@ -4536,7 +4536,13 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
 // Called when the file descriptor closes. If -terminate was already called this does nothing.
 // Otherwise, you can call replaceTerminatedShellWithNewInstance after this to restart the session.
 - (void)brokenPipe {
-    [self brokenPipeWithError:@"Session Ended"];
+    [self brokenPipeWithError:NSLocalizedStringFromTableInBundle(
+        @"Session Ended",
+        @"Triggers",
+        [NSBundle bundleForClass:[self class]],
+        @"会话结束"
+        )
+    ];
 }
 
 - (void)brokenPipeWithError:(NSString *)message {
@@ -4550,11 +4556,28 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
     if ([self shouldPostUserNotification] &&
         [iTermProfilePreferences boolForKey:KEY_SEND_SESSION_ENDED_ALERT inProfile:self.profile]) {
         NSString *customText = [iTermAdvancedSettingsModel sessionEndMessageText];
-        NSString *notificationText = (customText.length > 0) ? customText : @"Session Ended";
-        [[iTermNotificationController sharedInstance] notify:notificationText
-                                             withDescription:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Session \"%@\" in tab #%d just terminated.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible"),
-                                                              [[self name] removingHTMLFromTabTitleIfNeeded],
-                                                              [_delegate tabNumber]]];
+        NSString *notificationText =
+        	(customText.length > 0) ? customText :
+        		NSLocalizedStringFromTableInBundle(
+					@"Session Ended",
+                	@"Triggers",
+                	[NSBundle bundleForClass:[self class]],
+                	@"会话结束"
+			);
+        [
+            [iTermNotificationController sharedInstance]
+            notify:notificationText
+            withDescription:[
+                NSString stringWithFormat:
+                    NSLocalizedStringFromTableInBundle(
+                        @"Session \"%@\" in tab #%d just terminated.",
+                        @"PTYSession",
+                        [NSBundle bundleForClass:[self class]],
+                        @"user-visible"),
+                        [[self name] removingHTMLFromTabTitleIfNeeded],
+                        [_delegate tabNumber]
+            ]
+        ];
     }
 
     RLog(@"  brokenPipe: set exited = YES");

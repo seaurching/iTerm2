@@ -346,7 +346,7 @@ PSMTabBarControlOptionKey PSMTabBarControlOptionPUAFontProvider = @"PSMTabBarCon
             if (_overflowPopUpButton) {
                 // configure
                 [_overflowPopUpButton setAutoresizingMask:NSViewNotSizable|NSViewMinXMargin];
-                _overflowPopUpButton.accessibilityLabel = @"More tabs";
+                _overflowPopUpButton.accessibilityLabel = NSLocalizedStringFromTableInBundle(@"More tabs", @"TerminalView", [NSBundle bundleForClass:[self class]], @"标签栏: 更多标签页按钮无障碍标签");
             }
 
             // new tab button
@@ -381,7 +381,7 @@ PSMTabBarControlOptionKey PSMTabBarControlOptionPUAFontProvider = @"PSMTabBarCon
     if (_overflowPopUpButton) {
         // configure
         [_overflowPopUpButton setAutoresizingMask:NSViewNotSizable|NSViewMinXMargin];
-        _overflowPopUpButton.accessibilityLabel = @"More tabs";
+        _overflowPopUpButton.accessibilityLabel = NSLocalizedStringFromTableInBundle(@"More tabs", @"TerminalView", [NSBundle bundleForClass:[self class]], @"标签栏: 更多标签页按钮无障碍标签");
     }
 
     NSRect addTabButtonRect = NSMakeRect([self frame].size.width - [_style rightMarginForTabBarControlWithOverflow:YES

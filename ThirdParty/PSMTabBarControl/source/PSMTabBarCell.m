@@ -74,7 +74,7 @@ static NSRect PSMConvertAccessibilityFrameToScreen(NSView *view, NSRect frame) {
     if ([label length] > 0) {
         return label;
     }
-    return @"(Untitled Tab)";   // not localized as of now
+    return NSLocalizedStringFromTableInBundle(@"(Untitled Tab)", @"TerminalView", [NSBundle bundleForClass:[self class]], @"标签栏: 无标题标签页占位");   // not localized as of now
 }
 
 - (NSRect)accessibilityFrame {
@@ -100,7 +100,7 @@ static NSRect PSMConvertAccessibilityFrameToScreen(NSView *view, NSRect frame) {
 }
 
 - (NSString *)accessibilityLabel {
-    return @"Close Tab";        // not localized as of now
+    return NSLocalizedStringFromTableInBundle(@"Close Tab", @"TerminalView", [NSBundle bundleForClass:[self class]], @"标签栏: 关闭按钮无障碍标签");        // not localized as of now
 }
 
 - (NSRect)accessibilityFrame {

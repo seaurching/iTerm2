@@ -505,17 +505,17 @@
 
 /* ChatInputView.swift */
 "\nYou can click on a link in this message or on a yellow underline in the terminal to reveal an annotation." = "\nYou can click on a link in this message or on a yellow underline in the terminal to reveal an annotation.";
-"**Allow agent to control %@ \\u{201c}%@\\u{201d}?**" = "**Allow agent to control %@ \\u{201c}%@\\u{201d}?**";
+"**Allow agent to control %@ “%@”?**" = "**Allow agent to control %@ \\u{201c}%@\\u{201d}?**";
 "**Enable orchestration for this chat?**\n\n" = "**Enable orchestration for this chat?**\n\n";
-"**Granted this chat permission to control \\u{201c}%@\\u{201d}.**" = "**Granted this chat permission to control \\u{201c}%@\\u{201d}.**";
-"**Link this chat to %@ session \\u{201C}%@\\u{201D}, or enable orchestration?**" = "**Link this chat to %@ session \\u{201C}%@\\u{201D}, or enable orchestration?**";
+"**Granted this chat permission to control “%@”.**" = "**Granted this chat permission to control \\u{201c}%@\\u{201d}.**";
+"**Link this chat to %@ session “%@”, or enable orchestration?**" = "**Link this chat to %@ session \\u{201C}%@\\u{201D}, or enable orchestration?**";
 "**Request failed**\n\n%@" = "**Request failed**\n\n%@";
 "*If you grant or deny permission, it affects only this chat conversation while linked to this particular terminal session. You can change permissions in the chat Info menu.*" = "*If you grant or deny permission, it affects only this chat conversation while linked to this particular terminal session. You can change permissions in the chat Info menu.*";
 "A vector store was created" = "A vector store was created";
 "AI Model" = "AI Model";
 "AI Provider" = "AI Provider";
 "AI Speed" = "AI Speed";
-"Add \\u{201c}%@\\u{201d} to your message as an attachment, or insert its path as text?" = "Add \\u{201c}%@\\u{201d} to your message as an attachment, or insert its path as text?";
+"Add “%@” to your message as an attachment, or insert its path as text?" = "Add \\u{201c}%@\\u{201d} to your message as an attachment, or insert its path as text?";
 "Cancelled." = "Cancelled.";
 "Cassette delivery had neither response nor error" = "Cassette delivery had neither response nor error";
 "Chat about %@" = "Chat about %@";
@@ -548,9 +548,9 @@
 "The messages for this chat could not be loaded." = "The messages for this chat could not be loaded.";
 "There was a problem adding files to the vector store: %@" = "There was a problem adding files to the vector store: %@";
 "There was a problem creating a vector store database: %@" = "There was a problem creating a vector store database: %@";
-"This chat has been linked to terminal session \\u{201c}%@\\u{201d}" = "This chat has been linked to terminal session \\u{201c}%@\\u{201d}";
-"This chat has been linked to web browser session \\u{201c}%@\\u{201d}" = "This chat has been linked to web browser session \\u{201c}%@\\u{201d}";
-"This chat uses \\u{201c}%@\\u{201d}, and \\u{201c}%@\\u{201d} belongs to a different AI provider. A chat cannot change providers once the conversation has started; start a new chat to use \\u{201c}%@\\u{201d}." = "This chat uses \\u{201c}%@\\u{201d}, and \\u{201c}%@\\u{201d} belongs to a different AI provider. A chat cannot change providers once the conversation has started; start a new chat to use \\u{201c}%@\\u{201d}.";
+"This chat has been linked to terminal session “%@”" = "This chat has been linked to terminal session \\u{201c}%@\\u{201d}";
+"This chat has been linked to web browser session “%@”" = "This chat has been linked to web browser session \\u{201c}%@\\u{201d}";
+"This chat uses “%@”, and “%@” belongs to a different AI provider. A chat cannot change providers once the conversation has started; start a new chat to use “%@”." = "This chat uses \\u{201c}%@\\u{201d}, and \\u{201c}%@\\u{201d} belongs to a different AI provider. A chat cannot change providers once the conversation has started; start a new chat to use \\u{201c}%@\\u{201d}.";
 "Unexpected exception: %@" = "Unexpected exception: %@";
 "Unexpected output from plugin" = "Unexpected output from plugin";
 "Unexpected output from plugin: %@" = "Unexpected output from plugin: %@";
@@ -577,7 +577,7 @@
 "Streaming not supported in the objective C interface" = "Streaming not supported in the objective C interface";
 "The current hostname is %@" = "The current hostname is %@";
 "The exit status of the command was %@" = "The exit status of the command was %@";
-"The user has asked this question about it: \\u{201c}%@\\u{201d}" = "The user has asked this question about it: \\u{201c}%@\\u{201d}";
+"The user has asked this question about it: “%@”" = "The user has asked this question about it: \\u{201c}%@\\u{201d}";
 "iTerm2 is sending you this message automatically because the user enabled sending terminal commands to AI for assistance. If you can provide useful non-obvious insights, respond with those. Do not restate information that is obvious from the output. If there is nothing important to say, just respond with \"Got it.\"" = "iTerm2 is sending you this message automatically because the user enabled sending terminal commands to AI for assistance. If you can provide useful non-obvious insights, respond with those. Do not restate information that is obvious from the output. If there is nothing important to say, just respond with \"Got it.\"";
 "For example, if the command so far was `git re` then you might suggest `Rewrite commit history\\tgit rebase`, `Rewrite commit history\\tgit revert`, and `Move branch pointer\\tgit reset`. " = "For example, if the command so far was `git re` then you might suggest `Rewrite commit history\\tgit rebase`, `Rewrite commit history\\tgit revert`, and `Move branch pointer\\tgit reset`. ";
 "Truncated \\\\uXXXX escape (needs exactly four hex digits)." = "Truncated \\\\uXXXX escape (needs exactly four hex digits).";
