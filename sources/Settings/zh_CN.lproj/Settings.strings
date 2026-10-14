@@ -324,7 +324,7 @@
 "Experimental Features: Escape file names with single quotes instead of backslashes.\nThis is intended for users of xonsh, which does not accept backslash escaping." = "实验性功能： 用单引号而不是反斜杠转义文件名。\n这面向 xonsh 用户，xonsh 不接受反斜杠转义。";
 "Experimental Features: Extend background color into margins in alternate screen mode?" = "实验性功能： 在备用屏幕模式下将背景颜色延伸到边距？";
 "Experimental Features: Fast regular expression evaluation for triggers.\nThis is experimental because it could potentially change how regular expressions are interpreted." = "实验性功能： 触发器的快速正则表达式求值。\n这是实验性的，因为它可能改变正则表达式的解释方式。";
-"Experimental Features: Flag emoji render full-width" = "实验性功能： 国旗 emoji 全宽渲染";
+"Experimental Features: Lone regional indicators render full-width.\nA complete flag is always two columns, which is the width wcwidth reports for the pair." = "实验性功能： 孤立地区指示符全宽渲染。\n完整的国旗始终为两列，即 wcwidth 对该组合报告的宽度。";
 "Experimental Features: Host and port for proxy for AI requests.\ni.e., example.com:8080" = "实验性功能： AI 请求代理的主机和端口。\n例如 example.com：8080";
 "Experimental Features: Improved support for input method editors like AquaSKK." = "实验性功能： 改进对 AquaSKK 等输入法编辑器的支持。";
 "Experimental Features: Kill sessions on logout.\nA possible fix for issue 4147." = "实验性功能： 注销时终止会话。\n可能是 issue 4147 的修复方案。";
