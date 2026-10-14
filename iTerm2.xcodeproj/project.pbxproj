@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1083,6 +1083,8 @@
 		6C9AFC35D6E32B64B11A3A8F /* Portholes.strings in Resources */ = {isa = PBXBuildFile; fileRef = F8ACBF32A36014FF3886BE9B /* Portholes.strings */; };
 		6CE3AED77D074C569A3D6D07 /* iTermOpenDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A96ECF2322040C00AEA8E0 /* iTermOpenDirectory.m */; };
 		6D030EB5307E7A7D00E13376 /* menu_ids.rst in Resources */ = {isa = PBXBuildFile; fileRef = 6D030EB4307E7A7D00E13376 /* menu_ids.rst */; };
+		6D030EC0307F065B00E13376 /* MoveApplication.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D030EBE307F065B00E13376 /* MoveApplication.strings */; };
+		6D030EC1307F065B00E13376 /* MoveApplication.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D030EBE307F065B00E13376 /* MoveApplication.strings */; };
 		6D3A8786305D768B00562BB8 /* Cockpit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D3A8785305D768B00562BB8 /* Cockpit.xib */; };
 		6D3A8787305D768B00562BB8 /* Cockpit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D3A8785305D768B00562BB8 /* Cockpit.xib */; };
 		6D3A8788305D768B00562BB8 /* Cockpit.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D3A8785305D768B00562BB8 /* Cockpit.xib */; };
@@ -6039,9 +6041,8 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		1D6EDB0019AEA20D005A7799 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolder = Frameworks;
 			files = (
 				A6E180E723D2E2B2003C4EB1 /* CoreParse.framework in CopyFiles */,
 				A6184F8E1BAB3F090088EF3C /* ColorPicker.framework in CopyFiles */,
@@ -6050,13 +6051,11 @@
 				1D6EDB0219AEA20D005A7799 /* Sparkle.framework in CopyFiles */,
 				A6FB633623DE803A00026D52 /* SearchableComboListView.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1DAAE591180FAD7C0061611B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolder = Frameworks;
 			files = (
 				A62B04A629B428D30077B955 /* Highlightr.framework in CopyFiles */,
 				A6E180E623D2E182003C4EB1 /* CoreParse.framework in CopyFiles */,
@@ -6066,13 +6065,11 @@
 				1DAAE593180FAD9A0061611B /* Sparkle.framework in CopyFiles */,
 				A6FB633523DE803100026D52 /* SearchableComboListView.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		874206560564169600CFC3F1 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolder = Frameworks;
 			files = (
 				A6EC8053281C4A6A00493544 /* SwiftyMarkdown.framework in CopyFiles */,
 				A6A3D18E2815F74A00C0C9E0 /* Highlightr.framework in CopyFiles */,
@@ -6085,22 +6082,19 @@
 				A6FB633423DE802900026D52 /* SearchableComboListView.framework in CopyFiles */,
 				A68BE9512DE51591002DD513 /* librailroad_dsl.dylib in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A60593B0257DF9A500CACEE6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstSubfolder = None;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		A64BD0CD295FAA67001F3F7E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = utilities;
-			dstSubfolderSpec = 7;
+			dstSubfolder = Resources;
 			files = (
 				A6BAB25E2F8CCCD10063FA7F /* cc-status in CopyFiles */,
 				A6E7ED2F2F7CAFDD001349AE /* it2 in CopyFiles */,
@@ -6122,23 +6116,19 @@
 				A6CB24BE2C68155800005824 /* it2ul in CopyFiles */,
 				A6CB24BF2C68155800005824 /* it2universion in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A65DF4AC2849F2E700AA29AB /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = fish/vendor_conf.d;
-			dstSubfolderSpec = 7;
+			dstSubfolder = Resources;
 			files = (
 				A65DF4AD2849F2FF00AA29AB /* iterm2-shell-integration-loader.fish in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6725AD923D64A57001CA48A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 6;
+			dstSubfolder = Executables;
 			files = (
 				A616D7D92EA94318000C0C18 /* iterm2-keepassxc-adapter in CopyFiles */,
 				A616D7DA2EA94319000C0C18 /* iterm2-bitwarden-adapter in CopyFiles */,
@@ -6148,41 +6138,34 @@
 				A60593CC257DFAE400CACEE6 /* ShellLauncher in CopyFiles */,
 				A63F2A3923FA5698008DDEA4 /* iTermServer in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A67A515026CCD54000281693 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = terminfo/78;
-			dstSubfolderSpec = 7;
+			dstSubfolder = Resources;
 			files = (
 				A67A515126CCD56100281693 /* xterm-256color in CopyFiles */,
 				A67A515226CCD56100281693 /* xterm in CopyFiles */,
 				A67A515326CCD56100281693 /* xterm-new in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6866B7823CAA10A00ACD94C /* Embed XPC Services */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
-			dstSubfolderSpec = 16;
+			dstSubfolder = Product;
 			files = (
 				A6866B7223CAA10A00ACD94C /* pidinfo.xpc in Embed XPC Services */,
 				759637A52593AE0700E278CC /* iTerm2SandboxedWorker.xpc in Embed XPC Services */,
 			);
 			name = "Embed XPC Services";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6C1FE6E284C1BF200EA8A3B /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 13;
+			dstSubfolder = PlugIns;
 			files = (
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -7176,6 +7159,17 @@
 		6C53C6B13CEBD8E45E0D258C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Metrology.strings"; sourceTree = "<group>"; };
 		6CA038E797B515ECFFC12546 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/OpenQuickly.strings"; sourceTree = "<group>"; };
 		6D030EB4307E7A7D00E13376 /* menu_ids.rst */ = {isa = PBXFileReference; lastKnownFileType = text; path = menu_ids.rst; sourceTree = "<group>"; };
+		6D030EBF307F065B00E13376 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = LetsMove/Base.lproj/MoveApplication.strings; sourceTree = "<group>"; };
+		6D030EC2307F066100E13376 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = LetsMove/en.lproj/MoveApplication.strings; sourceTree = "<group>"; };
+		6D030EC3307F066500E13376 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = LetsMove/zh_CN.lproj/MoveApplication.strings; sourceTree = "<group>"; };
+		6D030EC4307F066900E13376 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = LetsMove/zh_TW.lproj/MoveApplication.strings; sourceTree = "<group>"; };
+		6D030EC5307F066D00E13376 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "LetsMove/zh-Hans.lproj/MoveApplication.strings"; sourceTree = "<group>"; };
+		6D030EC6307F067100E13376 /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "LetsMove/zh-Hans-CN.lproj/MoveApplication.strings"; sourceTree = "<group>"; };
+		6D030EC7307F067400E13376 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "LetsMove/zh-Hant.lproj/MoveApplication.strings"; sourceTree = "<group>"; };
+		6D030EC8307F067700E13376 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "LetsMove/zh-Hant-TW.lproj/MoveApplication.strings"; sourceTree = "<group>"; };
+		6D030EC9307F0FCA00E13376 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
+		6D030ECA307F0FCE00E13376 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = zh_CN; path = zh_CN.lproj/Credits.rtf; sourceTree = "<group>"; };
+		6D030ECB307F0FD200E13376 /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = zh_TW; path = zh_TW.lproj/Credits.rtf; sourceTree = "<group>"; };
 		6D3A8784305D768B00562BB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Cockpit.xib; sourceTree = "<group>"; };
 		6D3A8789305D768B00562BB8 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/Cockpit.xcstrings; sourceTree = "<group>"; };
 		6D3A878B305D8C3F00562BB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppKit.strings; sourceTree = "<group>"; };
@@ -11162,14 +11156,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9C0F690213C696BCC28C2EDF /* PerformanceTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = PerformanceTests; sourceTree = "<group>"; };
-		A6A723AF2DC04C2200A8115D /* ModernTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ModernTests; sourceTree = "<group>"; };
+		9C0F690213C696BCC28C2EDF /* PerformanceTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PerformanceTests;
+			sourceTree = "<group>";
+		};
+		A6A723AF2DC04C2200A8115D /* ModernTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ModernTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1D6EDAF419AEA20D005A7799 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				BEEFCAFEDEADC0DE00000001 /* iTermSwiftPackages.framework in Frameworks */,
 				BEEFCAFEDEADC0DE00000002 /* librailroad_dsl.dylib in Frameworks */,
@@ -11189,11 +11190,9 @@
 				1D6EDAFD19AEA20D005A7799 /* Quartz.framework in Frameworks */,
 				A6C763D81B45C5C800E3C992 /* libiTerm2Shared.a in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1DD39AD1180B8117004E56D5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				BEEFCAFEDEADC0DE00000004 /* iTermSwiftPackages.framework in Frameworks */,
 				BEEFCAFEDEADC0DE00000005 /* librailroad_dsl.dylib in Frameworks */,
@@ -11217,28 +11216,22 @@
 				1DD39AD7180B8118004E56D5 /* Cocoa.framework in Frameworks */,
 				A6C763D31B45C5B700E3C992 /* libiTerm2Shared.a in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1DFA7C641923E83500DF1410 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				1DFA7C681923E83500DF1410 /* Cocoa.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		759637972593AE0700E278CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A60D20E62597FAFB004AC979 /* libsandbox.tbd in Frameworks */,
 				756C32B72597AC8C0047B3A9 /* libsixel.a in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		874206510564169600CFC3F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A69FEECD2E123B8700AFF7A8 /* iTermSwiftPackages.framework in Frameworks */,
 				A6A3D18B2815EF4D00C0C9E0 /* Highlightr.framework in Frameworks */,
@@ -11258,77 +11251,59 @@
 				A667195F1DCE36F8000CE608 /* libiTerm2SharedARC.a in Frameworks */,
 				A68BE9502DE5142A002DD513 /* librailroad_dsl.dylib in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A1661B2C085A8DD77A76C77A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				B227A6877007742A924ACE7D /* ArgumentParser in Frameworks */,
 				4F14EF289B1DF0B36511C009 /* Yams in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A60593AF257DF9A500CACEE6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A663197522FF349700C502BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A60EAE7D23F9CEB3007536CE /* ApplicationServices.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A66719031DCE36C3000CE608 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A69FEF272E12417B00AFF7A8 /* iTermSwiftPackages.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6866B6423CAA10A00ACD94C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6A73D4827C8049E002E4CCA /* libicucore.tbd in Frameworks */,
 				3B049F12D648A9AFEEFCA7A1 /* OpenDirectory.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A69FEEB72E123B8700AFF7A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6C7C96D2E172F3E00AA7668 /* WebExtensionsFramework in Frameworks */,
 				51A4E0853124F0481929EF76 /* CompanionProtocol in Frameworks */,
 				611264B856DACEEA188EA842 /* CompanionNoise in Frameworks */,
 				D52DA7A75005457424B6ECB8 /* CompanionTransport in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6A5BDF42A070C3800F5FD44 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6A723AB2DC04C2200A8115D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6C760441B45C4CF00E3C992 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6184F8F1BAB458B0088EF3C /* ColorPicker.framework in Frameworks */,
 				A6C764161B45C77100E3C992 /* libSSKeychain.a in Frameworks */,
@@ -11336,24 +11311,19 @@
 				A6C764171B45C7B200E3C992 /* NMSSH.framework in Frameworks */,
 				A640487329C0F8AA0063C34A /* BetterFontPicker.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6C764191B45CB2800E3C992 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A667196B1DCE3970000CE608 /* libiTerm2SharedARC.a in Frameworks */,
 				A667F3881B48671B00705186 /* libiTerm2Shared.a in Frameworks */,
 				A6C7642B1B45CBA800E3C992 /* libSSKeychain.a in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BB285A1CF66CAEC00CEA40E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -14346,6 +14316,7 @@
 		A65871661D85E6660061CEEE /* LetsMove */ = {
 			isa = PBXGroup;
 			children = (
+				6D030EBE307F065B00E13376 /* MoveApplication.strings */,
 				A65871671D85E6700061CEEE /* PFMoveApplication.m */,
 				A65871681D85E6700061CEEE /* PFMoveApplication.h */,
 			);
@@ -17622,7 +17593,6 @@
 /* Begin PBXHeadersBuildPhase section */
 		1D6ED85519AEA20D005A7799 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				1D6ED85619AEA20D005A7799 /* URLAction.h in Headers */,
 				1D6ED85819AEA20D005A7799 /* LineBufferPosition.h in Headers */,
@@ -17941,22 +17911,18 @@
 				A663013219D0864C004AF81C /* SCEvents.h in Headers */,
 				A65B72791B2BF2D200F947A7 /* iTermProfilesPanel.h in Headers */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1DFA7C651923E83500DF1410 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				1DFA7C911923E89100DF1410 /* SSKeychain.h in Headers */,
 				1DFA7C8D1923E86400DF1410 /* SSKeychainQuery.h in Headers */,
 				1D8BBA921B33529E0005A852 /* iTermTip.h in Headers */,
 				1DA1C1F31A2E49A3007381D3 /* NSTableColumn+iTerm.h in Headers */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		874206480564169600CFC3F1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6CFDAD2185D2587005DC94B /* URLAction.h in Headers */,
 				1D78B55E183EE1C000014D49 /* LineBufferPosition.h in Headers */,
@@ -18295,11 +18261,9 @@
 				FB4CEC973C7E9235362E3F26 /* iTermRemotePreferences.h in Headers */,
 				A663013119D0864C004AF81C /* SCEvents.h in Headers */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A66719091DCE36C3000CE608 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A626DF0B217D3034005600F9 /* iTermTabBarAccessoryViewController.h in Headers */,
 				A667190A1DCE36C3000CE608 /* iTermRootTerminalView.h in Headers */,
@@ -18874,18 +18838,14 @@
 				A6F1B3B82690EA9700546767 /* iTermOptionallyBordered.h in Headers */,
 				A631FC9120EDDBC600EB824F /* iTermFindDriver.h in Headers */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A69FEEB52E123B8700AFF7A8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6C760461B45C4CF00E3C992 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6BDB0BB1B470CBE00F511E6 /* iTermRootTerminalView.h in Headers */,
 				A445EEDC85D346B39596FDC3 /* iTermLayoutCalculator.h in Headers */,
@@ -19029,14 +18989,11 @@
 				A6CEC1261DCE8146009F4FD2 /* GPBRootObject_PackagePrivate.h in Headers */,
 				A6CEC1191DCE8146009F4FD2 /* GPBCodedInputStream.h in Headers */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D53C0E5D9BD9433AD0D84577 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
@@ -19095,8 +19052,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = SSKeychain;
 			productName = SSKeychain;
 			productReference = 1DFA7C671923E83500DF1410 /* libSSKeychain.a */;
@@ -19132,8 +19087,6 @@
 				A1661B2C085A8DD77A76C77A /* Frameworks */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = it2core;
 			packageProductDependencies = (
@@ -19212,8 +19165,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = ShellLauncher;
 			productName = ShellLauncher;
 			productReference = A60593B2257DF9A500CACEE6 /* ShellLauncher */;
@@ -19228,8 +19179,6 @@
 				41AF18F5BD4726429B7779E3 /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = iTermServer;
 			productName = iTermServer;
@@ -19267,8 +19216,6 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			name = pidinfo;
 			productName = pidinfo;
 			productReference = A6866B6723CAA10A00ACD94C /* pidinfo.xpc */;
@@ -19284,8 +19231,6 @@
 				A69FEEB82E123B8700AFF7A8 /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = iTermSwiftPackages;
 			packageProductDependencies = (
@@ -19307,8 +19252,6 @@
 				A6A5BDF52A070C3800F5FD44 /* Resources */,
 			);
 			buildRules = (
-			);
-			dependencies = (
 			);
 			name = iTerm2ImportStatus;
 			productName = iTerm2ImportStatus;
@@ -19455,7 +19398,6 @@
 				};
 			};
 			buildConfigurationList = BB024D39096EE4080021E793 /* Build configuration list for PBXProject "iTerm2" */;
-			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -19475,6 +19417,7 @@
 				6AEB4F694FB62FA208F96240 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 				8282BAE40915D8F2B8CC6B66 /* XCRemoteSwiftPackageReference "Yams" */,
 			);
+			preferredProjectObjectVersion = 90;
 			productRefGroup = 0464AB32006CD2EC7F000001 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -19502,7 +19445,6 @@
 /* Begin PBXResourcesBuildPhase section */
 		109B71B05D8ACC2A59F9063F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				6D49380430595A3B00AE0F79 /* AppLaunch.strings in Resources */,
 				6D4937A930583E9F00AE0F79 /* AITermXC.strings in Resources */,
@@ -19583,11 +19525,9 @@
 				6D3A880B305E8C5500562BB8 /* AttributedStrings.strings in Resources */,
 				6D3A881B305E8C5500562BB8 /* Applescript.strings in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1D6ED97419AEA20D005A7799 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A64C569F2FE3211C003EA5FE /* Onboarding-ClaudeCode.png in Resources */,
 				A6F7A70C213CB143004DE961 /* StatusBarIconNetwork.png in Resources */,
@@ -20252,11 +20192,9 @@
 				718A1744F0690B2555C115C8 /* challenge-frame-detection.js in Resources */,
 				66ACA31A7AD33D24EE498F7C /* ai-models.json in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1DD39AD2180B8117004E56D5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6FE7A792E0E120100BEBCE4 /* indexeddb-demo.html in Resources */,
 				A6B70FBC19830C37007A4284 /* dead.png in Resources */,
@@ -20883,50 +20821,39 @@
 				8442E3770F2B54D3419663DB /* challenge-frame-detection.js in Resources */,
 				70FDC6E6ECC46F2A33AD733D /* ai-models.json in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		20913F7A7459990BC8F2E988 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		41AF18F5BD4726429B7779E3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5ABD906D9F58A2FB375A934F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		621F7E03A05C4E8F3CBF74F8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
+				6D030EC1307F065B00E13376 /* MoveApplication.strings in Resources */,
 				6D6965F33060C0DA002B885D /* CopyMode.strings in Resources */,
 				6D49380E3059684C00AE0F79 /* iTermPromptOnCloseReason.strings in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		759637982593AE0700E278CC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A60D20DC2597F83E004AC979 /* image_decoder.sb in Resources */,
 				A6038323294D062A00FE11C2 /* iTermCopyModeKeyBindings.dict in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8742064A0564169600CFC3F1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6109B612B969B4100D8E4E9 /* graphic_neovim.png in Resources */,
 				6D690DFD306017B8002B885D /* iTermBadgeConfigurationWindowController.xib in Resources */,
@@ -21550,6 +21477,7 @@
 				6D690DA93060169F002B885D /* PasteboardHistory.xib in Resources */,
 				A6C978F424A0194500971AA7 /* WindowCornerFull@2x.png in Resources */,
 				A6E7AEA3214394F600DE9F3B /* graphic_git.png in Resources */,
+				6D030EC0307F065B00E13376 /* MoveApplication.strings in Resources */,
 				A67F118018D82B9500B23C7B /* PrefsAdvanced.png in Resources */,
 				A6F31A27295BC41700C1A51E /* uniE0C9_PowerlineExtraSymbols.pdf in Resources */,
 				A6C838B62CB9ACF90062BE68 /* success-sound.mp3 in Resources */,
@@ -21665,35 +21593,27 @@
 				AA9D88347B84F8285654354D /* challenge-frame-detection.js in Resources */,
 				FF762198E91EE94A792CFEC8 /* ai-models.json in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6866B6523CAA10A00ACD94C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A69FEEB82E123B8700AFF7A8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6A5BDF52A070C3800F5FD44 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6A5BDFC2A070C3D00F5FD44 /* Assets.xcassets in Resources */,
 				6DAE7E60306D261500BEC9D7 /* ImportingWindowController.xib in Resources */,
 				A6A5BDFF2A070C3D00F5FD44 /* MainMenu.xib in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6A723AC2DC04C2200A8115D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				144DC651FBD55CD3407DB29C /* decdwl_decdhl_normalized.txt in Resources */,
 				A6D694482E448038005E9AFE /* find-constants.js in Resources */,
@@ -21713,11 +21633,9 @@
 				A6A3CDC52E36F34300710B09 /* secretaryofstate.html in Resources */,
 				A6D694672E4480E6005E9AFE /* find-match.js in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6C7641A1B45CB2800E3C992 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6E15177275DFCB400D0F41C /* PTYTextViewTest-golden-nonretina-testBackgroundImageWithReverseVideo.png in Resources */,
 				A6E15173275DFCB400D0F41C /* PTYTextViewTest-golden-travis-testBackgroundImageHighBlending.png in Resources */,
@@ -22022,67 +21940,51 @@
 				A6E15148275DFCB400D0F41C /* PTYTextViewTest-golden-testSmartCursorColor_allWhite.png in Resources */,
 				A6E15184275DFCB400D0F41C /* PTYTextViewTest-golden-testMultipleDiscontinuousSelection.png in Resources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FB10A8F246AE8B383ABA308A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXRezBuildPhase section */
 		1D6EDAFF19AEA20D005A7799 /* Rez */ = {
 			isa = PBXRezBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXRezBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		1B87F28900C78CC093B1FC6F /* Copy localized InfoPlist.strings into bundle */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
 			name = "Copy localized InfoPlist.strings into bundle";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Copy localized InfoPlist.strings into the bundle so the system shows\n# localized permission prompts (NS*UsageDescription) per user language.\nfor src in \"$SRCROOT\"/plists/*.lproj/InfoPlist.strings; do\n    [ -f \"$src\" ] || continue\n    lproj=\"$(basename \"$(dirname \"$src\")\")\"\n    dest=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}/Contents/Resources/${lproj}\"\n    mkdir -p \"$dest\"\n    cp -f \"$src\" \"$dest/InfoPlist.strings\"\n    echo \"InfoPlist.strings -> $lproj\"\ndone\n";
+			shellScript = (
+				"# Copy localized InfoPlist.strings into the bundle so the system shows",
+				"# localized permission prompts (NS*UsageDescription) per user language.",
+				"for src in \"$SRCROOT\"/plists/*.lproj/InfoPlist.strings; do",
+				"    [ -f \"$src\" ] || continue",
+				"    lproj=\"$(basename \"$(dirname \"$src\")\")\"",
+				"    dest=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}/Contents/Resources/${lproj}\"",
+				"    mkdir -p \"$dest\"",
+				"    cp -f \"$src\" \"$dest/InfoPlist.strings\"",
+				"    echo \"InfoPlist.strings -> $lproj\"",
+				"done",
+				"",
+			);
 		};
 		1D6EDB0419AEA20D005A7799 /* Update SVN Revision */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputPaths = (
-			);
 			name = "Update SVN Revision";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "exec tools/updateVersion.py";
+			shellScript = (
+				"exec tools/updateVersion.py",
+			);
 		};
 		93BD20450FE16DD50059656D /* Rewrite version number in plist file */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"$(SRCROOT)/version.txt",
 				"$(SRCROOT)/plists/dev-iTerm2.plist",
@@ -22091,64 +21993,112 @@
 			outputPaths = (
 				"$(SRCROOT)/plists/iTerm2.plist",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "test -f $SRCROOT/plists/iTerm2.plist || cp $SRCROOT/plists/dev-iTerm2.plist $SRCROOT/plists/iTerm2.plist\n\n# ---\n# Update version\n#\n# version.txt semantics:\n#   - Contains %(extra)s  -> template mode: extra depends on the configuration\n#       Development -> \"dev\", Nightly -> \"YYYYMMDD-nightly\", others (Beta/Deployment) -> \"YYYYMMDD\"\n#   - Hardcoded version (e.g. \"3.7.1\")  -> release mode: used verbatim for every configuration\n\n# 1) Read version prefix\nprefix=$(< \"${SRCROOT}/version.txt\")\n\n# 2) Compute the version\nif [[ \"$prefix\" == *'%(extra)s'* ]]; then\n    if [[ \"${CONFIGURATION:-}\" == \"Development\" ]]; then\n        extra=\"dev\"\n    elif [[ \"${CONFIGURATION:-}\" == \"Nightly\" ]]; then\n        extra=\"$(date +%Y%m%d-nightly)\"\n    else\n        extra=\"$(date +%Y%m%d)\"\n    fi\n    version=$(printf '%s' \"$prefix\" | sed \"s/%(extra)s/$extra/g\")\nelse\n    echo \"Release mode: version.txt is a hardcoded version number.\"\n    version=\"$prefix\"\nfi\necho \"Version: $version (${CONFIGURATION:-})\"\n\n# 3) Point at your Info-plist\nplist=\"${SRCROOT}/plists/iTerm2.plist\"\n\n# 4) PlistBuddy calls\n/usr/libexec/PlistBuddy \\\n  -c \"Set :CFBundleShortVersionString $version\" \\\n  -c \"Set :CFBundleVersion           $version\" \\\n  -c \"Set :CFBundleGetInfoString    $version\" \\\n  \"$plist\"\n\n# ---\n";
+			shellScript = (
+				"test -f $SRCROOT/plists/iTerm2.plist || cp $SRCROOT/plists/dev-iTerm2.plist $SRCROOT/plists/iTerm2.plist",
+				"",
+				"# ---",
+				"# Update version",
+				"#",
+				"# version.txt semantics:",
+				"#   - Contains %(extra)s  -> template mode: extra depends on the configuration",
+				"#       Development -> \"dev\", Nightly -> \"YYYYMMDD-nightly\", others (Beta/Deployment) -> \"YYYYMMDD\"",
+				"#   - Hardcoded version (e.g. \"3.7.1\")  -> release mode: used verbatim for every configuration",
+				"",
+				"# 1) Read version prefix",
+				"prefix=$(< \"${SRCROOT}/version.txt\")",
+				"",
+				"# 2) Compute the version",
+				"if [[ \"$prefix\" == *'%(extra)s'* ]]; then",
+				"    if [[ \"${CONFIGURATION:-}\" == \"Development\" ]]; then",
+				"        extra=\"dev\"",
+				"    elif [[ \"${CONFIGURATION:-}\" == \"Nightly\" ]]; then",
+				"        extra=\"$(date +%Y%m%d-nightly)\"",
+				"    else",
+				"        extra=\"$(date +%Y%m%d)\"",
+				"    fi",
+				"    version=$(printf '%s' \"$prefix\" | sed \"s/%(extra)s/$extra/g\")",
+				"else",
+				"    echo \"Release mode: version.txt is a hardcoded version number.\"",
+				"    version=\"$prefix\"",
+				"fi",
+				"echo \"Version: $version (${CONFIGURATION:-})\"",
+				"",
+				"# 3) Point at your Info-plist",
+				"plist=\"${SRCROOT}/plists/iTerm2.plist\"",
+				"",
+				"# 4) PlistBuddy calls",
+				"/usr/libexec/PlistBuddy \\",
+				"  -c \"Set :CFBundleShortVersionString $version\" \\",
+				"  -c \"Set :CFBundleVersion           $version\" \\",
+				"  -c \"Set :CFBundleGetInfoString    $version\" \\",
+				"  \"$plist\"",
+				"",
+				"# ---",
+				"",
+			);
 		};
 		A69FF3DC2E14A06D00AFF7A8 /* Make symlink to iTerm */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"$(DERIVED_SOURCES_DIR)/iTerm2-Swift.h",
 			);
 			name = "Make symlink to iTerm";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(PROJECT_DERIVED_FILE_DIR)/iTerm2-Swift.h",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -x\ntest -d \"${PROJECT_DERIVED_FILE_DIR}\" || mkdir \"${PROJECT_DERIVED_FILE_DIR}\"\ncp \"${DERIVED_SOURCES_DIR}\"/*-Swift.h \"${PROJECT_DERIVED_FILE_DIR}\"\n";
+			shellScript = (
+				"#!/bin/bash",
+				"set -x",
+				"test -d \"${PROJECT_DERIVED_FILE_DIR}\" || mkdir \"${PROJECT_DERIVED_FILE_DIR}\"",
+				"cp \"${DERIVED_SOURCES_DIR}\"/*-Swift.h \"${PROJECT_DERIVED_FILE_DIR}\"",
+				"",
+			);
 		};
 		A6B78B812A099498007D6D85 /* Build binary dependencies if xcode version changed */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"$(SRCROOT)/last-xcode-version",
 				"$(DEVELOPER_DIR)/usr/bin/xcodebuild",
 			);
 			name = "Build binary dependencies if xcode version changed";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/xcode-version-check.stamp",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -euo pipefail\n\nversion_file=\"${SRCROOT}/last-xcode-version\"\ncurrent=\"$(xcodebuild -version)\"\nlast=\"$(< \"$version_file\")\"\nif [[ \"$current\" == \"$last\" ]]; then\n    touch \"${DERIVED_FILE_DIR}/xcode-version-check.stamp\"\n    exit 0\nfi\n\n# versions differ → block\necho 'You must run `make paranoid-deps` before you can build because your xcode version is out of sync with the prebuild dependencies in the repo'\necho \"Your version is:\"\nprintf '%s\\n' \"$current\"\necho \"The last-built-for version is:\"\nprintf '%s\\n' \"$last\"\nexit 1\n";
+			shellScript = (
+				"#!/bin/bash",
+				"set -euo pipefail",
+				"",
+				"version_file=\"${SRCROOT}/last-xcode-version\"",
+				"current=\"$(xcodebuild -version)\"",
+				"last=\"$(< \"$version_file\")\"",
+				"if [[ \"$current\" == \"$last\" ]]; then",
+				"    touch \"${DERIVED_FILE_DIR}/xcode-version-check.stamp\"",
+				"    exit 0",
+				"fi",
+				"",
+				"# versions differ → block",
+				"echo 'You must run `make paranoid-deps` before you can build because your xcode version is out of sync with the prebuild dependencies in the repo'",
+				"echo \"Your version is:\"",
+				"printf '%s\\n' \"$current\"",
+				"echo \"The last-built-for version is:\"",
+				"printf '%s\\n' \"$last\"",
+				"exit 1",
+				"",
+			);
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		02DFDB5F1CE596C1BB2E6FF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1D6ED9ED19AEA20D005A7799 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A62A79FD2F98838F007CAA0B /* TerminalButton.metal in Sources */,
 				A62A79FE2F98838F007CAA0B /* UnderlineComposite.metal in Sources */,
@@ -22178,11 +22128,9 @@
 				A6D22A451BC8BE6B004084E0 /* Model.xcdatamodeld in Sources */,
 				A60D023A2684521400E19362 /* Phony.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1DD39AD0180B8117004E56D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				BEEFCAFEDEADC0DE00000003 /* AppleScriptTest.m in Sources */,
 				A6C763FE1B45C72F00E3C992 /* iTermTests.m in Sources */,
@@ -22212,20 +22160,16 @@
 				A60D023B2684526000E19362 /* Phony.swift in Sources */,
 				A6D22A441BC8BE6B004084E0 /* Model.xcdatamodeld in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1DFA7C631923E83500DF1410 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6C763E81B45C70E00E3C992 /* SSKeychainQuery.m in Sources */,
 				A6C763E71B45C70E00E3C992 /* SSKeychain.m in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		422DABB802A63D745D4612A1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				1E66B8BC8ED97F1A627B8EA3 /* CookieAuth.swift in Sources */,
 				1E491A470A315CF391869434 /* AppCommand.swift in Sources */,
@@ -22248,11 +22192,9 @@
 				7C0B66786B591F5FF2768833 /* IT2Embedded.swift in Sources */,
 				0A74EE0B96D6CE49AD2FF743 /* IT2Runner.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		759637962593AE0700E278CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				759637A12593AE0700E278CC /* main.m in Sources */,
 				A60D20C92597F496004AC979 /* iTermImage+ImageWithData.m in Sources */,
@@ -22261,11 +22203,9 @@
 				7596379F2593AE0700E278CC /* iTerm2SandboxedWorker.m in Sources */,
 				A60D20D22597F4DF004AC979 /* iTermImage.m in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8742064E0564169600CFC3F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6C763CE1B45C53A00E3C992 /* main.m in Sources */,
 				A6D22A431BC8BE6B004084E0 /* Model.xcdatamodeld in Sources */,
@@ -22295,20 +22235,16 @@
 				A60D02342683D61000E19362 /* Phony.swift in Sources */,
 				4705C05130977E2C81FD75E8 /* iTermUnicodeNormalization.h in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A60593AE257DF9A500CACEE6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A60593C3257DF9C000CACEE6 /* shell_launcher.c in Sources */,
 				A60593B5257DF9A500CACEE6 /* main.c in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A663197422FF349700C502BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A64FCD5B238DE88B001D8199 /* iTermMultiServerProtocol.c in Sources */,
 				A64FCD55238DE702001D8199 /* iTermPosixTTYReplacements.c in Sources */,
@@ -22318,11 +22254,9 @@
 				A64FCD5C238DE8B1001D8199 /* iTermResourceLimitsHelper.c in Sources */,
 				A64FCD54238DE6EF001D8199 /* iTermClientServerProtocol.c in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A66717861DCE36C3000CE608 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A62A79B12F98835A007CAA0B /* PillBackgroundRenderer.swift in Sources */,
 				A62A79B22F98835A007CAA0B /* iTermTexturePageCollection.mm in Sources */,
@@ -23858,11 +23792,9 @@
 				50D043C3B556FDAB689BD921 /* iTermAPICreateTabFocusDeferral.m in Sources */,
 				A32C12E5553FA7325505DE67 /* iTermAPICreateTabFocusDeferral.h in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6866B6323CAA10A00ACD94C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6A73D4627C803C1002E4CCA /* RegexKitLite.m in Sources */,
 				A643B7F72DAACB5D00EF918E /* iTermDirectoryEntry.m in Sources */,
@@ -23883,27 +23815,21 @@
 				A6EC936824E64FAA00EEADEF /* iTermFileDescriptorServerShared.c in Sources */,
 				6CE3AED77D074C569A3D6D07 /* iTermOpenDirectory.m in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A69FEEB62E123B8700AFF7A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6A5BDF32A070C3800F5FD44 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6A5BDFA2A070C3C00F5FD44 /* AppDelegate.swift in Sources */,
 				A6A5BE072A070C5E00F5FD44 /* ImportingWindowController.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6A723AA2DC04C2200A8115D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				CF138846630690AA6A7BCFD5 /* iTermGitClient.m in Sources */,
 				0CA1074480F384E60CA30B2F /* AILiveDriver.swift in Sources */,
@@ -23919,11 +23845,9 @@
 				C17A8484C4DAB6EEFC5D14D9 /* AILiveBlobReplayTests.swift in Sources */,
 				E514391A076D0A323CBA6C0D /* AILiveLlamaToolCallTests.swift in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6C760401B45C4CF00E3C992 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A6854FEE2D8B857B0019E96C /* VT100GraphicRendition.m in Sources */,
 				A6DC8154285CF45C0050788C /* GPBSourceContext.pbobjc.m in Sources */,
@@ -24145,11 +24069,9 @@
 				A6C763E61B45C70100E3C992 /* SCEvents.m in Sources */,
 				B0DBAA2AED68CD2C26771677 /* PSMTabGroupChipView.m in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A6C764181B45CB2800E3C992 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				A608CCFF214DE7C1007A7B87 /* PTYSessionTest.m in Sources */,
 				A63493FE23F277020047C31B /* iTermPromiseTests.m in Sources */,
@@ -24194,7 +24116,6 @@
 				A608CD27214E09E1007A7B87 /* Model.xcdatamodeld in Sources */,
 				E8BAEA319661F3A7E51D77B1 /* PTYTextViewAccessibilityTest.m in Sources */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -24445,6 +24366,9 @@
 				6D493771305830E600AE0F79 /* zh-Hans-CN */,
 				6D4937753058311400AE0F79 /* zh-Hant */,
 				6D4937793058314100AE0F79 /* zh-Hant-TW */,
+				6D030EC9307F0FCA00E13376 /* Base */,
+				6D030ECA307F0FCE00E13376 /* zh_CN */,
+				6D030ECB307F0FD200E13376 /* zh_TW */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -24642,6 +24566,21 @@
 				020030778993794422FECCD7 /* zh-Hant-TW */,
 			);
 			name = PasswordManager.strings;
+			sourceTree = "<group>";
+		};
+		6D030EBE307F065B00E13376 /* MoveApplication.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D030EBF307F065B00E13376 /* Base */,
+				6D030EC2307F066100E13376 /* en */,
+				6D030EC3307F066500E13376 /* zh_CN */,
+				6D030EC4307F066900E13376 /* zh_TW */,
+				6D030EC5307F066D00E13376 /* zh-Hans */,
+				6D030EC6307F067100E13376 /* zh-Hans-CN */,
+				6D030EC7307F067400E13376 /* zh-Hant */,
+				6D030EC8307F067700E13376 /* zh-Hant-TW */,
+			);
+			name = MoveApplication.strings;
 			sourceTree = "<group>";
 		};
 		6D3A8785305D768B00562BB8 /* Cockpit.xib */ = {
@@ -26505,7 +26444,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		01C2D3E4F5061829394A5B6C /* Beta */ = {
+		01C2D3E4F5061829394A5B6C /* Beta configuration for PBXNativeTarget "PerformanceTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -26538,7 +26477,7 @@
 			};
 			name = Beta;
 		};
-		12D3E4F5061829394A5B6C7D /* Nightly */ = {
+		12D3E4F5061829394A5B6C7D /* Nightly configuration for PBXNativeTarget "PerformanceTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -26571,7 +26510,7 @@
 			};
 			name = Nightly;
 		};
-		1809E7B01665E2CB0069C439 /* Nightly */ = {
+		1809E7B01665E2CB0069C439 /* Nightly configuration for PBXProject "iTerm2" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
@@ -26625,7 +26564,7 @@
 			};
 			name = Nightly;
 		};
-		1809E7B11665E2CB0069C439 /* Nightly */ = {
+		1809E7B11665E2CB0069C439 /* Nightly configuration for PBXNativeTarget "iTerm2" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
@@ -26724,7 +26663,7 @@
 			};
 			name = Nightly;
 		};
-		1BA69A43CDE772AF07AE9094 /* Beta */ = {
+		1BA69A43CDE772AF07AE9094 /* Beta configuration for PBXNativeTarget "it2core" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -26746,7 +26685,7 @@
 			};
 			name = Beta;
 		};
-		1D6EDB0619AEA20D005A7799 /* Development */ = {
+		1D6EDB0619AEA20D005A7799 /* Development configuration for PBXNativeTarget "iTerm2ForApplescriptTesting" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -26824,7 +26763,7 @@
 			};
 			name = Development;
 		};
-		1D6EDB0719AEA20D005A7799 /* Deployment */ = {
+		1D6EDB0719AEA20D005A7799 /* Deployment configuration for PBXNativeTarget "iTerm2ForApplescriptTesting" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -26897,7 +26836,7 @@
 			};
 			name = Deployment;
 		};
-		1D6EDB0819AEA20D005A7799 /* Nightly */ = {
+		1D6EDB0819AEA20D005A7799 /* Nightly configuration for PBXNativeTarget "iTerm2ForApplescriptTesting" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -26969,7 +26908,7 @@
 			};
 			name = Nightly;
 		};
-		1DD39B03180B812D004E56D5 /* Development */ = {
+		1DD39B03180B812D004E56D5 /* Development configuration for PBXNativeTarget "iTerm2Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27058,7 +26997,7 @@
 			};
 			name = Development;
 		};
-		1DD39B04180B812D004E56D5 /* Deployment */ = {
+		1DD39B04180B812D004E56D5 /* Deployment configuration for PBXNativeTarget "iTerm2Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27141,7 +27080,7 @@
 			};
 			name = Deployment;
 		};
-		1DD39B06180B812D004E56D5 /* Nightly */ = {
+		1DD39B06180B812D004E56D5 /* Nightly configuration for PBXNativeTarget "iTerm2Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27224,7 +27163,7 @@
 			};
 			name = Nightly;
 		};
-		1DFA7C821923E83700DF1410 /* Development */ = {
+		1DFA7C821923E83700DF1410 /* Development configuration for PBXNativeTarget "SSKeychain" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27271,7 +27210,7 @@
 			};
 			name = Development;
 		};
-		1DFA7C831923E83700DF1410 /* Deployment */ = {
+		1DFA7C831923E83700DF1410 /* Deployment configuration for PBXNativeTarget "SSKeychain" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27311,7 +27250,7 @@
 			};
 			name = Deployment;
 		};
-		1DFA7C841923E83700DF1410 /* Nightly */ = {
+		1DFA7C841923E83700DF1410 /* Nightly configuration for PBXNativeTarget "SSKeychain" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27351,7 +27290,7 @@
 			};
 			name = Nightly;
 		};
-		53955C78472DD7A95AD9D592 /* Deployment */ = {
+		53955C78472DD7A95AD9D592 /* Deployment configuration for PBXNativeTarget "it2core" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -27373,7 +27312,7 @@
 			};
 			name = Deployment;
 		};
-		759637A62593AE0700E278CC /* Development */ = {
+		759637A62593AE0700E278CC /* Development configuration for PBXNativeTarget "iTerm2SandboxedWorker" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27457,7 +27396,7 @@
 			};
 			name = Development;
 		};
-		759637A72593AE0700E278CC /* Deployment */ = {
+		759637A72593AE0700E278CC /* Deployment configuration for PBXNativeTarget "iTerm2SandboxedWorker" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27531,7 +27470,7 @@
 			};
 			name = Deployment;
 		};
-		759637A82593AE0700E278CC /* Beta */ = {
+		759637A82593AE0700E278CC /* Beta configuration for PBXNativeTarget "iTerm2SandboxedWorker" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27605,7 +27544,7 @@
 			};
 			name = Beta;
 		};
-		759637A92593AE0700E278CC /* Nightly */ = {
+		759637A92593AE0700E278CC /* Nightly configuration for PBXNativeTarget "iTerm2SandboxedWorker" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27679,7 +27618,7 @@
 			};
 			name = Nightly;
 		};
-		A60593B6257DF9A500CACEE6 /* Development */ = {
+		A60593B6257DF9A500CACEE6 /* Development configuration for PBXNativeTarget "ShellLauncher" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27745,7 +27684,7 @@
 			};
 			name = Development;
 		};
-		A60593B7257DF9A500CACEE6 /* Deployment */ = {
+		A60593B7257DF9A500CACEE6 /* Deployment configuration for PBXNativeTarget "ShellLauncher" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27802,7 +27741,7 @@
 			};
 			name = Deployment;
 		};
-		A60593B8257DF9A500CACEE6 /* Beta */ = {
+		A60593B8257DF9A500CACEE6 /* Beta configuration for PBXNativeTarget "ShellLauncher" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27859,7 +27798,7 @@
 			};
 			name = Beta;
 		};
-		A60593B9257DF9A500CACEE6 /* Nightly */ = {
+		A60593B9257DF9A500CACEE6 /* Nightly configuration for PBXNativeTarget "ShellLauncher" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -27916,7 +27855,7 @@
 			};
 			name = Nightly;
 		};
-		A656E9881F970C7200158128 /* Beta */ = {
+		A656E9881F970C7200158128 /* Beta configuration for PBXProject "iTerm2" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
@@ -27970,7 +27909,7 @@
 			};
 			name = Beta;
 		};
-		A656E9891F970C7200158128 /* Beta */ = {
+		A656E9891F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
@@ -28065,7 +28004,7 @@
 			};
 			name = Beta;
 		};
-		A656E98A1F970C7200158128 /* Beta */ = {
+		A656E98A1F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2Tests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28147,7 +28086,7 @@
 			};
 			name = Beta;
 		};
-		A656E98B1F970C7200158128 /* Beta */ = {
+		A656E98B1F970C7200158128 /* Beta configuration for PBXNativeTarget "SSKeychain" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28187,7 +28126,7 @@
 			};
 			name = Beta;
 		};
-		A656E98C1F970C7200158128 /* Beta */ = {
+		A656E98C1F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2ForApplescriptTesting" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -28259,7 +28198,7 @@
 			};
 			name = Beta;
 		};
-		A656E98D1F970C7200158128 /* Beta */ = {
+		A656E98D1F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2Shared" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28326,7 +28265,7 @@
 			};
 			name = Beta;
 		};
-		A656E98E1F970C7200158128 /* Beta */ = {
+		A656E98E1F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2XCTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28395,7 +28334,7 @@
 			};
 			name = Beta;
 		};
-		A656E9901F970C7200158128 /* Beta */ = {
+		A656E9901F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2SharedARC" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28479,7 +28418,7 @@
 			};
 			name = Beta;
 		};
-		A663197D22FF349800C502BD /* Development */ = {
+		A663197D22FF349800C502BD /* Development configuration for PBXNativeTarget "iTermServer" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28550,7 +28489,7 @@
 			};
 			name = Development;
 		};
-		A663197E22FF349800C502BD /* Deployment */ = {
+		A663197E22FF349800C502BD /* Deployment configuration for PBXNativeTarget "iTermServer" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28612,7 +28551,7 @@
 			};
 			name = Deployment;
 		};
-		A663197F22FF349800C502BD /* Beta */ = {
+		A663197F22FF349800C502BD /* Beta configuration for PBXNativeTarget "iTermServer" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28674,7 +28613,7 @@
 			};
 			name = Beta;
 		};
-		A663198022FF349800C502BD /* Nightly */ = {
+		A663198022FF349800C502BD /* Nightly configuration for PBXNativeTarget "iTermServer" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28736,7 +28675,7 @@
 			};
 			name = Nightly;
 		};
-		A66719581DCE36C3000CE608 /* Development */ = {
+		A66719581DCE36C3000CE608 /* Development configuration for PBXNativeTarget "iTerm2SharedARC" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28829,7 +28768,7 @@
 			};
 			name = Development;
 		};
-		A66719591DCE36C3000CE608 /* Deployment */ = {
+		A66719591DCE36C3000CE608 /* Deployment configuration for PBXNativeTarget "iTerm2SharedARC" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28910,7 +28849,7 @@
 			};
 			name = Deployment;
 		};
-		A667195A1DCE36C3000CE608 /* Nightly */ = {
+		A667195A1DCE36C3000CE608 /* Nightly configuration for PBXNativeTarget "iTerm2SharedARC" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -28993,7 +28932,7 @@
 			};
 			name = Nightly;
 		};
-		A6866B7423CAA10A00ACD94C /* Development */ = {
+		A6866B7423CAA10A00ACD94C /* Development configuration for PBXNativeTarget "pidinfo" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29081,7 +29020,7 @@
 			};
 			name = Development;
 		};
-		A6866B7523CAA10A00ACD94C /* Deployment */ = {
+		A6866B7523CAA10A00ACD94C /* Deployment configuration for PBXNativeTarget "pidinfo" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29161,7 +29100,7 @@
 			};
 			name = Deployment;
 		};
-		A6866B7623CAA10A00ACD94C /* Beta */ = {
+		A6866B7623CAA10A00ACD94C /* Beta configuration for PBXNativeTarget "pidinfo" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29241,7 +29180,7 @@
 			};
 			name = Beta;
 		};
-		A6866B7723CAA10A00ACD94C /* Nightly */ = {
+		A6866B7723CAA10A00ACD94C /* Nightly configuration for PBXNativeTarget "pidinfo" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29321,7 +29260,7 @@
 			};
 			name = Nightly;
 		};
-		A69FEECF2E123B8700AFF7A8 /* Development */ = {
+		A69FEECF2E123B8700AFF7A8 /* Development configuration for PBXNativeTarget "iTermSwiftPackages" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29413,7 +29352,7 @@
 			};
 			name = Development;
 		};
-		A69FEED02E123B8700AFF7A8 /* Deployment */ = {
+		A69FEED02E123B8700AFF7A8 /* Deployment configuration for PBXNativeTarget "iTermSwiftPackages" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29497,7 +29436,7 @@
 			};
 			name = Deployment;
 		};
-		A69FEED12E123B8700AFF7A8 /* Beta */ = {
+		A69FEED12E123B8700AFF7A8 /* Beta configuration for PBXNativeTarget "iTermSwiftPackages" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29581,7 +29520,7 @@
 			};
 			name = Beta;
 		};
-		A69FEED22E123B8700AFF7A8 /* Nightly */ = {
+		A69FEED22E123B8700AFF7A8 /* Nightly configuration for PBXNativeTarget "iTermSwiftPackages" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29665,7 +29604,7 @@
 			};
 			name = Nightly;
 		};
-		A6A5BE022A070C3D00F5FD44 /* Development */ = {
+		A6A5BE022A070C3D00F5FD44 /* Development configuration for PBXNativeTarget "iTerm2ImportStatus" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29749,7 +29688,7 @@
 			};
 			name = Development;
 		};
-		A6A5BE032A070C3D00F5FD44 /* Deployment */ = {
+		A6A5BE032A070C3D00F5FD44 /* Deployment configuration for PBXNativeTarget "iTerm2ImportStatus" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29824,7 +29763,7 @@
 			};
 			name = Deployment;
 		};
-		A6A5BE042A070C3D00F5FD44 /* Beta */ = {
+		A6A5BE042A070C3D00F5FD44 /* Beta configuration for PBXNativeTarget "iTerm2ImportStatus" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29899,7 +29838,7 @@
 			};
 			name = Beta;
 		};
-		A6A5BE052A070C3D00F5FD44 /* Nightly */ = {
+		A6A5BE052A070C3D00F5FD44 /* Nightly configuration for PBXNativeTarget "iTerm2ImportStatus" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -29974,7 +29913,7 @@
 			};
 			name = Nightly;
 		};
-		A6A723B52DC04C2200A8115D /* Development */ = {
+		A6A723B52DC04C2200A8115D /* Development configuration for PBXNativeTarget "ModernTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -30069,7 +30008,7 @@
 			};
 			name = Development;
 		};
-		A6A723B62DC04C2200A8115D /* Deployment */ = {
+		A6A723B62DC04C2200A8115D /* Deployment configuration for PBXNativeTarget "ModernTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -30156,7 +30095,7 @@
 			};
 			name = Deployment;
 		};
-		A6A723B72DC04C2200A8115D /* Beta */ = {
+		A6A723B72DC04C2200A8115D /* Beta configuration for PBXNativeTarget "ModernTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -30243,7 +30182,7 @@
 			};
 			name = Beta;
 		};
-		A6A723B82DC04C2200A8115D /* Nightly */ = {
+		A6A723B82DC04C2200A8115D /* Nightly configuration for PBXNativeTarget "ModernTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -30330,7 +30269,7 @@
 			};
 			name = Nightly;
 		};
-		A6C7604C1B45C4CF00E3C992 /* Development */ = {
+		A6C7604C1B45C4CF00E3C992 /* Development configuration for PBXNativeTarget "iTerm2Shared" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -30407,7 +30346,7 @@
 			};
 			name = Development;
 		};
-		A6C7604D1B45C4CF00E3C992 /* Deployment */ = {
+		A6C7604D1B45C4CF00E3C992 /* Deployment configuration for PBXNativeTarget "iTerm2Shared" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -30473,7 +30412,7 @@
 			};
 			name = Deployment;
 		};
-		A6C7604E1B45C4CF00E3C992 /* Nightly */ = {
+		A6C7604E1B45C4CF00E3C992 /* Nightly configuration for PBXNativeTarget "iTerm2Shared" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -30539,7 +30478,7 @@
 			};
 			name = Nightly;
 		};
-		A6C764251B45CB2800E3C992 /* Development */ = {
+		A6C764251B45CB2800E3C992 /* Development configuration for PBXNativeTarget "iTerm2XCTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -30617,7 +30556,7 @@
 			};
 			name = Development;
 		};
-		A6C764261B45CB2800E3C992 /* Deployment */ = {
+		A6C764261B45CB2800E3C992 /* Deployment configuration for PBXNativeTarget "iTerm2XCTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -30686,7 +30625,7 @@
 			};
 			name = Deployment;
 		};
-		A6C764271B45CB2800E3C992 /* Nightly */ = {
+		A6C764271B45CB2800E3C992 /* Nightly configuration for PBXNativeTarget "iTerm2XCTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -30755,7 +30694,7 @@
 			};
 			name = Nightly;
 		};
-		BB024D36096EE4080021E793 /* Development */ = {
+		BB024D36096EE4080021E793 /* Development configuration for PBXNativeTarget "iTerm2" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
@@ -30858,7 +30797,7 @@
 			};
 			name = Development;
 		};
-		BB024D37096EE4080021E793 /* Deployment */ = {
+		BB024D37096EE4080021E793 /* Deployment configuration for PBXNativeTarget "iTerm2" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
@@ -30953,7 +30892,7 @@
 			};
 			name = Deployment;
 		};
-		BB024D3A096EE4080021E793 /* Development */ = {
+		BB024D3A096EE4080021E793 /* Development configuration for PBXProject "iTerm2" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
@@ -31014,7 +30953,7 @@
 			};
 			name = Development;
 		};
-		BB024D3B096EE4080021E793 /* Deployment */ = {
+		BB024D3B096EE4080021E793 /* Deployment configuration for PBXProject "iTerm2" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
@@ -31070,7 +31009,7 @@
 			};
 			name = Deployment;
 		};
-		BEE5D6E2FC36B9A5124B99A3 /* Development */ = {
+		BEE5D6E2FC36B9A5124B99A3 /* Development configuration for PBXNativeTarget "it2core" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -31092,7 +31031,7 @@
 			};
 			name = Development;
 		};
-		D28D7769AF0349C6F024E60E /* Nightly */ = {
+		D28D7769AF0349C6F024E60E /* Nightly configuration for PBXNativeTarget "it2core" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
@@ -31114,7 +31053,7 @@
 			};
 			name = Nightly;
 		};
-		E9A1B2C3D4E5F60718293A4B /* Development */ = {
+		E9A1B2C3D4E5F60718293A4B /* Development configuration for PBXNativeTarget "PerformanceTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -31147,7 +31086,7 @@
 			};
 			name = Development;
 		};
-		F0B1C2D3E4F5061728394A5B /* Deployment */ = {
+		F0B1C2D3E4F5061728394A5B /* Deployment configuration for PBXNativeTarget "PerformanceTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -31186,188 +31125,171 @@
 		1D6EDB0519AEA20D005A7799 /* Build configuration list for PBXNativeTarget "iTerm2ForApplescriptTesting" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D6EDB0619AEA20D005A7799 /* Development */,
-				1D6EDB0719AEA20D005A7799 /* Deployment */,
-				A656E98C1F970C7200158128 /* Beta */,
-				1D6EDB0819AEA20D005A7799 /* Nightly */,
+				1D6EDB0619AEA20D005A7799 /* Development configuration for PBXNativeTarget "iTerm2ForApplescriptTesting" */,
+				1D6EDB0719AEA20D005A7799 /* Deployment configuration for PBXNativeTarget "iTerm2ForApplescriptTesting" */,
+				A656E98C1F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2ForApplescriptTesting" */,
+				1D6EDB0819AEA20D005A7799 /* Nightly configuration for PBXNativeTarget "iTerm2ForApplescriptTesting" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		1DD39B02180B812D004E56D5 /* Build configuration list for PBXNativeTarget "iTerm2Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DD39B03180B812D004E56D5 /* Development */,
-				1DD39B04180B812D004E56D5 /* Deployment */,
-				A656E98A1F970C7200158128 /* Beta */,
-				1DD39B06180B812D004E56D5 /* Nightly */,
+				1DD39B03180B812D004E56D5 /* Development configuration for PBXNativeTarget "iTerm2Tests" */,
+				1DD39B04180B812D004E56D5 /* Deployment configuration for PBXNativeTarget "iTerm2Tests" */,
+				A656E98A1F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2Tests" */,
+				1DD39B06180B812D004E56D5 /* Nightly configuration for PBXNativeTarget "iTerm2Tests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		1DFA7C811923E83700DF1410 /* Build configuration list for PBXNativeTarget "SSKeychain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DFA7C821923E83700DF1410 /* Development */,
-				1DFA7C831923E83700DF1410 /* Deployment */,
-				A656E98B1F970C7200158128 /* Beta */,
-				1DFA7C841923E83700DF1410 /* Nightly */,
+				1DFA7C821923E83700DF1410 /* Development configuration for PBXNativeTarget "SSKeychain" */,
+				1DFA7C831923E83700DF1410 /* Deployment configuration for PBXNativeTarget "SSKeychain" */,
+				A656E98B1F970C7200158128 /* Beta configuration for PBXNativeTarget "SSKeychain" */,
+				1DFA7C841923E83700DF1410 /* Nightly configuration for PBXNativeTarget "SSKeychain" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		759637AA2593AE0700E278CC /* Build configuration list for PBXNativeTarget "iTerm2SandboxedWorker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				759637A62593AE0700E278CC /* Development */,
-				759637A72593AE0700E278CC /* Deployment */,
-				759637A82593AE0700E278CC /* Beta */,
-				759637A92593AE0700E278CC /* Nightly */,
+				759637A62593AE0700E278CC /* Development configuration for PBXNativeTarget "iTerm2SandboxedWorker" */,
+				759637A72593AE0700E278CC /* Deployment configuration for PBXNativeTarget "iTerm2SandboxedWorker" */,
+				759637A82593AE0700E278CC /* Beta configuration for PBXNativeTarget "iTerm2SandboxedWorker" */,
+				759637A92593AE0700E278CC /* Nightly configuration for PBXNativeTarget "iTerm2SandboxedWorker" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		A60593BA257DF9A500CACEE6 /* Build configuration list for PBXNativeTarget "ShellLauncher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A60593B6257DF9A500CACEE6 /* Development */,
-				A60593B7257DF9A500CACEE6 /* Deployment */,
-				A60593B8257DF9A500CACEE6 /* Beta */,
-				A60593B9257DF9A500CACEE6 /* Nightly */,
+				A60593B6257DF9A500CACEE6 /* Development configuration for PBXNativeTarget "ShellLauncher" */,
+				A60593B7257DF9A500CACEE6 /* Deployment configuration for PBXNativeTarget "ShellLauncher" */,
+				A60593B8257DF9A500CACEE6 /* Beta configuration for PBXNativeTarget "ShellLauncher" */,
+				A60593B9257DF9A500CACEE6 /* Nightly configuration for PBXNativeTarget "ShellLauncher" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		A663197C22FF349800C502BD /* Build configuration list for PBXNativeTarget "iTermServer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A663197D22FF349800C502BD /* Development */,
-				A663197E22FF349800C502BD /* Deployment */,
-				A663197F22FF349800C502BD /* Beta */,
-				A663198022FF349800C502BD /* Nightly */,
+				A663197D22FF349800C502BD /* Development configuration for PBXNativeTarget "iTermServer" */,
+				A663197E22FF349800C502BD /* Deployment configuration for PBXNativeTarget "iTermServer" */,
+				A663197F22FF349800C502BD /* Beta configuration for PBXNativeTarget "iTermServer" */,
+				A663198022FF349800C502BD /* Nightly configuration for PBXNativeTarget "iTermServer" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		A66719571DCE36C3000CE608 /* Build configuration list for PBXNativeTarget "iTerm2SharedARC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A66719581DCE36C3000CE608 /* Development */,
-				A66719591DCE36C3000CE608 /* Deployment */,
-				A656E9901F970C7200158128 /* Beta */,
-				A667195A1DCE36C3000CE608 /* Nightly */,
+				A66719581DCE36C3000CE608 /* Development configuration for PBXNativeTarget "iTerm2SharedARC" */,
+				A66719591DCE36C3000CE608 /* Deployment configuration for PBXNativeTarget "iTerm2SharedARC" */,
+				A656E9901F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2SharedARC" */,
+				A667195A1DCE36C3000CE608 /* Nightly configuration for PBXNativeTarget "iTerm2SharedARC" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		A6866B7323CAA10A00ACD94C /* Build configuration list for PBXNativeTarget "pidinfo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6866B7423CAA10A00ACD94C /* Development */,
-				A6866B7523CAA10A00ACD94C /* Deployment */,
-				A6866B7623CAA10A00ACD94C /* Beta */,
-				A6866B7723CAA10A00ACD94C /* Nightly */,
+				A6866B7423CAA10A00ACD94C /* Development configuration for PBXNativeTarget "pidinfo" */,
+				A6866B7523CAA10A00ACD94C /* Deployment configuration for PBXNativeTarget "pidinfo" */,
+				A6866B7623CAA10A00ACD94C /* Beta configuration for PBXNativeTarget "pidinfo" */,
+				A6866B7723CAA10A00ACD94C /* Nightly configuration for PBXNativeTarget "pidinfo" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		A69FEED72E123B8700AFF7A8 /* Build configuration list for PBXNativeTarget "iTermSwiftPackages" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A69FEECF2E123B8700AFF7A8 /* Development */,
-				A69FEED02E123B8700AFF7A8 /* Deployment */,
-				A69FEED12E123B8700AFF7A8 /* Beta */,
-				A69FEED22E123B8700AFF7A8 /* Nightly */,
+				A69FEECF2E123B8700AFF7A8 /* Development configuration for PBXNativeTarget "iTermSwiftPackages" */,
+				A69FEED02E123B8700AFF7A8 /* Deployment configuration for PBXNativeTarget "iTermSwiftPackages" */,
+				A69FEED12E123B8700AFF7A8 /* Beta configuration for PBXNativeTarget "iTermSwiftPackages" */,
+				A69FEED22E123B8700AFF7A8 /* Nightly configuration for PBXNativeTarget "iTermSwiftPackages" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		A6A5BE012A070C3D00F5FD44 /* Build configuration list for PBXNativeTarget "iTerm2ImportStatus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6A5BE022A070C3D00F5FD44 /* Development */,
-				A6A5BE032A070C3D00F5FD44 /* Deployment */,
-				A6A5BE042A070C3D00F5FD44 /* Beta */,
-				A6A5BE052A070C3D00F5FD44 /* Nightly */,
+				A6A5BE022A070C3D00F5FD44 /* Development configuration for PBXNativeTarget "iTerm2ImportStatus" */,
+				A6A5BE032A070C3D00F5FD44 /* Deployment configuration for PBXNativeTarget "iTerm2ImportStatus" */,
+				A6A5BE042A070C3D00F5FD44 /* Beta configuration for PBXNativeTarget "iTerm2ImportStatus" */,
+				A6A5BE052A070C3D00F5FD44 /* Nightly configuration for PBXNativeTarget "iTerm2ImportStatus" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		A6A723B42DC04C2200A8115D /* Build configuration list for PBXNativeTarget "ModernTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6A723B52DC04C2200A8115D /* Development */,
-				A6A723B62DC04C2200A8115D /* Deployment */,
-				A6A723B72DC04C2200A8115D /* Beta */,
-				A6A723B82DC04C2200A8115D /* Nightly */,
+				A6A723B52DC04C2200A8115D /* Development configuration for PBXNativeTarget "ModernTests" */,
+				A6A723B62DC04C2200A8115D /* Deployment configuration for PBXNativeTarget "ModernTests" */,
+				A6A723B72DC04C2200A8115D /* Beta configuration for PBXNativeTarget "ModernTests" */,
+				A6A723B82DC04C2200A8115D /* Nightly configuration for PBXNativeTarget "ModernTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		A6C7604B1B45C4CF00E3C992 /* Build configuration list for PBXNativeTarget "iTerm2Shared" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6C7604C1B45C4CF00E3C992 /* Development */,
-				A6C7604D1B45C4CF00E3C992 /* Deployment */,
-				A656E98D1F970C7200158128 /* Beta */,
-				A6C7604E1B45C4CF00E3C992 /* Nightly */,
+				A6C7604C1B45C4CF00E3C992 /* Development configuration for PBXNativeTarget "iTerm2Shared" */,
+				A6C7604D1B45C4CF00E3C992 /* Deployment configuration for PBXNativeTarget "iTerm2Shared" */,
+				A656E98D1F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2Shared" */,
+				A6C7604E1B45C4CF00E3C992 /* Nightly configuration for PBXNativeTarget "iTerm2Shared" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		A6C764241B45CB2800E3C992 /* Build configuration list for PBXNativeTarget "iTerm2XCTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6C764251B45CB2800E3C992 /* Development */,
-				A6C764261B45CB2800E3C992 /* Deployment */,
-				A656E98E1F970C7200158128 /* Beta */,
-				A6C764271B45CB2800E3C992 /* Nightly */,
+				A6C764251B45CB2800E3C992 /* Development configuration for PBXNativeTarget "iTerm2XCTests" */,
+				A6C764261B45CB2800E3C992 /* Deployment configuration for PBXNativeTarget "iTerm2XCTests" */,
+				A656E98E1F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2XCTests" */,
+				A6C764271B45CB2800E3C992 /* Nightly configuration for PBXNativeTarget "iTerm2XCTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		AFE316DC78A36A80F9745F35 /* Build configuration list for PBXNativeTarget "PerformanceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E9A1B2C3D4E5F60718293A4B /* Development */,
-				F0B1C2D3E4F5061728394A5B /* Deployment */,
-				01C2D3E4F5061829394A5B6C /* Beta */,
-				12D3E4F5061829394A5B6C7D /* Nightly */,
+				E9A1B2C3D4E5F60718293A4B /* Development configuration for PBXNativeTarget "PerformanceTests" */,
+				F0B1C2D3E4F5061728394A5B /* Deployment configuration for PBXNativeTarget "PerformanceTests" */,
+				01C2D3E4F5061829394A5B6C /* Beta configuration for PBXNativeTarget "PerformanceTests" */,
+				12D3E4F5061829394A5B6C7D /* Nightly configuration for PBXNativeTarget "PerformanceTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		BB024D35096EE4080021E793 /* Build configuration list for PBXNativeTarget "iTerm2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BB024D36096EE4080021E793 /* Development */,
-				BB024D37096EE4080021E793 /* Deployment */,
-				A656E9891F970C7200158128 /* Beta */,
-				1809E7B11665E2CB0069C439 /* Nightly */,
+				BB024D36096EE4080021E793 /* Development configuration for PBXNativeTarget "iTerm2" */,
+				BB024D37096EE4080021E793 /* Deployment configuration for PBXNativeTarget "iTerm2" */,
+				A656E9891F970C7200158128 /* Beta configuration for PBXNativeTarget "iTerm2" */,
+				1809E7B11665E2CB0069C439 /* Nightly configuration for PBXNativeTarget "iTerm2" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		BB024D39096EE4080021E793 /* Build configuration list for PBXProject "iTerm2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BB024D3A096EE4080021E793 /* Development */,
-				BB024D3B096EE4080021E793 /* Deployment */,
-				A656E9881F970C7200158128 /* Beta */,
-				1809E7B01665E2CB0069C439 /* Nightly */,
+				BB024D3A096EE4080021E793 /* Development configuration for PBXProject "iTerm2" */,
+				BB024D3B096EE4080021E793 /* Deployment configuration for PBXProject "iTerm2" */,
+				A656E9881F970C7200158128 /* Beta configuration for PBXProject "iTerm2" */,
+				1809E7B01665E2CB0069C439 /* Nightly configuration for PBXProject "iTerm2" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 		BF282F13A16FE497A6915F6A /* Build configuration list for PBXNativeTarget "it2core" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1BA69A43CDE772AF07AE9094 /* Beta */,
-				53955C78472DD7A95AD9D592 /* Deployment */,
-				BEE5D6E2FC36B9A5124B99A3 /* Development */,
-				D28D7769AF0349C6F024E60E /* Nightly */,
+				1BA69A43CDE772AF07AE9094 /* Beta configuration for PBXNativeTarget "it2core" */,
+				53955C78472DD7A95AD9D592 /* Deployment configuration for PBXNativeTarget "it2core" */,
+				BEE5D6E2FC36B9A5124B99A3 /* Development configuration for PBXNativeTarget "it2core" */,
+				D28D7769AF0349C6F024E60E /* Nightly configuration for PBXNativeTarget "it2core" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Deployment;
 		};
 /* End XCConfigurationList section */
