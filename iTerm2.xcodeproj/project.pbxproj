@@ -5814,6 +5814,7 @@
 		DAF95A2F88DC85E4A1BFAA67 /* MetalRenderer.strings in Resources */ = {isa = PBXBuildFile; fileRef = C10A5922F6DDEF2ECCFA0FBE /* MetalRenderer.strings */; };
 		DB42A165C1B25A2BD5FC2BB8 /* iterm2-test-adapter in CopyFiles */ = {isa = PBXBuildFile; fileRef = 91FA576A88BCF13676249576 /* iterm2-test-adapter */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		DBBAF45A1CB97E40AF51336D /* CompanionWizardWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E5C503C5B7199DE032A9C7 /* CompanionWizardWindowController.swift */; };
+		DC9773CE6C7C31222A84E00A /* NSTextView+iTermUndoSafety.m in Sources */ = {isa = PBXBuildFile; fileRef = F564735947600E989AF5AB99 /* NSTextView+iTermUndoSafety.m */; };
 		DCE63F57A37160221DC5B939 /* iTermScreenshotPreviewOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6718DDCFD2CA382391CDFD /* iTermScreenshotPreviewOverlay.swift */; };
 		DCFBBEB14866896AE0594354 /* Metrology.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C95971C2926C98EDF7DB120 /* Metrology.strings */; };
 		DD4E77FB28CD2D48C6A13C66 /* TerminalHardRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFD443A066A4370FCB20EFC /* TerminalHardRules.swift */; };
@@ -11090,6 +11091,7 @@
 		F4EF5664748E7D360CA86213 /* iTermTabGroupOrdering.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = iTermTabGroupOrdering.swift; sourceTree = "<group>"; };
 		F5145BCC5773DB25978071C5 /* iTermScreenshotLineRangeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = iTermScreenshotLineRangeView.swift; sourceTree = "<group>"; };
 		F52ED8DD037F0A7D01A8A066 /* PTYSession.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PTYSession.m; sourceTree = "<group>"; tabWidth = 4; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		F564735947600E989AF5AB99 /* NSTextView+iTermUndoSafety.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+iTermUndoSafety.m"; sourceTree = "<group>"; };
 		F56B230B03A1B36701A8A066 /* PTYWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PTYWindow.m; sourceTree = "<group>"; tabWidth = 4; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F59B966EA817E1ED86A581C5 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Composer.strings"; sourceTree = "<group>"; };
 		F5E533B403B2959201A8A066 /* PTYTabView.m */ = {isa = PBXFileReference; fileEncoding = 30; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = PTYTabView.m; sourceTree = "<group>"; tabWidth = 4; };
@@ -15832,6 +15834,7 @@
 				A6EC809A282EBFF200493544 /* URL+iTerm.swift */,
 				A6D1A3E42C7E994B00FECDF2 /* VT100GridTypes+Swift.swift */,
 				9DB9BDAF96F842ABF40BB10B /* Data+BigEndian.swift */,
+				F564735947600E989AF5AB99 /* NSTextView+iTermUndoSafety.m */,
 				D7E4A3F02E0340A30065D09C /* Categories.strings */,
 			);
 			path = Categories;
@@ -21981,6 +21984,7 @@
 			shellPath = /bin/sh;
 			shellScript = (
 				"exec tools/updateVersion.py",
+				"",
 			);
 		};
 		93BD20450FE16DD50059656D /* Rewrite version number in plist file */ = {
@@ -23791,6 +23795,7 @@
 				A2663A4E2BC1C85588A6821A /* iTermTabGroupOrdering.swift in Sources */,
 				50D043C3B556FDAB689BD921 /* iTermAPICreateTabFocusDeferral.m in Sources */,
 				A32C12E5553FA7325505DE67 /* iTermAPICreateTabFocusDeferral.h in Sources */,
+				DC9773CE6C7C31222A84E00A /* NSTextView+iTermUndoSafety.m in Sources */,
 			);
 		};
 		A6866B6323CAA10A00ACD94C /* Sources */ = {
