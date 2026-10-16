@@ -157,3 +157,5 @@
 "no temporary directory" = "没有临时目录";
 "\"Waiting for your iPhone…\"" = "正在等待你的 iPhone…";
 "iTerm2 Buddy" = "iTerm2 Buddy";
+
+"plugin returned a non-string result" = "插件返回了非字符串结果";

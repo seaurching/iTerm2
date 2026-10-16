@@ -181,3 +181,18 @@
 "String with \\(expressions)" = "String with \\(expressions)";
 "Configure Action…" = "@\"Configure Action…\"";
 "Directory: %@\n" = "Directory: %@\n";
+
+/* Damaged bundle warning for triggers component icon */
+"The icon for the status bar “triggers” component is missing from the app bundle." = "The icon for the status bar “triggers” component is missing from the app bundle.";
+
+"Merging" = "Merging";
+
+"Reverting" = "Reverting";
+
+"Cherrypicking" = "Cherrypicking";
+
+"Bisecting" = "Bisecting";
+
+"Rebasing" = "Rebasing";
+
+"Applying" = "Applying";

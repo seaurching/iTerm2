@@ -272,7 +272,7 @@ exit:
                         break;
 
                     default:
-                        aString = [NSString stringWithFormat: @"Hex Code 0x%x", character];
+                        aString = [NSString stringWithFormat: NSLocalizedStringFromTableInBundle(@"Hex Code 0x%x", @"Keyboard", [NSBundle bundleForClass:[self class]], @"key code display"), character];
                         break;
                 }
             }

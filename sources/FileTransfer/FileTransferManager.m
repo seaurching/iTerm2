@@ -147,11 +147,11 @@ static const NSTimeInterval kMaximumTimeToKeepFinishedDownload = 24 * 60 * 60;
 }
 
 - (AXUIElementRef)downloadsMenuElement {
-    return [self menuElementNamed:@"Downloads"];
+    return [self menuElementNamed:NSLocalizedStringFromTableInBundle(@"Downloads", @"FileTransfer", [NSBundle mainBundle], @"accessibility label")];
 }
 
 - (AXUIElementRef)uploadsMenuElement {
-    return [self menuElementNamed:@"Uploads"];
+    return [self menuElementNamed:NSLocalizedStringFromTableInBundle(@"Uploads", @"FileTransfer", [NSBundle mainBundle], @"accessibility label")];
 }
 
 - (AXUIElementRef)menuElementNamed:(NSString *)menuName {

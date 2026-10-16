@@ -69,6 +69,7 @@
 		189D0DB85DE81235D7E2194E /* iTermProvisioningProgressWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F4E17ADA3A5F9B20391BAF /* iTermProvisioningProgressWindowController.swift */; };
 		197645E877F9CFD188A98B42 /* iTermGitStringMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 60884ED8C599CCA130F47597 /* iTermGitStringMaker.m */; };
 		1A6094C6046B518FC3BF6FCA /* SessionView+DiffWaitingPromptOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF70AC7768A565D0C687C0 /* SessionView+DiffWaitingPromptOverlay.swift */; };
+		1AB881BE031E4404349AE640 /* NSFont+BijectionIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A474879FF3997BD8245207EE /* NSFont+BijectionIdentifiable.swift */; };
 		1C98B69F7A353BDB2397C843 /* RegexVisualization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01FFA86C400048FAB5D09E9D /* RegexVisualization.strings */; };
 		1C9C9665FE03099937B93B39 /* PasswordManager.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63A747D09D4BD8FF172FF289 /* PasswordManager.strings */; };
 		1CB63D4DF23B1FBCF31F2E17 /* PTYSessionClipping+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72358FF17E45A546F9E56504 /* PTYSessionClipping+Formatting.swift */; };
@@ -7823,6 +7824,7 @@
 		A3C1A8905A6728CBE90BCD09 /* CompanionSessionStreamer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CompanionSessionStreamer.swift; sourceTree = "<group>"; };
 		A46100CDDF4A8743698351C7 /* iTermReplLauncher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = iTermReplLauncher.swift; sourceTree = "<group>"; };
 		A46ADB771B293713AA5706BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Metrology.strings; sourceTree = "<group>"; };
+		A474879FF3997BD8245207EE /* NSFont+BijectionIdentifiable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSFont+BijectionIdentifiable.swift"; sourceTree = "<group>"; };
 		A47FF38B2CB767D472370EC8 /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = zh_CN.lproj/ShellIntegrationInstaller.strings; sourceTree = "<group>"; };
 		A538236F249909852ECA9B45 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Logging.strings"; sourceTree = "<group>"; };
 		A60014F418550F3900CE38D8 /* NSMutableAttributedString+iTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+iTerm.h"; sourceTree = "<group>"; tabWidth = 4; };
@@ -15835,6 +15837,7 @@
 				A6D1A3E42C7E994B00FECDF2 /* VT100GridTypes+Swift.swift */,
 				9DB9BDAF96F842ABF40BB10B /* Data+BigEndian.swift */,
 				F564735947600E989AF5AB99 /* NSTextView+iTermUndoSafety.m */,
+				A474879FF3997BD8245207EE /* NSFont+BijectionIdentifiable.swift */,
 				D7E4A3F02E0340A30065D09C /* Categories.strings */,
 			);
 			path = Categories;
@@ -23796,6 +23799,7 @@
 				50D043C3B556FDAB689BD921 /* iTermAPICreateTabFocusDeferral.m in Sources */,
 				A32C12E5553FA7325505DE67 /* iTermAPICreateTabFocusDeferral.h in Sources */,
 				DC9773CE6C7C31222A84E00A /* NSTextView+iTermUndoSafety.m in Sources */,
+				1AB881BE031E4404349AE640 /* NSFont+BijectionIdentifiable.swift in Sources */,
 			);
 		};
 		A6866B6323CAA10A00ACD94C /* Sources */ = {

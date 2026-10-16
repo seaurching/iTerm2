@@ -760,7 +760,7 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
 - (BOOL)keyMapping:(iTermKeyMappingViewController *)viewController shouldImportKeystrokes:(NSSet<iTermKeystroke *> *)keystrokesThatWillChange {
     NSSet<iTermKeystroke *> *keystrokesInGlobalMapping = [iTermKeyMappings keystrokesInGlobalMapping];
     if (![keystrokesInGlobalMapping isSubsetOfSet:keystrokesThatWillChange]) {
-        NSNumber *n = [viewController removeBeforeLoading:@"importing mappings"];
+        NSNumber *n = [viewController removeBeforeLoading:NSLocalizedStringFromTableInBundle(@"importing mappings", @"Settings", [NSBundle bundleForClass:[self class]], @"fills ‘Remove all key mappings before %@?’")];
         if (!n) {
             return NO;
         }
@@ -852,7 +852,7 @@ static NSString *const kKeyCode0MitigationSuffixGlobal = @"Global";
     NSSet<iTermKeystroke *> *keystrokesInGlobalMapping = [iTermKeyMappings keystrokesInGlobalMapping];
     BOOL replaceAll = YES;
     if (![keystrokesInGlobalMapping isSubsetOfSet:keystrokesThatWillChange]) {
-        NSNumber *n = [viewController removeBeforeLoading:@"loading preset"];
+        NSNumber *n = [viewController removeBeforeLoading:NSLocalizedStringFromTableInBundle(@"loading preset", @"Settings", [NSBundle bundleForClass:[self class]], @"fills ‘Remove all key mappings before %@?’")];
         if (!n) {
             return;
         }

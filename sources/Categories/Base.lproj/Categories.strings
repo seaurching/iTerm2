@@ -56,3 +56,5 @@
 "Failed to write temporary archive file." = "Failed to write temporary archive file.";
 "No path found for directory in domain." = "No path found for directory in domain.";
 "Menu" = "Menu";
+
+"%.0f bytes" = "%.0f bytes";

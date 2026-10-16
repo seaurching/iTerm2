@@ -188,7 +188,7 @@ static NSDateFormatter *gScriptHistoryDateFormatter;
 }
 
 - (void)kill {
-    [self addOutput:@"\n*Terminate button pressed*\n" completion:^{}];
+    [self addOutput:NSLocalizedStringFromTableInBundle(@"\n*Terminate button pressed*\n", @"APIFiles", [NSBundle bundleForClass:[self class]], @"script console output") completion:^{}];
     self.terminatedByUser = YES;
     if (self.onlyPid > 0) {
         [self kill:1];

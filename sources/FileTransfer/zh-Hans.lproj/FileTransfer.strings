@@ -237,3 +237,5 @@
 
 /* Alert title: file transfer summary */
 "File Transfer Summary" = "文件传输摘要";
+
+"Uploads" = "上传";

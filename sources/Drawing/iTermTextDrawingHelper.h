@@ -398,6 +398,15 @@ extern const CGFloat iTermCursorGuideAlphaThreshold;
 @property (nonatomic) BOOL selectedCommandHasLineStyleMarks;
 @property (nonatomic) BOOL forceRegularBottomMargin;
 @property (nonatomic, readonly) NSArray<NSColor *> *selectedCommandOutlineColors;
+
+// The three mark indicator colors (success, other, error) blended 50/50 into the
+// background color, for use as line-style mark backgrounds. Cached; the metal
+// per-frame state reads this every frame and blending costs a ColorSync ICC
+// profile creation per color.
+- (NSArray<NSColor *> *)blendedMarkColorsForBackground:(NSColor *)background
+                                              colorMap:(id<iTermColorMapReading>)colorMap
+                                        useThemeColors:(BOOL)useThemeColors;
+
 @property (nonatomic) NSEdgeInsets extraMargins;
 
 // Color for shade over deselected commands

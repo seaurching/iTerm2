@@ -157,3 +157,5 @@
 "no temporary directory" = "no temporary directory";
 "\"Waiting for your iPhone…\"" = "\"Waiting for your iPhone…\"";
 "iTerm2 Buddy" = "@\"iTerm2 Buddy\"";
+
+"plugin returned a non-string result" = "plugin returned a non-string result";

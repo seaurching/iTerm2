@@ -1721,3 +1721,11 @@
 "%@: %@" = "%@：%@";
 
 "Snippets, notes, or icon customizations changed both on this Mac and in the settings folder “%@” since they were last in sync. Which copy would you like to keep?" = "程式碼片段、備忘錄或圖示自訂在此 Mac 與設定資料夾「%@」中自上次同步後均有變更。您想保留哪個副本？";
+
+/* Dynamic profiles: profiles key not array error */
+"In Dynamic Profiles file %@, the value of “Profiles” must be an array." = "動態設定檔 %@ 中，「Profiles」的值必須是陣列。";
+
+/* Graphic map: load failure reason */
+"While loading %@.json" = "載入 %@.json 時";
+
+"IntelliJ IDEA (Ultimate)" = "IntelliJ IDEA（旗艦版）";

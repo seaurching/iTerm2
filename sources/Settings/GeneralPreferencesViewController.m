@@ -2118,7 +2118,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 - (NSString *)defaultAIModelTitleForManualConfiguration:(NSDictionary *)configuration {
     NSString *name = configuration[kAIManualModelNameKey] ?: NSLocalizedStringFromTableInBundle(@"Untitled model", @"Settings", [NSBundle bundleForClass:[self class]], @"General prefs: untitled model fallback");
     iTermAIVendor provider = [self providerForManualAIModelConfiguration:configuration];
-    return [NSString stringWithFormat:@"Manual: %@ — %@",
+    return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Manual: %@ — %@", @"Settings", [NSBundle bundleForClass:[self class]], @"manual AI model title"),
             name,
             [self aiAPIKeyProviderNameForVendor:provider]];
 }
@@ -2382,7 +2382,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 
 - (void)validatePlugin {
     DLog(@"validatePlugin");
-    _pluginStatus.stringValue = @"Checking plugin status…";
+    _pluginStatus.stringValue = NSLocalizedStringFromTableInBundle(@"Checking plugin status…", @"Settings", [NSBundle bundleForClass:[self class]], @"plugin status");
     __weak __typeof(self) weakSelf = self;
     [iTermAITermGatekeeper validatePlugin:^(NSString * _Nullable problem) {
         [weakSelf setPluginProblem:problem];
@@ -2500,7 +2500,7 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
         variableName ? [NSString stringWithFormat:@"\\(ai.%@)", variableName] : nil;
     if (requiredVariable && ![[self stringForKey:key] containsString:requiredVariable]) {
         _aiPromptWarning.toolTip =
-            [NSString stringWithFormat:@"The prompt must contain the substring %@. %@",
+            [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The prompt must contain the substring %@. %@", @"Settings", [NSBundle bundleForClass:[self class]], @"AI prompt validation tooltip"),
              requiredVariable, explanation];
         _aiPromptWarning.alphaValue = 1.0;
     } else {
@@ -3352,11 +3352,11 @@ objectValueForTableColumn:(NSTableColumn *)tableColumn
 }
 
 - (IBAction)exportAllSettingsAndData:(id)sender {
-    [self showMessage:[iTerm2ImportExport exportAll] title:@"Problem Exporting"];
+    [self showMessage:[iTerm2ImportExport exportAll] title:NSLocalizedStringFromTableInBundle(@"Problem Exporting", @"Settings", [NSBundle bundleForClass:[self class]], @"export error title")];
 }
 
 - (IBAction)importAllSettingsAndData:(id)sender {
-    [self showMessage:[iTerm2ImportExport importAll] title:@"Problem Importing"];
+    [self showMessage:[iTerm2ImportExport importAll] title:NSLocalizedStringFromTableInBundle(@"Problem Importing", @"Settings", [NSBundle bundleForClass:[self class]], @"import error title")];
 }
 
 - (IBAction)eraseAllSettingsAndData:(id)sender {

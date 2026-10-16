@@ -182,3 +182,18 @@
 "foo(bar: \"baz\")" = "foo(bar: \"baz\")";
 "Configure Action…" = "配置操作…";
 "Directory: %@\n" = "目录：%@\n";
+
+/* Damaged bundle warning for triggers component icon */
+"The icon for the status bar “triggers” component is missing from the app bundle." = "状态栏“触发器”组件的图标在应用包中缺失。";
+
+"Merging" = "正在合并";
+
+"Reverting" = "正在回退";
+
+"Cherrypicking" = "正在拣选";
+
+"Bisecting" = "正在二分查找";
+
+"Rebasing" = "正在变基";
+
+"Applying" = "正在应用";

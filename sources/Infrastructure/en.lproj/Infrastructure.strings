@@ -70,3 +70,5 @@
 /* Error description: JavaScript evaluation failed */
 "Error evaluating '%@' at line %@: %@" = "Error evaluating '%@' at line %@: %@";
 
+
+"as a hotkey" = "as a hotkey";

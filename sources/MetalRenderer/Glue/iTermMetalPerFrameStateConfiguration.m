@@ -105,23 +105,23 @@ static vector_float4 VectorForColor(NSColor *color) {
 
     const BOOL useThemeMarkColors = drawingHelper.useThemeMarkColors;
     NSColor *markBackgroundColor = [drawingHelper defaultBackgroundColor];
-    NSColor *successMarkColor = [iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeSuccess
-                                                               colorMap:_colorMap
-                                                         useThemeColors:useThemeMarkColors];
-    NSColor *otherMarkColor = [iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeOther
-                                                             colorMap:_colorMap
-                                                       useThemeColors:useThemeMarkColors];
-    NSColor *errorMarkColor = [iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeError
-                                                             colorMap:_colorMap
-                                                       useThemeColors:useThemeMarkColors];
+    NSArray<NSColor *> *blendedMarkColors = [drawingHelper blendedMarkColorsForBackground:markBackgroundColor
+                                                                                 colorMap:_colorMap
+                                                                           useThemeColors:useThemeMarkColors];
     _lineStyleMarkColors = (iTermLineStyleMarkColors) {
-        .success = [[markBackgroundColor blendedWithColor:successMarkColor weight:0.5] colorUsingColorSpace:colorSpace].vector,
-        .other = [[markBackgroundColor blendedWithColor:otherMarkColor weight:0.5] colorUsingColorSpace:colorSpace].vector,
-        .failure = [[markBackgroundColor blendedWithColor:errorMarkColor weight:0.5] colorUsingColorSpace:colorSpace].vector
+        .success = [blendedMarkColors[0] colorUsingColorSpace:colorSpace].vector,
+        .other = [blendedMarkColors[1] colorUsingColorSpace:colorSpace].vector,
+        .failure = [blendedMarkColors[2] colorUsingColorSpace:colorSpace].vector
     };
-    _markSuccessColor = [successMarkColor colorUsingColorSpace:colorSpace];
-    _markOtherColor = [otherMarkColor colorUsingColorSpace:colorSpace];
-    _markFailureColor = [errorMarkColor colorUsingColorSpace:colorSpace];
+    _markSuccessColor = [[iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeSuccess
+                                                         colorMap:_colorMap
+                                                   useThemeColors:useThemeMarkColors] colorUsingColorSpace:colorSpace];
+    _markOtherColor = [[iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeOther
+                                                       colorMap:_colorMap
+                                                 useThemeColors:useThemeMarkColors] colorUsingColorSpace:colorSpace];
+    _markFailureColor = [[iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeError
+                                                         colorMap:_colorMap
+                                                   useThemeColors:useThemeMarkColors] colorUsingColorSpace:colorSpace];
 
     _renderInputs.isFrontTextView = (textView == [[iTermController sharedInstance] frontTextView]);
     _renderInputs.unfocusedSelectionColor = VectorForColor([[_colorMap colorForKey:kColorMapSelection] colorDimmedBy:2.0/3.0

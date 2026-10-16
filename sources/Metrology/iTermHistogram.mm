@@ -276,13 +276,16 @@ namespace iTerm2 {
             _sum += hist.sum;
         }
 
+#if ENABLE_STATS
         _sampler = new iTerm2::Sampler(_reservoirSize);
         for (iTermHistogram *hist in histograms) {
             _sampler->concatenate(*hist->_sampler);
         }
+#endif
     }
     return self;
 }
+#if ENABLE_STATS
 - (instancetype)initWithReservoirSize:(int)reservoirSize
                               sampler:(const iTerm2::Sampler &)sampler {
     self = [super init];
@@ -292,6 +295,7 @@ namespace iTerm2 {
     }
     return self;
 }
+#endif
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
@@ -318,9 +322,11 @@ namespace iTerm2 {
 }
 
 - (void)sanityCheck {
+#if ENABLE_STATS
     if (_sampler->weight() > 0) {
         assert(_count > 0);
     }
+#endif
 }
 
 - (id)clone {
@@ -351,8 +357,8 @@ namespace iTerm2 {
 #endif
 }
 - (void)setReservoirSize:(int)reservoirSize {
-#if ENABLE_STATS
     _reservoirSize = reservoirSize;
+#if ENABLE_STATS
     [self clear];
 #endif
 }
@@ -532,7 +538,11 @@ static double iTermSaneDouble(const double d) {
 }
 
 - (double)percentile:(double)p {
+#if ENABLE_STATS
     return _sampler->value_for_percentile(p);
+#else
+    return 0;
+#endif
 }
 
 - (double)valueAtNTile:(double)ntile {
@@ -570,6 +580,7 @@ static double iTermSaneDouble(const double d) {
 }
 
 - (NSString *)graphString {
+#if ENABLE_STATS
     std::vector<int> buckets = _sampler->get_histogram();
     if (buckets.size() == 0) {
         return @"";
@@ -580,6 +591,9 @@ static double iTermSaneDouble(const double d) {
         [sparklines appendString:[self sparkWithHeight:buckets[i] / largestBucketCount]];
     }
     return sparklines;
+#else
+    return @"";
+#endif
 }
 
 - (NSArray<NSDictionary *> *)bucketData {

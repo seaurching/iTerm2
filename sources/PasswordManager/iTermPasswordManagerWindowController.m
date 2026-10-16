@@ -1991,19 +1991,26 @@ static NSInteger const kDynamicMenuItemTag = 9999;
 }
 
 - (NSString *)nameForNewAccount {
-    static NSString *const kNewAccountName = @"New Account";
+    NSString *const baseName = NSLocalizedStringFromTableInBundle(@"New Account",
+                                                                  @"PasswordManager",
+                                                                  [NSBundle bundleForClass:[self class]],
+                                                                  @"PasswordManager: default new account name");
     int number = 0;
-    NSString *name = kNewAccountName;
+    NSString *name = baseName;
     while ([self indexOfAccountName:name] != NSNotFound) {
         ++number;
-        name = [NSString stringWithFormat:@"%@ %d", kNewAccountName, number];
+        name = [NSString stringWithFormat:@"%@ %d", baseName, number];
         if (number == 10) {
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             dateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MM-dd-yyyy HH:mm:ss"
                                                                        options:0
                                                                         locale:[NSLocale currentLocale]];
             NSString *formattedDate = [dateFormatter stringFromDate:[NSDate date]];
-            return [NSString stringWithFormat:@"New Account %@", formattedDate];
+            return [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"New Account %@",
+                                                                                  @"PasswordManager",
+                                                                                  [NSBundle bundleForClass:[self class]],
+                                                                                  @"PasswordManager: default new account name with date"),
+                              formattedDate];
         }
     }
     return name;

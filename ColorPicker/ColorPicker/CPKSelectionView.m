@@ -177,7 +177,7 @@ typedef NS_ENUM(NSInteger, CPKRGBViewMode) {
     self.hslRgbTextFieldSwitch.imagePosition = NSImageOnly;
     self.hslRgbTextFieldSwitch.target = self;
     self.hslRgbTextFieldSwitch.action = @selector(toggleHslRgbTextFields:);
-    self.hslRgbTextFieldSwitch.toolTip = @"Switch between RGB and HSB values.";
+    self.hslRgbTextFieldSwitch.toolTip = NSLocalizedStringFromTableInBundle(@"Switch between RGB and HSB values.", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"tooltip");
 
     [self createTextFieldsIncludingAlpha:_alphaAllowed];
     [self updateTextFieldsForColor:_selectedColor];
@@ -198,7 +198,7 @@ typedef NS_ENUM(NSInteger, CPKRGBViewMode) {
         [self addSubview:self.alphaSliderView];
     }
     [self addSubview:self.hexTextField];
-    self.rgbHexTextFieldLabel = [self addLabel:@"Hex" belowView:self.hexTextField toContainer:self];
+    self.rgbHexTextFieldLabel = [self addLabel:NSLocalizedStringFromTableInBundle(@"Hex", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"label") belowView:self.hexTextField toContainer:self];
     [self setTextFieldsRGB:![[NSUserDefaults standardUserDefaults] boolForKey:kCPKSelectionViewShowHSBTextFieldsKey]];
     // Update for the default mode
     [self modeDidChange:self.modeButton];
@@ -212,27 +212,27 @@ typedef NS_ENUM(NSInteger, CPKRGBViewMode) {
         self.modeButton.focusRingType = NSFocusRingTypeNone;
     }
 
-    [self.modeButton addItemWithTitle:@"HSB with Hue Slider"];
+    [self.modeButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"HSB with Hue Slider", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"menu title")];
     [self.modeButton.menu.itemArray.lastObject setTag:kCPKRGBViewModeHSBWithHueSliderTag];
-    [self.modeButton addItemWithTitle:@"HSB with Brightness Slider"];
+    [self.modeButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"HSB with Brightness Slider", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"menu title")];
     [self.modeButton.menu.itemArray.lastObject setTag:kCPKRGBViewModeHSBWithBrightnessSliderTag];
-    [self.modeButton addItemWithTitle:@"HSB with Saturation Slider"];
+    [self.modeButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"HSB with Saturation Slider", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"menu title")];
     [self.modeButton.menu.itemArray.lastObject setTag:kCPKRGBViewModeHSBWithSaturationSliderTag];
 
     [self.modeButton.menu addItem:[NSMenuItem separatorItem]];
 
-    [self.modeButton addItemWithTitle:@"RGB with Red Slider"];
+    [self.modeButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"RGB with Red Slider", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"menu title")];
     [self.modeButton.menu.itemArray.lastObject setTag:kCPKRGBViewModeRGBWithRedSliderTag];
-    [self.modeButton addItemWithTitle:@"RGB with Green Slider"];
+    [self.modeButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"RGB with Green Slider", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"menu title")];
     [self.modeButton.menu.itemArray.lastObject setTag:kCPKRGBViewModeRGBWithGreenSliderTag];
-    [self.modeButton addItemWithTitle:@"RGB with Blue Slider"];
+    [self.modeButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"RGB with Blue Slider", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"menu title")];
     [self.modeButton.menu.itemArray.lastObject setTag:kCPKRGBViewModeRGBWithBlueSliderTag];
 
     [self.modeButton.menu addItem:[NSMenuItem separatorItem]];
 
-    [self.modeButton addItemWithTitle:@"HSB Sliders"];
+    [self.modeButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"HSB Sliders", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"menu title")];
     [self.modeButton.menu.itemArray.lastObject setTag:kCPKRGBViewModeHSBSliders];
-    [self.modeButton addItemWithTitle:@"RGB Sliders"];
+    [self.modeButton addItemWithTitle:NSLocalizedStringFromTableInBundle(@"RGB Sliders", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"menu title")];
     [self.modeButton.menu.itemArray.lastObject setTag:kCPKRGBViewModeRGBSliders];
 
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kCPKSelectionViewPreferredModeKey]) {
@@ -254,7 +254,7 @@ typedef NS_ENUM(NSInteger, CPKRGBViewMode) {
                                                      block:^(CGFloat newValue) {
                                                          [weakSelf updateSelectedColorFromHSBSliders];
                                                      }];
-    self.hueLabel = [self labelWithTitle:@"Hue" origin:NSZeroPoint];
+    self.hueLabel = [self labelWithTitle:NSLocalizedStringFromTableInBundle(@"Hue", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"label") origin:NSZeroPoint];
     [self.hsbSliders addSubview:self.hueSliderView];
     [self.hsbSliders addSubview:self.hueLabel];
 
@@ -266,7 +266,7 @@ typedef NS_ENUM(NSInteger, CPKRGBViewMode) {
                                                      block:^(CGFloat newValue) {
                                                          [weakSelf updateSelectedColorFromHSBSliders];
                                                      }];
-    self.saturationLabel = [self labelWithTitle:@"Saturation" origin:NSZeroPoint];
+    self.saturationLabel = [self labelWithTitle:NSLocalizedStringFromTableInBundle(@"Saturation", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"label") origin:NSZeroPoint];
     [self.hsbSliders addSubview:self.saturationSliderView];
     [self.hsbSliders addSubview:self.saturationLabel];
 
@@ -278,7 +278,7 @@ typedef NS_ENUM(NSInteger, CPKRGBViewMode) {
                                                      block:^(CGFloat newValue) {
                                                          [weakSelf updateSelectedColorFromHSBSliders];
                                                      }];
-    self.brightnessLabel = [self labelWithTitle:@"Brightness" origin:NSZeroPoint];
+    self.brightnessLabel = [self labelWithTitle:NSLocalizedStringFromTableInBundle(@"Brightness", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"label") origin:NSZeroPoint];
     [self.hsbSliders addSubview:self.brightnessSliderView];
     [self.hsbSliders addSubview:self.brightnessLabel];
 
@@ -293,7 +293,7 @@ typedef NS_ENUM(NSInteger, CPKRGBViewMode) {
                                                          [weakSelf updateSelectedColorFromRGBSliders];
 
                                                      }];
-    self.redLabel = [self labelWithTitle:@"Red" origin:NSZeroPoint];
+    self.redLabel = [self labelWithTitle:NSLocalizedStringFromTableInBundle(@"Red", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"label") origin:NSZeroPoint];
     [self.rgbSliders addSubview:self.redSliderView];
     [self.rgbSliders addSubview:self.redLabel];
 
@@ -305,7 +305,7 @@ typedef NS_ENUM(NSInteger, CPKRGBViewMode) {
                                                      block:^(CGFloat newValue) {
                                                          [weakSelf updateSelectedColorFromRGBSliders];
                                                      }];
-    self.greenLabel = [self labelWithTitle:@"Green" origin:NSZeroPoint];
+    self.greenLabel = [self labelWithTitle:NSLocalizedStringFromTableInBundle(@"Green", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"label") origin:NSZeroPoint];
     [self.rgbSliders addSubview:self.greenSliderView];
     [self.rgbSliders addSubview:self.greenLabel];
 
@@ -317,7 +317,7 @@ typedef NS_ENUM(NSInteger, CPKRGBViewMode) {
                                                      block:^(CGFloat newValue) {
                                                          [weakSelf updateSelectedColorFromRGBSliders];
                                                      }];
-    self.blueLabel = [self labelWithTitle:@"Blue" origin:NSZeroPoint];
+    self.blueLabel = [self labelWithTitle:NSLocalizedStringFromTableInBundle(@"Blue", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"label") origin:NSZeroPoint];
     [self.rgbSliders addSubview:self.blueSliderView];
     [self.rgbSliders addSubview:self.blueLabel];
 
@@ -383,7 +383,7 @@ typedef NS_ENUM(NSInteger, CPKRGBViewMode) {
     self.colorSpaceButton.title = self.colorSpace.cpk_shortLocalizedName;
     self.colorSpaceButton.target = self;
     self.colorSpaceButton.action = @selector(toggleColorSpace:);
-    self.colorSpaceButton.toolTip = @"Switch between color spaces.";
+    self.colorSpaceButton.toolTip = NSLocalizedStringFromTableInBundle(@"Switch between color spaces.", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"tooltip");
     [self.colorSpaceButton sizeToFit];
 
     self.hexTextField.delegate = self;

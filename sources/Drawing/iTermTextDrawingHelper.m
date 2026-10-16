@@ -121,6 +121,21 @@ static CGFloat iTermTextDrawingHelperAlphaValueForDefaultBackgroundColor(BOOL ha
     NSFont *_cachedFont;
     CGFontRef _cgFont;
 
+    // Cached value of selectedCommandOutlineColors, keyed by the colors it derives from. The
+    // metal per-frame state reads this every frame and blending the colors costs a ColorSync
+    // ICC profile creation each time, so cache the result and recompute only when the
+    // selected-command color or the background color changes.
+    NSArray<NSColor *> *_selectedCommandOutlineColorsCache;
+    NSColor *_cachedOutlineSelectedColor;
+    NSColor *_cachedOutlineBackgroundColor;
+
+    // Cached value of blendedMarkColorsForBackground:, keyed by the colors it derives from.
+    NSArray<NSColor *> *_blendedMarkColorsCache;
+    NSColor *_cachedMarkBackgroundColor;
+    NSColor *_cachedMarkSuccessColor;
+    NSColor *_cachedMarkOtherColor;
+    NSColor *_cachedMarkErrorColor;
+
     // Last position of blinking cursor
     VT100GridCoord _oldCursorPosition;
 
@@ -991,10 +1006,51 @@ static CGFloat iTermTextDrawingHelperAlphaValueForDefaultBackgroundColor(BOOL ha
         selectedColor = [NSColor colorWithDisplayP3Red:0.2 green:0.2 blue:1 alpha:1];
     }
     NSColor *bg = [[self defaultBackgroundColor] colorWithAlphaComponent:1.0];
-    return @[
+    if (_selectedCommandOutlineColorsCache &&
+        [_cachedOutlineSelectedColor isEqual:selectedColor] &&
+        [_cachedOutlineBackgroundColor isEqual:bg]) {
+        return _selectedCommandOutlineColorsCache;
+    }
+    NSArray<NSColor *> *result = @[
         selectedColor,
         [selectedColor blendedWithColor:bg weight:0.25],
     ];
+    _selectedCommandOutlineColorsCache = result;
+    _cachedOutlineSelectedColor = selectedColor;
+    _cachedOutlineBackgroundColor = bg;
+    return result;
+}
+
+- (NSArray<NSColor *> *)blendedMarkColorsForBackground:(NSColor *)background
+                                              colorMap:(id<iTermColorMapReading>)colorMap
+                                        useThemeColors:(BOOL)useThemeColors {
+    NSColor *success = [iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeSuccess
+                                                       colorMap:colorMap
+                                                 useThemeColors:useThemeColors];
+    NSColor *other = [iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeOther
+                                                     colorMap:colorMap
+                                               useThemeColors:useThemeColors];
+    NSColor *error = [iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeError
+                                                     colorMap:colorMap
+                                               useThemeColors:useThemeColors];
+    if (_blendedMarkColorsCache &&
+        [_cachedMarkBackgroundColor isEqual:background] &&
+        [_cachedMarkSuccessColor isEqual:success] &&
+        [_cachedMarkOtherColor isEqual:other] &&
+        [_cachedMarkErrorColor isEqual:error]) {
+        return _blendedMarkColorsCache;
+    }
+    NSArray<NSColor *> *result = @[
+        [background blendedWithColor:success weight:0.5],
+        [background blendedWithColor:other weight:0.5],
+        [background blendedWithColor:error weight:0.5],
+    ];
+    _blendedMarkColorsCache = result;
+    _cachedMarkBackgroundColor = background;
+    _cachedMarkSuccessColor = success;
+    _cachedMarkOtherColor = other;
+    _cachedMarkErrorColor = error;
+    return result;
 }
 
 const CGFloat commandRegionOutlineThickness = 2.0;

@@ -303,3 +303,17 @@
 "Session has no view" = "工作階段沒有視圖";
 
 "Failed to create session" = "建立工作階段失敗";
+
+"Untitled" = "未命名";
+
+"Edit Triggers" = "編輯觸發器";
+
+"some selected text" = "一些選取的文字";
+
+"the selected command" = "選取的命令";
+
+"Session %@ #%d had a mark set." = "工作階段 %@ #%d 已設定標記。";
+
+"The directory “%@” is unavailable. Started in home directory instead." = "目錄「%@」無法使用。已在主目錄中啟動。";
+
+"The terminal attempted to access the clipboard but it was denied. Enable clipboard access in “Settings > General > Selection > Applications in terminal may access clipboard”." = "終端機嘗試存取剪貼簿但被拒絕。請在「設定 > 一般 > 選取 > 終端機中的應用程式可以存取剪貼簿」中開啟剪貼簿存取。";

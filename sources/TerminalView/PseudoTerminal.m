@@ -11191,6 +11191,17 @@ static CGFloat iTermDimmingAmount(PSMTabBarControl *tabView) {
         return nil;
     }
     RLog(@"--------- splitVertically -----------");
+    // An async split looks up the working directory before it gets here, and the target can leave
+    // this window in the meantime (closed, or moved to another window). Splitting the current tab
+    // instead would trip PTYTab's assertion that the target is in its split tree.
+    PTYTab *targetTab = [self tabForSession:targetSession];
+    if (!targetTab || ![self.tabs containsObject:targetTab]) {
+        RLog(@"Not splitting because target session %@ is not in this window", targetSession);
+        if (completion) {
+            completion(nil, NO);
+        }
+        return nil;
+    }
     if (![self canSplitPaneVertically:isVertical withBookmark:theBookmark]) {
         RLog(@"Beep: can't split");
         NSBeep();
@@ -12681,7 +12692,7 @@ static BOOL iTermApproximatelyEqualRects(NSRect lhs, NSRect rhs, double epsilon)
 
 - (NSString *)rootTerminalViewWindowSizeViewDetailString {
     if (_sizeLocked && [self windowTypeSupportsSizeLock]) {
-        return @"Window size locked";
+        return NSLocalizedStringFromTableInBundle(@"Window size locked", @"TerminalView", [NSBundle bundleForClass:[self class]], @"transient title detail");
     }
     switch (self.windowType) {
         case WINDOW_TYPE_NORMAL:

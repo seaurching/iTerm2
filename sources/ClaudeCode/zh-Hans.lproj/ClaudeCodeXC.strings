@@ -393,3 +393,49 @@
 "The operation timed out." = "操作超时。";
 
 "The new session was created but is no longer reachable. The command likely exited immediately (e.g. binary not on PATH or a non-zero startup script) and the window auto-closed." = "新会话已创建，但已不再可达。命令很可能立即退出了（例如二进制文件不在 PATH 中，或启动脚本返回非零值），窗口已自动关闭。";
+
+"the command uses shell history expansion (`!`/`^`), which resurrects a previous command that can't be safety-checked" = "命令使用 shell 历史扩展（`!`/`^`），会复活一条无法进行安全检查的先前命令";
+
+"the command contains a terminal escape sequence" = "命令包含终端转义序列";
+
+"the command contains a carriage return, which the shell and the safety check tokenize differently" = "命令包含回车符，shell 与安全检查对其分词方式不同";
+
+"the command has unbalanced quotes and cannot be parsed for safety" = "命令引号不配对，无法解析以进行安全检查";
+
+"the command writes directly to a device" = "命令直接写入设备";
+
+"the command pipes into a shell (`%@`), whose input can't be safety-checked" = "命令通过管道输入 shell（`%@`），其输入无法进行安全检查";
+
+"zsh builtin `%@` can bypass ordinary command checks" = "zsh 内建命令 `%@` 可绕过常规命令检查";
+
+"the command recursively deletes the filesystem root or home directory" = "命令递归删除文件系统根目录或家目录";
+
+"the command recursively changes ownership/permissions on the filesystem root or home directory" = "命令递归更改文件系统根目录或家目录的属主/权限";
+
+"the command writes directly to a device with dd" = "命令使用 dd 直接写入设备";
+
+"the command formats a filesystem (mkfs)" = "命令格式化文件系统（mkfs）";
+
+"the command deletes or runs a destructive command across the filesystem root or home directory with find" = "命令使用 find 对文件系统根目录或家目录执行删除或破坏性操作";
+
+"Interactive terminal application — review the intended action before allowing input." = "交互式终端应用——允许输入前请先审查其意图执行的操作。";
+
+"the file is too large to safety-check automatically" = "文件过大，无法自动进行安全检查";
+
+"Notifications are not enabled on the paired phone yet. Call request_notification_permission first." = "配对手机尚未开启通知。请先调用 request_notification_permission。";
+
+"Notification delivery failed: %@" = "通知发送失败：%@";
+
+"a concurrent send changed this session's prompt during the safety check; resubmit so the whole line is re-checked." = "安全检查期间有并发发送更改了此会话的提示符；请重新提交，以便整行重新检查。";
+
+"the user declined to approve it." = "用户拒绝批准该操作。";
+
+"Target %@ in %@ is not the Code Review role. start_code_review only targets the Code Review role; use send_text if you want to type text into another role." = "%1$@ 工作组中的 %2$@ 不是 Code Review 角色。start_code_review 只能以 Code Review 角色为目标；若要向其他角色输入文本，请使用 send_text。";
+
+"Target %@ in %@ is busy (status: %@). Wait until it returns to idle before starting a review." = "%1$@ 工作组中的 %2$@ 正忙（状态：%3$@）。请等其回到空闲状态后再开始审查。";
+
+"Target %@ in %@ can't be reloaded to start a fresh review." = "%1$@ 工作组中的 %2$@ 无法重新加载以开始新一轮审查。";
+
+"Code Review overlay unavailable on %@ in %@." = "%1$@ 工作组中的 %2$@ 上 Code Review 浮层不可用。";
+
+"text: %@" = "text 参数：%@";

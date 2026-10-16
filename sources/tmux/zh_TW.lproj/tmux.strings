@@ -42,3 +42,7 @@
 "Error opening tmux tab" = "開啟 tmux 分頁時發生錯誤";
 "A tmux pane terminated immediately after creation" = "tmux 面板在建立後立即終止";
 "Unrecognized command from tmux. Did your ssh session die? The command was:" = "從 tmux 收到無法識別的命令。你的 ssh 工作階段是否已中斷？該命令是：";
+
+"** ERROR **" = "** 錯誤 **";
+
+"tmux exited unexpectedly." = "tmux 意外結束。";

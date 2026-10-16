@@ -1172,7 +1172,7 @@ final class OrchestratorDispatcher {
             let outcome: SafetyGateOutcome
             if fileArgs.content.count > Self.createFileMaxClassifiableContent {
                 outcome = .requireApproval(
-                    reason: "the file is too large to safety-check automatically")
+                    reason: NSLocalizedString("the file is too large to safety-check automatically", tableName: "ClaudeCodeXC", comment: "文件过大，无法自动进行安全检查"))
             } else {
                 outcome = await Self.classifyFileWrite(filename: fileArgs.filename,
                                                        content: fileArgs.content,
@@ -1689,7 +1689,7 @@ final class OrchestratorDispatcher {
             switch (CompanionPairingController.shared.isPhoneConnected, CompanionPushRegistry.authorization) {
             case (true, .notDetermined):
                 throw OrchestratorError.unsupported(
-                    reason: "Notifications are not enabled on the paired phone yet. Call request_notification_permission first.")
+                    reason: NSLocalizedString("Notifications are not enabled on the paired phone yet. Call request_notification_permission first.", tableName: "ClaudeCodeXC", comment: "配对手机尚未开启通知。请先调用 request_notification_permission。"))
             case (_, .denied):
                 throw OrchestratorError.unsupported(
                     reason: NSLocalizedString("The user has notifications turned off for iTerm2 Buddy. Do not push them about it; they can enable it in iOS Settings if they want alerts.", tableName: "ClaudeCodeXC", comment: "用户已关闭 iTerm2 Buddy 的通知。请勿就此向其推送；如需提醒，可在 iOS 设置中开启。"))
@@ -1707,7 +1707,7 @@ final class OrchestratorDispatcher {
             try await CompanionPushSender.send(title: args.title, body: args.body)
         } catch {
             throw OrchestratorError.unsupported(
-                reason: "Notification delivery failed: \(error.localizedDescription)")
+                reason: String(format: NSLocalizedString("Notification delivery failed: %@", tableName: "ClaudeCodeXC", comment: "通知发送失败：%@"), error.localizedDescription))
         }
         return .ack
     }
@@ -2420,7 +2420,7 @@ final class OrchestratorDispatcher {
         do {
             decoded = try decodeAIBackslashEscapes(args.text)
         } catch {
-            throw OrchestratorError.malformedArgs(reason: "text: \(error)")
+            throw OrchestratorError.malformedArgs(reason: String(format: NSLocalizedString("text: %@", tableName: "ClaudeCodeXC", comment: "text 参数：%@"), "\(error)"))
         }
         if let overlay = resolved.session.view?.codeReviewPromptOverlay {
             // Code-review prompt overlay: the text populates an in-session
@@ -2548,7 +2548,7 @@ final class OrchestratorDispatcher {
             // letting the caller type/submit a stale-classified line.
             typedInput.contaminated.insert(guid)
             throw OrchestratorError.safetyBlocked(
-                reason: "a concurrent send changed this session's prompt during the safety check; resubmit so the whole line is re-checked.")
+                reason: NSLocalizedString("a concurrent send changed this session's prompt during the safety check; resubmit so the whole line is re-checked.", tableName: "ClaudeCodeXC", comment: "安全检查期间有并发发送更改了此会话的提示符；请重新提交，以便整行重新检查。"))
         case .markContaminatedAndReturn:
             // Inert send raced by a concurrent write: leave its keystroke on the
             // now-contaminated prompt; the next submit is judged against the
@@ -2609,7 +2609,7 @@ final class OrchestratorDispatcher {
                                               reason: reason, flagged: false) {
                 return
             }
-            throw OrchestratorError.safetyBlocked(reason: "the user declined to approve it.")
+            throw OrchestratorError.safetyBlocked(reason: NSLocalizedString("the user declined to approve it.", tableName: "ClaudeCodeXC", comment: "用户拒绝批准该操作。"))
         case .deny(let reason):
             DLog("Orchestrator safety gate: deny (\(reason))")
             if await promptForCommandApproval(actionSummary: actionSummary,
@@ -2993,16 +2993,16 @@ final class OrchestratorDispatcher {
         RLog("OrchestratorDispatcher.doStartCodeReview role=\(resolved.roleName) workgroup=\(resolved.workgroupName) hasOverlay=\(overlay != nil) isReviewRole=\(isReviewRole) state=\(sessionState.rawValue) restartable=\(resolved.session.isRestartable())")
         if overlay == nil {
             guard isReviewRole else {
-                throw OrchestratorError.unsupported(reason: "Target \(resolved.roleName) in \(resolved.workgroupName) is not the Code Review role. start_code_review only targets the Code Review role; use send_text if you want to type text into another role.")
+                throw OrchestratorError.unsupported(reason: String(format: NSLocalizedString("Target %@ in %@ is not the Code Review role. start_code_review only targets the Code Review role; use send_text if you want to type text into another role.", tableName: "ClaudeCodeXC", comment: "%1$@ 工作组中的 %2$@ 不是 Code Review 角色。start_code_review 只能以 Code Review 角色为目标；若要向其他角色输入文本，请使用 send_text。"), resolved.roleName, resolved.workgroupName))
             }
             guard sessionState == .idle else {
-                throw OrchestratorError.unsupported(reason: "Target \(resolved.roleName) in \(resolved.workgroupName) is busy (status: \(sessionState.rawValue)). Wait until it returns to idle before starting a review.")
+                throw OrchestratorError.unsupported(reason: String(format: NSLocalizedString("Target %@ in %@ is busy (status: %@). Wait until it returns to idle before starting a review.", tableName: "ClaudeCodeXC", comment: "%1$@ 工作组中的 %2$@ 正忙（状态：%3$@）。请等其回到空闲状态后再开始审查。"), resolved.roleName, resolved.workgroupName, sessionState.rawValue))
             }
             // Reloading kills+relaunches the session, which requires a
             // restartable session and the cached review command template.
             guard resolved.session.isRestartable(),
                   resolved.session.codeReviewRawCommand != nil else {
-                throw OrchestratorError.unsupported(reason: "Target \(resolved.roleName) in \(resolved.workgroupName) can't be reloaded to start a fresh review.")
+                throw OrchestratorError.unsupported(reason: String(format: NSLocalizedString("Target %@ in %@ can't be reloaded to start a fresh review.", tableName: "ClaudeCodeXC", comment: "%1$@ 工作组中的 %2$@ 无法重新加载以开始新一轮审查。"), resolved.roleName, resolved.workgroupName))
             }
         }
 
@@ -3058,7 +3058,7 @@ final class OrchestratorDispatcher {
         }
         guard let liveOverlay = resolved.session.view?.codeReviewPromptOverlay else {
             RLog("OrchestratorDispatcher.doStartCodeReview overlay unavailable after reload for role=\(resolved.roleName)")
-            throw OrchestratorError.unsupported(reason: "Code Review overlay unavailable on \(resolved.roleName) in \(resolved.workgroupName).")
+            throw OrchestratorError.unsupported(reason: String(format: NSLocalizedString("Code Review overlay unavailable on %@ in %@.", tableName: "ClaudeCodeXC", comment: "%1$@ 工作组中的 %2$@ 上 Code Review 浮层不可用。"), resolved.roleName, resolved.workgroupName))
         }
         // Fire the overlay's Start handler with the resolved prompt. Whether
         // this is the initial deferred launch or a reload, onStart runs the

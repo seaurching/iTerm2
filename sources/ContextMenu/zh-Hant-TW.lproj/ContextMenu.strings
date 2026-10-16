@@ -67,3 +67,21 @@
 "VT300" = "VT300";
 "VT400" = "VT400";
 "VT500" = "VT500";
+
+"Move Session to Split Pane" = "將工作階段移到分割窗格";
+
+"Edit Session..." = "編輯工作階段...";
+
+"Toggle Broadcasting Input" = "切換廣播輸入";
+
+"Close" = "關閉";
+
+"Send Email to Selected Address" = "傳送郵件至所選地址";
+
+"Split Pane Vertically" = "垂直分割窗格";
+
+"Send Selection" = "傳送所選內容";
+
+"Clear Buffer" = "清空緩衝區";
+
+"Annotate Selection" = "為所選內容加入註解";

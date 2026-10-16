@@ -17,7 +17,7 @@
 }
 
 - (void)awakeFromNib {
-    _shortcut.purpose = @"as a hotkey";
+    _shortcut.purpose = NSLocalizedStringFromTableInBundle(@"as a hotkey", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"fills shortcut confirmation alert");
     _shortcut.shortcutDelegate = self;
 }
 

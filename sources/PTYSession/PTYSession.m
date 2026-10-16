@@ -3454,7 +3454,7 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
     // Build the message before clearing the property. This file is MRC and
     // `unavailable` is unretained, so niling the copy property here would
     // deallocate the string and leave `unavailable` dangling (issue 12955 crash).
-    NSString *message = [NSString stringWithFormat:@"The directory “%@” is unavailable. Started in home directory instead.",
+    NSString *message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The directory “%@” is unavailable. Started in home directory instead.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"unavailable directory notice"),
                          unavailable];
     self.unavailableWorkingDirectory = nil;
     [_screen mutateAsynchronously:^(VT100Terminal *terminal,
@@ -5305,7 +5305,7 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
             if ([_textview keyIsARepeat] == NO &&
                 [self shouldPostUserNotification] &&
                 [iTermProfilePreferences boolForKey:KEY_SEND_BELL_ALERT inProfile:self.profile]) {
-                [[iTermNotificationController sharedInstance] notify:@"Bell"
+                [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Bell", @"PTYSession", [NSBundle bundleForClass:[self class]], @"notification title")
                                                      withDescription:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Session %@ #%d just rang a bell!", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible"),
                                                                       [[self name] removingHTMLFromTabTitleIfNeeded],
                                                                       [_delegate tabNumber]]
@@ -6313,7 +6313,7 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
 }
 
 - (NSString *)name {
-    return [self.variablesScope valueForVariableName:iTermVariableKeySessionName] ?: [self.variablesScope valueForVariableName:iTermVariableKeySessionProfileName] ?: @"Untitled";
+    return [self.variablesScope valueForVariableName:iTermVariableKeySessionName] ?: [self.variablesScope valueForVariableName:iTermVariableKeySessionProfileName] ?: NSLocalizedStringFromTableInBundle(@"Untitled", @"PTYSession", [NSBundle bundleForClass:[self class]], @"session name fallback");
 }
 
 - (void)setIconName:(NSString *)theName {
@@ -10034,6 +10034,9 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
             return  nil;
         }
         NSString *bare = [SmartSelectionController regexInRule:rule];
+        if (!bare) {
+            return nil;
+        }
         NSError *error = nil;
         NSRegularExpression *expr = [[NSRegularExpression alloc] initWithPattern:bare options:0 error:&error];
         if (error || !expr) {
@@ -16191,7 +16194,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     self.alertOnNextMark = NO;
     NSString *action = [iTermApplication.sharedApplication delegate].markAlertAction;
     if ([action isEqualToString:kMarkAlertActionPostNotification]) {
-        NSString *markDescription = [NSString stringWithFormat:@"Session %@ #%d had a mark set.",
+        NSString *markDescription = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Session %@ #%d had a mark set.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"notification body"),
                                      [[self name] removingHTMLFromTabTitleIfNeeded],
                                      [_delegate tabNumber]];
         [[iTermNotificationController sharedInstance] notify:NSLocalizedStringFromTableInBundle(@"Mark Set", @"PTYSession", [NSBundle bundleForClass:[self class]], @"user-visible")
@@ -16203,7 +16206,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
         // Mirror to the paired iPhone when this profile opted in (the bridge is a
         // no-op unless a revision-2 phone is paired and can be notified).
         if ([iTermProfilePreferences boolForKey:KEY_SEND_ALERTS_TO_COMPANION inProfile:self.profile]) {
-            [iTermCompanionAlertBridge postTerminalAlertWithTitle:@"Mark Set"
+            [iTermCompanionAlertBridge postTerminalAlertWithTitle:NSLocalizedStringFromTableInBundle(@"Mark Set", @"PTYSession", [NSBundle bundleForClass:[self class]], @"companion alert title")
                                                              body:markDescription
                                                         threadKey:self.stableID];
         }
@@ -19009,7 +19012,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
     if ([self hasAnnouncementWithIdentifier:identifier]) {
         return;
     }
-    NSString *notice = @"The terminal attempted to access the clipboard but it was denied. Enable clipboard access in “Settings > General > Selection > Applications in terminal may access clipboard”.";
+    NSString *notice = NSLocalizedStringFromTableInBundle(@"The terminal attempted to access the clipboard but it was denied. Enable clipboard access in “Settings > General > Selection > Applications in terminal may access clipboard”.", @"PTYSession", [NSBundle bundleForClass:[self class]], @"clipboard denied announcement");
     iTermAnnouncementViewController *announcement =
     [iTermAnnouncementViewController announcementWithTitle:notice
                                                      style:kiTermAnnouncementViewStyleWarning
@@ -19453,7 +19456,7 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
                                      [_delegate tabNumber],
                                      message];
         }
-        [controller notify:@"Alert"
+        [controller notify:NSLocalizedStringFromTableInBundle(@"Alert", @"PTYSession", [NSBundle bundleForClass:[self class]], @"notification title")
            withDescription:description
                windowIndex:[self screenWindowIndex]
                   tabIndex:[self screenTabIndex]
@@ -20570,26 +20573,26 @@ static const NSTimeInterval PTYSessionFocusReportBellSquelchTimeIntervalThreshol
         if (_screen.lastCommandMark.firstLineOfCommand.length) {
             return _screen.lastCommandMark.firstLineOfCommand;
         }
-        return @"Command output";
+        return NSLocalizedStringFromTableInBundle(@"Command output", @"PTYSession", [NSBundle bundleForClass:[self class]], @"AI subject fallback");
     }
     return nil;
 }
 
 - (NSString *)subjectMatterToExplainWithAI {
     if (_textview.selection.hasSelection) {
-        return [[_textview selectedText] ellipsizedDescriptionNoLongerThan:16].stringEnclosedInMarkdownInlineCode ?: @"some selected text";
+        return [[_textview selectedText] ellipsizedDescriptionNoLongerThan:16].stringEnclosedInMarkdownInlineCode ?: NSLocalizedStringFromTableInBundle(@"some selected text", @"PTYSession", [NSBundle bundleForClass:[self class]], @"AI subject fallback");
     }
     if (self.selectedCommandMark) {
         if (self.selectedCommandMark.firstLineOfCommand.length) {
             return self.selectedCommandMark.firstLineOfCommand.stringEnclosedInMarkdownInlineCode;
         }
-        return @"the selected command";
+        return NSLocalizedStringFromTableInBundle(@"the selected command", @"PTYSession", [NSBundle bundleForClass:[self class]], @"AI subject fallback");
     }
     if (_screen.lastCommandMark) {
         if (_screen.lastCommandMark.firstLineOfCommand.length) {
             return _screen.lastCommandMark.firstLineOfCommand.stringEnclosedInMarkdownInlineCode;
         }
-        return @"the last command";
+        return NSLocalizedStringFromTableInBundle(@"the last command", @"PTYSession", [NSBundle bundleForClass:[self class]], @"AI subject fallback");
     }
     return nil;
 }
@@ -24230,7 +24233,7 @@ getOptionKeyBehaviorLeft:(iTermOptionKeyBehavior *)left
     [[triggerController.window undoManager] registerUndoWithTarget:self
                                                           selector:@selector(setTriggersValue:)
                                                             object:self.profile[KEY_TRIGGERS]];
-    [[triggerController.window undoManager] setActionName:@"Edit Triggers"];
+    [[triggerController.window undoManager] setActionName:NSLocalizedStringFromTableInBundle(@"Edit Triggers", @"PTYSession", [NSBundle bundleForClass:[self class]], @"undo action name")];
     [self setSessionSpecificProfileValues:@{ KEY_TRIGGERS: value }];
     triggerController.guid = self.profile[KEY_GUID];
 }

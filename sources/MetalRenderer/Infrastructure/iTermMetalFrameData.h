@@ -214,8 +214,8 @@ NS_CLASS_AVAILABLE(10_11, NA)
 - (void)createUnderlineOffscreenRenderPassDescriptors;
 - (void)dispatchToQueue:(dispatch_queue_t)queue forCompletion:(void (^)(void))block;
 - (void)enqueueDrawCallsWithBlock:(void (^)(void))block;
-- (void)didCompleteWithAggregateStats:(iTermPreciseTimerStats *)aggregateStats
-                           histograms:(NSArray<iTermHistogram *> *)aggregateHistograms
+- (void)didCompleteWithAggregateStats:(nullable iTermPreciseTimerStats *)aggregateStats
+                           histograms:(nullable NSArray<iTermHistogram *> *)aggregateHistograms
                                 owner:(NSString *)owner
                            additional:(NSString *)additional;
 

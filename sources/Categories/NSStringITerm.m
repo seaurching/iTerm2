@@ -2274,7 +2274,7 @@ static TECObjectRef CreateTECConverterForUTF8Variants(TextEncodingVariant varian
         NSString *format;
     } units[] = {
         { 1,        1, @"%.0f bytes" }, // 0 bytes
-        { k,        1, @"%.0f bytes" }, // 999 bytes
+        { k,        1, NSLocalizedStringFromTableInBundle(@"%.0f bytes", @"Categories", [NSBundle mainBundle], @"byte count") }, // 999 bytes
         { 10 * k,   k, @"%.1f kB" },  // 9.9 KB
         { mb,       k, @"%.0f kB" },  // 999 KB
         { 10 * mb, mb, @"%.1f MB" },  // 9.9 MB

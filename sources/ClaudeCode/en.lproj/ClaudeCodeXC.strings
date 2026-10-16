@@ -393,3 +393,49 @@
 "The operation timed out." = "The operation timed out.";
 
 "The new session was created but is no longer reachable. The command likely exited immediately (e.g. binary not on PATH or a non-zero startup script) and the window auto-closed." = "The new session was created but is no longer reachable. The command likely exited immediately (e.g. binary not on PATH or a non-zero startup script) and the window auto-closed.";
+
+"the command uses shell history expansion (`!`/`^`), which resurrects a previous command that can't be safety-checked" = "the command uses shell history expansion (`!`/`^`), which resurrects a previous command that can't be safety-checked";
+
+"the command contains a terminal escape sequence" = "the command contains a terminal escape sequence";
+
+"the command contains a carriage return, which the shell and the safety check tokenize differently" = "the command contains a carriage return, which the shell and the safety check tokenize differently";
+
+"the command has unbalanced quotes and cannot be parsed for safety" = "the command has unbalanced quotes and cannot be parsed for safety";
+
+"the command writes directly to a device" = "the command writes directly to a device";
+
+"the command pipes into a shell (`%@`), whose input can't be safety-checked" = "the command pipes into a shell (`%@`), whose input can't be safety-checked";
+
+"zsh builtin `%@` can bypass ordinary command checks" = "zsh builtin `%@` can bypass ordinary command checks";
+
+"the command recursively deletes the filesystem root or home directory" = "the command recursively deletes the filesystem root or home directory";
+
+"the command recursively changes ownership/permissions on the filesystem root or home directory" = "the command recursively changes ownership/permissions on the filesystem root or home directory";
+
+"the command writes directly to a device with dd" = "the command writes directly to a device with dd";
+
+"the command formats a filesystem (mkfs)" = "the command formats a filesystem (mkfs)";
+
+"the command deletes or runs a destructive command across the filesystem root or home directory with find" = "the command deletes or runs a destructive command across the filesystem root or home directory with find";
+
+"Interactive terminal application — review the intended action before allowing input." = "Interactive terminal application — review the intended action before allowing input.";
+
+"the file is too large to safety-check automatically" = "the file is too large to safety-check automatically";
+
+"Notifications are not enabled on the paired phone yet. Call request_notification_permission first." = "Notifications are not enabled on the paired phone yet. Call request_notification_permission first.";
+
+"Notification delivery failed: %@" = "Notification delivery failed: %@";
+
+"a concurrent send changed this session's prompt during the safety check; resubmit so the whole line is re-checked." = "a concurrent send changed this session's prompt during the safety check; resubmit so the whole line is re-checked.";
+
+"the user declined to approve it." = "the user declined to approve it.";
+
+"Target %@ in %@ is not the Code Review role. start_code_review only targets the Code Review role; use send_text if you want to type text into another role." = "Target %@ in %@ is not the Code Review role. start_code_review only targets the Code Review role; use send_text if you want to type text into another role.";
+
+"Target %@ in %@ is busy (status: %@). Wait until it returns to idle before starting a review." = "Target %@ in %@ is busy (status: %@). Wait until it returns to idle before starting a review.";
+
+"Target %@ in %@ can't be reloaded to start a fresh review." = "Target %@ in %@ can't be reloaded to start a fresh review.";
+
+"Code Review overlay unavailable on %@ in %@." = "Code Review overlay unavailable on %@ in %@.";
+
+"text: %@" = "text: %@";

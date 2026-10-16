@@ -9,3 +9,35 @@
 "Permission Needed" = "需要權限";
 "The eyedropper needs Screen Recording permission to work." = "取色器需要螢幕錄製權限才能運作。";
 "The eyedropper requires screen recording permission.\n\nYou can enable this by adding %@ to System Preferences > Security & Privacy > Privacy > Screen Recording." = "取色器需要螢幕錄製權限。\n\n您可以透過將%@加入「系統偏好設定 > 安全性與隱私 > 隱私 > 螢幕錄製」來啟用此功能。";
+
+"Select the absence of color" = "選取無顏色";
+
+"Save color as a Favorite" = "將顏色儲存為個人收藏";
+
+"Remove selected Favorite color" = "移除所選個人收藏顏色";
+
+"Open the eye dropper" = "打開取色器";
+
+"Use the system color picker" = "使用系統顏色面板";
+
+"Switch between RGB and HSB values." = "在 RGB 與 HSB 值之間切換。";
+
+"Switch between color spaces." = "在色彩空間之間切換。";
+
+"HSB with Hue Slider" = "帶色相滑桿的 HSB";
+
+"HSB with Brightness Slider" = "帶亮度滑桿的 HSB";
+
+"HSB with Saturation Slider" = "帶飽和度滑桿的 HSB";
+
+"RGB with Red Slider" = "帶紅色滑桿的 RGB";
+
+"RGB with Green Slider" = "帶綠色滑桿的 RGB";
+
+"RGB with Blue Slider" = "帶藍色滑桿的 RGB";
+
+"HSB Sliders" = "HSB 滑桿";
+
+"RGB Sliders" = "RGB 滑桿";
+
+"Hex" = "十六進位";

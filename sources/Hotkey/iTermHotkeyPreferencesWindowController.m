@@ -45,7 +45,7 @@
 
 - (void)awakeFromNib {
     _hotKey.leaderAllowed = NO;
-    _hotKey.purpose = @"as a hotkey";
+    _hotKey.purpose = NSLocalizedStringFromTableInBundle(@"as a hotkey", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"fills shortcut confirmation alert");
     if (_pendingExplanation) {
         _explanation.stringValue = _pendingExplanation;
         self.pendingExplanation = nil;

@@ -30,3 +30,7 @@
 "Ignore" = "忽略";
 
 "Learn More" = "了解更多";
+
+"%@\\n…and %@ more" = "%@\\n…以及其他 %@ 项";
+
+"Directory Listing" = "目录列表";

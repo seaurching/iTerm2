@@ -103,7 +103,7 @@ final class TerminalHardRules {
 
     // Shared reason for every history-expansion / quick-substitution surface.
     private static let historyExpansionReason =
-        "the command uses shell history expansion (`!`/`^`), which resurrects a previous command that can't be safety-checked"
+        NSLocalizedString("the command uses shell history expansion (`!`/`^`), which resurrects a previous command that can't be safety-checked", tableName: "ClaudeCodeXC", comment: "命令使用 shell 历史扩展（`!`/`^`），会复活一条无法进行安全检查的先前命令")
 
     // True if `segment` contains an unquoted, unescaped `!` that triggers history
     // expansion: a `!` NOT immediately followed by whitespace, `=`, `(`, a
@@ -166,11 +166,11 @@ final class TerminalHardRules {
         //  - CR is the submit gesture and tokenizes differently for the shell
         //    than for our line reconstruction (a genuine misparsing vector).
         if line.unicodeScalars.contains(where: { $0.value == 0x1B }) {
-            return .needsManualApproval(reason: "the command contains a terminal escape sequence")
+            return .needsManualApproval(reason: NSLocalizedString("the command contains a terminal escape sequence", tableName: "ClaudeCodeXC", comment: "命令包含终端转义序列"))
         }
         if line.unicodeScalars.contains(where: { $0.value == 0x0D }) {
             return .needsManualApproval(
-                reason: "the command contains a carriage return, which the shell and the safety check tokenize differently")
+                reason: NSLocalizedString("the command contains a carriage return, which the shell and the safety check tokenize differently", tableName: "ClaudeCodeXC", comment: "命令包含回车符，shell 与安全检查对其分词方式不同"))
         }
 
         // History expansion / quick substitution at LINE START (`!!`, `!rm`,
@@ -212,7 +212,7 @@ final class TerminalHardRules {
         // the classifier could read it differently. Surface for review.
         guard scanned.balanced else {
             return .needsManualApproval(
-                reason: "the command has unbalanced quotes and cannot be parsed for safety")
+                reason: NSLocalizedString("the command has unbalanced quotes and cannot be parsed for safety", tableName: "ClaudeCodeXC", comment: "命令引号不配对，无法解析以进行安全检查"))
         }
 
         // Catastrophic tripwire + pipe-to-shell, computed by TOKENIZING each
@@ -249,7 +249,7 @@ final class TerminalHardRules {
             // raw segment text (quote-aware) so a `>` inside a quoted string is
             // not mistaken for a real redirect operator.
             if Self.redirectsToBlockDevice(segment.text) {
-                return .needsManualApproval(reason: "the command writes directly to a device")
+                return .needsManualApproval(reason: NSLocalizedString("the command writes directly to a device", tableName: "ClaudeCodeXC", comment: "命令直接写入设备"))
             }
             guard let (cmd, args) = Self.effectiveCommand(words) else { continue }
             if let decision = catastrophicVerdict(cmd: cmd, args: args,
@@ -271,12 +271,12 @@ final class TerminalHardRules {
         // interactive shell, which the classifier CAN judge, so they defer.
         if afterPipe, shellInterpreters.contains(cmd) {
             return .needsManualApproval(
-                reason: "the command pipes into a shell (`\(cmd)`), whose input can't be safety-checked")
+                reason: String(format: NSLocalizedString("the command pipes into a shell (`%@`), whose input can't be safety-checked", tableName: "ClaudeCodeXC", comment: "命令通过管道输入 shell（`%@`），其输入无法进行安全检查"), cmd))
         }
         // Obscure zsh dangerous builtins.
         if zshDangerousCommands.contains(cmd) {
             return .needsManualApproval(
-                reason: "zsh builtin `\(cmd)` can bypass ordinary command checks")
+                reason: String(format: NSLocalizedString("zsh builtin `%@` can bypass ordinary command checks", tableName: "ClaudeCodeXC", comment: "zsh 内建命令 `%@` 可绕过常规命令检查"), cmd))
         }
         // rm -r of the whole root or home directory (force not required -- a
         // recursive delete of root is worth a prompt with or without -f).
@@ -284,22 +284,22 @@ final class TerminalHardRules {
            Self.hasFlag(args, short: ["r", "R"], long: "recursive"),
            args.contains(where: Self.isCatastrophicTarget) {
             return .needsManualApproval(
-                reason: "the command recursively deletes the filesystem root or home directory")
+                reason: NSLocalizedString("the command recursively deletes the filesystem root or home directory", tableName: "ClaudeCodeXC", comment: "命令递归删除文件系统根目录或家目录"))
         }
         // chmod/chown/chgrp -R on the whole root or home directory.
         if cmd == "chmod" || cmd == "chown" || cmd == "chgrp",
            Self.hasFlag(args, short: ["R"], long: "recursive"),
            args.contains(where: Self.isCatastrophicTarget) {
             return .needsManualApproval(
-                reason: "the command recursively changes ownership/permissions on the filesystem root or home directory")
+                reason: NSLocalizedString("the command recursively changes ownership/permissions on the filesystem root or home directory", tableName: "ClaudeCodeXC", comment: "命令递归更改文件系统根目录或家目录的属主/权限"))
         }
         // dd writing directly to a raw block device (of=/dev/sda, not /dev/null).
         if cmd == "dd", args.contains(where: Self.isDeviceWriteArg) {
-            return .needsManualApproval(reason: "the command writes directly to a device with dd")
+            return .needsManualApproval(reason: NSLocalizedString("the command writes directly to a device with dd", tableName: "ClaudeCodeXC", comment: "命令使用 dd 直接写入设备"))
         }
         // mkfs formats (destroys) a filesystem.
         if cmd == "mkfs" || cmd.hasPrefix("mkfs.") {
-            return .needsManualApproval(reason: "the command formats a filesystem (mkfs)")
+            return .needsManualApproval(reason: NSLocalizedString("the command formats a filesystem (mkfs)", tableName: "ClaudeCodeXC", comment: "命令格式化文件系统（mkfs）"))
         }
         // find rooted at / or home that deletes, or -execs a destructive command
         // (`find ~ -exec grep {} \;`, a read-only exec, defers).
@@ -307,7 +307,7 @@ final class TerminalHardRules {
            args.contains(where: Self.isCatastrophicTarget),
            Self.findIsDestructive(args, shellInterpreters: shellInterpreters) {
             return .needsManualApproval(
-                reason: "the command deletes or runs a destructive command across the filesystem root or home directory with find")
+                reason: NSLocalizedString("the command deletes or runs a destructive command across the filesystem root or home directory with find", tableName: "ClaudeCodeXC", comment: "命令使用 find 对文件系统根目录或家目录执行删除或破坏性操作"))
         }
         return nil
     }

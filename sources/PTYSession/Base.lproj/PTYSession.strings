@@ -242,3 +242,17 @@
 "Session has no view" = "Session has no view";
 
 "Failed to create session" = "Failed to create session";
+
+"Untitled" = "Untitled";
+
+"Edit Triggers" = "Edit Triggers";
+
+"some selected text" = "some selected text";
+
+"the selected command" = "the selected command";
+
+"Session %@ #%d had a mark set." = "Session %@ #%d had a mark set.";
+
+"The directory “%@” is unavailable. Started in home directory instead." = "The directory “%@” is unavailable. Started in home directory instead.";
+
+"The terminal attempted to access the clipboard but it was denied. Enable clipboard access in “Settings > General > Selection > Applications in terminal may access clipboard”." = "The terminal attempted to access the clipboard but it was denied. Enable clipboard access in “Settings > General > Selection > Applications in terminal may access clipboard”.";

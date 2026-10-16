@@ -137,9 +137,9 @@ const double SmartSelectionVeryHighPrecision = 1000000.0;
     if (!rulesArray) {
         NSString* plistFile = [[NSBundle bundleForClass:[self class]] pathForResource:@"SmartSelectionRules"
                                                                                ofType:@"plist"];
-        NSDictionary* rulesDict = [NSDictionary dictionaryWithContentsOfFile:plistFile];
-        if (!plistFile) {
-            [iTermAppSignatureValidator warnWithReason:NSLocalizedStringFromTableInBundle(@"While loading the default smart selection rules", @"Settings", [NSBundle bundleForClass:[self class]], @"加载默认智能选择规则警告原因")];
+        NSDictionary* rulesDict = plistFile ? [NSDictionary dictionaryWithContentsOfFile:plistFile] : nil;
+        if (!rulesDict) {
+            [iTermAppSignatureValidator warnAndExitWithReason:NSLocalizedStringFromTableInBundle(@"While loading the default smart selection rules", @"Settings", [NSBundle bundleForClass:[self class]], @"加载默认智能选择规则警告原因")];
         }
         ITCriticalError(rulesDict != nil, @"Failed to parse SmartSelectionRules in %@: %@", plistFile, [NSString stringWithContentsOfFile:plistFile encoding:NSUTF8StringEncoding error:nil]);
         rulesArray = [rulesDict objectForKey:@"Rules"];
@@ -151,8 +151,11 @@ const double SmartSelectionVeryHighPrecision = 1000000.0;
     return [rule objectForKey:kActionsKey];
 }
 
+// Nil if the rule has no usable regex. Rules can come from hand-edited, dynamic, or imported
+// profiles, so the value may be missing or not a string.
 + (NSString *)regexInRule:(NSDictionary *)rule {
-    return [rule objectForKey:kRegexKey];
+    NSString *regex = [NSString castFrom:[rule objectForKey:kRegexKey]];
+    return regex.length > 0 ? regex : nil;
 }
 
 + (double)precisionInRule:(NSDictionary *)rule {

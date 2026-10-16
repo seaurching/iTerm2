@@ -130,11 +130,11 @@
         if (over == 0) {
             message = [files componentsJoinedByString:@"\n"];
         } else {
-            message = [NSString stringWithFormat:@"%@\n…and %@ more", [files componentsJoinedByString:@"\n"], @(over)];
+            message = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@\n…and %@ more", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"migration file list"), [files componentsJoinedByString:@"\n"], @(over)];
         }
 
         iTermDisclosableView *accessory = [[iTermDisclosableView alloc] initWithFrame:NSZeroRect
-                                                                               prompt:@"Directory Listing"
+                                                                               prompt:NSLocalizedStringFromTableInBundle(@"Directory Listing", @"AppLaunch", [NSBundle bundleForClass:[self class]], @"disclosable view prompt")
                                                                               message:message];
         iTermAccessoryViewUnfucker *unfucker = [[iTermAccessoryViewUnfucker alloc] initWithView:accessory];
         accessory.frame = NSMakeRect(0, 0, accessory.intrinsicContentSize.width, accessory.intrinsicContentSize.height);

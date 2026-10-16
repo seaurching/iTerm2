@@ -221,7 +221,7 @@ final class CompanionPluginClient: NSObject, @unchecked Sendable {
 
     private func decode<T: Codable>(_ value: JSValue, as type: T.Type) throws -> T {
         guard let json = value.toString(), let data = json.data(using: .utf8) else {
-            throw PluginError(reason: "plugin returned a non-string result")
+            throw PluginError(reason: NSLocalizedString("plugin returned a non-string result", tableName: "Companion", comment: "插件返回了非字符串结果"))
         }
         return try JSONDecoder().decode(T.self, from: data)
     }

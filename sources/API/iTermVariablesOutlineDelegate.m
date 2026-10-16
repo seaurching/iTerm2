@@ -147,7 +147,7 @@ static id iTermVariablesNewProxy(NSString *name, id value, BOOL isAlias, NSStrin
 }
 
 - (NSString *)value {
-    return _isAlias ? @"↶ Alias" : @"⭫ Parent Object";
+    return _isAlias ? NSLocalizedStringFromTableInBundle(@"↶ Alias", @"APIFiles", [NSBundle bundleForClass:[self class]], @"variables outline") : NSLocalizedStringFromTableInBundle(@"⭫ Parent Object", @"APIFiles", [NSBundle bundleForClass:[self class]], @"variables outline");
 }
 
 @end

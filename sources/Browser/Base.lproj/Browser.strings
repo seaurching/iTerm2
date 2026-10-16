@@ -180,3 +180,8 @@
 "The certificate is expired." = "The certificate is expired.";
 "The certificate is not yet valid." = "The certificate is not yet valid.";
 "The hostname does not match the certificate." = "The hostname does not match the certificate.";
+
+/* Browser page template load failure: template name, file type */
+"While loading the browser page template %@.%@" = "While loading the browser page template %@.%@";
+/* Browser page include file load failure: file name, file type */
+"While loading the browser page file %@.%@" = "While loading the browser page file %@.%@";

@@ -43,17 +43,17 @@
         case iTermGitRepoStateNone:
             break;
         case iTermGitRepoStateMerge:
-            return [self attributedStringWithString:@"Merging"];
+            return [self attributedStringWithString:NSLocalizedStringFromTableInBundle(@"Merging", @"StatusBar", [NSBundle mainBundle], @"Git repo state")];
         case iTermGitRepoStateRevert:
-            return [self attributedStringWithString:@"Reverting"];
+            return [self attributedStringWithString:NSLocalizedStringFromTableInBundle(@"Reverting", @"StatusBar", [NSBundle mainBundle], @"Git repo state")];
         case iTermGitRepoStateCherrypick:
-            return [self attributedStringWithString:@"Cherrypicking"];
+            return [self attributedStringWithString:NSLocalizedStringFromTableInBundle(@"Cherrypicking", @"StatusBar", [NSBundle mainBundle], @"Git repo state")];
         case iTermGitRepoStateBisect:
-            return [self attributedStringWithString:@"Bisecting"];
+            return [self attributedStringWithString:NSLocalizedStringFromTableInBundle(@"Bisecting", @"StatusBar", [NSBundle mainBundle], @"Git repo state")];
         case iTermGitRepoStateRebase:
-            return [self attributedStringWithString:@"Rebasing"];
+            return [self attributedStringWithString:NSLocalizedStringFromTableInBundle(@"Rebasing", @"StatusBar", [NSBundle mainBundle], @"Git repo state")];
         case iTermGitRepoStateApply:
-            return [self attributedStringWithString:@"Applying"];
+            return [self attributedStringWithString:NSLocalizedStringFromTableInBundle(@"Applying", @"StatusBar", [NSBundle mainBundle], @"Git repo state")];
     }
     static NSAttributedString *upImage;
     static NSAttributedString *downImage;

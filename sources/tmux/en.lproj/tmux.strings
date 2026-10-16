@@ -42,3 +42,7 @@
 "Error opening tmux tab" = "Error opening tmux tab";
 "A tmux pane terminated immediately after creation" = "A tmux pane terminated immediately after creation";
 "Unrecognized command from tmux. Did your ssh session die? The command was:" = "Unrecognized command from tmux. Did your ssh session die? The command was:";
+
+"** ERROR **" = "** ERROR **";
+
+"tmux exited unexpectedly." = "tmux exited unexpectedly.";

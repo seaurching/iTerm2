@@ -127,8 +127,7 @@ struct AutoModeClassifier {
     ) async throws -> ClassifierDecision {
         if inTUI {
             return .needsManualApproval(
-                reason: "Interactive terminal application — review the intended action before allowing input."
-            )
+                reason: NSLocalizedString("Interactive terminal application — review the intended action before allowing input.", tableName: "ClaudeCodeXC", comment: "交互式终端应用——允许输入前请先审查其意图执行的操作。"))
         }
         if let shortCircuit = hardRules?(action) {
             DLog("Hard rules short-circuted check")

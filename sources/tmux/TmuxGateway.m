@@ -848,7 +848,7 @@ static NSString *kCommandTimestamp = @"timestamp";
         TmuxLog(@"tmux exit message: %@", command);
         if ([strayMessages_ length] > 0) {
             [delegate_ tmuxPrintLine:@""];
-            [delegate_ tmuxPrintLine:@"** ERROR **"];
+            [delegate_ tmuxPrintLine:NSLocalizedStringFromTableInBundle(@"** ERROR **", @"tmux", [NSBundle bundleForClass:[self class]], @"printed to terminal")];
             [delegate_ tmuxPrintLine:@"tmux exited with message:"];
             for (NSString *line in [strayMessages_ componentsSeparatedByString:@"\n"]) {
                 if ([line length] > 0) {
@@ -857,7 +857,7 @@ static NSString *kCommandTimestamp = @"timestamp";
             }
             [delegate_ tmuxPrintLine:@"********************************************************************************"];
         } else if ([command hasPrefix:@"%exit "]) {
-            [delegate_ tmuxPrintLine:@"tmux exited unexpectedly."];
+            [delegate_ tmuxPrintLine:NSLocalizedStringFromTableInBundle(@"tmux exited unexpectedly.", @"tmux", [NSBundle bundleForClass:[self class]], @"printed to terminal")];
             [delegate_ tmuxPrintLine:command];
         }
         if ([self versionAtLeastDecimalNumberWithString:@"3.2"]) {

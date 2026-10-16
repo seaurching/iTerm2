@@ -56,3 +56,5 @@
 "Failed to write temporary archive file." = "无法写入临时归档文件。";
 "No path found for directory in domain." = "未在指定域中找到目录的路径。";
 "Menu" = "菜单";
+
+"%.0f bytes" = "%.0f 字节";

@@ -317,3 +317,12 @@
 "Downloading the Apple Silicon Python runtime…\n" = "Downloading the Apple Silicon Python runtime…\n";
 "Version: " = "Version: ";
 "%@ could not be upgraded and still use the previous Python runtime. " = "%@ could not be upgraded and still use the previous Python runtime. ";
+
+"↶ Alias" = "↶ Alias";
+
+"⭫ Parent Object" = "⭫ Parent Object";
+
+"\\n*Terminate button pressed*\\n" = "\\n*Terminate button pressed*\\n";
+
+/* pip3 missing: python version, container path */
+"pip3 not found for python version %@ in %@" = "pip3 not found for python version %@ in %@";

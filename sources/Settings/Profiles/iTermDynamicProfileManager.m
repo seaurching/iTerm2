@@ -382,20 +382,38 @@
             *fileType = kDynamicProfileFileTypeJSON;
         }
     }
-    NSArray *entries = dict[@"Profiles"];
+    // These files are written by hand or by scripts, so don't trust the types of anything in them.
+    NSArray *entries = [NSArray castFrom:dict[@"Profiles"]];
     if (!entries) {
-        XLog(@"Property list in %@ has no entries", entries);
-        [self reportError:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Dynamic Profiles file %@ does not have a “Profiles” key at the root.", @"Settings", [NSBundle bundleForClass:[self class]], @"Dynamic profiles: missing profiles key error"),
-                           filename]
-                     file:filename];
+        XLog(@"Property list in %@ has no array of entries: %@", filename, dict[@"Profiles"]);
+        if (dict[@"Profiles"]) {
+            [self reportError:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"In Dynamic Profiles file %@, the value of “Profiles” must be an array.",
+                                                                                             @"Settings", [NSBundle bundleForClass:[self class]], @"Dynamic profiles: profiles key not array error"),
+                               filename]
+                         file:filename];
+        } else {
+            [self reportError:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Dynamic Profiles file %@ does not have a “Profiles” key at the root.", @"Settings", [NSBundle bundleForClass:[self class]], @"Dynamic profiles: missing profiles key error"),
+                               filename]
+                         file:filename];
+        }
         return nil;
     }
 
     NSMutableArray *profiles = [NSMutableArray array];
-    for (Profile *profile in entries) {
+    for (id entry in entries) {
+        Profile *profile = [NSDictionary castFrom:entry];
+        if (!profile) {
+            [self reportError:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Dynamic Profiles file %@ has an entry in “Profiles” that is not an Object (i.e., a dictionary); it was skipped", @"Settings", [NSBundle bundleForClass:[self class]], @"Dynamic profiles: entry not object error"), filename]
+                         file:filename];
+            continue;
+        }
         if (![profile[KEY_GUID] isKindOfClass:[NSString class]]) {
             [self reportError:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Dynamic profile is missing the Guid field in file %@", @"Settings", [NSBundle bundleForClass:[self class]], @"Dynamic profiles: missing guid error"), filename]
                          file:filename];
+            continue;
+        }
+        profile = [self profileBySanitizingDynamicProfile:profile file:filename];
+        if (!profile) {
             continue;
         }
         if (![profile[KEY_NAME] isKindOfClass:[NSString class]]) {
@@ -445,6 +463,51 @@
     } else {
         return profiles;
     }
+}
+
+// JSON null means a value is absent. Left in, it can't be stored in user defaults ("Attempt to
+// insert non-property list object") or used where code expects a value of the key's type.
+static id iTermDynamicProfileByRemovingNulls(id object) {
+    if ([object isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *result = [NSMutableDictionary dictionary];
+        [(NSDictionary *)object enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+            id sanitized = iTermDynamicProfileByRemovingNulls(value);
+            if (sanitized) {
+                result[key] = sanitized;
+            }
+        }];
+        return result;
+    }
+    if ([object isKindOfClass:[NSArray class]]) {
+        NSMutableArray *result = [NSMutableArray array];
+        for (id value in (NSArray *)object) {
+            id sanitized = iTermDynamicProfileByRemovingNulls(value);
+            if (sanitized) {
+                [result addObject:sanitized];
+            }
+        }
+        return result;
+    }
+    if ([object isKindOfClass:[NSNull class]]) {
+        return nil;
+    }
+    return object;
+}
+
+- (Profile *)profileBySanitizingDynamicProfile:(Profile *)profile file:(NSString *)filename {
+    if (!profile) {
+        RLog(@"Skipping nil dynamic profile from %@", filename);
+        return nil;
+    }
+    NSMutableDictionary *result = [iTermDynamicProfileByRemovingNulls(profile) mutableCopy];
+    id keyboardMap = result[KEY_KEYBOARD_MAP];
+    if (keyboardMap && ![keyboardMap isKindOfClass:[NSDictionary class]]) {
+        [self reportError:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"Dynamic profile with Guid %@ has a “Keyboard Map” that is not a dictionary; it was dropped", @"Settings", [NSBundle bundleForClass:[self class]], @"Dynamic profiles: bad keyboard map error"),
+                           profile[KEY_GUID]]
+                     file:filename];
+        [result removeObjectForKey:KEY_KEYBOARD_MAP];
+    }
+    return result;
 }
 
 - (NSDictionary *)dictionaryForProfiles:(NSArray<Profile *> *)profiles {

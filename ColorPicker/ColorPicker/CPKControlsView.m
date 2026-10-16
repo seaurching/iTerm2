@@ -37,7 +37,7 @@ NSString *const kCPKUseSystemColorPicker = @"kCPKUseSystemColorPicker";
         if (noColorAllowed) {
             self.noColor = [self addButtonWithImage:[self cpk_imageNamed:@"NoColor"]
                                              origin:NSMakePoint(x, kTopMargin)];
-            self.noColor.toolTip = @"Select the absence of color";
+            self.noColor.toolTip = NSLocalizedStringFromTableInBundle(@"Select the absence of color", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"tooltip");
             [self.noColor setTarget:self];
             [self.noColor setAction:@selector(selectNoColor:)];
             x = NSMaxX(self.noColor.frame) + kMarginBetweenButtons;
@@ -45,7 +45,7 @@ NSString *const kCPKUseSystemColorPicker = @"kCPKUseSystemColorPicker";
 
         self.addFavorite = [self addButtonWithImage:[self cpk_imageNamed:@"Add"]
                                              origin:NSMakePoint(x, kTopMargin)];
-        self.addFavorite.toolTip = @"Save color as a Favorite";
+        self.addFavorite.toolTip = NSLocalizedStringFromTableInBundle(@"Save color as a Favorite", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"tooltip");
         [self.addFavorite setTarget:self];
         [self.addFavorite setAction:@selector(addFavorite:)];
 
@@ -53,7 +53,7 @@ NSString *const kCPKUseSystemColorPicker = @"kCPKUseSystemColorPicker";
                                      kTopMargin);
         self.removeFavorite = [self addButtonWithImage:[self cpk_imageNamed:@"Remove"]
                                                 origin:origin];
-        self.removeFavorite.toolTip = @"Remove selected Favorite color";
+        self.removeFavorite.toolTip = NSLocalizedStringFromTableInBundle(@"Remove selected Favorite color", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"tooltip");
         [self.removeFavorite setTarget:self];
         [self.removeFavorite setAction:@selector(removeFavorite:)];
         self.removeEnabled = NO;
@@ -62,7 +62,7 @@ NSString *const kCPKUseSystemColorPicker = @"kCPKUseSystemColorPicker";
                              kTopMargin);
         self.eyedropperMode = [self addButtonWithImage:[self cpk_imageNamed:@"Eyedropper"]
                                                 origin:origin];
-        self.eyedropperMode.toolTip = @"Open the eye dropper";
+        self.eyedropperMode.toolTip = NSLocalizedStringFromTableInBundle(@"Open the eye dropper", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"tooltip");
         [self.eyedropperMode setTarget:self];
         [self.eyedropperMode setAction:@selector(eyedropperMode:)];
 
@@ -70,7 +70,7 @@ NSString *const kCPKUseSystemColorPicker = @"kCPKUseSystemColorPicker";
                              kTopMargin);
         self.escapeHatch = [self addButtonWithImage:[self cpk_imageNamed:@"EscapeHatch"]
                                              origin:origin];
-        self.escapeHatch.toolTip = @"Use the system color picker";
+        self.escapeHatch.toolTip = NSLocalizedStringFromTableInBundle(@"Use the system color picker", @"ColorPicker", [NSBundle bundleForClass:[self class]], @"tooltip");
         [self.escapeHatch setTarget:self];
         [self.escapeHatch setAction:@selector(escapeHatch:)];
 

@@ -9,3 +9,35 @@
 "Permission Needed" = "Permission Needed";
 "The eyedropper needs Screen Recording permission to work." = "The eyedropper needs Screen Recording permission to work.";
 "The eyedropper requires screen recording permission.\n\nYou can enable this by adding %@ to System Preferences > Security & Privacy > Privacy > Screen Recording." = "The eyedropper requires screen recording permission.\n\nYou can enable this by adding %@ to System Preferences > Security & Privacy > Privacy > Screen Recording.";
+
+"Select the absence of color" = "Select the absence of color";
+
+"Save color as a Favorite" = "Save color as a Favorite";
+
+"Remove selected Favorite color" = "Remove selected Favorite color";
+
+"Open the eye dropper" = "Open the eye dropper";
+
+"Use the system color picker" = "Use the system color picker";
+
+"Switch between RGB and HSB values." = "Switch between RGB and HSB values.";
+
+"Switch between color spaces." = "Switch between color spaces.";
+
+"HSB with Hue Slider" = "HSB with Hue Slider";
+
+"HSB with Brightness Slider" = "HSB with Brightness Slider";
+
+"HSB with Saturation Slider" = "HSB with Saturation Slider";
+
+"RGB with Red Slider" = "RGB with Red Slider";
+
+"RGB with Green Slider" = "RGB with Green Slider";
+
+"RGB with Blue Slider" = "RGB with Blue Slider";
+
+"HSB Sliders" = "HSB Sliders";
+
+"RGB Sliders" = "RGB Sliders";
+
+"Hex" = "Hex";

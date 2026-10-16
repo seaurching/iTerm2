@@ -1,139 +1,69 @@
-Version 3.7.3
+Version 3.7.4
 
 Bug Fixes:
-- Fixed the Python API not reporting OSC 8
-  hyperlinks. A cell’s CellStyle.url is now
-  populated, so scripts reading screen contents
-  can see the link target.
-- Fixed the Screen setting in Settings >
-  Profiles > Window. Choosing “Main Screen”
-  left the popup blank and showed no checkmark
-  next to it when reopened, although the
-  setting was saved correctly.
-- Fixed a crash when a program wrote a hyperlink
-  whose web address contained an emoji or other
-  character outside the Basic Multilingual
-  Plane. The link is now handled correctly
-  instead of terminating iTerm2, which could
-  recur on restore because the saved session
-  replayed the same link.
-- Fixed severe typing lag in a tmux Integration
-  session running on a host you connected to
-  with an SSH profile. Keystrokes and the output
-  they produced were each held back about a
-  second, so typing arrived in slow bursts.
-- Fixed occasional delayed screen updates in a
-  session that had gone quiet. A redraw with no
-  other output behind it could be held back
-  until something else happened in the session.
-- Fixed a bug where a profile whose custom
-  working directory used a tilde (such as
-  ~/www) wrongly reported the directory as
-  unavailable and started in the home
-  directory instead.
-- Fixed a bug where editing only the keystroke
-  of a Select Menu Item or Toggle Setting key
-  binding erased the menu item or setting it
-  was bound to.
-- Fixed a bug where a flag emoji took four
-  columns instead of two, leaving a gap after
-  it. A flag is now always two columns, the
-  width other terminals report for it, so the
-  advanced setting “Lone regional indicators
-  render full-width” no longer affects flags.
-  Skin-toned emoji are still affected and will
-  be fixed separately.
-- Fixed a bug where a character that combined
-  with the one before it could come out the
-  wrong width when the two halves arrived in
-  separate writes, leaving the cursor inside
-  the character.
-- Fixed Cmd-number tab shortcuts becoming
-  non-consecutive after changing a tab group
-  from the context menu. Removing a tab from a
-  group reordered the tabs but left the
-  shortcut numbers on their old positions.
-- Fixed Kitty graphics placeholder cells
-  drawing nothing when the image id fit in
-  three bytes and the program omitted the
-  optional diacritic that carries the high
-  byte. Other terminals render these, and now
-  iTerm2 does too.
-- Fixed a crash when asking for notification
-  permission. The reply block could be called
-  after it had gone out of scope, which could
-  terminate iTerm2 at the moment a
-  notification was first requested.
-- Installing the Python runtime used by scripts
-  now trusts the certificates installed on your
-  Mac. On networks that inspect secure traffic,
-  it could fail with a certificate error even
-  though the same download succeeded in a
-  browser.
-- Fixed unbounded memory growth with programs
-  that animate using the Kitty graphics
-  protocol. Each redrawn frame was kept for the
-  life of the window, so a long-running
-  animation could consume many gigabytes.
-- Fixed a bug where blank space rendered as a
-  stray “~” with the GPU renderer in profiles
-  that have Anti-aliased turned off. It showed
-  up most often in bold runs and in the padding
-  of full-screen programs like k9s, and it
-  persisted for the rest of the session once it
-  appeared.
-
-
-Version 3.7.2
-
-Bug Fixes:
-- Fixed a crash when editing a dynamic profile
-  whose file had been changed on disk.
-- Fixed a crash when clicking the bookmark
-  button on a command in the terminal.
-- Fixed a crash in the GPU renderer on macOS 26
-  caused by configuring the drawable timeout off
-  the main thread.
-- Fixed a crash that could occur when quitting
-  iTerm2 while several Claude Code sessions were
-  running.
-- Stopped falsely offering to reset the key
-  reporting mode after every command when using
-  Fish with oh-my-posh, which together emit a
-  duplicate command-finished mark after
-  re-enabling the keyboard protocol for the next
-  prompt.
-- Fixed a performance regression from 3.7.0 that
-  made typing lag or arrive in bursts when using
-  terminal multiplexers (such as tmux -CC) and
-  other programs that query the terminal’s colors,
-  especially when switching tabs or windows.
-- Fixed a bug on macOS 26 where the tab bar
-  became short and shifted down after entering
-  and exiting Lion fullscreen, and where the
-  tabs sat jammed against the top of the screen
-  in fullscreen. Affects the Tahoe tab bar with
-  tabs on top.
-- The Companion setup wizard now saves the
-  pasted API key for the provider you chose
-  in the popup, so choosing a provider
-  other than the current default no longer
-  stores the key under the wrong service.
-- Fixed the workgroup toolbar’s
-  auto-request-review and auto-send-clippings
-  toggles showing a stale off state after a
-  restart even though they were actually on, so
-  the button now always matches whether the
-  behavior is enabled.
-- Notify on Status Change no longer claims
-  ⇧⌘X as a default keyboard shortcut. That
-  shortcut could shadow a macOS Service bound
-  to the same keys. Assign your own shortcut
-  in System Settings > Keyboard > Keyboard
-  Shortcuts > App Shortcuts if you want one.
-- Fixed extended key reporting being lost after
-  a restart with session restoration on. An app
-  that had turned on modifyOtherKeys (so keys
-  like Shift-Enter send a distinct code) now
-  keeps working when its session is restored,
-  instead of quietly reverting to plain keys.
+- Fixed a crash when opening a new tab next to a
+  tab in a tab group.
+- Fixed a crash that could happen when the GPU
+  renderer had been running for several weeks
+  without restarting iTerm2. Issue 13103.
+- Fixed a crash when a program printed a
+  letter followed by many spacing marks (such
+  as Devanagari vowel signs) in a later write.
+- Fixed a crash in Find when the scrollback
+  contained an unusually long composed
+  character.
+- Fixed a crash when pressing Cmd-Z after
+  closing a pane, toolbelt tool, or other view
+  that had text you had edited.
+- Fixed a crash when Cmd-hovering over a line
+  containing right-to-left text.
+- Fixed a crash that could recur every time
+  iTerm2 saved window state. Quitting while a
+  save was in progress could store duplicate
+  entries in the saved-state database, which
+  later saves could not handle.
+- Fixed a crash that could happen after using
+  Find when the window got narrower before the
+  match was highlighted.
+- Fixed a crash with the GPU renderer that
+  could happen after changing the font size
+  with Cmd-+ or Cmd--.
+- Fixed a crash in “Import All Settings and
+  Data” when the import changed a setting that
+  requires your administrator password.
+- Fixed “Export All Settings and Data” failing
+  with “Failed to copy file” after using SSH
+  Integration. Temporary connection files it
+  could not copy are now skipped.
+- iTerm2 no longer crashes when its app was
+  moved, deleted, or replaced while running,
+  for example by an installer. It now explains
+  that the app is damaged and quits.
+- Fixed a crash when exiting full screen in a
+  window without a title bar, such as a tmux
+  integration window, on macOS 26.
+- Fixed a crash when holding Cmd with the mouse
+  over a gray autosuggestion in the composer.
+- Fixed a crash when splitting a pane whose
+  target session had left the window while the
+  split was pending.
+- Fixed a crash that could happen when an
+  assistive app asked about a tab that had been
+  closed after the tab bar was updated.
+- Fixed a crash when opening a new tab when the
+  font measured as zero size.
+- Fixed a crash when iTerm2 was told to quit,
+  for example by logging out, while it was
+  still starting up.
+- Fixed memory corruption with the GPU renderer
+  that could cause crashes after closing a
+  session.
+- Fixed a crash from a Smart Selection rule
+  with no regular expression, for example in a
+  hand-edited or Dynamic Profile.
+- Fixed a crash from a Smart Selection rule
+  with no regular expression, for example in a
+  hand-edited or Dynamic Profile.
+- Fixed a crash with the GPU renderer that
+  could happen when switching to or from
+  battery power.

@@ -56,3 +56,5 @@
 "Failed to write temporary archive file." = "無法寫入暫存封存檔案。";
 "No path found for directory in domain." = "未在指定網域中找到目錄的路徑。";
 "Menu" = "選單";
+
+"%.0f bytes" = "%.0f 位元組";

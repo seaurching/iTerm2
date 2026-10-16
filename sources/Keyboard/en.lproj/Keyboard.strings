@@ -356,3 +356,5 @@
 "%@ at index %d in %@" = "%@ at index %d in %@";
 
 "Cancel" = "Cancel";
+
+"Hex Code 0x%x" = "Hex Code 0x%x";

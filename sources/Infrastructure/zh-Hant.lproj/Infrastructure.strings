@@ -70,3 +70,5 @@
 /* Error description: JavaScript evaluation failed */
 "Error evaluating '%@' at line %@: %@" = "評估 '%@' 時發生錯誤（第 %@ 行）：%@";
 
+
+"as a hotkey" = "作為快捷鍵";

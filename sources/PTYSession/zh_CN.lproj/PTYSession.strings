@@ -303,3 +303,17 @@
 "Session has no view" = "会话没有视图";
 
 "Failed to create session" = "创建会话失败";
+
+"Untitled" = "未命名";
+
+"Edit Triggers" = "编辑触发器";
+
+"some selected text" = "一些选中的文本";
+
+"the selected command" = "选中的命令";
+
+"Session %@ #%d had a mark set." = "会话 %@ #%d 设置了标记。";
+
+"The directory “%@” is unavailable. Started in home directory instead." = "目录“%@”不可用。已在主目录中启动。";
+
+"The terminal attempted to access the clipboard but it was denied. Enable clipboard access in “Settings > General > Selection > Applications in terminal may access clipboard”." = "终端尝试访问剪贴板但被拒绝。请在“设置 > 通用 > 选择 > 终端中的应用程序可以访问剪贴板”中开启剪贴板访问。";

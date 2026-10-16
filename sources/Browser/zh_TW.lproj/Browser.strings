@@ -180,3 +180,8 @@
 "The certificate is expired." = "憑證已過期。";
 "The certificate is not yet valid." = "憑證尚未生效。";
 "The hostname does not match the certificate." = "主機名稱與憑證不符。";
+
+/* Browser page template load failure: template name, file type */
+"While loading the browser page template %@.%@" = "載入瀏覽器頁面範本 %@.%@ 時";
+/* Browser page include file load failure: file name, file type */
+"While loading the browser page file %@.%@" = "載入瀏覽器頁面檔案 %@.%@ 時";

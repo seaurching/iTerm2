@@ -97,7 +97,15 @@ static uint64_t sGraphicMapGeneration;
     };
 
     NSString *bundlePath = [[NSBundle bundleForClass:self] pathForResource:bundleResource ofType:@"json"];
-    NSDictionary *map = parse([NSData dataWithContentsOfFile:bundlePath options:0 error:nil]);
+    NSDictionary *map = bundlePath ? parse([NSData dataWithContentsOfFile:bundlePath options:0 error:nil]) : nil;
+    if (!map) {
+        [iTermAppSignatureValidator warnAndExitWithReason:
+            [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"While loading %@.json",
+                                                                          @"Settings",
+                                                                          [NSBundle bundleForClass:[self class]],
+                                                                          @"graphic map: load failure reason"),
+                                       bundleResource]];
+    }
 
     NSString *appSupport = [[NSFileManager defaultManager] applicationSupportDirectory];
     NSString *overridePath = [appSupport stringByAppendingPathComponent:appSupportName];

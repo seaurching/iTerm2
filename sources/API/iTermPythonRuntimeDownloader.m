@@ -1052,7 +1052,11 @@ static NSArray<NSString *> *iTermConvertThreePartVersionNumbersToTwoPart(NSArray
                     pythonVersion:pythonVersion];
     if (!pip3) {
         RLog(@"pip3 not found");
-        completion(NO, [[NSString stringWithFormat:@"pip3 not found for python version %@ in %@", pythonVersion, container.path] dataUsingEncoding:NSUTF8StringEncoding]);
+        completion(NO, [[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"pip3 not found for python version %@ in %@",
+                                                                                    @"APIFiles",
+                                                                                    [NSBundle bundleForClass:[self class]],
+                                                                                    @"pip3 missing: python version, container path"),
+                                    pythonVersion, container.path] dataUsingEncoding:NSUTF8StringEncoding]);
         return;
     }
     NSMutableData *output = [NSMutableData data];

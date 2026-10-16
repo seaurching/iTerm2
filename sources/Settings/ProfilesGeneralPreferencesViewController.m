@@ -160,7 +160,7 @@ static NSString *const iTermProfilePreferencesUpdateSessionName = @"iTermProfile
 
 - (void)awakeFromNib {
     _sessionHotkeyInputView.leaderAllowed = NO;
-    _sessionHotkeyInputView.purpose = @"as a hotkey";
+    _sessionHotkeyInputView.purpose = NSLocalizedStringFromTableInBundle(@"as a hotkey", @"Infrastructure", [NSBundle bundleForClass:[self class]], @"fills shortcut confirmation alert");
     _rateLimit = [[iTermRateLimitedUpdate alloc] initWithName:@"General prefs" minimumInterval:0.75];
     
     PreferenceInfo *info;

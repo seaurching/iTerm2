@@ -620,7 +620,7 @@ const int kMaxSelectedTextLengthForCustomActions = 400;
     }
     addLocalized(@"Search the Web for Selection", @selector(searchInBrowser:));
 
-    addLocalized(@"Send Email to Selected Address", @selector(mail:));
+    addLocalized(NSLocalizedStringFromTableInBundle(@"Send Email to Selected Address", @"ContextMenu", [NSBundle bundleForClass:[self class]], @"Context menu item"), @selector(mail:));
     addLocalized(@"Add Trigger…", @selector(addTrigger:));
 
     // Separator
@@ -641,7 +641,7 @@ const int kMaxSelectedTextLengthForCustomActions = 400;
     }
 
     // Split pane options
-    addLocalized(@"Split Pane Vertically", @selector(splitTextViewVertically:));
+    addLocalized(NSLocalizedStringFromTableInBundle(@"Split Pane Vertically", @"ContextMenu", [NSBundle bundleForClass:[self class]], @"Context menu item"), @selector(splitTextViewVertically:));
     addLocalized(@"Split Pane Horizontally", @selector(splitTextViewHorizontally:));
     if ([iTermPreferences boolForKey:kPreferenceKeyMenuActionImages]) {
         NSInteger n = theMenu.numberOfItems;
@@ -654,7 +654,7 @@ const int kMaxSelectedTextLengthForCustomActions = 400;
     // Separator
     [theMenu addItem:[NSMenuItem separatorItem]];
 
-    addLocalized(@"Move Session to Split Pane", @selector(movePane:));
+    addLocalized(NSLocalizedStringFromTableInBundle(@"Move Session to Split Pane", @"ContextMenu", [NSBundle bundleForClass:[self class]], @"Context menu item"), @selector(movePane:));
     if ([self.delegate contextMenuCurrentTabHasMultipleSessions:self]) {
         NSMenuItem *item = [theMenu addItemWithTitle:NSLocalizedStringFromTableInBundle(@"Move Session to Tab",
                                                                                         @"iTerm",
@@ -733,27 +733,27 @@ const int kMaxSelectedTextLengthForCustomActions = 400;
                                                                  @"Context menu")
                      action:@selector(selectAll:) keyEquivalent:@""];
 
-    addLocalized(@"Send Selection", @selector(sendSelection:));
+    addLocalized(NSLocalizedStringFromTableInBundle(@"Send Selection", @"ContextMenu", [NSBundle bundleForClass:[self class]], @"Context menu item"), @selector(sendSelection:));
     addLocalized(@"Save Selection as Snippet", @selector(saveSelectionAsSnippet:));
 
     // Clear buffer
-    addLocalized(@"Clear Buffer", @selector(clearTextViewBuffer:));
+    addLocalized(NSLocalizedStringFromTableInBundle(@"Clear Buffer", @"ContextMenu", [NSBundle bundleForClass:[self class]], @"Context menu item"), @selector(clearTextViewBuffer:));
 
     // Make note
-    addLocalized(@"Annotate Selection", @selector(addNote:));
+    addLocalized(NSLocalizedStringFromTableInBundle(@"Annotate Selection", @"ContextMenu", [NSBundle bundleForClass:[self class]], @"Context menu item"), @selector(addNote:));
     addLocalized(@"Reveal Annotation", @selector(showNotes:));
 
     // Separator
     [theMenu addItem:[NSMenuItem separatorItem]];
 
     // Edit Session
-    addLocalized(@"Edit Session...", @selector(editTextViewSession:));
+    addLocalized(NSLocalizedStringFromTableInBundle(@"Edit Session...", @"ContextMenu", [NSBundle bundleForClass:[self class]], @"Context menu item"), @selector(editTextViewSession:));
 
     // Separator
     [theMenu addItem:[NSMenuItem separatorItem]];
 
     // Toggle broadcast
-    addLocalized(@"Toggle Broadcasting Input", @selector(toggleBroadcastingInput:));
+    addLocalized(NSLocalizedStringFromTableInBundle(@"Toggle Broadcasting Input", @"ContextMenu", [NSBundle bundleForClass:[self class]], @"Context menu item"), @selector(toggleBroadcastingInput:));
 
     // Lock pane
     {
@@ -821,7 +821,7 @@ const int kMaxSelectedTextLengthForCustomActions = 400;
     [theMenu addItem:[NSMenuItem separatorItem]];
 
     // Close current pane
-    addLocalized(@"Close", @selector(closeTextViewSession:));
+    addLocalized(NSLocalizedStringFromTableInBundle(@"Close", @"ContextMenu", [NSBundle bundleForClass:[self class]], @"Context menu item"), @selector(closeTextViewSession:));
     addLocalized(@"Restart", @selector(restartSession:));
 
     [self.delegate contextMenu:self amend:theMenu];
@@ -956,6 +956,10 @@ const int kMaxSelectedTextLengthForCustomActions = 400;
 
         DLog(@"Evaluating rule:\n%@", rule);
         NSString *regex = [SmartSelectionController regexInRule:rule];
+        if (!regex) {
+            DLog(@"Skipping rule with no regex:\n%@", rule);
+            continue;
+        }
         for (int i = 0; i <= textWindow.length; i++) {
             NSString *substring = [textWindow substringWithRange:NSMakeRange(i, [textWindow length] - i)];
             NSError *regexError = nil;

@@ -296,7 +296,7 @@ enum {
                            kVSCodeInsidersIdentifier: @"VS Code Insiders",
                                  kEmacsAppIdentifier: @"Emacs.app",
                            kIntelliJIDEAIdentifierCE: NSLocalizedStringFromTableInBundle(@"IntelliJ IDEA (Community Edition)", @"Settings", [NSBundle bundleForClass:[self class]], @"弹出菜单项标题"),
-                           kIntelliJIDEAIdentifierUE: @"IntelliJ IDEA (Ultimate)",
+                           kIntelliJIDEAIdentifierUE: NSLocalizedStringFromTableInBundle(@"IntelliJ IDEA (Ultimate)", @"Settings", [NSBundle bundleForClass:[self class]], @"弹出菜单项标题"),
                                  kWebStormIdentifier: @"WebStorm",
                                     kRiderIdentifier: @"Rider",
                                   kNovaAppIdentifier: @"Nova",

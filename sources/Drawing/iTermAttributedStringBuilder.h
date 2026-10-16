@@ -56,6 +56,9 @@ extern NSString *const iTermBoldAttribute;
 extern NSString *const iTermFaintAttribute;
 extern NSString *const iTermFakeBoldAttribute;
 extern NSString *const iTermFakeItalicAttribute;
+// NSNumber: the -it_metalFontID of the NSFontAttributeName font, so the GPU renderer doesn't
+// have to look it up.
+extern NSString *const iTermMetalFontIDAttribute;
 extern NSString *const iTermImageCodeAttribute;
 extern NSString *const iTermImageColumnAttribute;
 extern NSString *const iTermImageLineAttribute;
@@ -78,6 +81,8 @@ extern NSString *const iTermKittyImagePlacementIDAttribute;
 @property (nonatomic, readonly) BOOL asciiLigaturesAvailable;
 @property (nonatomic, readonly) BOOL asciiLigatures;
 @property (nonatomic, readonly) iTermAttributedStringBuilderStatsPointers stats;
+// Whatever owns the memory that `stats` points into, retained so it lives as long as this builder.
+@property (nonatomic, strong, nullable) id statsOwner;
 @property (nonatomic, readonly) BOOL preferSpeedToFullLigatureSupport;
 @property (nonatomic, readonly) BOOL lowFiCombiningMarks;
 @property (nonatomic, readonly) NSSize cellSize;

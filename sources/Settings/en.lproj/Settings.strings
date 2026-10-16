@@ -2143,3 +2143,11 @@ Affected key bindings:
 "%@: %@" = "%@: %@";
 
 "Snippets, notes, or icon customizations changed both on this Mac and in the settings folder “%@” since they were last in sync. Which copy would you like to keep?" = "Snippets, notes, or icon customizations changed both on this Mac and in the settings folder “%@” since they were last in sync. Which copy would you like to keep?";
+
+/* Dynamic profiles: profiles key not array error */
+"In Dynamic Profiles file %@, the value of “Profiles” must be an array." = "In Dynamic Profiles file %@, the value of “Profiles” must be an array.";
+
+/* Graphic map: load failure reason */
+"While loading %@.json" = "While loading %@.json";
+
+"IntelliJ IDEA (Ultimate)" = "IntelliJ IDEA (Ultimate)";

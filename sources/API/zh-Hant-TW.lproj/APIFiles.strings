@@ -320,3 +320,12 @@
 "Downloading the Apple Silicon Python runtime…\n" = "正在下載 Apple Silicon Python 執行階段…\n";
 "Version: " = "版本： ";
 "%@ could not be upgraded and still use the previous Python runtime. " = "%@ 無法升級，仍將使用之前的 Python 執行階段。 ";
+
+"↶ Alias" = "↶ 別名";
+
+"⭫ Parent Object" = "⭫ 父物件";
+
+"\\n*Terminate button pressed*\\n" = "\\n*已按下終止按鈕*\\n";
+
+/* pip3 missing: python version, container path */
+"pip3 not found for python version %@ in %@" = "在此 Python 版本 %@ 的 %@ 中找不到 pip3";
