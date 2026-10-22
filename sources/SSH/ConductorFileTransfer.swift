@@ -64,7 +64,7 @@ class ConductorFileTransfer: TransferrableFile {
     }
 
     override func protocolName() -> String? {
-        return "SSH Integration"
+        return NSLocalizedString("SSH Integration", tableName: "SSH", comment: "ConductorFileTransfer: 协议名称（认证弹窗中展示）")
     }
 
     private var chunked = false

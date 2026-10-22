@@ -244,7 +244,7 @@ extension OrchestratorDispatcher {
     /// the content could collide with.
     nonisolated static func createFileClassificationCommand(filename: String,
                                                             content: String) -> String {
-        return "Write a file at \(filename) with exactly this content:\n\(content)"
+        return String(format: NSLocalizedString("Write a file at %1$@ with exactly this content:\n%2$@", tableName: "ClaudeCodeXC", comment: "create_file 操作的分类表示；%1$@ 为文件名，%2$@ 为完整文件内容（不可信载荷，原样传递）"), filename, content)
     }
 
     // Split the live command line at the cursor for reconstruction. Both come

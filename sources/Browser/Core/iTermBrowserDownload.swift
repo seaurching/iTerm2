@@ -53,11 +53,10 @@ class iTermBrowserDownload: TransferrableFile {
     // MARK: - TransferrableFile Overrides
     
     override func displayName() -> String? {
-        return """
-        Browser Download
-        Source: \(sourceURL.absoluteString)
-        File: \(suggestedFilename)
-        """
+        return String(format: NSLocalizedString("Browser Download\nSource: %@\nFile: %@",
+                                                tableName: "Browser",
+                                                comment: "浏览器下载的传输详情（Get Info 弹窗正文）；%@ 依次为来源 URL 与文件名"),
+                      sourceURL.absoluteString, suggestedFilename)
     }
     
     override func shortName() -> String? {
@@ -69,11 +68,11 @@ class iTermBrowserDownload: TransferrableFile {
     }
     
     override func authRequestor() -> String? {
-        return sourceURL.host ?? "Browser"
+        return sourceURL.host ?? NSLocalizedString("Browser", tableName: "Browser", comment: "无主机名时的认证请求方兜底名称")
     }
-    
+
     override func protocolName() -> String? {
-        return "Browser Download"
+        return NSLocalizedString("Browser Download", tableName: "Browser", comment: "浏览器下载的传输协议名称（认证弹窗中展示）")
     }
     
     override func download() {

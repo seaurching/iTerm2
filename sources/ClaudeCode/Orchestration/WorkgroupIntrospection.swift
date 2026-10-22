@@ -615,9 +615,9 @@ enum WorkgroupIntrospection {
     // without having to memorize iTerm2-internal conventions.
     static func pendingActionDescription(for session: PTYSession) -> String? {
         if session.view?.codeReviewPromptOverlay != nil {
-            return "The Code Review prompt overlay is showing. Call send_text "
-                + "on this role with the review prompt; your text becomes the "
-                + "prompt and the review starts immediately."
+            return NSLocalizedString("The Code Review prompt overlay is showing. Call send_text on this role with the review prompt; your text becomes the prompt and the review starts immediately.",
+                                     tableName: "ClaudeCodeXC",
+                                     comment: "pending_action 字段（get_state/get_screen_contents 工具结果）；Code Review 与 send_text 保留原文")
         }
         return nil
     }

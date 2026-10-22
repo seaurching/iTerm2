@@ -444,7 +444,7 @@ final class OrchestratorDispatcher {
                 watcher: fired,
                 reason: .stateReached,
                 stateReached: newState.rawValue,
-                detail: "\(Self.watcherTargetLabel(role: fired.roleName, workgroup: fired.workgroupName, workgroupID: fired.workgroupID)) reached state '\(newState.rawValue)'.")
+                detail: String(format: NSLocalizedString("%1$@ reached state '%2$@'.", tableName: "ClaudeCodeXC", comment: "watcher 触发：状态到达；%1$@ 为目标名，%2$@ 为状态 wire 值保留原文"), Self.watcherTargetLabel(role: fired.roleName, workgroup: fired.workgroupName, workgroupID: fired.workgroupID), newState.rawValue))
         }
     }
 
@@ -489,7 +489,7 @@ final class OrchestratorDispatcher {
                 watcher: watcher,
                 reason: .watcherDropped,
                 stateReached: "",
-                detail: "Watch dropped: the session for \(Self.watcherTargetLabel(role: watcher.roleName, workgroup: watcher.workgroupName, workgroupID: watcher.workgroupID)) terminated before \(watcher.goalDescription) was reached.")
+                detail: String(format: NSLocalizedString("Watch dropped: the session for %1$@ terminated before %2$@ was reached.", tableName: "ClaudeCodeXC", comment: "watcher 丢弃：会话终止；%1$@ 为目标名，%2$@ 为目标描述"), Self.watcherTargetLabel(role: watcher.roleName, workgroup: watcher.workgroupName, workgroupID: watcher.workgroupID), watcher.goalDescription))
         }
     }
 
@@ -518,7 +518,7 @@ final class OrchestratorDispatcher {
                     watcher: watcher,
                     reason: .watcherDropped,
                     stateReached: "",
-                    detail: "Watch dropped after iTerm2 restart: the session for \(Self.watcherTargetLabel(role: watcher.roleName, workgroup: watcher.workgroupName, workgroupID: watcher.workgroupID)) could not be restored.")
+                    detail: String(format: NSLocalizedString("Watch dropped after iTerm2 restart: the session for %@ could not be restored.", tableName: "ClaudeCodeXC", comment: "watcher 丢弃：重启后无法恢复；%@ 为目标名"), Self.watcherTargetLabel(role: watcher.roleName, workgroup: watcher.workgroupName, workgroupID: watcher.workgroupID)))
             }
         }
         // Seed history for every surviving watcher's session. Use the
@@ -849,18 +849,18 @@ final class OrchestratorDispatcher {
                 watcher: watcher,
                 reason: .watchTimedOut,
                 stateReached: "",
-                detail: "Watch timed out: \(Self.watcherTargetLabel(role: watcher.roleName, workgroup: watcher.workgroupName, workgroupID: watcher.workgroupID)) "
-                    + "did not reach \(watcher.goalDescription) after "
-                    + "\(ScreenWatchPoller.deadlineDescription) of watching its screen. "
-                    + "Check it with get_screen_contents, "
-                    + "or register_watch again to keep waiting.")
+                detail: String(format: NSLocalizedString("Watch timed out: %1$@ did not reach %2$@ after %3$@ of watching its screen. Check it with get_screen_contents, or register_watch again to keep waiting.", tableName: "ClaudeCodeXC", comment: "watch 超时；%1$@ 为目标名，%2$@ 为目标描述，%3$@ 为时长描述；get_screen_contents、register_watch 保留原文"),
+                    Self.watcherTargetLabel(role: watcher.roleName, workgroup: watcher.workgroupName, workgroupID: watcher.workgroupID),
+                    watcher.goalDescription,
+                    ScreenWatchPoller.deadlineDescription))
         } else if let condition = watcher.condition {
             publishStatusUpdate(
                 watcher: watcher,
                 reason: .conditionMet,
                 stateReached: "",
-                detail: "\(Self.watcherTargetLabel(role: watcher.roleName, workgroup: watcher.workgroupName, workgroupID: watcher.workgroupID)) met the watched "
-                    + "condition '\(condition)' (detected by screen observation).")
+                detail: String(format: NSLocalizedString("%1$@ met the watched condition '%2$@' (detected by screen observation).", tableName: "ClaudeCodeXC", comment: "watch 条件满足；%1$@ 为目标名，%2$@ 为条件文本"),
+                    Self.watcherTargetLabel(role: watcher.roleName, workgroup: watcher.workgroupName, workgroupID: watcher.workgroupID),
+                    condition))
         } else {
             // A state (target_state) watch reports the session's state. If Check
             // Terminal State was revoked since the poller started -- including via
@@ -885,17 +885,16 @@ final class OrchestratorDispatcher {
             // instead. A .screenPoll watcher's session reports no status at
             // all. The detail spells out which so the agent isn't misled.
             let how = watcher.effectiveMode == .tabStatus
-                ? "confirmed by reading the screen; its reported status had "
-                    + "stopped updating for several minutes, so the status may "
-                    + "have been stale"
-                : "detected by screen observation; this session reports no "
-                    + "machine-readable status"
+                ? NSLocalizedString("confirmed by reading the screen; its reported status had stopped updating for several minutes, so the status may have been stale", tableName: "ClaudeCodeXC", comment: "watch 触发方式说明（tabStatus 升级为屏幕轮询）")
+                : NSLocalizedString("detected by screen observation; this session reports no machine-readable status", tableName: "ClaudeCodeXC", comment: "watch 触发方式说明（纯屏幕轮询）")
             publishStatusUpdate(
                 watcher: watcher,
                 reason: .stateReached,
                 stateReached: target,
-                detail: "\(Self.watcherTargetLabel(role: watcher.roleName, workgroup: watcher.workgroupName, workgroupID: watcher.workgroupID)) reached state "
-                    + "'\(target)' (\(how)).")
+                detail: String(format: NSLocalizedString("%1$@ reached state '%2$@' (%3$@).", tableName: "ClaudeCodeXC", comment: "watcher 触发（屏幕轮询路径）；%1$@ 为目标名，%2$@ 为状态 wire 值，%3$@ 为触发方式说明"),
+                    Self.watcherTargetLabel(role: watcher.roleName, workgroup: watcher.workgroupName, workgroupID: watcher.workgroupID),
+                    target,
+                    how))
         }
     }
 
@@ -2001,7 +2000,7 @@ final class OrchestratorDispatcher {
                     watcher: synthetic,
                     reason: .stateReached,
                     stateReached: reachedState,
-                    detail: "\(Self.watcherTargetLabel(role: synthetic.roleName, workgroup: synthetic.workgroupName, workgroupID: synthetic.workgroupID)) was already in state '\(reachedState)' at watch registration.")
+                    detail: String(format: NSLocalizedString("%1$@ was already in state '%2$@' at watch registration.", tableName: "ClaudeCodeXC", comment: "watch 注册时目标已处于目标状态；%1$@ 为目标名，%2$@ 为状态 wire 值"), Self.watcherTargetLabel(role: synthetic.roleName, workgroup: synthetic.workgroupName, workgroupID: synthetic.workgroupID), reachedState))
             }
             return .watcherRegistered(Self.description(of: synthetic))
         }
@@ -2225,19 +2224,19 @@ final class OrchestratorDispatcher {
         let categoryName: String
         switch watcherReadDenial(watcher) {
         case .viewContents:
-            action = "read \(name)'s screen"
-            categoryName = "View Contents"
+            action = String(format: NSLocalizedString("read %@'s screen", tableName: "ClaudeCodeXC", comment: "watcher 丢弃原因中的动作短语；%@ 为目标名"), name)
+            categoryName = NSLocalizedString("View Contents", tableName: "AITermXC", comment: "权限类别名，与权限弹窗共用 AITermXC 既有译名")
         case .checkTerminalState:
-            action = "observe \(name)'s state"
-            categoryName = "Check Terminal State"
+            action = String(format: NSLocalizedString("observe %@'s state", tableName: "ClaudeCodeXC", comment: "watcher 丢弃原因中的动作短语；%@ 为目标名"), name)
+            categoryName = NSLocalizedString("Check Terminal State", tableName: "AITermXC", comment: "权限类别名，与权限弹窗共用 AITermXC 既有译名")
         default:
-            action = "watch \(name)"
-            categoryName = "required"
+            action = String(format: NSLocalizedString("watch %@", tableName: "ClaudeCodeXC", comment: "watcher 丢弃原因中的动作短语；%@ 为目标名"), name)
+            categoryName = NSLocalizedString("required", tableName: "ClaudeCodeXC", comment: "权限类别名兜底")
         }
         if afterRestart {
-            return "Watch dropped after iTerm2 restart: the \u{201C}\(categoryName)\u{201D} permission is off, so it can no longer \(action). Re-register it if you enable \(categoryName) again."
+            return String(format: NSLocalizedString("Watch dropped after iTerm2 restart: the \u{201C}%1$@\u{201D} permission is off, so it can no longer %2$@. Re-register it if you enable %3$@ again.", tableName: "ClaudeCodeXC", comment: "watcher 因权限撤销被丢弃（重启后）；%1$@/%3$@ 为权限类别名，%2$@ 为动作短语"), categoryName, action, categoryName)
         }
-        return "Watch dropped: the \u{201C}\(categoryName)\u{201D} permission was turned off, so it can no longer \(action)."
+        return String(format: NSLocalizedString("Watch dropped: the \u{201C}%1$@\u{201D} permission was turned off, so it can no longer %2$@.", tableName: "ClaudeCodeXC", comment: "watcher 因权限撤销被丢弃（运行中）；%1$@ 为权限类别名，%2$@ 为动作短语"), categoryName, action)
     }
 
     @MainActor

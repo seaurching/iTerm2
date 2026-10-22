@@ -389,66 +389,35 @@ final class ScreenWatchPoller {
     // Condition watchers get the caller's plain-English condition verbatim.
     private static func detectionInstruction(for watcher: WorkgroupWatcher) -> String {
         if let condition = watcher.condition {
-            return "Your target is this plain-English condition, judged from "
-                + "the rendered screen:\n\n"
-                + condition + "\n\n"
-                + "Conclude REACHED only when the screen positively shows the "
-                + "condition is satisfied. If the screen is ambiguous, or the "
-                + "condition describes something that has not visibly happened "
-                + "yet, answer NOT_YET. Do not reinterpret the condition as a "
-                + "generic idle/busy check; judge exactly what it says."
+            return String(format: NSLocalizedString("Your target is this plain-English condition, judged from the rendered screen:\n\n%@\n\nConclude REACHED only when the screen positively shows the condition is satisfied. If the screen is ambiguous, or the condition describes something that has not visibly happened yet, answer NOT_YET. Do not reinterpret the condition as a generic idle/busy check; judge exactly what it says.",
+                                              tableName: "ClaudeCodeXC",
+                                              comment: "屏幕监视判定指令：condition 形式；REACHED、NOT_YET 为代码解析的判定词保留原文；%@ 为用户给定的条件文本"),
+                          condition)
         }
         switch watcher.targetState ?? .idle {
         case .waiting:
-            return "Your target: the program is BLOCKED waiting for the user "
-                + "to answer a prompt or make a choice — a question, "
-                + "confirmation, or menu is on screen expecting input before it "
-                + "can continue. Conclude REACHED only when such a prompt is "
-                + "visibly present. An activity indicator means it is still "
-                + "working, not waiting; a plain idle prompt with no question "
-                + "is also not waiting."
+            return NSLocalizedString("Your target: the program is BLOCKED waiting for the user to answer a prompt or make a choice — a question, confirmation, or menu is on screen expecting input before it can continue. Conclude REACHED only when such a prompt is visibly present. An activity indicator means it is still working, not waiting; a plain idle prompt with no question is also not waiting.",
+                                     tableName: "ClaudeCodeXC",
+                                     comment: "屏幕监视判定指令：waiting 状态；REACHED、NOT_YET 保留原文")
         case .working:
-            return "Your target: the program is ACTIVELY working right now — an "
-                + "animated spinner, an increasing elapsed-time counter, a "
-                + "progress bar, a \"Working…/Thinking…\" line, or streaming "
-                + "output that changes between captures is present. Conclude "
-                + "REACHED as soon as the screen shows such active work. A "
-                + "static idle ready prompt with no activity indicator is "
-                + "NOT_YET."
+            return NSLocalizedString("Your target: the program is ACTIVELY working right now — an animated spinner, an increasing elapsed-time counter, a progress bar, a \"Working…/Thinking…\" line, or streaming output that changes between captures is present. Conclude REACHED as soon as the screen shows such active work. A static idle ready prompt with no activity indicator is NOT_YET.",
+                                     tableName: "ClaudeCodeXC",
+                                     comment: "屏幕监视判定指令：working 状态；REACHED、NOT_YET 与屏幕示例 \"Working…/Thinking…\" 保留原文")
         case .idle, .unknown:
-            return "Your target: the program has FINISHED its current work and "
-                + "is now idle at a ready input prompt, with no active progress "
-                + "bar, spinner, elapsed-time counter, or other activity "
-                + "indicator. While any activity indicator is present, or the "
-                + "screen is changing in a way that shows ongoing work, it is "
-                + "NOT_YET. Conclude REACHED only when the screen positively "
-                + "shows an idle ready prompt."
+            return NSLocalizedString("Your target: the program has FINISHED its current work and is now idle at a ready input prompt, with no active progress bar, spinner, elapsed-time counter, or other activity indicator. While any activity indicator is present, or the screen is changing in a way that shows ongoing work, it is NOT_YET. Conclude REACHED only when the screen positively shows an idle ready prompt.",
+                                     tableName: "ClaudeCodeXC",
+                                     comment: "屏幕监视判定指令：idle/unknown 状态；REACHED、NOT_YET 保留原文")
         }
     }
 
     private static func systemPrompt(for watcher: WorkgroupWatcher) -> String {
-        return """
-        You are a silent monitor inside iTerm2. You are watching one terminal \
-        session that an automated orchestrator is driving. The program in it \
-        (often a coding agent or another interactive TUI) is being judged by \
-        reading its rendered screen.
-
-        Background on reading these screens: a program that is actively working \
-        almost always shows an activity indicator that changes between \
-        captures — an animated spinner, an increasing elapsed-time counter, a \
-        progress bar, a "Working…/Thinking…/esc to interrupt" line, or \
-        streaming output. A program that is idle shows a ready input prompt and \
-        no such indicator. An unchanged or blank screen does NOT by itself \
-        prove the program is idle — it may be computing silently (for example, \
-        sleeping or waiting on a subprocess). Judge from positive evidence on \
-        screen, not from the mere absence of change.
-
-        \(detectionInstruction(for: watcher))
-
-        Respond with EXACTLY one word on the first line: REACHED if the target \
-        condition is satisfied, or NOT_YET if it is not. You may add a brief \
-        reason (12 words or fewer) on a second line. Output nothing else.
-        """
+        return NSLocalizedString("You are a silent monitor inside iTerm2. You are watching one terminal session that an automated orchestrator is driving. The program in it (often a coding agent or another interactive TUI) is being judged by reading its rendered screen.\n\nBackground on reading these screens: a program that is actively working almost always shows an activity indicator that changes between captures — an animated spinner, an increasing elapsed-time counter, a progress bar, a \"Working…/Thinking…/esc to interrupt\" line, or streaming output. A program that is idle shows a ready input prompt and no such indicator. An unchanged or blank screen does NOT by itself prove the program is idle — it may be computing silently (for example, sleeping or waiting on a subprocess). Judge from positive evidence on screen, not from the mere absence of change.",
+                                 tableName: "ClaudeCodeXC",
+                                 comment: "屏幕监视判定系统提示词（背景部分）；屏幕示例 \"Working…/Thinking…/esc to interrupt\" 保留原文")
+            + "\n\n" + detectionInstruction(for: watcher)
+            + "\n\n" + NSLocalizedString("Respond with EXACTLY one word on the first line: REACHED if the target condition is satisfied, or NOT_YET if it is not. You may add a brief reason (12 words or fewer) on a second line. Output nothing else.",
+                                 tableName: "ClaudeCodeXC",
+                                 comment: "屏幕监视判定系统提示词（响应格式部分）；REACHED、NOT_YET 为代码解析的判定词，必须原样输出，保留原文")
     }
 
     private static func userPrompt(window: [Capture], kind: SessionKind) -> String {
@@ -456,25 +425,27 @@ final class ScreenWatchPoller {
         for (index, capture) in window.enumerated() {
             let label: String
             if index == 0 {
-                label = "earliest capture, t=\(capture.elapsed)s"
+                label = String(format: NSLocalizedString("earliest capture, t=%@s", tableName: "ClaudeCodeXC", comment: "捕获窗口标签（最早）；t=…s 记法保留原文"), "\(capture.elapsed)")
             } else if index == window.count - 1 {
-                label = "most recent capture, t=\(capture.elapsed)s"
+                label = String(format: NSLocalizedString("most recent capture, t=%@s", tableName: "ClaudeCodeXC", comment: "捕获窗口标签（最近）；t=…s 记法保留原文"), "\(capture.elapsed)")
             } else {
-                label = "capture at t=\(capture.elapsed)s"
+                label = String(format: NSLocalizedString("capture at t=%@s", tableName: "ClaudeCodeXC", comment: "捕获窗口标签（中间）；t=…s 记法保留原文"), "\(capture.elapsed)")
             }
-            let body = capture.text.isEmpty ? "(blank screen)" : capture.text
+            let body = capture.text.isEmpty ? NSLocalizedString("(blank screen)", tableName: "ClaudeCodeXC", comment: "空屏幕捕获的占位文本") : capture.text
             sections.append("----- \(label) -----\n\(body)")
         }
         let kindHint: String
         switch kind {
         case .tui:
-            kindHint = "The captures are point-in-time snapshots of a "
-                + "full-screen TUI."
+            kindHint = NSLocalizedString("The captures are point-in-time snapshots of a full-screen TUI.",
+                                         tableName: "ClaudeCodeXC",
+                                         comment: "userPrompt 的会话类型说明（TUI）")
         case .claudeCode, .shell, .other:
-            kindHint = "The captures are the trailing lines of the session "
-                + "transcript, oldest content first within each capture."
+            kindHint = NSLocalizedString("The captures are the trailing lines of the session transcript, oldest content first within each capture.",
+                                         tableName: "ClaudeCodeXC",
+                                         comment: "userPrompt 的会话类型说明（shell/claude-code/other）")
         }
         return kindHint + "\n\n" + sections.joined(separator: "\n\n")
-            + "\n\nHas the target condition been reached?"
+            + "\n\n" + NSLocalizedString("Has the target condition been reached?", tableName: "ClaudeCodeXC", comment: "userPrompt 的结尾提问")
     }
 }

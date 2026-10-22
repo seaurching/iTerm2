@@ -98,3 +98,5 @@
 "Status %@ when running python code" = "執行 python 程式碼時狀態為 %@";
 "Unexpected output from %@" = "來自 %@ 的未預期輸出";
 "Invalid process ID from remote: %@" = "來自遠端的行程 ID 無效：%@";
+
+"SSH Integration" = "SSH 整合";

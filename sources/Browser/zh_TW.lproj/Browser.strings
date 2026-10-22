@@ -185,3 +185,7 @@
 "While loading the browser page template %@.%@" = "載入瀏覽器頁面範本 %@.%@ 時";
 /* Browser page include file load failure: file name, file type */
 "While loading the browser page file %@.%@" = "載入瀏覽器頁面檔案 %@.%@ 時";
+
+"Browser Download\nSource: %@\nFile: %@" = "瀏覽器下載\n來源：%@\n檔案：%@";
+"Browser" = "瀏覽器";
+"Browser Download" = "瀏覽器下載";

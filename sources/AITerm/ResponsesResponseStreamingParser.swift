@@ -438,9 +438,14 @@ struct ResponsesResponseStreamingParser: LLMStreamingResponseParser {
         var errorDescription: String? {
             switch self {
             case .invalidJSON:
-                return "Invalid JSON data"
+                return NSLocalizedString("Invalid JSON data",
+                                         tableName: "AITermXC",
+                                         comment: "AI 流式响应解析错误：JSON 数据无效")
             case .unknownEventType(let type):
-                return "Unknown event type: \(type)"
+                return String(format: NSLocalizedString("Unknown event type: %@",
+                                                        tableName: "AITermXC",
+                                                        comment: "AI 流式响应解析错误：未知的事件类型；%@ 为事件类型名，保留原文"),
+                              type)
             }
         }
     }

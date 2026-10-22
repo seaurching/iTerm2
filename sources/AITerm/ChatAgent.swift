@@ -866,14 +866,21 @@ class ChatAgent {
                                                     targetStateForm: Bool) -> String? {
         var forms = [String]()
         if targetStateForm {
-            forms.append("a target_state (idle, working, or waiting) to fire when the program reports that transition")
+            forms.append(NSLocalizedString("a target_state (idle, working, or waiting) to fire when the program reports that transition",
+                                           tableName: "AITermXC",
+                                           comment: "register_watch 指引中 target_state 形式的描述片段"))
         }
         if conditionForm {
-            forms.append("a plain-English condition an AI judges by reading the screen (e.g. a build printing a success or failure line)")
+            forms.append(NSLocalizedString("a plain-English condition an AI judges by reading the screen (e.g. a build printing a success or failure line)",
+                                           tableName: "AITermXC",
+                                           comment: "register_watch 指引中自然语言条件形式的描述片段"))
         }
         guard !forms.isEmpty else { return nil }
-        let formsText = forms.joined(separator: ", or ")
-        return "You can watch this terminal session for a future state instead of polling: call register_watch with \(formsText). It returns immediately and does not block your turn; when the watch fires, iTerm2 delivers a <status_update> message as a separate turn for you to act on. Use list_watches and unregister_watch to manage active watches, and do not repeatedly read the screen yourself while a watch is pending."
+        let formsText = forms.joined(separator: NSLocalizedString(", or ", tableName: "AITermXC", comment: "连接两种 register_watch 形式的分隔符"))
+        return String(format: NSLocalizedString("You can watch this terminal session for a future state instead of polling: call register_watch with %@. It returns immediately and does not block your turn; when the watch fires, iTerm2 delivers a <status_update> message as a separate turn for you to act on. Use list_watches and unregister_watch to manage active watches, and do not repeatedly read the screen yourself while a watch is pending.",
+                                                tableName: "AITermXC",
+                                                comment: "向模型介绍 register_watch 能力的系统提示词片段；register_watch、list_watches、unregister_watch、<status_update> 为工具名/协议标记，须保留原文"),
+                      formsText)
     }
 
     private func updateSystemMessage(_ permissions: Set<RemoteCommand.Content.PermissionCategory>) {
@@ -959,7 +966,7 @@ class ChatAgent {
         }
     }
 
-    private static let orchestrationDisplayPolicy = """
+    private static let orchestrationDisplayPolicy = NSLocalizedString("""
     Terminal output display policy:
     - iTerm2 displays raw terminal command output to the user as its own code block.
     - Do not repeat raw command output in prose, do not convert it into Markdown tables, and do not reformat listings such as ls, ps, df, netstat, or grep output.
@@ -974,7 +981,7 @@ class ChatAgent {
     - Treat a <status_update> as a system signal to act on, not a message to acknowledge. Do not thank it, restate it, or re-explain your standing plan each time one fires.
     - When the user has set up a standing loop (“keep doing X until there are no steps left”), run it silently: speak up only when a step actually advances, when the loop finishes, or when something needs the user’s decision. Do not ask what to do next on each iteration; you already know the next step.
     - Do not repeat yourself across turns. Announce a milestone once: once you have told the user a step finished (a fix applied, a review kicked off, a review came back clean), do not announce it again when a later tool result or status_update merely re-confirms the same thing. If nothing new has happened since your last message, say nothing.
-    """
+    """, tableName: "AITermXC", comment: "orchestration 模式的终端输出与对话风格策略，发给模型。session ids、status_source、role_id、wg-/workgroup_id、<status_update>、ls/ps/df/netstat/grep、“the Code Review”、“your Chat”等标识符、命令名与协议标记须保留原文")
 
     @MainActor
     private static func evaluateOrchestrationPromptTemplate(_ template: String) -> String {

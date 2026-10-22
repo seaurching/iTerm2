@@ -185,3 +185,7 @@
 "While loading the browser page template %@.%@" = "While loading the browser page template %@.%@";
 /* Browser page include file load failure: file name, file type */
 "While loading the browser page file %@.%@" = "While loading the browser page file %@.%@";
+
+"Browser Download\nSource: %@\nFile: %@" = "Browser Download\nSource: %@\nFile: %@";
+"Browser" = "Browser";
+"Browser Download" = "Browser Download";

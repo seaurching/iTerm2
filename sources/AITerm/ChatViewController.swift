@@ -747,7 +747,7 @@ extension ChatViewController {
            let chat = listModel.chat(id: chatID) {
             return chat.title
         }
-        return "AI Chat"
+        return NSLocalizedString("AI Chat", tableName: "AITermXC", comment: "无标题 AI 对话的默认标题")
     }
 
     func offerLink(to guid: String, terminal: Bool, name: String?) {
@@ -830,7 +830,7 @@ extension ChatViewController {
         // window, and clobbering its title with the chat title would be
         // wrong.
         if let windowController = view.window?.windowController as? ChatWindowController {
-            windowController.updateTitle(chat?.title ?? "AI Chat")
+            windowController.updateTitle(chat?.title ?? NSLocalizedString("AI Chat", tableName: "AITermXC", comment: "无标题 AI 对话的默认标题"))
         } else if isInlinePanel {
             updateInlineToolbarTitle()
         } else {

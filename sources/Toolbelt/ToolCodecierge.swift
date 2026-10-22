@@ -91,10 +91,10 @@ class ToolCodecierge: NSView, ToolbeltTool {
                                 var command: String = ""
                             }
                             let schema = JSONSchema(for: ExecuteCommand(),
-                                                    descriptions: ["command": "The command to run"])
+                                                    descriptions: ["command": NSLocalizedString("The command to run", tableName: "Toolbelt", comment: "execute 工具 command 参数描述")])
                             let decl = ChatGPTFunctionDeclaration(
                                 name: "execute",
-                                description: "Execute a command at the shell. The output will be provided in a subsequent message from me.",
+                                description: NSLocalizedString("Execute a command at the shell. The output will be provided in a subsequent message from me.", tableName: "Toolbelt", comment: "execute 工具描述；发给模型的工具声明"),
                                 parameters: schema)
                             conversation?.define(
                                 function: decl,
@@ -117,11 +117,11 @@ class ToolCodecierge: NSView, ToolbeltTool {
                                 var contents: String = ""
                             }
                             let schema = JSONSchema(for: WriteCommand(),
-                                                    descriptions: ["filename": "The filename to write to. It may be relative or absolute.",
-                                                                   "contents": "The contents of the file to be written."])
+                                                    descriptions: ["filename": NSLocalizedString("The filename to write to. It may be relative or absolute.", tableName: "Toolbelt", comment: "write 工具 filename 参数描述"),
+                                                                   "contents": NSLocalizedString("The contents of the file to be written.", tableName: "Toolbelt", comment: "write 工具 contents 参数描述")])
                             let decl = ChatGPTFunctionDeclaration(
                                 name: "write",
-                                description: "Write a file, replacing an existing file with the same name.",
+                                description: NSLocalizedString("Write a file, replacing an existing file with the same name.", tableName: "Toolbelt", comment: "write 工具描述；发给模型的工具声明"),
                                 parameters: schema)
                             conversation?.define(
                                 function: decl,
@@ -161,13 +161,13 @@ class ToolCodecierge: NSView, ToolbeltTool {
             let shell = scope.value(forVariableName: "shell")
             let uname = scope.value(forVariableName: "uname")
             if let shell, let uname {
-                return "The shell is \(shell) and the system's `uname` is \(uname). "
+                return String(format: NSLocalizedString("The shell is %1$@ and the system's `uname` is %2$@. ", tableName: "Toolbelt", comment: "Codecierge 系统提示词的 $CONTEXT 片段；%1$@ 为 shell，%2$@ 为 uname 输出；`uname` 记法保留原文；key 以空格结尾，用于模板拼接"), String(describing: shell), String(describing: uname))
             }
             if let shell {
-                return "The shell is \(shell). "
+                return String(format: NSLocalizedString("The shell is %@. ", tableName: "Toolbelt", comment: "Codecierge 系统提示词的 $CONTEXT 片段；%@ 为 shell；key 以空格结尾"), String(describing: shell))
             }
             if let uname {
-                return "The system's `uname` is \(uname). "
+                return String(format: NSLocalizedString("The system's `uname` is %@. ", tableName: "Toolbelt", comment: "Codecierge 系统提示词的 $CONTEXT 片段；%@ 为 uname 输出；`uname` 记法保留原文；key 以空格结尾"), String(describing: uname))
             }
             return ""
         }

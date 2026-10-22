@@ -1,4 +1,4 @@
-/* Toolbelt.strings - zh-Hans-CN */
+/* Toolbelt.strings - zh-Hans */
 "Toggle Checkmark" = "切换复选标记";
 "Actions" = "动作";
 "Captured Output" = "捕获的输出";
@@ -13,3 +13,13 @@
 "Session Status" = "会话状态";
 "Clear" = "清除";
 "The session no longer exists" = "该会话已不存在。";
+
+"The shell is %1$@ and the system's `uname` is %2$@. " = "shell 为 %1$@，系统的 `uname` 为 %2$@。 ";
+"The shell is %@. " = "shell 为 %@。 ";
+"The system's `uname` is %@. " = "系统的 `uname` 为 %@。 ";
+
+"The command to run" = "要运行的命令";
+"Execute a command at the shell. The output will be provided in a subsequent message from me." = "在 shell 中执行命令。输出会在稍后的消息中提供给你。";
+"The filename to write to. It may be relative or absolute." = "要写入的文件名。可以是相对路径或绝对路径。";
+"The contents of the file to be written." = "要写入的文件内容。";
+"Write a file, replacing an existing file with the same name." = "写入一个文件，同名文件会被替换。";

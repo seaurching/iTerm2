@@ -32,7 +32,7 @@ enum AIBackslashEscapeError: Error, CustomStringConvertible {
         case .truncatedUnicodeEscape:
             return NSLocalizedString("Truncated \\\\uXXXX escape (needs exactly four hex digits).", tableName: "AITermXC", comment: "")
         case .invalidUnicodeScalar(let hex):
-            return "\\u\(hex) is not a valid Unicode scalar."
+            return String(format: NSLocalizedString("\\u%@ is not a valid Unicode scalar.", tableName: "AITermXC", comment: "无效的 \\uXXXX 转义；%@ 为四位十六进制码元，保留原文"), hex)
         case .danglingBackslash:
             return NSLocalizedString("Text ends with an unescaped backslash.", tableName: "AITermXC", comment: "")
         }

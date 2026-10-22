@@ -185,3 +185,7 @@
 "While loading the browser page template %@.%@" = "加载浏览器页面模板 %@.%@ 时";
 /* Browser page include file load failure: file name, file type */
 "While loading the browser page file %@.%@" = "加载浏览器页面文件 %@.%@ 时";
+
+"Browser Download\nSource: %@\nFile: %@" = "浏览器下载\n来源：%@\n文件：%@";
+"Browser" = "浏览器";
+"Browser Download" = "浏览器下载";

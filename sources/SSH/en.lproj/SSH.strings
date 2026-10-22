@@ -98,3 +98,5 @@
 "Status %@ when running python code" = "Status %@ when running python code";
 "Unexpected output from %@" = "Unexpected output from %@";
 "Invalid process ID from remote: %@" = "Invalid process ID from remote: %@";
+
+"SSH Integration" = "SSH Integration";

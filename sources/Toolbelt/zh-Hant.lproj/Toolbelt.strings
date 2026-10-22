@@ -13,3 +13,13 @@
 "Session Status" = "工作階段狀態";
 "Clear" = "清除";
 "The session no longer exists" = "該工作階段已不存在。";
+
+"The shell is %1$@ and the system's `uname` is %2$@. " = "shell 為 %1$@，系統的 `uname` 為 %2$@。 ";
+"The shell is %@. " = "shell 為 %@。 ";
+"The system's `uname` is %@. " = "系統的 `uname` 為 %@。 ";
+
+"The command to run" = "要執行的指令";
+"Execute a command at the shell. The output will be provided in a subsequent message from me." = "在 shell 中執行指令。輸出會在稍後的訊息中提供給你。";
+"The filename to write to. It may be relative or absolute." = "要寫入的檔案名稱。可以是相對路徑或絕對路徑。";
+"The contents of the file to be written." = "要寫入的檔案內容。";
+"Write a file, replacing an existing file with the same name." = "寫入一個檔案，同名檔案會被取代。";

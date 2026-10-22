@@ -139,7 +139,7 @@ final class OrchestrationToolProvider: ToolProvider {
         guard let handler = enableRequestHandler else { return }
         let decl = ChatGPTFunctionDeclaration(
             name: "request_orchestration_enable",
-            description: """
+            description: NSLocalizedString("""
                 Ask the user to enable orchestration mode for this chat. Use this whenever the \
                 task requires interacting with the user's iTerm2 sessions and you don't currently \
                 have the tools to do it: sending text or keystrokes, running shell commands, \
@@ -153,7 +153,8 @@ final class OrchestrationToolProvider: ToolProvider {
                 get_screen_contents, get_state, register_watch, etc.) starting with the next \
                 turn; the linked terminal or browser session, if any, is detached. Returns a \
                 string describing the outcome.
-                """,
+                """, tableName: "ClaudeCodeXC",
+                comment: "request_orchestration_enable 工具描述；send_text 等工具名、Code Review/Diff/Chat 保留原文"),
             parameters: JSONSchema(rawJSON: [
                 "type": "object",
                 "properties": [:],
@@ -299,7 +300,7 @@ final class OrchestrationToolProvider: ToolProvider {
         var schema = JSONSchema(for: prototype, descriptions: content.argDescriptions)
         schema.properties["session_guid"] = JSONSchema.Property(
             type: AnyCodable("string"),
-            description: "GUID of the session to target. Pull session_guid values from list_workgroups output (each role's session_guid field).")
+            description: NSLocalizedString("GUID of the session to target. Pull session_guid values from list_workgroups output (each role's session_guid field).", tableName: "ClaudeCodeXC", comment: "session_* 工具 session_guid 参数描述；list_workgroups、session_guid 保留原文"))
         if !schema.required.contains("session_guid") {
             schema.required.append("session_guid")
         }
@@ -307,7 +308,7 @@ final class OrchestrationToolProvider: ToolProvider {
         let toolName = "session_" + content.functionName
         let decl = ChatGPTFunctionDeclaration(
             name: toolName,
-            description: content.functionDescription + " Targets the session with the supplied session_guid.",
+            description: content.functionDescription + NSLocalizedString(" Targets the session with the supplied session_guid.", tableName: "ClaudeCodeXC", comment: "session_* 工具描述后缀，与前半 functionDescription 拼接；session_guid 保留原文；key 以空格开头"),
             parameters: schema)
 
         conversation.define(

@@ -1,4 +1,4 @@
-/* Toolbelt.strings - Base */
+/* Toolbelt.strings - en */
 "Toggle Checkmark" = "Toggle Checkmark";
 "Actions" = "Actions";
 "Captured Output" = "Captured Output";
@@ -13,3 +13,13 @@
 "Session Status" = "Session Status";
 "Clear" = "Clear";
 "The session no longer exists" = "The session no longer exists";
+
+"The shell is %1$@ and the system's `uname` is %2$@. " = "The shell is %1$@ and the system's `uname` is %2$@. ";
+"The shell is %@. " = "The shell is %@. ";
+"The system's `uname` is %@. " = "The system's `uname` is %@. ";
+
+"The command to run" = "The command to run";
+"Execute a command at the shell. The output will be provided in a subsequent message from me." = "Execute a command at the shell. The output will be provided in a subsequent message from me.";
+"The filename to write to. It may be relative or absolute." = "The filename to write to. It may be relative or absolute.";
+"The contents of the file to be written." = "The contents of the file to be written.";
+"Write a file, replacing an existing file with the same name." = "Write a file, replacing an existing file with the same name.";
