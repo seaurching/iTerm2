@@ -648,6 +648,13 @@ static CGFloat iTermTextDrawingHelperAlphaValueForDefaultBackgroundColor(BOOL ha
                       virtualOffset:virtualOffset];
 
         for (NSInteger j = i; j < MIN(i + rows, backgroundRunArrays.count); j++) {
+            if (defaultColor == nil) {
+                // The color map isn't ready yet (e.g. the first draw after
+                // creating a split pane). Skip the margins this frame; they'll
+                // be drawn once colors exist. Array literals would throw on a
+                // nil element, so never build @[] with these colors.
+                continue;
+            }
             iTermBoxedBackgroundColorRun *firstRun = runArray.array.firstObject;
             iTermBoxedBackgroundColorRun *lastRun = runArray.array.lastObject;
             NSColor *leftColor = (!extend || !firstRun || firstRun.isDefault) ? defaultColor : (firstRun.backgroundColor ?: defaultColor);
