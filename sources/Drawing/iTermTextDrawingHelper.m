@@ -1013,6 +1013,11 @@ static CGFloat iTermTextDrawingHelperAlphaValueForDefaultBackgroundColor(BOOL ha
         selectedColor = [NSColor colorWithDisplayP3Red:0.2 green:0.2 blue:1 alpha:1];
     }
     NSColor *bg = [[self defaultBackgroundColor] colorWithAlphaComponent:1.0];
+    if (bg == nil) {
+        // Color map not ready yet (first frames of a new split pane); never
+        // let a nil color reach the array literal below.
+        bg = [NSColor clearColor];
+    }
     if (_selectedCommandOutlineColorsCache &&
         [_cachedOutlineSelectedColor isEqual:selectedColor] &&
         [_cachedOutlineBackgroundColor isEqual:bg]) {
@@ -1031,15 +1036,21 @@ static CGFloat iTermTextDrawingHelperAlphaValueForDefaultBackgroundColor(BOOL ha
 - (NSArray<NSColor *> *)blendedMarkColorsForBackground:(NSColor *)background
                                               colorMap:(id<iTermColorMapReading>)colorMap
                                         useThemeColors:(BOOL)useThemeColors {
+    if (background == nil) {
+        // The color map isn't ready yet (e.g. the first frames Metal renders
+        // when a newly created split pane turns on during setupSession).
+        // Array literals below must never see a nil element.
+        background = [NSColor clearColor];
+    }
     NSColor *success = [iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeSuccess
                                                        colorMap:colorMap
-                                                 useThemeColors:useThemeColors];
+                                                 useThemeColors:useThemeColors] ?: background;
     NSColor *other = [iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeOther
                                                      colorMap:colorMap
-                                               useThemeColors:useThemeColors];
+                                               useThemeColors:useThemeColors] ?: background;
     NSColor *error = [iTermTextDrawingHelper colorForMarkType:iTermMarkIndicatorTypeError
                                                      colorMap:colorMap
-                                               useThemeColors:useThemeColors];
+                                               useThemeColors:useThemeColors] ?: background;
     if (_blendedMarkColorsCache &&
         [_cachedMarkBackgroundColor isEqual:background] &&
         [_cachedMarkSuccessColor isEqual:success] &&

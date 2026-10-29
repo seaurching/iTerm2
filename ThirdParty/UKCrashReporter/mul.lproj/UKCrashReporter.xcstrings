@@ -10,6 +10,42 @@
             "state" : "new",
             "value" : "Crash Reporter"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩溃报告器"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩溃报告器"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩溃报告器"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩潰報告器"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩潰報告器"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩潰報告器"
+          }
         }
       }
     },
@@ -21,6 +57,42 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Description"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "描述"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "描述"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "描述"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "描述"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "描述"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "描述"
           }
         }
       }
@@ -34,6 +106,42 @@
             "state" : "new",
             "value" : "Crash Log"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩溃日志"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩溃日志"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩溃日志"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩潰日誌"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩潰日誌"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "崩潰日誌"
+          }
         }
       }
     },
@@ -45,6 +153,42 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "It appears that %%APPNAME crashed the last time it was used. Do you want to send a crash log to the developers?\n\nCrash logs from Apple are not sent to other developers, so this is the only way the developers of %%APPNAME can find out about and fix this crash."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "看起来 %%APPNAME 在上次使用时崩溃了。要向开发者发送崩溃日志吗？\n\nApple 收集的崩溃日志不会发送给其他开发者，因此这是 %%APPNAME 的开发者得知并修复此崩溃的唯一途径。"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "看起来 %%APPNAME 在上次使用时崩溃了。要向开发者发送崩溃日志吗？\n\nApple 收集的崩溃日志不会发送给其他开发者，因此这是 %%APPNAME 的开发者得知并修复此崩溃的唯一途径。"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "看起来 %%APPNAME 在上次使用时崩溃了。要向开发者发送崩溃日志吗？\n\nApple 收集的崩溃日志不会发送给其他开发者，因此这是 %%APPNAME 的开发者得知并修复此崩溃的唯一途径。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "看起來 %%APPNAME 在上次使用時當機了。要向開發者傳送崩潰日誌嗎？\n\nApple 收集的崩潰日誌不會傳送給其他開發者，因此這是 %%APPNAME 的開發者得知並修復此當機的唯一途徑。"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "看起來 %%APPNAME 在上次使用時當機了。要向開發者傳送崩潰日誌嗎？\n\nApple 收集的崩潰日誌不會傳送給其他開發者，因此這是 %%APPNAME 的開發者得知並修復此當機的唯一途徑。"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "看起來 %%APPNAME 在上次使用時當機了。要向開發者傳送崩潰日誌嗎？\n\nApple 收集的崩潰日誌不會傳送給其他開發者，因此這是 %%APPNAME 的開發者得知並修復此當機的唯一途徑。"
           }
         }
       }
@@ -58,6 +202,42 @@
             "state" : "new",
             "value" : "You can delete any information you do not want transmitted, but this will make it more difficult to detect the bug. By default, the crash log as well as what Mac you are using and your settings are transmitted."
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你可以删除任何不想传输的信息，但这会让检测此 bug 变得更困难。默认情况下，崩溃日志以及你所用的 Mac 信息和设置都会被传输。"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你可以删除任何不想传输的信息，但这会让检测此 bug 变得更困难。默认情况下，崩溃日志以及你所用的 Mac 信息和设置都会被传输。"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你可以删除任何不想传输的信息，但这会让检测此 bug 变得更困难。默认情况下，崩溃日志以及你所用的 Mac 信息和设置都会被传输。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你可以刪除任何不想傳送的資訊，但這會讓偵測此 bug 變得更加困難。預設情況下，崩潰日誌以及你所用的 Mac 資訊與設定都會被傳送。"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你可以刪除任何不想傳送的資訊，但這會讓偵測此 bug 變得更加困難。預設情況下，崩潰日誌以及你所用的 Mac 資訊與設定都會被傳送。"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你可以刪除任何不想傳送的資訊，但這會讓偵測此 bug 變得更加困難。預設情況下，崩潰日誌以及你所用的 Mac 資訊與設定都會被傳送。"
+          }
         }
       }
     },
@@ -69,6 +249,42 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Send"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发送"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发送"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发送"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "傳送"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "傳送"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "傳送"
           }
         }
       }
@@ -82,6 +298,42 @@
             "state" : "new",
             "value" : "Remind Me Later"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稍后提醒我"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稍后提醒我"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稍后提醒我"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稍後提醒我"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稍後提醒我"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稍後提醒我"
+          }
         }
       }
     },
@@ -93,6 +345,42 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Discard"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "丢弃"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "丢弃"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "丢弃"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "捨棄"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "捨棄"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "捨棄"
           }
         }
       }

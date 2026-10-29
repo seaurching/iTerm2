@@ -17488,7 +17488,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     iTermAnnouncementViewController *announcement =
     [iTermAnnouncementViewController announcementWithTitle:title
                                                      style:kiTermAnnouncementViewStyleQuestion
-                                               withActions:@[ @"_Yes", @"Always", @"Never" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"_Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"announcement button: yes (dismiss on click)"), NSLocalizedStringFromTableInBundle(@"Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"announcement button: always"), NSLocalizedStringFromTableInBundle(@"Never", @"PTYSession", [NSBundle bundleForClass:[self class]], @"announcement button: never") ]
                                                 completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programmatically
@@ -17547,7 +17547,7 @@ typedef NS_ENUM(NSUInteger, PTYSessionTmuxReport) {
     iTermAnnouncementViewController *announcement =
     [iTermAnnouncementViewController announcementWithTitle:title
                                                      style:kiTermAnnouncementViewStyleQuestion
-                                               withActions:@[ @"_Yes", @"Always", @"Never" ]
+                                               withActions:@[ NSLocalizedStringFromTableInBundle(@"_Yes", @"PTYSession", [NSBundle bundleForClass:[self class]], @"announcement button: yes (dismiss on click)"), NSLocalizedStringFromTableInBundle(@"Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"announcement button: always"), NSLocalizedStringFromTableInBundle(@"Never", @"PTYSession", [NSBundle bundleForClass:[self class]], @"announcement button: never") ]
                                                 completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programmatically

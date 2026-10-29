@@ -2777,7 +2777,10 @@ static iTermKeyEventReplayer *gReplayer;
 }
 
 - (IBAction)toggleToolbeltTool:(NSMenuItem *)menuItem {
-    [iTermToolbeltView toggleShouldShowTool:[menuItem title]];
+    // The title is localized; the registered (English) tool name is carried in
+    // representedObject. Fall back to the title for menu items built elsewhere.
+    NSString *toolName = menuItem.representedObject ?: menuItem.title;
+    [iTermToolbeltView toggleShouldShowTool:toolName];
 }
 
 - (IBAction)toggleFullScreenTabBar:(id)sender {

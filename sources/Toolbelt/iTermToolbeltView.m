@@ -205,12 +205,15 @@ static NSString *const kDynamicToolURL = @"URL";
 + (void)addToolsToMenu:(NSMenu *)menu {
     NSArray *names = [[iTermToolbeltView allTools] sortedArrayUsingSelector:@selector(compare:)];
     for (NSString *theName in names) {
-        NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:theName
+        NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:[iTermToolbeltView localizedDisplayNameForToolName:theName]
                                                    action:@selector(toggleToolbeltTool:)
                                             keyEquivalent:@""];
         i.tag = (ProfileType)[gRegisteredTools[theName] supportedProfileTypes];
         [i setState:[[iTermToolbeltView configuredTools] containsObject:theName] ? NSControlStateValueOn : NSControlStateValueOff];
         i.identifier = [@"Toolbelt." stringByAppendingString:theName];
+        // The registered (English) name rides along in representedObject so
+        // the action can resolve the tool even though the title is localized.
+        i.representedObject = theName;
         [menu addItem:i];
     }
 }

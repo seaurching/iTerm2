@@ -6514,6 +6514,14 @@ extendResultsAcrossSoftBoundaries:(BOOL)extendResultsAcrossSoftBoundaries {
                     bold:(BOOL)isBold
                    faint:(BOOL)isFaint
             isBackground:(BOOL)isBackground {
+    if (_colorMap == nil) {
+        // The color map isn't attached yet (e.g. the first draw after creating
+        // a split pane, before the profile's colors arrive). Return a
+        // placeholder so callers never see nil: drawing one transparent frame
+        // is harmless, but nil propagates into array literals and
+        // assert(rawColor) downstream and crashes.
+        return [NSColor clearColor];
+    }
     iTermColorMapKey key = [self colorMapKeyForCode:theIndex
                                               green:green
                                                blue:blue

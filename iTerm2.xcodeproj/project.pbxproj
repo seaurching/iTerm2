@@ -6555,7 +6555,7 @@
 		1D93D3B012697D53007F741B /* DVRIndexEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = DVRIndexEntry.m; sourceTree = "<group>"; tabWidth = 4; };
 		1D94EAA412D64022008225A9 /* UKCrashReporter Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UKCrashReporter Readme.txt"; sourceTree = "<group>"; };
 		1D94EAA512D64022008225A9 /* UKCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKCrashReporter.h; sourceTree = "<group>"; };
-		1D94EAA612D64022008225A9 /* UKCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKCrashReporter.m; sourceTree = "<group>"; };
+		1D94EAA612D64022008225A9 /* UKCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = UKCrashReporter.m; sourceTree = "<group>"; };
 		1D94EAA912D64022008225A9 /* UKNibOwner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKNibOwner.h; sourceTree = "<group>"; };
 		1D94EAAA12D64022008225A9 /* UKNibOwner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKNibOwner.m; sourceTree = "<group>"; };
 		1D94EAAB12D64022008225A9 /* UKSystemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKSystemInfo.h; sourceTree = "<group>"; };
@@ -7008,7 +7008,7 @@
 		5370677221C9D2750088D0F3 /* SIGIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIGIdentity.h; path = SignedArchive/SIGIdentity.h; sourceTree = "<group>"; };
 		5370677321C9D2750088D0F3 /* SIGPartialInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIGPartialInputStream.h; path = SignedArchive/SIGPartialInputStream.h; sourceTree = "<group>"; };
 		5370677521C9D2760088D0F3 /* SIGSigningAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIGSigningAlgorithm.h; path = SignedArchive/SIGSigningAlgorithm.h; sourceTree = "<group>"; };
-		5370677721C9D2760088D0F3 /* SIGArchiveBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIGArchiveBuilder.m; path = SignedArchive/SIGArchiveBuilder.m; sourceTree = "<group>"; };
+		5370677721C9D2760088D0F3 /* SIGArchiveBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SIGArchiveBuilder.m; path = SignedArchive/SIGArchiveBuilder.m; sourceTree = "<group>"; };
 		5370677821C9D2760088D0F3 /* SIGSHA2SigningAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIGSHA2SigningAlgorithm.m; path = SignedArchive/SIGSHA2SigningAlgorithm.m; sourceTree = "<group>"; };
 		5370677A21C9D2760088D0F3 /* SIGArchiveVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIGArchiveVerifier.h; path = SignedArchive/SIGArchiveVerifier.h; sourceTree = "<group>"; };
 		5370677B21C9D2770088D0F3 /* SIGVerificationAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIGVerificationAlgorithm.h; path = SignedArchive/SIGVerificationAlgorithm.h; sourceTree = "<group>"; };
@@ -7503,7 +7503,7 @@
 		6D70E7DE7E81B39DC29CC27B /* VT100PromptKind.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VT100PromptKind.h; sourceTree = "<group>"; };
 		6DA92A4F3062D8090062F390 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6DA92A543062D8090062F390 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MainMenu.xcstrings; sourceTree = "<group>"; };
-		6DAE024E307D0B100044B45E /* SIGArchiveBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SIGArchiveBuilder.h; path = SignedArchive/SIGArchiveBuilder.h; sourceTree = "<group>"; };
+		6DAE024E307D0B100044B45E /* SIGArchiveBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIGArchiveBuilder.h; path = SignedArchive/SIGArchiveBuilder.h; sourceTree = "<group>"; };
 		6DAE0251307D15450044B45E /* Base */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = Base; path = "Base.lproj/ai-prompt-help.md"; sourceTree = "<group>"; };
 		6DAE0256307D15480044B45E /* en */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = en; path = "en.lproj/ai-prompt-help.md"; sourceTree = "<group>"; };
 		6DAE0257307D154C0044B45E /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = zh_CN; path = "zh_CN.lproj/ai-prompt-help.md"; sourceTree = "<group>"; };
@@ -8682,7 +8682,7 @@
 		A63F0A582BF435200096633F /* iTermSSHHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iTermSSHHelpers.h; sourceTree = "<group>"; };
 		A63F0A592BF435200096633F /* iTermSSHHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iTermSSHHelpers.m; sourceTree = "<group>"; };
 		A63F0A5C2BF436850096633F /* iTermHostnameFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTermHostnameFinder.swift; sourceTree = "<group>"; };
-		A63F2A3A23FA5951008DDEA4 /* it2run */ = {isa = PBXFileReference; lastKnownFileType = text; name = it2run; path = sources/it2run; sourceTree = "<group>"; };
+		A63F2A3A23FA5951008DDEA4 /* it2run */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; name = it2run; path = sources/it2run; sourceTree = "<group>"; usesTabs = 1; };
 		A63F2A3B23FB8191008DDEA4 /* keyboard.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = keyboard.py; sourceTree = "<group>"; };
 		A63F2A3C23FB8191008DDEA4 /* arrangement.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = arrangement.py; sourceTree = "<group>"; };
 		A63F2A3D23FB8191008DDEA4 /* mainmenu.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = mainmenu.py; sourceTree = "<group>"; };
