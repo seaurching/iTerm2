@@ -26625,6 +26625,7 @@
 					"sources/**",
 				);
 				INFOPLIST_FILE = plists/iTerm2.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@loader_path/../Frameworks",
 					"@executable_path/../Frameworks",
@@ -27969,6 +27970,7 @@
 					"sources/**",
 				);
 				INFOPLIST_FILE = plists/iTerm2.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@loader_path/../Frameworks",
 					"@executable_path/../Frameworks",
@@ -30756,6 +30758,7 @@
 					"sources/**",
 				);
 				INFOPLIST_FILE = plists/iTerm2.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@loader_path/../Frameworks",
 					"@executable_path/../Frameworks",
@@ -30857,6 +30860,7 @@
 					"sources/**",
 				);
 				INFOPLIST_FILE = plists/iTerm2.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@loader_path/../Frameworks",
 					"@executable_path/../Frameworks",
