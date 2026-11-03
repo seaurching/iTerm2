@@ -166,7 +166,7 @@ extension iTermApplicationDelegate {
                 imageName: "AIChatMenuTip",
                 text: NSLocalizedString("**AI Chats** opens a chat window where you can interact with AI. It can optionally view and control the terminal if you grant it permission.", tableName: "AppKit", comment: "AI 对话打开一个对话窗口，您可以在其中与 AI 交互。如果您授予权限，它可以选择性地查看和控制终端。")),
             Tip(identifier: "Pin Hotkey Window",
-                text: NSLocalizedString("A **pinned** Hotkey Window does not close automatically when it loses keyboard focus.", tableName: "AppKit", comment: "固定的热键窗口在失去键盘焦点时不会自动关闭。")),
+                text: NSLocalizedString("A **pinned** Hotkey Window does not close automatically when it loses keyboard focus.", tableName: "AppKit", comment: "固定的快捷键窗口在失去键盘焦点时不会自动关闭。")),
             Tip(identifier: "GPU Renderer Availability",
                 text: NSLocalizedString("Checks whether the GPU Renderer is currently being used in the active session. This is sometimes useful for debugging.", tableName: "AppKit", comment: "检查活动会话中是否正在使用 GPU 渲染器。这有时对调试很有用。")),
             Tip(identifier: "Secure Keyboard Entry",

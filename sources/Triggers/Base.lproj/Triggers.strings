@@ -219,3 +219,6 @@
 "Fires when a process matching the job filter enters the foreground-job ancestry chain." = "Fires when a process matching the job filter enters the foreground-job ancestry chain.";
 "Fires when a process matching the job filter leaves the foreground-job ancestry chain." = "Fires when a process matching the job filter leaves the foreground-job ancestry chain.";
 "Fires when a session variable changes to a value matching the regex." = "Fires when a session variable changes to a value matching the regex.";
+
+"Session Restarted" = "Session Restarted";
+"Finished" = "Finished";

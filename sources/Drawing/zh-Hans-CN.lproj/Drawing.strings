@@ -12,7 +12,7 @@
 "Debug logging is enabled." = "调试日志已启用。";
 "Secure Keyboard Entry is enabled. Select iTerm2 > Secure Keyboard Entry to disable.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)" = "安全键盘输入已启用。选择 iTerm2 > 安全键盘输入以禁用。\n[禁用此指示器。](iterm2:disable-secure-keyboard-entry-indicator)";
 "Secure Keyboard Entry is enabled because another app has turned it on.\n[Disable this indicator.](iterm2:disable-secure-keyboard-entry-indicator)" = "安全键盘输入已由其他应用启用。\n[禁用此指示器。](iterm2:disable-secure-keyboard-entry-indicator)";
-"This Hotkey Window is pinned." = "此热键窗口已固定。";
+"This Hotkey Window is pinned." = "此快捷键窗口已固定。";
 "AI Chats can view or control this session.\n * [Unlink from AI Chat](iterm2:unlink-session-chat?s=%@&t=%@)\n * [Reveal AI Chat](iterm2:reveal-chat-for-session?s=%@&t=%@)" = "AI 对话可以查看或控制此会话。\n * [取消与 AI 对话的链接](iterm2:unlink-session-chat?s=%@&t=%@)\n * [显示 AI 对话](iterm2:reveal-chat-for-session?s=%@&t=%@)";
 "Commands run in this session are automatically sent to an AI chat, along with their output. [Stop sending](iterm2:disable-streaming-session-chat?s=%@&t=%@)" = "此会话中运行的命令及其输出会自动发送到 AI 对话。[停止发送](iterm2:disable-streaming-session-chat?s=%@&t=%@)";
 "This command is running within another session.\n * [Return to Enclosing Session](iterm2:pop-channel?s=%@&t=%@)" = "此命令运行于另一个会话内。\n * [返回外层会话](iterm2:pop-channel?s=%@&t=%@)";

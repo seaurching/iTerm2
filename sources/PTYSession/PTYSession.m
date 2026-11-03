@@ -4589,7 +4589,14 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
                                                  VT100ScreenMutableState *mutableState,
                                                  id<VT100ScreenDelegate> delegate) {
             [terminal resetForReason:VT100TerminalResetReasonBrokenPipe];
-            [self appendBrokenPipeMessage:[iTermAdvancedSettingsModel sessionRestartedMessageText]];
+            NSString *customText = [iTermAdvancedSettingsModel sessionRestartedMessageText];
+            [self appendBrokenPipeMessage:(customText.length > 0) ? customText :
+                NSLocalizedStringFromTableInBundle(
+                    @"Session Restarted",
+                    @"Triggers",
+                    [NSBundle bundleForClass:[self class]],
+                    @"会话已重启"
+                    )];
             [self replaceTerminatedShellWithNewInstance];
         }];
         return;
@@ -4597,7 +4604,14 @@ webViewConfiguration:(WKWebViewConfiguration *)webViewConfiguration
 
     if (_shortLivedSingleUse) {
         [[iTermBuriedSessions sharedInstance] restoreSession:self];
-        [self appendBrokenPipeMessage:[iTermAdvancedSettingsModel sessionFinishedMessageText]];
+        NSString *customFinishedText = [iTermAdvancedSettingsModel sessionFinishedMessageText];
+        [self appendBrokenPipeMessage:(customFinishedText.length > 0) ? customFinishedText :
+            NSLocalizedStringFromTableInBundle(
+                @"Finished",
+                @"Triggers",
+                [NSBundle bundleForClass:[self class]],
+                @"已完成"
+                )];
         // restart is not respected here because it doesn't make sense and would make for an awful bug.
         if (self.endAction == iTermSessionEndActionClose &&
             [_delegate sessionShouldAutoClose:self]) {

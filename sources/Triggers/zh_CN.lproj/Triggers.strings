@@ -219,3 +219,6 @@
 "Fires when a process matching the job filter enters the foreground-job ancestry chain." = "匹配作业过滤器的进程进入前台作业祖链时触发。";
 "Fires when a process matching the job filter leaves the foreground-job ancestry chain." = "匹配作业过滤器的进程离开前台作业祖链时触发。";
 "Fires when a session variable changes to a value matching the regex." = "会话变量更改为匹配正则的值时触发。";
+
+"Session Restarted" = "会话已重启";
+"Finished" = "已完成";

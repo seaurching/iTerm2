@@ -9,8 +9,8 @@
 "No profile exists named '%@'" = "不存在名为 '%@' 的配置文件";
 "No profile name was specified" = "未指定配置文件名称";
 "The profile '%@' is damaged." = "配置文件 '%@' 已损坏。";
-"The profile '%@' does not have a hotkey defined." = "配置文件 '%@' 未定义热键。";
-"A hotkey window for profile '%@' already exists. Use “reveal hotkey window” instead." = "配置文件 '%@' 的热键窗口已存在。请改用“显示热键窗口”。";
+"The profile '%@' does not have a hotkey defined." = "配置文件 '%@' 未定义快捷键。";
+"A hotkey window for profile '%@' already exists. Use “reveal hotkey window” instead." = "配置文件 '%@' 的快捷键窗口已存在。请改用“显示快捷键窗口”。";
 
 /* iTermRequestCookieCommand.m - Cookie 请求命令 */
 "The Python API is not enabled." = "Python API 未启用。";

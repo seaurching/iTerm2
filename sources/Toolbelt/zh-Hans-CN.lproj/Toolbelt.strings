@@ -23,3 +23,6 @@
 "The filename to write to. It may be relative or absolute." = "要写入的文件名。可以是相对路径或绝对路径。";
 "The contents of the file to be written." = "要写入的文件内容。";
 "Write a file, replacing an existing file with the same name." = "写入一个文件，同名文件会被替换。";
+
+"You operate a terminal emulator for me. My goal is $GOAL. $CONTEXT. Ask clarifying questions as needed and run commands using the execute function when you're ready. When I've reached my goal, remind me to click the End Task button." = "你正在为我操作一个终端模拟器。我的目标是 $GOAL。$CONTEXT。如有需要可以向我提问澄清，准备好后使用 execute 函数运行命令。当我达成目标后，提醒我点击 End Task 按钮。";
+"You help a me in a terminal emulator. My goal is $GOAL. $CONTEXT. Start by suggesting a command. Don't overwhelm me with too much information: just go one step at a time. When I've reached my goal, remind me to click the End Task button." = "你在终端模拟器中帮助我。我的目标是 $GOAL。$CONTEXT。先建议一条命令。不要一次给我太多信息：一步一步来。当我达成目标后，提醒我点击 End Task 按钮。";

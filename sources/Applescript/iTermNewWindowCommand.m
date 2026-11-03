@@ -90,13 +90,13 @@
     iTermProfileHotKey *profileHotkey = [[iTermHotKeyController sharedInstance] profileHotKeyForGUID:profile[KEY_GUID]];
     if (!profileHotkey) {
         [self setScriptErrorNumber:3];
-        [self setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The profile '%@' does not have a hotkey defined.", @"Applescript", [NSBundle bundleForClass:[self class]], @"配置文件 '%@' 未定义热键。"),
+        [self setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"The profile '%@' does not have a hotkey defined.", @"Applescript", [NSBundle bundleForClass:[self class]], @"配置文件 '%@' 未定义快捷键。"),
                                     profileName]];
         return nil;
     }
     if (profileHotkey.windowController.weaklyReferencedObject) {
         [self setScriptErrorNumber:2];
-        [self setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"A hotkey window for profile '%@' already exists. Use “reveal hotkey window” instead.", @"Applescript", [NSBundle bundleForClass:[self class]], @"配置文件 '%@' 的热键窗口已存在。请改用“显示热键窗口”。"),
+        [self setScriptErrorString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"A hotkey window for profile '%@' already exists. Use “reveal hotkey window” instead.", @"Applescript", [NSBundle bundleForClass:[self class]], @"配置文件 '%@' 的快捷键窗口已存在。请改用“显示快捷键窗口”。"),
                                     profileName]];
         return nil;
     }

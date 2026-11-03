@@ -164,7 +164,7 @@
 "Toggle Fullscreen" = "切换全屏";
 
 /* Key binding action */
-"Toggle Pin Hotkey Window" = "切换固定热键窗口";
+"Toggle Pin Hotkey Window" = "切换固定快捷键窗口";
 
 /* Key binding action */
 "Undo" = "撤销";
