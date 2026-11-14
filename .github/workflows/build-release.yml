@@ -3,8 +3,9 @@
 # 策略：matrix 双 job，各在原生架构的 GitHub runner 上构建：
 #   - arm64  → macos-26（Apple Silicon）
 #   - x86_64 → macos-26-intel（Intel x64；macos-15-intel 也在但更老）
-# 每个 job：克隆 → make setup 装工具链 → make deps 用本机 Xcode 重编全部二进制
-# 依赖（ThirdParty/、各 *.framework，原生单架构）→ 用同一 Xcode 版本盖写
+# 每个 job：克隆 → make setup 装工具链 → make deps（显式目标列表，跳过
+# sfsymbolenum）用本机 Xcode 重编全部二进制依赖（ThirdParty/、各 *.framework，
+# 原生单架构）→ 用同一 Xcode 版本盖写
 # last-xcode-version（"Build binary dependencies if xcode version changed"
 # 构建脚本阶段会逐字节比对该文件，不匹配则 exit 1）→ make release 构建
 # Deployment 配置（Makefile 默认 ARCHS=本机架构）→ ad-hoc 重签 → 打 DMG。
@@ -84,13 +85,21 @@ jobs:
           command -v envsubst >/dev/null || \
             echo "$(brew --prefix gettext)/bin" >> "$GITHUB_PATH"
 
-      - name: 重建全部二进制依赖（make deps，本机原生架构）
+      - name: 重建全部二进制依赖（除 sfsymbolenum）
         run: |
           # 不传 UNIVERSAL：Makefile 按本机 NATIVE_ARCH 构建单架构依赖
           # （arm64 机走 armopenssl/armsixel，Intel 机走 x86openssl/x86libsixel）。
           # SIGNING_FLAGS 为命令行变量，自动传播到各依赖的 xcodebuild 构建；
           # ad-hoc 签名（identity 为 "-"）在无证书环境下保证产物签名一致。
-          make deps SIGNING_FLAGS='CODE_SIGN_IDENTITY=-'
+          #
+          # 显式列出 deps 的目标并去掉 sfsymbolenum：该目标用 swift 脚本解析
+          # 本机 SF Symbols.app 的 name_availability.plist 重新生成枚举，而
+          # 最新版 app 的 year_to_release 表含尚无符号引用的发行版条目
+          # （2026.x），触发生成器断言。ThirdParty/SFSymbolEnum/*.{h,m} 是
+          # 已提交的生成产物，直接用仓库版本即可，无需在 CI 重生成。
+          make fatlibsixel CoreParse NMSSH bindeps libgit2 sparkle \
+            librailroad_dsl pwmadapters \
+            SIGNING_FLAGS='CODE_SIGN_IDENTITY=-'
 
       - name: 用当前 Xcode 版本盖写 last-xcode-version
         run: |
