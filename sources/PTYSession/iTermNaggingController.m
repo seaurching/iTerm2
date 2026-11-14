@@ -649,7 +649,25 @@ static NSString *const iTermNaggingControllerRestoreIconAndWindowNameChoiceAlway
                                      isQuestion:YES
                                       important:YES
                                      identifier:kRestoreIconAndWindowNameOnHostChangeAnnouncementIdentifier
-                                        options:@[ NSLocalizedStringFromTableInBundle(@"_Only This Time", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: only this time button"), NSLocalizedStringFromTableInBundle(@"Always", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: always button"), NSLocalizedStringFromTableInBundle(@"Never", @"PTYSession", [NSBundle bundleForClass:[self class]], @"PTYSession: never button") ]
+                                        options:@[
+        NSLocalizedStringFromTableInBundle(
+        	@"_Only This Time",
+        	@"PTYSession",
+        	[NSBundle bundleForClass:[self class]],
+        	@"PTYSession: only this time button"
+        ),
+        NSLocalizedStringFromTableInBundle(
+        	@"Always",
+        	@"PTYSession",
+        	[NSBundle bundleForClass:[self class]],
+        	@"PTYSession: always button"
+        ),
+        NSLocalizedStringFromTableInBundle(
+        	@"Never",
+        	@"PTYSession",
+        	[NSBundle bundleForClass:[self class]],
+        	@"PTYSession: never button")
+    ]
                                      completion:^(int selection) {
         switch (selection) {
             case -2:  // Dismiss programmatically

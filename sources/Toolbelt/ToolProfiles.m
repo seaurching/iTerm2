@@ -72,10 +72,10 @@ static NSString *const iTermToolProfilesProfileListViewState = @"iTermToolProfil
         popup_ = [[NSPopUpButton alloc] initWithFrame:NSMakeRect(0, frame.size.height - kPopupHeight, frame.size.width - _openButton.frame.size.width - kInnerMargin, kPopupHeight)];
         [[popup_ cell] setControlSize:NSControlSizeSmall];
         [[popup_ cell] setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
-        [[popup_ menu] addItemWithTitle:NSLocalizedStringFromTableInBundle(@"New Tab", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool profiles: new tab menu item")
+        [[popup_ menu] addItemWithTitle:NSLocalizedStringFromTableInBundle(@"New Tab", @"TerminalView", [NSBundle bundleForClass:[self class]], @"tool profiles: new tab menu item")
                                  action:@selector(toolProfilesNewTab:)
                           keyEquivalent:@""];
-        [[popup_ menu] addItemWithTitle:NSLocalizedStringFromTableInBundle(@"New Window", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool profiles: new window menu item")
+        [[popup_ menu] addItemWithTitle:NSLocalizedStringFromTableInBundle(@"New Window", @"TerminalView", [NSBundle bundleForClass:[self class]], @"tool profiles: new window menu item")
                                  action:@selector(toolProfilesNewWindow:)
                           keyEquivalent:@""];
         [[popup_ menu] addItemWithTitle:NSLocalizedStringFromTableInBundle(@"New Horizontal Split", @"Toolbelt", [NSBundle bundleForClass:[self class]], @"tool profiles: new horizontal split menu item")

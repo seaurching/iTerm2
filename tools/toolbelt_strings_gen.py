@@ -154,8 +154,8 @@ T['Send Snippet'] = ('发送代码片段', '傳送程式碼片段')
 # --- ToolProfiles.m ---
 T['Open Profile'] = ('打开配置文件', '開啟設定檔')
 T['Open'] = ('打开', '開啟')
-T['New Tab'] = ('新建标签页', '新建分頁')
-T['New Window'] = ('新建窗口', '新建視窗')
+# 注意：ToolProfiles.m:75/78 的 'New Tab'/'New Window' 挂 TerminalView 表，
+# 译文在 TerminalView.strings，不属 Toolbelt 表；此二条曾误入 T 表（交叉校验报 EXTRA），已移除。
 T['New Horizontal Split'] = ('新建水平分屏', '新建水平分割窗格')
 T['New Vertical Split'] = ('新建垂直分屏', '新建垂直分割窗格')
 
@@ -226,6 +226,24 @@ T['Goal: '] = ('目标：', '目標：')
 T['End Task'] = ('结束任务', '結束任務')
 T['Response'] = ('回复', '回覆')
 T['Send reply'] = ('发送回复', '傳送回覆')
+T['Running `%@`\n'] = ('正在运行 `%@`\n', '正在執行 `%@`\n')
+T['Writing to %@\n'] = ('正在写入 %@\n', '正在寫入 %@\n')
+T['Done'] = ('完成', '完成')
+T['Tell me how to get started.'] = ('告诉我如何开始。', '告訴我如何開始。')
+T['The command failed with exit code %d.'] = (
+    '命令失败，退出码为 %d。',
+    '指令失敗，結束碼為 %d。')
+T['Briefly explain the output, especially if anything went wrong, and perform the next step.'] = (
+    '简要解释输出内容，尤其说明出现的问题，并执行下一步。',
+    '簡要解釋輸出內容，尤其說明出現的問題，並執行下一步。')
+T['Briefly explain the output, especially if anything went wrong, and suggest the next step. If there is another command to run, please state it.'] = (
+    '简要解释输出内容，尤其说明出现的问题，并建议下一步。如果还有要运行的命令，请说明。',
+    '簡要解釋輸出內容，尤其說明出現的問題，並建議下一步。如果還有要執行的指令，請說明。')
+T['\n\n### 👤 You\n%@\n'] = ('\n\n### 👤 你\n%@\n', '\n\n### 👤 你\n%@\n')
+T['### 🔮 Assistant\n%@'] = ('### 🔮 助手\n%@', '### 🔮 助手\n%@')
+T['\n\n### 🔮 Assistant\n%@'] = ('\n\n### 🔮 助手\n%@', '\n\n### 🔮 助手\n%@')
+T['\n\n### 💻 Terminal\n`%@`'] = ('\n\n### 💻 终端\n`%@`', '\n\n### 💻 終端機\n`%@`')
+T['\n\n### 🔮 Assistant\nThinking…'] = ('\n\n### 🔮 助手\n思考中…', '\n\n### 🔮 助手\n思考中…')
 
 # --- ToolStatus.swift ---
 T['Settings'] = ('设置', '設定')

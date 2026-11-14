@@ -1,5 +1,5 @@
 ORIG_PATH := $(PATH)
-PATH := /opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+PATH := /opt/local/bin:/opt/local/sbin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:
 ITERM_PID=$(shell pgrep "iTerm2")
 APPS := /Applications
 ITERM_CONF_PLIST = $(HOME)/Library/Preferences/com.googlecode.iterm2.plist
@@ -9,9 +9,19 @@ SUITE ?= $(notdir $(CURDIR))
 COMPACTDATE=$(shell date +"%Y%m%d")
 VERSION = $(shell cat version.txt | sed -e "s/%(extra)s/$(COMPACTDATE)/")
 NAME=$(shell echo $(VERSION) | sed -e "s/\\./_/g")
+# Tool discovery: works with MacPorts (/opt/local) or Homebrew. PATH (above)
+# lists /opt/local first, so command -v finds whichever is installed; explicit
+# prefix fallbacks cover minimal environments. Override on the command line to
+# pin a specific binary, e.g. CMAKE=/opt/local/bin/cmake.
+PORT_PREFIX ?= /opt/local
 HOMEBREW_PREFIX ?= $(shell brew --prefix 2>/dev/null || echo /opt/homebrew)
-CMAKE ?= $(HOMEBREW_PREFIX)/bin/cmake
-PKG_CONFIG ?= $(HOMEBREW_PREFIX)/bin/pkg-config
+# Package manager used by `make setup` to install missing tools. Auto-detected;
+# if both are installed MacPorts wins (matches the PATH order above).
+# Override with PKG_MANAGER=brew to force Homebrew.
+PKG_MANAGER ?= $(firstword $(shell PATH="$(PATH)" command -v port >/dev/null 2>&1 && echo port) $(shell PATH="$(PATH)" command -v brew >/dev/null 2>&1 && echo brew))
+CMAKE ?= $(firstword $(shell PATH="$(PATH)" command -v cmake 2>/dev/null) $(wildcard $(PORT_PREFIX)/bin/cmake $(HOMEBREW_PREFIX)/bin/cmake /usr/local/bin/cmake) cmake)
+PKG_CONFIG ?= $(firstword $(shell PATH="$(PATH)" command -v pkg-config 2>/dev/null) $(wildcard $(PORT_PREFIX)/bin/pkg-config $(HOMEBREW_PREFIX)/bin/pkg-config) pkg-config)
+PYTHON3 ?= $(firstword $(shell PATH="$(PATH)" command -v python3 2>/dev/null) python3)
 RUSTUP ?= $(shell PATH="$(ORIG_PATH):$(HOME)/.cargo/bin" which rustup 2>/dev/null)
 DEPLOYMENT_TARGET=13.0
 
@@ -128,6 +138,10 @@ companion-bump-build-upload: companion-bump-build
 	cd Companion && bundle exec fastlane release
 
 setup:
+ifeq ($(PKG_MANAGER),port)
+	@echo "Using MacPorts ($(PORT_PREFIX)) to install build dependencies."
+	@$(MAKE) _setup-main SKIP_CONFIRM="$(SKIP_CONFIRM)"
+else
 	@BREW_BIN=$$(PATH="/opt/homebrew/bin:/usr/local/bin:$(ORIG_PATH)" command -v brew 2>/dev/null); \
 	if [ -z "$$BREW_BIN" ]; then \
 		echo "Homebrew is not installed."; \
@@ -149,6 +163,7 @@ setup:
 	else \
 		$(MAKE) _setup-main SKIP_CONFIRM="$(SKIP_CONFIRM)"; \
 	fi
+endif
 
 dangerous-setup:
 	@$(MAKE) setup SKIP_CONFIRM=1
@@ -220,6 +235,23 @@ _setup-main:
 		export PATH="$$HOME/.cargo/bin:$$PATH"; \
 	fi
 	@test -f plists/iTerm2.plist || cp plists/dev-iTerm2.plist plists/iTerm2.plist
+ifeq ($(PKG_MANAGER),port)
+	@command -v cmake >/dev/null 2>&1 || sudo port install cmake
+	@command -v pkg-config >/dev/null 2>&1 || sudo port install pkgconfig
+	@command -v automake >/dev/null 2>&1 || sudo port install automake
+	@command -v perl >/dev/null 2>&1 || sudo port install perl5
+	@# gettext provides envsubst, used by tools/copy_shell_integration.sh to embed it2.py.
+	@command -v envsubst >/dev/null 2>&1 || sudo port install gettext
+	@# pyobjc is needed by tools/updateVersion.py. py314-pyobjc pulls in python314;
+	@# port select then makes `python3` resolve to it (PATH has /opt/local/bin first).
+	@$(PYTHON3) -c "import objc" 2>/dev/null || { \
+		sudo port install python3_select py314-pyobjc && \
+		sudo port select --set python3 python314; \
+	}
+	@# sf-symbols is not packaged for MacPorts; install manually when needed.
+	@test -d "/Applications/SF Symbols.app" || \
+		echo "NOTE: SF Symbols not found. Download: https://developer.apple.com/sf-symbols/"
+else
 	@PATH="$(ORIG_PATH)" brew list cmake >/dev/null 2>&1 || PATH="$(ORIG_PATH)" brew install cmake
 	@PATH="$(ORIG_PATH)" brew list pkg-config >/dev/null 2>&1 || PATH="$(ORIG_PATH)" brew install pkg-config
 	@PATH="$(ORIG_PATH)" brew list automake >/dev/null 2>&1 || PATH="$(ORIG_PATH)" brew install automake
@@ -251,6 +283,7 @@ _setup-main:
 		fi; \
 	fi
 	@$(HOMEBREW_PREFIX)/bin/python3 -c "import objc" 2>/dev/null || $(HOMEBREW_PREFIX)/bin/pip3 install --break-system-packages pyobjc
+endif
 	@PATH="$(ORIG_PATH):$$HOME/.cargo/bin" command -v cbindgen >/dev/null || $(or $(RUSTUP),$$HOME/.cargo/bin/rustup) run stable cargo install cbindgen
 	# Note: this installs arm tooling as well
 	$(or $(RUSTUP),$$HOME/.cargo/bin/rustup) target add x86_64-apple-darwin
@@ -263,8 +296,10 @@ _setup-main:
 doctor:
 	@echo "iTerm2 build environment — $(NATIVE_ARCH)"
 	@echo ""
-	@printf "  %-18s" "Homebrew:"; (PATH="$(ORIG_PATH)" brew --version 2>/dev/null | head -1) || echo "NOT FOUND"
-	@printf "  %-18s" "Homebrew prefix:"; echo "$(HOMEBREW_PREFIX)"
+	@printf "  %-18s" "Package manager:"; \
+		if [ "$(PKG_MANAGER)" = "port" ]; then echo "MacPorts ($(PORT_PREFIX))"; \
+		elif [ "$(PKG_MANAGER)" = "brew" ]; then echo "Homebrew ($(HOMEBREW_PREFIX))"; \
+		else echo "NOT FOUND"; fi
 	@printf "  %-18s" "Xcode:"; (xcodebuild -version 2>/dev/null | tr '\n' ' ' && echo) || echo "NOT FOUND"
 	@printf "  %-18s" "xcode-select:"; (xcode-select -p 2>/dev/null) || echo "NOT FOUND"
 	@printf "  %-18s" "xcodes:"; (PATH="$(ORIG_PATH)" xcodes version 2>/dev/null) || echo "not installed"
@@ -272,14 +307,14 @@ doctor:
 	@printf "  %-18s" "pkg-config:"; ($(PKG_CONFIG) --version 2>/dev/null) || echo "NOT FOUND"
 	@printf "  %-18s" "automake:"; (PATH="$(ORIG_PATH)" automake --version 2>/dev/null | grep -m1 .) || echo "NOT FOUND"
 	@printf "  %-18s" "perl:"; (PATH="$(ORIG_PATH)" perl -e 'print $$]."\n"' 2>/dev/null) || echo "NOT FOUND"
-	@printf "  %-18s" "python3 (brew):"; ver=$$($(HOMEBREW_PREFIX)/bin/python3 --version 2>/dev/null); \
+	@printf "  %-18s" "python3:"; ver=$$($(PYTHON3) --version 2>/dev/null); \
 		if [ -z "$$ver" ]; then echo "NOT FOUND — run make setup"; \
-		elif echo "$$ver" | grep -q "^Python 3"; then echo "$$ver"; \
+		elif echo "$$ver" | grep -q "^Python 3"; then echo "$$ver ($(PYTHON3))"; \
 		else echo "$$ver (WARNING: needs Python 3)"; fi
-	@printf "  %-18s" "pyobjc:"; ($(HOMEBREW_PREFIX)/bin/python3 -c "import objc; print('installed')" 2>/dev/null) || echo "NOT FOUND"
+	@printf "  %-18s" "pyobjc:"; ($(PYTHON3) -c "import objc; print('installed')" 2>/dev/null) || echo "NOT FOUND"
 	@printf "  %-18s" "rustup:"; (PATH="$(ORIG_PATH):$(HOME)/.cargo/bin" rustup --version 2>/dev/null) || echo "NOT FOUND"
 	@printf "  %-18s" "cbindgen:"; (PATH="$(ORIG_PATH):$(HOME)/.cargo/bin" cbindgen --version 2>/dev/null) || echo "NOT FOUND"
-	@printf "  %-18s" "sf-symbols:"; (PATH="$(ORIG_PATH)" brew list --cask sf-symbols >/dev/null 2>&1 && echo "installed") || echo "NOT FOUND"
+	@printf "  %-18s" "sf-symbols:"; if [ -d "/Applications/SF Symbols.app" ]; then echo "installed"; else echo "NOT FOUND"; fi
 
 TAGS:
 	find . -name "*.[mhMH]" -exec etags -o ./TAGS -a '{}' +
@@ -404,11 +439,11 @@ preview:
 
 x86libsixel: force
 	mkdir -p submodules/libsixel/build-x86
-	cd submodules/libsixel/build-x86 && PKG_CONFIG=$(PKG_CONFIG) CC="/usr/bin/clang -target x86_64-apple-macos$(DEPLOYMENT_TARGET)" LDFLAGS="-target x86_64-apple-macos$(DEPLOYMENT_TARGET)" CFLAGS="-target x86_64-apple-macos$(DEPLOYMENT_TARGET)" LIBTOOLFLAGS="-target x86_64-apple-macos$(DEPLOYMENT_TARGET)" ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes ../configure -host=x86_64-apple-darwin --prefix=${PWD}/ThirdParty/libsixel-x86 --without-libcurl --without-jpeg --without-png --disable-python --disable-shared && $(MAKE) && $(MAKE) install
+	cd submodules/libsixel/build-x86 && PKG_CONFIG=$(PKG_CONFIG) CC="/usr/bin/clang -target x86_64-apple-macos$(DEPLOYMENT_TARGET)" LDFLAGS="-target x86_64-apple-macos$(DEPLOYMENT_TARGET)" CFLAGS="-target x86_64-apple-macos$(DEPLOYMENT_TARGET) -std=gnu17" LIBTOOLFLAGS="-target x86_64-apple-macos$(DEPLOYMENT_TARGET)" ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes ../configure -host=x86_64-apple-darwin --prefix=${PWD}/ThirdParty/libsixel-x86 --without-libcurl --without-jpeg --without-png --disable-python --disable-shared && $(MAKE) && $(MAKE) install
 
 armsixel: force
 	mkdir -p submodules/libsixel/build-arm
-	cd submodules/libsixel/build-arm && PKG_CONFIG=$(PKG_CONFIG) CC="/usr/bin/clang -target arm64-apple-macos$(DEPLOYMENT_TARGET)" LDFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET)" CFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET)" LIBTOOLFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET)" ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes ../configure --host=aarch64-apple-darwin --prefix=${PWD}/ThirdParty/libsixel-arm --without-libcurl --without-jpeg --without-png --disable-python --disable-shared && $(MAKE) && $(MAKE) install
+	cd submodules/libsixel/build-arm && PKG_CONFIG=$(PKG_CONFIG) CC="/usr/bin/clang -target arm64-apple-macos$(DEPLOYMENT_TARGET)" LDFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET)" CFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET) -std=gnu17" LIBTOOLFLAGS="-target arm64-apple-macos$(DEPLOYMENT_TARGET)" ac_cv_func_malloc_0_nonnull=yes ac_cv_func_realloc_0_nonnull=yes ../configure --host=aarch64-apple-darwin --prefix=${PWD}/ThirdParty/libsixel-arm --without-libcurl --without-jpeg --without-png --disable-python --disable-shared && $(MAKE) && $(MAKE) install
 
 ifdef UNIVERSAL
 # Usage: go to an intel mac and run make x86libsixel and commit it. Go to an arm mac and run make armsixel && make libsixel.
@@ -431,6 +466,9 @@ endif
 armopenssl: force
 	echo Begin building configure-armopenssl
 	cd submodules/openssl && make clean && make distclean || echo make failed
+	# A stale Makefile generated from an older submodule revision lists this tracked
+	# header as a generated file and `make clean` deletes it; restore unconditionally.
+	git -C submodules/openssl checkout -- include/openssl/opensslconf.h 2>/dev/null || true
 	cd submodules/openssl && ./Configure darwin64-arm64-cc no-shared -fPIC -mmacosx-version-min=$(DEPLOYMENT_TARGET)
 	echo Begin building armopenssl
 	cd submodules/openssl && $(MAKE) build_libs
@@ -441,6 +479,9 @@ armopenssl: force
 x86openssl: force
 	echo Begin building configure-x86openssl
 	cd submodules/openssl && make clean && make distclean || echo make failed
+	# A stale Makefile generated from an older submodule revision lists this tracked
+	# header as a generated file and `make clean` deletes it; restore unconditionally.
+	git -C submodules/openssl checkout -- include/openssl/opensslconf.h 2>/dev/null || true
 	cd submodules/openssl && ./Configure darwin64-x86_64-cc no-shared -fPIC -mmacosx-version-min=$(DEPLOYMENT_TARGET)
 	echo Begin building x86openssl
 	cd submodules/openssl && $(MAKE) build_libs
@@ -479,14 +520,14 @@ x86libssh2: force
 	mkdir -p submodules/libssh2/build_x86_64
 	# Add this flag to enable tracing:
 	# -DCMAKE_C_FLAGS="-DLIBSSH2DEBUG"
-	cd submodules/libssh2/build_x86_64 && $(CMAKE) -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_IGNORE_PREFIX_PATH=/opt/homebrew -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -DOPENSSL_INCLUDE_DIR=${PWD}/submodules/openssl/build-fat/include -DOPENSSL_ROOT_DIR=${PWD}/submodules/openssl/build-fat -DBUILD_EXAMPLES=NO -DBUILD_TESTING=NO -DCMAKE_OSX_ARCHITECTURES=x86_64 -DCRYPTO_BACKEND=OpenSSL -DCMAKE_OSX_DEPLOYMENT_TARGET=$(DEPLOYMENT_TARGET) .. && $(MAKE) libssh2_static
+	cd submodules/libssh2/build_x86_64 && $(CMAKE) -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_IGNORE_PREFIX_PATH="/opt/homebrew;/opt/local" -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -DOPENSSL_INCLUDE_DIR=${PWD}/submodules/openssl/build-fat/include -DOPENSSL_ROOT_DIR=${PWD}/submodules/openssl/build-fat -DBUILD_EXAMPLES=NO -DBUILD_TESTING=NO -DCMAKE_OSX_ARCHITECTURES=x86_64 -DCRYPTO_BACKEND=OpenSSL -DCMAKE_OSX_DEPLOYMENT_TARGET=$(DEPLOYMENT_TARGET) .. && $(MAKE) libssh2_static
 
 armlibssh2: force
 	echo Begin building armlibssh2
 	mkdir -p submodules/libssh2/build_arm64
 	# Add this flag to enable tracing:
 	# -DCMAKE_C_FLAGS="-DLIBSSH2DEBUG"
-	cd submodules/libssh2/build_arm64 && $(CMAKE) -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_IGNORE_PREFIX_PATH=/opt/homebrew -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -DOPENSSL_INCLUDE_DIR=${PWD}/submodules/openssl/include -DOPENSSL_ROOT_DIR=${PWD}/submodules/openssl -DBUILD_EXAMPLES=NO -DBUILD_TESTING=NO -DCMAKE_OSX_ARCHITECTURES=arm64 -DCRYPTO_BACKEND=OpenSSL -DCMAKE_OSX_DEPLOYMENT_TARGET=$(DEPLOYMENT_TARGET) .. && $(MAKE) libssh2_static
+	cd submodules/libssh2/build_arm64 && $(CMAKE) -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_IGNORE_PREFIX_PATH="/opt/homebrew;/opt/local" -DCMAKE_OSX_SYSROOT=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -DOPENSSL_INCLUDE_DIR=${PWD}/submodules/openssl/include -DOPENSSL_ROOT_DIR=${PWD}/submodules/openssl -DBUILD_EXAMPLES=NO -DBUILD_TESTING=NO -DCMAKE_OSX_ARCHITECTURES=arm64 -DCRYPTO_BACKEND=OpenSSL -DCMAKE_OSX_DEPLOYMENT_TARGET=$(DEPLOYMENT_TARGET) .. && $(MAKE) libssh2_static
 
 ifdef UNIVERSAL
 fatlibssh2: force fatopenssl
@@ -568,12 +609,12 @@ cc-status: force
 
 libgit2: force
 	mkdir -p submodules/libgit2/build
-	PATH=/usr/local/bin:${PATH} cd submodules/libgit2/build && ${CMAKE} -DBUILD_CLAR=OFF -DCMAKE_IGNORE_PREFIX_PATH=/opt/homebrew -DBUILD_SHARED_LIBS=OFF -DCMAKE_OSX_ARCHITECTURES="$(CMAKE_ARCHS)" -DCMAKE_OSX_DEPLOYMENT_TARGET="$(DEPLOYMENT_TARGET)" -DCMAKE_INSTALL_PREFIX=../../../ThirdParty/libgit2 -DUSE_SSH=OFF -DUSE_ICONV=OFF ..
-	PATH=/usr/local/bin:${PATH} cd submodules/libgit2/build && ${CMAKE} --build . --target install --parallel "$$(sysctl -n hw.ncpu)"
+	cd submodules/libgit2/build && ${CMAKE} -DBUILD_CLAR=OFF -DCMAKE_IGNORE_PREFIX_PATH="/opt/homebrew;/opt/local" -DPKG_CONFIG_EXECUTABLE=$(PKG_CONFIG) -DBUILD_SHARED_LIBS=OFF -DCMAKE_OSX_ARCHITECTURES="$(CMAKE_ARCHS)" -DCMAKE_OSX_SYSROOT=macosx -DCMAKE_OSX_DEPLOYMENT_TARGET="$(DEPLOYMENT_TARGET)" -DCMAKE_INSTALL_PREFIX=../../../ThirdParty/libgit2 -DUSE_SSH=OFF -DUSE_ICONV=OFF ..
+	cd submodules/libgit2/build && ${CMAKE} --build . --target install --parallel "$$(sysctl -n hw.ncpu)"
 
 sparkle: force
 	rm -rf ThirdParty/Sparkle.framework
-	cd submodules/Sparkle && xcodebuild -scheme Sparkle -configuration Release 'CONFIGURATION_BUILD_DIR=$$(SRCROOT)/Build/$$(CONFIGURATION)' $(SIGNING_FLAGS) $(ARCH_FLAGS)
+	cd submodules/Sparkle && xcodebuild -scheme Sparkle -configuration Release 'CONFIGURATION_BUILD_DIR=$$(SRCROOT)/Build/$$(CONFIGURATION)' MACOSX_DEPLOYMENT_TARGET=$(DEPLOYMENT_TARGET) $(SIGNING_FLAGS) $(ARCH_FLAGS)
 	mv submodules/Sparkle/Build/Release/Sparkle.framework ThirdParty/Sparkle.framework
 
 paranoid-cc-status: force

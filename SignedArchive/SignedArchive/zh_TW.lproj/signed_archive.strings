@@ -37,7 +37,7 @@
 "ok" = "正常";
 
 /* SIGArchiveBuilder.m */
-"Could not create write stream" = "无法建立写入流";
+"Could not create write stream" = "無法創建寫流";
 "Error checking file size" = "检查档案大小时出错";
 
 /* SIGArchiveChunk.m */

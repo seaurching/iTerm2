@@ -1354,6 +1354,7 @@
 		6D6965F23060C0DA002B885D /* CopyMode.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6965EE3060C0DA002B885D /* CopyMode.strings */; };
 		6D6965F33060C0DA002B885D /* CopyMode.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6965EE3060C0DA002B885D /* CopyMode.strings */; };
 		6D6965F43060C0DA002B885D /* CopyMode.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6D6965EE3060C0DA002B885D /* CopyMode.strings */; };
+		6D83FC4730A68F2300D8DFB0 /* SignedArchive.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6D83FC4630A68F2300D8DFB0 /* SignedArchive.xcstrings */; };
 		6DA92A513062D8090062F390 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DA92A503062D8090062F390 /* MainMenu.xib */; };
 		6DA92A523062D8090062F390 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DA92A503062D8090062F390 /* MainMenu.xib */; };
 		6DA92A533062D8090062F390 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DA92A503062D8090062F390 /* MainMenu.xib */; };
@@ -7501,6 +7502,7 @@
 		6D6965FA3060C0EC002B885D /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CopyMode.strings"; sourceTree = "<group>"; };
 		6D6965FB3060C0EF002B885D /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/CopyMode.strings"; sourceTree = "<group>"; };
 		6D70E7DE7E81B39DC29CC27B /* VT100PromptKind.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = VT100PromptKind.h; sourceTree = "<group>"; };
+		6D83FC4630A68F2300D8DFB0 /* SignedArchive.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = SignedArchive.xcstrings; path = SignedArchive/SignedArchive.xcstrings; sourceTree = "<group>"; };
 		6DA92A4F3062D8090062F390 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6DA92A543062D8090062F390 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/MainMenu.xcstrings; sourceTree = "<group>"; };
 		6DAE024E307D0B100044B45E /* SIGArchiveBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIGArchiveBuilder.h; path = SignedArchive/SIGArchiveBuilder.h; sourceTree = "<group>"; };
@@ -12288,6 +12290,7 @@
 				6D3AD65E305E000000562BB8 /* signed_archive.strings */,
 				5370677721C9D2760088D0F3 /* SIGArchiveBuilder.m */,
 				6DAE024E307D0B100044B45E /* SIGArchiveBuilder.h */,
+				6D83FC4630A68F2300D8DFB0 /* SignedArchive.xcstrings */,
 				5370676221C9D2700088D0F3 /* SIGArchiveChunk.h */,
 				5370677021C9D2750088D0F3 /* SIGArchiveChunk.m */,
 				A6F22ACE239B66CC00C5D1A9 /* SIGArchiveCommon.h */,
@@ -19511,6 +19514,7 @@
 				29E495F44E531BFA0A8930B2 /* Popups.strings in Resources */,
 				1C98B69F7A353BDB2397C843 /* RegexVisualization.strings in Resources */,
 				714CAF98DAA59034B5E66181 /* Marks.strings in Resources */,
+				6D83FC4730A68F2300D8DFB0 /* SignedArchive.xcstrings in Resources */,
 				1683E1CD28C73FD10DC94C49 /* Locale.strings in Resources */,
 				1409C21F985D39605349F655 /* iTermController.strings in Resources */,
 				3B0D7D63B35BC4D303B414B6 /* Keyboard.strings in Resources */,
@@ -26568,6 +26572,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -26591,7 +26596,7 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -27914,6 +27919,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -27937,7 +27943,7 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -30724,7 +30730,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -30827,7 +30833,7 @@
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = ZVXNS6CXS6;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -30961,6 +30967,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				WARNING_CFLAGS = "-Wall";
 			};
@@ -31017,6 +31024,7 @@
 				SDKROOT = macosx;
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				WARNING_CFLAGS = "-Wall";
 			};

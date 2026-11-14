@@ -295,37 +295,37 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "的字体："
+            "value" : "字体："
           }
         },
         "zh_TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "的字型："
+            "value" : "字型："
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "的字体："
+            "value" : "字体："
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "的字体："
+            "value" : "字体："
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "的字型："
+            "value" : "字型："
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "的字型："
+            "value" : "字型："
           }
         }
       }

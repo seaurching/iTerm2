@@ -109,7 +109,7 @@ class ToolCodecierge: NSView, ToolbeltTool {
                                         return
                                     }
                                     session.writeTask(command.command.trimmingTrailingNewline + "\n")
-                                    delegate?.session(session: self, didProduceAdditionalText: "Running `\(command.command.escapedForMarkdownCode)`\n")
+                                    delegate?.session(session: self, didProduceAdditionalText: String(format: NSLocalizedString("Running `%@`\n", tableName: "Toolbelt", comment: "codecierge: 转写追加文本：正在执行的命令；%@ 为命令"), command.command.escapedForMarkdownCode))
                                     pendingCompletion = completion
                                 })
                         }
@@ -141,11 +141,11 @@ class ToolCodecierge: NSView, ToolbeltTool {
                                         session.sendTextSlowly("\n")
                                     }
                                     session.sendTextSlowly("\u{0004}")
-                                    delegate?.session(session: self, didProduceAdditionalText: "Writing to \(command.filename)\n")
+                                    delegate?.session(session: self, didProduceAdditionalText: String(format: NSLocalizedString("Writing to %@\n", tableName: "Toolbelt", comment: "codecierge: 转写追加文本：正在写入文件；%@ 为文件名"), command.filename))
                                     pendingCompletion = { result in
                                         switch result {
                                         case .success:
-                                            try? completion(.success("Done"))
+                                            try? completion(.success(NSLocalizedString("Done", tableName: "Toolbelt", comment: "codecierge: write 工具完成时回传给模型的结果文本")))
                                         case .failure(let error):
                                             try? completion(.failure(error))
                                         }
@@ -283,7 +283,7 @@ class ToolCodecierge: NSView, ToolbeltTool {
                 let text = if let newCommand {
                     message(forCommand: newCommand)
                 } else {
-                    "Tell me how to get started."
+                    NSLocalizedString("Tell me how to get started.", tableName: "Toolbelt", comment: "codecierge: 开始会话时发给模型的引导消息")
                 }
                 enqueueCompletion(text) { [weak self] result in
                     guard let self else { return }
@@ -364,12 +364,12 @@ class ToolCodecierge: NSView, ToolbeltTool {
             lines.append(command.output)
             lines.append("-- end output --")
             if command.exitCode != 0 {
-                lines.append("The command failed with exit code \(command.exitCode).")
+                lines.append(String(format: NSLocalizedString("The command failed with exit code %d.", tableName: "Toolbelt", comment: "codecierge: 发给模型的命令失败信息；%d 为退出码"), command.exitCode))
             }
             if ghostRiding {
-                lines.append("Briefly explain the output, especially if anything went wrong, and perform the next step.")
+                lines.append(NSLocalizedString("Briefly explain the output, especially if anything went wrong, and perform the next step.", tableName: "Toolbelt", comment: "codecierge: 发给模型的下一步指令（自动执行模式）"))
             } else {
-                lines.append("Briefly explain the output, especially if anything went wrong, and suggest the next step. If there is another command to run, please state it.")
+                lines.append(NSLocalizedString("Briefly explain the output, especially if anything went wrong, and suggest the next step. If there is another command to run, please state it.", tableName: "Toolbelt", comment: "codecierge: 发给模型的下一步指令（建议模式）"))
             }
             return lines.joined(separator: "\n")
         }
@@ -599,7 +599,7 @@ class ToolCodecierge: NSView, ToolbeltTool {
             break
         case .running:
             if let session = currentSession() {
-                appendToSuggestion(guid: session.guid, suggestion: "\n\n### 👤 You\n\(text)\n")
+                appendToSuggestion(guid: session.guid, suggestion: String(format: NSLocalizedString("\n\n### 👤 You\n%@\n", tableName: "Toolbelt", comment: "codecierge: 转写视图：用户消息段；%@ 为消息内容"), text))
             }
             currentSession()?.sendTextMessage(text)
         }
@@ -608,11 +608,11 @@ class ToolCodecierge: NSView, ToolbeltTool {
 
 extension ToolCodecierge: ToolCodeciergeSessionDelegate {
     fileprivate func session(session: Session, didProduceText text: String) {
-        setSuggestion(guid: session.guid, suggestion: "### 🔮 Assistant\n\(text)")
+        setSuggestion(guid: session.guid, suggestion: String(format: NSLocalizedString("### 🔮 Assistant\n%@", tableName: "Toolbelt", comment: "codecierge: 转写视图：助手回复段（首次展示）；%@ 为回复内容"), text))
     }
 
     fileprivate func session(session: Session, didProduceAdditionalText text: String) {
-        appendToSuggestion(guid: session.guid, suggestion: "\n\n### 🔮 Assistant\n\(text)")
+        appendToSuggestion(guid: session.guid, suggestion: String(format: NSLocalizedString("\n\n### 🔮 Assistant\n%@", tableName: "Toolbelt", comment: "codecierge: 转写视图：助手回复段（追加）；%@ 为回复内容"), text))
     }
 
     fileprivate func sessionBusyDidChange(session: Session, busy: Bool) {
@@ -623,8 +623,8 @@ extension ToolCodecierge: ToolCodeciergeSessionDelegate {
 
     fileprivate func sessionDidReceiveCommand(session: Session, command: String) {
         let sanitizedCommand = command.escapedForMarkdownCode.truncatedWithTrailingEllipsis(to: 80)
-        appendToSuggestion(guid: session.guid, suggestion: "\n\n### 💻 Terminal\n`\(sanitizedCommand)`")
-        appendToSuggestion(guid: session.guid, suggestion: "\n\n### 🔮 Assistant\nThinking…")
+        appendToSuggestion(guid: session.guid, suggestion: String(format: NSLocalizedString("\n\n### 💻 Terminal\n`%@`", tableName: "Toolbelt", comment: "codecierge: 转写视图：终端命令段；%@ 为命令"), sanitizedCommand))
+        appendToSuggestion(guid: session.guid, suggestion: NSLocalizedString("\n\n### 🔮 Assistant\nThinking…", tableName: "Toolbelt", comment: "codecierge: 转写视图：等待助手回复的占位段"))
     }
 
     fileprivate func sessionEnabled(_ session: ToolCodecierge.Session) -> Bool {

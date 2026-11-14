@@ -1547,7 +1547,8 @@
             "value" : "▋"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "3bd-rH-r3u.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Reset\"; ObjectID = \"3bd-rH-r3u\";",
@@ -1802,37 +1803,37 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择"
+            "value" : "选区"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择"
+            "value" : "選區"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择"
+            "value" : "选区"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择"
+            "value" : "选区"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择"
+            "value" : "選區"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择"
+            "value" : "選區"
           }
         }
       }
@@ -2039,7 +2040,8 @@
             "value" : "⏐"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "4Ha-Ub-4AS.ibShadowedToolTip" : {
       "comment" : "Class = \"NSButton\"; ibShadowedToolTip = \"Paste bracketing tells compatible apps that text was inserted by a paste operation rather than typing. Some programs use this to treat pastes specially, such as by not auto-indenting it.\"; ObjectID = \"4Ha-Ub-4AS\";",
@@ -2627,7 +2629,8 @@
             "value" : "⚠️"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "5OR-eB-vkq.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Send “Idle” alert\"; ObjectID = \"5OR-eB-vkq\";",
@@ -3698,7 +3701,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键可打开一个使用此配置文件的专用窗口"
+            "value" : "快捷键可打开一个使用此配置文件的专用窗口"
           }
         },
         "zh_TW" : {
@@ -3710,13 +3713,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键可打开一个使用此配置文件的专用窗口"
+            "value" : "快捷键可打开一个使用此配置文件的专用窗口"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键可打开一个使用此配置文件的专用窗口"
+            "value" : "快捷键可打开一个使用此配置文件的专用窗口"
           }
         },
         "zh-Hant" : {
@@ -5234,7 +5237,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "…但仅当所有窗口都是热键窗口时"
+            "value" : "…但仅当所有窗口都是快捷键窗口时"
           }
         },
         "zh_TW" : {
@@ -5246,13 +5249,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "…但仅当所有窗口都是热键窗口时"
+            "value" : "…但仅当所有窗口都是快捷键窗口时"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "…但仅当所有窗口都是热键窗口时"
+            "value" : "…但仅当所有窗口都是快捷键窗口时"
           }
         },
         "zh-Hant" : {
@@ -7199,7 +7202,8 @@
             "value" : "3"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2150.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"⌃⌘W\"; ObjectID = \"2150\";",
@@ -7451,7 +7455,8 @@
             "value" : "5"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2156.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"6\"; ObjectID = \"2156\";",
@@ -7463,7 +7468,8 @@
             "value" : "6"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2157.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"7\"; ObjectID = \"2157\";",
@@ -7475,7 +7481,8 @@
             "value" : "7"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2158.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"8\"; ObjectID = \"2158\";",
@@ -7487,7 +7494,8 @@
             "value" : "8"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2160.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"9\"; ObjectID = \"2160\";",
@@ -7499,7 +7507,8 @@
             "value" : "9"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2161.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"⌃⌘X\"; ObjectID = \"2161\";",
@@ -7751,7 +7760,8 @@
             "value" : "0"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2167.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"⌃⌘C\"; ObjectID = \"2167\";",
@@ -7811,7 +7821,8 @@
             "value" : "1"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2169.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"⌃⌘D\"; ObjectID = \"2169\";",
@@ -7871,7 +7882,8 @@
             "value" : "4"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2171.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"⌃⌘P\"; ObjectID = \"2171\";",
@@ -8363,7 +8375,8 @@
             "value" : "2"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "2182.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Shortcut key:      \"; ObjectID = \"2182\";",
@@ -8762,37 +8775,37 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "选区:"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "選區:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "选区:"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "选区："
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "選區:"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "選區:"
           }
         }
       }
@@ -14759,7 +14772,8 @@
             "value" : "_"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "5023.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Radio\"; ObjectID = \"5023\";",
@@ -15254,7 +15268,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "应用热键:"
+            "value" : "应用快捷键:"
           }
         },
         "zh_TW" : {
@@ -15266,13 +15280,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "应用热键:"
+            "value" : "应用快捷键:"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "应用热键:"
+            "value" : "应用快捷键:"
           }
         },
         "zh-Hant" : {
@@ -15302,7 +15316,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "用系统级热键显示/隐藏所有窗口"
+            "value" : "用系统级快捷键显示/隐藏所有窗口"
           }
         },
         "zh_TW" : {
@@ -15314,13 +15328,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "用系统级热键显示/隐藏所有窗口"
+            "value" : "用系统级快捷键显示/隐藏所有窗口"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "用系统级热键显示/隐藏所有窗口"
+            "value" : "用系统级快捷键显示/隐藏所有窗口"
           }
         },
         "zh-Hant" : {
@@ -16261,37 +16275,37 @@
         },
         "zh_CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "默认"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "預設"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "默认"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "默认"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "預設"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "預設"
           }
         }
@@ -16309,37 +16323,37 @@
         },
         "zh_CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "名称"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "名称"
+            "state" : "translated",
+            "value" : "名稱"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "名称"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "名称"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "名称"
+            "state" : "translated",
+            "value" : "名稱"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "名称"
           }
         }
@@ -16403,7 +16417,8 @@
             "value" : "-"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "5586.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Set Default\"; ObjectID = \"5586\";",
@@ -17234,7 +17249,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "开启后，可通过“视图 > 使用透明”逐窗口切换透明效果。注意这不适用于原生全屏窗口（由 macOS 管理并进入独立桌面空间的窗口），因为它们背后没有内容可看。使用“设置 > 通用 > 窗口 > 原生全屏窗口”控制使用哪种全屏窗口。热键窗口全屏时只能是非原生全屏。"
+            "value" : "开启后，可通过“视图 > 使用透明”逐窗口切换透明效果。注意这不适用于原生全屏窗口（由 macOS 管理并进入独立桌面空间的窗口），因为它们背后没有内容可看。使用“设置 > 通用 > 窗口 > 原生全屏窗口”控制使用哪种全屏窗口。快捷键窗口全屏时只能是非原生全屏。"
           }
         },
         "zh_TW" : {
@@ -17246,13 +17261,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "开启后，可通过“视图 > 使用透明”逐窗口切换透明效果。注意这不适用于原生全屏窗口（由 macOS 管理并进入独立桌面空间的窗口），因为它们背后没有内容可看。使用“设置 > 通用 > 窗口 > 原生全屏窗口”控制使用哪种全屏窗口。热键窗口全屏时只能是非原生全屏。"
+            "value" : "开启后，可通过“视图 > 使用透明”逐窗口切换透明效果。注意这不适用于原生全屏窗口（由 macOS 管理并进入独立桌面空间的窗口），因为它们背后没有内容可看。使用“设置 > 通用 > 窗口 > 原生全屏窗口”控制使用哪种全屏窗口。快捷键窗口全屏时只能是非原生全屏。"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "开启后，可通过“视图 > 使用透明”逐窗口切换透明效果。注意这不适用于原生全屏窗口（由 macOS 管理并进入独立桌面空间的窗口），因为它们背后没有内容可看。使用“设置 > 通用 > 窗口 > 原生全屏窗口”控制使用哪种全屏窗口。热键窗口全屏时只能是非原生全屏。"
+            "value" : "开启后，可通过“视图 > 使用透明”逐窗口切换透明效果。注意这不适用于原生全屏窗口（由 macOS 管理并进入独立桌面空间的窗口），因为它们背后没有内容可看。使用“设置 > 通用 > 窗口 > 原生全屏窗口”控制使用哪种全屏窗口。快捷键窗口全屏时只能是非原生全屏。"
           }
         },
         "zh-Hant" : {
@@ -18049,38 +18064,38 @@
         },
         "zh_CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "备注"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "备注"
+            "state" : "translated",
+            "value" : "備註"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "备注"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "备注"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "备注"
+            "state" : "translated",
+            "value" : "備註"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "备注"
+            "state" : "translated",
+            "value" : "備註"
           }
         }
       }
@@ -19057,37 +19072,37 @@
         },
         "zh_CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "鼠标按键/触控板手势"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "滑鼠按键/触控板手勢"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "鼠标按键/触控板手势"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "鼠标按键/触控板手势"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "滑鼠按键/触控板手勢"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "滑鼠按键/触控板手勢"
           }
         }
@@ -19103,43 +19118,38 @@
             "value" : "Action"
           }
         },
-        "zh_CN" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "操作"
-          }
-        },
         "zh_TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "操作"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "操作"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "操作"
+            "state" : "translated",
+            "value" : "动作"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "操作"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "操作"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "6108.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"⌘-Click opens filename/URL (semantic history)\"; ObjectID = \"6108\";",
@@ -19343,7 +19353,8 @@
             "value" : "^"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "6141.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"⇧\"; ObjectID = \"6141\";",
@@ -19355,7 +19366,8 @@
             "value" : "⇧"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "6142.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"⌥\"; ObjectID = \"6142\";",
@@ -19367,7 +19379,8 @@
             "value" : "⌥"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "6143.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"⌘\"; ObjectID = \"6143\";",
@@ -19379,7 +19392,8 @@
             "value" : "⌘"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "6157.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Button/Gesture:\"; ObjectID = \"6157\";",
@@ -19821,6 +19835,42 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "OK"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
           }
         }
       }
@@ -20701,38 +20751,38 @@
         },
         "zh_CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "标题"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "标题"
+            "state" : "translated",
+            "value" : "標題"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "标题"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "标题"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "标题"
+            "state" : "translated",
+            "value" : "標題"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "标题"
+            "state" : "translated",
+            "value" : "標題"
           }
         }
       }
@@ -20793,6 +20843,42 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "OK"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
           }
         }
       }
@@ -23450,7 +23536,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "快速打开热键:"
+            "value" : "快速打开快捷键:"
           }
         },
         "zh_TW" : {
@@ -23462,13 +23548,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "快速打开热键:"
+            "value" : "快速打开快捷键:"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "快速打开热键:"
+            "value" : "快速打开快捷键:"
           }
         },
         "zh-Hant" : {
@@ -23690,7 +23776,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "配置热键窗口"
+            "value" : "配置快捷键窗口"
           }
         },
         "zh_TW" : {
@@ -23702,13 +23788,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "配置热键窗口"
+            "value" : "配置快捷键窗口"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "配置热键窗口"
+            "value" : "配置快捷键窗口"
           }
         },
         "zh-Hant" : {
@@ -25946,37 +26032,37 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "命令选择:"
+            "value" : "命令选区:"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "指令选择:"
+            "value" : "指令選區:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "命令选择:"
+            "value" : "命令选区:"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "命令选择:"
+            "value" : "命令选区:"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "指令选择:"
+            "value" : "指令選區:"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "指令选择:"
+            "value" : "指令選區:"
           }
         }
       }
@@ -26519,7 +26605,8 @@
             "value" : "AI"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "dI5-Wy-HCI.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"⌃ Left Control\"; ObjectID = \"dI5-Wy-HCI\";",
@@ -27585,6 +27672,42 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "OK"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
           }
         }
       }
@@ -29617,37 +29740,37 @@
         },
         "zh_CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "值"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "值"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "值"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "值"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "值"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "值"
           }
         }
@@ -29714,7 +29837,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键窗口:"
+            "value" : "快捷键窗口:"
           }
         },
         "zh_TW" : {
@@ -29726,13 +29849,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键窗口:"
+            "value" : "快捷键窗口:"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键窗口:"
+            "value" : "快捷键窗口:"
           }
         },
         "zh-Hant" : {
@@ -30098,7 +30221,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "创建专用热键窗口…"
+            "value" : "创建专用快捷键窗口…"
           }
         },
         "zh_TW" : {
@@ -30110,13 +30233,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "创建专用热键窗口…"
+            "value" : "创建专用快捷键窗口…"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "创建专用热键窗口…"
+            "value" : "创建专用快捷键窗口…"
           }
         },
         "zh-Hant" : {
@@ -31103,7 +31226,8 @@
             "value" : "⚠️"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "gUo-d2-CFJ.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Automatic Profile Switching:\"; ObjectID = \"gUo-d2-CFJ\";",
@@ -32846,7 +32970,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键窗口:"
+            "value" : "快捷键窗口:"
           }
         },
         "zh_TW" : {
@@ -32858,13 +32982,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键窗口:"
+            "value" : "快捷键窗口:"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键窗口:"
+            "value" : "快捷键窗口:"
           }
         },
         "zh-Hant" : {
@@ -34418,13 +34542,49 @@
       }
     },
     "jN9-Kg-e2W.title" : {
-      "comment" : "Class = \"NSButtonCell\"; title = \"Ok\"; ObjectID = \"jN9-Kg-e2W\";",
+      "comment" : "Class = \"NSButtonCell\"; title = \"OK\"; ObjectID = \"jN9-Kg-e2W\";",
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Ok"
+            "value" : "OK"
+          }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh_TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh-Hans-CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "确认"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
+          }
+        },
+        "zh-Hant-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "確認"
           }
         }
       }
@@ -34538,7 +34698,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "按全局热键跳转到此会话:"
+            "value" : "按全局快捷键跳转到此会话:"
           }
         },
         "zh_TW" : {
@@ -34550,13 +34710,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "按全局热键跳转到此会话:"
+            "value" : "按全局快捷键跳转到此会话:"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "按全局热键跳转到此会话:"
+            "value" : "按全局快捷键跳转到此会话:"
           }
         },
         "zh-Hant" : {
@@ -34682,7 +34842,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键"
+            "value" : "快捷键"
           }
         },
         "zh_TW" : {
@@ -34694,13 +34854,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键"
+            "value" : "快捷键"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "热键"
+            "value" : "快捷键"
           }
         },
         "zh-Hant" : {
@@ -37946,37 +38106,37 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "选区:"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "選區:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "选区:"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "选区:"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "選區:"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择:"
+            "value" : "選區:"
           }
         }
       }
@@ -40298,7 +40458,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择“使用系统窗口恢复策略”后，如果存在自动启动脚本、定义了热键窗口或有已收起的会话，iTerm2 启动时不会打开新窗口。启用此项可强制打开新窗口。"
+            "value" : "选择“使用系统窗口恢复策略”后，如果存在自动启动脚本、定义了快捷键窗口或有已收起的会话，iTerm2 启动时不会打开新窗口。启用此项可强制打开新窗口。"
           }
         },
         "zh_TW" : {
@@ -40310,13 +40470,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择“使用系统窗口恢复策略”后，如果存在自动启动脚本、定义了热键窗口或有已收起的会话，iTerm2 启动时不会打开新窗口。启用此项可强制打开新窗口。"
+            "value" : "选择“使用系统窗口恢复策略”后，如果存在自动启动脚本、定义了快捷键窗口或有已收起的会话，iTerm2 启动时不会打开新窗口。启用此项可强制打开新窗口。"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择“使用系统窗口恢复策略”后，如果存在自动启动脚本、定义了热键窗口或有已收起的会话，iTerm2 启动时不会打开新窗口。启用此项可强制打开新窗口。"
+            "value" : "选择“使用系统窗口恢复策略”后，如果存在自动启动脚本、定义了快捷键窗口或有已收起的会话，iTerm2 启动时不会打开新窗口。启用此项可强制打开新窗口。"
           }
         },
         "zh-Hant" : {
@@ -41243,7 +41403,8 @@
             "value" : "值"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "pzb-ff-PHK.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Minimal\"; ObjectID = \"pzb-ff-PHK\";",
@@ -41930,7 +42091,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "仅恢复热键窗口"
+            "value" : "仅恢复快捷键窗口"
           }
         },
         "zh_TW" : {
@@ -41942,13 +42103,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "仅恢复热键窗口"
+            "value" : "仅恢复快捷键窗口"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "仅恢复热键窗口"
+            "value" : "仅恢复快捷键窗口"
           }
         },
         "zh-Hant" : {
@@ -42310,8 +42471,15 @@
             "state" : "new",
             "value" : "↻"
           }
+        },
+        "zh_CN" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "↻"
+          }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "QkD-2r-f9S.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"300\"; ObjectID = \"QkD-2r-f9S\";",
@@ -42323,7 +42491,8 @@
             "value" : "300"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "qLh-uF-nSW.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"Right command (⌘) key:\"; ObjectID = \"qLh-uF-nSW\";",
@@ -46226,37 +46395,37 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "访问:"
+            "value" : "权限访问:"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "访问:"
+            "value" : "权限访问:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "访问:"
+            "value" : "权限访问:"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "访问:"
+            "value" : "权限访问:"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "访问:"
+            "value" : "权限访问:"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "访问:"
+            "value" : "权限访问:"
           }
         }
       }
@@ -47329,37 +47498,37 @@
         },
         "zh_CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "即使会话位于未选中的标签页/窗格，也可能导致窗口改变大小"
+            "state" : "translated",
+            "value" : "即使窗口位于未选中的标签页/窗格中，某个会话也可能导致该窗口大小发生变化"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "即使階段位于未选中的分頁/窗格，也可能导致視窗改变大小"
+            "state" : "translated",
+            "value" : "即使視窗位於未選中的選項卡/窗格中，會話也可能導致視窗調整大小"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "即使会话位于未选中的标签页/窗格，也可能导致窗口改变大小"
+            "state" : "translated",
+            "value" : "即使窗口位于未选中的标签页/窗格中，某个会话也可能导致该窗口大小发生变化"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "即使会话位于未选中的标签页/窗格，也可能导致窗口改变大小"
+            "state" : "translated",
+            "value" : "即使窗口位于未选中的标签页/窗格中，某个会话也可能导致该窗口大小发生变化"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "即使階段位于未选中的分頁/窗格，也可能导致視窗改变大小"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "即使階段位于未选中的分頁/窗格，也可能导致視窗改变大小"
           }
         }
@@ -47809,38 +47978,38 @@
         },
         "zh_CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "按键"
+            "state" : "translated",
+            "value" : "键"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "按键"
+            "state" : "translated",
+            "value" : "鍵"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "按键"
+            "state" : "translated",
+            "value" : "键"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "按键"
+            "state" : "translated",
+            "value" : "键"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "按键"
+            "state" : "translated",
+            "value" : "鍵"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "按键"
+            "state" : "translated",
+            "value" : "鍵"
           }
         }
       }
@@ -48527,7 +48696,8 @@
             "value" : "⚠️"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "vTm-IT-1wG.title" : {
       "comment" : "Class = \"NSButtonCell\"; title = \"Restrict alternate mouse scroll to vertical scrolling\"; ObjectID = \"vTm-IT-1wG\";",
@@ -49262,7 +49432,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "仅当所有窗口都是热键窗口时才从 Dock 排除"
+            "value" : "仅当所有窗口都是快捷键窗口时才从 Dock 排除"
           }
         },
         "zh_TW" : {
@@ -49274,13 +49444,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "仅当所有窗口都是热键窗口时才从 Dock 排除"
+            "value" : "仅当所有窗口都是快捷键窗口时才从 Dock 排除"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "仅当所有窗口都是热键窗口时才从 Dock 排除"
+            "value" : "仅当所有窗口都是快捷键窗口时才从 Dock 排除"
           }
         },
         "zh-Hant" : {
@@ -49310,7 +49480,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果你只通过热键窗口使用 iTerm2，这会很有用。未定义专用热键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义热键时将无法访问它。"
+            "value" : "如果你只通过快捷键窗口使用 iTerm2，这会很有用。未定义专用快捷键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义快捷键时将无法访问它。"
           }
         },
         "zh_TW" : {
@@ -49322,13 +49492,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果你只通过热键窗口使用 iTerm2，这会很有用。未定义专用热键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义热键时将无法访问它。"
+            "value" : "如果你只通过快捷键窗口使用 iTerm2，这会很有用。未定义专用快捷键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义快捷键时将无法访问它。"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果你只通过热键窗口使用 iTerm2，这会很有用。未定义专用热键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义热键时将无法访问它。"
+            "value" : "如果你只通过快捷键窗口使用 iTerm2，这会很有用。未定义专用快捷键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义快捷键时将无法访问它。"
           }
         },
         "zh-Hant" : {
@@ -49453,37 +49623,37 @@
         },
         "zh_CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "设置"
           }
         },
         "zh_TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "設定"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "设置"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "设置"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "設定"
           }
         },
         "zh-Hant-TW" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "設定"
           }
         }
@@ -51854,7 +52024,7 @@
         "zh_CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果你只通过热键窗口使用 iTerm2，这会很有用。未定义专用热键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义热键时将无法访问它。"
+            "value" : "如果你只通过快捷键窗口使用 iTerm2，这会很有用。未定义专用快捷键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义快捷键时将无法访问它。"
           }
         },
         "zh_TW" : {
@@ -51866,13 +52036,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果你只通过热键窗口使用 iTerm2，这会很有用。未定义专用热键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义热键时将无法访问它。"
+            "value" : "如果你只通过快捷键窗口使用 iTerm2，这会很有用。未定义专用快捷键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义快捷键时将无法访问它。"
           }
         },
         "zh-Hans-CN" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "如果你只通过热键窗口使用 iTerm2，这会很有用。未定义专用热键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义热键时将无法访问它。"
+            "value" : "如果你只通过快捷键窗口使用 iTerm2，这会很有用。未定义专用快捷键窗口时此选项不可用，因为当 iTerm2 没有窗口且未定义快捷键时将无法访问它。"
           }
         },
         "zh-Hant" : {
@@ -52331,7 +52501,8 @@
             "value" : "⚠️"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "zNI-8R-j0Y.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Item 3\"; ObjectID = \"zNI-8R-j0Y\";",

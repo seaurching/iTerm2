@@ -53,7 +53,13 @@
     NSOutputStream *combinedOutputStream = [NSOutputStream outputStreamToMemory];
     if (!combinedOutputStream) {
         if (error) {
-            *error = [SIGError errorWithCode:SIGErrorCodeIOWrite detail:NSLocalizedStringFromTable(@"Could not create write stream", @"signed_archive", @"无法创建写入流")];
+//            *error = [SIGError errorWithCode:SIGErrorCodeIOWrite detail:NSLocalizedStringFromTable(@"Could not create write stream", @"signed_archive", @"无法创建写入流")];
+            *error = [ SIGError errorWithCode:SIGErrorCodeIOWrite
+            detail:NSLocalizedStringWithDefaultValue(@"sugarchivebuilder.error",
+                                                     @"SignedArchive",
+                                                     [NSBundle mainBundle],
+                                                     @"Could not create write stream",
+                                                     @"无法创建写入流")];
         }
         return NO;
     }
