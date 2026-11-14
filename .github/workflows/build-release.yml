@@ -1,0 +1,167 @@
+# 构建 v3.7.4 中文化分支并分别发布 arm64 / x86_64 两个 DMG（自举式构建）。
+#
+# 策略：matrix 双 job，各在原生架构的 GitHub runner 上构建：
+#   - arm64  → macos-26（Apple Silicon）
+#   - x86_64 → macos-26-intel（Intel x64；macos-15-intel 也在但更老）
+# 每个 job：克隆 → make setup 装工具链 → make deps 用本机 Xcode 重编全部二进制
+# 依赖（ThirdParty/、各 *.framework，原生单架构）→ 用同一 Xcode 版本盖写
+# last-xcode-version（"Build binary dependencies if xcode version changed"
+# 构建脚本阶段会逐字节比对该文件，不匹配则 exit 1）→ make release 构建
+# Deployment 配置（Makefile 默认 ARCHS=本机架构）→ ad-hoc 重签 → 打 DMG。
+# 最后由 release job 汇总两个 DMG 发布到滚动 pre-release。
+#
+# 注意：Intel runner 处于逐步退役通道（macos-12/13/14 已下线），macos-26-intel
+# 是当前可用的最新 Intel 镜像；若未来下架，可退回"arm64 runner 交叉编译 x86_64"
+# 方案（Makefile 的 x86openssl/x86libsixel 目标自带 -target 交叉编译参数）。
+name: Build & DMG Release
+
+on:
+  push:
+    branches: [v3.7.4-chineses]
+  workflow_dispatch:
+
+permissions:
+  contents: write # 创建/更新 Release 与推送 tag
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true # 新 push 到来时取消过时的构建
+
+jobs:
+  build:
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 300
+
+    strategy:
+      fail-fast: false # 一个架构失败不取消另一个
+      matrix:
+        include:
+          - arch: arm64
+            runner: macos-26
+          - arch: x86_64
+            runner: macos-26-intel
+
+    steps:
+      - name: Checkout (含 submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: 显示 runner 架构与 Xcode 版本（依赖将用它重建，无需匹配 last-xcode-version）
+        run: |
+          uname -m
+          xcodebuild -version
+          xcode-select -p
+
+      - name: 安装构建工具链（make setup，SKIP_CONFIRM 跳过全部交互提示）
+        run: |
+          # 装齐 deps 所需工具：cmake/pkg-config/automake/perl/gettext、
+          # python3+pyobjc（tools/updateVersion.py 需要）、rustup+cbindgen
+          # （railroad_dsl 需要 cargo）。
+          make setup SKIP_CONFIRM=1
+          # brew 的 gettext 是 keg-only，envsubst 不在默认 PATH，需显式加入
+          # （copy_shell_integration.sh 在构建脚本阶段要用 envsubst）。
+          command -v envsubst >/dev/null || \
+            echo "$(brew --prefix gettext)/bin" >> "$GITHUB_PATH"
+
+      - name: 重建全部二进制依赖（make deps，本机原生架构）
+        run: |
+          # 不传 UNIVERSAL：Makefile 按本机 NATIVE_ARCH 构建单架构依赖
+          # （arm64 机走 armopenssl/armsixel，Intel 机走 x86openssl/x86libsixel）。
+          # SIGNING_FLAGS 为命令行变量，自动传播到各依赖的 xcodebuild 构建；
+          # ad-hoc 签名（identity 为 "-"）在无证书环境下保证产物签名一致。
+          make deps SIGNING_FLAGS='CODE_SIGN_IDENTITY=-'
+
+      - name: 用当前 Xcode 版本盖写 last-xcode-version
+        run: |
+          xcodebuild -version > last-xcode-version
+          cat last-xcode-version
+
+      - name: 构建（make release → Deployment，默认本机架构）
+        run: |
+          # make release 先拷贝 release-iTerm2.plist 再调 make Deployment；
+          # 不传 ARCH_FLAGS 时 Makefile 默认 ARCHS="$(NATIVE_ARCH)"，
+          # 恰好就是各 runner 的原生架构。
+          make release SIGNING_FLAGS='CODE_SIGN_IDENTITY=-'
+
+      - name: ad-hoc 重签并校验 app bundle
+        run: |
+          codesign --force --deep --sign - build/Deployment/iTerm2.app
+          codesign --verify --deep --strict build/Deployment/iTerm2.app
+
+      - name: 打 DMG
+        run: |
+          VERSION=$(cat version.txt)
+          DMG="iTerm2-${VERSION}-ch-${{ matrix.arch }}.dmg"
+          hdiutil create \
+            -volname "iTerm2 ${VERSION} 中文版 (${{ matrix.arch }})" \
+            -srcfolder build/Deployment/iTerm2.app \
+            -ov -format UDZO \
+            "${DMG}"
+          ls -lh "${DMG}"
+
+      - name: 上传 artifact（由 release job 汇总发布）
+        uses: actions/upload-artifact@v4
+        with:
+          name: iterm2-dmg-${{ matrix.arch }}
+          path: iTerm2-*-ch-*.dmg
+          retention-days: 14
+          if-no-files-found: error
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout（用于推送 tag）
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: 下载两个架构的 DMG
+        uses: actions/download-artifact@v4
+        with:
+          pattern: iterm2-dmg-*
+          merge-multiple: true # 两个 artifact 的文件合并到同一目录
+
+      - name: "更新滚动 Release（tag: v<版本>-ch，含双架构 DMG）"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(cat version.txt)
+          TAG="v${VERSION}-ch"
+          SHA="${GITHUB_SHA}"
+          SHORT_SHA="${SHA:0:8}"
+          BUILD_TIME=$(date -u +"%Y-%m-%d %H:%M UTC")
+
+          NOTES=$(cat <<EOF
+          iTerm2 ${VERSION} 中文化自动构建。
+
+          - 构建时间：${BUILD_TIME}
+          - 提交：${GITHUB_REPOSITORY}@${SHORT_SHA}
+          - 资产：iTerm2-${VERSION}-ch-arm64.dmg（Apple Silicon）、iTerm2-${VERSION}-ch-x86_64.dmg（Intel）
+          - 签名：ad-hoc（无开发者证书），首次打开时请在系统设置中允许
+
+          国内加速下载：将下方资产链接加上 \`https://gh-proxy.com/\` 前缀，例如：
+          \`https://gh-proxy.com/https://github.com/${GITHUB_REPOSITORY}/releases/download/${TAG}/iTerm2-${VERSION}-ch-arm64.dmg\`
+          EOF
+          )
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -f "$TAG" "$SHA"
+          git push -f origin "$TAG"
+
+          if ! gh release view "$TAG" >/dev/null 2>&1; then
+            gh release create "$TAG" \
+              --prerelease \
+              --title "iTerm2 ${VERSION} 中文版" \
+              --notes "$NOTES"
+          else
+            gh release edit "$TAG" --title "iTerm2 ${VERSION} 中文版" --notes "$NOTES"
+          fi
+          gh release upload "$TAG" \
+            "iTerm2-${VERSION}-ch-arm64.dmg" \
+            "iTerm2-${VERSION}-ch-x86_64.dmg" \
+            --clobber
