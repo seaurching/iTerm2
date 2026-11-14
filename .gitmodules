@@ -12,7 +12,9 @@
 	ignore = dirty
 [submodule "submodules/libsixel"]
 	path = submodules/libsixel
-	url = https://github.com/saitoha/libsixel
+	# 上游 saitoha/libsixel 重写过历史，原 pin 的 e2c8546 在上游已不可达
+	# （GitHub API 与 git fetch 均无法获取），改用 fork 中保存该提交的分支。
+	url = https://github.com/seaurching/libsixel
 	ignore = dirty
 [submodule "submodules/openssl"]
 	path = submodules/openssl
