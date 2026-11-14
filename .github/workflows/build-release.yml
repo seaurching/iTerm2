@@ -1,19 +1,20 @@
 # 构建 v3.7.4 中文化分支并分别发布 arm64 / x86_64 两个 DMG（自举式构建）。
 #
-# 策略：matrix 双 job，各在原生架构的 GitHub runner 上构建：
-#   - arm64  → macos-26（Apple Silicon）
-#   - x86_64 → macos-26-intel（Intel x64；macos-15-intel 也在但更老）
-# 每个 job：克隆 → make setup 装工具链 → make deps（显式目标列表，跳过
-# sfsymbolenum）用本机 Xcode 重编全部二进制依赖（ThirdParty/、各 *.framework，
-# 原生单架构）→ 用同一 Xcode 版本盖写
-# last-xcode-version（"Build binary dependencies if xcode version changed"
-# 构建脚本阶段会逐字节比对该文件，不匹配则 exit 1）→ make release 构建
-# Deployment 配置（Makefile 默认 ARCHS=本机架构）→ ad-hoc 重签 → 打 DMG。
-# 最后由 release job 汇总两个 DMG 发布到滚动 pre-release。
+# 结构（三段式）：
+#   deps job（macos-26 arm64）：UNIVERSAL=1 重编全部二进制依赖为 fat 库
+#     （openssl/libssh2 预编译库不重编；libsixel/openssl 交叉编译双架构后
+#     lipo 合并），并把 ThirdParty/、三个自维护 framework、NMSSH 内嵌库等
+#     产物上传为 artifact。
+#   build job × 2（matrix）：arm64 用 macos-26，x86_64 用 macos-26-intel，
+#     各自下载 deps 产物后仅执行 make release（默认本机架构）→ ad-hoc 重签
+#     → 打 DMG → 上传。
+#   release job：汇总两个 DMG 发布到滚动 pre-release（tag v<版本>-ch）。
 #
-# 注意：Intel runner 处于逐步退役通道（macos-12/13/14 已下线），macos-26-intel
-# 是当前可用的最新 Intel 镜像；若未来下架，可退回"arm64 runner 交叉编译 x86_64"
-# 方案（Makefile 的 x86openssl/x86libsixel 目标自带 -target 交叉编译参数）。
+# 为什么不在 x86_64 runner 上重编依赖：Intel 标准规格 runner 核少，
+# 实测 deps 超过 5 小时（撞 300 分钟 job 上限被杀），而 fat 依赖对单架构
+# app 链接同样适用（链接器按需取架构切片），一次编译两架构共享。
+#
+# 注意：GitHub 对单 job 有 6 小时硬上限，timeout 只能到 360，无法完全去掉。
 name: Build & DMG Release
 
 on:
@@ -29,21 +30,12 @@ concurrency:
   cancel-in-progress: true # 新 push 到来时取消过时的构建
 
 jobs:
-  build:
-    runs-on: ${{ matrix.runner }}
-    timeout-minutes: 300
-
-    strategy:
-      fail-fast: false # 一个架构失败不取消另一个
-      matrix:
-        include:
-          - arch: arm64
-            runner: macos-26
-          - arch: x86_64
-            runner: macos-26-intel
+  deps:
+    runs-on: macos-26
+    timeout-minutes: 360 # GitHub 上限 6 小时
 
     steps:
-      - name: Checkout（不启用 checkout 自带的 submodule 拉取）
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -51,16 +43,9 @@ jobs:
       - name: 完整拉取全部 submodules（非浅克隆）
         run: |
           # actions/checkout 对 submodule 用 --depth=1 浅 fetch，pin 在非
-          # ref-tip 提交上的 submodule（如 libsixel e2c8546、老版 openssl 等）
-          # 会被 GitHub 拒绝（"not our ref"）。普通 git submodule update 做
-          # 完整 fetch，按 SHA 直取可成功，故在 checkout 后手动递归拉取。
+          # ref-tip 提交上的 submodule（如 libsixel e2c8546）会被 GitHub
+          # 拒绝（"not our ref"）。普通 git submodule update 做完整 fetch。
           git submodule update --init --recursive --force
-
-      - name: 显示 runner 架构与 Xcode 版本（依赖将用它重建，无需匹配 last-xcode-version）
-        run: |
-          uname -m
-          xcodebuild -version
-          xcode-select -p
 
       - name: 安装 Rust 工具链（railroad_dsl 需要 cargo）
         run: |
@@ -77,32 +62,98 @@ jobs:
 
       - name: 安装构建工具链（make setup，SKIP_CONFIRM 跳过全部交互提示）
         run: |
-          # 装齐 setup 所需工具：gettext、python3+pyobjc（tools/updateVersion.py
-          # 需要）等；RUSTUP 覆盖让 setup/deps 内的 cargo 全走上一步装的 rustup。
+          # 装齐 setup 所需工具：gettext、python3+pyobjc 等；
+          # RUSTUP 覆盖让 setup 内的 cargo 走上一步装的 rustup。
           make setup SKIP_CONFIRM=1 RUSTUP="$HOME/.cargo/bin/rustup"
           # brew 的 gettext 是 keg-only，envsubst 不在默认 PATH，需显式加入
           # （copy_shell_integration.sh 在构建脚本阶段要用 envsubst）。
           command -v envsubst >/dev/null || \
             echo "$(brew --prefix gettext)/bin" >> "$GITHUB_PATH"
 
-      - name: 重建全部二进制依赖（除 sfsymbolenum）
+      - name: 重建全部二进制依赖（UNIVERSAL=1，出双架构 fat 库）
         run: |
-          # 不传 UNIVERSAL：Makefile 按本机 NATIVE_ARCH 构建单架构依赖
-          # （arm64 机走 armopenssl/armsixel，Intel 机走 x86openssl/x86libsixel）。
-          # SIGNING_FLAGS 为命令行变量，自动传播到各依赖的 xcodebuild 构建；
-          # ad-hoc 签名（identity 为 "-"）在无证书环境下保证产物签名一致。
-          #
           # 显式列出 deps 的目标并去掉 sfsymbolenum：该目标用 swift 脚本解析
           # 本机 SF Symbols.app 的 name_availability.plist 重新生成枚举，而
           # 最新版 app 的 year_to_release 表含尚无符号引用的发行版条目
           # （2026.x），触发生成器断言。ThirdParty/SFSymbolEnum/*.{h,m} 是
-          # 已提交的生成产物，直接用仓库版本即可，无需在 CI 重生成。
-          make fatlibsixel CoreParse NMSSH bindeps libgit2 sparkle \
+          # 已提交的生成产物，直接用仓库版本即可。
+          #
+          # UNIVERSAL=1：CMAKE_ARCHS=x86_64;arm64，libsixel/openssl/railroad_dsl
+          # 交叉编译双架构后 lipo 合并；xcodebuild 类目标 ARCH_FLAGS 留空 =
+          # 默认构建双架构。fat 静态库/框架对后续单架构 app 构建同样适用。
+          #
+          # SIGNING_FLAGS 为命令行变量，自动传播到各依赖的 xcodebuild 构建；
+          # ad-hoc 签名（identity 为 "-"）在无证书环境下保证产物签名一致。
+          UNIVERSAL=1 make fatlibsixel CoreParse NMSSH bindeps libgit2 sparkle \
             librailroad_dsl pwmadapters \
-            SIGNING_FLAGS='CODE_SIGN_IDENTITY=-'
+            SIGNING_FLAGS='CODE_SIGN_IDENTITY=-' \
+            RUSTUP="$HOME/.cargo/bin/rustup"
 
       - name: 用当前 Xcode 版本盖写 last-xcode-version
         run: |
+          xcodebuild -version > last-xcode-version
+          cat last-xcode-version
+
+      - name: 上传依赖产物（供双架构 build job 共享）
+        uses: actions/upload-artifact@v4
+        with:
+          name: deps-fat
+          path: |
+            ThirdParty/
+            BetterFontPicker/BetterFontPicker.framework/
+            ColorPicker/ColorPicker.framework/
+            SearchableComboListView/SearchableComboListView.framework/
+            submodules/NMSSH/NMSSH-OSX/Libraries/lib/
+            last-xcode-version
+          retention-days: 3
+          if-no-files-found: error
+
+  build:
+    needs: deps
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 240
+
+    strategy:
+      fail-fast: false # 一个架构失败不取消另一个
+      matrix:
+        include:
+          - arch: arm64
+            runner: macos-26
+          - arch: x86_64
+            runner: macos-26-intel
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: 完整拉取全部 submodules（构建脚本阶段需要 shell-integration 等）
+        run: |
+          git submodule update --init --recursive --force
+
+      - name: 安装构建脚本阶段所需工具
+        run: |
+          # copy_shell_integration.sh 需要 envsubst（gettext 提供，keg-only
+          # 需显式加入 PATH）；tools/updateVersion.py 需要 pyobjc。
+          command -v envsubst >/dev/null || {
+            brew install gettext
+            echo "$(brew --prefix gettext)/bin" >> "$GITHUB_PATH"
+          }
+          python3 -c "import objc" 2>/dev/null || \
+            python3 -m pip install --break-system-packages pyobjc-framework-Cocoa
+
+      - name: 下载 deps job 的依赖产物（覆盖到工作区）
+        uses: actions/download-artifact@v4
+        with:
+          name: deps-fat
+          path: .
+
+      - name: 用本机 Xcode 版本盖写 last-xcode-version
+        run: |
+          # deps 产物里的 stamp 来自 arm64 runner；若本机 Xcode 版本不同，
+          # "Build binary dependencies if xcode version changed" 构建脚本
+          # 阶段会拒绝构建。依赖已预编好，这里按本机版本重写以放行。
           xcodebuild -version > last-xcode-version
           cat last-xcode-version
 
@@ -110,7 +161,7 @@ jobs:
         run: |
           # make release 先拷贝 release-iTerm2.plist 再调 make Deployment；
           # 不传 ARCH_FLAGS 时 Makefile 默认 ARCHS="$(NATIVE_ARCH)"，
-          # 恰好就是各 runner 的原生架构。
+          # 恰好就是各 runner 的原生架构。deps 产物中的 fat 库按需取切片。
           make release SIGNING_FLAGS='CODE_SIGN_IDENTITY=-'
 
       - name: ad-hoc 重签并校验 app bundle
@@ -140,6 +191,7 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout（用于推送 tag）

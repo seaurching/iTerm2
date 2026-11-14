@@ -4,7 +4,8 @@
 	ignore = dirty
 [submodule "submodules/CoreParse"]
 	path = submodules/CoreParse
-	url = https://github.com/gnachman/CoreParse
+	# 本地化 lproj 等改动不在上游 gnachman/CoreParse，改用 fork 的 iterm2-zh 分支
+	url = https://github.com/seaurching/CoreParse
 	ignore = dirty
 [submodule "submodules/Sparkle"]
 	path = submodules/Sparkle
