@@ -61,12 +61,24 @@ jobs:
           xcodebuild -version
           xcode-select -p
 
+      - name: 安装 Rust 工具链（railroad_dsl 需要 cargo）
+        run: |
+          # runner 预装的 rustup 状态不完整（make setup 的
+          # `rustup run stable cargo` 报 "could not execute process rustc -vV"），
+          # 因此装一套自己掌控的 rustup（minimal profile 含 rustc/cargo/rust-std），
+          # 并在后续 make 命令行用 RUSTUP= 覆盖（Makefile 的 ?= 会被命令行压住）。
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- \
+            -y --profile minimal --default-toolchain stable
+          "$HOME/.cargo/bin/rustup" run stable rustc -vV # 验证 cargo 视角的 rustc 可执行
+          "$HOME/.cargo/bin/rustup" target add x86_64-apple-darwin
+          "$HOME/.cargo/bin/rustup" target add aarch64-apple-darwin
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+
       - name: 安装构建工具链（make setup，SKIP_CONFIRM 跳过全部交互提示）
         run: |
-          # 装齐 deps 所需工具：cmake/pkg-config/automake/perl/gettext、
-          # python3+pyobjc（tools/updateVersion.py 需要）、rustup+cbindgen
-          # （railroad_dsl 需要 cargo）。
-          make setup SKIP_CONFIRM=1
+          # 装齐 setup 所需工具：gettext、python3+pyobjc（tools/updateVersion.py
+          # 需要）等；RUSTUP 覆盖让 setup/deps 内的 cargo 全走上一步装的 rustup。
+          make setup SKIP_CONFIRM=1 RUSTUP="$HOME/.cargo/bin/rustup"
           # brew 的 gettext 是 keg-only，envsubst 不在默认 PATH，需显式加入
           # （copy_shell_integration.sh 在构建脚本阶段要用 envsubst）。
           command -v envsubst >/dev/null || \
