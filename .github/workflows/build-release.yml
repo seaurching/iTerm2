@@ -42,11 +42,18 @@ jobs:
             runner: macos-26-intel
 
     steps:
-      - name: Checkout (含 submodules)
+      - name: Checkout（不启用 checkout 自带的 submodule 拉取）
         uses: actions/checkout@v4
         with:
-          submodules: recursive
           fetch-depth: 0
+
+      - name: 完整拉取全部 submodules（非浅克隆）
+        run: |
+          # actions/checkout 对 submodule 用 --depth=1 浅 fetch，pin 在非
+          # ref-tip 提交上的 submodule（如 libsixel e2c8546、老版 openssl 等）
+          # 会被 GitHub 拒绝（"not our ref"）。普通 git submodule update 做
+          # 完整 fetch，按 SHA 直取可成功，故在 checkout 后手动递归拉取。
+          git submodule update --init --recursive --force
 
       - name: 显示 runner 架构与 Xcode 版本（依赖将用它重建，无需匹配 last-xcode-version）
         run: |
