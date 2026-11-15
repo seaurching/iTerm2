@@ -162,7 +162,12 @@ jobs:
           # make release 先拷贝 release-iTerm2.plist 再调 make Deployment；
           # 不传 ARCH_FLAGS 时 Makefile 默认 ARCHS="$(NATIVE_ARCH)"，
           # 恰好就是各 runner 的原生架构。deps 产物中的 fat 库按需取切片。
-          make release SIGNING_FLAGS='CODE_SIGN_IDENTITY=-'
+          #
+          # BUILD_DIR 必须显式指定：Makefile 默认从 xcodebuild
+          # -showBuildSettings 探测 SYMROOT，会解析到 DerivedData 绝对路径，
+          # 导致产物不在仓库的 build/ 下；且 Makefile 要求绝对路径。
+          # 命令行变量会传播给内层 `make Deployment`。
+          make release BUILD_DIR="$PWD/build" SIGNING_FLAGS='CODE_SIGN_IDENTITY=-'
 
       - name: ad-hoc 重签并校验 app bundle
         run: |
